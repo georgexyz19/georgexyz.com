@@ -1,0 +1,202 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <link rel="stylesheet" href="https://www.georgexyz.com/theme/css/bootstrap.min.css">
+ 
+    <link rel="stylesheet" href="https://www.georgexyz.com/theme/css/friendly.css">
+    <link rel="stylesheet" href="https://www.georgexyz.com/theme/css/custom.css">
+    <meta name="author" content="George Zhang" />
+    <meta name="keywords" content="pelican,bootstrap" />
+    <meta name="description" content="This website is created with Pelican and Bootstrap, both of which are open-source software. When I am learning Django web framework, I want to create a blog site to write …" />
+    <title>Create Static Website With Pelican And Bootstrap - George Zhang</title>
+  </head>
+  <body>
+    <!-- navbar -->
+    <nav class="navbar navbar-expand-md navbar-dark bg-primary">
+      <div class="container">
+        <a class="navbar-brand" href="/">George Zhang</a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarColor01" aria-controls="navbarColor01" aria-expanded="false" aria-label="Toggle navigation">
+          <span class="navbar-toggler-icon"></span>
+        </button>
+
+        <div class="collapse navbar-collapse" id="navbarColor01">
+          <ul class="navbar-nav mr-auto">
+            <li class="nav-item">
+              <a class="nav-link " 
+                href="/article-list.html">Blog</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link " 
+                href="/archives.html">Archives</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link pr-3 " 
+                href="/tags.html">Tags</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link pr-3 "
+                 href="/pages/inkscape-tutorial.html">Inkscape Tutorial</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link "
+                   href="/pages/projects.html">Projects</a>
+              </li>
+          </ul>
+
+          <ul class="navbar-nav">
+            <li class="nav-item">
+              <a class="nav-link " 
+                 href="/pages/about.html">About</a>
+            </li>
+          </ul>
+        </div>
+
+      </div>
+    </nav>
+
+   
+  
+<div class="container">
+
+  <div class="row">
+    <div class="col-lg-8 mx-auto">   
+
+  <h2 class="mt-4 mb-3">Create Static Website With Pelican And Bootstrap</h2>
+  
+  <div class="text-muted mb-2">
+    <span>Posted on </span>
+    <time datetime="2019-04-14 19:34:00-04:00">
+      Sunday, 04/14/2019 19:34
+    </time>
+    
+     <span>with tags: </span>
+       <a href="https://www.georgexyz.com/tag/pelican.html">pelican</a>
+/       <a href="https://www.georgexyz.com/tag/bootstrap.html">bootstrap</a>
+  </div>
+      
+  <p>This website is created with Pelican and Bootstrap, both of which are open-source
+software.  When I am learning Django web framework, I want to create a blog site to 
+write down some notes. A blog site with 50-500 articles does not need full scale 
+Django back-end. My original plan is to write some python scripts calling Django Template 
+system and python Markdown package.  Then I find Pelican which includes
+Jinja2 Template system, Markdown, and many other functions.  It does what 
+I want to do and much more. </p>
+<h3>Pelican</h3>
+<p>Pelican is a static website generator written in Python. When a web server is running Django or Flask 
+framework, the server creates an html page and sends it back to client 
+as the response to a request. If a developer chooses a static site generator like 
+Pelican, html pages are created during development.  When a web request comes
+to a server, the serve fetches pre-generated static html page and sends it back. 
+The response cycle is simpler and faster.  The drawback is that the website is static. 
+It does receive or collect input from a user. </p>
+<p>This <a href="https://www.fullstackpython.com/blog/generating-static-websites-pelican-jinja2-markdown.html">full stack python article</a> 
+is an excellent tutorial on Pelican. 
+<a href="https://docs.getpelican.com/en/stable/">The Pelican documentation</a> 
+is a good reference. The fast way to learn Pelican is to look at code of 
+two included themes "simple" and "notmyidea".  To get started, you can 
+write a few blog posts in markdown format and utilize the built-in theme 
+"simple" to generate a site. </p>
+<p>The figure below roughly describes how pelican works. Pelican reads markdown files and 
+theme files into memory.  The theme files work as templates for html output. 
+Some theme files correspond to multiple outputs, while others only relate to 
+one output file. </p>
+<div style="max-width:800px">
+  <img class="img-fluid" src="/images/img-pelican-work.svg" alt="How Pelican Work"> 
+</div>
+
+<p><a href="https://github.com/getpelican/pelican/tree/4.0.1/pelican">The Pelican source code</a>
+consists of 14 python files (version 4.0.1).  The source files has 5,670 lines of 
+code. It is a good median size code base to study if you are looking for python 
+project to work on. I have not read all pelican source code yet. </p>
+<div class="highlight"><pre><span></span># bash command to tally pelican source code lines
+find . -maxdepth 1 -name &#39;*.py&#39; -exec wc -l &#39;{}&#39; +
+</pre></div>
+
+
+<h3>Bootstrap 4</h3>
+<p>There is an excellent 
+<a href="https://github.com/getpelican/pelican-themes/tree/master/pelican-bootstrap3"><em>pelican-bootstrap3</em></a> 
+theme in the pelican-themes repo.  The original author of the theme did a nice work
+of including lots of bootstrap features into the theme. </p>
+<p>Bootstrap 4 has been released for a while, so I decide to use Bootstrap 4 and create a theme 
+for this website. Whenever I am not sure about certain pelican theme features, 
+I check the code of the "pelican-bootstrap3" and start from there. </p>
+<p>Another nice pelican theme is 
+<a href="https://github.com/pR0Ps/pelican-subtle"><em>pelican-subtle</em></a>. 
+The Markdown code style on this website is from pelican-subtle. I also read the 
+code of this theme to get a better understanding on how pelican and pelican theme work. </p>
+<p>I changed the Bootstrap 4 default colors on the 
+<a href="https://bootstrap.build/">bootstrap.build webiste</a>. This website has a 
+<a href="https://hackerthemes.com/kit/">Bootstrap theme kit</a> if you want to customize 
+Bootstrap locally.</p>
+<p>Here are the color variables of this website. </p>
+<div class="highlight"><pre><span></span><span class="c1">// _variables.scss </span>
+<span class="nv">$blue</span><span class="o">:</span> <span class="mh">#990000</span><span class="p">;</span>
+<span class="nv">$green</span><span class="o">:</span> <span class="mh">#720027</span><span class="p">;</span>
+<span class="nv">$cyan</span><span class="o">:</span> <span class="mh">#ce4257</span><span class="p">;</span>
+<span class="nv">$yellow</span><span class="o">:</span> <span class="mh">#ff9b54</span><span class="p">;</span>
+<span class="nv">$pink</span><span class="o">:</span> <span class="mh">#4f000b</span><span class="p">;</span>
+<span class="nv">$font-size-base</span><span class="o">:</span> <span class="mi">1</span><span class="mf">.1</span><span class="kt">rem</span><span class="p">;</span>
+<span class="nv">$h4-font-size</span><span class="o">:</span> <span class="nv">$font-size-base</span> <span class="o">*</span> <span class="mi">1</span><span class="mf">.1</span><span class="p">;</span>
+<span class="nv">$h5-font-size</span><span class="o">:</span> <span class="nv">$font-size-base</span> <span class="o">*</span> <span class="mi">1</span><span class="mf">.0</span><span class="p">;</span>
+<span class="nv">$h3-font-size</span><span class="o">:</span> <span class="nv">$font-size-base</span> <span class="o">*</span> <span class="mi">1</span><span class="mf">.4</span><span class="p">;</span>
+<span class="nv">$h2-font-size</span><span class="o">:</span> <span class="nv">$font-size-base</span> <span class="o">*</span> <span class="mi">1</span><span class="mf">.6</span><span class="p">;</span>
+<span class="nv">$h1-font-size</span><span class="o">:</span> <span class="nv">$font-size-base</span> <span class="o">*</span> <span class="mi">1</span><span class="mf">.8</span><span class="p">;</span>
+<span class="nv">$h6-font-size</span><span class="o">:</span> <span class="nv">$font-size-base</span><span class="p">;</span>
+<span class="nv">$paragraph-margin-bottom</span><span class="o">:</span> <span class="mi">1</span><span class="mf">.1</span><span class="kt">rem</span><span class="p">;</span>
+<span class="nv">$print-page-size</span><span class="o">:</span> <span class="n">letter</span><span class="p">;</span>
+</pre></div>
+
+
+<p>The pelican-theme github repo collects many themes.  However, it seems to me that
+few of them are of professional quality. The possible reason is that most 
+themes are produced by hobbyists during spare time. </p>
+<p>The three images on the homepage are downloaded from 
+<a href="https://www.pexels.com/">pexels.com</a>, 
+which is a very nice website for free photos. The icons on the Projects page are from 
+<a href="https://pixabay.com/">pixabay.com</a>, and are modified with Gimp. </p>
+<h3>Invoke Package</h3>
+<p><a href="http://docs.pyinvoke.org/en/1.2/getting-started.html">Invoke package</a>
+"is a Python task execution tool and library". It is similar to GNU 
+Make program, but the script tasks.py is written in Python.  The tasks.py 
+file is an equivalent of Makefile for GNU Make. </p>
+<p>I usually install Invoke package along with pelican and Markdown packages in a
+python virtual environment. </p>
+<div class="highlight"><pre><span></span><span class="n">python</span> <span class="o">-</span><span class="n">m</span> <span class="n">venv</span> <span class="o">~/.</span><span class="n">venv</span><span class="o">/</span><span class="n">pelican</span>
+<span class="n">source</span> <span class="o">~/</span><span class="n">venv</span><span class="o">/</span><span class="n">pelican</span><span class="o">/</span><span class="nb">bin</span><span class="o">/</span><span class="n">activate</span>
+<span class="n">pip</span> <span class="n">install</span> <span class="n">pelican</span> <span class="n">Markdown</span> <span class="n">invoke</span>
+</pre></div>
+
+
+<p>The <code>pelican-quickstart</code> command will create a tasks.py file in the project directory. 
+One nice feature of Invoke is that you can run multiple tasks in one command. The 
+command below cleans the <code>output</code> directory, rebuilds the project, and serves the 
+website at <code>http://localhost:8000</code> address. </p>
+<div class="highlight"><pre><span></span>invoke clean build serve
+</pre></div>
+
+
+<h3>Future Blog Plan</h3>
+<p>My future plan for the blog is to write about one post per month.  That comes 
+to about 12 posts per year.  My goal is to write at least 6 posts per year 
+even I am busy at work.  Another goal is to keep the blog running for at 
+least 10 years, so we will see if the site has 60 posts in the year 2029. </p>
+<p>This site does not track who is reading or visiting. It does not have any 
+Google Analytics or similar services turned on to track users. </p>
+
+    </div>
+  </div>
+
+</div>
+  
+   
+
+    <!-- Optional JavaScript -->
+    <!-- jQuery first, then Bootstrap Bundle JS -->
+    <script src="https://www.georgexyz.com/theme/js/jquery-3.3.1.slim.min.js"></script>
+    <script src="https://www.georgexyz.com/theme/js/bootstrap.bundle.min.js"></script>
+  </body>
+</html>

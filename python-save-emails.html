@@ -1,0 +1,252 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <link rel="stylesheet" href="https://www.georgexyz.com/theme/css/bootstrap.min.css">
+ 
+    <link rel="stylesheet" href="https://www.georgexyz.com/theme/css/friendly.css">
+    <link rel="stylesheet" href="https://www.georgexyz.com/theme/css/custom.css">
+    <meta name="author" content="George Zhang" />
+    <meta name="keywords" content="Python" />
+    <meta name="description" content="One of my work tasks requires me to save hundreds of emails in my work Gmail account to PDF files in local hard drive. I could do it manually spending …" />
+    <title>Python Code to Save Emails in Gmail to PDF Files - George Zhang</title>
+  </head>
+  <body>
+    <!-- navbar -->
+    <nav class="navbar navbar-expand-md navbar-dark bg-primary">
+      <div class="container">
+        <a class="navbar-brand" href="/">George Zhang</a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarColor01" aria-controls="navbarColor01" aria-expanded="false" aria-label="Toggle navigation">
+          <span class="navbar-toggler-icon"></span>
+        </button>
+
+        <div class="collapse navbar-collapse" id="navbarColor01">
+          <ul class="navbar-nav mr-auto">
+            <li class="nav-item">
+              <a class="nav-link " 
+                href="/article-list.html">Blog</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link " 
+                href="/archives.html">Archives</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link pr-3 " 
+                href="/tags.html">Tags</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link pr-3 "
+                 href="/pages/inkscape-tutorial.html">Inkscape Tutorial</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link "
+                   href="/pages/projects.html">Projects</a>
+              </li>
+          </ul>
+
+          <ul class="navbar-nav">
+            <li class="nav-item">
+              <a class="nav-link " 
+                 href="/pages/about.html">About</a>
+            </li>
+          </ul>
+        </div>
+
+      </div>
+    </nav>
+
+   
+  
+<div class="container">
+
+  <div class="row">
+    <div class="col-lg-8 mx-auto">   
+
+  <h2 class="mt-4 mb-3">Python Code to Save Emails in Gmail to PDF Files</h2>
+  
+  <div class="text-muted mb-2">
+    <span>Posted on </span>
+    <time datetime="2019-04-03 13:02:00-04:00">
+      Wednesday, 04/03/2019 13:02
+    </time>
+    
+     <span>with tags: </span>
+       <a href="https://www.georgexyz.com/tag/python.html">Python</a>
+  </div>
+      
+  <p>One of my work tasks requires me to save hundreds of emails in my work Gmail 
+account to PDF files in local hard drive.  I could do it manually spending hours 
+saving emails, or I could write a python program to do the work. 
+No doubt I prefer the second approach. </p>
+<p>A google search finds several online articles discussing how to do it.  A typical 
+method is to install a Chrome plugin for the browser, and the plugin will do the work. 
+But granting permission to a plugin to read my work emails is not acceptable. </p>
+<p>After reading some articles, I settled on two methods. The first one is to select and 
+export emails in Gmail to a .mbox file, then write a python program to read the .mbox file 
+and save emails.  The second one is discovered when I was reading the
+last chapter of Al Sweigart's wonderful book 
+<a href="https://automatetheboringstuff.com/">Automate The Boring Stuff With Python</a>. 
+This method uses the pyautogui module and involves writing a python program to simulate 
+mouse button clicks and keyboard key presses to save emails.  The program is like a person is 
+clicking the mouse button and typing on the keyboard. </p>
+<p>Let's look at the first method. 
+<a href="https://www.lifewire.com/how-to-export-your-emails-from-gmail-as-mbox-files-1171881">An article on Lifwire.com</a> 
+has step by step guide on how to save emails to a .mbox file.  The python standard
+library modules <em>mailbox</em> and <em>email</em> can read emails in the .mbox file.  I spent
+some time writing a python program, which also parses email content and extracts 
+useful information from emails. The code structure looks like this. </p>
+<div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">mailbox</span>
+<span class="kn">import</span> <span class="nn">email.header</span>
+<span class="kn">import</span> <span class="nn">email.utils</span> 
+
+<span class="kn">import</span> <span class="nn">time</span><span class="o">,</span> <span class="nn">datetime</span><span class="o">,</span> <span class="nn">argparse</span>
+<span class="kn">import</span> <span class="nn">re</span><span class="o">,</span> <span class="nn">csv</span><span class="o">,</span> <span class="nn">copy</span><span class="o">,</span> <span class="nn">os</span>  <span class="c1"># for os.path.exists</span>
+
+<span class="k">def</span> <span class="nf">parse_html</span><span class="p">(</span><span class="n">message</span><span class="p">):</span>
+    <span class="sd">&#39;&#39;&#39;parse a message and return html_content&#39;&#39;&#39;</span>
+    <span class="k">if</span> <span class="n">message</span><span class="o">.</span><span class="n">is_multipart</span><span class="p">():</span>
+        <span class="n">content</span> <span class="o">=</span> <span class="s1">&#39;&#39;</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">part</span><span class="o">.</span><span class="n">get_payload</span><span class="p">(</span><span class="n">decode</span><span class="o">=</span><span class="bp">True</span><span class="p">)</span><span class="o">.</span><span class="n">decode</span><span class="p">(</span>
+            <span class="s1">&#39;utf-8&#39;</span><span class="p">)</span> <span class="k">for</span> <span class="n">part</span> <span class="ow">in</span> <span class="n">message</span><span class="o">.</span><span class="n">get_payload</span><span class="p">())</span>
+        <span class="n">html_content</span> <span class="o">=</span> <span class="n">content</span>
+    <span class="k">else</span><span class="p">:</span>
+        <span class="n">content</span> <span class="o">=</span> <span class="n">message</span><span class="o">.</span><span class="n">get_payload</span><span class="p">(</span><span class="n">decode</span><span class="o">=</span><span class="bp">True</span><span class="p">)</span>
+        <span class="n">html_content</span> <span class="o">=</span> <span class="n">content</span><span class="o">.</span><span class="n">decode</span><span class="p">(</span><span class="s1">&#39;utf-8&#39;</span><span class="p">)</span>
+    <span class="k">return</span> <span class="n">html_content</span>
+
+<span class="k">def</span> <span class="nf">parse_date</span><span class="p">(</span><span class="n">message</span><span class="p">):</span>
+    <span class="sd">&#39;&#39;&#39;return a date of message of format datetime&#39;&#39;&#39;</span>
+    <span class="n">date</span> <span class="o">=</span> <span class="n">message</span><span class="p">[</span><span class="s1">&#39;Date&#39;</span><span class="p">]</span>
+    <span class="n">dt_parse</span> <span class="o">=</span> <span class="n">email</span><span class="o">.</span><span class="n">utils</span><span class="o">.</span><span class="n">parsedate</span><span class="p">(</span><span class="n">date</span><span class="p">)</span>
+    <span class="n">timestamp</span> <span class="o">=</span> <span class="n">time</span><span class="o">.</span><span class="n">mktime</span><span class="p">(</span><span class="n">dt_parse</span><span class="p">)</span>
+    <span class="n">dt</span> <span class="o">=</span> <span class="n">datetime</span><span class="o">.</span><span class="n">datetime</span><span class="o">.</span><span class="n">fromtimestamp</span><span class="p">(</span><span class="n">timestamp</span><span class="p">)</span>  <span class="c1"># dt of the message</span>
+    <span class="n">dt</span> <span class="o">=</span> <span class="n">dt</span> <span class="o">+</span> <span class="n">datetime</span><span class="o">.</span><span class="n">timedelta</span><span class="p">(</span><span class="n">hours</span><span class="o">=</span><span class="mi">3</span><span class="p">)</span> <span class="c1"># email time has an offset</span>
+    <span class="k">return</span> <span class="n">dt</span>
+
+<span class="k">def</span> <span class="nf">parse_subject</span><span class="p">(</span><span class="n">message</span><span class="p">):</span>
+    <span class="n">subj</span> <span class="o">=</span> <span class="n">message</span><span class="p">[</span><span class="s1">&#39;Subject&#39;</span><span class="p">]</span>
+    <span class="n">s1</span> <span class="o">=</span> <span class="s1">&#39; &#39;</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">subj</span><span class="o">.</span><span class="n">strip</span><span class="p">()</span><span class="o">.</span><span class="n">splitlines</span><span class="p">())</span> <span class="c1"># remove multiple \n or &#39; &#39;</span>
+    <span class="n">s2</span> <span class="o">=</span> <span class="s1">&#39; &#39;</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">s1</span><span class="o">.</span><span class="n">split</span><span class="p">())</span>
+    <span class="k">return</span> <span class="n">s2</span>
+
+<span class="c1"># ... other methods for parsing email contents</span>
+
+<span class="k">if</span> <span class="vm">__name__</span> <span class="o">==</span> <span class="s1">&#39;__main__&#39;</span><span class="p">:</span>
+    <span class="n">mbox</span> <span class="o">=</span> <span class="n">mailbox</span><span class="o">.</span><span class="n">mbox</span><span class="p">(</span><span class="n">path</span><span class="p">)</span>
+    <span class="n">save</span> <span class="o">=</span> <span class="bp">True</span> <span class="c1"># flag for parse emails, not save them</span>
+    <span class="k">for</span> <span class="n">message</span> <span class="ow">in</span> <span class="n">mbox</span><span class="p">:</span>
+        <span class="c1"># code to parse emails</span>
+        <span class="n">html</span> <span class="o">=</span> <span class="n">parse_html</span><span class="p">(</span><span class="n">message</span><span class="p">)</span>
+        <span class="c1"># ...</span>
+        <span class="k">if</span> <span class="n">save</span><span class="p">:</span>
+            <span class="n">fn</span> <span class="o">=</span> <span class="s1">&#39;{}&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span> <span class="o">...</span> <span class="p">)</span>
+            <span class="n">f</span> <span class="o">=</span> <span class="nb">open</span><span class="p">(</span><span class="n">fn</span><span class="p">,</span> <span class="s1">&#39;w&#39;</span><span class="p">)</span>
+            <span class="n">f</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="n">html</span><span class="p">)</span>
+            <span class="n">f</span><span class="o">.</span><span class="n">close</span><span class="p">()</span>            
+</pre></div>
+
+
+<p>I find a major flaw in this approach a few days later.  The Google archive 
+system has a limit on the number of time a user is allowed to export emails to .mbox files. Once 
+the daily limit (3 times on my account) is reached, it does not allow a user to export 
+emails that day.  The system simply gives a message "Please try to create your 
+archive again".</p>
+<p>When I am reading the last chapter of Al Sweigart's book, I realize that
+the pyautogui module can be used for this task.  Here is the code to save emails, </p>
+<div class="highlight"><pre><span></span><span class="c1"># save_emails.py by Geroge Zhang on 2/1/2019</span>
+<span class="c1"># The GMail window should be in a status shown in SaveEMails.png</span>
+<span class="c1"># The EMails should be in a folder(label), the program clicks next button</span>
+<span class="c1"># This program only works on my laptop</span>
+
+<span class="c1"># Chrome settings -&gt; Advanced -&gt; Privacy and security -&gt; Content settings -&gt;</span>
+<span class="c1"># pop-ups and redirects -&gt; allow =&gt; add https://mail.google.com</span>
+
+<span class="c1"># setup the program</span>
+<span class="kn">import</span> <span class="nn">pyautogui</span> <span class="c1"># this requires installation</span>
+<span class="kn">import</span> <span class="nn">time</span>
+
+<span class="n">pyautogui</span><span class="o">.</span><span class="n">PAUSE</span> <span class="o">=</span> <span class="mf">0.1</span>
+<span class="n">pyautogui</span><span class="o">.</span><span class="n">FAILSAFE</span> <span class="o">=</span> <span class="bp">True</span>
+
+<span class="n">TOTALEMAILS</span> <span class="o">=</span> <span class="mi">10</span>
+<span class="n">START</span> <span class="o">=</span> <span class="mi">1</span>
+
+<span class="n">nextButton</span> <span class="o">=</span> <span class="p">(</span><span class="mi">1229</span><span class="p">,</span> <span class="mi">189</span><span class="p">)</span>
+<span class="n">printButton</span> <span class="o">=</span> <span class="p">(</span><span class="mi">1230</span><span class="p">,</span> <span class="mi">247</span><span class="p">)</span>
+<span class="n">saveButton</span> <span class="o">=</span> <span class="p">(</span><span class="mi">202</span><span class="p">,</span> <span class="mi">167</span><span class="p">)</span>
+<span class="n">filenameBox</span> <span class="o">=</span> <span class="p">(</span><span class="mi">878</span><span class="p">,</span> <span class="mi">443</span><span class="p">)</span>
+<span class="n">saveDialog</span> <span class="o">=</span> <span class="p">(</span><span class="mi">788</span><span class="p">,</span> <span class="mi">503</span><span class="p">)</span>
+
+<span class="n">closeButton</span> <span class="o">=</span> <span class="p">(</span><span class="mi">470</span><span class="p">,</span> <span class="mi">15</span><span class="p">)</span>
+<span class="n">centerWindow</span> <span class="o">=</span> <span class="p">(</span><span class="mi">683</span><span class="p">,</span> <span class="mi">7</span><span class="p">)</span>
+
+<span class="k">print</span><span class="p">(</span><span class="s1">&#39;&gt;&gt;&gt; 5 Seconds to start &lt;&lt;&lt;&#39;</span><span class="p">)</span>
+<span class="n">time</span><span class="o">.</span><span class="n">sleep</span><span class="p">(</span><span class="mi">5</span><span class="p">)</span>
+
+<span class="c1">##print(&#39;Click window center to activate Gmail&#39;)</span>
+<span class="c1">##pyautogui.click(centerWindow[0], centerWindow[1])</span>
+
+<span class="k">print</span><span class="p">(</span><span class="s1">&#39;Please click the first email in a label group&#39;</span><span class="p">)</span>
+<span class="k">print</span><span class="p">(</span><span class="s1">&#39;&gt;&gt;&gt; 5 Seconds to start &lt;&lt;&lt;&#39;</span><span class="p">)</span>
+<span class="n">time</span><span class="o">.</span><span class="n">sleep</span><span class="p">(</span><span class="mi">5</span><span class="p">)</span>
+
+<span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">START</span><span class="p">,</span> <span class="n">TOTALEMAILS</span> <span class="o">+</span> <span class="n">START</span><span class="p">):</span>
+    <span class="k">print</span><span class="p">(</span><span class="s1">&#39;</span><span class="se">\n</span><span class="s1">Now click the print button&#39;</span><span class="p">)</span>
+    <span class="n">pyautogui</span><span class="o">.</span><span class="n">click</span><span class="p">(</span><span class="n">printButton</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span> <span class="n">printButton</span><span class="p">[</span><span class="mi">1</span><span class="p">])</span>
+    <span class="n">time</span><span class="o">.</span><span class="n">sleep</span><span class="p">(</span><span class="mi">5</span><span class="p">)</span>
+
+    <span class="k">print</span><span class="p">(</span><span class="s1">&#39;Click the Save email button&#39;</span><span class="p">)</span>
+    <span class="n">pyautogui</span><span class="o">.</span><span class="n">click</span><span class="p">(</span><span class="n">saveButton</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span> <span class="n">saveButton</span><span class="p">[</span><span class="mi">1</span><span class="p">])</span>
+    <span class="n">time</span><span class="o">.</span><span class="n">sleep</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span>
+
+    <span class="k">print</span><span class="p">(</span><span class="s1">&#39;Click filename field&#39;</span><span class="p">)</span>
+    <span class="n">pyautogui</span><span class="o">.</span><span class="n">click</span><span class="p">(</span><span class="n">filenameBox</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span> <span class="n">filenameBox</span><span class="p">[</span><span class="mi">1</span><span class="p">])</span>
+    <span class="n">time</span><span class="o">.</span><span class="n">sleep</span><span class="p">(</span><span class="o">.</span><span class="mi">5</span><span class="p">)</span>
+
+    <span class="n">pyautogui</span><span class="o">.</span><span class="n">press</span><span class="p">(</span><span class="s1">&#39;home&#39;</span><span class="p">)</span>
+    <span class="n">filename_prefix</span> <span class="o">=</span> <span class="s1">&#39;{0:03}&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">i</span><span class="p">)</span> <span class="o">+</span> <span class="s1">&#39; - &#39;</span>
+    <span class="n">pyautogui</span><span class="o">.</span><span class="n">typewrite</span><span class="p">(</span><span class="n">filename_prefix</span><span class="p">)</span>
+    <span class="n">time</span><span class="o">.</span><span class="n">sleep</span><span class="p">(</span><span class="o">.</span><span class="mi">5</span><span class="p">)</span> 
+
+    <span class="k">print</span><span class="p">(</span><span class="s1">&#39;Click the Save file button&#39;</span><span class="p">)</span>
+    <span class="n">pyautogui</span><span class="o">.</span><span class="n">click</span><span class="p">(</span><span class="n">saveDialog</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span> <span class="n">saveDialog</span><span class="p">[</span><span class="mi">1</span><span class="p">])</span>
+    <span class="n">time</span><span class="o">.</span><span class="n">sleep</span><span class="p">(</span><span class="o">.</span><span class="mi">5</span><span class="p">)</span>
+
+    <span class="k">print</span><span class="p">(</span><span class="s1">&#39;Close the second window&#39;</span><span class="p">)</span>
+    <span class="n">pyautogui</span><span class="o">.</span><span class="n">click</span><span class="p">(</span><span class="n">closeButton</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span> <span class="n">closeButton</span><span class="p">[</span><span class="mi">1</span><span class="p">])</span>
+    <span class="n">time</span><span class="o">.</span><span class="n">sleep</span><span class="p">(</span><span class="o">.</span><span class="mi">5</span><span class="p">)</span>
+
+    <span class="k">print</span><span class="p">(</span><span class="s1">&#39;Click next button&#39;</span><span class="p">)</span>
+    <span class="n">pyautogui</span><span class="o">.</span><span class="n">click</span><span class="p">(</span><span class="n">nextButton</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span> <span class="n">nextButton</span><span class="p">[</span><span class="mi">1</span><span class="p">])</span>
+    <span class="n">time</span><span class="o">.</span><span class="n">sleep</span><span class="p">(</span><span class="o">.</span><span class="mi">5</span><span class="p">)</span>
+
+<span class="k">print</span><span class="p">(</span><span class="s1">&#39; &gt;&gt;&gt; Done &lt;&lt;&lt; &#39;</span><span class="p">)</span>
+</pre></div>
+
+
+<p>The program is able to save 1500 emails in about four hours.  Depending on the network speed, the
+sleep seconds between tasks can be adjusted. Sometime the program may abort for 
+some reason.  Change the variables <code>TOTALEMAILS</code> and <code>START</code> at the beginning of the program
+to resume running. </p>
+<p>You need to manually save a few emails in Chrome browser to understand what the
+program is doing.  How do I get the coordinates of the buttons on Gmail interface?  The 
+Al Sweigart book includes a <code>mouseNow.py</code> program.  I simple write down the coordinates
+on a piece of paper and then type those coordinates into the program. </p>
+<div style="max-width:450px">
+  <img class="img-fluid" src="/images/save-emails-notes.png" alt="save emails"> 
+</div>
+
+    </div>
+  </div>
+
+</div>
+  
+   
+
+    <!-- Optional JavaScript -->
+    <!-- jQuery first, then Bootstrap Bundle JS -->
+    <script src="https://www.georgexyz.com/theme/js/jquery-3.3.1.slim.min.js"></script>
+    <script src="https://www.georgexyz.com/theme/js/bootstrap.bundle.min.js"></script>
+  </body>
+</html>

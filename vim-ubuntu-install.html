@@ -1,0 +1,170 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <link rel="stylesheet" href="https://www.georgexyz.com/theme/css/bootstrap.min.css">
+ 
+    <link rel="stylesheet" href="https://www.georgexyz.com/theme/css/friendly.css">
+    <link rel="stylesheet" href="https://www.georgexyz.com/theme/css/custom.css">
+    <meta name="author" content="George Zhang" />
+    <meta name="keywords" content="vim,ubuntu,linux bash" />
+    <meta name="description" content="Ubuntu 18.04 comes with a stripped down version of Vim. If you want to use Vim for serious work, you need the full version. The default version is started …" />
+    <title>Vim Full Version Installation in Ubuntu - George Zhang</title>
+  </head>
+  <body>
+    <!-- navbar -->
+    <nav class="navbar navbar-expand-md navbar-dark bg-primary">
+      <div class="container">
+        <a class="navbar-brand" href="/">George Zhang</a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarColor01" aria-controls="navbarColor01" aria-expanded="false" aria-label="Toggle navigation">
+          <span class="navbar-toggler-icon"></span>
+        </button>
+
+        <div class="collapse navbar-collapse" id="navbarColor01">
+          <ul class="navbar-nav mr-auto">
+            <li class="nav-item">
+              <a class="nav-link " 
+                href="/article-list.html">Blog</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link " 
+                href="/archives.html">Archives</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link pr-3 " 
+                href="/tags.html">Tags</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link pr-3 "
+                 href="/pages/inkscape-tutorial.html">Inkscape Tutorial</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link "
+                   href="/pages/projects.html">Projects</a>
+              </li>
+          </ul>
+
+          <ul class="navbar-nav">
+            <li class="nav-item">
+              <a class="nav-link " 
+                 href="/pages/about.html">About</a>
+            </li>
+          </ul>
+        </div>
+
+      </div>
+    </nav>
+
+   
+  
+<div class="container">
+
+  <div class="row">
+    <div class="col-lg-8 mx-auto">   
+
+  <h2 class="mt-4 mb-3">Vim Full Version Installation in Ubuntu</h2>
+  
+  <div class="text-muted mb-2">
+    <span>Posted on </span>
+    <time datetime="2019-04-01 12:45:00-04:00">
+      Monday, 04/01/2019 12:45
+    </time>
+    
+     <span>with tags: </span>
+       <a href="https://www.georgexyz.com/tag/vim.html">vim</a>
+/       <a href="https://www.georgexyz.com/tag/ubuntu.html">ubuntu</a>
+/       <a href="https://www.georgexyz.com/tag/linux-bash.html">linux bash</a>
+  </div>
+      
+  <p>Ubuntu 18.04 comes with a stripped down version of Vim. If you want to use Vim for 
+serious work, you need the full version. </p>
+<p>The default version is started via command <code>vi</code>. The <code>vi --version</code> command shows 
+the version information. Note the Line 5 below shows "Small version without GUI". </p>
+<div class="highlight"><pre><span></span>VIM - Vi IMproved 8.0 (2016 Sep 12, compiled Apr 10 2018 21:31:58)
+Included patches: 1-1453
+Modified by pkg-vim-maintainers@lists.alioth.debian.org
+Compiled by pkg-vim-maintainers@lists.alioth.debian.org
+Small version without GUI.  Features included (+) or not (-):
++acl               -extra_search      -mouse_netterm     -tag_old_static
+-arabic            -farsi             -mouse_sgr         -tag_any_white
+-autocmd           -file_in_path      -mouse_sysmouse    -tcl
+-autoservername    -find_in_path      -mouse_urxvt       -termguicolors
+-balloon_eval      -float             -mouse_xterm       -terminal
+-balloon_eval_term -folding           +multi_byte        +terminfo
+-browse            -footer            -multi_lang        -termresponse
++builtin_terms     +fork()            -mzscheme          -textobjects
+-byte_offset       -gettext           -netbeans_intg     -timers
+-channel           -hangul_input      -num64             -title
+-cindent           +iconv             +packages          -toolbar
+-clientserver      -insert_expand     -path_extra        -user_commands
+-clipboard         -job               -perl              +vertsplit
+-cmdline_compl     +jumplist          -persistent_undo   -virtualedit
++cmdline_hist      -keymap            -printer           +visual
+-cmdline_info      -lambda            -profile           -visualextra
+-comments          -langmap           -python            -viminfo
+-conceal           -libcall           -python3           -vreplace
+-cryptv            -linebreak         -quickfix          +wildignore
+-cscope            -lispindent        -reltime           -wildmenu
+-cursorbind        -listcmds          -rightleft         +windows
+-cursorshape       -localmap          -ruby              +writebackup
+-dialog            -lua               -scrollbind        -X11
+-diff              -menu              -signs             +xfontset
+-digraphs          -mksession         -smartindent       -xim
+-dnd               -modify_fname      -startuptime       -xpm
+-ebcdic            -mouse             -statusline        -xsmp
+-emacs_tags        -mouse_dec         -sun_workshop      -xterm_clipboard
+-eval              -mouse_gpm         -syntax            -xterm_save
++ex_extra          -mouse_jsbterm     +tag_binary 
+   system vimrc file: &quot;$VIM/vimrc&quot;
+     user vimrc file: &quot;$HOME/.vimrc&quot;
+ 2nd user vimrc file: &quot;~/.vim/vimrc&quot;
+      user exrc file: &quot;$HOME/.exrc&quot;
+       defaults file: &quot;$VIMRUNTIME/defaults.vim&quot;
+  fall-back for $VIM: &quot;/usr/share/vim&quot;
+Compilation: gcc -c -I. -Iproto -DHAVE_CONFIG_H   -Wdate-time  -g -O2 
+-fdebug-prefix-map=/build/vim-NQEcoP/vim-8.0.1453=. -fstack-protector-strong 
+-Wformat -Werror=format-security -DTINY_VIMRC -U_FORTIFY_SOURCE -D_FORTIFY_SOURCE=1 
+Linking: gcc   -Wl,-Bsymbolic-functions -Wl,-z,relro -Wl,-z,now -Wl,--as-needed 
+-o vim    -lSM -lICE -lXpm -lXt -lX11 -lXdmcp -lSM -lICE  -lm -ltinfo  -lselinux 
+-lacl -lattr -ldl 
+</pre></div>
+
+
+<p>If you type command <code>vim</code> in bash, it will tell you that "command vim not found". </p>
+<div class="highlight"><pre><span></span>george@X250:~$ vim
+Command &#39;vim&#39; not found, but can be installed with:
+sudo apt install vim
+sudo apt install vim-gtk3
+sudo apt install vim-tiny 
+sudo apt install neovim
+sudo apt install vim-athena
+sudo apt install vim-gtk
+sudo apt install vim-nox
+</pre></div>
+
+
+<p>Those three commands remove the existing vim-tiny and install the full version with GUI
+vim-gtk3 in Ubuntu 18.04 or Xubuntu. </p>
+<div class="highlight"><pre><span></span>sudo apt-get remove vim-tiny
+sudo apt-get update
+sudo apt-get install vim-gtk3
+</pre></div>
+
+
+<p>You can then check the vim version by command <code>vim --version</code>. </p>
+
+    </div>
+  </div>
+
+</div>
+  
+   
+
+    <!-- Optional JavaScript -->
+    <!-- jQuery first, then Bootstrap Bundle JS -->
+    <script src="https://www.georgexyz.com/theme/js/jquery-3.3.1.slim.min.js"></script>
+    <script src="https://www.georgexyz.com/theme/js/bootstrap.bundle.min.js"></script>
+  </body>
+</html>

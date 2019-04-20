@@ -1,0 +1,130 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <link rel="stylesheet" href="https://www.georgexyz.com/theme/css/bootstrap.min.css">
+ 
+    <link rel="stylesheet" href="https://www.georgexyz.com/theme/css/friendly.css">
+    <link rel="stylesheet" href="https://www.georgexyz.com/theme/css/custom.css">
+    <meta name="author" content="George Zhang" />
+    <meta name="keywords" content="python" />
+    <meta name="description" content="Python has a standard library module logging which is a very useful development tool. When a development environment does not have access to command line interface such as writing an …" />
+    <title>Python Standard Library Module Logging - George Zhang</title>
+  </head>
+  <body>
+    <!-- navbar -->
+    <nav class="navbar navbar-expand-md navbar-dark bg-primary">
+      <div class="container">
+        <a class="navbar-brand" href="/">George Zhang</a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarColor01" aria-controls="navbarColor01" aria-expanded="false" aria-label="Toggle navigation">
+          <span class="navbar-toggler-icon"></span>
+        </button>
+
+        <div class="collapse navbar-collapse" id="navbarColor01">
+          <ul class="navbar-nav mr-auto">
+            <li class="nav-item">
+              <a class="nav-link " 
+                href="/article-list.html">Blog</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link " 
+                href="/archives.html">Archives</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link pr-3 " 
+                href="/tags.html">Tags</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link pr-3 "
+                 href="/pages/inkscape-tutorial.html">Inkscape Tutorial</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link "
+                   href="/pages/projects.html">Projects</a>
+              </li>
+          </ul>
+
+          <ul class="navbar-nav">
+            <li class="nav-item">
+              <a class="nav-link " 
+                 href="/pages/about.html">About</a>
+            </li>
+          </ul>
+        </div>
+
+      </div>
+    </nav>
+
+   
+  
+<div class="container">
+
+  <div class="row">
+    <div class="col-lg-8 mx-auto">   
+
+  <h2 class="mt-4 mb-3">Python Standard Library Module Logging</h2>
+  
+  <div class="text-muted mb-2">
+    <span>Posted on </span>
+    <time datetime="2019-04-04 20:57:00-04:00">
+      Thursday, 04/04/2019 20:57
+    </time>
+    
+     <span>with tags: </span>
+       <a href="https://www.georgexyz.com/tag/python.html">python</a>
+  </div>
+      
+  <p>Python has a standard library module logging which is a very useful development 
+tool.  When a development environment does not have access to command line 
+interface such as writing an extension for Inkscape, a programmer cannot call <code>print</code> 
+function to output intermediate program variables.  Instead, you use logging module
+to monitor program flow. </p>
+<p>The default logger is named root.  You only need three lines of code to output
+some information to a log file.  Predefined logging levels are debug, info, 
+warning, error, and critical.  By default, root logger only outputs messages
+with a severity level of warning and above. </p>
+<div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">logging</span>
+<span class="n">logging</span><span class="o">.</span><span class="n">basicConfig</span><span class="p">(</span><span class="n">level</span><span class="o">=</span><span class="n">logging</span><span class="o">.</span><span class="n">DEBUG</span><span class="p">,</span> <span class="n">filename</span><span class="o">=</span><span class="s1">&#39;logging.txt&#39;</span><span class="p">)</span>
+<span class="n">logging</span><span class="o">.</span><span class="n">debug</span><span class="p">(</span><span class="s1">&#39;This is a debug message&#39;</span><span class="p">)</span>
+</pre></div>
+
+
+<p>Logging module defines many class.  Commonly used classes are Logger,
+LogRecord, Handler, and Formatter.  Logger class is not instantiated directly. 
+The first time call to module level function  <code>logging.getLogger(name)</code> returns
+a Logger object.  Subsequent calls to the function return a reference to the same 
+Logger object. A typical example looks like this, </p>
+<div class="highlight"><pre><span></span><span class="n">logger</span> <span class="o">=</span> <span class="n">logging</span><span class="o">.</span><span class="n">getLogger</span><span class="p">(</span><span class="vm">__name__</span><span class="p">)</span>
+<span class="n">f_handler</span> <span class="o">=</span> <span class="n">logging</span><span class="o">.</span><span class="n">FileHandler</span><span class="p">(</span><span class="s1">&#39;file.log&#39;</span><span class="p">)</span>  <span class="c1"># StreamHandler</span>
+<span class="n">f_handler</span><span class="o">.</span><span class="n">setLevel</span><span class="p">(</span><span class="n">logging</span><span class="o">.</span><span class="n">ERROR</span><span class="p">)</span>
+<span class="n">f_format</span> <span class="o">=</span> <span class="n">logging</span><span class="o">.</span><span class="n">Formatter</span><span class="p">(</span><span class="s1">&#39;</span><span class="si">%(asctime)s</span><span class="s1"> - </span><span class="si">%(levelname)s</span><span class="s1"> - </span><span class="si">%(message)s</span><span class="s1">&#39;</span><span class="p">)</span>
+<span class="n">f_handler</span><span class="o">.</span><span class="n">setFormatter</span><span class="p">(</span><span class="n">f_format</span><span class="p">)</span>
+<span class="n">logger</span><span class="o">.</span><span class="n">addHandler</span><span class="p">(</span><span class="n">f_handler</span><span class="p">)</span>
+<span class="n">logger</span><span class="o">.</span><span class="n">error</span><span class="p">(</span><span class="s1">&#39;This is an error&#39;</span><span class="p">)</span>
+</pre></div>
+
+
+<p>If you need a more versatile logging system, you create a config file or a 
+dictionary and then load it using <code>fileConfig</code> or <code>dictConfig</code> methods. </p>
+<h4>Reference</h4>
+<p>An article 
+<a href="https://realpython.com/python-logging/">Logging in Python</a> 
+in realpython.com site is a very nice introduction to the topic. </p>
+<p>Here is a link to the official 
+<a href="https://docs.python.org/3/howto/logging.html">Python logging module document</a>. </p>
+
+    </div>
+  </div>
+
+</div>
+  
+   
+
+    <!-- Optional JavaScript -->
+    <!-- jQuery first, then Bootstrap Bundle JS -->
+    <script src="https://www.georgexyz.com/theme/js/jquery-3.3.1.slim.min.js"></script>
+    <script src="https://www.georgexyz.com/theme/js/bootstrap.bundle.min.js"></script>
+  </body>
+</html>

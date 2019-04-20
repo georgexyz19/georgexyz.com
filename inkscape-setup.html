@@ -1,0 +1,221 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <link rel="stylesheet" href="https://www.georgexyz.com/theme/css/bootstrap.min.css">
+ 
+    <link rel="stylesheet" href="https://www.georgexyz.com/theme/css/friendly.css">
+    <link rel="stylesheet" href="https://www.georgexyz.com/theme/css/custom.css">
+    <meta name="author" content="George Zhang" />
+    <meta name="keywords" content="inkscape,ubuntu" />
+    <meta name="description" content="Inkscape software is easy to install in both Windows and Ubuntu. However it is a little difficult for beginners to figure out how to customize the software. This article discusses …" />
+    <title>Setup Inkscape in Windows and Ubuntu - George Zhang</title>
+  </head>
+  <body>
+    <!-- navbar -->
+    <nav class="navbar navbar-expand-md navbar-dark bg-primary">
+      <div class="container">
+        <a class="navbar-brand" href="/">George Zhang</a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarColor01" aria-controls="navbarColor01" aria-expanded="false" aria-label="Toggle navigation">
+          <span class="navbar-toggler-icon"></span>
+        </button>
+
+        <div class="collapse navbar-collapse" id="navbarColor01">
+          <ul class="navbar-nav mr-auto">
+            <li class="nav-item">
+              <a class="nav-link " 
+                href="/article-list.html">Blog</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link " 
+                href="/archives.html">Archives</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link pr-3 " 
+                href="/tags.html">Tags</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link pr-3 "
+                 href="/pages/inkscape-tutorial.html">Inkscape Tutorial</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link "
+                   href="/pages/projects.html">Projects</a>
+              </li>
+          </ul>
+
+          <ul class="navbar-nav">
+            <li class="nav-item">
+              <a class="nav-link " 
+                 href="/pages/about.html">About</a>
+            </li>
+          </ul>
+        </div>
+
+      </div>
+    </nav>
+
+   
+  
+<div class="container">
+
+  <div class="row">
+    <div class="col-lg-8 mx-auto">   
+
+  <h2 class="mt-4 mb-3">Setup Inkscape in Windows and Ubuntu</h2>
+  
+  <div class="text-muted mb-2">
+    <span>Posted on </span>
+    <time datetime="2019-04-07 20:23:00-04:00">
+      Sunday, 04/07/2019 20:23
+    </time>
+    
+     <span>with tags: </span>
+       <a href="https://www.georgexyz.com/tag/inkscape.html">inkscape</a>
+/       <a href="https://www.georgexyz.com/tag/ubuntu.html">ubuntu</a>
+  </div>
+      
+  <p>Inkscape software is easy to install in both Windows and Ubuntu.  However it is 
+a little difficult for beginners to figure out how to customize the software. 
+This article discusses the steps to customize Inkscape in both Windows and Ubuntu. </p>
+<h3>Windows Setup</h3>
+<p>Inkscape official website has a portable version.  You can download a 
+7-zip file from this official
+<a href="https://inkscape.org/release/0.92.4/windows/64-bit/">download page</a>. 
+Click the third download button under text "Binary archive in 7zip 
+format (64bit)" to down a .7z file. A free utility software 7-zip 
+is able to extract .7z file into a directory. The 7-zip software also has 
+a portable version if you do not want to install it. </p>
+<p>After the file is extracted into this directory, double clicking 
+<code>inkscape.exe</code> starts Inkscape. </p>
+<div class="highlight"><pre><span></span>C:\Users\Username\Documents\inkscape0.92.4
+</pre></div>
+
+
+<h4>Inkscape User Extension Directory</h4>
+<p>In Inkscape, click menu item <code>Edit &gt; Preferences</code> to open preference 
+dialog (Ctrl + Shift + p). Choose <code>System</code> on the left, and the right side 
+shows system paths for variables.  The default value 
+for <code>User extensions</code> is,</p>
+<div class="highlight"><pre><span></span>C:\Users\Username\AppData\Roaming\inkscape\extensions
+</pre></div>
+
+
+<p>Open this location in File Explorer and copy and paste extension files 
+(.py and .inx) into the directory. The extension program will show up 
+under <code>Extensions</code> top level menu next time Inkscape is started. Or you
+can change the location to a different directory. </p>
+<h4>Fonts</h4>
+<p>There are two ways to customize fonts in Inkscape. 
+The first one is to drop font files into <code>C:\Windows\Fonts</code> directory. 
+The fonts become accessible to all Windows programs.  You can find 
+and download .ttf font files online (such as popular <code>Roboto</code> fonts).</p>
+<p>The second way is to create a new <code>fonts</code> directory at the location 
+where <code>inkscape.exe</code> is stored, and copy files into
+this directory. Open file <code>\etc\fonts\conf.d\50-user.conf</code> and add 
+a line <code>&lt;dir&gt;./fonts&lt;/dir&gt;</code> before the last line. Check the new fonts 
+on <code>Text and Font</code> dialog in Inkscape. </p>
+<div class="highlight"><pre><span></span>... 
+&lt;dir&gt;./fonts&lt;/dir&gt;
+&lt;/fontconfig&gt;
+</pre></div>
+
+
+<h4>Install Dependencies for Plugin WriteTex</h4>
+<p>WriteTex is a nice Inkscape extension for adding LaTeX equations onto
+a drawing.  Other options are available, but WriteTex is simple and 
+reliable. </p>
+<p>This extension requires LaTeX system and pdf2svg program installed. 
+WriteTex calls LaTeX system to generate a PDF file, and calls 
+pdf2svg to convert PDF to an SVG file. Then it loads 
+the SVG onto Inkscape drawing. </p>
+<p>The WriteTex plugin files <code>writetex.inx</code> and <code>writetex.py</code> are 
+available on 
+<a href="https://github.com/wanglongqi/WriteTeX">this github page</a>.  Download
+those two files and drop them into <code>User extension</code> directory. </p>
+<p>You can download a texlive ISO file from 
+<a href="https://www.tug.org/texlive/acquire-iso.html">this web page</a>. 
+Use 7-zip to extract the ISO file into a directory.  Double click
+<code>install-tl-advanced.bat</code> to run advanced installation.
+You may choose portable version and install LaTeX system into 
+a directory. </p>
+<p>Program pdf2svg can be downloaded from 
+<a href="https://github.com/wanglongqi/WriteTeX/releases/download/v1.1/pdf2svg-x64.7z">this github address</a></p>
+<p>Suppose texlive and pdf2svg-x64 directories are stored in this location, </p>
+<div class="highlight"><pre><span></span>C:\Users\Username\Downloads\WriteTex-dep
+</pre></div>
+
+
+<p>Two directories containing files <code>xelatex.exe</code> and <code>pdf2svg.exe</code> should be 
+added to the system path. In Windows 10 File Explorer, right click <code>This PC</code> and 
+choose <code>Properties</code>.  Choose <code>Advanced system settings</code> and click <code>Advanced</code>
+tab on the dialog.  Click <code>Environment Variables</code> button and <code>Path</code> variable. 
+Then click <code>Edit</code> and add two directories to the list. </p>
+<div class="highlight"><pre><span></span>C:\Users\Username\Downloads\WriteTex-dep\pdf2svg-x64
+C:\Users\Username\Downloads\WriteTex-dep\texlive\bin\win32
+</pre></div>
+
+
+<p>The purpose of above steps is for WriteTex python extension to find 
+<code>xelatex.exe</code> and <code>pdf2svg.exe</code> programs. </p>
+<h4>How to Enter Equations with Plugin WriteTex</h4>
+<p>Enter equations between &#92;[ and &#92;] in LaTeX Source box and click <code>Apply</code>. 
+Some LaTeX symbols like <code>\dfrac</code> need AmsTeX.  Add the line below to 
+<code>Preamble File</code> box and toggle box <code>Trade above as contents</code>. </p>
+<div class="highlight"><pre><span></span>\usepackage{amsmath, amsthm, amssymb, amsfonts} 
+</pre></div>
+
+
+<div style="max-width:400px">
+  <img class="img-fluid" src="/images/writetex-interface.png" alt="WriteTex Interface"> 
+</div>
+
+<p>The third tab <code>View Original TeX</code> on the dialog enables you to view texts 
+of equations.  Choose an equation in Inskscape and click <code>Apply</code> button.
+A dialog will pop up showing equation input. </p>
+<h3>Ubuntu Setup</h3>
+<p>In Ubuntu 18.04, bash command <code>sudo apt install inkscape</code> installs Inkscape. 
+If you want the latest stable version,
+<a href="https://code.launchpad.net/~inkscape.dev/+archive/ubuntu/stable">this web page</a> 
+provides more information. You add a ppa repository first and then 
+type the same bash command to install. </p>
+<p>To add fonts in Ubuntu, you create a .fonts subdirectory in the home directory
+and drop font files into it.  The fonts will become available in Inkscape. </p>
+<h4>WriteTex in Ubuntu</h4>
+<p>The steps to add Inkscape extension in Ubuntu 18.04 are the same 
+as in Windows.  However it is easier to install dependencies for WriteTex. 
+The two commands below install the texlive and pdf2svg programs. 
+The programs are automatically added to the system path. </p>
+<div class="highlight"><pre><span></span>sudo apt-get install texlive
+sudo apt-get install pdf2svg
+</pre></div>
+
+
+<p>The texlive installation does not include xelatex.  You change <code>xelatex</code>
+to <code>pdflatex</code> on the WriteTex dialog to make it work. </p>
+<h3>Other Comments</h3>
+<p>It seems that the Windows Inkscape is more stable than the Ubuntu version. 
+I have several svg files that crash Inkscape in Ubuntu but work fine 
+in Windows version.</p>
+<p>One time I was really frustrated by constant Inkscape crashes in Ubuntu.
+I checked the SVG file line by line and found that one drawing element
+had wrong XML format. It somehow slipped into the drawing file. 
+Once the element was removed, the SVG file worked
+fine. The lesson learned was that when an SVG file contains corrupted
+XML code, Inkscape may crash without giving error messages. </p>
+
+    </div>
+  </div>
+
+</div>
+  
+   
+
+    <!-- Optional JavaScript -->
+    <!-- jQuery first, then Bootstrap Bundle JS -->
+    <script src="https://www.georgexyz.com/theme/js/jquery-3.3.1.slim.min.js"></script>
+    <script src="https://www.georgexyz.com/theme/js/bootstrap.bundle.min.js"></script>
+  </body>
+</html>
