@@ -1,0 +1,56 @@
+{% extends "base.html" %}
+
+  {% block customcss %} 
+    <link rel="stylesheet" href="{{ SITEURL }}/{{ THEME_STATIC_DIR }}/css/friendly.css">
+    <link rel="stylesheet" href="{{ SITEURL }}/{{ THEME_STATIC_DIR }}/css/custom.css">
+  {% endblock %}
+
+{% block title %}{{ article.title|striptags }} - {{ SITENAME }}{% endblock %}
+
+{% block meta %}
+  {% if article.author %}
+    <meta name="author" content="{{ article.author }}" />
+  {% else %}
+    <meta name="author" content="{{ AUTHOR }}" />
+  {% endif %}
+  {% if article.tags %}
+    <meta name="keywords" content="{{ article.tags|join(',')|striptags }}" />
+  {% endif %}
+  {% if article.summary %}
+    <meta name="description" content="{{ article.summary|striptags|escape }}" />
+  {% endif %}
+{% endblock %}
+
+{% block content %}
+  
+<div class="container">
+
+  <div class="row">
+    <div class="col-lg-8 mx-auto">   
+
+  <h2 class="mt-4 mb-3">{{ article.title }}</h2>
+  
+  <div class="text-muted mb-2">
+    <span>Posted on </span>
+    <time datetime="{{ article.date }}">
+      {{ article.date.strftime('%A, %m/%d/%Y %H:%M') }}
+    </time>
+    
+   {% if article.tags %}
+     <span>with tags: </span>
+     {% for tag in article.tags %}
+       <a href="{{ SITEURL }}/{{ tag.url }}">{{ tag }}</a>
+       {% if not loop.last %}/{% endif %}
+     {% endfor %}
+   {% endif %}
+  </div>
+      
+  {{ article.content }}
+
+    </div>
+  </div>
+
+</div>
+  
+{% endblock %}
+

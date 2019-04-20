@@ -1,0 +1,49 @@
+{% extends "base.html" %}
+
+  {% block customcss %} 
+    <link rel="stylesheet" href="{{ SITEURL }}/{{ THEME_STATIC_DIR }}/css/page.css">
+  {% endblock %}
+
+{% block title %}{{ page.title|striptags }} - {{ SITENAME }}{% endblock %}
+
+{% block meta %}
+  {% if page.author %}
+    <meta name="author" content="{{ page.author }}" />
+  {% else %}
+    <meta name="author" content="{{ AUTHOR }}" />
+  {% endif %}
+  {% if page.tags %}
+    <meta name="keywords" content="{{ page.tags|join(',')|striptags }}" />
+  {% endif %}
+  {% if page.summary %}
+    <meta name="description" content="{{ page.summary|striptags|escape }}" />
+  {% endif %}
+{% endblock %}
+
+{% block content %}
+
+<div class="container">
+
+  <h1 class="mt-4 mb-2">{{ page.title }}</h1>
+  
+  <div class="text-muted mb-3">
+    <span>Posted on </span>
+    <time datetime="{{ page.date }}">
+      {{ page.date.strftime('%A, %m/%d/%Y %H:%M') }}
+    </time>
+    
+   {% if page.tags %}
+     <span>with tags: </span>
+     {% for tag in page.tags %}
+       <a href="{{ SITEURL }}/{{ tag.url }}">{{ tag }}</a>
+       {% if not loop.last %}/{% endif %}
+     {% endfor %}
+   {% endif %}
+  </div>
+             
+  {{ page.content }}
+
+</div>
+  
+{% endblock %}
+

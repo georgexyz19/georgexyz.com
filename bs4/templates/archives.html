@@ -1,0 +1,28 @@
+{% extends "base.html" %}
+
+{% block title %}{{ SITENAME }} - Archives{% endblock %}
+
+{% block content %}
+
+<div class="container">
+
+  <h1 class="mt-4">Articles in Inverse Chronological Order</h1>
+
+  {% for year, year_articles in articles|groupby('date.year')|reverse %}
+
+    <h2 class="pl-2">{{ year }}</h2>
+
+      {% for article in year_articles %}
+        <p class="pl-4 ">
+          <span class="pr-3 d-none d-md-inline">{{ article.date.strftime('%b %d, %Y') }}</span>
+          <a href="{{ SITEURL }}/{{ article.url }}">{{ article.title }}</a>
+        </p>
+
+      {% endfor %}
+
+  {% endfor %}
+
+ 
+</div>
+
+{% endblock content %}

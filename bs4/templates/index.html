@@ -1,0 +1,32 @@
+{% extends "base.html" %}
+
+{% block content %}
+
+<div class="container">
+    <section id="content">
+        <h1 class="mt-3 mb-3">Recent Articles</h1>
+
+        <ul class="list-group">
+            {% for article in articles_page.object_list[0:3] %}
+            <li class="list-group-item  mb-3">
+                <article>
+                    <h2><a href="{{ SITEURL }}/{{ article.url }}" rel="bookmark"
+                            title="link to {{ article.title|striptags }}">{{ article.title }}</a></h2>
+
+                    <time class="published" datetime="{{ article.date.isoformat() }}">
+                        {{ article.date.strftime('%m/%d/%Y') }}
+                    </time>
+
+                    <div class="entry-content"> {{ article.summary }} <p><a class="btn btn-outline-info btn-sm" href="{{ SITEURL }}/{{ article.url }}" role="button">Read More...</a></p> </div>
+                </article>
+            </li>
+            {% endfor %}
+        </ul><!-- /#posts-list -->
+
+        {% if articles_page.has_other_pages() %}
+          {% include 'pagination.html' %}
+        {% endif %}
+    </section><!-- /#content -->
+</div>
+
+{% endblock content %}
