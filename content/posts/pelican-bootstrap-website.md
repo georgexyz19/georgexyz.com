@@ -23,18 +23,18 @@ as the response to a request. If a developer chooses a static site generator lik
 Pelican, html pages are created during development.  When a web request comes
 to a server, the serve fetches pre-generated static html page and sends it back. 
 The response cycle is simpler and faster.  The drawback is that the website is static. 
-It does receive or collect input from a user. 
+It does not receive or collect input from a user. 
 
 This [full stack python article](https://www.fullstackpython.com/blog/generating-static-websites-pelican-jinja2-markdown.html) 
 is an excellent tutorial on Pelican. 
 [The Pelican documentation](https://docs.getpelican.com/en/stable/) 
-is a good reference. The fast way to learn Pelican is to look at code of 
+site is a good reference. The fast way to learn Pelican is to look at code of 
 two included themes "simple" and "notmyidea".  To get started, you can 
 write a few blog posts in markdown format and utilize the built-in theme 
 "simple" to generate a site. 
 
 The figure below roughly describes how pelican works. Pelican reads markdown files and 
-theme files into memory.  The theme files work as templates for html output. 
+theme files into memory and produces html pages.  The theme files work as templates for html output. 
 Some theme files correspond to multiple outputs, while others only relate to 
 one output file. 
 
@@ -60,20 +60,20 @@ theme in the pelican-themes repo.  The original author of the theme did a nice w
 of including lots of bootstrap features into the theme. 
 
 Bootstrap 4 has been released for a while, so I decide to use Bootstrap 4 and create a theme 
-for this website. Whenever I am not sure about certain pelican theme features, 
+for this website. Whenever I am not sure about a certain pelican theme feature, 
 I check the code of the "pelican-bootstrap3" and start from there. 
 
 Another nice pelican theme is 
 [*pelican-subtle*](https://github.com/pR0Ps/pelican-subtle). 
-The Markdown code style on this website is from pelican-subtle. I also read the 
+The Markdown code style on this website is copied from pelican-subtle. I also read the 
 code of this theme to get a better understanding on how pelican and pelican theme work. 
 
 I changed the Bootstrap 4 default colors on the 
-[bootstrap.build webiste](https://bootstrap.build/). This website has a 
+[bootstrap.build webiste](https://bootstrap.build/). Another website has a 
 [Bootstrap theme kit](https://hackerthemes.com/kit/) if you want to customize 
 Bootstrap locally.
 
-Here are the color variables of this website. 
+The theme of this website has the following color variables:
  
 ```Scss
 // _variables.scss 
@@ -134,10 +134,6 @@ to about 12 posts per year.  My goal is to write at least 6 posts per year
 even I am busy at work.  Another goal is to keep the blog running for at 
 least 10 years, so we will see if the site has 60 posts in the year 2029. 
 
-This site does not track who is reading or visiting. It does not have any 
-Google Analytics or similar services turned on to track users. 
-
-
-
- 
+This site does not track who is reading or visiting. It does not have 
+Google Analytics or similar services to track users. 
 
