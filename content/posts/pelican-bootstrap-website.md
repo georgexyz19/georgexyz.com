@@ -39,7 +39,7 @@ Some theme files correspond to multiple outputs, while others only relate to
 one output file. 
 
 <div style="max-width:800px">
-  <img class="img-fluid" src="/images/img-pelican-work.svg" alt="How Pelican Work"> 
+  <img class="img-fluid" src="/images/pelican-bootstrap/img-pelican-work.svg" alt="How Pelican Work"> 
 </div>
 
 [The Pelican source code](https://github.com/getpelican/pelican/tree/4.0.1/pelican)
