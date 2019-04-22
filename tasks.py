@@ -76,6 +76,8 @@ def publish(c):
             CONFIG['deploy_path'].rstrip('/') + '/',
             **CONFIG))
 
+# those two commands are not used anymore 
+
 @task
 def pbuild(c):
     c.run('pelican -o dist -s publishconf.py')
