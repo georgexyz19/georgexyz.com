@@ -127,6 +127,17 @@ website at `http://localhost:8000` address.
 invoke clean build serve
 ```
 
+### Website Source Code
+
+This website is hosted in Github Pages, which is a free service for static sites. 
+Source code of this website including markdown files and bootstrap 4 theme files 
+are available in this 
+[github repository](https://github.com/georgexyz19/georgexyz.com). 
+The gh-pages branch of the same repository contains generated html files of the website. 
+I followed 
+[this pelican documentation page](https://docs.getpelican.com/en/stable/tips.html#publishing-to-github)
+and utilized ghp-import python package to streamline the publication process. 
+
 ### Future Blog Plan
 
 My future plan for the blog is to write about one post per month.  That comes 
