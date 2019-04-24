@@ -7,11 +7,11 @@
         <h1 class="mt-3 mb-3">Recent Articles</h1>
 
         <ul class="list-group">
-            {% for article in articles_page.object_list[0:3] %}
+            {% for article in articles_page.object_list %}
             <li class="list-group-item  mb-3">
                 <article>
-                    <h2><a href="{{ SITEURL }}/{{ article.url }}" rel="bookmark"
-                            title="link to {{ article.title|striptags }}">{{ article.title }}</a></h2>
+                    <h3><a href="{{ SITEURL }}/{{ article.url }}" rel="bookmark"
+                            title="link to {{ article.title|striptags }}">{{ article.title }}</a></h3>
 
                     <time class="published" datetime="{{ article.date.isoformat() }}">
                         {{ article.date.strftime('%m/%d/%Y') }}
