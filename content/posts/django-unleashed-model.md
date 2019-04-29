@@ -43,6 +43,7 @@ Add the GRAPH_MODELS dictionary to the project settings file.
 GRAPH_MODELS = {
   'all_applications': False, 
   'group_models': True,
+}
 ```
 
 Here is the generated PNG file. 
