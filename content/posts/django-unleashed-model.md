@@ -2,7 +2,7 @@ title: Django Unleashed Book Model Diagram
 slug: django-unleashed-model
 meta: A diagram for Chap 3 of Django Unleashed book.
 date: 2019-04-23 07:47
-modified: 2019-04-23 07:47
+modified: 2019-04-29 13:37
 tags: django
 note: none
 no: 11
@@ -23,3 +23,30 @@ include a diagram showing the models and relations. Here is the diagram I draw i
 
 Here is the link to the [PDF page](/files/django-unleashed-models.pdf) of the diagram.
 
+The 
+[django-extensions](https://django-extensions.readthedocs.io/) has a 
+[grahp_models command](https://django-extensions.readthedocs.io/en/latest/graph_models.html) which 
+generates similar model diagrams. 
+
+The extension command depends on the graphviz package and pydot/pyparsing modules.  Install those 
+dependencies in Ubuntu 18.04 with commands shown below. 
+
+```
+$sudo apt-get install graphviz
+(env)$pip install pyparsing pydot
+(env)$python manage.py graph_models blog organizer --pydot -o models.png
+```
+
+Add the GRAPH_MODELS dictionary to the project settings file. 
+
+```python
+GRAPH_MODELS = {
+  'all_applications': False, 
+  'group_models': True,
+```
+
+Here is the generated PNG file. 
+
+<div style="max-width:800px">
+  <img class="img-fluid" src="/images/django-unleashed-models.png" alt="django unleashed models"> 
+</div>
