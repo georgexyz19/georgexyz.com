@@ -90,16 +90,8 @@ include a diagram showing the models and relations. Here is the diagram I draw i
 <p>Here is the link to the <a href="/files/django-unleashed-models.pdf">PDF page</a> of the diagram.</p>
 <p>The 
 <a href="https://django-extensions.readthedocs.io/">django-extensions</a> has a 
-<a href="https://django-extensions.readthedocs.io/en/latest/graph_models.html">grahp_models command</a> which 
+<a href="https://django-extensions.readthedocs.io/en/latest/graph_models.html">graph_models command</a> which 
 generates similar model diagrams. </p>
-<p>The extension command depends on the graphviz package and pydot/pyparsing modules.  Install those 
-dependencies in Ubuntu 18.04 with commands shown below. </p>
-<div class="highlight"><pre><span></span>$sudo apt-get install graphviz
-(env)$pip install pyparsing pydot
-(env)$python manage.py graph_models blog organizer --pydot -o models.png
-</pre></div>
-
-
 <p>Add the GRAPH_MODELS dictionary to the project settings file. </p>
 <div class="highlight"><pre><span></span><span class="n">GRAPH_MODELS</span> <span class="o">=</span> <span class="p">{</span>
   <span class="s1">&#39;all_applications&#39;</span><span class="p">:</span> <span class="bp">False</span><span class="p">,</span> 
@@ -108,7 +100,16 @@ dependencies in Ubuntu 18.04 with commands shown below. </p>
 </pre></div>
 
 
-<p>Here is the generated PNG file. </p>
+<p>The extension command depends on the graphviz package and pydot/pyparsing modules.  Install those 
+dependencies in Ubuntu 18.04 and run the <code>python manage.py ...</code> command to generate diagram.</p>
+<div class="highlight"><pre><span></span>$sudo apt-get install graphviz
+(env)$pip install pyparsing pydot
+
+(env)$python manage.py graph_models blog organizer --pydot -o models.png
+</pre></div>
+
+
+<p>Here is the result PNG file. </p>
 <div style="max-width:800px">
   <img class="img-fluid" src="/images/django-unleashed-models.png" alt="django unleashed models"> 
 </div>
