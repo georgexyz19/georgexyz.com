@@ -25,17 +25,8 @@ Here is the link to the [PDF page](/files/django-unleashed-models.pdf) of the di
 
 The 
 [django-extensions](https://django-extensions.readthedocs.io/) has a 
-[grahp_models command](https://django-extensions.readthedocs.io/en/latest/graph_models.html) which 
+[graph_models command](https://django-extensions.readthedocs.io/en/latest/graph_models.html) which 
 generates similar model diagrams. 
-
-The extension command depends on the graphviz package and pydot/pyparsing modules.  Install those 
-dependencies in Ubuntu 18.04 with commands shown below. 
-
-```
-$sudo apt-get install graphviz
-(env)$pip install pyparsing pydot
-(env)$python manage.py graph_models blog organizer --pydot -o models.png
-```
 
 Add the GRAPH_MODELS dictionary to the project settings file. 
 
@@ -46,7 +37,18 @@ GRAPH_MODELS = {
 }
 ```
 
-Here is the generated PNG file. 
+The extension command depends on the graphviz package and pydot/pyparsing modules.  Install those 
+dependencies in Ubuntu 18.04 and run the `python manage.py ...` command to generate diagram.
+
+```
+$sudo apt-get install graphviz
+(env)$pip install pyparsing pydot
+
+(env)$python manage.py graph_models blog organizer --pydot -o models.png
+```
+
+
+Here is the result PNG file. 
 
 <div style="max-width:800px">
   <img class="img-fluid" src="/images/django-unleashed-models.png" alt="django unleashed models"> 
