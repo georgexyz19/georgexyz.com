@@ -138,6 +138,20 @@ I followed
 [this pelican documentation page](https://docs.getpelican.com/en/stable/tips.html#publishing-to-github)
 and utilized ghp-import python package to streamline the publication process. 
 
+I use the following commands to update posts and github repo. 
+
+```
+source venv.sh  # load virtual env
+invoke clean build
+git status
+git add -A
+git commit -m "commit message"
+git push origin master # update source code
+
+ghp-import output -b gh-pages
+git push origin gh-pages
+```
+
 ### Future Blog Plan
 
 My future plan for the blog is to write about one post per month.  That comes 
