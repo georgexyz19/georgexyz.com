@@ -1,0 +1,118 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <link rel="stylesheet" href="/theme/css/bootstrap.min.css">
+ 
+    <link rel="stylesheet" href="/theme/css/friendly.css">
+    <link rel="stylesheet" href="/theme/css/custom.css">
+    <meta name="author" content="George Zhang" />
+    <meta name="keywords" content="django,WSGI" />
+    <meta name="description" content="WSGI is an abbreviation for Web Server Gateway Interface, which is a &#34;simple calling convention for web servers to forward requests to web applications for frameworks written in Python.&#34; WSGI …" />
+    <title>What is WSGI? - George Zhang</title>
+  </head>
+  <body>
+    <!-- navbar -->
+    <nav class="navbar navbar-expand-md navbar-dark bg-primary">
+      <div class="container">
+        <a class="navbar-brand" href="/">George Zhang</a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarColor01" aria-controls="navbarColor01" aria-expanded="false" aria-label="Toggle navigation">
+          <span class="navbar-toggler-icon"></span>
+        </button>
+
+        <div class="collapse navbar-collapse" id="navbarColor01">
+          <ul class="navbar-nav mr-auto">
+            <li class="nav-item">
+              <a class="nav-link " 
+                href="/article-list.html">Blog</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link " 
+                href="/archives.html">Archives</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link pr-3 " 
+                href="/tags.html">Tags</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link pr-3 "
+                 href="/pages/inkscape-tutorial.html">Inkscape Tutorial</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link "
+                   href="/pages/projects.html">Projects</a>
+              </li>
+          </ul>
+
+          <ul class="navbar-nav">
+            <li class="nav-item">
+              <a class="nav-link " 
+                 href="/pages/about.html">About</a>
+            </li>
+          </ul>
+        </div>
+
+      </div>
+    </nav>
+
+   
+  
+<div class="container">
+
+  <div class="row">
+    <div class="col-lg-8 mx-auto">   
+
+  <h2 class="mt-4 mb-3">What is WSGI?</h2>
+  
+  <div class="text-muted mb-2">
+    <span>Posted on </span>
+    <time datetime="2019-05-04 12:27:00-04:00">
+      Saturday, 05/04/2019 12:27
+    </time>
+    
+     <span>with tags: </span>
+       <a href="/tag/django.html">django</a>
+/       <a href="/tag/wsgi.html">WSGI</a>
+  </div>
+      
+  <p>WSGI is an abbreviation for Web Server Gateway Interface, which is a "simple calling 
+convention for web servers to forward requests to web applications for frameworks written
+in Python."   WSGI is part of Python ecosystem.  It was originally specified in PEP-333
+in 2003, and was updated to PEP-3333 for python 3 in 2010.   Python standard library even 
+has a wsgiref WSGI reference server built in.  </p>
+<p>Why do we need to know WSGI? A Python web app is essentially an WSGI app. A
+web framework like Django adds many other functions such as database handling and 
+template processing to generate html files. It will help a developer to understand 
+how web framework works behind the scene. </p>
+<p>The best writing on WSGI is probably 
+<a href="http://lucumr.pocoo.org/2007/5/21/getting-started-with-wsgi/">a blog post</a> 
+by Armin Ronacher, who is the creator of Flask web framework and many other open 
+source Python packages.   Three code examples in this article are fantastic 
+prototypes showing how WSGI and web framework work.  </p>
+<p>I would suggest anyone who is interested to read the article multiple times to get a good understanding 
+of the topic.  The article was written in 2007 with Python 2.  A developer needs to
+make small changes to the code for Python 3.  Here is the link to github repo which 
+contains code I modified for Python 3.</p>
+<p><a href="https://github.com/georgexyz19/WSGI_example_code">https://github.com/georgexyz19/WSGI_example_code</a> </p>
+<h3>Other Articles</h3>
+<p>Full Stack Python website has 
+<a href="https://www.fullstackpython.com/wsgi-servers.html">an article about WSGI</a> 
+which includes links to several other articles. </p>
+<p><a href="https://www.appdynamics.com/blog/engineering/an-introduction-to-python-wsgi-servers-part-1/">An online article</a> 
+by Kevin Goldberg dicusses several WSGI web servers. </p>
+
+    </div>
+  </div>
+
+</div>
+  
+   
+
+    <!-- Optional JavaScript -->
+    <!-- jQuery first, then Bootstrap Bundle JS -->
+    <script src="/theme/js/jquery-3.3.1.slim.min.js"></script>
+    <script src="/theme/js/bootstrap.bundle.min.js"></script>
+  </body>
+</html>
