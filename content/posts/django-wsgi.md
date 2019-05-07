@@ -27,12 +27,12 @@ prototypes showing how WSGI and web framework work.
 
 I would suggest anyone who is interested to read the article multiple times to get a good understanding 
 of the topic.  The article was written in 2007 with Python 2.  A developer needs to
-make small changes to the code for Python 3.  Here is the link to github repo which 
-contains code I modified for Python 3.
+make small changes to the code for Python 3.  Here is the 
+[link to github repo](https://github.com/georgexyz19/WSGI_example_code) 
+which contains code I modified for Python 3.
 
-[https://github.com/georgexyz19/WSGI_example_code](https://github.com/georgexyz19/WSGI_example_code) 
 
-### Other Articles
+### References
 
 Full Stack Python website has 
 [an WSGI article](https://www.fullstackpython.com/wsgi-servers.html) 
