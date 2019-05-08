@@ -23,7 +23,7 @@ import logging
 logging.basicConfig(level=logging.DEBUG, filename='logging.txt')
 logging.debug('This is a debug message')
 ``` 
-Logging module defines many class.  Commonly used classes are Logger,
+Logging module defines many classes.  Commonly used classes are Logger,
 LogRecord, Handler, and Formatter.  Logger class is not instantiated directly. 
 The first time call to module level function  `logging.getLogger(name)` returns
 a Logger object.  Subsequent calls to the function return a reference to the same 
@@ -42,7 +42,7 @@ logger.error('This is an error')
 If you need a more versatile logging system, you create a config file or a 
 dictionary and then load it using `fileConfig` or `dictConfig` methods. 
  
-#### Reference
+#### References
  
 An article 
 [Logging in Python](https://realpython.com/python-logging/) 
