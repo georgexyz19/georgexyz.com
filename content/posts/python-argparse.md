@@ -71,7 +71,7 @@ python argparse_example.py -h
 python argparse_example.py 
 python argparse_example.py myfile.html
 python argparse_example.py -x -c mystyle.css myfile.html
-python argparse_example.py --xhtml -cssfile=mystyle.css myfile.html
+python argparse_example.py --xhtml --cssfile=mystyle.css myfile.html
 ```
 The argparse module contains many other options.  Here is a link to 
 [Python argparse Offical Doc](https://docs.python.org/3/howto/argparse.html).
