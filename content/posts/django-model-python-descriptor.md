@@ -54,7 +54,7 @@ which consists of code examples in those articles.
 ### Django Model Code
 
 This section is trying to answer the question "how does the class variable 'name' 
-become an instance variable"? The source code and line numbers reference below are from Django 
+become an instance variable"? The source code and line number reference below are from Django 
 [version 2.1](https://github.com/django/django/tree/2.1). 
 
 ```python
@@ -83,7 +83,7 @@ where name is a field in Book model class.
 def __new__(cls, name, bases, attrs, **kwargs):
 ```
 
-The `add_to_class` method is defined on L302.  The method checks to see if the 
+The `add_to_class` method is defined on L301.  The method checks to see if the 
 value being added has `contribute_to_class` method, and if it does it will call 
 this method. Otherwise, the method calls `setattr` to set (name, value) pair 
 as class attribute.  The `getattr` and `setattr` are python built-in functions. 
@@ -98,6 +98,7 @@ def add_to_class(cls, name, value):
 ```
 
 The `contribute_to_class` method is defined in db/models/fields/__init__.py L727. 
+It is a method in Field class. 
 This is where the actual magic happens.  The self, cls, and name in `contribute_to_class` 
 are models.CharField(max_length=255), Book, and 'name', respectively. 
 
@@ -135,8 +136,8 @@ def contribute_to_class(self, cls, name, private_only=False):
 ```
 
 The `DeferredAttribute` descriptor class is defined in db.models.query_utils.py 
-file L124.  The code for the class is not long, and they are shown below. 
-The instance and cls in `__get__` method will be a book instance and class will 
+file L116.  The code for the class is not long, and they are shown below. 
+The instance and cls in `__get__` method will be a book instance and cls will 
 be Book class. The code in `__get__` method shows the subtle differences 
 between `__dict__` attribute and `getattr` (search tree). 
 
