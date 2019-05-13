@@ -17,7 +17,7 @@ a short section on descriptors (Page 31 to 33), but it is not detailed.
 
 After some google search, I found several articles on Python descriptors. 
 The first article is Michael Driscoll's 
-[*Python 201: What are descriptors?*](https://www.blog.pythonlibrary.org/2016/06/10/python-201-what-are-descriptors/), 
+[Python 201: What are descriptors?](https://www.blog.pythonlibrary.org/2016/06/10/python-201-what-are-descriptors/), 
 which is a good introduction. At bottom of the linked page, it has a reference 
 to Ned Batchelder's blog site. I heard Ned Batchelder on 
 [Talk Python To Me Podcase](https://talkpython.fm/) and read his excellent 
@@ -97,7 +97,7 @@ def add_to_class(cls, name, value):
         setattr(cls, name, value)
 ```
 
-The `contribute_to_class` method is defined in db/models/fields/__init__.py L727. 
+The `contribute_to_class` method is defined in `db/models/fields/__init__.py` L727. 
 It is a method in Field class. 
 This is where the actual magic happens.  The self, cls, and name in `contribute_to_class` 
 are models.CharField(max_length=255), Book, and 'name', respectively. 
