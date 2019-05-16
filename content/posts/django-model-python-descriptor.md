@@ -9,26 +9,26 @@ no: 13
 
 
 Django model fields are descriptors. The descriptor is a Python intermediate feature. 
-It is almost impossible to understand the FileField and ImageField source code 
-without understanding Python descriptor.  Marty Alchin's book *Pro Django* has 
-a short section on descriptors (Page 31 to 33), but it is not detailed. 
+It is almost impossible to understand FileField and ImageField source code 
+without knowing Python descriptor.  Marty Alchin's book *Pro Django* has 
+a short section on descriptors (Page 31 to 33), but it lacks detail. 
 
 ### Descriptor Online Articles
 
 After some google search, I found several articles on Python descriptors. 
 The first article is Michael Driscoll's 
 [Python 201: What are descriptors?](https://www.blog.pythonlibrary.org/2016/06/10/python-201-what-are-descriptors/), 
-which is a good introduction. At bottom of the linked page, it has a reference 
+which is a good introduction. The webpage has a link 
 to Ned Batchelder's blog site. I heard Ned Batchelder on 
 [Talk Python To Me Podcase](https://talkpython.fm/) and read his excellent 
-[article on Unicode](https://nedbatchelder.com/text/unipain.html). His blog post 
+[article on Unicode](https://nedbatchelder.com/text/unipain.html) before. His blog post 
 on descriptor is actually recommending a lightning talk and an article by Chris 
 Beaumont. 
 
-The article 
+Chris Beaumont's article 
 [Python Descriptors Demystified](https://nbviewer.jupyter.org/urls/gist.github.com/ChrisBeaumont/5758381/raw/descriptor_writeup.ipynb) 
-by Chris Beaumont is possibly the best writing on descriptors.  Many descriptor techniques 
-discussed in the article are used in Django Model source code. Here are the main points 
+is possibly the best writing on descriptors.  Many descriptor techniques 
+discussed in the article are directly used in Django Model source code. Here are the main points 
 of the article:
 
 * Descriptors are reusable properties
@@ -37,14 +37,14 @@ of the article:
 * Label your descriptor
 * Label descriptors with Metaclasses
 
-The article itself is not long, but it takes time to understand the techniques. The article 
-also beriefly discussed property. I found a short article 
+The article itself is not very long, but the content takes time to understand. The article 
+also beriefly discussed property. A short online article 
 [Property Explained – How to Use and When](https://www.machinelearningplus.com/python/python-property/) 
-which has nice Python property examples.
+has nice Python property examples.
 
 Python official documentation has an article 
 [Descriptor HowTo Guide](https://docs.python.org/3/howto/descriptor.html) 
-written by Raymond Hettinger. This article is not easy, it takes time to digest the content. 
+by Raymond Hettinger. This article is not easy and it takes time to digest. 
 
 Here is the 
 [link to my Github repo](https://github.com/georgexyz19/PythonDescriptor) 
@@ -53,8 +53,8 @@ which consists of code examples in those articles.
 
 ### Django Model Code
 
-This section is trying to answer the question "how does the class variable 'name' 
-become an instance variable"? The source code and line number reference below are from Django 
+This section is trying to answer the question "how does a class variable 'name' 
+become an instance variable"? The Django source code and line number reference below are from Django 
 [version 2.1](https://github.com/django/django/tree/2.1). 
 
 ```python
@@ -68,22 +68,22 @@ bn = b.name
 ```
 
 The two lines of code below are from base.py ModelBase class (L138-139), which is
-a Metaclass for Model.
+a metaclass for Model.
   
 ```python
 for obj_name, obj in attrs.items():
     new_class.add_to_class(obj_name, obj)
 ```
 
-The attrs is the fourth argument to the `__new__` method in meta class ModelBase. 
-The obj_name refers to 'name' and obj refers to `'models.CharField(max_length=255)'` 
+The attrs is the fourth argument to the `__new__` method in metaclass ModelBase. 
+The obj_name refers to 'name' and obj refers to `models.CharField(max_length=255)` 
 where name is a field in Book model class. 
 
 ```python
 def __new__(cls, name, bases, attrs, **kwargs):
 ```
 
-The `add_to_class` method is defined on L301.  The method checks to see if the 
+The `add_to_class` method is defined on L301.  The method checks if the 
 value being added has `contribute_to_class` method, and if it does it will call 
 this method. Otherwise, the method calls `setattr` to set (name, value) pair 
 as class attribute.  The `getattr` and `setattr` are python built-in functions. 
@@ -94,7 +94,7 @@ def add_to_class(cls, name, value):
     if not inspect.isclass(value) and hasattr(value, 'contribute_to_class'):
         value.contribute_to_class(cls, name)
     else:
-        setattr(cls, name, value)
+        setattr(cls, name, value)  # call this if Book has a field price = 50
 ```
 
 The `contribute_to_class` method is defined in `db/models/fields/__init__.py` L727. 
@@ -108,7 +108,7 @@ class variable and stores it in class attribute \_meta, which is an Options obje
 The second thing it does is to assign an instance of a DeferredAttribute class 
 to this field.  The class is a Descriptor in python. The construction of 
 `DeferredAttribute` has an argument `self.attname`, which has the same name of 
-the field.  It can be shown that for fields the `getattr(cls, self.attname, None)` 
+the field.  It can be shown that for descriptor fields the `getattr(cls, self.attname, None)` 
 function returns None.  The comments indicate that this line is intended for the class method. 
 
 ```python
@@ -128,8 +128,8 @@ def contribute_to_class(self, cls, name, private_only=False):
         # Don't override classmethods with the descriptor. This means that
         # if you have a classmethod and a field with the same name, then
         # such fields can't be deferred (we don't have a check for this).
-        if not getattr(cls, self.attname, None):
-            setattr(cls, self.attname, DeferredAttribute(self.attname))
+        if not getattr(cls, self.attname, None):   # attname is name
+            setattr(cls, self.attname, DeferredAttribute(self.attname)) 
     if self.choices:
         setattr(cls, 'get_%s_display' % self.name,
                 partialmethod(cls._get_FIELD_display, field=self))
