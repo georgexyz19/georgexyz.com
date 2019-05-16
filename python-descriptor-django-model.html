@@ -10,7 +10,7 @@
     <link rel="stylesheet" href="/theme/css/custom.css">
     <meta name="author" content="George Zhang" />
     <meta name="keywords" content="python,django" />
-    <meta name="description" content="Django model fields are descriptors. The descriptor is a Python intermediate feature. It is almost impossible to understand the FileField and ImageField source code without understanding Python descriptor. Marty Alchin&#39;s …" />
+    <meta name="description" content="Django model fields are descriptors. The descriptor is a Python intermediate feature. It is almost impossible to understand FileField and ImageField source code without knowing Python descriptor. Marty Alchin&#39;s book …" />
     <title>Python Descriptor and Django Model Field - George Zhang</title>
   </head>
   <body>
@@ -78,23 +78,23 @@
   </div>
       
   <p>Django model fields are descriptors. The descriptor is a Python intermediate feature. 
-It is almost impossible to understand the FileField and ImageField source code 
-without understanding Python descriptor.  Marty Alchin's book <em>Pro Django</em> has 
-a short section on descriptors (Page 31 to 33), but it is not detailed. </p>
+It is almost impossible to understand FileField and ImageField source code 
+without knowing Python descriptor.  Marty Alchin's book <em>Pro Django</em> has 
+a short section on descriptors (Page 31 to 33), but it lacks detail. </p>
 <h3>Descriptor Online Articles</h3>
 <p>After some google search, I found several articles on Python descriptors. 
 The first article is Michael Driscoll's 
 <a href="https://www.blog.pythonlibrary.org/2016/06/10/python-201-what-are-descriptors/">Python 201: What are descriptors?</a>, 
-which is a good introduction. At bottom of the linked page, it has a reference 
+which is a good introduction. The webpage has a link 
 to Ned Batchelder's blog site. I heard Ned Batchelder on 
 <a href="https://talkpython.fm/">Talk Python To Me Podcase</a> and read his excellent 
-<a href="https://nedbatchelder.com/text/unipain.html">article on Unicode</a>. His blog post 
+<a href="https://nedbatchelder.com/text/unipain.html">article on Unicode</a> before. His blog post 
 on descriptor is actually recommending a lightning talk and an article by Chris 
 Beaumont. </p>
-<p>The article 
+<p>Chris Beaumont's article 
 <a href="https://nbviewer.jupyter.org/urls/gist.github.com/ChrisBeaumont/5758381/raw/descriptor_writeup.ipynb">Python Descriptors Demystified</a> 
-by Chris Beaumont is possibly the best writing on descriptors.  Many descriptor techniques 
-discussed in the article are used in Django Model source code. Here are the main points 
+is possibly the best writing on descriptors.  Many descriptor techniques 
+discussed in the article are directly used in Django Model source code. Here are the main points 
 of the article:</p>
 <ul>
 <li>Descriptors are reusable properties</li>
@@ -103,19 +103,19 @@ of the article:</p>
 <li>Label your descriptor</li>
 <li>Label descriptors with Metaclasses</li>
 </ul>
-<p>The article itself is not long, but it takes time to understand the techniques. The article 
-also beriefly discussed property. I found a short article 
+<p>The article itself is not very long, but the content takes time to understand. The article 
+also beriefly discussed property. A short online article 
 <a href="https://www.machinelearningplus.com/python/python-property/">Property Explained – How to Use and When</a> 
-which has nice Python property examples.</p>
+has nice Python property examples.</p>
 <p>Python official documentation has an article 
 <a href="https://docs.python.org/3/howto/descriptor.html">Descriptor HowTo Guide</a> 
-written by Raymond Hettinger. This article is not easy, it takes time to digest the content. </p>
+by Raymond Hettinger. This article is not easy and it takes time to digest. </p>
 <p>Here is the 
 <a href="https://github.com/georgexyz19/PythonDescriptor">link to my Github repo</a> 
 which consists of code examples in those articles. </p>
 <h3>Django Model Code</h3>
-<p>This section is trying to answer the question "how does the class variable 'name' 
-become an instance variable"? The source code and line number reference below are from Django 
+<p>This section is trying to answer the question "how does a class variable 'name' 
+become an instance variable"? The Django source code and line number reference below are from Django 
 <a href="https://github.com/django/django/tree/2.1">version 2.1</a>. </p>
 <div class="highlight"><pre><span></span><span class="k">class</span> <span class="nc">Book</span><span class="p">(</span><span class="n">models</span><span class="o">.</span><span class="n">Model</span><span class="p">):</span>
     <span class="n">name</span> <span class="o">=</span> <span class="n">models</span><span class="o">.</span><span class="n">CharField</span><span class="p">(</span><span class="n">max_length</span><span class="o">=</span><span class="mi">255</span><span class="p">)</span>
@@ -127,20 +127,20 @@ become an instance variable"? The source code and line number reference below ar
 
 
 <p>The two lines of code below are from base.py ModelBase class (L138-139), which is
-a Metaclass for Model.</p>
+a metaclass for Model.</p>
 <div class="highlight"><pre><span></span><span class="k">for</span> <span class="n">obj_name</span><span class="p">,</span> <span class="n">obj</span> <span class="ow">in</span> <span class="n">attrs</span><span class="o">.</span><span class="n">items</span><span class="p">():</span>
     <span class="n">new_class</span><span class="o">.</span><span class="n">add_to_class</span><span class="p">(</span><span class="n">obj_name</span><span class="p">,</span> <span class="n">obj</span><span class="p">)</span>
 </pre></div>
 
 
-<p>The attrs is the fourth argument to the <code>__new__</code> method in meta class ModelBase. 
-The obj_name refers to 'name' and obj refers to <code>'models.CharField(max_length=255)'</code> 
+<p>The attrs is the fourth argument to the <code>__new__</code> method in metaclass ModelBase. 
+The obj_name refers to 'name' and obj refers to <code>models.CharField(max_length=255)</code> 
 where name is a field in Book model class. </p>
 <div class="highlight"><pre><span></span><span class="k">def</span> <span class="fm">__new__</span><span class="p">(</span><span class="bp">cls</span><span class="p">,</span> <span class="n">name</span><span class="p">,</span> <span class="n">bases</span><span class="p">,</span> <span class="n">attrs</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">):</span>
 </pre></div>
 
 
-<p>The <code>add_to_class</code> method is defined on L301.  The method checks to see if the 
+<p>The <code>add_to_class</code> method is defined on L301.  The method checks if the 
 value being added has <code>contribute_to_class</code> method, and if it does it will call 
 this method. Otherwise, the method calls <code>setattr</code> to set (name, value) pair 
 as class attribute.  The <code>getattr</code> and <code>setattr</code> are python built-in functions. </p>
@@ -149,7 +149,7 @@ as class attribute.  The <code>getattr</code> and <code>setattr</code> are pytho
     <span class="k">if</span> <span class="ow">not</span> <span class="n">inspect</span><span class="o">.</span><span class="n">isclass</span><span class="p">(</span><span class="n">value</span><span class="p">)</span> <span class="ow">and</span> <span class="nb">hasattr</span><span class="p">(</span><span class="n">value</span><span class="p">,</span> <span class="s1">&#39;contribute_to_class&#39;</span><span class="p">):</span>
         <span class="n">value</span><span class="o">.</span><span class="n">contribute_to_class</span><span class="p">(</span><span class="bp">cls</span><span class="p">,</span> <span class="n">name</span><span class="p">)</span>
     <span class="k">else</span><span class="p">:</span>
-        <span class="nb">setattr</span><span class="p">(</span><span class="bp">cls</span><span class="p">,</span> <span class="n">name</span><span class="p">,</span> <span class="n">value</span><span class="p">)</span>
+        <span class="nb">setattr</span><span class="p">(</span><span class="bp">cls</span><span class="p">,</span> <span class="n">name</span><span class="p">,</span> <span class="n">value</span><span class="p">)</span>  <span class="c1"># call this if Book has a field price = 50</span>
 </pre></div>
 
 
@@ -162,7 +162,7 @@ class variable and stores it in class attribute _meta, which is an Options objec
 <p>The second thing it does is to assign an instance of a DeferredAttribute class 
 to this field.  The class is a Descriptor in python. The construction of 
 <code>DeferredAttribute</code> has an argument <code>self.attname</code>, which has the same name of 
-the field.  It can be shown that for fields the <code>getattr(cls, self.attname, None)</code> 
+the field.  It can be shown that for descriptor fields the <code>getattr(cls, self.attname, None)</code> 
 function returns None.  The comments indicate that this line is intended for the class method. </p>
 <div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">contribute_to_class</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="bp">cls</span><span class="p">,</span> <span class="n">name</span><span class="p">,</span> <span class="n">private_only</span><span class="o">=</span><span class="bp">False</span><span class="p">):</span>
     <span class="sd">&quot;&quot;&quot;</span>
@@ -180,8 +180,8 @@ function returns None.  The comments indicate that this line is intended for the
         <span class="c1"># Don&#39;t override classmethods with the descriptor. This means that</span>
         <span class="c1"># if you have a classmethod and a field with the same name, then</span>
         <span class="c1"># such fields can&#39;t be deferred (we don&#39;t have a check for this).</span>
-        <span class="k">if</span> <span class="ow">not</span> <span class="nb">getattr</span><span class="p">(</span><span class="bp">cls</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">attname</span><span class="p">,</span> <span class="bp">None</span><span class="p">):</span>
-            <span class="nb">setattr</span><span class="p">(</span><span class="bp">cls</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">attname</span><span class="p">,</span> <span class="n">DeferredAttribute</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">attname</span><span class="p">))</span>
+        <span class="k">if</span> <span class="ow">not</span> <span class="nb">getattr</span><span class="p">(</span><span class="bp">cls</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">attname</span><span class="p">,</span> <span class="bp">None</span><span class="p">):</span>   <span class="c1"># attname is name</span>
+            <span class="nb">setattr</span><span class="p">(</span><span class="bp">cls</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">attname</span><span class="p">,</span> <span class="n">DeferredAttribute</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">attname</span><span class="p">))</span> 
     <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">choices</span><span class="p">:</span>
         <span class="nb">setattr</span><span class="p">(</span><span class="bp">cls</span><span class="p">,</span> <span class="s1">&#39;get_</span><span class="si">%s</span><span class="s1">_display&#39;</span> <span class="o">%</span> <span class="bp">self</span><span class="o">.</span><span class="n">name</span><span class="p">,</span>
                 <span class="n">partialmethod</span><span class="p">(</span><span class="bp">cls</span><span class="o">.</span><span class="n">_get_FIELD_display</span><span class="p">,</span> <span class="n">field</span><span class="o">=</span><span class="bp">self</span><span class="p">))</span>
