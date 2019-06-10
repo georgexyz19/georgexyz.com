@@ -13,7 +13,7 @@ I wish I could write as a developer.
 
 The software was produced by a Canadian company 
 [Tracker Software](https://www.tracker-software.com/product/pdf-xchange-viewer),
-and it has a free portable version which includes lots of useful feathers.  Here 
+and it has a free portable version which includes lots of useful features.  Here 
 is a quote from the website,
 
 > PDF-XChange Viewer 'Free Version' is free for private and commercial use,
