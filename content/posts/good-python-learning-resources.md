@@ -12,6 +12,11 @@ This post describes some good python resources that I found useful. Python has m
 resources, sometimes it becomes difficult for people to figure out which are good 
 and which are not. 
 
+<div style="max-width:800px">
+  <img class="img-fluid" src="/images/python-books.jpg" alt="python-books"> 
+</div>
+
+
 #### Automate The Boring Stuff with Python
 
 I am a big fan of Al Sweigart's book. He is very kind to provide the [HTML version 
@@ -27,7 +32,13 @@ Recursion](https://youtu.be/AfBqVVKg4GE) by Al Sweigart is also worth checking o
 [Google has a free class](https://developers.google.com/edu/python/) 
 for people who want to learn Python.  The class was created by Nick Parlante and 
 was originally given to new Google employees.  The contents of the class are quite 
-good. It also comes with well-designed exercises for each lecture.  
+good. It also comes with well-designed exercises for each lecture. 
+
+#### Think Python 
+
+*Think Python* is a nice short introductory book by Allen B. Downey, and it only has 
+268 pages. Each chapter of the book has many nice exercises. The book is an easy read 
+if you take programming courses before. 
 
 #### A Byte of Python (OOP Chapter)
 
@@ -35,7 +46,7 @@ Most introductory Python materials do not discuss python classes.  Classes and
 Object Oriented Programming (OOP) concepts are everywhere for any serious Python 
 work. I found the 
 [OOP chapter](https://python.swaroopch.com/oop.html) 
-of a free online book *A Byte of Python* by Swaroop C H is a good introduction to the topic.   
+of a free online book *A Byte of Python* by Swaroop C H is a good introduction to the topic. 
 
 #### Python Reference 
 
@@ -56,11 +67,10 @@ If I get a chance to revise those code, I will make sure they follow those recom
 
 I am currently reading Luciano Ramalho's *Fluent Python* book.  I am half way through the 
 book and it is good.  The book covers many contents that I probably will never use, but it is 
-always good to know more than we need.  
+always good to know more than we need. 
 
 #### Podcasts
 
 I regularly listen to *Talk Python To Me* and *Python Bytes* podcasts.  They keep me in 
 the loop of a larger Python community.  
-
 
