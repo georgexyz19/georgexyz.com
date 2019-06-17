@@ -13,16 +13,15 @@ resources, sometimes it becomes difficult for people to figure out which are goo
 and which are not. 
 
 <div style="max-width:800px">
-  <img class="img-fluid" src="/images/python-books.jpg" alt="python-books"> 
+  <img class="img-fluid pb-3" src="/images/python-books.jpg" alt="python-books"> 
 </div>
-
 
 #### Automate The Boring Stuff with Python
 
 I am a big fan of Al Sweigart's book. He is very kind to provide the [HTML version 
 of the book](https://automatetheboringstuff.com/) online for free. I bought the hard 
 copy and Udemy class, but the online version is very handy when I want to look 
-something up quickly.  
+something up quickly. 
 
 A presentation on youtube titled [Recursion for Beginners: A Beginner's Guide to 
 Recursion](https://youtu.be/AfBqVVKg4GE) by Al Sweigart is also worth checking out.
@@ -72,5 +71,5 @@ always good to know more than we need.
 #### Podcasts
 
 I regularly listen to *Talk Python To Me* and *Python Bytes* podcasts.  They keep me in 
-the loop of a larger Python community.  
+the loop of a larger Python community. 
 
