@@ -57,7 +57,7 @@ github page by Kevin Markham is very nice summary of Python language features.
  [This presentation](https://youtu.be/OSGv2VnC0go) 
  by Raymond Hettinger is excellent.  Someone has prepared the 
  notes and posted them on github.  Here is the link to 
- [the github notes](https://gist.github.com/0x4D31/f0b633548d8e0cfb66ee3bea6a0deff9).
+ [the github notes](https://github.com/JeffPaine/beautiful_idiomatic_python).
 
 I read the notes a few times and found that many examples apply to my existing python code. 
 If I get a chance to revise those code, I will make sure they follow those recommendations.
