@@ -115,7 +115,7 @@ python virtual environment.
 ```python
 python -m venv ~/.venv/pelican
 source ~/venv/pelican/bin/activate
-pip install pelican Markdown invoke
+pip install pelican Markdown invoke ghp-import2
 ```
 
 The `pelican-quickstart` command will create a tasks.py file in the project directory. 

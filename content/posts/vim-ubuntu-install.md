@@ -1,7 +1,7 @@
 title: Vim Full Version Installation in Ubuntu
 slug: vim-ubuntu-install
 meta: Vim Ubuntu Installation Guide
-tags: vim, ubuntu, linux bash
+tags: vim, ubuntu, linux
 date: 2019-04-01 12:45
 modified: 2019-04-01 12:45
 
