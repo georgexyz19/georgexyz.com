@@ -24,7 +24,7 @@ copy and Udemy class, but the online version is very handy when I want to look
 something up quickly. 
 
 A presentation on youtube titled [Recursion for Beginners: A Beginner's Guide to 
-Recursion](https://youtu.be/AfBqVVKg4GE) by Al Sweigart is also worth checking out.
+Recursion](https://youtu.be/AfBqVVKg4GE) by Al Sweigart is also worth watching.
 
 #### Google's Python Class
 
@@ -47,10 +47,16 @@ work. I found the
 [OOP chapter](https://python.swaroopch.com/oop.html) 
 of a free online book *A Byte of Python* by Swaroop C H is a good introduction to the topic. 
 
-#### Python Reference 
+#### Online References
 
 This [Python Reference](https://github.com/justmarkham/python-reference) 
-github page by Kevin Markham is very nice summary of Python language features.
+github page by Kevin Markham is a very nice summary of Python language features.
+
+[This online article by Trey Hunner](https://treyhunner.com/2019/05/python-builtins-worth-learning/) 
+examines all 69 python 3 built-in functions/callables. It is an excellent 
+summary of python 
+built-ins. Python 2 actually have a few more built-in callables.
+
 
 #### Transforming Code into Beautiful, Idiomatic Python
 
