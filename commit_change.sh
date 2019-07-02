@@ -1,3 +1,9 @@
+if [ -z "$1" ]
+then
+    echo "\$1 is empty"
+    exit
+fi
+
 source venv.sh  # load virtual env
 invoke clean build
 git status
