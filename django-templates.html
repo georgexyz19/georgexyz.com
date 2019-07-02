@@ -1,0 +1,244 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <link rel="stylesheet" href="/theme/css/bootstrap.min.css">
+ 
+    <link rel="stylesheet" href="/theme/css/friendly.css">
+    <link rel="stylesheet" href="/theme/css/custom.css">
+    <meta name="author" content="George Zhang" />
+    <meta name="keywords" content="django" />
+    <meta name="description" content="Django has a built-in template system. It is relatively easy to understand, and the source code is not as complicated as other parts of Django. This article is a summary …" />
+    <title>A Close Look at Django Template System - George Zhang</title>
+  </head>
+  <body>
+    <!-- navbar -->
+    <nav class="navbar navbar-expand-md navbar-dark bg-primary">
+      <div class="container">
+        <a class="navbar-brand" href="/">George Zhang</a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarColor01" aria-controls="navbarColor01" aria-expanded="false" aria-label="Toggle navigation">
+          <span class="navbar-toggler-icon"></span>
+        </button>
+
+        <div class="collapse navbar-collapse" id="navbarColor01">
+          <ul class="navbar-nav mr-auto">
+            <li class="nav-item">
+              <a class="nav-link " 
+                href="/article-list.html">Blog</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link " 
+                href="/archives.html">Archives</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link pr-3 " 
+                href="/tags.html">Tags</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link pr-3 "
+                 href="/pages/inkscape-tutorial.html">Inkscape Tutorial</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link "
+                   href="/pages/projects.html">Projects</a>
+              </li>
+          </ul>
+
+          <ul class="navbar-nav">
+            <li class="nav-item">
+              <a class="nav-link " 
+                 href="/pages/about.html">About</a>
+            </li>
+          </ul>
+        </div>
+
+      </div>
+    </nav>
+
+   
+  
+<div class="container">
+
+  <div class="row">
+    <div class="col-lg-8 mx-auto">   
+
+  <h2 class="mt-4 mb-3">A Close Look at Django Template System</h2>
+  
+  <div class="text-muted mb-2">
+    <span>Posted on </span>
+    <time datetime="2019-07-02 13:40:00-04:00">
+      Tuesday, 07/02/2019 13:40
+    </time>
+    
+     <span>with tags: </span>
+       <a href="/tag/django.html">django</a>
+  </div>
+      
+  <p>Django has a built-in template system. It is relatively easy to understand, and 
+the source code is not as complicated as other parts of Django. This article is 
+a summary of the notes I took  when studying the system. </p>
+<h3>Official Documentation</h3>
+<p>The online Django documentation has 5 pages dedicated to template. </p>
+<ul>
+<li>Intro to template (<a href="https://docs.djangoproject.com/en/2.2/topics/templates/">link</a>)</li>
+<li>Template language reference (<a href="https://docs.djangoproject.com/en/2.2/ref/templates/language/">link</a>) </li>
+<li>Built-in tags and filters (<a href="https://docs.djangoproject.com/en/2.2/ref/templates/builtins/">link</a>) </li>
+<li>How to use template system (<a href="https://docs.djangoproject.com/en/2.2/ref/templates/api/">link</a>)</li>
+<li>Custom tags and filters (<a href="https://docs.djangoproject.com/en/2.2/howto/custom-template-tags/">link</a>)</li>
+</ul>
+<p>A Django application developer probably does not need to know all of those details. 
+But it is always a good thing for programmers to know how things work behind the scene. </p>
+<h3>Template Language Summary</h3>
+<p>Django Template Language (DTL) syntax mainly consists of three elements: variable, 
+tag, and filter. Here are some examples:</p>
+<p><strong>variable</strong></p>
+<div class="highlight"><pre><span></span>{{ variable }}
+{{ tag.name }}
+</pre></div>
+
+
+<p><strong>tag</strong></p>
+<div class="highlight"><pre><span></span>{% expression %}
+{% for startup in tag.startup_set.all %}
+  ...
+{% endfor %}
+
+{% extends &quot;base.html&quot; %}
+{% block title %}
+  {{ block.super }} - Tag List
+{% endblock title %}
+
+{% if/else/endif %}
+{% if not tag.startup_set all and not tag.blog_posts.all %}
+</pre></div>
+
+
+<p><strong>filter</strong></p>
+<div class="highlight"><pre><span></span>{{ startup_date|date:&quot;F jS, Y&quot; }}  ▶ July 2nd, 2019
+{{ startup.website|urlize }}
+{{ startup.description|linebreaks }}
+</pre></div>
+
+
+<p><em>other filters</em>:  title, pluralize, truncatewords:20, default:"base.html"</p>
+<h3>How to Load Templates</h3>
+<h4>Method 1</h4>
+<p>The django.template.loader module defines <code>get_template</code> and <code>select_template</code> 
+functions. Both functions can load template files and render them agaist a dict. 
+The difference is that <code>get_template</code> accepts a template name and 
+<code>select_template</code> accepts a list of template names. Here is an example from 
+Django official tutorial. </p>
+<div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">index</span><span class="p">(</span><span class="n">request</span><span class="p">):</span>
+    <span class="n">latest_question_list</span> <span class="o">=</span> <span class="n">Question</span><span class="o">.</span><span class="n">objects</span><span class="o">.</span><span class="n">order_by</span><span class="p">(</span><span class="s1">&#39;-pub_date&#39;</span><span class="p">)[:</span><span class="mi">5</span><span class="p">]</span>
+    <span class="n">template</span> <span class="o">=</span> <span class="n">loader</span><span class="o">.</span><span class="n">get_template</span><span class="p">(</span><span class="s1">&#39;polls/index.html&#39;</span><span class="p">)</span>
+    <span class="n">context</span> <span class="o">=</span> <span class="p">{</span>
+        <span class="s1">&#39;latest_question_list&#39;</span><span class="p">:</span> <span class="n">latest_question_list</span><span class="p">,</span>
+    <span class="p">}</span>
+    <span class="k">return</span> <span class="n">HttpResponse</span><span class="p">(</span><span class="n">template</span><span class="o">.</span><span class="n">render</span><span class="p">(</span><span class="n">context</span><span class="p">,</span> <span class="n">request</span><span class="p">))</span>
+</pre></div>
+
+
+<h4>Method 2</h4>
+<p>The more common code is to use the <code>render</code> function defined in django.shortcuts 
+module in views.  </p>
+<div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">django.shortcuts</span> <span class="kn">import</span> <span class="n">render</span>
+<span class="o">...</span>
+<span class="k">return</span> <span class="n">render</span><span class="p">(</span><span class="n">request</span><span class="p">,</span> <span class="s1">&#39;template_name.html&#39;</span><span class="p">,</span> <span class="p">{</span><span class="s1">&#39;tag&#39;</span><span class="p">:</span> <span class="n">tag</span><span class="p">})</span>
+</pre></div>
+
+
+<p>The <code>render</code> function itself (Django2.2.2 source code) is very simple and short. 
+It calls <code>render_to_string</code> function in django.template.loader module, which in 
+turn calls <code>get_template</code> or <code>select_template</code> depending on template_name. </p>
+<div class="highlight"><pre><span></span><span class="c1"># in django.shortcuts</span>
+<span class="k">def</span> <span class="nf">render</span><span class="p">(</span><span class="n">request</span><span class="p">,</span> <span class="n">template_name</span><span class="p">,</span> <span class="n">context</span><span class="o">=</span><span class="bp">None</span><span class="p">,</span> <span class="n">content_type</span><span class="o">=</span><span class="bp">None</span><span class="p">,</span> 
+           <span class="n">status</span><span class="o">=</span><span class="bp">None</span><span class="p">,</span> <span class="n">using</span><span class="o">=</span><span class="bp">None</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    Return a HttpResponse whose content is filled with the result of calling</span>
+<span class="sd">    django.template.loader.render_to_string() with the passed arguments.</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="n">content</span> <span class="o">=</span> <span class="n">loader</span><span class="o">.</span><span class="n">render_to_string</span><span class="p">(</span><span class="n">template_name</span><span class="p">,</span> <span class="n">context</span><span class="p">,</span> <span class="n">request</span><span class="p">,</span> 
+                                      <span class="n">using</span><span class="o">=</span><span class="n">using</span><span class="p">)</span>
+    <span class="k">return</span> <span class="n">HttpResponse</span><span class="p">(</span><span class="n">content</span><span class="p">,</span> <span class="n">content_type</span><span class="p">,</span> <span class="n">status</span><span class="p">)</span>
+
+<span class="c1"># in django.template.loader </span>
+<span class="k">def</span> <span class="nf">render_to_string</span><span class="p">(</span><span class="n">template_name</span><span class="p">,</span> <span class="n">context</span><span class="o">=</span><span class="bp">None</span><span class="p">,</span> <span class="n">request</span><span class="o">=</span><span class="bp">None</span><span class="p">,</span> <span class="n">using</span><span class="o">=</span><span class="bp">None</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    Load a template and render it with a context. Return a string.</span>
+<span class="sd">    template_name may be a string or a list of strings.</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="k">if</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">template_name</span><span class="p">,</span> <span class="p">(</span><span class="nb">list</span><span class="p">,</span> <span class="nb">tuple</span><span class="p">)):</span>
+        <span class="n">template</span> <span class="o">=</span> <span class="n">select_template</span><span class="p">(</span><span class="n">template_name</span><span class="p">,</span> <span class="n">using</span><span class="o">=</span><span class="n">using</span><span class="p">)</span>
+    <span class="k">else</span><span class="p">:</span>
+        <span class="n">template</span> <span class="o">=</span> <span class="n">get_template</span><span class="p">(</span><span class="n">template_name</span><span class="p">,</span> <span class="n">using</span><span class="o">=</span><span class="n">using</span><span class="p">)</span>
+    <span class="k">return</span> <span class="n">template</span><span class="o">.</span><span class="n">render</span><span class="p">(</span><span class="n">context</span><span class="p">,</span> <span class="n">request</span><span class="p">)</span>
+</pre></div>
+
+
+<h4>Method 3</h4>
+<p>The django.template module has two classes Template and Context. Those 
+are template system's lower level APIs. Here is an example:</p>
+<div class="highlight"><pre><span></span>from django.template import Template, Context
+template = Template(&#39;Hi, my name is {{ name }}.&#39;)
+context = Context({&#39;name&#39;: &#39;Andrew&#39;})
+template.render(context)
+#  result is &#39;Hi, my name is Andrew.&#39;
+</pre></div>
+
+
+<h3>Template System Source Code</h3>
+<p>The source code for Django template system is in django/template directory, and 
+consists of 26 python files. </p>
+<p>Bash command <code>wc</code> outputs number of lines in a file. We know that total number 
+of lines of Django template system code is 5,863 (Django 2.2.2). The output 
+below also shows that two files <code>base.py</code> and <code>defaulttags.py</code> have over 1,000 
+lines of code each. </p>
+<div class="highlight"><pre><span></span>george@STK2M3:~/django-2.2.2/django/template$ wc -l *.py
+  1044 base.py
+    81 context_processors.py
+   280 context.py
+   907 defaultfilters.py
+  1474 defaulttags.py
+   180 engine.py
+    42 exceptions.py
+    68 __init__.py
+   328 library.py
+    66 loader.py
+   317 loader_tags.py
+   145 response.py
+   208 smartif.py
+   107 utils.py
+  5247 total
+george@STK2M3:~/django-2.2.2/django/template$ wc -l loaders/*.py
+  14 loaders/app_directories.py
+  49 loaders/base.py
+  95 loaders/cached.py
+  46 loaders/filesystem.py
+   0 loaders/__init__.py
+  27 loaders/locmem.py
+ 231 total
+george@STK2M3:~/django-2.2.2/django/template$ wc -l backends/*.py
+   81 backends/base.py
+  129 backends/django.py
+   53 backends/dummy.py
+    0 backends/__init__.py
+  108 backends/jinja2.py
+   14 backends/utils.py
+  385 total
+</pre></div>
+
+    </div>
+  </div>
+
+</div>
+  
+   
+
+    <!-- Optional JavaScript -->
+    <!-- jQuery first, then Bootstrap Bundle JS -->
+    <script src="/theme/js/jquery-3.3.1.slim.min.js"></script>
+    <script src="/theme/js/bootstrap.bundle.min.js"></script>
+  </body>
+</html>
