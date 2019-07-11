@@ -1,4 +1,4 @@
-if [ -z "$1" ]
+if [ -z "$1" ]  # if no command line arg, exit
 then
     echo "\$1 is empty"
     exit
