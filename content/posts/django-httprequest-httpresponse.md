@@ -1,8 +1,8 @@
 title: Django HttpRequest and HttpResponse
 slug: django-httprequest-httpresponse
 meta: This post discusses django HttpRequest and HttpResponse
-date: 2019-07-10 15:39
-modified: 2019-07-10 15:40
+date: 2019-07-11 23:45 
+modified: 2019-07-11 23:45 
 tags: django
 note: this note is based on several notes.
 no: 16

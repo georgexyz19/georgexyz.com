@@ -26,7 +26,7 @@ WSGI is an abbreviation for Web Server Gateway Interface, which is a "simple cal
 convention for web servers to forward requests to web applications for frameworks written
 in Python."   WSGI is part of Python ecosystem.  It was originally specified in PEP-333
 in 2003, and was updated to PEP-3333 for python 3 in 2010.   Python standard library even 
-has a wsgiref WSGI reference server built in.  
+has a wsgiref WSGI reference server built in. 
 
 The best writing on WSGI is probably 
 [a blog post](http://lucumr.pocoo.org/2007/5/21/getting-started-with-wsgi/) 

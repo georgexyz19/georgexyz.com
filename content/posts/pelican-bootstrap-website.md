@@ -31,7 +31,8 @@ is an excellent tutorial on Pelican.
 site is a good reference. The fast way to learn Pelican is to look at code of 
 two included themes "simple" and "notmyidea".  To get started, you can 
 write a few blog posts in markdown format and utilize the built-in theme 
-"simple" to generate a site. 
+"simple" to generate a site. The markdown guide website has 
+[a nice summary of basic syntax](https://www.markdownguide.org/basic-syntax/). 
 
 The figure below roughly describes how pelican works. Pelican reads markdown files and 
 theme files into memory and produces html pages.  The theme files work as templates for html output. 

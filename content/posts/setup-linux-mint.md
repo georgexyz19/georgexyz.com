@@ -3,7 +3,7 @@ slug: linux-mint
 meta: This post has two tips about how to setup linux mint on a new computer. 
 date: 2019-06-26 12:32
 modified: 2019-06-26 12:32 
-tags: linux
+tags: linux, linux mint
 note: None
 no: 15
 
