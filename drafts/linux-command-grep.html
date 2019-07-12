@@ -1,0 +1,130 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <link rel="stylesheet" href="/theme/css/bootstrap.min.css">
+ 
+    <link rel="stylesheet" href="/theme/css/friendly.css">
+    <link rel="stylesheet" href="/theme/css/custom.css">
+    <meta name="author" content="George Zhang" />
+    <meta name="keywords" content="linux,software utility" />
+    <meta name="description" content="Brian Kernighan Youtube talk link: https://www.youtube.com/watch?v=NTfOnGZUZDk Corey Schafer Linux Terminal Tutorial for Grep: https://youtu.be/VGgTmxXp7xQ Nick Parlante&#39;s Python RE Video: https://youtu …" />
+    <title>Linux Command Grep - George Zhang</title>
+  </head>
+  <body>
+    <!-- navbar -->
+    <nav class="navbar navbar-expand-md navbar-dark bg-primary">
+      <div class="container">
+        <a class="navbar-brand" href="/">George Zhang</a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarColor01" aria-controls="navbarColor01" aria-expanded="false" aria-label="Toggle navigation">
+          <span class="navbar-toggler-icon"></span>
+        </button>
+
+        <div class="collapse navbar-collapse" id="navbarColor01">
+          <ul class="navbar-nav mr-auto">
+            <li class="nav-item">
+              <a class="nav-link " 
+                href="/article-list.html">Blog</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link " 
+                href="/archives.html">Archives</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link pr-3 " 
+                href="/tags.html">Tags</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link pr-3 "
+                 href="/pages/inkscape-tutorial.html">Inkscape Tutorial</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link "
+                   href="/pages/projects.html">Projects</a>
+              </li>
+          </ul>
+
+          <ul class="navbar-nav">
+            <li class="nav-item">
+              <a class="nav-link " 
+                 href="/pages/about.html">About</a>
+            </li>
+          </ul>
+        </div>
+
+      </div>
+    </nav>
+
+   
+  
+<div class="container">
+
+  <div class="row">
+    <div class="col-lg-8 mx-auto">   
+
+  <h2 class="mt-4 mb-3">Linux Command Grep</h2>
+  
+  <div class="text-muted mb-2">
+    <span>Posted on </span>
+    <time datetime="2019-07-11 23:57:00-04:00">
+      Thursday, 07/11/2019 23:57
+    </time>
+    
+     <span>with tags: </span>
+       <a href="/tag/linux.html">linux</a>
+/       <a href="/tag/software-utility.html">software utility</a>
+  </div>
+      
+  <p>Brian Kernighan Youtube talk link: https://www.youtube.com/watch?v=NTfOnGZUZDk</p>
+<p>Corey Schafer Linux Terminal Tutorial for Grep:  https://youtu.be/VGgTmxXp7xQ</p>
+<p>Nick Parlante's Python RE Video:  https://youtu.be/kWyoYtvJpe4</p>
+<p>Grep command searches file contents to find lines that contain a pattern.  The pattern is described 
+in Regular Expression language. </p>
+<p>Ryan's Tutorials website has <a href="https://ryanstutorials.net/linuxtutorial/grep.php">a nice introduction</a> 
+to <strong>Grep and Regular Expression</strong>.  Note egrep is a shortcut to <code>grep -E</code> in Ubuntu: </p>
+<div class="highlight"><pre><span></span>$which egrep
+/bin/egrep
+$file /bin/egrep
+/bin/egrep: POSIX shell script, ASCII text executable
+$vim /bin/egrep  # file content is
+#!/bin/sh
+exec grep -E &quot;$@&quot;
+</pre></div>
+
+
+<p>This is a very simple grep example:</p>
+<p>$grep "Jane Williams" filename.txt</p>
+<p>The command has many options. A few common ones are:</p>
+<ul>
+<li>-w  Whole word</li>
+<li>-i  ignore case</li>
+<li>-n  line number</li>
+<li>-B 4  4 lines before</li>
+</ul>
+<p>The <code>filename.txt</code> in the above example could be either ./<em> or ./</em>.txt. </p>
+<p>For example, this command will search current directory and subdirectories. </p>
+<p>$grep -winr "Jane Williams" ./</p>
+<p>Here are a few more options:</p>
+<ul>
+<li>-r  recursive</li>
+<li>-l  file name only</li>
+<li>-c  count, print a count</li>
+</ul>
+<p>You can use pipes to search the results of another command.</p>
+<p>$history | grep "git commit"</p>
+
+    </div>
+  </div>
+
+</div>
+  
+   
+
+    <!-- Optional JavaScript -->
+    <!-- jQuery first, then Bootstrap Bundle JS -->
+    <script src="/theme/js/jquery-3.3.1.slim.min.js"></script>
+    <script src="/theme/js/bootstrap.bundle.min.js"></script>
+  </body>
+</html>
