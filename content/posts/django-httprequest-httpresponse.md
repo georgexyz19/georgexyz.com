@@ -5,7 +5,7 @@ date: 2019-07-11 23:45
 modified: 2019-07-11 23:45 
 tags: django
 note: this note is based on several notes.
-no: 16
+no: 17
 
 
 Django view "is simply a Python function that takes a web request and 

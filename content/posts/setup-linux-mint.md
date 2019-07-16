@@ -5,7 +5,7 @@ date: 2019-06-26 12:32
 modified: 2019-06-26 12:32 
 tags: linux, linux mint
 note: None
-no: 15
+no: 16
 
 
 I have been using Xubuntu since version 17.10. This week I read some articles on 
