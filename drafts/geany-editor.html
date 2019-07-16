@@ -1,0 +1,133 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <link rel="stylesheet" href="/theme/css/bootstrap.min.css">
+ 
+    <link rel="stylesheet" href="/theme/css/friendly.css">
+    <link rel="stylesheet" href="/theme/css/custom.css">
+    <meta name="author" content="George Zhang" />
+    <meta name="keywords" content="software utility" />
+    <meta name="description" content="Geany is a lightweight editor mainly for programmers. I heard Geany editor from Python Crash Book and I liked it. The default settings of Geany in Ubuntu are not the …" />
+    <title>Geany Editor - George Zhang</title>
+  </head>
+  <body>
+    <!-- navbar -->
+    <nav class="navbar navbar-expand-md navbar-dark bg-primary">
+      <div class="container">
+        <a class="navbar-brand" href="/">George Zhang</a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarColor01" aria-controls="navbarColor01" aria-expanded="false" aria-label="Toggle navigation">
+          <span class="navbar-toggler-icon"></span>
+        </button>
+
+        <div class="collapse navbar-collapse" id="navbarColor01">
+          <ul class="navbar-nav mr-auto">
+            <li class="nav-item">
+              <a class="nav-link " 
+                href="/article-list.html">Blog</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link " 
+                href="/archives.html">Archives</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link pr-3 " 
+                href="/tags.html">Tags</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link pr-3 "
+                 href="/pages/inkscape-tutorial.html">Inkscape Tutorial</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link "
+                   href="/pages/projects.html">Projects</a>
+              </li>
+          </ul>
+
+          <ul class="navbar-nav">
+            <li class="nav-item">
+              <a class="nav-link " 
+                 href="/pages/about.html">About</a>
+            </li>
+          </ul>
+        </div>
+
+      </div>
+    </nav>
+
+   
+  
+<div class="container">
+
+  <div class="row">
+    <div class="col-lg-8 mx-auto">   
+
+  <h2 class="mt-4 mb-3">Geany Editor</h2>
+  
+  <div class="text-muted mb-2">
+    <span>Posted on </span>
+    <time datetime="2019-07-15 09:05:00-04:00">
+      Monday, 07/15/2019 09:05
+    </time>
+    
+     <span>with tags: </span>
+       <a href="/tag/software-utility.html">software utility</a>
+  </div>
+      
+  <p>Geany is a lightweight editor mainly for programmers.  I heard Geany 
+editor from <em>Python Crash Book</em> and I liked it. The default settings of 
+Geany in Ubuntu are not the best, and this post discusses my preferred 
+settings </p>
+<p>Here is the command to install Geany in Ubuntu. The current version in 
+Ubuntu repo is 1.32.</p>
+<div class="highlight"><pre><span></span>$sudo apt-get install geany
+</pre></div>
+
+
+<p>The commands below install the latest version 1.35.</p>
+<div class="highlight"><pre><span></span>$sudo add-apt-repository ppa:geany-dev/ppa
+$sudo apt-get update
+$sudo apt-get install geany
+</pre></div>
+
+
+<p>Those two commands install some plugins for Geany. The addions is 
+a must-have for a function I will discuss later in the post. </p>
+<div class="highlight"><pre><span></span>$sudo apt-get install geany-plugins-common
+$sudo apt-get install geany-plugin-addons
+$sudo apt-get install geany-plugin-spellcheck
+</pre></div>
+
+
+<p>Here are my preferred settings for Geany after the installation. This is under 
+menu item <code>Edit → Preferences</code>. </p>
+<ul>
+<li>Editor → Features → Line breaking column : 80</li>
+<li>Editor → Indentation → Type: Spaces</li>
+<li>Editor → Display → Display: Long line marker : 80 </li>
+</ul>
+<p>The menu item <code>Tools → Plugin Manager</code> has access to Plugins dialog, turn on 
+Addons, File Browser, and HTML Characters options. Click menu item <code>Edit → 
+Plugin Preference</code> and toggle on option <em>Mark all occurrences of a word when 
+double-clicking it</em>. Windows text editor Notepad++ has this nice feature. 
+Geany editor also has it, but it takes a little time to configure and turn 
+the feature on. </p>
+<div style="max-width:800px">
+  <img class="img-fluid pb-3" src="/images/geany-screenshot.png" alt="Geany Editor"> 
+</div>
+
+    </div>
+  </div>
+
+</div>
+  
+   
+
+    <!-- Optional JavaScript -->
+    <!-- jQuery first, then Bootstrap Bundle JS -->
+    <script src="/theme/js/jquery-3.3.1.slim.min.js"></script>
+    <script src="/theme/js/bootstrap.bundle.min.js"></script>
+  </body>
+</html>
