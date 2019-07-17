@@ -1,0 +1,130 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <link rel="stylesheet" href="/theme/css/bootstrap.min.css">
+ 
+    <link rel="stylesheet" href="/theme/css/friendly.css">
+    <link rel="stylesheet" href="/theme/css/custom.css">
+    <meta name="author" content="George Zhang" />
+    <meta name="keywords" content="django" />
+    <meta name="description" content="Merriam-Webster dictionary defines pagination as &#34;the action of paging&#34;. In web design world, pagination means separating a large list of contents onto different pages for easy web navigation. The top …" />
+    <title>Django Pagination - George Zhang</title>
+  </head>
+  <body>
+    <!-- navbar -->
+    <nav class="navbar navbar-expand-md navbar-dark bg-primary">
+      <div class="container">
+        <a class="navbar-brand" href="/">George Zhang</a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarColor01" aria-controls="navbarColor01" aria-expanded="false" aria-label="Toggle navigation">
+          <span class="navbar-toggler-icon"></span>
+        </button>
+
+        <div class="collapse navbar-collapse" id="navbarColor01">
+          <ul class="navbar-nav mr-auto">
+            <li class="nav-item">
+              <a class="nav-link " 
+                href="/article-list.html">Blog</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link " 
+                href="/archives.html">Archives</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link pr-3 " 
+                href="/tags.html">Tags</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link pr-3 "
+                 href="/pages/inkscape-tutorial.html">Inkscape Tutorial</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link "
+                   href="/pages/projects.html">Projects</a>
+              </li>
+          </ul>
+
+          <ul class="navbar-nav">
+            <li class="nav-item">
+              <a class="nav-link " 
+                 href="/pages/about.html">About</a>
+            </li>
+          </ul>
+        </div>
+
+      </div>
+    </nav>
+
+   
+  
+<div class="container">
+
+  <div class="row">
+    <div class="col-lg-8 mx-auto">   
+
+  <h2 class="mt-4 mb-3">Django Pagination</h2>
+  
+  <div class="text-muted mb-2">
+    <span>Posted on </span>
+    <time datetime="2019-07-17 10:05:00-04:00">
+      Wednesday, 07/17/2019 10:05
+    </time>
+    
+     <span>with tags: </span>
+       <a href="/tag/django.html">django</a>
+  </div>
+      
+  <p>Merriam-Webster dictionary defines pagination as "the action of paging". In web 
+design world, pagination means separating a large list of contents onto 
+different pages for easy web navigation. The top level <strong>Blog</strong> page on this 
+site uses pagination (3 post previews per page).  </p>
+<p>Django provides a few classes that help you manage pagination.  The office documentation has 
+<a href="https://docs.djangoproject.com/en/2.2/topics/pagination/">one page on Pagination</a>.
+The source code is in one file django/core/paginator.py, which has 195 lines 
+(version 2.2.2). The Paginator and Page classes defined in this file are very 
+good python class examples. </p>
+<p>The Paginator class has those public methods:</p>
+<ul>
+<li>validate_number</li>
+<li>get_page : calls page method, handles exception</li>
+<li>page : page number is 1-based</li>
+<li>count : cached_property</li>
+<li>num_pages</li>
+<li>page_range</li>
+</ul>
+<p>The Page class is derived from collections.abc.Sequence, and it has those 
+public methods:</p>
+<ul>
+<li>has_next</li>
+<li>has_previous</li>
+<li>has_other_pages</li>
+<li>next_page_number</li>
+<li>previous_page_number</li>
+<li>start_index</li>
+<li>end_index</li>
+</ul>
+<p>The Page class also defines <code>__len__</code> and <code>__getitem__</code> methods, and it has 
+three attributes: object_list, number, and paginator.</p>
+<p>Chapter 14 of <em>Django Unleashed</em> book covers how to use the django pagination 
+in detail. An online article 
+<a href="https://simpleisbetterthancomplex.com/tutorial/2016/08/03/how-to-paginate-with-django.html">How to Paginate with Django</a> 
+is also a nice summary on how to use paginator.  In class based views, all 
+it takes is one line of code to use Django paginator.</p>
+<div class="highlight"><pre><span></span><span class="n">paginate_by</span> <span class="o">=</span> <span class="mi">10</span>
+</pre></div>
+
+    </div>
+  </div>
+
+</div>
+  
+   
+
+    <!-- Optional JavaScript -->
+    <!-- jQuery first, then Bootstrap Bundle JS -->
+    <script src="/theme/js/jquery-3.3.1.slim.min.js"></script>
+    <script src="/theme/js/bootstrap.bundle.min.js"></script>
+  </body>
+</html>
