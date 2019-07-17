@@ -277,7 +277,7 @@ the storage defines a <code>default_storage</code> function. </p>
 
 
 <p>The grep command results show that <code>MESSAGE_STORAGE</code> is assigned FallBackStorage 
-class which is defined in fallback.py file. </p>
+class which is defined in the fallback.py file. </p>
 <div class="highlight"><pre><span></span>george@STK2M3:~/Desktop/django-2.2.2$ grep -nr &#39;MESSAGE_STORAGE&#39; ./
 ./django/contrib/messages/storage/__init__.py:9: 
    This isn&#39;t just default_storage = import_string(settings.MESSAGE_STORAGE)
@@ -296,15 +296,15 @@ level, message, and extra_tags. It also defines BaseStorage class,
 which is an abstraction of messages storage.  Two methods of the class <code>_get</code> 
 and <code>_store</code> are placeholders and they must be overridden. </p>
 <p>To understand code in the BaseStorage class, we need to think about 
-how an Message object is instantiated, stored, and retrieved. Here are the 
-steps in which methods in BaseStorage are called. </p>
+how an object of Message class is instantiated, stored, and retrieved. Here are 
+the steps in which methods in BaseStorage are called. </p>
 <ol>
 <li>A request comes to Django. Messages middleware initializes a default_storage
    backend and assigns it to the <code>_messages</code> attribute of request.</li>
 <li>The <code>add_message</code> method of message API is called. It calls the add method in 
    BaseStorage, which changes <code>added_new</code> attribute to <code>True</code> and append the 
    message into the <code>_queued_messages</code> list. </li>
-<li>The view function does not call the template render function. The 
+<li>If the view function does not call the template render function, the 
    <code>__iter__</code> method of BaseStorage is not called.</li>
 <li>The <code>process_response</code> method of middleware class calls <code>update</code> method of 
    BaseStorage, which stores unread messages. They are stored in client's 
@@ -342,14 +342,14 @@ stored. Here is the source code. </p>
 
 <h3>Cookies and Sessions</h3>
 <p>The discussion of the messages app has already became convoluted, and it will 
-become even more complicated when we examine how Cookies and Sessions work. 
-I will have a general dicussion on Cookies and Sessions and stop here.  It will 
+become even more complicated when we examine how cookies and sessions work. 
+I will have a general dicussion on cookies and sessions and stop here.  It will 
 be in another post to have a detailed discussion of those topics. </p>
 <p>Internet cookies is "a small piece of data sent from a web server and stored 
 on the user's computer".  The 
 <a href="https://en.wikipedia.org/wiki/HTTP_cookie">wikipedia http cookie page</a> 
 provides a good overview of the topic. The cookie information is sent via the 
-http header, which may have a size limit. The session cookie 
+http header, which usually has a size limit. The session cookie 
 contains a unique session id, and the infomation is saved in server database. 
 Django web framework also comes with a sessions contrib app.  Here is the link 
 to the 
@@ -410,9 +410,9 @@ source code of session.py file. </p>
 
 
 <h3>Conclusion</h3>
-<p>The messages app is easier to use in a Django app, but the implementation of 
+<p>The messages app is easy to use in a Django app, but the implementation of 
 the app is not simple.  Reading the source code helps us understand how the 
-Django web framework works.   </p>
+Django messages app works.   </p>
 
     </div>
   </div>
