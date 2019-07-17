@@ -225,7 +225,7 @@ def default_storage(request):
 ```
 
 The grep command results show that `MESSAGE_STORAGE` is assigned FallBackStorage 
-class which is defined in fallback.py file. 
+class which is defined in the fallback.py file. 
 
 ```
 george@STK2M3:~/Desktop/django-2.2.2$ grep -nr 'MESSAGE_STORAGE' ./
@@ -247,15 +247,15 @@ which is an abstraction of messages storage.  Two methods of the class `_get`
 and `_store` are placeholders and they must be overridden. 
 
 To understand code in the BaseStorage class, we need to think about 
-how an Message object is instantiated, stored, and retrieved. Here are the 
-steps in which methods in BaseStorage are called. 
+how an object of Message class is instantiated, stored, and retrieved. Here are 
+the steps in which methods in BaseStorage are called. 
 
 1. A request comes to Django. Messages middleware initializes a default_storage
    backend and assigns it to the `_messages` attribute of request.
 2. The `add_message` method of message API is called. It calls the add method in 
    BaseStorage, which changes `added_new` attribute to `True` and append the 
    message into the `_queued_messages` list. 
-3. The view function does not call the template render function. The 
+3. If the view function does not call the template render function, the 
    `__iter__` method of BaseStorage is not called.
 4. The `process_response` method of middleware class calls `update` method of 
    BaseStorage, which stores unread messages. They are stored in client's 
@@ -295,15 +295,15 @@ def update(self, response):
 ### Cookies and Sessions
 
 The discussion of the messages app has already became convoluted, and it will 
-become even more complicated when we examine how Cookies and Sessions work. 
-I will have a general dicussion on Cookies and Sessions and stop here.  It will 
+become even more complicated when we examine how cookies and sessions work. 
+I will have a general dicussion on cookies and sessions and stop here.  It will 
 be in another post to have a detailed discussion of those topics. 
 
 Internet cookies is "a small piece of data sent from a web server and stored 
 on the user's computer".  The 
 [wikipedia http cookie page](https://en.wikipedia.org/wiki/HTTP_cookie) 
 provides a good overview of the topic. The cookie information is sent via the 
-http header, which may have a size limit. The session cookie 
+http header, which usually has a size limit. The session cookie 
 contains a unique session id, and the infomation is saved in server database. 
 Django web framework also comes with a sessions contrib app.  Here is the link 
 to the 
@@ -367,9 +367,9 @@ class SessionStorage(BaseStorage):
 
 ### Conclusion
 
-The messages app is easier to use in a Django app, but the implementation of 
+The messages app is easy to use in a Django app, but the implementation of 
 the app is not simple.  Reading the source code helps us understand how the 
-Django web framework works.   
+Django messages app works.   
 
 
 
