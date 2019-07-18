@@ -315,8 +315,8 @@ the steps in which methods in BaseStorage are called. </p>
    <code>__iter__</code> method of BaseStorage.  It changes <code>used</code> attribute to <code>True</code>. 
    The <code>_queued_messages</code> is empty at this time, and it is not the 
    same object described in step 2. It then calls <code>_loaded_messages</code> property 
-   and calls <code>_get</code> method to retrieve the stored message. from client's browser 
-   storage. All cookies from this domain will be uploaded to the server. </li>
+   and calls <code>_get</code> method to retrieve the stored message. All cookies from 
+   this domain will be uploaded to the server. </li>
 <li>The <code>process_response</code> method of middleware class calls <code>update</code> method 
    of BaseStorage. In this case the <code>_queued_messages</code> list is empty, and 
    nothing is stored. </li>
