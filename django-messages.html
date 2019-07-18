@@ -307,15 +307,16 @@ the steps in which methods in BaseStorage are called. </p>
 <li>If the view function does not call the template render function, the 
    <code>__iter__</code> method of BaseStorage is not called.</li>
 <li>The <code>process_response</code> method of middleware class calls <code>update</code> method of 
-   BaseStorage, which stores unread messages. They are stored in client's 
-   browser storage, not on the server.</li>
+   BaseStorage, which stores unread messages. Let's assume messages are saved 
+   in a cookie (session works in a similar way). They are stored in client's 
+   browser storage, not on the server. </li>
 <li>A new request comes in, Django does the same as step 1.</li>
 <li>The view function calls the template <code>render</code> method, which calls the 
    <code>__iter__</code> method of BaseStorage.  It changes <code>used</code> attribute to <code>True</code>. 
    The <code>_queued_messages</code> is empty at this time, and it is not the 
    same object described in step 2. It then calls <code>_loaded_messages</code> property 
-   and calls <code>_get</code> method to retrieve the stored message from client's browser 
-   storage.</li>
+   and calls <code>_get</code> method to retrieve the stored message. from client's browser 
+   storage. All cookies from this domain will be uploaded to the server. </li>
 <li>The <code>process_response</code> method of middleware class calls <code>update</code> method 
    of BaseStorage. In this case the <code>_queued_messages</code> list is empty, and 
    nothing is stored. </li>
@@ -344,7 +345,10 @@ stored. Here is the source code. </p>
 <p>The discussion of the messages app has already became convoluted, and it will 
 become even more complicated when we examine how cookies and sessions work. 
 I will have a general dicussion on cookies and sessions and stop here.  It will 
-be in another post to have a detailed discussion of those topics. </p>
+be in another post to have a detailed discussion of those topics. Tango with 
+Django book has 
+<a href="https://www.tangowithdjango.com/book17/chapters/cookie.html">a chapter on cookies and sessions</a> 
+which is very good. </p>
 <p>Internet cookies is "a small piece of data sent from a web server and stored 
 on the user's computer".  The 
 <a href="https://en.wikipedia.org/wiki/HTTP_cookie">wikipedia http cookie page</a> 
