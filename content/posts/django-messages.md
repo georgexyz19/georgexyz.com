@@ -266,8 +266,8 @@ the steps in which methods in BaseStorage are called.
    `__iter__` method of BaseStorage.  It changes `used` attribute to `True`. 
    The `_queued_messages` is empty at this time, and it is not the 
    same object described in step 2. It then calls `_loaded_messages` property 
-   and calls `_get` method to retrieve the stored message. from client's browser 
-   storage. All cookies from this domain will be uploaded to the server. 
+   and calls `_get` method to retrieve the stored message. All cookies from 
+   this domain will be uploaded to the server. 
 7. The `process_response` method of middleware class calls `update` method 
    of BaseStorage. In this case the `_queued_messages` list is empty, and 
    nothing is stored. 
