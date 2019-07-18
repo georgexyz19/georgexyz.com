@@ -258,15 +258,16 @@ the steps in which methods in BaseStorage are called.
 3. If the view function does not call the template render function, the 
    `__iter__` method of BaseStorage is not called.
 4. The `process_response` method of middleware class calls `update` method of 
-   BaseStorage, which stores unread messages. They are stored in client's 
-   browser storage, not on the server.
+   BaseStorage, which stores unread messages. Let's assume messages are saved 
+   in a cookie (session works in a similar way). They are stored in client's 
+   browser storage, not on the server. 
 5. A new request comes in, Django does the same as step 1.
 6. The view function calls the template `render` method, which calls the 
    `__iter__` method of BaseStorage.  It changes `used` attribute to `True`. 
    The `_queued_messages` is empty at this time, and it is not the 
    same object described in step 2. It then calls `_loaded_messages` property 
-   and calls `_get` method to retrieve the stored message from client's browser 
-   storage.
+   and calls `_get` method to retrieve the stored message. from client's browser 
+   storage. All cookies from this domain will be uploaded to the server. 
 7. The `process_response` method of middleware class calls `update` method 
    of BaseStorage. In this case the `_queued_messages` list is empty, and 
    nothing is stored. 
@@ -297,7 +298,10 @@ def update(self, response):
 The discussion of the messages app has already became convoluted, and it will 
 become even more complicated when we examine how cookies and sessions work. 
 I will have a general dicussion on cookies and sessions and stop here.  It will 
-be in another post to have a detailed discussion of those topics. 
+be in another post to have a detailed discussion of those topics. Tango with 
+Django book has 
+[a chapter on cookies and sessions](https://www.tangowithdjango.com/book17/chapters/cookie.html) 
+which is very good. 
 
 Internet cookies is "a small piece of data sent from a web server and stored 
 on the user's computer".  The 
@@ -308,6 +312,8 @@ contains a unique session id, and the infomation is saved in server database.
 Django web framework also comes with a sessions contrib app.  Here is the link 
 to the 
 [official documentation](https://docs.djangoproject.com/en/2.2/topics/http/sessions/). 
+
+
 
 The SessionStorage class does not need to consider the size limit when saving 
 messages, so the code is simpler than in CookieStorage class.  Here is the 
