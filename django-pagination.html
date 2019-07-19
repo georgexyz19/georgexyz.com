@@ -111,9 +111,25 @@ three attributes: object_list, number, and paginator.</p>
 in detail. An online article 
 <a href="https://simpleisbetterthancomplex.com/tutorial/2016/08/03/how-to-paginate-with-django.html">How to Paginate with Django</a> 
 is also a nice summary on how to use paginator.  In class based views, all 
-it takes is one line of code to use Django paginator.</p>
+it takes is to add one line of code to use Django paginator.</p>
 <div class="highlight"><pre><span></span><span class="n">paginate_by</span> <span class="o">=</span> <span class="mi">10</span>
 </pre></div>
+
+
+<p>The template will be rendered with a context object with those contents:</p>
+<div class="highlight"><pre><span></span>context = {
+            &#39;paginator&#39;: paginator,
+            &#39;page_obj&#39;: page,
+            &#39;is_paginated&#39;: is_paginated,
+            &#39;object_list&#39;: queryset
+        }
+</pre></div>
+
+
+<p>The context object is defined in the <code>get_context_data</code> method of MultipleObjectMixin. The 
+<code>queryset</code> value of <code>context</code> dictionary is returned by <code>paginate_queryset</code> method, and it is 
+<code>page.object_list</code>.  You can easliy navigate the source code on this 
+<a href="https://ccbv.co.uk/projects/Django/2.2/django.views.generic.list/ListView/">Class CBV website</a>. </p>
 
     </div>
   </div>
