@@ -45,9 +45,26 @@ Chapter 14 of *Django Unleashed* book covers how to use the django pagination
 in detail. An online article 
 [How to Paginate with Django](https://simpleisbetterthancomplex.com/tutorial/2016/08/03/how-to-paginate-with-django.html) 
 is also a nice summary on how to use paginator.  In class based views, all 
-it takes is one line of code to use Django paginator.
+it takes is to add one line of code to use Django paginator.
 
 ```python
 paginate_by = 10
 ```
+
+The template will be rendered with a context object with those contents:
+
+```
+context = {
+            'paginator': paginator,
+            'page_obj': page,
+            'is_paginated': is_paginated,
+            'object_list': queryset
+        }
+```
+
+The context object is defined in the `get_context_data` method of MultipleObjectMixin. The 
+`queryset` value of `context` dictionary is returned by `paginate_queryset` method, and it is 
+`page.object_list`.  You can easliy navigate the source code on this 
+[Class CBV website](https://ccbv.co.uk/projects/Django/2.2/django.views.generic.list/ListView/). 
+
 
