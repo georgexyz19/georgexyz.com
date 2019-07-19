@@ -12,7 +12,7 @@ no: 17
 Geany is a lightweight editor mainly for programmers.  I heard Geany 
 editor from *Python Crash Book* and I liked it. The default settings of 
 Geany in Ubuntu are not the best, and this post discusses my preferred 
-settings 
+settings. 
 
 Here is the command to install Geany in Ubuntu. The current version in 
 Ubuntu repo is 1.32.
@@ -46,7 +46,7 @@ menu item `Edit → Preferences`.
 * Editor → Display → Display: Long line marker : 80 
 
 The menu item `Tools → Plugin Manager` has access to Plugins dialog, turn on 
-Addons, File Browser, and HTML Characters options. Click menu item `Edit → 
+Addons, File Browser, HTML Characters, and Spell Check options. Click menu item `Edit → 
 Plugin Preference` and toggle on option *Mark all occurrences of a word when 
 double-clicking it*. Windows text editor Notepad++ has this nice feature. 
 Geany editor also has it, but it takes a little time to configure and turn 
