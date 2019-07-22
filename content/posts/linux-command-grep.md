@@ -9,7 +9,7 @@ no: 20
 
 Grep command searches file contents to find lines that contain a pattern.  The 
 pattern is described in Regular Expression (regex) language. Here are three 
-youtube vidio links about Grep and regular expressions. 
+youtube video links about Grep and regular expressions. 
 
 * [Brian Kernighan Youtube Talk on Grep](https://www.youtube.com/watch?v=NTfOnGZUZDk)
 * [Corey Schafer Linux Terminal Tutorial for Grep](https://youtu.be/VGgTmxXp7xQ)
@@ -73,7 +73,7 @@ in pattern. Here is a list of common regex special characters in Python:
 * \.(dot) : any char
 * \\w : word char 'A-Za-z0-9_'
 * \\d : digit
-* \\s : white sapce
+* \\s : white space
 * \* : zero or more
 * \+ : one or more
 
