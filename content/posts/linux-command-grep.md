@@ -45,7 +45,7 @@ The grep command has many options. A few common ones are:
 * -A 4 : 4 lines after
 * -C 4 : 2 lines before, 2 lines after
 
-The `filename.txt` in the above example could be either ./* or ./*.txt. 
+The `filename.txt` in the above example could be either `./*` or `./*.txt`. 
 
 For example, this command will search current directory and subdirectories. 
 

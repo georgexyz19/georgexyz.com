@@ -1,12 +1,12 @@
 title: Geany Editor
 slug: geany-editor
 meta: This post discusses how to setup geany editor
-date: 2019-07-15 09:05
-modified: 2019-07-15 09:05
+date: 2019-07-19 15:45
+modified: 2019-07-19 15:45
 tags: software utility
 status: draft
 note: this note is based on a hard copy note
-no: 17
+no: 21
 
 
 Geany is a lightweight editor mainly for programmers.  I heard Geany 
@@ -49,8 +49,8 @@ The menu item `Tools → Plugin Manager` has access to Plugins dialog, turn on
 Addons, File Browser, HTML Characters, and Spell Check options. Click menu item `Edit → 
 Plugin Preference` and toggle on option *Mark all occurrences of a word when 
 double-clicking it*. Windows text editor Notepad++ has this nice feature. 
-Geany editor also has it, but it takes a little time to configure and turn 
-the feature on. 
+Geany editor also has it, but it takes a little time to configure and turn on 
+the feature. 
 
 <div style="max-width:800px">
   <img class="img-fluid pb-3" src="/images/geany-screenshot.png" alt="Geany Editor"> 
