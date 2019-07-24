@@ -153,6 +153,9 @@ ghp-import output -b gh-pages
 git push origin gh-pages
 ```
 
+[This github page](https://gist.github.com/jedmao/5053440) 
+has a nice summary of common github commands.  
+
 ### Future Blog Plan
 
 My future plan for the blog is to write about one post per month.  That comes 
