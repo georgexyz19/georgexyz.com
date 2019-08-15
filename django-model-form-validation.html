@@ -216,7 +216,10 @@ the <code>clean()</code> method of a ModelForm subclass."</p>
 ModelForm validation.  In addition to that, <code>Model.full_clean()</code> method is 
 triggered after the form's <code>clean()</code> method is called. So, model validation 
 methods are not triggered by model <code>save()</code> method, but model validation methods 
-are triggered by ModelForm validation.</p>
+are triggered by ModelForm validation. 
+<a href="https://stackoverflow.com/questions/40881708/django-model-validator-not-working-on-create">This stack overflow question</a> 
+discusses this exact issue. The accepted answer also has code example on 
+model validation. </p>
 <p>Error messages at the form field level take precedence over the error messages 
 defined at the model field level. </p>
 
