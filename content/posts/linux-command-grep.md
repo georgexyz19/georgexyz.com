@@ -18,7 +18,7 @@ youtube video links about Grep and regular expressions.
 Ryan's Tutorials website has [a nice introduction](https://ryanstutorials.net/linuxtutorial/grep.php) 
 to *Grep and Regular Expression*.  Note egrep is a shortcut to `grep -E` in 
 Ubuntu. The man page of grep describes that "in GNU grep there is no difference 
-in available functionality between basic and  extended syntaxes".  
+in available functionality between basic and  extended syntaxes". 
 
 ```
 $which egrep
