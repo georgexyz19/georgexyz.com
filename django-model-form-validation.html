@@ -81,13 +81,13 @@ confusing topic in Django app development.  A developer needs to understand
 several basic concepts such as model, model field, form, model form, etc. to 
 have a good understanding of validation.  Most books or online tutorials do not 
 have a systematic explanation on validation. </p>
-<p>Django official documentation has detailed descriptions on validation.<br>
+<p>Django official documentation has detailed descriptions on validation. 
 However, the contents are dispersed on several places.  I will describe the 
-material I read on this topic in this post.  </p>
+material I read on this topic in this post. </p>
 <h3>Validator Function</h3>
 <p>The 
-<a href="https://docs.djangoproject.com/en/2.2/ref/validators/#django.core.validators.EmailValidator"><strong>Validator</strong></a> 
-official documentation page is a good starting point to study model and form validation. </p>
+<a href="https://docs.djangoproject.com/en/2.2/ref/validators/#django.core.validators.EmailValidator">validator official documentation page</a> 
+is a good starting point to study model and form validation. </p>
 <p>The validator function is a callable that takes a value and raises a 
 ValidationError if not validated. Here is an example from the page:</p>
 <div class="highlight"><pre><span></span>from django.core.exceptions import ValidationError
@@ -107,11 +107,10 @@ class MyModel(models.Model):
 </pre></div>
 
 
-<p>The subsection <em>How validators are run</em> on the 
-<a href="https://docs.djangoproject.com/en/2.2/ref/validators/#django.core.validators.EmailValidator"><strong>Validator</strong></a> 
+<p>The subsection <em>How validators are run</em> on the validator
 page has three links. The second link <em>Validating objects</em> is about 
 <strong>model validation</strong>.  The link points to a subsection on the 
-<em>Model instance reference</em> page. The first link <em>form validation</em> points 
+"Model instance reference" page. The first link <em>form validation</em> points 
 to a separate page about <strong>form validation</strong>.</p>
 <h3>Model Validation</h3>
 <p>A model's <code>full_clean()</code> method performs model validation. The method calls 
@@ -121,7 +120,7 @@ three other methods:</p>
 <li><code>Model.clean()</code> method, as a whole</li>
 <li><code>Model.validate_unique()</code> method</li>
 </ul>
-<p>The model <code>save()</code> method does NOT call <code>full_clean()</code> method automatically.<br>
+<p>The model <code>save()</code> method does NOT call <code>full_clean()</code> method automatically. 
 A programmer needs to call it manually to trigger model validation such as 
 the below code.</p>
 <div class="highlight"><pre><span></span>try:
@@ -189,8 +188,8 @@ attribute or call <code>full_clean()</code> method of a form.</p>
 <li>to_python() method on a Field, correct data type</li>
 <li>validation() on a field</li>
 <li>run_validators() method on a field</li>
-<li><em>clean() method</em> on a Field subclass, calls above three methods and returns the clean data</li>
-<li>clean_\&lt;fieldname>() method has access to <code>cleaned_data</code> Python object and returns value replaces data in <code>cleaned_data</code></li>
+<li>clean() method on a Field subclass, calls above three methods and returns the clean data</li>
+<li>clean_<fieldname>() method has access to cleaned_data Python object and returns value replaces data in cleaned_data</li>
 <li>clean() method of form, for multiple fields</li>
 </ul>
 <p>The same documetation page has several nice examples, which are based on the 
@@ -209,8 +208,8 @@ the <code>clean()</code> method of a ModelForm subclass."</p>
 <h3>ModelForm Validation</h3>
 <p>The form validation steps described in the previous section still apply in 
 ModelForm validation.  In addition to that, <code>Model.full_clean()</code> method is 
-triggered after the form's clean() method is called. So, model validation 
-methods are not triggered by model save() method, but model validation methods 
+triggered after the form's <code>clean()</code> method is called. So, model validation 
+methods are not triggered by model <code>save()</code> method, but model validation methods 
 are triggered by ModelForm validation.</p>
 <p>Error messages at the form field level take precedence over the error messages 
 defined at the model field level. </p>
