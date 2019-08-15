@@ -8,15 +8,15 @@ note: I wrote this article in an afternoon. I will update it as I read more on t
 no: 21
  
 
-Django model and form validation is a somewhat complicated and sometimes 
+Django model and form validation is a somewhat complicated and 
 confusing topic in Django app development.  A developer needs to understand 
 several basic concepts such as model, model field, form, model form, etc. to 
-have a good understanding of validation.  Most books or online tutorials do not 
-have a systematic explanation on validation. 
+have a good understanding of validation.  Most Django books and online tutorials 
+do not have a good discussion on validation. 
 
 Django official documentation has detailed descriptions on validation. 
 However, the contents are dispersed on several places.  I will describe the 
-material I read on this topic in this post. 
+material I have read on this topic. 
 
 ### Validator Function
 
@@ -44,23 +44,29 @@ class MyModel(models.Model):
     even_field = models.IntegerField(validators=[validate_even])
 ```
 
-The subsection *How validators are run* on the validator
-page has three links. The second link *Validating objects* is about 
-**model validation**.  The link points to a subsection on the 
-"Model instance reference" page. The first link *form validation* points 
-to a separate page about **form validation**.
+The subsection *how validators are run* on the validator
+page has three links. 
+
+* The second link *validating objects* is about 
+*model validation*.  The link points to a subsection on the 
+[model instance reference](https://docs.djangoproject.com/en/2.2/ref/models/instances/#validating-objects) 
+page. 
+* The first link *form validation* points 
+to a separate page about 
+[*form validation*](https://docs.djangoproject.com/en/2.2/ref/forms/validation/). 
+* The third link goes to the ModelForm page. 
 
 ### Model Validation
 
 A model's `full_clean()` method performs model validation. The method calls 
 three other methods:
 
-* `Model.clean_fields()` method
-* `Model.clean()` method, as a whole
-* `Model.validate_unique()` method
+* `clean_fields()` method
+* `clean()` method, as a whole
+* `validate_unique()` method
 
 The model `save()` method does NOT call `full_clean()` method automatically. 
-A programmer needs to call it manually to trigger model validation such as 
+A programmer needs to call it manually to trigger model validation like 
 the below code.
 
 ```
@@ -72,7 +78,7 @@ except ValidationError as e:
 ``` 
 
 [A stack overflow answer](https://stackoverflow.com/questions/7366363/adding-custom-django-model-validation) 
-shows a typical pattern to conduct custom model validation. It overrides the 
+shows a typical pattern to conduct custom model validation. The model class overrides the 
 `clean()` method to provide custom model validation and the `save()` method 
 to call `full_clean` method.  The example code is shown below:
 
@@ -93,7 +99,7 @@ class BaseModel(models.Model):
 shows how to use custom model validation or simply use model field's built-in 
 validator.
 
-Model field's validation would not kick in unless the `full_clean()` method 
+Model field's validation will not kick in unless the `full_clean()` method 
 is explicitly called. For example, the `p2.save()` below would not raise an 
 exception when called. 
 
@@ -106,8 +112,8 @@ class PageModel(models.Model):
 >>> p1 = PageModel(name='Page1', slug='page1')
 >>> p1.save()
 >>> p2 = PageModel(name='Page2', slug='page2#$%')
->>> p2.save()   # no error
->>> p2.full_clean()  # generate error
+>>> p2.save()        # no error
+>>> p2.full_clean()  # raise exception
 ```
 
 Checking `full_clean()` method source code, it has the following lines. 
@@ -124,20 +130,18 @@ except ValidationError as e:
 
 While model validation is a subsection on a Django documentation page, the 
 [form validation](https://docs.djangoproject.com/en/2.2/ref/forms/validation/) 
-is on a separate page. 
-
-Form validation is normally executed when you call the `is_valid()` method on 
-a form. A programmer can also trigger form validation by accessing `errors` 
-attribute or call `full_clean()` method of a form.
+is on a separate page. Form validation is normally executed when the `is_valid()` 
+method is called on a form. A programmer can also trigger form validation 
+by accessing `errors` attribute or call `full_clean()` method of a form.
 
 Form validation has a series of steps:
 
-* to\_python() method on a Field, correct data type
-* validation() on a field
-* run\_validators() method on a field
-* clean() method on a Field subclass, calls above three methods and returns the clean data
-* clean\_<fieldname>() method has access to cleaned\_data Python object and returns value replaces data in cleaned\_data
-* clean() method of form, for multiple fields
+* `to_python()` method on a field, correct data type
+* `validation()` method on a field
+* `run_validators()` method on a field
+* `clean()` method on a Field subclass, which calls above three methods and returns the clean data
+* `clean_<fieldname>()` method has access to cleaned\_data Python object and returns value that replaces data in cleaned\_data
+* `clean()` method of form, for multiple fields
 
 The same documetation page has several nice examples, which are based on the 
 model shown below:
