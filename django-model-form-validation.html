@@ -10,7 +10,7 @@
     <link rel="stylesheet" href="/theme/css/custom.css">
     <meta name="author" content="George Zhang" />
     <meta name="keywords" content="django" />
-    <meta name="description" content="Django model and form validation is a somewhat complicated and sometimes confusing topic in Django app development. A developer needs to understand several basic concepts such as model, model field …" />
+    <meta name="description" content="Django model and form validation is a somewhat complicated and confusing topic in Django app development. A developer needs to understand several basic concepts such as model, model field, form …" />
     <title>Django Model and Form Validation - George Zhang</title>
   </head>
   <body>
@@ -76,14 +76,14 @@
        <a href="/tag/django.html">django</a>
   </div>
       
-  <p>Django model and form validation is a somewhat complicated and sometimes 
+  <p>Django model and form validation is a somewhat complicated and 
 confusing topic in Django app development.  A developer needs to understand 
 several basic concepts such as model, model field, form, model form, etc. to 
-have a good understanding of validation.  Most books or online tutorials do not 
-have a systematic explanation on validation. </p>
+have a good understanding of validation.  Most Django books and online tutorials 
+do not have a good discussion on validation. </p>
 <p>Django official documentation has detailed descriptions on validation. 
 However, the contents are dispersed on several places.  I will describe the 
-material I read on this topic in this post. </p>
+material I have read on this topic. </p>
 <h3>Validator Function</h3>
 <p>The 
 <a href="https://docs.djangoproject.com/en/2.2/ref/validators/#django.core.validators.EmailValidator">validator official documentation page</a> 
@@ -107,21 +107,28 @@ class MyModel(models.Model):
 </pre></div>
 
 
-<p>The subsection <em>How validators are run</em> on the validator
-page has three links. The second link <em>Validating objects</em> is about 
-<strong>model validation</strong>.  The link points to a subsection on the 
-"Model instance reference" page. The first link <em>form validation</em> points 
-to a separate page about <strong>form validation</strong>.</p>
+<p>The subsection <em>how validators are run</em> on the validator
+page has three links. </p>
+<ul>
+<li>The second link <em>validating objects</em> is about 
+<em>model validation</em>.  The link points to a subsection on the 
+<a href="https://docs.djangoproject.com/en/2.2/ref/models/instances/#validating-objects">model instance reference</a> 
+page. </li>
+<li>The first link <em>form validation</em> points 
+to a separate page about 
+<a href="https://docs.djangoproject.com/en/2.2/ref/forms/validation/"><em>form validation</em></a>. </li>
+<li>The third link goes to the ModelForm page. </li>
+</ul>
 <h3>Model Validation</h3>
 <p>A model's <code>full_clean()</code> method performs model validation. The method calls 
 three other methods:</p>
 <ul>
-<li><code>Model.clean_fields()</code> method</li>
-<li><code>Model.clean()</code> method, as a whole</li>
-<li><code>Model.validate_unique()</code> method</li>
+<li><code>clean_fields()</code> method</li>
+<li><code>clean()</code> method, as a whole</li>
+<li><code>validate_unique()</code> method</li>
 </ul>
 <p>The model <code>save()</code> method does NOT call <code>full_clean()</code> method automatically. 
-A programmer needs to call it manually to trigger model validation such as 
+A programmer needs to call it manually to trigger model validation like 
 the below code.</p>
 <div class="highlight"><pre><span></span>try:
     article.full_clean()
@@ -132,7 +139,7 @@ except ValidationError as e:
 
 
 <p><a href="https://stackoverflow.com/questions/7366363/adding-custom-django-model-validation">A stack overflow answer</a> 
-shows a typical pattern to conduct custom model validation. It overrides the 
+shows a typical pattern to conduct custom model validation. The model class overrides the 
 <code>clean()</code> method to provide custom model validation and the <code>save()</code> method 
 to call <code>full_clean</code> method.  The example code is shown below:</p>
 <div class="highlight"><pre><span></span>class BaseModel(models.Model):
@@ -151,7 +158,7 @@ to call <code>full_clean</code> method.  The example code is shown below:</p>
 <p><a href="https://stackoverflow.com/questions/42003866/django-validation-at-model-not-forms-level">Another stack overflow answer</a> 
 shows how to use custom model validation or simply use model field's built-in 
 validator.</p>
-<p>Model field's validation would not kick in unless the <code>full_clean()</code> method 
+<p>Model field's validation will not kick in unless the <code>full_clean()</code> method 
 is explicitly called. For example, the <code>p2.save()</code> below would not raise an 
 exception when called. </p>
 <div class="highlight"><pre><span></span>class PageModel(models.Model):
@@ -162,8 +169,8 @@ exception when called. </p>
 &gt;&gt;&gt; p1 = PageModel(name=&#39;Page1&#39;, slug=&#39;page1&#39;)
 &gt;&gt;&gt; p1.save()
 &gt;&gt;&gt; p2 = PageModel(name=&#39;Page2&#39;, slug=&#39;page2#$%&#39;)
-&gt;&gt;&gt; p2.save()   # no error
-&gt;&gt;&gt; p2.full_clean()  # generate error
+&gt;&gt;&gt; p2.save()        # no error
+&gt;&gt;&gt; p2.full_clean()  # raise exception
 </pre></div>
 
 
@@ -179,18 +186,17 @@ except ValidationError as e:
 <h3>Form Validation</h3>
 <p>While model validation is a subsection on a Django documentation page, the 
 <a href="https://docs.djangoproject.com/en/2.2/ref/forms/validation/">form validation</a> 
-is on a separate page. </p>
-<p>Form validation is normally executed when you call the <code>is_valid()</code> method on 
-a form. A programmer can also trigger form validation by accessing <code>errors</code> 
-attribute or call <code>full_clean()</code> method of a form.</p>
+is on a separate page. Form validation is normally executed when the <code>is_valid()</code> 
+method is called on a form. A programmer can also trigger form validation 
+by accessing <code>errors</code> attribute or call <code>full_clean()</code> method of a form.</p>
 <p>Form validation has a series of steps:</p>
 <ul>
-<li>to_python() method on a Field, correct data type</li>
-<li>validation() on a field</li>
-<li>run_validators() method on a field</li>
-<li>clean() method on a Field subclass, calls above three methods and returns the clean data</li>
-<li>clean_<fieldname>() method has access to cleaned_data Python object and returns value replaces data in cleaned_data</li>
-<li>clean() method of form, for multiple fields</li>
+<li><code>to_python()</code> method on a field, correct data type</li>
+<li><code>validation()</code> method on a field</li>
+<li><code>run_validators()</code> method on a field</li>
+<li><code>clean()</code> method on a Field subclass, which calls above three methods and returns the clean data</li>
+<li><code>clean_&lt;fieldname&gt;()</code> method has access to cleaned_data Python object and returns value that replaces data in cleaned_data</li>
+<li><code>clean()</code> method of form, for multiple fields</li>
 </ul>
 <p>The same documetation page has several nice examples, which are based on the 
 model shown below:</p>
