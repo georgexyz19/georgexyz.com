@@ -1,0 +1,230 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <link rel="stylesheet" href="/theme/css/bootstrap.min.css">
+ 
+    <link rel="stylesheet" href="/theme/css/friendly.css">
+    <link rel="stylesheet" href="/theme/css/custom.css">
+    <meta name="author" content="George Zhang" />
+    <meta name="keywords" content="django" />
+    <meta name="description" content="Django model and form validation is a somewhat complicated and sometimes confusing topic in Django app development. A developer needs to understand several basic concepts such as model, model field …" />
+    <title>Django Model and Form Validation - George Zhang</title>
+  </head>
+  <body>
+    <!-- navbar -->
+    <nav class="navbar navbar-expand-md navbar-dark bg-primary">
+      <div class="container">
+        <a class="navbar-brand" href="/">George Zhang</a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarColor01" aria-controls="navbarColor01" aria-expanded="false" aria-label="Toggle navigation">
+          <span class="navbar-toggler-icon"></span>
+        </button>
+
+        <div class="collapse navbar-collapse" id="navbarColor01">
+          <ul class="navbar-nav mr-auto">
+            <li class="nav-item">
+              <a class="nav-link " 
+                href="/article-list.html">Blog</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link " 
+                href="/archives.html">Archives</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link pr-3 " 
+                href="/tags.html">Tags</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link pr-3 "
+                 href="/pages/inkscape-tutorial.html">Inkscape Tutorial</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link "
+                   href="/pages/projects.html">Projects</a>
+              </li>
+          </ul>
+
+          <ul class="navbar-nav">
+            <li class="nav-item">
+              <a class="nav-link " 
+                 href="/pages/about.html">About</a>
+            </li>
+          </ul>
+        </div>
+
+      </div>
+    </nav>
+
+   
+  
+<div class="container">
+
+  <div class="row">
+    <div class="col-lg-8 mx-auto">   
+
+  <h2 class="mt-4 mb-3">Django Model and Form Validation</h2>
+  
+  <div class="text-muted mb-2">
+    <span>Posted on </span>
+    <time datetime="2019-08-15 00:59:00-04:00">
+      Thursday, 08/15/2019 00:59
+    </time>
+    
+     <span>with tags: </span>
+       <a href="/tag/django.html">django</a>
+  </div>
+      
+  <p>Django model and form validation is a somewhat complicated and sometimes 
+confusing topic in Django app development.  A developer needs to understand 
+several basic concepts such as model, model field, form, model form, etc. to 
+have a good understanding of validation.  Most books or online tutorials do not 
+have a systematic explanation on validation. </p>
+<p>Django official documentation has detailed descriptions on validation.<br>
+However, the contents are dispersed on several places.  I will describe the 
+material I read on this topic in this post.  </p>
+<h3>Validator Function</h3>
+<p>The 
+<a href="https://docs.djangoproject.com/en/2.2/ref/validators/#django.core.validators.EmailValidator"><strong>Validator</strong></a> 
+official documentation page is a good starting point to study model and form validation. </p>
+<p>The validator function is a callable that takes a value and raises a 
+ValidationError if not validated. Here is an example from the page:</p>
+<div class="highlight"><pre><span></span>from django.core.exceptions import ValidationError
+from django.utils.translation import gettext_lazy as _
+
+def validate_even(value):
+    if value % 2 != 0:
+        raise ValidationError(
+            _(&#39;%(value)s is not an even number&#39;),
+            params={&#39;value&#39;: value},
+        )
+
+from django.db import models
+
+class MyModel(models.Model):
+    even_field = models.IntegerField(validators=[validate_even])
+</pre></div>
+
+
+<p>The subsection <em>How validators are run</em> on the 
+<a href="https://docs.djangoproject.com/en/2.2/ref/validators/#django.core.validators.EmailValidator"><strong>Validator</strong></a> 
+page has three links. The second link <em>Validating objects</em> is about 
+<strong>model validation</strong>.  The link points to a subsection on the 
+<em>Model instance reference</em> page. The first link <em>form validation</em> points 
+to a separate page about <strong>form validation</strong>.</p>
+<h3>Model Validation</h3>
+<p>A model's <code>full_clean()</code> method performs model validation. The method calls 
+three other methods:</p>
+<ul>
+<li><code>Model.clean_fields()</code> method</li>
+<li><code>Model.clean()</code> method, as a whole</li>
+<li><code>Model.validate_unique()</code> method</li>
+</ul>
+<p>The model <code>save()</code> method does NOT call <code>full_clean()</code> method automatically.<br>
+A programmer needs to call it manually to trigger model validation such as 
+the below code.</p>
+<div class="highlight"><pre><span></span>try:
+    article.full_clean()
+except ValidationError as e:
+    ...
+    # handle the error
+</pre></div>
+
+
+<p><a href="https://stackoverflow.com/questions/7366363/adding-custom-django-model-validation">A stack overflow answer</a> 
+shows a typical pattern to conduct custom model validation. It overrides the 
+<code>clean()</code> method to provide custom model validation and the <code>save()</code> method 
+to call <code>full_clean</code> method.  The example code is shown below:</p>
+<div class="highlight"><pre><span></span>class BaseModel(models.Model):
+    # model fields 
+
+    def clean(self, *args, **kwargs):
+        # add custom validation here
+        super(BaseModel, self).clean(*args, **kwargs)
+
+    def save(self, *args, **kwargs):
+        self.full_clean()
+        super(BaseModel, self).save(*args, **kwargs)
+</pre></div>
+
+
+<p><a href="https://stackoverflow.com/questions/42003866/django-validation-at-model-not-forms-level">Another stack overflow answer</a> 
+shows how to use custom model validation or simply use model field's built-in 
+validator.</p>
+<p>Model field's validation would not kick in unless the <code>full_clean()</code> method 
+is explicitly called. For example, the <code>p2.save()</code> below would not raise an 
+exception when called. </p>
+<div class="highlight"><pre><span></span>class PageModel(models.Model):
+    name = models.CharField(max_length=50)
+    slug = models.SlugField(max_length=50)
+
+&gt;&gt;&gt; from page.models import PageModel #page app name
+&gt;&gt;&gt; p1 = PageModel(name=&#39;Page1&#39;, slug=&#39;page1&#39;)
+&gt;&gt;&gt; p1.save()
+&gt;&gt;&gt; p2 = PageModel(name=&#39;Page2&#39;, slug=&#39;page2#$%&#39;)
+&gt;&gt;&gt; p2.save()   # no error
+&gt;&gt;&gt; p2.full_clean()  # generate error
+</pre></div>
+
+
+<p>Checking <code>full_clean()</code> method source code, it has the following lines. 
+The <code>f.clean(...)</code> method calls validation method on a model field.</p>
+<div class="highlight"><pre><span></span>try:
+    setattr(self, f.attname, f.clean(raw_value, self))
+except ValidationError as e:
+    errors[f.name] = e.error_list
+</pre></div>
+
+
+<h3>Form Validation</h3>
+<p>While model validation is a subsection on a Django documentation page, the 
+<a href="https://docs.djangoproject.com/en/2.2/ref/forms/validation/">form validation</a> 
+is on a separate page. </p>
+<p>Form validation is normally executed when you call the <code>is_valid()</code> method on 
+a form. A programmer can also trigger form validation by accessing <code>errors</code> 
+attribute or call <code>full_clean()</code> method of a form.</p>
+<p>Form validation has a series of steps:</p>
+<ul>
+<li>to_python() method on a Field, correct data type</li>
+<li>validation() on a field</li>
+<li>run_validators() method on a field</li>
+<li><em>clean() method</em> on a Field subclass, calls above three methods and returns the clean data</li>
+<li>clean_\&lt;fieldname>() method has access to <code>cleaned_data</code> Python object and returns value replaces data in <code>cleaned_data</code></li>
+<li>clean() method of form, for multiple fields</li>
+</ul>
+<p>The same documetation page has several nice examples, which are based on the 
+model shown below:</p>
+<div class="highlight"><pre><span></span>class ContactForm(forms.Form):
+    subject = forms.CharField(max_length=100)
+    message = forms.CharField()
+    sender = forms.EmailField()
+    recipients = MultiEmailField()
+    cc_myself = forms.BooleanField(required=False)
+</pre></div>
+
+
+<p>The same page points out that "there are special considerations when overriding 
+the <code>clean()</code> method of a ModelForm subclass."</p>
+<h3>ModelForm Validation</h3>
+<p>The form validation steps described in the previous section still apply in 
+ModelForm validation.  In addition to that, <code>Model.full_clean()</code> method is 
+triggered after the form's clean() method is called. So, model validation 
+methods are not triggered by model save() method, but model validation methods 
+are triggered by ModelForm validation.</p>
+<p>Error messages at the form field level take precedence over the error messages 
+defined at the model field level. </p>
+
+    </div>
+  </div>
+
+</div>
+  
+   
+
+    <!-- Optional JavaScript -->
+    <!-- jQuery first, then Bootstrap Bundle JS -->
+    <script src="/theme/js/jquery-3.3.1.slim.min.js"></script>
+    <script src="/theme/js/bootstrap.bundle.min.js"></script>
+  </body>
+</html>
