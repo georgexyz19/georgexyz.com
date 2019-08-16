@@ -212,11 +212,11 @@ model shown below:</p>
 <p>The same page points out that "there are special considerations when overriding 
 the <code>clean()</code> method of a ModelForm subclass."</p>
 <p>Chapter 7 of Andrew Pinkham's <em>Django Unleashed</em> book, titled <em>allowing user 
-input with forms</em>, has good example about how to override <code>clean_&lt;fieldname&gt;</code> 
+input with forms</em>, has good example on how to override <code>clean_&lt;fieldname&gt;</code> 
 method. The discussion on model validation and form validation in this chapter 
-is better than other Django books I have read.  </p>
+is better than other Django books I have read. </p>
 <h3>ModelForm Validation</h3>
-<p>The form validation steps described in the previous section still apply in 
+<p>The form validation steps described in the previous section also apply to 
 ModelForm validation.  In addition to that, <code>Model.full_clean()</code> method is 
 triggered after the form's <code>clean()</code> method is called. So, model validation 
 methods are not triggered by model <code>save()</code> method, but model validation methods 
