@@ -159,13 +159,13 @@ The same page points out that "there are special considerations when overriding
 the `clean()` method of a ModelForm subclass."
 
 Chapter 7 of Andrew Pinkham's *Django Unleashed* book, titled *allowing user 
-input with forms*, has good example about how to override `clean_<fieldname>` 
+input with forms*, has good example on how to override `clean_<fieldname>` 
 method. The discussion on model validation and form validation in this chapter 
-is better than other Django books I have read.  
+is better than other Django books I have read. 
 
 ### ModelForm Validation
 
-The form validation steps described in the previous section still apply in 
+The form validation steps described in the previous section also apply to 
 ModelForm validation.  In addition to that, `Model.full_clean()` method is 
 triggered after the form's `clean()` method is called. So, model validation 
 methods are not triggered by model `save()` method, but model validation methods 
