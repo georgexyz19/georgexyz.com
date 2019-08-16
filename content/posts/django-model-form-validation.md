@@ -158,6 +158,11 @@ class ContactForm(forms.Form):
 The same page points out that "there are special considerations when overriding 
 the `clean()` method of a ModelForm subclass."
 
+Chapter 7 of Andrew Pinkham's *Django Unleashed* book, titled *allowing user 
+input with forms*, has good example about how to override `clean_<fieldname>` 
+method. The discussion on model validation and form validation in this chapter 
+is better than other Django books I have read.  
+
 ### ModelForm Validation
 
 The form validation steps described in the previous section still apply in 
