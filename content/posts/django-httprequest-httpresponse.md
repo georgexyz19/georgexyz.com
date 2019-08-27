@@ -36,7 +36,7 @@ The HttpRequest and HttpResponse classes are defined in the request.py and
 response.py files in http directory. The response.py file also defines 
 several other classes such as Http404 and HttpResponseRedirect. 
 
-The Django office documentation has 
+The Django official documentation has 
 [a reference page](https://docs.djangoproject.com/en/2.2/ref/request-response/) 
 for HttpRequest and HttpResponse. It is probably to easier to read the source 
 code directly. Here is a list of files in the http directory.

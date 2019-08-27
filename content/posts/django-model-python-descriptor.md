@@ -40,7 +40,9 @@ of the article:
 The article itself is not very long, but the content takes time to understand. The article 
 also beriefly discussed property. A short online article 
 [Property Explained – How to Use and When](https://www.machinelearningplus.com/python/python-property/) 
-has nice Python property examples.
+has nice Python property examples. The article also mentions meta classes.  Real 
+Python website has 
+[a nice introductory article on meta classes](https://realpython.com/python-metaclasses/).  
 
 Python official documentation has an article 
 [Descriptor HowTo Guide](https://docs.python.org/3/howto/descriptor.html) 
