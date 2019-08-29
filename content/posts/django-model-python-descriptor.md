@@ -42,7 +42,7 @@ also beriefly discussed property. A short online article
 [Property Explained – How to Use and When](https://www.machinelearningplus.com/python/python-property/) 
 has nice Python property examples. The article also mentions meta classes.  Real 
 Python website has 
-[a nice introductory article on meta classes](https://realpython.com/python-metaclasses/).  
+[a nice introductory article on meta classes](https://realpython.com/python-metaclasses/). 
 
 Python official documentation has an article 
 [Descriptor HowTo Guide](https://docs.python.org/3/howto/descriptor.html) 
@@ -102,7 +102,7 @@ def add_to_class(cls, name, value):
 The `contribute_to_class` method is defined in `db/models/fields/__init__.py` L727. 
 It is a method in Field class. 
 This is where the actual magic happens.  The self, cls, and name in `contribute_to_class` 
-are models.CharField(max_length=255), Book, and 'name', respectively. 
+are `models.CharField(max_length=255)`, `Book`, and `name`, respectively. 
 
 The first thing `contribute_to_class` does is it takes the value assigned to the 
 class variable and stores it in class attribute \_meta, which is an Options object. 
@@ -183,3 +183,11 @@ class DeferredAttribute:
             return getattr(instance, link_field.attname)
         return None
 ```
+
+The `DeferredAttribute` class does not define a `__set__` method as descriptors 
+in other articles.  In such a case, the `b.name` in a statement `b.name = 'Python Tricks` 
+refers to instance attribute, which overrides the `Book.name` class level attribute. 
+The second answer in 
+[this stack overflow post](https://stackoverflow.com/questions/48537906/how-do-keyword-arguments-interact-with-model-django?rq=1) 
+discusses this particular issue.  It takes me sometime to understand how it works. 
+  
