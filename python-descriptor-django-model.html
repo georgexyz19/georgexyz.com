@@ -108,7 +108,7 @@ also beriefly discussed property. A short online article
 <a href="https://www.machinelearningplus.com/python/python-property/">Property Explained – How to Use and When</a> 
 has nice Python property examples. The article also mentions meta classes.  Real 
 Python website has 
-<a href="https://realpython.com/python-metaclasses/">a nice introductory article on meta classes</a>.  </p>
+<a href="https://realpython.com/python-metaclasses/">a nice introductory article on meta classes</a>. </p>
 <p>Python official documentation has an article 
 <a href="https://docs.python.org/3/howto/descriptor.html">Descriptor HowTo Guide</a> 
 by Raymond Hettinger. This article is not easy and it takes time to digest. </p>
@@ -158,7 +158,7 @@ as class attribute.  The <code>getattr</code> and <code>setattr</code> are pytho
 <p>The <code>contribute_to_class</code> method is defined in <code>db/models/fields/__init__.py</code> L727. 
 It is a method in Field class. 
 This is where the actual magic happens.  The self, cls, and name in <code>contribute_to_class</code> 
-are models.CharField(max_length=255), Book, and 'name', respectively. </p>
+are <code>models.CharField(max_length=255)</code>, <code>Book</code>, and <code>name</code>, respectively. </p>
 <p>The first thing <code>contribute_to_class</code> does is it takes the value assigned to the 
 class variable and stores it in class attribute _meta, which is an Options object. </p>
 <p>The second thing it does is to assign an instance of a DeferredAttribute class 
@@ -234,6 +234,14 @@ between <code>__dict__</code> attribute and <code>getattr</code> (search tree). 
             <span class="k">return</span> <span class="nb">getattr</span><span class="p">(</span><span class="n">instance</span><span class="p">,</span> <span class="n">link_field</span><span class="o">.</span><span class="n">attname</span><span class="p">)</span>
         <span class="k">return</span> <span class="bp">None</span>
 </pre></div>
+
+
+<p>The <code>DeferredAttribute</code> class does not define a <code>__set__</code> method as descriptors 
+in other articles.  In such a case, the <code>b.name</code> in a statement <code>b.name = 'Python Tricks</code> 
+refers to instance attribute, which overrides the <code>Book.name</code> class level attribute. 
+The second answer in 
+<a href="https://stackoverflow.com/questions/48537906/how-do-keyword-arguments-interact-with-model-django?rq=1">this stack overflow post</a> 
+discusses this particular issue.  It takes me sometime to understand how it works. </p>
 
     </div>
   </div>
