@@ -77,15 +77,43 @@
   </div>
       
   <p>Pyenv is the tool I use to install multiple versions of python in Linux, and I have 
-<a href="/pyenv-python-tool.html">a short post on how to install pyenv</a>. I simply use the python built-in tool venv to manage virtual environment. It works fine for most tasks. </p>
+<a href="/pyenv-python-tool.html">a short post on how to install pyenv</a>. I simply 
+use the python built-in tool venv to manage virtual environment. It works fine 
+for most tasks. </p>
 <p>William Vicent recommends pipenv tool in his <em>Django for Beginners</em> book. Corey Schafer also 
 favors pipenv in this youtube tutorials. I take a close look at the tool and I like it. </p>
-<p>Here are the links to two youtube videos and an article on real python website. Those are very nice resources to learn pipenv. </p>
+<p>Here are the links to two youtube videos and an article on real python website. 
+Those are very nice resources to learn pipenv. </p>
 <ul>
 <li><a href="https://youtu.be/zDYL22QNiWk">Corey Schafer's Pipenv Tutorial</a></li>
 <li><a href="https://youtu.be/GBQAKldqgZs">Pipenv Author Kenneth Reitz's Pycon Talk on Pipenv</a></li>
 <li><a href="https://realpython.com/pipenv-guide/">Pipenv Tutorial on Realpython.com</a> </li>
 </ul>
+<p>I will use pipenv to manage virtual environment and packages in my future projects. 
+The shell script file for updating this website has been modified to like this:</p>
+<div class="highlight"><pre><span></span># commit_change.sh
+if [ -z &quot;$1&quot; ]  # if no command line arg, exit
+then
+    echo &quot;\$1 is empty&quot;
+    exit
+fi
+
+# pipenv shell # does not work
+pipenv run invoke clean build # see stack overflow 48056606
+git status
+git add -A
+#echo $1
+git commit -m &quot;$1&quot;
+git push origin master # update source code
+
+pipenv run ghp-import output -b gh-pages
+git push origin gh-pages
+</pre></div>
+
+
+<p>The website is updated with the bash command:</p>
+<div class="highlight"><pre><span></span>source commit_change.sh &quot;git commit message&quot;
+</pre></div>
 
     </div>
   </div>
