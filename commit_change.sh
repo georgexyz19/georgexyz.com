@@ -4,13 +4,13 @@ then
     exit
 fi
 
-pipenv shell # load virtual env, this line need source commit...
-invoke clean build
+# pipenv shell # load virtual env, this line need source commit...
+pipenv run invoke clean build # see stack overflow 48056606
 git status
 git add -A
 #echo $1
 git commit -m "$1"
 git push origin master # update source code
 
-ghp-import output -b gh-pages
+pipenv run ghp-import output -b gh-pages
 git push origin gh-pages
