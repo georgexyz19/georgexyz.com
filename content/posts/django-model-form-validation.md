@@ -15,8 +15,8 @@ have a good understanding of validation.  Most Django books and online tutorials
 do not have a good discussion on validation. 
 
 Django official documentation has detailed descriptions on validation. 
-However, the contents are dispersed on several places.  I will describe the 
-material I have read on this topic. 
+However, the contents are dispersed on several places.  This post describes the 
+materials I have read on this topic. 
 
 ### Validator Function
 
@@ -116,7 +116,7 @@ class PageModel(models.Model):
 >>> p2.full_clean()  # raise exception
 ```
 
-Checking `full_clean()` method source code, it has the following lines. 
+Checking `clean_fields()` method source code, it has the following lines. 
 The `f.clean(...)` method calls validation method on a model field.
 
 ```
