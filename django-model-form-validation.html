@@ -82,8 +82,8 @@ several basic concepts such as model, model field, form, model form, etc. to
 have a good understanding of validation.  Most Django books and online tutorials 
 do not have a good discussion on validation. </p>
 <p>Django official documentation has detailed descriptions on validation. 
-However, the contents are dispersed on several places.  I will describe the 
-material I have read on this topic. </p>
+However, the contents are dispersed on several places.  This post describes the 
+materials I have read on this topic. </p>
 <h3>Validator Function</h3>
 <p>The 
 <a href="https://docs.djangoproject.com/en/2.2/ref/validators/#django.core.validators.EmailValidator">validator official documentation page</a> 
@@ -174,7 +174,7 @@ exception when called. </p>
 </pre></div>
 
 
-<p>Checking <code>full_clean()</code> method source code, it has the following lines. 
+<p>Checking <code>clean_fields()</code> method source code, it has the following lines. 
 The <code>f.clean(...)</code> method calls validation method on a model field.</p>
 <div class="highlight"><pre><span></span>try:
     setattr(self, f.attname, f.clean(raw_value, self))
