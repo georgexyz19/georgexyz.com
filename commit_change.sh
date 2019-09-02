@@ -4,7 +4,7 @@ then
     exit
 fi
 
-source venv.sh  # load virtual env
+pipenv shell # load virtual env
 invoke clean build
 git status
 git add -A
