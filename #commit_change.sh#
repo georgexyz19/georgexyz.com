@@ -1,10 +1,11 @@
+
 if [ -z "$1" ]  # if no command line arg, exit
 then
     echo "\$1 is empty"
     exit
 fi
 
-pipenv shell # load virtual env, this line need source commit...
+pipenv shell # load virtual env
 invoke clean build
 git status
 git add -A
