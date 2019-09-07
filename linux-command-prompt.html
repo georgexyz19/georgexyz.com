@@ -1,0 +1,141 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <link rel="stylesheet" href="/theme/css/bootstrap.min.css">
+ 
+    <link rel="stylesheet" href="/theme/css/friendly.css">
+    <link rel="stylesheet" href="/theme/css/custom.css">
+    <meta name="author" content="George Zhang" />
+    <meta name="keywords" content="linux,linux mint" />
+    <meta name="description" content="William Shotts&#39; The Linux Command Line is an excellent Linux book. It is written in a tutorial style and very easy to understand. The PDF file of the whole book …" />
+    <title>Linux Mint (Ubuntu) Default Command Prompt - George Zhang</title>
+  </head>
+  <body>
+    <!-- navbar -->
+    <nav class="navbar navbar-expand-md navbar-dark bg-primary">
+      <div class="container">
+        <a class="navbar-brand" href="/">George Zhang</a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarColor01" aria-controls="navbarColor01" aria-expanded="false" aria-label="Toggle navigation">
+          <span class="navbar-toggler-icon"></span>
+        </button>
+
+        <div class="collapse navbar-collapse" id="navbarColor01">
+          <ul class="navbar-nav mr-auto">
+            <li class="nav-item">
+              <a class="nav-link " 
+                href="/article-list.html">Blog</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link " 
+                href="/archives.html">Archives</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link pr-3 " 
+                href="/tags.html">Tags</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link pr-3 "
+                 href="/pages/inkscape-tutorial.html">Inkscape Tutorial</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link "
+                   href="/pages/projects.html">Projects</a>
+              </li>
+          </ul>
+
+          <ul class="navbar-nav">
+            <li class="nav-item">
+              <a class="nav-link " 
+                 href="/pages/about.html">About</a>
+            </li>
+          </ul>
+        </div>
+
+      </div>
+    </nav>
+
+   
+  
+<div class="container">
+
+  <div class="row">
+    <div class="col-lg-8 mx-auto">   
+
+  <h2 class="mt-4 mb-3">Linux Mint (Ubuntu) Default Command Prompt</h2>
+  
+  <div class="text-muted mb-2">
+    <span>Posted on </span>
+    <time datetime="2019-09-07 01:31:00-04:00">
+      Saturday, 09/07/2019 01:31
+    </time>
+    
+     <span>with tags: </span>
+       <a href="/tag/linux.html">linux</a>
+/       <a href="/tag/linux-mint.html">linux mint</a>
+  </div>
+      
+  <p>William Shotts' <em>The Linux Command Line</em> is an excellent Linux book. It is written 
+in a tutorial style and very easy to understand. The PDF file of the whole book is 
+<a href="http://linuxcommand.org/tlcl.php">freely available online</a>. </p>
+<p>Chapter 13 of the book discusses how to customize linux command prompt. The default 
+command prompt is defined by an environment vairable named <code>PS1</code>. The <code>PS1</code> is 
+defined as a long string in Linux Mint or Ubuntu. See the screen shot below:</p>
+<p><img class="img-fluid pb-3" src="/images/command-prompt.png" alt="command-prompt"></p>
+<p>The <code>PS1</code> string can be divided into three lines:</p>
+<div class="highlight"><pre><span></span>\[\e]0;\u@\h: \w\a\]
+${debian_chroot:+($debian_chroot)}
+\[\033[01;32m\]\u@\h\[\033[00m\]:\[\033[01;34m\]\w\[\033[00m\]\$
+</pre></div>
+
+
+<p>It is a little hard to understand the <code>PS1</code> string even after reading the book chapter. 
+A few Google searches find people are asking the same question, and it has already 
+been answered. </p>
+<ul>
+<li><code>\[\e]0;\u@\h: \w\a\]</code> sets the title bar of terminal<ul>
+<li><code>\[</code> starts a series of one or more non-printing characters</li>
+<li><code>\e]0;</code> is for 'set terminal title', <code>\e</code> is same as <code>\033</code></li>
+<li><code>\u@\h \w</code> is username@hostname and working directory</li>
+<li><code>\a</code> marks the end of the title</li>
+<li><code>\]</code> ends non-printing characters</li>
+</ul>
+</li>
+<li><code>${var:+value}</code> means if <code>$var</code> is defined; then use <code>value</code>; else do nothing. The 
+  <code>debian_chroot</code> is defined in the <code>/etc/bash.bashrc</code> file.</li>
+<li><code>\[\033[01;32m\]\u@\h\[\033[00m\]:\[\033[01;34m\]\w\[\033[00m\]\$</code> is the actual
+  command prompt<ul>
+<li><code>\033[01;32m</code> is for color light green (book Table 13-2)</li>
+<li><code>\033[00m</code> is for turn off color</li>
+<li><code>\033[01;34m</code> is for color light blue</li>
+</ul>
+</li>
+</ul>
+<p>The variable <code>debian_chroot</code> is defined in the <code>/etc/bash.bashrc</code> file as:</p>
+<div class="highlight"><pre><span></span>if [ -z &quot;${debian_chroot:-}&quot; ] &amp;&amp; [ -r /etc/debian_chroot ]; then
+    debian_chroot=$(cat /etc/debian_chroot)
+</pre></div>
+
+
+<p>It means that if variable <code>$debian_chroot</code> is empty and the file <code>/etc/debian_chroot</code> 
+is readable, the variable is set to the content of the file.</p>
+<p>Most explanations are from two askubuntu web pages: 
+<a href="https://askubuntu.com/questions/404341/where-can-i-find-a-complete-reference-for-the-ps1-variable">question 404341</a> 
+and 
+<a href="https://askubuntu.com/questions/372849/what-does-debian-chrootdebian-chroot-do-in-my-terminal-prompt">question 372849</a>. </p>
+
+    </div>
+  </div>
+
+</div>
+  
+   
+
+    <!-- Optional JavaScript -->
+    <!-- jQuery first, then Bootstrap Bundle JS -->
+    <script src="/theme/js/jquery-3.3.1.slim.min.js"></script>
+    <script src="/theme/js/bootstrap.bundle.min.js"></script>
+  </body>
+</html>
