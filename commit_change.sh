@@ -1,8 +1,9 @@
 # commit_change.sh
-if [ -z "$1" ]  # if no command line arg, exit
-then
-    echo "\$1 is empty"
-    exit
+
+# if no command line argument, exit
+if [ -z "$1" ]; then 
+    echo "$1 is empty"
+    exit 1
 fi
 
 # pipenv shell # does not work
