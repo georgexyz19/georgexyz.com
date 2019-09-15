@@ -1,8 +1,19 @@
-# commit_change.sh
+#!/bin/bash
 
-# if no command line argument, exit
+# commit_change.sh : commit git changes for georgexyz.com 
+
+PROGNAME="$(basename "$0")" # or = "${0##*/}"
+
+usage () {
+  cat << EOF
+Usage: $PROGNAME "git commit message"
+Where:
+  git commit message: is a message passed to 'git commit -m' 
+EOF
+}
+
 if [ -z "$1" ]; then 
-    echo "$1 is empty"
+    usage
     exit 1
 fi
 
@@ -10,7 +21,6 @@ fi
 pipenv run invoke clean build # see stack overflow 48056606
 git status
 git add -A
-#echo $1
 git commit -m "$1"
 git push origin master # update source code
 
