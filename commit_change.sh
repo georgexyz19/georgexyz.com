@@ -17,6 +17,8 @@ if [ -z "$1" ]; then
     exit 1
 fi
 
+git pull
+
 # pipenv shell # does not work
 pipenv run invoke clean build # see stack overflow 48056606
 git status
