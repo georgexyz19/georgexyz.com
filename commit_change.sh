@@ -1,6 +1,9 @@
 #!/bin/bash
 
-# commit_change.sh : commit git changes for georgexyz.com 
+# commit_change.sh : commit git changes for georgexyz.com
+# see stackoverflow question 6565357 to set git credential caching
+# $git config credential.helper store
+# $git push origin master
 
 PROGNAME="$(basename "$0")" # or = "${0##*/}"
 
