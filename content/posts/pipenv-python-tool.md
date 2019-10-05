@@ -51,3 +51,29 @@ The website is updated with the bash command:
 ```
 source commit_change.sh "git commit message"
 ```
+
+Here are some common pipenv commands:
+
+```
+$pip install pipenv      # global install
+$pipenv install requests # virtualenv in ~/.local/share/virtualenvs/...
+$pipenv shell
+
+$pipenv run python ...   # no need to activate
+>>> import requests
+
+$pipenv install -r requirements.txt
+$pipenv lock -r > requirements.txt   # create
+
+$pipenv install pytest --dev
+$pipenv uninstall requests
+
+$pipenv --python 3.6
+$pipenv --rm      # remove virtual env
+$pipenv install   # from Pipfile
+$pipenv --venv    # show path
+
+$pipenv check
+$pipenv graph     # show dependency
+$pipenv install --ignore-pipfile
+```
