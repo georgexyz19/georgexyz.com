@@ -115,6 +115,31 @@ git push origin gh-pages
 <div class="highlight"><pre><span></span>source commit_change.sh &quot;git commit message&quot;
 </pre></div>
 
+
+<p>Here are some common pipenv commands:</p>
+<div class="highlight"><pre><span></span>$pip install pipenv      # global install
+$pipenv install requests # virtualenv in ~/.local/share/virtualenvs/...
+$pipenv shell
+
+$pipenv run python ...   # no need to activate
+&gt;&gt;&gt; import requests
+
+$pipenv install -r requirements.txt
+$pipenv lock -r &gt; requirements.txt   # create
+
+$pipenv install pytest --dev
+$pipenv uninstall requests
+
+$pipenv --python 3.6
+$pipenv --rm      # remove virtual env
+$pipenv install   # from Pipfile
+$pipenv --venv    # show path
+
+$pipenv check
+$pipenv graph     # show dependency
+$pipenv install --ignore-pipfile
+</pre></div>
+
     </div>
   </div>
 
