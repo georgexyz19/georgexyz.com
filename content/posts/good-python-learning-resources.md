@@ -38,7 +38,7 @@ good. It also comes with well-designed exercises for each lecture.
 *Think Python* is a nice short introductory book by Allen B. Downey, and it only has 
 268 pages. Each chapter of the book has many nice exercises. The book is an easy read 
 if you take programming courses before. The book is also freely available online. Here is
-[the link](http://greenteapress.com/thinkpython2/html/index.html) 
+[the link](http://greenteapress.com/thinkpython2/html/index.html).
 
 #### A Byte of Python (OOP Chapter)
 
