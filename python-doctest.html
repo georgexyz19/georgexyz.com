@@ -1,0 +1,144 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <link rel="stylesheet" href="/theme/css/bootstrap.min.css">
+ 
+    <link rel="stylesheet" href="/theme/css/friendly.css">
+    <link rel="stylesheet" href="/theme/css/custom.css">
+    <meta name="author" content="George Zhang" />
+    <meta name="keywords" content="python" />
+    <meta name="description" content="Python doctest is easier to use than unittest and pytest. A developer writes the test cases in the documentation and doctest module verifies the results. There are examples in the …" />
+    <title>Python Doctest - George Zhang</title>
+  </head>
+  <body>
+    <!-- navbar -->
+    <nav class="navbar navbar-expand-md navbar-dark bg-primary">
+      <div class="container">
+        <a class="navbar-brand" href="/">George Zhang</a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarColor01" aria-controls="navbarColor01" aria-expanded="false" aria-label="Toggle navigation">
+          <span class="navbar-toggler-icon"></span>
+        </button>
+
+        <div class="collapse navbar-collapse" id="navbarColor01">
+          <ul class="navbar-nav mr-auto">
+            <li class="nav-item">
+              <a class="nav-link " 
+                href="/article-list.html">Blog</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link " 
+                href="/archives.html">Archives</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link pr-3 " 
+                href="/tags.html">Tags</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link pr-3 "
+                 href="/pages/inkscape-tutorial.html">Inkscape Tutorial</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link "
+                   href="/pages/projects.html">Projects</a>
+              </li>
+          </ul>
+
+          <ul class="navbar-nav">
+            <li class="nav-item">
+              <a class="nav-link " 
+                 href="/pages/about.html">About</a>
+            </li>
+          </ul>
+        </div>
+
+      </div>
+    </nav>
+
+   
+  
+<div class="container">
+
+  <div class="row">
+    <div class="col-lg-8 mx-auto">   
+
+  <h2 class="mt-4 mb-3">Python Doctest</h2>
+  
+  <div class="text-muted mb-2">
+    <span>Posted on </span>
+    <time datetime="2019-10-05 15:42:00-04:00">
+      Saturday, 10/05/2019 15:42
+    </time>
+    
+     <span>with tags: </span>
+       <a href="/tag/python.html">python</a>
+  </div>
+      
+  <p>Python doctest is easier to use than unittest and pytest. A developer writes the 
+test cases in the documentation and doctest module verifies the results. There are 
+examples in the <em>Fluent Python</em> book that use doctest, but I have not seen them 
+used often. </p>
+<p>The Python Module of The Week web site has 
+<a href="https://pymotw.com/3/doctest/">a page on doctest</a>.  It is a nice introduction on
+how to use doctest. The doctest module is useful in some situations. </p>
+<p>Below is a python file which includes a single function. The function has a docstring
+which also serves as doctest. </p>
+<div class="highlight"><pre><span></span><span class="ch">#!/usr/bin/env python</span>
+
+<span class="c1"># nested_sum adds up elements from a list of lists of integers</span>
+<span class="c1">#            file name: nested_sum.py</span>
+
+<span class="k">def</span> <span class="nf">nested_sum</span><span class="p">(</span><span class="n">t</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    &gt;&gt;&gt; t = [[1, 2], [3], [4, 5, 6]]</span>
+<span class="sd">    &gt;&gt;&gt; nested_sum(t)</span>
+<span class="sd">    21</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="n">total</span> <span class="o">=</span> <span class="mi">0</span>
+    <span class="k">for</span> <span class="n">ti</span> <span class="ow">in</span> <span class="n">t</span><span class="p">:</span>
+        <span class="n">total</span> <span class="o">+=</span> <span class="nb">sum</span><span class="p">(</span><span class="n">ti</span><span class="p">)</span>
+    <span class="k">return</span> <span class="n">total</span>
+</pre></div>
+
+
+<p>Run the python file with the following command in bash. Note the <code>-m</code> option 
+loads doctest module. The <code>-v</code> option represents verbose. Without the <code>-v</code> 
+option, the command outputs nothing.</p>
+<div class="highlight"><pre><span></span>python -m doctest -v nested_sum.py 
+</pre></div>
+
+
+<p>Here is the doctest results:</p>
+<div class="highlight"><pre><span></span>Trying:
+    t = [[1, 2], [3], [4, 5, 6]]
+Expecting nothing
+ok
+Trying:
+    nested_sum(t)
+Expecting:
+    21
+ok
+1 items had no tests:
+    nested_sum
+1 items passed all tests:
+   2 tests in nested_sum.nested_sum
+2 tests in 2 items.
+2 passed and 0 failed.
+Test passed.
+</pre></div>
+
+    </div>
+  </div>
+
+</div>
+  
+   
+
+    <!-- Optional JavaScript -->
+    <!-- jQuery first, then Bootstrap Bundle JS -->
+    <script src="/theme/js/jquery-3.3.1.slim.min.js"></script>
+    <script src="/theme/js/bootstrap.bundle.min.js"></script>
+  </body>
+</html>
