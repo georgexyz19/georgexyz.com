@@ -5,6 +5,10 @@
 # $git config credential.helper store
 # $git push origin master
 
+# need pipenv installed
+# $pip install pipenv
+# pipenv install pelican Markdown invoke ghp-import2
+
 PROGNAME="$(basename "$0")" # or = "${0##*/}"
 
 usage () {
