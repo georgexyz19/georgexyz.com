@@ -47,7 +47,7 @@ option, the command outputs nothing.
 python -m doctest -v nested_sum.py 
 ```
 
-Here is the doctest results:
+Here are the doctest results:
 
 ```
 Trying:

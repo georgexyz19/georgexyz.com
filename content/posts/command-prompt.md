@@ -3,7 +3,7 @@ slug: linux-command-prompt
 meta: Explain default command prompt string in Ubuntu and Linux Mint
 date: 2019-09-07 01:31
 modified: 2019-09-07 01:31
-tags: linux, linux mint
+tags: linux, linux mint, bash
 note: 23
  
 
@@ -13,7 +13,7 @@ in a tutorial style and very easy to understand. The PDF file of the whole book 
 
 Chapter 13 of the book discusses how to customize linux command prompt. The default 
 command prompt is defined by an environment variable named `PS1`. The `PS1` is 
-defined as a long string in Linux Mint (or Ubuntu). See the screen shot below:
+defined as a long string in Linux Mint (or Ubuntu). See the screenshot below:
 
 <img class="img-fluid pb-3" src="/images/command-prompt.png" alt="command-prompt">
 
@@ -26,7 +26,7 @@ ${debian_chroot:+($debian_chroot)}
 ```
 
 It is a little hard to understand the `PS1` string even after reading the book chapter. 
-A few Google searches find people are also asking the meaning of the string, 
+A few Google searches find other people are also asking the meaning of the string, 
 and it has already been answered by someone. 
 
 * `\[\e]0;\u@\h: \w\a\]` sets the title bar of terminal
@@ -36,7 +36,8 @@ and it has already been answered by someone.
     * `\a` marks the end of the title
     * `\]` ends non-printing characters
 * `${var:+value}` means if `$var` is defined; then use `value`; else do nothing. The 
-  `debian_chroot` on the second line is defined in the `/etc/bash.bashrc` file.
+  `debian_chroot` on the second line is defined in the `/etc/bash.bashrc` file (discussed
+   later in this article).
 * `\[\033[01;32m\]\u@\h\[\033[00m\]:\[\033[01;34m\]\w\[\033[00m\]\$` is the actual
   command prompt
     * `\033[01;32m` is for color light green (Table 13-2 in the book)
