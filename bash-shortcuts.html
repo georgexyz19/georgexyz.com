@@ -1,0 +1,127 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <link rel="stylesheet" href="/theme/css/bootstrap.min.css">
+ 
+    <link rel="stylesheet" href="/theme/css/friendly.css">
+    <link rel="stylesheet" href="/theme/css/custom.css">
+    <meta name="author" content="George Zhang" />
+    <meta name="keywords" content="linux,bash" />
+    <meta name="description" content="I recently spent sometime reading two Linux command line books. The first is William Shotts&#39; The Linux Command Line (2e), and the second one is Learning the Bash Shell by …" />
+    <title>Bash Command Line Editing Shortcuts - George Zhang</title>
+  </head>
+  <body>
+    <!-- navbar -->
+    <nav class="navbar navbar-expand-md navbar-dark bg-primary">
+      <div class="container">
+        <a class="navbar-brand" href="/">George Zhang</a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarColor01" aria-controls="navbarColor01" aria-expanded="false" aria-label="Toggle navigation">
+          <span class="navbar-toggler-icon"></span>
+        </button>
+
+        <div class="collapse navbar-collapse" id="navbarColor01">
+          <ul class="navbar-nav mr-auto">
+            <li class="nav-item">
+              <a class="nav-link " 
+                href="/article-list.html">Blog</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link " 
+                href="/archives.html">Archives</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link pr-3 " 
+                href="/tags.html">Tags</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link pr-3 "
+                 href="/pages/inkscape-tutorial.html">Inkscape Tutorial</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link "
+                   href="/pages/projects.html">Projects</a>
+              </li>
+          </ul>
+
+          <ul class="navbar-nav">
+            <li class="nav-item">
+              <a class="nav-link " 
+                 href="/pages/about.html">About</a>
+            </li>
+          </ul>
+        </div>
+
+      </div>
+    </nav>
+
+   
+  
+<div class="container">
+
+  <div class="row">
+    <div class="col-lg-8 mx-auto">   
+
+  <h2 class="mt-4 mb-3">Bash Command Line Editing Shortcuts</h2>
+  
+  <div class="text-muted mb-2">
+    <span>Posted on </span>
+    <time datetime="2019-10-12 13:19:00-04:00">
+      Saturday, 10/12/2019 13:19
+    </time>
+    
+     <span>with tags: </span>
+       <a href="/tag/linux.html">linux</a>
+/       <a href="/tag/bash.html">bash</a>
+  </div>
+      
+  <p>I recently spent sometime reading two Linux command line books.  The first is William Shotts' 
+<em>The Linux Command Line (2e)</em>, and the second one is <em>Learning the Bash Shell</em> 
+by Cameron Newbam and Bill Rosenblatt. Both books are good.  The first book is 
+written in a tutorial style and easy to understand.  The second one is on 
+Bash shell only and is more thorough. </p>
+<div style="max-width:800px">
+  <img class="img-fluid pb-3" src="/images/bash-books-crop.jpg" alt="bash-books"> 
+</div>
+
+<p>The <em>Learning the Bash Shell</em> book is in its third edition, and the book was 
+published in April 2005.  The first edition was published in 1995, so it is an 
+old book.  The third edition covers Bash 3.0.  Bash 5.0 has already been 
+released. However, most contents in the book still apply to current release. </p>
+<p>Chapter 2 of the book describes that Bash has two editing mode: emacs and vi. 
+The default is emacs mode. When you open a Terminal window (Ctrl + Alt + T) in 
+Ubuntu, the command line is in emacs editing mode.  You can change it to vi mode 
+by command <code>set -o vi</code> and change it back by <code>set -o emacs</code>.  The emacs mode 
+is adequate for most situations. The mode has some useful shortcuts (listed
+below) in addition to common ones like Tab, Arrow Up, Arrow Down. </p>
+<ol>
+<li><code>Ctrl + a</code> : Move cursor to the beginning of the line</li>
+<li><code>Ctrl + e</code> : Move cursor to the end</li>
+<li><code>Ctrl + r</code> : Search command history</li>
+<li><code>Ctrl + k</code> : Delete from cursor to the end of the line</li>
+<li><code>Ctrl + u</code> : Delete from the beginning of the line to cursor</li>
+<li><code>Ctrl + l</code> : Clear the screen</li>
+<li><code>Ctrl + t</code> : Transpose two character</li>
+<li><code>Ctrl + o</code> : Return, bring next line in history to command line</li>
+</ol>
+<p>A reddit post 
+"<a href="https://www.reddit.com/r/vim/comments/a65qfe/do_you_use_bash_vi_mode/">do you use bash vi mode</a>" 
+has some interesting discussion on 
+whether to use vi mode.  I personally think emacs mode with the above shortcuts 
+is good enough. </p>
+
+    </div>
+  </div>
+
+</div>
+  
+   
+
+    <!-- Optional JavaScript -->
+    <!-- jQuery first, then Bootstrap Bundle JS -->
+    <script src="/theme/js/jquery-3.3.1.slim.min.js"></script>
+    <script src="/theme/js/bootstrap.bundle.min.js"></script>
+  </body>
+</html>
