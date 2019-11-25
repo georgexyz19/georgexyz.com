@@ -26,7 +26,7 @@ mobile devices and desktops.  This book discussed many advanced topics in CSS.
 I searched and found an online article Q/A post 
 “[How can I download an entire website](https://superuser.com/questions/14403/how-can-i-download-an-entire-website)”. 
 
-The post has an answer regarding using wget command line tool wget to download 
+The post has an answer regarding using command line tool wget to download 
 a website to local hard drive.  The command is shown below:
 
 ```
