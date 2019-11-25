@@ -1,0 +1,134 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <link rel="stylesheet" href="/theme/css/bootstrap.min.css">
+ 
+    <link rel="stylesheet" href="/theme/css/friendly.css">
+    <link rel="stylesheet" href="/theme/css/custom.css">
+    <meta name="author" content="George Zhang" />
+    <meta name="keywords" content="web development" />
+    <meta name="description" content="This post is an update on what I am working on. CSS Books I recently re-read the online book HTML/CSS Is Hard. I found the book when I was …" />
+    <title>HTML, CSS, and Others - George Zhang</title>
+  </head>
+  <body>
+    <!-- navbar -->
+    <nav class="navbar navbar-expand-md navbar-dark bg-primary">
+      <div class="container">
+        <a class="navbar-brand" href="/">George Zhang</a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarColor01" aria-controls="navbarColor01" aria-expanded="false" aria-label="Toggle navigation">
+          <span class="navbar-toggler-icon"></span>
+        </button>
+
+        <div class="collapse navbar-collapse" id="navbarColor01">
+          <ul class="navbar-nav mr-auto">
+            <li class="nav-item">
+              <a class="nav-link " 
+                href="/article-list.html">Blog</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link " 
+                href="/archives.html">Archives</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link pr-3 " 
+                href="/tags.html">Tags</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link pr-3 "
+                 href="/pages/inkscape-tutorial.html">Inkscape Tutorial</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link "
+                   href="/pages/projects.html">Projects</a>
+              </li>
+          </ul>
+
+          <ul class="navbar-nav">
+            <li class="nav-item">
+              <a class="nav-link " 
+                 href="/pages/about.html">About</a>
+            </li>
+          </ul>
+        </div>
+
+      </div>
+    </nav>
+
+   
+  
+<div class="container">
+
+  <div class="row">
+    <div class="col-lg-8 mx-auto">   
+
+  <h2 class="mt-4 mb-3">HTML, CSS, and Others</h2>
+  
+  <div class="text-muted mb-2">
+    <span>Posted on </span>
+    <time datetime="2019-11-23 13:07:00-05:00">
+      Saturday, 11/23/2019 13:07
+    </time>
+    
+     <span>with tags: </span>
+       <a href="/tag/web-development.html">web development</a>
+  </div>
+      
+  <p>This post is an update on what I am working on. </p>
+<h4>CSS Books</h4>
+<p>I recently re-read the online book <a href="https://internetingishard.com/">HTML/CSS Is Hard</a>. 
+I found the book when I was searching for CSS flexbox.  It is an excellent resource to 
+learn CSS.  Jon Duckett’s <em>Web Design with HTML and CSS</em> book is a good introductory book, 
+but it does not include any advanced features that are often used in practice.  The 
+online book covers these topics very well, and the illustrations in the book are wonderful.</p>
+<p>I also read another book <em>CSS In Depth</em> by Keith Grant.  This is also an excellent 
+book which covers many tricky parts of CSS.  The basic rules of CSS is very 
+straightforward, but it is not easy to lay out a nice looking webpage for both 
+mobile devices and desktops.  This book discussed many advanced topics in CSS. </p>
+<h4>Wget to Download Website</h4>
+<p>I searched and found an online article Q/A post 
+“<a href="https://superuser.com/questions/14403/how-can-i-download-an-entire-website">How can I download an entire website</a>”. </p>
+<p>The post has an answer regarding using wget command line tool wget to download 
+a website to local hard drive.  The command is shown below:</p>
+<div class="highlight"><pre><span></span>wget -m -p -E -k www.excample.com
+</pre></div>
+
+
+<ul>
+<li>-m : --mirror recursion and time stamping</li>
+<li>-p : all images</li>
+<li>-E : adjust extension</li>
+<li>-k : convert links for local file</li>
+</ul>
+<p>I test the command on internetingishard.com and it works well. </p>
+<h4>VS Code</h4>
+<p>I have been using vim as my text editor coding python programs for some time. 
+However vim is not ideal for coding HTML/CSS webpages.  I installed VS code 
+in Linux Mint and it worked very well.  It also has Emmet auto completion 
+built in, and it makes coding HTML/CSS much easier and faster. Youtube has 
+<a href="https://youtu.be/5BIAdWNcr8Y">a nice tutorial on how to use Emmet</a> when coding HTML/CSS</p>
+<p>The other nice feature of VS Code is that it is very easy to install plugins. 
+I installed Live Server Addon plugin in a few mouse clicks.  It takes efforts
+to make plugins work in vim. </p>
+<h4>Inkscape 1.0 Beta Testing</h4>
+<p>Inkscape 1.0 Beta is out.  I test it out in Windows and it crashes often. 
+It is not ready for production work yet.  The built in Python system is 
+upgraded to 3.7, which is long overdue.  One plugin I wrote (Draw Sign Arrow)
+works fine in Inkscape 1.0 beta without any changes. </p>
+<p>I will upgrade all my Inkscape python program to 3.7 in near future. </p>
+
+    </div>
+  </div>
+
+</div>
+  
+   
+
+    <!-- Optional JavaScript -->
+    <!-- jQuery first, then Bootstrap Bundle JS -->
+    <script src="/theme/js/jquery-3.3.1.slim.min.js"></script>
+    <script src="/theme/js/bootstrap.bundle.min.js"></script>
+  </body>
+</html>
