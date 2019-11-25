@@ -1,8 +1,8 @@
 title: HTML, CSS, and Others
 slug: html-css-others
 meta: Updates on what I am working on 
-date: 2019-11-23 13:07
-modified: 2019-11-23 13:07
+date: 2019-11-25 13:07
+modified: 2019-11-25 13:07
 tags: web development
 note: 25
 
