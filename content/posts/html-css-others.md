@@ -49,7 +49,7 @@ built in, and it makes coding HTML/CSS much easier and faster. Youtube has
 [a nice tutorial on how to use Emmet](https://youtu.be/5BIAdWNcr8Y) when coding HTML/CSS
 
 The other nice feature of VS Code is that it is very easy to install plugins. 
-I installed Live Server Addon plugin in a few mouse clicks.  It takes efforts
+I installed Live Server Addon plugin with a few mouse clicks.  It takes efforts
 to make plugins work in vim. 
 
 #### Inkscape 1.0 Beta Testing 
@@ -59,6 +59,6 @@ It is not ready for production work yet.  The built in Python system is
 upgraded to 3.7, which is long overdue.  One plugin I wrote (Draw Sign Arrow)
 works fine in Inkscape 1.0 beta without any changes. 
 
-I will upgrade all my Inkscape python program to 3.7 in near future. 
+I will upgrade all my Inkscape python programs to 3.7 in near future. 
 
 
