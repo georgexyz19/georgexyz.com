@@ -411,3 +411,9 @@ Next step for the app is to add another dropdown control for file
 formats (SVG, EMF, PNG) and a download button for user to download 
 a file to local computer.  
 
+I also referenced those two online articles when working on this
+blog post. 
+
+1. [*Using Javascript With SVG*](http://www.petercollingridge.co.uk/tutorials/svg/interactive/javascript/) by Peter Collingridge.
+2. [*Making SVGs Responsive with CSS*](https://tympanus.net/codrops/2014/08/19/making-svgs-responsive-with-css/) by Sara Soueidan.
+
