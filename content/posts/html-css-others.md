@@ -37,6 +37,10 @@ wget -m -p -E -k www.excample.com
 
 I tested the command on internetingishard.com and it worked well. 
 
+This [GNU Wget manual](https://www.gnu.org/software/wget/manual/html_node/Recursive-Retrieval-Options.html) 
+web page lists other recursive options.  If you want to retrieval one level down, you can use 
+options `-r -l 1` instead of option `-m`. 
+
 #### VS Code
 
 Vim has been my main text editor for some time.  But it is not ideal for 
