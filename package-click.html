@@ -1,0 +1,189 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <link rel="stylesheet" href="/theme/css/bootstrap.min.css">
+ 
+    <link rel="stylesheet" href="/theme/css/friendly.css">
+    <link rel="stylesheet" href="/theme/css/custom.css">
+    <meta name="author" content="George Zhang" />
+    <meta name="keywords" content="python" />
+    <meta name="description" content="I am reading Miguel Grinberg&#39;s Flask Mega Tutorial and Flask Web Development book and converting OpenSignTool to a flask app. The Click package is one of the tools created by …" />
+    <title>Click Python Package - George Zhang</title>
+  </head>
+  <body>
+    <!-- navbar -->
+    <nav class="navbar navbar-expand-md navbar-dark bg-primary">
+      <div class="container">
+        <a class="navbar-brand" href="/">George Zhang</a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarColor01" aria-controls="navbarColor01" aria-expanded="false" aria-label="Toggle navigation">
+          <span class="navbar-toggler-icon"></span>
+        </button>
+
+        <div class="collapse navbar-collapse" id="navbarColor01">
+          <ul class="navbar-nav mr-auto">
+            <li class="nav-item">
+              <a class="nav-link " 
+                href="/archives.html">Articles</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link pr-3 " 
+                href="/tags.html">Tags</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link pr-3 "
+                 href="/pages/inkscape-tutorial.html">Inkscape Tutorial</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link "
+                   href="/pages/projects.html">Projects</a>
+              </li>
+          </ul>
+
+          <ul class="navbar-nav">
+            <li class="nav-item">
+              <a class="nav-link " 
+                 href="/pages/about.html">About</a>
+            </li>
+          </ul>
+        </div>
+
+      </div>
+    </nav>
+
+   
+  
+<div class="container">
+
+  <div class="row">
+    <div class="col-lg-8 mx-auto">   
+
+  <h2 class="mt-4 mb-3">Click Python Package</h2>
+  
+  <div class="text-muted mb-2">
+    <span>Posted on </span>
+    <time datetime="2020-02-18 14:39:00-05:00">
+      Tuesday, 02/18/2020 14:39
+    </time>
+    
+     <span>with tags: </span>
+       <a href="/tag/python.html">python</a>
+  </div>
+      
+  <p>I am reading Miguel Grinberg's 
+<a href="https://blog.miguelgrinberg.com/post/the-flask-mega-tutorial-part-i-hello-world">Flask Mega Tutorial</a> 
+and <em>Flask Web Development</em> book and converting OpenSignTool to a flask app. The 
+<a href="https://click.palletsprojects.com/en/7.x/">Click package</a> is one of the
+tools created by Armin Ronacher and used by many developers as a standalone 
+python package. I decided to read the Click documentation and build a 
+simple command line interface for OpenSignTool. </p>
+<p>I found several resources to learn Click:</p>
+<ol>
+<li><a href="https://youtu.be/kNke39OZ2k0">Youtube Tutorial Video by Armin</a>. Armin speaks
+fast, and I find 0.75 play speed is good for me. The video content is very good. </li>
+<li><a href="https://dbader.org/blog/python-commandline-tools-with-click">Writing Python Command-Line Tools With Click</a>. 
+Seb Vetter wrote two articles about Click on dbader.org.  This is the first one.</li>
+<li><a href="https://dbader.org/blog/mastering-click-advanced-python-command-line-apps">Mastering Click: Writing Advanced Python Command Line Apps</a>. 
+This is Seb Vetter's second article on dbader.org. Both articles are fantastic. </li>
+</ol>
+<p>Here is what I come up with, </p>
+<div class="highlight"><pre><span></span># signtool_cli.py
+
+@click.command()
+@click.option(&#39;--width&#39;, &#39;-w&#39;, default=0, 
+    help=&#39;Width of the sign in inches for output svg&#39; )
+@click.option(&#39;--ratio&#39;, &#39;-r&#39;, default=1.0, 
+    help=&#39;Ratio to true scale when drawing the sign, default 1.0&#39;)
+@click.argument(&#39;filename&#39;, type=click.Path(exists=True))
+@click.argument(&#39;output_filename&#39;, type=click.Path(writable=True), 
+    required=False)
+def cli(width, ratio, filename, output_filename): 
+    stream = open(filename, &#39;r&#39;)
+    d = yaml.safe_load(stream)
+    ......
+    if output_filename is None:
+        output_filename = pathlib.Path(filename).with_suffix(&#39;.svg&#39;)
+    out_file = open(output_filename, &#39;w&#39;)
+    out_file.write(output_stream.getvalue())
+    click.echo(f&#39;Write the file to {output_filename}&#39;)
+
+if __name__ == &#39;__main__&#39;:
+    cli()
+</pre></div>
+
+
+<p>This is the help message and command to run the app. </p>
+<div class="highlight"><pre><span></span>(dev_cli) george@STK2M3:~/dev_cli$ python signtool_cli.py --help
+Usage: signtool_cli.py [OPTIONS] FILENAME [OUTPUT_FILENAME]
+
+Options:
+  -w, --width INTEGER  Width of the sign in inches for output svg
+  -r, --ratio FLOAT    Ratio to true scale when drawing the sign, default 1.0
+  --help               Show this message and exit.
+
+(dev_cli) ... $ python signtool_cli.py --ratio 0.1 R2-1.yaml 
+Write the file to R2-1.svg
+</pre></div>
+
+
+<p>I also created a second python file to read all files under a directory and 
+write results to another directory. </p>
+<div class="highlight"><pre><span></span># signtool_dir.py
+
+@click.command()
+@click.option(&#39;--width&#39;, &#39;-w&#39;, default=0, 
+    help=&#39;Width of the sign in inches for output svg&#39; )
+@click.option(&#39;--ratio&#39;, &#39;-r&#39;, default=1.0, 
+    help=&#39;Ratio to true scale when drawing the sign, default 1.0&#39;)
+@click.argument(&#39;input_dir&#39;, type=click.Path(exists=True, dir_okay=True, 
+    file_okay=False))
+@click.argument(&#39;output_dir&#39;, type=click.Path(dir_okay=True), required=False)
+def cli(width, ratio, input_dir, output_dir):
+    pathlist = pathlib.Path(input_dir).glob(&#39;**/*.yaml&#39;)
+    for filename in pathlist:
+        stream = open(filename, &#39;r&#39;)
+        d = yaml.safe_load(stream)
+        arg = dict_to_obj(d)
+        ......
+        output_filename = output_dir + pathlib.Path(filename).stem + &#39;.svg&#39;
+        out_file = open(output_filename, &#39;w&#39;)
+        out_file.write(output_stream.getvalue())
+        click.echo(f&#39;Write the file to {output_filename}&#39;)
+
+if __name__ == &#39;__main__&#39;:
+    cli()
+</pre></div>
+
+
+<p>Here is how to call this Click app.</p>
+<div class="highlight"><pre><span></span>(dev_cli) george@STK2M3:~/dev_cli$ python signtool_dir.py --help
+Usage: signtool_dir.py [OPTIONS] INPUT_DIR [OUTPUT_DIR]
+
+Options:
+  -w, --width INTEGER  Width of the sign in inches for output svg
+  -r, --ratio FLOAT    Ratio to true scale when drawing the sign, default 1.0
+  --help               Show this message and exit.
+
+
+
+(dev_cli) george@STK2M3:~/dev_cli$ python signtool_dir.py ./yaml/ ./svg/
+Write the file to ./svg/W8-5P.svg
+Write the file to ./svg/R2-1.svg
+......
+</pre></div>
+
+    </div>
+  </div>
+
+</div>
+  
+   
+
+    <!-- Optional JavaScript -->
+    <!-- jQuery first, then Bootstrap Bundle JS -->
+    <script src="/theme/js/jquery-3.3.1.slim.min.js"></script>
+    <script src="/theme/js/bootstrap.bundle.min.js"></script>
+  </body>
+</html>
