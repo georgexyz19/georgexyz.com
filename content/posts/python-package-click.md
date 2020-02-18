@@ -25,7 +25,7 @@ This is Seb Vetter's second article on dbader.org. Both articles are fantastic.
 
 Here is what I come up with, 
 
-```
+```python
 # signtool_cli.py
 
 @click.command()
@@ -69,7 +69,7 @@ Write the file to R2-1.svg
 I also created a second python file to read all files under a directory and 
 write results to another directory. 
 
-```
+```python
 # signtool_dir.py
 
 @click.command()
