@@ -89,28 +89,28 @@ Seb Vetter wrote two articles about Click on dbader.org.  This is the first one.
 This is Seb Vetter's second article on dbader.org. Both articles are fantastic. </li>
 </ol>
 <p>Here is what I come up with, </p>
-<div class="highlight"><pre><span></span># signtool_cli.py
+<div class="highlight"><pre><span></span><span class="c1"># signtool_cli.py</span>
 
-@click.command()
-@click.option(&#39;--width&#39;, &#39;-w&#39;, default=0, 
-    help=&#39;Width of the sign in inches for output svg&#39; )
-@click.option(&#39;--ratio&#39;, &#39;-r&#39;, default=1.0, 
-    help=&#39;Ratio to true scale when drawing the sign, default 1.0&#39;)
-@click.argument(&#39;filename&#39;, type=click.Path(exists=True))
-@click.argument(&#39;output_filename&#39;, type=click.Path(writable=True), 
-    required=False)
-def cli(width, ratio, filename, output_filename): 
-    stream = open(filename, &#39;r&#39;)
-    d = yaml.safe_load(stream)
-    ......
-    if output_filename is None:
-        output_filename = pathlib.Path(filename).with_suffix(&#39;.svg&#39;)
-    out_file = open(output_filename, &#39;w&#39;)
-    out_file.write(output_stream.getvalue())
-    click.echo(f&#39;Write the file to {output_filename}&#39;)
+<span class="nd">@click.command</span><span class="p">()</span>
+<span class="nd">@click.option</span><span class="p">(</span><span class="s1">&#39;--width&#39;</span><span class="p">,</span> <span class="s1">&#39;-w&#39;</span><span class="p">,</span> <span class="n">default</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span> 
+    <span class="n">help</span><span class="o">=</span><span class="s1">&#39;Width of the sign in inches for output svg&#39;</span> <span class="p">)</span>
+<span class="nd">@click.option</span><span class="p">(</span><span class="s1">&#39;--ratio&#39;</span><span class="p">,</span> <span class="s1">&#39;-r&#39;</span><span class="p">,</span> <span class="n">default</span><span class="o">=</span><span class="mf">1.0</span><span class="p">,</span> 
+    <span class="n">help</span><span class="o">=</span><span class="s1">&#39;Ratio to true scale when drawing the sign, default 1.0&#39;</span><span class="p">)</span>
+<span class="nd">@click.argument</span><span class="p">(</span><span class="s1">&#39;filename&#39;</span><span class="p">,</span> <span class="nb">type</span><span class="o">=</span><span class="n">click</span><span class="o">.</span><span class="n">Path</span><span class="p">(</span><span class="n">exists</span><span class="o">=</span><span class="bp">True</span><span class="p">))</span>
+<span class="nd">@click.argument</span><span class="p">(</span><span class="s1">&#39;output_filename&#39;</span><span class="p">,</span> <span class="nb">type</span><span class="o">=</span><span class="n">click</span><span class="o">.</span><span class="n">Path</span><span class="p">(</span><span class="n">writable</span><span class="o">=</span><span class="bp">True</span><span class="p">),</span> 
+    <span class="n">required</span><span class="o">=</span><span class="bp">False</span><span class="p">)</span>
+<span class="k">def</span> <span class="nf">cli</span><span class="p">(</span><span class="n">width</span><span class="p">,</span> <span class="n">ratio</span><span class="p">,</span> <span class="n">filename</span><span class="p">,</span> <span class="n">output_filename</span><span class="p">):</span> 
+    <span class="n">stream</span> <span class="o">=</span> <span class="nb">open</span><span class="p">(</span><span class="n">filename</span><span class="p">,</span> <span class="s1">&#39;r&#39;</span><span class="p">)</span>
+    <span class="n">d</span> <span class="o">=</span> <span class="n">yaml</span><span class="o">.</span><span class="n">safe_load</span><span class="p">(</span><span class="n">stream</span><span class="p">)</span>
+    <span class="o">......</span>
+    <span class="k">if</span> <span class="n">output_filename</span> <span class="ow">is</span> <span class="bp">None</span><span class="p">:</span>
+        <span class="n">output_filename</span> <span class="o">=</span> <span class="n">pathlib</span><span class="o">.</span><span class="n">Path</span><span class="p">(</span><span class="n">filename</span><span class="p">)</span><span class="o">.</span><span class="n">with_suffix</span><span class="p">(</span><span class="s1">&#39;.svg&#39;</span><span class="p">)</span>
+    <span class="n">out_file</span> <span class="o">=</span> <span class="nb">open</span><span class="p">(</span><span class="n">output_filename</span><span class="p">,</span> <span class="s1">&#39;w&#39;</span><span class="p">)</span>
+    <span class="n">out_file</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="n">output_stream</span><span class="o">.</span><span class="n">getvalue</span><span class="p">())</span>
+    <span class="n">click</span><span class="o">.</span><span class="n">echo</span><span class="p">(</span><span class="n">f</span><span class="s1">&#39;Write the file to {output_filename}&#39;</span><span class="p">)</span>
 
-if __name__ == &#39;__main__&#39;:
-    cli()
+<span class="k">if</span> <span class="vm">__name__</span> <span class="o">==</span> <span class="s1">&#39;__main__&#39;</span><span class="p">:</span>
+    <span class="n">cli</span><span class="p">()</span>
 </pre></div>
 
 
@@ -130,30 +130,30 @@ Write the file to R2-1.svg
 
 <p>I also created a second python file to read all files under a directory and 
 write results to another directory. </p>
-<div class="highlight"><pre><span></span># signtool_dir.py
+<div class="highlight"><pre><span></span><span class="c1"># signtool_dir.py</span>
 
-@click.command()
-@click.option(&#39;--width&#39;, &#39;-w&#39;, default=0, 
-    help=&#39;Width of the sign in inches for output svg&#39; )
-@click.option(&#39;--ratio&#39;, &#39;-r&#39;, default=1.0, 
-    help=&#39;Ratio to true scale when drawing the sign, default 1.0&#39;)
-@click.argument(&#39;input_dir&#39;, type=click.Path(exists=True, dir_okay=True, 
-    file_okay=False))
-@click.argument(&#39;output_dir&#39;, type=click.Path(dir_okay=True), required=False)
-def cli(width, ratio, input_dir, output_dir):
-    pathlist = pathlib.Path(input_dir).glob(&#39;**/*.yaml&#39;)
-    for filename in pathlist:
-        stream = open(filename, &#39;r&#39;)
-        d = yaml.safe_load(stream)
-        arg = dict_to_obj(d)
-        ......
-        output_filename = output_dir + pathlib.Path(filename).stem + &#39;.svg&#39;
-        out_file = open(output_filename, &#39;w&#39;)
-        out_file.write(output_stream.getvalue())
-        click.echo(f&#39;Write the file to {output_filename}&#39;)
+<span class="nd">@click.command</span><span class="p">()</span>
+<span class="nd">@click.option</span><span class="p">(</span><span class="s1">&#39;--width&#39;</span><span class="p">,</span> <span class="s1">&#39;-w&#39;</span><span class="p">,</span> <span class="n">default</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span> 
+    <span class="n">help</span><span class="o">=</span><span class="s1">&#39;Width of the sign in inches for output svg&#39;</span> <span class="p">)</span>
+<span class="nd">@click.option</span><span class="p">(</span><span class="s1">&#39;--ratio&#39;</span><span class="p">,</span> <span class="s1">&#39;-r&#39;</span><span class="p">,</span> <span class="n">default</span><span class="o">=</span><span class="mf">1.0</span><span class="p">,</span> 
+    <span class="n">help</span><span class="o">=</span><span class="s1">&#39;Ratio to true scale when drawing the sign, default 1.0&#39;</span><span class="p">)</span>
+<span class="nd">@click.argument</span><span class="p">(</span><span class="s1">&#39;input_dir&#39;</span><span class="p">,</span> <span class="nb">type</span><span class="o">=</span><span class="n">click</span><span class="o">.</span><span class="n">Path</span><span class="p">(</span><span class="n">exists</span><span class="o">=</span><span class="bp">True</span><span class="p">,</span> <span class="n">dir_okay</span><span class="o">=</span><span class="bp">True</span><span class="p">,</span> 
+    <span class="n">file_okay</span><span class="o">=</span><span class="bp">False</span><span class="p">))</span>
+<span class="nd">@click.argument</span><span class="p">(</span><span class="s1">&#39;output_dir&#39;</span><span class="p">,</span> <span class="nb">type</span><span class="o">=</span><span class="n">click</span><span class="o">.</span><span class="n">Path</span><span class="p">(</span><span class="n">dir_okay</span><span class="o">=</span><span class="bp">True</span><span class="p">),</span> <span class="n">required</span><span class="o">=</span><span class="bp">False</span><span class="p">)</span>
+<span class="k">def</span> <span class="nf">cli</span><span class="p">(</span><span class="n">width</span><span class="p">,</span> <span class="n">ratio</span><span class="p">,</span> <span class="n">input_dir</span><span class="p">,</span> <span class="n">output_dir</span><span class="p">):</span>
+    <span class="n">pathlist</span> <span class="o">=</span> <span class="n">pathlib</span><span class="o">.</span><span class="n">Path</span><span class="p">(</span><span class="n">input_dir</span><span class="p">)</span><span class="o">.</span><span class="n">glob</span><span class="p">(</span><span class="s1">&#39;**/*.yaml&#39;</span><span class="p">)</span>
+    <span class="k">for</span> <span class="n">filename</span> <span class="ow">in</span> <span class="n">pathlist</span><span class="p">:</span>
+        <span class="n">stream</span> <span class="o">=</span> <span class="nb">open</span><span class="p">(</span><span class="n">filename</span><span class="p">,</span> <span class="s1">&#39;r&#39;</span><span class="p">)</span>
+        <span class="n">d</span> <span class="o">=</span> <span class="n">yaml</span><span class="o">.</span><span class="n">safe_load</span><span class="p">(</span><span class="n">stream</span><span class="p">)</span>
+        <span class="n">arg</span> <span class="o">=</span> <span class="n">dict_to_obj</span><span class="p">(</span><span class="n">d</span><span class="p">)</span>
+        <span class="o">......</span>
+        <span class="n">output_filename</span> <span class="o">=</span> <span class="n">output_dir</span> <span class="o">+</span> <span class="n">pathlib</span><span class="o">.</span><span class="n">Path</span><span class="p">(</span><span class="n">filename</span><span class="p">)</span><span class="o">.</span><span class="n">stem</span> <span class="o">+</span> <span class="s1">&#39;.svg&#39;</span>
+        <span class="n">out_file</span> <span class="o">=</span> <span class="nb">open</span><span class="p">(</span><span class="n">output_filename</span><span class="p">,</span> <span class="s1">&#39;w&#39;</span><span class="p">)</span>
+        <span class="n">out_file</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="n">output_stream</span><span class="o">.</span><span class="n">getvalue</span><span class="p">())</span>
+        <span class="n">click</span><span class="o">.</span><span class="n">echo</span><span class="p">(</span><span class="n">f</span><span class="s1">&#39;Write the file to {output_filename}&#39;</span><span class="p">)</span>
 
-if __name__ == &#39;__main__&#39;:
-    cli()
+<span class="k">if</span> <span class="vm">__name__</span> <span class="o">==</span> <span class="s1">&#39;__main__&#39;</span><span class="p">:</span>
+    <span class="n">cli</span><span class="p">()</span>
 </pre></div>
 
 
