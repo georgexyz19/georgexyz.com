@@ -3,7 +3,7 @@ slug: package-click
 meta: Resources on learning python package click 
 date: 2020-02-18 14:39
 modified: 2020-02-18 14:39
-tags: python
+tags: python, flask
 note: 28
 
 I am reading Miguel Grinberg's 
@@ -87,6 +87,8 @@ def cli(width, ratio, input_dir, output_dir):
         d = yaml.safe_load(stream)
         arg = dict_to_obj(d)
         ......
+        if output_dir is None:
+            output_dir = input_dir
         output_filename = output_dir + pathlib.Path(filename).stem + '.svg'
         out_file = open(output_filename, 'w')
         out_file.write(output_stream.getvalue())
@@ -107,8 +109,6 @@ Options:
   -w, --width INTEGER  Width of the sign in inches for output svg
   -r, --ratio FLOAT    Ratio to true scale when drawing the sign, default 1.0
   --help               Show this message and exit.
-
-
 
 (dev_cli) george@STK2M3:~/dev_cli$ python signtool_dir.py ./yaml/ ./svg/
 Write the file to ./svg/W8-5P.svg
