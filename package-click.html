@@ -9,7 +9,7 @@
     <link rel="stylesheet" href="/theme/css/friendly.css">
     <link rel="stylesheet" href="/theme/css/custom.css">
     <meta name="author" content="George Zhang" />
-    <meta name="keywords" content="python" />
+    <meta name="keywords" content="python,flask" />
     <meta name="description" content="I am reading Miguel Grinberg&#39;s Flask Mega Tutorial and Flask Web Development book and converting OpenSignTool to a flask app. The Click package is one of the tools created by …" />
     <title>Click Python Package - George Zhang</title>
   </head>
@@ -70,6 +70,7 @@
     
      <span>with tags: </span>
        <a href="/tag/python.html">python</a>
+/       <a href="/tag/flask.html">flask</a>
   </div>
       
   <p>I am reading Miguel Grinberg's 
@@ -147,6 +148,8 @@ write results to another directory. </p>
         <span class="n">d</span> <span class="o">=</span> <span class="n">yaml</span><span class="o">.</span><span class="n">safe_load</span><span class="p">(</span><span class="n">stream</span><span class="p">)</span>
         <span class="n">arg</span> <span class="o">=</span> <span class="n">dict_to_obj</span><span class="p">(</span><span class="n">d</span><span class="p">)</span>
         <span class="o">......</span>
+        <span class="k">if</span> <span class="n">output_dir</span> <span class="ow">is</span> <span class="bp">None</span><span class="p">:</span>
+            <span class="n">output_dir</span> <span class="o">=</span> <span class="n">input_dir</span>
         <span class="n">output_filename</span> <span class="o">=</span> <span class="n">output_dir</span> <span class="o">+</span> <span class="n">pathlib</span><span class="o">.</span><span class="n">Path</span><span class="p">(</span><span class="n">filename</span><span class="p">)</span><span class="o">.</span><span class="n">stem</span> <span class="o">+</span> <span class="s1">&#39;.svg&#39;</span>
         <span class="n">out_file</span> <span class="o">=</span> <span class="nb">open</span><span class="p">(</span><span class="n">output_filename</span><span class="p">,</span> <span class="s1">&#39;w&#39;</span><span class="p">)</span>
         <span class="n">out_file</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="n">output_stream</span><span class="o">.</span><span class="n">getvalue</span><span class="p">())</span>
@@ -165,8 +168,6 @@ Options:
   -w, --width INTEGER  Width of the sign in inches for output svg
   -r, --ratio FLOAT    Ratio to true scale when drawing the sign, default 1.0
   --help               Show this message and exit.
-
-
 
 (dev_cli) george@STK2M3:~/dev_cli$ python signtool_dir.py ./yaml/ ./svg/
 Write the file to ./svg/W8-5P.svg
