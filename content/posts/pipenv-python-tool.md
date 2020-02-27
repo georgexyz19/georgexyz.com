@@ -2,7 +2,7 @@ title: Python Pipenv Tool
 slug: python-pipenv-tool
 meta: Short discussion on pipenv
 date: 2019-09-02 00:32
-modified: 2019-09-02 00:33
+modified: 2020-02-27 15:40
 tags: python
 note: 22
  
@@ -77,3 +77,14 @@ $pipenv check
 $pipenv graph     # show dependency
 $pipenv install --ignore-pipfile
 ```
+
+When I am reading Miguel Grinberg's Flask Mega Tutorial Chapter 15 
+[A Better Application Structure](https://blog.miguelgrinberg.com/post/the-flask-mega-tutorial-part-xv-a-better-application-structure).  
+He recommends to use a python package `python-dotenv` to load environment variables.  
+Corey Schafer's tutorial video mentioned that pipenv can load environment variables as well. 
+
+This [Pipenv documentation page](https://pipenv-fork.readthedocs.io/en/latest/advanced.html) 
+has a section *Automatic Loading of .env*. If a project directory has a .env file, pipenv 
+commands `$pipenv shell` and `$pipenv run` will automatically load it. You can set the 
+`PIPENV_DOTENV_LOCATION` to change the file location or file name. You can also set 
+`PIPENV_DONT_LOAD_ENV =1` to prevent pipenv from loading the .env file.
