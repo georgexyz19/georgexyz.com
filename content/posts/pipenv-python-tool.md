@@ -79,8 +79,8 @@ $pipenv install --ignore-pipfile
 ```
 
 When I am reading Miguel Grinberg's Flask Mega Tutorial Chapter 15 
-[A Better Application Structure](https://blog.miguelgrinberg.com/post/the-flask-mega-tutorial-part-xv-a-better-application-structure).  
-He recommends to use a python package `python-dotenv` to load environment variables.  
+[A Better Application Structure](https://blog.miguelgrinberg.com/post/the-flask-mega-tutorial-part-xv-a-better-application-structure). 
+He recommends to use a python package `python-dotenv` to load environment variables. 
 Corey Schafer's tutorial video mentioned that pipenv can load environment variables as well. 
 
 This [Pipenv documentation page](https://pipenv-fork.readthedocs.io/en/latest/advanced.html) 
