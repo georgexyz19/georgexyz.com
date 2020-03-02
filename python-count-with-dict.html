@@ -1,0 +1,151 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <link rel="stylesheet" href="/theme/css/bootstrap.min.css">
+ 
+    <link rel="stylesheet" href="/theme/css/friendly.css">
+    <link rel="stylesheet" href="/theme/css/custom.css">
+    <meta name="author" content="George Zhang" />
+    <meta name="keywords" content="python" />
+    <meta name="description" content="When I am reading a realpython article Working With JSON Data in Python, I find an interesting python technique that reminds me something else I read before. It is called …" />
+    <title>Python Counting With Dictionary - George Zhang</title>
+  </head>
+  <body>
+    <!-- navbar -->
+    <nav class="navbar navbar-expand-md navbar-dark bg-primary">
+      <div class="container">
+        <a class="navbar-brand" href="/">George Zhang</a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarColor01" aria-controls="navbarColor01" aria-expanded="false" aria-label="Toggle navigation">
+          <span class="navbar-toggler-icon"></span>
+        </button>
+
+        <div class="collapse navbar-collapse" id="navbarColor01">
+          <ul class="navbar-nav mr-auto">
+            <li class="nav-item">
+              <a class="nav-link " 
+                href="/archives.html">Articles</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link pr-3 " 
+                href="/tags.html">Tags</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link pr-3 "
+                 href="/pages/inkscape-tutorial.html">Inkscape Tutorial</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link "
+                   href="/pages/projects.html">Projects</a>
+              </li>
+          </ul>
+
+          <ul class="navbar-nav">
+            <li class="nav-item">
+              <a class="nav-link " 
+                 href="/pages/about.html">About</a>
+            </li>
+          </ul>
+        </div>
+
+      </div>
+    </nav>
+
+   
+  
+<div class="container">
+
+  <div class="row">
+    <div class="col-lg-8 mx-auto">   
+
+  <h2 class="mt-4 mb-3">Python Counting With Dictionary</h2>
+  
+  <div class="text-muted mb-2">
+    <span>Posted on </span>
+    <time datetime="2020-03-02 02:20:00-05:00">
+      Monday, 03/02/2020 02:20
+    </time>
+    
+     <span>with tags: </span>
+       <a href="/tag/python.html">python</a>
+  </div>
+      
+  <p>When I am reading a realpython article 
+<a href="https://realpython.com/python-json/">Working With JSON Data in Python</a>, I find 
+an interesting python technique that reminds me something else I read before. 
+It is called <em>Counting With Dictionary</em> by Raymond Hettinger in a python talk.
+<a href="/python-resources.html">A previous blog post</a> has the links 
+to the video and the note. </p>
+<p>Given a list such as colors below,</p>
+<div class="highlight"><pre><span></span><span class="n">colors</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;red&#39;</span><span class="p">,</span> <span class="s1">&#39;green&#39;</span><span class="p">,</span> <span class="s1">&#39;red&#39;</span><span class="p">,</span> <span class="s1">&#39;blue&#39;</span><span class="p">,</span> <span class="s1">&#39;green&#39;</span><span class="p">,</span> <span class="s1">&#39;red&#39;</span><span class="p">]</span>
+</pre></div>
+
+
+<p>the python code should generate a dictionary. The keys of the dictionary are 
+values in the list, and the values of the dictionary are the corresponding number of 
+keys in the list.  For the above example, the result dictionary <code>d</code> is </p>
+<div class="highlight"><pre><span></span><span class="p">{</span><span class="s1">&#39;red&#39;</span><span class="p">:</span> <span class="mi">3</span><span class="p">,</span> <span class="s1">&#39;green&#39;</span><span class="p">:</span> <span class="mi">2</span><span class="p">,</span> <span class="s1">&#39;blue&#39;</span><span class="p">:</span> <span class="mi">1</span><span class="p">}</span>
+</pre></div>
+
+
+<p>There are many ways to write the code.  I will summarize these techniques below. </p>
+<h4>Basic Way to Count</h4>
+<p>The basic way is to set the d[color] to 0 when the dictionary sees the color 
+first time.  Total line count is 5.  Some programmer may add an <code>else</code> clause 
+after <code>d[color]=0</code>, the code will be more clear but it will add one more line. </p>
+<p>d = {}
+for color in colors:
+    if color not in d:
+        d[color] = 0
+    d[color] += 1</p>
+<h4>Get Method of Dictionary</h4>
+<p>If the color is not in the dictionary, using <code>d[color]</code> to access its value raises
+a KeyValue exception.  The dictionary <code>get</code> method returns the second argument 
+when the first argument is not already in the dictionary.  Line count is 3. </p>
+<p>d = {}
+for color in colors:
+    d[color] = d.get(color, 0) + 1</p>
+<h4>Use Defaultdict</h4>
+<p>The standard collections package has a defaultdict class. The class sets a default 
+value for a key.  Line count is still 5. </p>
+<p>import collections
+d = collections.defaultdict(int)
+for color in colors:
+    d[color] += 1
+d = dict(d)</p>
+<h4>Try and Except to Handle Exception</h4>
+<p>The above three methods are from Raymond Hettinger's python talk.  The method below
+is from the Real Python article I introduced earlier.  This method takes 6 lines, 
+but the logic is very clear. </p>
+<p>d ={}
+for color in colors:
+    try:
+        d[color] += 1
+    except KeyError:
+        d[color] = 1</p>
+<h4>Setdefault Method of Dictionary</h4>
+<p>This method is between the first two methods.  Line count is also between 5 and 3. 
+This methods uses dictionary method <code>setdefault</code>, which is also discussed in 
+Raymond Hettinger's python talk</p>
+<p>d={}
+for color in colors:
+    d.setdefault(color, 0)
+    d[color] +=1 </p>
+<p>Python is very flexible to write once you know the basics, and there are always 
+many ways to solve a problem. </p>
+
+    </div>
+  </div>
+
+</div>
+  
+   
+
+    <!-- Optional JavaScript -->
+    <!-- jQuery first, then Bootstrap Bundle JS -->
+    <script src="/theme/js/jquery-3.3.1.slim.min.js"></script>
+    <script src="/theme/js/bootstrap.bundle.min.js"></script>
+  </body>
+</html>
