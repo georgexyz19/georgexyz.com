@@ -26,11 +26,10 @@ keys in the list.  For the above example, the result dictionary `d` is
 ```
 There are many ways to write the code.  I will summarize these techniques below. 
 
-#### Basic Way to Count
+### Basic Way to Count
 
 The basic way is to set the d[color] to 0 when the dictionary sees the color 
-first time.  Total line count is 5.  Some programmer may add an `else` clause 
-after `d[color]=0`, the code will be more clear but it will add one more line. 
+first time.  Total line count is 5. 
 
 ```python
 d = {}
@@ -40,7 +39,7 @@ for color in colors:
     d[color] += 1
 ```
 
-#### Get Method of Dictionary
+### Get Method of Dictionary
 If the color is not in the dictionary, using `d[color]` to access its value raises
 a KeyValue exception.  The dictionary `get` method returns the second argument 
 when the first argument is not already in the dictionary.  Line count is 3. 
@@ -51,7 +50,7 @@ for color in colors:
     d[color] = d.get(color, 0) + 1
 ```
     
-#### Use Defaultdict 
+### Use Defaultdict 
 The standard collections package has a defaultdict class. The class sets a default 
 value for a key.  Line count is still 5. 
 
@@ -63,7 +62,7 @@ for color in colors:
 d = dict(d)
 ```
 
-#### Try and Except to Handle Exception
+### Try and Except to Handle Exception
 The above three methods are from Raymond Hettinger's python talk.  The method below
 is from the Real Python article I introduced earlier.  This method takes 6 lines, 
 but the logic is very clear. 
@@ -77,9 +76,9 @@ for color in colors:
         d[color] = 1
 ```
         
-#### Setdefault Method of Dictionary
+### Setdefault Method of Dictionary
 This method is between the first two methods.  Line count is also between 5 and 3. 
-This methods uses dictionary method `setdefault`, which is also discussed in 
+This method uses dictionary method `setdefault`, which is also discussed in 
 Raymond Hettinger's python talk
 
 ```python
