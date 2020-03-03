@@ -91,10 +91,9 @@ keys in the list.  For the above example, the result dictionary <code>d</code> i
 
 
 <p>There are many ways to write the code.  I will summarize these techniques below. </p>
-<h4>Basic Way to Count</h4>
+<h3>Basic Way to Count</h3>
 <p>The basic way is to set the d[color] to 0 when the dictionary sees the color 
-first time.  Total line count is 5.  Some programmer may add an <code>else</code> clause 
-after <code>d[color]=0</code>, the code will be more clear but it will add one more line. </p>
+first time.  Total line count is 5. </p>
 <div class="highlight"><pre><span></span><span class="n">d</span> <span class="o">=</span> <span class="p">{}</span>
 <span class="k">for</span> <span class="n">color</span> <span class="ow">in</span> <span class="n">colors</span><span class="p">:</span>
     <span class="k">if</span> <span class="n">color</span> <span class="ow">not</span> <span class="ow">in</span> <span class="n">d</span><span class="p">:</span>
@@ -103,7 +102,7 @@ after <code>d[color]=0</code>, the code will be more clear but it will add one m
 </pre></div>
 
 
-<h4>Get Method of Dictionary</h4>
+<h3>Get Method of Dictionary</h3>
 <p>If the color is not in the dictionary, using <code>d[color]</code> to access its value raises
 a KeyValue exception.  The dictionary <code>get</code> method returns the second argument 
 when the first argument is not already in the dictionary.  Line count is 3. </p>
@@ -113,7 +112,7 @@ when the first argument is not already in the dictionary.  Line count is 3. </p>
 </pre></div>
 
 
-<h4>Use Defaultdict</h4>
+<h3>Use Defaultdict</h3>
 <p>The standard collections package has a defaultdict class. The class sets a default 
 value for a key.  Line count is still 5. </p>
 <div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">collections</span>
@@ -124,7 +123,7 @@ value for a key.  Line count is still 5. </p>
 </pre></div>
 
 
-<h4>Try and Except to Handle Exception</h4>
+<h3>Try and Except to Handle Exception</h3>
 <p>The above three methods are from Raymond Hettinger's python talk.  The method below
 is from the Real Python article I introduced earlier.  This method takes 6 lines, 
 but the logic is very clear. </p>
@@ -137,9 +136,9 @@ but the logic is very clear. </p>
 </pre></div>
 
 
-<h4>Setdefault Method of Dictionary</h4>
+<h3>Setdefault Method of Dictionary</h3>
 <p>This method is between the first two methods.  Line count is also between 5 and 3. 
-This methods uses dictionary method <code>setdefault</code>, which is also discussed in 
+This method uses dictionary method <code>setdefault</code>, which is also discussed in 
 Raymond Hettinger's python talk</p>
 <div class="highlight"><pre><span></span><span class="n">d</span><span class="o">=</span><span class="p">{}</span>
 <span class="k">for</span> <span class="n">color</span> <span class="ow">in</span> <span class="n">colors</span><span class="p">:</span>
