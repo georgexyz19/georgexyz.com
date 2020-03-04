@@ -101,8 +101,9 @@ themes are produced by hobbyists during spare time.
 The three images on the homepage are downloaded from 
 [pexels.com](https://www.pexels.com/), 
 which is a very nice website for free photos. The icons on the Projects page are from 
-[pixabay.com](https://pixabay.com/), and are modified with Gimp. 
- 
+[pixabay.com](https://pixabay.com/), and are modified with GIMP. The favicon is 
+generated and downloaded from [favicon.io website](https://favicon.io/). 
+
 ### Invoke Package
 
 [Invoke package](http://docs.pyinvoke.org/en/1.2/getting-started.html)
@@ -154,7 +155,7 @@ git push origin gh-pages
 ```
 
 [This github page](https://gist.github.com/jedmao/5053440) 
-has a nice summary of common github commands.  
+has a nice summary of common github commands. 
 
 ### Future Blog Plan
 
