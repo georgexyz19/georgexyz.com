@@ -405,11 +405,11 @@ When the page loads, the javascript program picks a random speed and
 turns on the SVG layer with that speed. When a user chooses a speed 
 on the dropdown box, the program turns off the previous layer and turns 
 on the chosen layer.  You can view the code by right click the webpage 
-and choose "View Page Source" menu.  
+and choose "View Page Source" menu. 
 
 Next step for the app is to add another dropdown control for file 
 formats (SVG, EMF, PNG) and a download button for user to download 
-a file to local computer.  
+a file to local computer. 
 
 I also referenced those two online articles when working on this
 blog post. 
