@@ -1,4 +1,4 @@
-title: A Simple Flask APP - Temperature Converter
+title: A Simple Flask App - Temperature Converter
 slug: a-simple-flask-app
 meta: How to develop and deploy a simple flask app
 date: 2020-03-21 10:19
@@ -7,7 +7,7 @@ tags: python, flask
 note: 30
 
 
-I have been studying Flask Web Framework for some time.  Today I decide to 
+I have been studying Flask web framework for some time.  Today I decide to 
 write a simple app and deploy it to a Digital Ocean web server under my 
 control.  The Flask app itself is very simple. It is a temperature converter which 
 converts temperature in fahrenheit to celsius. The source code is on github and the 
@@ -45,8 +45,8 @@ after reading the chapter a few times.  The main reason is that the Docker conta
 incur a significant overhead on a $5/mo Digital Ocean server. 
 
 William Shotts' book [The Linux Command Line](http://linuxcommand.org/tlcl.php) 
-has a section on ssh, scp and sftp. It also has a sentence "the SFTP protocol 
+has a section on ssh, scp and sftp. It has a sentence "the SFTP protocol 
 is supported by many of the graphical file managers found in Linux distributions." I found 
-[FileZilla](https://filezilla-project.org/) is very easy to setup and transfer files between 
+[FileZilla](https://filezilla-project.org/) is easy to setup and easy to transfer files between 
 a local computer and the server. 
 
