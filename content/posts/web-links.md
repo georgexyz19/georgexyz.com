@@ -13,9 +13,19 @@ This page has a collection of web links that I visit often.
 
 [Official Flask Tutorial](https://flask.palletsprojects.com/en/1.1.x/tutorial/)
 
-[Official Tutorial Source Code on Github](https://github.com/pallets/flask/tree/master/examples/tutorial)
+[Official Flask Tutorial Source Code on Github](https://github.com/pallets/flask/tree/master/examples/tutorial)
 
 [The Flask Mega-Tutorial by Miguel Grinberg](https://blog.miguelgrinberg.com/post/the-flask-mega-tutorial-part-i-hello-world)
+
+[Flask Web Framework Book Source Code on Github](https://github.com/miguelgrinberg/flasky)
+
+[Flask Extension Flask-Bootstrap Source Code](https://github.com/mbr/flask-bootstrap)
+
+<p class="pl-3">Flask-Bootstrap still bundles with Bootstrap 3.X.  Use Flask-BS4 instead. (4/4/2020) </p>
+
+[Flask Extension Flask-BS4 Source Code](https://github.com/hfilimonescu/flask-bs4)
+
+[Flask Extension Flask-Moment Source Code](https://github.com/miguelgrinberg/Flask-Moment)
 
 
 ### Javascript Language
@@ -23,6 +33,20 @@ This page has a collection of web links that I visit often.
 [Eloquent Javascript](https://eloquentjavascript.net/)
 
 [The Modern Javascript Tutorial Javascript.info](https://javascript.info/)
+
+[Javascript Moment (Momentjs) Date and Time Display Library](https://momentjs.com/)
+
+
+### HTML and CSS
+
+[Front End Web Framework Bootstrap](https://getbootstrap.com/)
+
+[HTML & CSS Is Hard - Web Book](https://www.internetingishard.com/html-and-css/)
+
+
+
+
+
 
 
 
