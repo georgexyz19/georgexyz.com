@@ -21,11 +21,13 @@ This page has a collection of web links that I visit often.
 
 [Flask Extension Flask-Bootstrap Source Code](https://github.com/mbr/flask-bootstrap)
 
-<p class="pl-3">Flask-Bootstrap still bundles with Bootstrap 3.X.  Use Flask-BS4 instead. (4/4/2020) </p>
+<p class="pl-3">Flask-Bootstrap still bundles with Bootstrap 3.X.  Use Flask-BS4 instead. (4/4/2020)</p>
 
 [Flask Extension Flask-BS4 Source Code](https://github.com/hfilimonescu/flask-bs4)
 
 [Flask Extension Flask-Moment Source Code](https://github.com/miguelgrinberg/Flask-Moment)
+
+[Flask Extension Flask-SQLAlchemy Documentaion](https://flask-sqlalchemy.palletsprojects.com/en/2.x/)
 
 
 ### Javascript Language
@@ -42,6 +44,11 @@ This page has a collection of web links that I visit often.
 [Front End Web Framework Bootstrap](https://getbootstrap.com/)
 
 [HTML & CSS Is Hard - Web Book](https://www.internetingishard.com/html-and-css/)
+
+
+### Markdown Reference
+
+[Markdown Cheatsheet on Github](https://github.com/adam-p/markdown-here/wiki/Markdown-Cheatsheet)
 
 
 
