@@ -1,0 +1,134 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <link rel="stylesheet" href="/theme/css/bootstrap.min.css">
+    <link rel="shortcut icon" type="image/x-icon" href="/theme/images/favicon.ico" >
+    <link rel="icon" type="image/x-icon" href="/theme/images/favicon.ico" >
+ 
+    <link rel="stylesheet" href="/theme/css/friendly.css">
+    <link rel="stylesheet" href="/theme/css/custom.css">
+    <meta name="author" content="George Zhang" />
+    <meta name="keywords" content="python" />
+    <meta name="description" content="Some Python code I read yesterday uses dictionary methods copy and update. This prompted me to test those two methods and check all other python dictionary methods. Here is the …" />
+    <title>Python Dictionary Methods - George Zhang</title>
+  </head>
+  <body>
+    <!-- navbar -->
+    <nav class="navbar navbar-expand-md navbar-dark bg-primary">
+      <div class="container">
+        <a class="navbar-brand" href="/">George Zhang</a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarColor01" aria-controls="navbarColor01" aria-expanded="false" aria-label="Toggle navigation">
+          <span class="navbar-toggler-icon"></span>
+        </button>
+
+        <div class="collapse navbar-collapse" id="navbarColor01">
+          <ul class="navbar-nav mr-auto">
+            <li class="nav-item">
+              <a class="nav-link " 
+                href="/archives.html">Articles</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link pr-3 " 
+                href="/tags.html">Tags</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link pr-3 "
+                 href="/pages/inkscape-tutorial.html">Inkscape Tutorial</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link "
+                   href="/pages/projects.html">Projects</a>
+              </li>
+          </ul>
+
+          <ul class="navbar-nav">
+            <li class="nav-item">
+              <a class="nav-link " 
+                 href="/pages/about.html">About</a>
+            </li>
+          </ul>
+        </div>
+
+      </div>
+    </nav>
+
+   
+  
+<div class="container">
+
+  <div class="row">
+    <div class="col-lg-8 mx-auto">   
+
+  <h2>Python Dictionary Methods</h2>
+  
+  <div class="text-muted mb-2">
+    <span>Posted on </span>
+    <time datetime="2020-04-06 09:40:00-04:00">
+      Monday, 04/06/2020 09:40
+    </time>
+    
+     <span>with tags: </span>
+       <a href="/tag/python.html">python</a>
+  </div>
+      
+  <p>Some Python code I read yesterday uses dictionary methods <code>copy</code> and <code>update</code>. 
+This prompted me to test those two methods and check all other python dictionary methods. </p>
+<p>Here is the code testing the two methods:</p>
+<div class="highlight"><pre><span></span><span class="o">&gt;&gt;&gt;</span> <span class="n">d</span> <span class="o">=</span> <span class="p">{</span><span class="s1">&#39;a&#39;</span><span class="p">:</span> <span class="mi">1</span><span class="p">,</span> <span class="s1">&#39;b&#39;</span><span class="p">:</span> <span class="mi">2</span><span class="p">,</span> <span class="s1">&#39;c&#39;</span><span class="p">:</span><span class="mi">3</span><span class="p">}</span>
+<span class="o">&gt;&gt;&gt;</span> <span class="n">d</span>
+<span class="p">{</span><span class="s1">&#39;a&#39;</span><span class="p">:</span> <span class="mi">1</span><span class="p">,</span> <span class="s1">&#39;b&#39;</span><span class="p">:</span> <span class="mi">2</span><span class="p">,</span> <span class="s1">&#39;c&#39;</span><span class="p">:</span> <span class="mi">3</span><span class="p">}</span>
+<span class="o">&gt;&gt;&gt;</span> <span class="n">d1</span> <span class="o">=</span> <span class="n">d</span>
+<span class="o">&gt;&gt;&gt;</span> <span class="n">d</span><span class="p">[</span><span class="s1">&#39;a&#39;</span><span class="p">]</span><span class="o">=</span><span class="mi">0</span>
+<span class="o">&gt;&gt;&gt;</span> <span class="n">d1</span>
+<span class="p">{</span><span class="s1">&#39;a&#39;</span><span class="p">:</span> <span class="mi">0</span><span class="p">,</span> <span class="s1">&#39;b&#39;</span><span class="p">:</span> <span class="mi">2</span><span class="p">,</span> <span class="s1">&#39;c&#39;</span><span class="p">:</span> <span class="mi">3</span><span class="p">}</span>
+<span class="o">&gt;&gt;&gt;</span> <span class="n">d2</span> <span class="o">=</span> <span class="n">d</span><span class="o">.</span><span class="n">copy</span><span class="p">()</span>
+<span class="o">&gt;&gt;&gt;</span> <span class="n">d</span><span class="p">[</span><span class="s1">&#39;a&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="mi">4</span>
+<span class="o">&gt;&gt;&gt;</span> <span class="n">d1</span>
+<span class="p">{</span><span class="s1">&#39;a&#39;</span><span class="p">:</span> <span class="mi">4</span><span class="p">,</span> <span class="s1">&#39;b&#39;</span><span class="p">:</span> <span class="mi">2</span><span class="p">,</span> <span class="s1">&#39;c&#39;</span><span class="p">:</span> <span class="mi">3</span><span class="p">}</span>
+<span class="o">&gt;&gt;&gt;</span> <span class="n">d2</span>
+<span class="p">{</span><span class="s1">&#39;a&#39;</span><span class="p">:</span> <span class="mi">0</span><span class="p">,</span> <span class="s1">&#39;b&#39;</span><span class="p">:</span> <span class="mi">2</span><span class="p">,</span> <span class="s1">&#39;c&#39;</span><span class="p">:</span> <span class="mi">3</span><span class="p">}</span>
+<span class="o">&gt;&gt;&gt;</span> <span class="n">d2</span><span class="o">.</span><span class="n">update</span><span class="p">({</span><span class="s1">&#39;a&#39;</span><span class="p">:</span><span class="mi">4</span><span class="p">,</span> <span class="s1">&#39;e&#39;</span><span class="p">:</span><span class="mi">5</span><span class="p">})</span>
+<span class="o">&gt;&gt;&gt;</span> <span class="n">d2</span>
+<span class="p">{</span><span class="s1">&#39;a&#39;</span><span class="p">:</span> <span class="mi">4</span><span class="p">,</span> <span class="s1">&#39;b&#39;</span><span class="p">:</span> <span class="mi">2</span><span class="p">,</span> <span class="s1">&#39;c&#39;</span><span class="p">:</span> <span class="mi">3</span><span class="p">,</span> <span class="s1">&#39;e&#39;</span><span class="p">:</span> <span class="mi">5</span><span class="p">}</span>
+<span class="o">&gt;&gt;&gt;</span> 
+</pre></div>
+
+
+<p>Python official documentation lists dictionary methods on the 
+<a href="https://docs.python.org/3/library/stdtypes.html">Built-in Types</a> 
+page. The page has a seciton 
+<a href="https://docs.python.org/3/library/stdtypes.html#typesmapping">Mapping Types - dict</a>
+which lists all dictionary methods. The notable class methods are <code>clear</code>, <code>copy</code>, 
+<code>fromkeys</code>, <code>get</code>, <code>items</code>, <code>keys</code>, <code>pop</code>, <code>popitem</code>, <code>setdefault</code>, <code>update</code>, and 
+<code>values</code>. </p>
+<p>I found some interesting online documentation when searching for the topic. </p>
+<ul>
+<li>This blog post 
+<a href="https://www.ibisc.univ-evry.fr/~fpommereau/blog/2009-05-12-copy-a-python-dict-with-updates.html">Copy a Python Dict with Updates</a> 
+has an example of <code>copy</code> and <code>update</code> methods.</li>
+<li><a href="https://stackoverflow.com/questions/5551672/how-to-copy-a-dict-and-modify-it-in-one-line-of-code">This stackoverflow Q\&amp;A</a> 
+discusses the same problem</li>
+<li><a href="https://www.w3schools.com/python/python_ref_dictionary.asp">This webpage</a> 
+on W3schools.com has a list of python dictionary methods. </li>
+<li>Realpython.com has an article 
+<a href="https://realpython.com/python-dicts/#restrictions-on-dictionary-values">Dictionaries in Python</a>
+which discusses the dictionary with more details. </li>
+</ul>
+<p>The dictionary is so fundamental in Python and programmers should become familar with those methods. </p>
+
+    </div>
+  </div>
+
+</div>
+  
+   
+
+    <!-- Optional JavaScript -->
+    <!-- jQuery first, then Bootstrap Bundle JS -->
+    <script src="/theme/js/jquery-3.3.1.slim.min.js"></script>
+    <script src="/theme/js/bootstrap.bundle.min.js"></script>
+  </body>
+</html>
