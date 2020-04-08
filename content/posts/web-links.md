@@ -31,6 +31,14 @@ This page has a collection of web links that I visit often.
 
 [Flask Extension Flask-Migrate Documentation](https://flask-migrate.readthedocs.io/en/latest/)
 
+[Flask Extension Flask-Mail Documentation](https://pythonhosted.org/Flask-Mail/)
+
+[Flask Extension Flask-Login Documentation](https://flask-login.readthedocs.io/en/latest/)
+
+
+### Python Language
+
+[Sphinx - Python Documentation Generator](https://www.sphinx-doc.org/en/master/)
 
 ### Javascript Language
 
@@ -51,6 +59,10 @@ This page has a collection of web links that I visit often.
 ### Markdown Reference
 
 [Markdown Cheatsheet on Github](https://github.com/adam-p/markdown-here/wiki/Markdown-Cheatsheet)
+
+[Markdown Basic Syntax on Markdownguid.com](https://www.markdownguide.org/basic-syntax/)
+
+
 
 
 
