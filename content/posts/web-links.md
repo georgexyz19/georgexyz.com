@@ -29,6 +29,8 @@ This page has a collection of web links that I visit often.
 
 [Flask Extension Flask-SQLAlchemy Documentaion](https://flask-sqlalchemy.palletsprojects.com/en/2.x/)
 
+[Flask Extension Flask-Migrate Documentation](https://flask-migrate.readthedocs.io/en/latest/)
+
 
 ### Javascript Language
 
