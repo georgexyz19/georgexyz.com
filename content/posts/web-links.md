@@ -85,6 +85,16 @@ This page has a collection of web links that I visit often.
 
 [Sphinx - Python Documentation Generator](https://www.sphinx-doc.org/en/master/)
 
+### Database
+
+[SQLAlchemy Documentation](https://docs.sqlalchemy.org/en/13/)
+
+[MySql Tutorial Website](https://www.mysqltutorial.org/)
+
+### Date and Time
+
+[For a Good Strftime](https://www.foragoodstrftime.com/)
+
 
 
 

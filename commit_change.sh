@@ -1,9 +1,9 @@
 #!/bin/bash
 
 # commit_change.sh : commit git changes for georgexyz.com
-# see stackoverflow question 6565357 to set git credential caching
-# $git config credential.helper store
-# $git push origin master
+# How to execute the script:
+# $pipenv shell
+# $source commit_change.sh "git commit message"
 
 # need pipenv installed
 # $pip install pipenv
