@@ -2,7 +2,7 @@ title: A Collection of Web Links
 slug: web-links
 meta: April 1 post 
 date: 2020-04-01 23:30
-modified: 2020-04-01 23:30
+modified: 2020-04-09 08:54
 tags: web development
 note: A short post on April 1, 2020
 no: 34
@@ -35,10 +35,29 @@ This page has a collection of web links that I visit often.
 
 [Flask Extension Flask-Login Documentation](https://flask-login.readthedocs.io/en/latest/)
 
+<hr>
+
+[Flask Tutorial by Corey Schafer on Youtube ](https://www.youtube.com/playlist?list=PL-osiE80TeTs4UjLw5MM6OjgkjFeUxCYH)
+
+[Flask Tutorial by Corey Schafer Source Code](https://github.com/CoreyMSchafer/code_snippets/tree/master/Python/Flask_Blog)
+
 
 ### Python Language
 
-[Sphinx - Python Documentation Generator](https://www.sphinx-doc.org/en/master/)
+[Automate The Boring Stuff with Python](https://automatetheboringstuff.com/)
+
+[Think Python](http://greenteapress.com/thinkpython2/html/index.html)
+
+[Python Quick Reference by Data School](https://nbviewer.jupyter.org/github/justmarkham/python-reference/blob/master/reference.ipynb)
+
+[Python built-ins worth learning](https://treyhunner.com/2019/05/python-builtins-worth-learning/)
+
+[Transforming Code into Beautiful, Idiomatic Python Youtube Video](https://youtu.be/OSGv2VnC0go)
+
+[Transforming Code into Beautiful, Idiomatic Python Code](https://github.com/JeffPaine/beautiful_idiomatic_python)
+
+[Google's Python Class](https://developers.google.com/edu/python/)
+
 
 ### Javascript Language
 
@@ -56,13 +75,15 @@ This page has a collection of web links that I visit often.
 [HTML & CSS Is Hard - Web Book](https://www.internetingishard.com/html-and-css/)
 
 
-### Markdown Reference
+### Markdown and RST Reference
 
 [Markdown Cheatsheet on Github](https://github.com/adam-p/markdown-here/wiki/Markdown-Cheatsheet)
 
 [Markdown Basic Syntax on Markdownguid.com](https://www.markdownguide.org/basic-syntax/)
 
+[reStructuredText Documentation](https://docutils.sourceforge.io/rst.html)
 
+[Sphinx - Python Documentation Generator](https://www.sphinx-doc.org/en/master/)
 
 
 
