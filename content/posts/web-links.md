@@ -85,6 +85,8 @@ This page has a collection of web links that I visit often.
 
 [Sphinx - Python Documentation Generator](https://www.sphinx-doc.org/en/master/)
 
+[Python Markdown Package](https://python-markdown.github.io/)
+
 ### Database
 
 [SQLAlchemy Documentation](https://docs.sqlalchemy.org/en/13/)

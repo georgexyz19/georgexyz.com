@@ -45,7 +45,7 @@ I found some interesting online documentation when searching for the topic.
 * This blog post 
 [Copy a Python Dict with Updates](https://www.ibisc.univ-evry.fr/~fpommereau/blog/2009-05-12-copy-a-python-dict-with-updates.html) 
 has an example of `copy` and `update` methods.
-* [This stackoverflow Q\&A](https://stackoverflow.com/questions/5551672/how-to-copy-a-dict-and-modify-it-in-one-line-of-code) 
+* [This stackoverflow Q&A](https://stackoverflow.com/questions/5551672/how-to-copy-a-dict-and-modify-it-in-one-line-of-code) 
 discusses the same problem
 * [This webpage](https://www.w3schools.com/python/python_ref_dictionary.asp) 
 on W3schools.com has a list of python dictionary methods. 
