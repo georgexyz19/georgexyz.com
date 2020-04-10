@@ -1,4 +1,4 @@
-title: What is RSS/ATOM Feed
+title: What is RSS/ATOM Feed?
 slug: rss-feed
 meta: Get to know what is RSS/ATOM Feed 
 date: 2020-04-10 9:27
@@ -25,3 +25,6 @@ websites I often visit and it works well. Most major websites have RSS feeds ava
 one website I visit often does not have one.  As for this personal blog site, I do not have 
 many updates and do not plan to provide RSS feeds. 
 
+<div style="max-width:800px">
+  <img class="img-fluid pb-3" src="/images/feedbro.png" alt="Feedbro Screenshot"> 
+</div>
