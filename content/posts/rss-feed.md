@@ -7,10 +7,10 @@ tags: web development
 note: A short post about RSS/ATOM Feed
 no: 35
 
-When I am reading 
-[Pelican Documention](https://docs.getpelican.com/en/4.2.0/themes.html#feeds), 
-it has a short section on ATOM/RSS feed.  I have seen RSS/ATOM feed links somewhere before, but never pay 
-much attention to them.  A Google search finds those two nice introduction articles. 
+The 
+[Pelican documention](https://docs.getpelican.com/en/4.2.0/themes.html#feeds), 
+has a short section on ATOM/RSS feed.  I have seen RSS/ATOM feed links somewhere before, but never paid 
+much attention to them.  A Google search finds these two nice introduction articles. 
 
 - [A Few Simple Benefits of Using An RSS Feed](https://www.business2community.com/blogging/a-few-simple-benefits-of-using-an-rss-feed-0144503)
 - [How to Subscribe to or Read an RSS Site Feed or an ATOM Feed](https://www.thesitewizard.com/faqs/howtoreadsitefeeds.shtml)

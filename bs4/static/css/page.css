@@ -74,3 +74,7 @@ blockquote > :last-child {
   color: #aaa;
 }
 
+
+.rounded-img {
+    border-radius: .5rem !important;
+  }
