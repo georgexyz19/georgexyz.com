@@ -29,10 +29,9 @@ LINKS = (('Pelican', 'http://getpelican.com/'),
 SOCIAL = (('You can add links in your config file', '#'),
           ('Another social link', '#'),)
 
-DEFAULT_PAGINATION = 10
 
 # Uncomment following line if you want document-relative URLs when developing
-#RELATIVE_URLS = True
+# RELATIVE_URLS = True
 
 # four directories under contents: images, files, posts, pages
 STATIC_PATHS = ['images', 'files', 'extra/CNAME']
@@ -60,8 +59,12 @@ AUTHORS_SAVE_AS = ''
 AUTHOR_URL = ''
 AUTHOR_SAVE_AS = ''
 
-DEFAULT_PAGINATION = 3
-INDEX_SAVE_AS = 'article-list.html'
+# DEFAULT_PAGINATION = 3
+INDEX_SAVE_AS = ''
 SUMMARY_MAX_LENGTH = 30
+
+# link to this file in base.html
+# work computer blocks archives.html web page
+ARCHIVES_SAVE_AS = 'articlelist.html'
 
 

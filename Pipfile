@@ -10,6 +10,8 @@ pelican = "*"
 markdown = "*"
 invoke = "*"
 ghp-import2 = "*"
+livereload = "*"
+typogrify = "*"
 
 [requires]
 python_version = "3.7"
