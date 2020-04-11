@@ -14,7 +14,7 @@
     <meta name="author" content="George Zhang" />
     <meta name="keywords" content="flask,books" />
     <meta name="description" content="This static blog site started on Github one year ago on April 1, 2009. It has been one year, and it is going better than I originally planned. The most …" />
-    <title>Two Flask Books by Miguel Grinberg - George Zhang</title>
+    <title>Two Flask Books by Miguel Grinberg - George Zhang</title>
   </head>
   <body>
     <!-- navbar -->
@@ -63,7 +63,7 @@
   <div class="row">
     <div class="col-lg-8 mx-auto">   
 
-  <h2>Two Flask Books by Miguel Grinberg</h2>
+  <h2>Two Flask Books by Miguel&nbsp;Grinberg</h2>
   
   <div class="text-muted mb-2">
     <span>Posted on </span>
@@ -79,12 +79,12 @@
   <p>This static blog site started on Github one year ago on April 1, 2009. 
 It has been one year, and it is going better than I originally planned. 
 The most frequent visitor of the site is most likely myself, and the site 
-serves as an online notepad for myself. </p>
+serves as an online notepad for&nbsp;myself. </p>
 <p>I recently finished reading two Flask books by Miguel Grinberg.  The first 
 one is <em>Flask Web Development - Developing Web Applications with Python</em>, and 
 the second book is <a href="https://blog.miguelgrinberg.com/post/the-flask-mega-tutorial-part-i-hello-world">The new and Improved Flask Mega Tutorial</a>. 
 Both books are fantastic. They are better than every Django book I have read, and they are 
-definitely among the top programming books. </p>
+definitely among the top programming&nbsp;books. </p>
 <div style="max-width:400px">
   <img class="img-fluid pb-3" src="/images/flask-books.jpg" alt="Flask books"> 
 </div>
@@ -103,7 +103,7 @@ $ flask run
 </code></pre></div>
 
 
-<p>The <code>setup.sh</code> file sets two environment variables. </p>
+<p>The <code>setup.sh</code> file sets two environment&nbsp;variables. </p>
 <div class="highlight"><pre><span></span><code><span class="nb">export</span> <span class="nv">FLASK_APP</span><span class="o">=</span>flasky.py
 <span class="nb">export</span> <span class="nv">FLASK_DEBUG</span><span class="o">=</span><span class="m">1</span>
 <span class="nb">echo</span> <span class="s2">&quot;setup FLASK_APP and FLASK_DEBUG&quot;</span>
@@ -114,13 +114,12 @@ $ flask run
 the configuration for the email smtp server is not complete. It is 
 easier to setup a local smtp testing server than setup email accounts. 
 Open a new terminal window and type the command below. The command 
-invokes a standard python module smtpd and starts a debugging email 
-server. </p>
+invokes a standard python module smtpd and starts a debugging email&nbsp;server. </p>
 <div class="highlight"><pre><span></span><code>$python -m smtpd -n -c DebuggingServer localhost:8025
 </code></pre></div>
 
 
-<p>In the <code>config.py</code> file, add three lines to the DevelopmentConfig section.</p>
+<p>In the <code>config.py</code> file, add three lines to the DevelopmentConfig&nbsp;section.</p>
 <div class="highlight"><pre><span></span><code>class DevelopmentConfig(Config):
     DEBUG = True
     SQLALCHEMY_DATABASE_URI = os.environ.get(&#39;DEV_DATABASE_URL&#39;) or \
@@ -132,7 +131,7 @@ server. </p>
 
 
 <p>You also need to initialize database when running the code base after 
-Chapter 9 and Chapter 12. The commands are shown below. </p>
+Chapter 9 and Chapter 12. The commands are shown&nbsp;below. </p>
 <div class="highlight"><pre><span></span><code>$ flask shell
 &gt;&gt;&gt; Role.insert_roles()
 &gt;&gt;&gt; User.add_self_follows()

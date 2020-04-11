@@ -14,7 +14,7 @@
     <meta name="author" content="George Zhang" />
     <meta name="keywords" content="python" />
     <meta name="description" content="I am working on a personal project putting my OpenSignTool Inkscape python extension app online. I plan to wrap the python code into a Flask web app and make the …" />
-    <title>Convert Python 2 Code to Python 3 - George Zhang</title>
+    <title>Convert Python 2 Code to Python 3 - George Zhang</title>
   </head>
   <body>
     <!-- navbar -->
@@ -63,7 +63,7 @@
   <div class="row">
     <div class="col-lg-8 mx-auto">   
 
-  <h2>Convert Python 2 Code to Python 3</h2>
+  <h2>Convert Python 2 Code to Python&nbsp;3</h2>
   
   <div class="text-muted mb-2">
     <span>Posted on </span>
@@ -77,11 +77,11 @@
       
   <p>I am working on a personal project putting my OpenSignTool Inkscape 
 python extension app online.  I plan to wrap the python code into 
-a Flask web app and make the code run on a web server. </p>
+a Flask web app and make the code run on a web&nbsp;server. </p>
 <p>The extension app is written in Summer 2018 and mostly python 3 ready. 
 However, they depend on several existing Inkscape extension modules. 
 Those are all python 2 code written years ago by others. Specifically, 
-the extension code depends on 6 python modules. These are </p>
+the extension code depends on 6 python modules. These&nbsp;are </p>
 <ul>
 <li>simplestyle.py</li>
 <li>simplepath.py</li>
@@ -93,26 +93,25 @@ the extension code depends on 6 python modules. These are </p>
 <p>Originally I plan to test my app in python 3.7 and fix any errors 
 that pop up. I work on fixing the code for one hour or two, and 
 find that this approach is too timing consuming even for a small 
-code base of a few hundred lines of code.</p>
+code base of a few hundred lines of&nbsp;code.</p>
 <p>A little Google search finds that Python standard library includes a
 2to3 tool that can do the job automatically. 
 <a href="https://docs.python.org/3.8/library/2to3.html">The documenation</a> is 
 pretty straightforward. This is the command I used to convert all python 
-files in the current directory. </p>
+files in the current&nbsp;directory. </p>
 <div class="highlight"><pre><span></span><code>$2to3 -o ../dev_py3 -W -n ./
 </code></pre></div>
 
 
 <p>The option <code>-o</code> is to specify the output directory, <code>-W</code> is for 
-writing files even not changed, and <code>-n</code> means that backups are not 
-needed. </p>
+writing files even not changed, and <code>-n</code> means that backups are not&nbsp;needed. </p>
 <p>The tool is very useful, and it can figure out almost all changes. The 
 place the tool has trouble figuring out is string encoding.  I change 
 a few places that involve string encoding, and the program runs 
-perfectly in Python 3. </p>
+perfectly in Python&nbsp;3. </p>
 <p>The Inkscape project is upgrading the extension system to be Python 3 
 compatible.  <a href="https://gitlab.com/inkscape/extensions">The new extension python code</a> 
-are available online. </p>
+are available&nbsp;online. </p>
 
     </div>
   </div>

@@ -13,8 +13,8 @@
     <link rel="stylesheet" href="/theme/css/custom.css">
     <meta name="author" content="George Zhang" />
     <meta name="keywords" content="python,flask" />
-    <meta name="description" content="I am reading Miguel Grinberg&#39;s Flask Mega Tutorial and Flask Web Development book and converting OpenSignTool to a flask app. The Click package is one of the tools created by …" />
-    <title>Click Python Package - George Zhang</title>
+    <meta name="description" content="I am reading Miguel Grinberg’s Flask Mega Tutorial and Flask Web Development book and converting OpenSignTool to a flask app. The Click package is one of the tools created …" />
+    <title>Click Python Package - George Zhang</title>
   </head>
   <body>
     <!-- navbar -->
@@ -63,7 +63,7 @@
   <div class="row">
     <div class="col-lg-8 mx-auto">   
 
-  <h2>Click Python Package</h2>
+  <h2>Click Python&nbsp;Package</h2>
   
   <div class="text-muted mb-2">
     <span>Posted on </span>
@@ -76,23 +76,23 @@
 /       <a href="/tag/flask.html">flask</a>
   </div>
       
-  <p>I am reading Miguel Grinberg's 
+  <p>I am reading Miguel Grinberg&#8217;s 
 <a href="https://blog.miguelgrinberg.com/post/the-flask-mega-tutorial-part-i-hello-world">Flask Mega Tutorial</a> 
 and <em>Flask Web Development</em> book and converting OpenSignTool to a flask app. The 
 <a href="https://click.palletsprojects.com/en/7.x/">Click package</a> is one of the
 tools created by Armin Ronacher and used by many developers as a standalone 
 python package. I decided to read the Click documentation and build a 
-simple command line interface for OpenSignTool. </p>
-<p>I found several resources to learn Click:</p>
+simple command line interface for&nbsp;OpenSignTool. </p>
+<p>I found several resources to learn&nbsp;Click:</p>
 <ol>
 <li><a href="https://youtu.be/kNke39OZ2k0">Youtube Tutorial Video by Armin</a>. Armin speaks
-fast, and I find 0.75 play speed is good for me. The video content is very good. </li>
+fast, and I find 0.75 play speed is good for me. The video content is very&nbsp;good. </li>
 <li><a href="https://dbader.org/blog/python-commandline-tools-with-click">Writing Python Command-Line Tools With Click</a>. 
-Seb Vetter wrote two articles about Click on dbader.org.  This is the first one.</li>
+Seb Vetter wrote two articles about Click on dbader.org.  This is the first&nbsp;one.</li>
 <li><a href="https://dbader.org/blog/mastering-click-advanced-python-command-line-apps">Mastering Click: Writing Advanced Python Command Line Apps</a>. 
-This is Seb Vetter's second article on dbader.org. Both articles are fantastic. </li>
+This is Seb Vetter&#8217;s second article on dbader.org. Both articles are&nbsp;fantastic. </li>
 </ol>
-<p>Here is what I come up with, </p>
+<p>Here is what I come up&nbsp;with, </p>
 <div class="highlight"><pre><span></span><code><span class="c1"># signtool_cli.py</span>
 
 <span class="nd">@click</span><span class="o">.</span><span class="n">command</span><span class="p">()</span>
@@ -118,7 +118,7 @@ This is Seb Vetter's second article on dbader.org. Both articles are fantastic. 
 </code></pre></div>
 
 
-<p>This is the help message and command to run the app. </p>
+<p>This is the help message and command to run the&nbsp;app. </p>
 <div class="highlight"><pre><span></span><code>(dev_cli) george@STK2M3:~/dev_cli$ python signtool_cli.py --help
 Usage: signtool_cli.py [OPTIONS] FILENAME [OUTPUT_FILENAME]
 
@@ -133,7 +133,7 @@ Write the file to R2-1.svg
 
 
 <p>I also created a second python file to read all files under a directory and 
-write results to another directory. </p>
+write results to another&nbsp;directory. </p>
 <div class="highlight"><pre><span></span><code><span class="c1"># signtool_dir.py</span>
 
 <span class="nd">@click</span><span class="o">.</span><span class="n">command</span><span class="p">()</span>
@@ -163,7 +163,7 @@ write results to another directory. </p>
 </code></pre></div>
 
 
-<p>Here is how to call this Click app.</p>
+<p>Here is how to call this Click&nbsp;app.</p>
 <div class="highlight"><pre><span></span><code>(dev_cli) george@STK2M3:~/dev_cli$ python signtool_dir.py --help
 Usage: signtool_dir.py [OPTIONS] INPUT_DIR [OUTPUT_DIR]
 

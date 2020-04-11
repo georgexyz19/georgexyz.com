@@ -14,7 +14,7 @@
     <meta name="author" content="George Zhang" />
     <meta name="keywords" content="pelican,bootstrap" />
     <meta name="description" content="This website is created with Pelican and Bootstrap, both of which are open-source software. When I am learning Django web framework, I want to create a blog site to write …" />
-    <title>Create Static Website With Pelican And Bootstrap - George Zhang</title>
+    <title>Create Static Website With Pelican And Bootstrap - George Zhang</title>
   </head>
   <body>
     <!-- navbar -->
@@ -63,7 +63,7 @@
   <div class="row">
     <div class="col-lg-8 mx-auto">   
 
-  <h2>Create Static Website With Pelican And Bootstrap</h2>
+  <h2>Create Static Website With Pelican And&nbsp;Bootstrap</h2>
   
   <div class="text-muted mb-2">
     <span>Posted on </span>
@@ -82,7 +82,7 @@ write down some notes. A blog site with 50-500 articles does not need full scale
 Django back-end. My original plan is to write some python scripts calling Django Template 
 system and python Markdown package.  Then I find Pelican which includes
 Jinja2 Template system, Markdown, and many other functions.  It does what 
-I want to do and much more. </p>
+I want to do and much&nbsp;more. </p>
 <h3>Pelican</h3>
 <p>Pelican is a static website generator written in Python. When a web server is running Django or Flask 
 framework, the server creates an html page and sends it back to client 
@@ -90,19 +90,19 @@ as the response to a request. If a developer chooses a static site generator lik
 Pelican, html pages are created during development.  When a web request comes
 to a server, the serve fetches pre-generated static html page and sends it back. 
 The response cycle is simpler and faster.  The drawback is that the website is static. 
-It does not receive or collect input from a user. </p>
+It does not receive or collect input from a&nbsp;user. </p>
 <p>This <a href="https://www.fullstackpython.com/blog/generating-static-websites-pelican-jinja2-markdown.html">full stack python article</a> 
 is an excellent tutorial on Pelican. 
 <a href="https://docs.getpelican.com/en/stable/">The Pelican documentation</a> 
 site is a good reference. The fast way to learn Pelican is to look at code of 
-two included themes "simple" and "notmyidea".  To get started, you can 
+two included themes &#8220;simple&#8221; and &#8220;notmyidea&#8221;.  To get started, you can 
 write a few blog posts in markdown format and utilize the built-in theme 
-"simple" to generate a site. The markdown guide website has 
+&#8220;simple&#8221; to generate a site. The markdown guide website has 
 <a href="https://www.markdownguide.org/basic-syntax/">a nice summary of basic syntax</a>. </p>
 <p>The figure below roughly describes how pelican works. Pelican reads markdown files and 
 theme files into memory and produces html pages.  The theme files work as templates for html output. 
 Some theme files correspond to multiple outputs, while others only relate to 
-one output file. </p>
+one output&nbsp;file. </p>
 <div style="max-width:800px">
   <img class="img-fluid" src="/images/pelican-bootstrap/img-pelican-work.svg" alt="How Pelican Work"> 
 </div>
@@ -110,29 +110,29 @@ one output file. </p>
 <p><a href="https://github.com/getpelican/pelican/tree/4.0.1/pelican">The Pelican source code</a>
 consists of 14 python files (version 4.0.1).  The source files has 5,670 lines of 
 code. It is a good median size code base to study if you are looking for python 
-project to work on. I have not read all pelican source code yet. </p>
+project to work on. I have not read all pelican source code&nbsp;yet. </p>
 <div class="highlight"><pre><span></span><code># bash command to tally pelican source code lines
 find . -maxdepth 1 -name &#39;*.py&#39; -exec wc -l &#39;{}&#39; +
 </code></pre></div>
 
 
-<h3>Bootstrap 4</h3>
+<h3>Bootstrap&nbsp;4</h3>
 <p>There is an excellent 
 <a href="https://github.com/getpelican/pelican-themes/tree/master/pelican-bootstrap3"><em>pelican-bootstrap3</em></a> 
 theme in the pelican-themes repo.  The original author of the theme did a nice work
-of including lots of bootstrap features into the theme. </p>
+of including lots of bootstrap features into the&nbsp;theme. </p>
 <p>Bootstrap 4 has been released for a while, so I decide to use Bootstrap 4 and create a theme 
 for this website. Whenever I am not sure about a certain pelican theme feature, 
-I check the code of the "pelican-bootstrap3" and start from there. </p>
+I check the code of the &#8220;pelican-bootstrap3&#8221; and start from&nbsp;there. </p>
 <p>Another nice pelican theme is 
 <a href="https://github.com/pR0Ps/pelican-subtle"><em>pelican-subtle</em></a>. 
 The Markdown code style on this website is copied from pelican-subtle. I also read the 
-code of this theme to get a better understanding on how pelican and pelican theme work. </p>
+code of this theme to get a better understanding on how pelican and pelican theme&nbsp;work. </p>
 <p>I changed the Bootstrap 4 default colors on the 
 <a href="https://bootstrap.build/">bootstrap.build webiste</a>. Another website has a 
 <a href="https://hackerthemes.com/kit/">Bootstrap theme kit</a> if you want to customize 
-Bootstrap locally.</p>
-<p>The theme of this website has the following color variables:</p>
+Bootstrap&nbsp;locally.</p>
+<p>The theme of this website has the following color&nbsp;variables:</p>
 <div class="highlight"><pre><span></span><code><span class="c1">// _variables.scss </span>
 <span class="nv">$blue</span><span class="o">:</span> <span class="mh">#990000</span><span class="p">;</span>
 <span class="nv">$green</span><span class="o">:</span> <span class="mh">#720027</span><span class="p">;</span>
@@ -153,19 +153,19 @@ Bootstrap locally.</p>
 
 <p>The pelican-theme github repo collects many themes.  However, it seems to me that
 few of them are of professional quality. The possible reason is that most 
-themes are produced by hobbyists during spare time. </p>
+themes are produced by hobbyists during spare&nbsp;time. </p>
 <p>The three images on the homepage are downloaded from 
 <a href="https://www.pexels.com/">pexels.com</a>, 
 which is a very nice website for free photos. The icons on the Projects page are from 
-<a href="https://pixabay.com/">pixabay.com</a>, and are modified with GIMP. The favicon is 
+<a href="https://pixabay.com/">pixabay.com</a>, and are modified with <span class="caps">GIMP</span>. The favicon is 
 generated and downloaded from <a href="https://favicon.io/">favicon.io website</a>. </p>
-<h3>Invoke Package</h3>
+<h3>Invoke&nbsp;Package</h3>
 <p><a href="http://docs.pyinvoke.org/en/1.2/getting-started.html">Invoke package</a>
-"is a Python task execution tool and library". It is similar to GNU 
+&#8220;is a Python task execution tool and library&#8221;. It is similar to <span class="caps">GNU</span> 
 Make program, but the script tasks.py is written in Python.  The tasks.py 
-file is an equivalent of Makefile for GNU Make. </p>
+file is an equivalent of Makefile for <span class="caps">GNU</span>&nbsp;Make. </p>
 <p>I usually install Invoke package along with pelican and Markdown packages in a
-python virtual environment. </p>
+python virtual&nbsp;environment. </p>
 <div class="highlight"><pre><span></span><code><span class="n">python</span> <span class="o">-</span><span class="n">m</span> <span class="n">venv</span> <span class="o">~/.</span><span class="n">venv</span><span class="o">/</span><span class="n">pelican</span>
 <span class="n">source</span> <span class="o">~/</span><span class="n">venv</span><span class="o">/</span><span class="n">pelican</span><span class="o">/</span><span class="nb">bin</span><span class="o">/</span><span class="n">activate</span>
 <span class="n">pip</span> <span class="n">install</span> <span class="n">pelican</span> <span class="n">Markdown</span> <span class="n">invoke</span> <span class="n">ghp</span><span class="o">-</span><span class="n">import2</span>
@@ -180,7 +180,7 @@ website at <code>http://localhost:8000</code> address. </p>
 </code></pre></div>
 
 
-<h3>Website Source Code</h3>
+<h3>Website Source&nbsp;Code</h3>
 <p>This website is hosted in Github Pages, which is a free service for static sites. 
 Source code of this website including markdown files and bootstrap 4 theme files 
 are available in this 
@@ -188,8 +188,8 @@ are available in this
 The gh-pages branch of the same repository contains generated html files of the website. 
 I followed 
 <a href="https://docs.getpelican.com/en/stable/tips.html#publishing-to-github">this pelican documentation page</a>
-and utilized ghp-import python package to streamline the publication process. </p>
-<p>I use the following commands to update posts and github repo. </p>
+and utilized ghp-import python package to streamline the publication&nbsp;process. </p>
+<p>I use the following commands to update posts and github&nbsp;repo. </p>
 <div class="highlight"><pre><span></span><code>source venv.sh  # load virtual env
 invoke clean build
 git status
@@ -203,14 +203,14 @@ git push origin gh-pages
 
 
 <p><a href="https://gist.github.com/jedmao/5053440">This github page</a> 
-has a nice summary of common github commands. </p>
-<h3>Future Blog Plan</h3>
+has a nice summary of common github&nbsp;commands. </p>
+<h3>Future Blog&nbsp;Plan</h3>
 <p>My future plan for the blog is to write about one post per month.  That comes 
 to about 12 posts per year.  My goal is to write at least 6 posts per year 
 even I am busy at work.  Another goal is to keep the blog running for at 
-least 10 years, so we will see if the site has 60 posts in the year 2029. </p>
+least 10 years, so we will see if the site has 60 posts in the year&nbsp;2029. </p>
 <p>This site does not track who is reading or visiting. It does not have 
-Google Analytics or similar services to track users. </p>
+Google Analytics or similar services to track&nbsp;users. </p>
 
     </div>
   </div>

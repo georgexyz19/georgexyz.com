@@ -13,8 +13,8 @@
     <link rel="stylesheet" href="/theme/css/custom.css">
     <meta name="author" content="George Zhang" />
     <meta name="keywords" content="django" />
-    <meta name="description" content="Django messages app is used to &#34;display one-time notification message to the user after processing a form or some other types of user input.&#34; Django official documentation has a page …" />
-    <title>Django Messages Contrib App - George Zhang</title>
+    <meta name="description" content="Django messages app is used to “display one-time notification message to the user after processing a form or some other types of user input.” Django official documentation has a page …" />
+    <title>Django Messages Contrib App - George Zhang</title>
   </head>
   <body>
     <!-- navbar -->
@@ -63,7 +63,7 @@
   <div class="row">
     <div class="col-lg-8 mx-auto">   
 
-  <h2>Django Messages Contrib App</h2>
+  <h2>Django Messages Contrib&nbsp;App</h2>
   
   <div class="text-muted mb-2">
     <span>Posted on </span>
@@ -75,16 +75,16 @@
        <a href="/tag/django.html">django</a>
   </div>
       
-  <p>Django messages app is used to "display one-time notification message to the 
-user after processing a form or some other types of user input." Django 
+  <p>Django messages app is used to &#8220;display one-time notification message to the 
+user after processing a form or some other types of user input.&#8221; Django 
 official documentation has a page 
 <a href="https://docs.djangoproject.com/en/2.2/ref/contrib/messages/">the messages framework</a> 
-for the app. </p>
-<h3>How to Use Messages App</h3>
+for the&nbsp;app. </p>
+<h3>How to Use Messages&nbsp;App</h3>
 <p>Chapter 11 of <em>Django Unleashed</em> book utilizes the app to convey a message 
 that an email has been successfully sent. The code is easy to understand. 
 The view adds a success message to the message queue. The next web page 
-(redirected page <code>blog_post_list</code>) will show the message.</p>
+(redirected page <code>blog_post_list</code>) will show the&nbsp;message.</p>
 <div class="highlight"><pre><span></span><code><span class="c1"># contact/views.py</span>
 
 <span class="o">...</span>
@@ -106,7 +106,7 @@ The view adds a success message to the message queue. The next web page
 
 
 <p>The code to show the messages is in the base.html file, and all web pages 
-extended from the base.html will show the messages. </p>
+extended from the base.html will show the&nbsp;messages. </p>
 <div class="highlight"><pre><span></span><code><span class="p">&lt;</span><span class="nt">ul</span><span class="p">&gt;</span>
   {% for message in messages %}
     {% if message.tags %}
@@ -121,7 +121,7 @@ extended from the base.html will show the messages. </p>
 
 
 <p>The code above is very similar to the code shown on the Django official 
-documentation page (shown below). </p>
+documentation page (shown&nbsp;below). </p>
 <div class="highlight"><pre><span></span><code>{% if messages %}
 &lt;ul class=&quot;messages&quot;&gt;
     {% for message in messages %}
@@ -133,9 +133,9 @@ documentation page (shown below). </p>
 </code></pre></div>
 
 
-<h3>Source Code Files</h3>
+<h3>Source Code&nbsp;Files</h3>
 <p>The source code for the messages app is in the django/contrib/messages directory. 
-It consists of 13 python files, and the total line count is 647 in Django 2.2.2.</p>
+It consists of 13 python files, and the total line count is 647 in Django&nbsp;2.2.2.</p>
 <div class="highlight"><pre><span></span><code>george@STK2M3:~$ find . -name <span class="s1">&#39;*.py&#39;</span> -exec wc -l <span class="o">{}</span> +
    <span class="m">26</span> ./middleware.py
     <span class="m">4</span> ./__init__.py
@@ -154,19 +154,18 @@ It consists of 13 python files, and the total line count is 647 in Django 2.2.2.
 </code></pre></div>
 
 
-<h3>Messages App API</h3>
+<h3>Messages App <span class="caps">API</span></h3>
 <p>The __init__.py file imports all from api.py and constants.py. The api.py 
-file defines the API of the messages app, which includes those functions:</p>
+file defines the <span class="caps">API</span> of the messages app, which includes those&nbsp;functions:</p>
 <ul>
 <li>add_message</li>
 <li>get_message</li>
 <li>get_level</li>
 <li>set_level</li>
-<li>debug, info, warning, success, and error (call add_message)</li>
+<li>debug, info, warning, success, and error (call&nbsp;add_message)</li>
 </ul>
-<p>The functions shows that the attribute <code>_message</code> of request is the message 
-storage.</p>
-<p>The constants.py defines a few constants:</p>
+<p>The functions shows that the attribute <code>_message</code> of request is the message&nbsp;storage.</p>
+<p>The constants.py defines a few&nbsp;constants:</p>
 <div class="highlight"><pre><span></span><code><span class="c1"># messages/constants.py</span>
 
 <span class="n">DEBUG</span> <span class="o">=</span> <span class="mi">10</span>
@@ -198,7 +197,7 @@ Django. The class derives from MiddlewareMixin and defines two methods
 <code>process_request</code> and <code>process_response</code>.  The <code>process_request</code> adds 
 <code>_messages</code> attribute to the request and <code>process_response</code> stores the messages 
 by calling <code>update</code> method of <code>_message</code> and raises an exception if messages 
-are not all stored.</p>
+are not all&nbsp;stored.</p>
 <div class="highlight"><pre><span></span><code><span class="c1"># messages/middleware.py</span>
 
 <span class="kn">from</span> <span class="nn">django.conf</span> <span class="kn">import</span> <span class="n">settings</span>
@@ -231,7 +230,7 @@ are not all stored.</p>
 
 
 <p>The context_processor.py defines a function <code>messages</code> which simply returns a 
-dictionary of two context variables.</p>
+dictionary of two context&nbsp;variables.</p>
 <div class="highlight"><pre><span></span><code><span class="c1"># messages/context_processor.py </span>
 
 <span class="kn">from</span> <span class="nn">django.contrib.messages.api</span> <span class="kn">import</span> <span class="n">get_messages</span>
@@ -252,10 +251,10 @@ dictionary of two context variables.</p>
 
 <p>The <code>views.py</code> defines a SuccessMessageMixin, which adds a success message 
 attribute to class based views. It is probably easier for a programmer 
-to call <code>success</code> API method directly to add a message. </p>
+to call <code>success</code> <span class="caps">API</span> method directly to add a&nbsp;message. </p>
 <p>The <code>utils.py</code> file defines a <code>get_level_tags</code> function which returns a 
-dictionary of level tags. </p>
-<h3>Messages Backend Storage</h3>
+dictionary of level&nbsp;tags. </p>
+<h3>Messages Backend&nbsp;Storage</h3>
 <p>The interesting part of the messages app is its storage. The __init__.py in 
 the storage defines a <code>default_storage</code> function. </p>
 <div class="highlight"><pre><span></span><code><span class="c1"># messages/storage/__init__.py</span>
@@ -276,7 +275,7 @@ the storage defines a <code>default_storage</code> function. </p>
 
 
 <p>The grep command results show that <code>MESSAGE_STORAGE</code> is assigned FallBackStorage 
-class which is defined in the fallback.py file. </p>
+class which is defined in the fallback.py&nbsp;file. </p>
 <div class="highlight"><pre><span></span><code>george@STK2M3:~/Desktop/django-2.2.2$ grep -nr &#39;MESSAGE_STORAGE&#39; ./
 ./django/contrib/messages/storage/__init__.py:9: 
    This isn&#39;t just default_storage = import_string(settings.MESSAGE_STORAGE)
@@ -288,41 +287,41 @@ class which is defined in the fallback.py file. </p>
 
 
 <p>The <code>import_string</code> function is defined in the module_loading.py file, which 
-"imports a dotted module path and return the attribute/class designated by the 
-last name in the path."</p>
+&#8220;imports a dotted module path and return the attribute/class designated by the 
+last name in the&nbsp;path.&#8221;</p>
 <p>The base.py file defines Message class, which has three attributes: 
 level, message, and extra_tags. It also defines BaseStorage class, 
 which is an abstraction of messages storage.  Two methods of the class <code>_get</code> 
-and <code>_store</code> are placeholders and they must be overridden. </p>
+and <code>_store</code> are placeholders and they must be&nbsp;overridden. </p>
 <p>To understand code in the BaseStorage class, we need to think about 
 how an object of Message class is instantiated, stored, and retrieved. Here are 
-the steps in which methods in BaseStorage are called. </p>
+the steps in which methods in BaseStorage are&nbsp;called. </p>
 <ol>
 <li>A request comes to Django. Messages middleware initializes a default_storage
-   backend and assigns it to the <code>_messages</code> attribute of request.</li>
-<li>The <code>add_message</code> method of message API is called. It calls the add method in 
+   backend and assigns it to the <code>_messages</code> attribute of&nbsp;request.</li>
+<li>The <code>add_message</code> method of message <span class="caps">API</span> is called. It calls the add method in 
    BaseStorage, which changes <code>added_new</code> attribute to <code>True</code> and append the 
    message into the <code>_queued_messages</code> list. </li>
 <li>If the view function does not call the template render function, the 
-   <code>__iter__</code> method of BaseStorage is not called.</li>
+   <code>__iter__</code> method of BaseStorage is not&nbsp;called.</li>
 <li>The <code>process_response</code> method of middleware class calls <code>update</code> method of 
-   BaseStorage, which stores unread messages. Let's assume messages are saved 
-   in a cookie (session works in a similar way). They are stored in client's 
-   browser storage, not on the server. </li>
-<li>A new request comes in, Django does the same as step 1.</li>
+   BaseStorage, which stores unread messages. Let&#8217;s assume messages are saved 
+   in a cookie (session works in a similar way). They are stored in client&#8217;s 
+   browser storage, not on the&nbsp;server. </li>
+<li>A new request comes in, Django does the same as step&nbsp;1.</li>
 <li>The view function calls the template <code>render</code> method, which calls the 
    <code>__iter__</code> method of BaseStorage.  It changes <code>used</code> attribute to <code>True</code>. 
    The <code>_queued_messages</code> is empty at this time, and it is not the 
    same object described in step 2. It then calls <code>_loaded_messages</code> property 
    and calls <code>_get</code> method to retrieve the stored message. All cookies from 
-   this domain will be uploaded to the server. </li>
+   this domain will be uploaded to the&nbsp;server. </li>
 <li>The <code>process_response</code> method of middleware class calls <code>update</code> method 
    of BaseStorage. In this case the <code>_queued_messages</code> list is empty, and 
-   nothing is stored. </li>
+   nothing is&nbsp;stored. </li>
 </ol>
 <p>The logic in the <code>update</code> method of BaseStorage is smart. If two consecutive 
 requests add two messages without displaying them, both messages will be 
-stored. Here is the source code. </p>
+stored. Here is the source&nbsp;code. </p>
 <div class="highlight"><pre><span></span><code><span class="c1"># update method of BaseStorage class</span>
 <span class="k">def</span> <span class="nf">update</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">response</span><span class="p">):</span>
     <span class="sd">&quot;&quot;&quot;</span>
@@ -340,16 +339,16 @@ stored. Here is the source code. </p>
 </code></pre></div>
 
 
-<h3>Cookies and Sessions</h3>
+<h3>Cookies and&nbsp;Sessions</h3>
 <p>The discussion of the messages app has already became convoluted, and it will 
 become even more complicated when we examine how cookies and sessions work. 
 I will have a general dicussion on cookies and sessions and stop here.  It will 
 be in another post to have a detailed discussion of those topics. Tango with 
 Django book has 
 <a href="https://www.tangowithdjango.com/book17/chapters/cookie.html">a chapter on cookies and sessions</a> 
-which is very good. </p>
-<p>Internet cookies is "a small piece of data sent from a web server and stored 
-on the user's computer".  The 
+which is very&nbsp;good. </p>
+<p>Internet cookies is &#8220;a small piece of data sent from a web server and stored 
+on the user&#8217;s computer&#8221;.  The 
 <a href="https://en.wikipedia.org/wiki/HTTP_cookie">wikipedia http cookie page</a> 
 provides a good overview of the topic. The cookie information is sent via the 
 http header, which usually has a size limit. The session cookie 
@@ -359,7 +358,7 @@ to the
 <a href="https://docs.djangoproject.com/en/2.2/topics/http/sessions/">official documentation</a>. </p>
 <p>The SessionStorage class does not need to consider the size limit when saving 
 messages, so the code is simpler than in CookieStorage class.  Here is the 
-source code of session.py file. </p>
+source code of session.py&nbsp;file. </p>
 <div class="highlight"><pre><span></span><code><span class="c1"># messages/storage/session.py</span>
 <span class="kn">import</span> <span class="nn">json</span>
 
@@ -415,7 +414,7 @@ source code of session.py file. </p>
 <h3>Conclusion</h3>
 <p>The messages app is easy to use in a Django app, but the implementation of 
 the app is not simple.  Reading the source code helps us understand how the 
-Django messages app works.   </p>
+Django messages app&nbsp;works.   </p>
 
     </div>
   </div>

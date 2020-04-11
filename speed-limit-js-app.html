@@ -13,8 +13,8 @@
     <link rel="stylesheet" href="/theme/css/custom.css">
     <meta name="author" content="George Zhang" />
     <meta name="keywords" content="web development,javascript" />
-    <meta name="description" content="I am reading Eloquent Javascript book by Marijn Haverbeke. It is a fantastic book, and some people describe it as &#34;a work of art&#34;. It is probably the best programming …" />
-    <title>Javascript App - Speed Limit - George Zhang</title>
+    <meta name="description" content="I am reading Eloquent Javascript book by Marijn Haverbeke. It is a fantastic book, and some people describe it as “a work of art”. It is probably the best programming …" />
+    <title>Javascript App - Speed Limit - George Zhang</title>
   </head>
   <body>
     <!-- navbar -->
@@ -63,7 +63,7 @@
   <div class="row">
     <div class="col-lg-8 mx-auto">   
 
-  <h2>Javascript App - Speed Limit</h2>
+  <h2>Javascript App - Speed&nbsp;Limit</h2>
   
   <div class="text-muted mb-2">
     <span>Posted on </span>
@@ -78,20 +78,20 @@
       
   <p>I am reading <a href="https://eloquentjavascript.net/">Eloquent Javascript</a> book by
 Marijn Haverbeke.  It is a fantastic book, and some people describe it as 
-"a work of art".  It is probably the best programming book I recently read. 
-The whole book is freely available on the website in HTML and PDF formats. </p>
+&#8220;a work of art&#8221;.  It is probably the best programming book I recently read. 
+The whole book is freely available on the website in <span class="caps">HTML</span> and <span class="caps">PDF</span>&nbsp;formats. </p>
 <p>Here is a quote at the beginning of Chapter 1 written by the author. It 
-reads more like a poem rather than a sentence from a programming book. </p>
+reads more like a poem rather than a sentence from a programming&nbsp;book. </p>
 <blockquote>
 <p>Below the surface of the machine, the program moves. Without effort, it 
 expands and contracts. In great harmony, electrons scatter and regroup.
 The forms on the monitor are but ripples on the water. The essence stays 
-invisibly below. - Master Yuan-Ma, The Book of Programming</p>
+invisibly below. - Master Yuan-Ma, The Book of&nbsp;Programming</p>
 </blockquote>
-<p>When I am reading Chapter 18 <em>HTTP and Forms</em>, I find that I can easily 
+<p>When I am reading Chapter 18 <em><span class="caps">HTTP</span> and Forms</em>, I find that I can easily 
 write a javascript app showing a speed limit sign.  The speed limit is 
-controlled by an option in a dropdown control. </p>
-<h4>Speed Limit Sign App</h4>
+controlled by an option in a dropdown&nbsp;control. </p>
+<h4>Speed Limit Sign&nbsp;App</h4>
 <div class="w-50">
         <svg xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:cc="http://creativecommons.org/ns#"
             xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#" xmlns:svg="http://www.w3.org/2000/svg"
@@ -395,23 +395,23 @@ controlled by an option in a dropdown control. </p>
 <div>
     <p>Select Speed Limit:
         <select name="speed" id="speedSelector">
-            <option value="L5">5 MPH</option>
-            <option value="L10">10 MPH</option>
-            <option value="L15">15 MPH</option>
-            <option value="L20">20 MPH</option>
-            <option value="L25">25 MPH</option>
-            <option value="L30">30 MPH</option>
-            <option value="L35">35 MPH</option>
-            <option value="L40">40 MPH</option>
-            <option value="L45">45 MPH</option>
-            <option value="L50">50 MPH</option>
-            <option value="L55">55 MPH</option>
-            <option value="L60">60 MPH</option>
-            <option value="L65">65 MPH</option>
-            <option value="L70">70 MPH</option>
-            <option value="L75">75 MPH</option>
-            <option value="L80">80 MPH</option>
-            <option value="L85">85 MPH</option>
+            <option value="L5">5 <span class="caps">MPH</span></option>
+            <option value="L10">10 <span class="caps">MPH</span></option>
+            <option value="L15">15 <span class="caps">MPH</span></option>
+            <option value="L20">20 <span class="caps">MPH</span></option>
+            <option value="L25">25 <span class="caps">MPH</span></option>
+            <option value="L30">30 <span class="caps">MPH</span></option>
+            <option value="L35">35 <span class="caps">MPH</span></option>
+            <option value="L40">40 <span class="caps">MPH</span></option>
+            <option value="L45">45 <span class="caps">MPH</span></option>
+            <option value="L50">50 <span class="caps">MPH</span></option>
+            <option value="L55">55 <span class="caps">MPH</span></option>
+            <option value="L60">60 <span class="caps">MPH</span></option>
+            <option value="L65">65 <span class="caps">MPH</span></option>
+            <option value="L70">70 <span class="caps">MPH</span></option>
+            <option value="L75">75 <span class="caps">MPH</span></option>
+            <option value="L80">80 <span class="caps">MPH</span></option>
+            <option value="L85">85 <span class="caps">MPH</span></option>
         </select>
     </p>
 </div>
@@ -460,23 +460,23 @@ controlled by an option in a dropdown control. </p>
 
 </script>
 
-<h4>How Does It Work?</h4>
+<h4>How Does It&nbsp;Work?</h4>
 <p>The speed limit sign was created with Inkscape and 
-<a href="https://gotrafficsign.com/">OpenSignTool</a>.  The SVG file has 17 layers 
-for different speed limit numbers from 5 MPH to 85 MPH.</p>
+<a href="https://gotrafficsign.com/">OpenSignTool</a>.  The <span class="caps">SVG</span> file has 17 layers 
+for different speed limit numbers from 5 <span class="caps">MPH</span> to 85 <span class="caps">MPH</span>.</p>
 <p>When the page loads, the javascript program picks a random speed and 
-turns on the SVG layer with that speed. When a user chooses a speed 
+turns on the <span class="caps">SVG</span> layer with that speed. When a user chooses a speed 
 on the dropdown box, the program turns off the previous layer and turns 
 on the chosen layer.  You can view the code by right click the webpage 
-and choose "View Page Source" menu. </p>
+and choose &#8220;View Page Source&#8221;&nbsp;menu. </p>
 <p>Next step for the app is to add another dropdown control for file 
-formats (SVG, EMF, PNG) and a download button for user to download 
-a file to local computer. </p>
+formats (<span class="caps">SVG</span>, <span class="caps">EMF</span>, <span class="caps">PNG</span>) and a download button for user to download 
+a file to local&nbsp;computer. </p>
 <p>I also referenced those two online articles when working on this
-blog post. </p>
+blog&nbsp;post. </p>
 <ol>
-<li><a href="http://www.petercollingridge.co.uk/tutorials/svg/interactive/javascript/"><em>Using Javascript With SVG</em></a> by Peter Collingridge.</li>
-<li><a href="https://tympanus.net/codrops/2014/08/19/making-svgs-responsive-with-css/"><em>Making SVGs Responsive with CSS</em></a> by Sara Soueidan.</li>
+<li><a href="http://www.petercollingridge.co.uk/tutorials/svg/interactive/javascript/"><em>Using Javascript With <span class="caps">SVG</span></em></a> by Peter&nbsp;Collingridge.</li>
+<li><a href="https://tympanus.net/codrops/2014/08/19/making-svgs-responsive-with-css/"><em>Making SVGs Responsive with <span class="caps">CSS</span></em></a> by Sara&nbsp;Soueidan.</li>
 </ol>
 
     </div>

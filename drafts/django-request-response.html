@@ -14,7 +14,7 @@
     <meta name="author" content="George Zhang" />
     <meta name="keywords" content="django" />
     <meta name="description" content="Most Django tutorials and books do not discuss how the web framework starts and finishes. A developer needs to dig into source code and online blog posts to find out …" />
-    <title>What is WSGI Request/Response Process - George Zhang</title>
+    <title>What is WSGI Request/Response Process - George Zhang</title>
   </head>
   <body>
     <!-- navbar -->
@@ -63,7 +63,7 @@
   <div class="row">
     <div class="col-lg-8 mx-auto">   
 
-  <h2>What is WSGI Request/Response Process</h2>
+  <h2>What is <span class="caps">WSGI</span> Request/Response&nbsp;Process</h2>
   
   <div class="text-muted mb-2">
     <span>Posted on </span>
@@ -79,50 +79,49 @@
 A developer needs to dig into source code and online blog posts to find out how Django 
 processes a request. Fortunately many people have written on this topic and 
 <a href="https://github.com/django/django/tree/2.2">Django source code</a>
-is easily accessible to anyone who is interested. </p>
+is easily accessible to anyone who is&nbsp;interested. </p>
 <p>In this article, I am writing down my understanding of this process. 
 A developer does not have to know this process to create great web apps, but it is always 
 interesting to know how web framework works behind the scene.  Before we discuss 
-Django code, let's look at WSGI first. </p>
-<h3>WSGI</h3>
-<p>WSGI is an abbreviation for Web Server Gateway Interface, which is a "simple calling 
+Django code, let&#8217;s look at <span class="caps">WSGI</span>&nbsp;first. </p>
+<h3><span class="caps">WSGI</span></h3>
+<p><span class="caps">WSGI</span> is an abbreviation for Web Server Gateway Interface, which is a &#8220;simple calling 
 convention for web servers to forward requests to web applications for frameworks written
-in Python."   WSGI is part of Python ecosystem.  It was originally specified in PEP-333
-in 2003, and was updated to PEP-3333 for python 3 in 2010.   Python standard library even 
-has a wsgiref WSGI reference server built in. </p>
-<p>The best writing on WSGI is probably 
+in Python.&#8221;   <span class="caps">WSGI</span> is part of Python ecosystem.  It was originally specified in <span class="caps">PEP</span>-333
+in 2003, and was updated to <span class="caps">PEP</span>-3333 for python 3 in 2010.   Python standard library even 
+has a wsgiref <span class="caps">WSGI</span> reference server built&nbsp;in. </p>
+<p>The best writing on <span class="caps">WSGI</span> is probably 
 <a href="http://lucumr.pocoo.org/2007/5/21/getting-started-with-wsgi/">a blog post</a> 
 by Armin Ronacher, who is the creator of Flask web framework and many other open 
 source Python packages.   Three code examples in this article are fantastic 
-prototypes showing how WSGI and web framework work.  I would suggest anyone 
+prototypes showing how <span class="caps">WSGI</span> and web framework work.  I would suggest anyone 
 who is interested to read the article multiple times to get a good understanding 
 of the topic.  The article was written in 2007 with Python 2.  A developer needs to
 make small changes to the code for Python 3.  Here are 
 <a href="https://github.com/georgexyz19/WSGI_example_code">the example code</a> 
-I modified for Python 3.</p>
-<p>Why do we need to know WSGI? A Python web app is essentially an WSGI app. A
+I modified for Python&nbsp;3.</p>
+<p>Why do we need to know <span class="caps">WSGI</span>? A Python web app is essentially an <span class="caps">WSGI</span> app. A
 web framework like Django adds many other functions such as database handling and 
-template processing to generate html files. </p>
-<h3>Other Articles</h3>
+template processing to generate html&nbsp;files. </p>
+<h3>Other&nbsp;Articles</h3>
 <p>After several google searches, I found a few related articles on the topic.  Those articles 
 were written a few years ago, but most contents still apply to 
-Django 2.2 which is the version I am looking at now.</p>
+Django 2.2 which is the version I am looking at&nbsp;now.</p>
 <p><a href="https://simonwillison.net/2005/Aug/15/request/">An article by Simon Willison</a> 
 in 2005 is an early discussion on the topic.  This article does not contain any code. 
 The ModPythonHandler class has been removed from recent Django releases. The article 
-presents a good overview on how Django processes a request and how middleware works. </p>
+presents a good overview on how Django processes a request and how middleware&nbsp;works. </p>
 <p>James Bennett wrote 
 <a href="https://www.b-list.org/weblog/2006/jun/13/how-django-processes-request/">a long article</a> 
 on his blog discussing how Django processes a request in 20016. The contents of the 
-article are still very relevant today. </p>
+article are still very relevant&nbsp;today. </p>
 <p><a href="https://k4ml.me/posts/django-where-does-the-application-start.html">Another article</a> 
 written by Kamal Mustafa is closer to what I am looking for.  The article discusses 
-Django code and traces through several functions and classes. </p>
+Django code and traces through several functions and&nbsp;classes. </p>
 <p>Brian Rosner has an interesting 
 <a href="https://eldarion.com/blog/2013/02/14/entry-point-hook-django-projects/">short article</a> 
-about how to run code when Django starts. We will get back to the example later in this 
-article.</p>
-<h3>Django Code</h3>
+about how to run code when Django starts. We will get back to the example later in this&nbsp;article.</p>
+<h3>Django&nbsp;Code</h3>
 
     </div>
   </div>

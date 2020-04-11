@@ -14,7 +14,7 @@
     <meta name="author" content="George Zhang" />
     <meta name="keywords" content="Python" />
     <meta name="description" content="One of my work tasks requires me to save hundreds of emails in my work Gmail account to PDF files in local hard drive. I could do it manually spending …" />
-    <title>Python Code to Save Emails in Gmail to PDF Files - George Zhang</title>
+    <title>Python Code to Save Emails in Gmail to PDF Files - George Zhang</title>
   </head>
   <body>
     <!-- navbar -->
@@ -63,7 +63,7 @@
   <div class="row">
     <div class="col-lg-8 mx-auto">   
 
-  <h2>Python Code to Save Emails in Gmail to PDF Files</h2>
+  <h2>Python Code to Save Emails in Gmail to <span class="caps">PDF</span>&nbsp;Files</h2>
   
   <div class="text-muted mb-2">
     <span>Posted on </span>
@@ -76,26 +76,26 @@
   </div>
       
   <p>One of my work tasks requires me to save hundreds of emails in my work Gmail 
-account to PDF files in local hard drive.  I could do it manually spending hours 
+account to <span class="caps">PDF</span> files in local hard drive.  I could do it manually spending hours 
 saving emails, or I could write a python program to do the work. 
-No doubt I prefer the second approach. </p>
+No doubt I prefer the second&nbsp;approach. </p>
 <p>A google search finds several online articles discussing how to do it.  A typical 
 method is to install a Chrome plugin for the browser, and the plugin will do the work. 
-But granting permission to a plugin to read my work emails is not acceptable. </p>
+But granting permission to a plugin to read my work emails is not&nbsp;acceptable. </p>
 <p>After reading some articles, I settled on two methods. The first one is to select and 
 export emails in Gmail to a .mbox file, then write a python program to read the .mbox file 
 and save emails.  The second one is discovered when I was reading the
-last chapter of Al Sweigart's wonderful book 
+last chapter of Al Sweigart&#8217;s wonderful book 
 <a href="https://automatetheboringstuff.com/">Automate The Boring Stuff With Python</a>. 
 This method uses the pyautogui module and involves writing a python program to simulate 
 mouse button clicks and keyboard key presses to save emails.  The program is like a person is 
-clicking the mouse button and typing on the keyboard. </p>
-<p>Let's look at the first method. 
+clicking the mouse button and typing on the&nbsp;keyboard. </p>
+<p>Let&#8217;s look at the first method. 
 <a href="https://www.lifewire.com/how-to-export-your-emails-from-gmail-as-mbox-files-1171881">An article on Lifwire.com</a> 
 has step by step guide on how to save emails to a .mbox file.  The python standard
 library modules <em>mailbox</em> and <em>email</em> can read emails in the .mbox file.  I spent
 some time writing a python program, which also parses email content and extracts 
-useful information from emails. The code structure looks like this. </p>
+useful information from emails. The code structure looks like&nbsp;this. </p>
 <div class="highlight"><pre><span></span><code><span class="kn">import</span> <span class="nn">mailbox</span>
 <span class="kn">import</span> <span class="nn">email.header</span>
 <span class="kn">import</span> <span class="nn">email.utils</span> 
@@ -149,10 +149,10 @@ useful information from emails. The code structure looks like this. </p>
 <p>I find a major flaw in this approach a few days later.  The Google archive 
 system has a limit on the number of time a user is allowed to export emails to .mbox files. Once 
 the daily limit (3 times on my account) is reached, it does not allow a user to export 
-emails that day.  The system simply gives a message "Please try to create your 
-archive again".</p>
-<p>When I am reading the last chapter of Al Sweigart's book, I realize that
-the pyautogui module can be used for this task.  Here is the code to save emails, </p>
+emails that day.  The system simply gives a message &#8220;Please try to create your 
+archive&nbsp;again&#8221;.</p>
+<p>When I am reading the last chapter of Al Sweigart&#8217;s book, I realize that
+the pyautogui module can be used for this task.  Here is the code to save&nbsp;emails, </p>
 <div class="highlight"><pre><span></span><code><span class="c1"># save_emails.py by Geroge Zhang on 2/1/2019</span>
 <span class="c1"># The GMail window should be in a status shown in SaveEMails.png</span>
 <span class="c1"># The EMails should be in a folder(label), the program clicks next button</span>
@@ -227,11 +227,11 @@ the pyautogui module can be used for this task.  Here is the code to save emails
 <p>The program is able to save 1500 emails in about four hours.  Depending on the network speed, the
 sleep seconds between tasks can be adjusted. Sometime the program may abort for 
 some reason.  Change the variables <code>TOTALEMAILS</code> and <code>START</code> at the beginning of the program
-to resume running. </p>
+to resume&nbsp;running. </p>
 <p>You need to manually save a few emails in Chrome browser to understand what the
 program is doing.  How do I get the coordinates of the buttons on Gmail interface?  The 
 Al Sweigart book includes a <code>mouseNow.py</code> program.  I simple write down the coordinates
-on a piece of paper and then type those coordinates into the program. </p>
+on a piece of paper and then type those coordinates into the&nbsp;program. </p>
 <div style="max-width:450px">
   <img class="img-fluid" src="/images/save-emails-notes.png" alt="save emails"> 
 </div>

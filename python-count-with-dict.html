@@ -14,7 +14,7 @@
     <meta name="author" content="George Zhang" />
     <meta name="keywords" content="python" />
     <meta name="description" content="When I am reading a realpython article Working With JSON Data in Python, I find an interesting python technique that reminds me something else I read before. It is called …" />
-    <title>Python Counting With Dictionary - George Zhang</title>
+    <title>Python Counting With Dictionary - George Zhang</title>
   </head>
   <body>
     <!-- navbar -->
@@ -63,7 +63,7 @@
   <div class="row">
     <div class="col-lg-8 mx-auto">   
 
-  <h2>Python Counting With Dictionary</h2>
+  <h2>Python Counting With&nbsp;Dictionary</h2>
   
   <div class="text-muted mb-2">
     <span>Posted on </span>
@@ -76,12 +76,12 @@
   </div>
       
   <p>When I am reading a realpython article 
-<a href="https://realpython.com/python-json/">Working With JSON Data in Python</a>, I find 
+<a href="https://realpython.com/python-json/">Working With <span class="caps">JSON</span> Data in Python</a>, I find 
 an interesting python technique that reminds me something else I read before. 
 It is called <em>Counting With Dictionary</em> by Raymond Hettinger in a python talk.
 <a href="/python-resources.html">A previous blog post</a> has the links 
-to the video and the note. </p>
-<p>Given a list such as colors below,</p>
+to the video and the&nbsp;note. </p>
+<p>Given a list such as colors&nbsp;below,</p>
 <div class="highlight"><pre><span></span><code><span class="n">colors</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;red&#39;</span><span class="p">,</span> <span class="s1">&#39;green&#39;</span><span class="p">,</span> <span class="s1">&#39;red&#39;</span><span class="p">,</span> <span class="s1">&#39;blue&#39;</span><span class="p">,</span> <span class="s1">&#39;green&#39;</span><span class="p">,</span> <span class="s1">&#39;red&#39;</span><span class="p">]</span>
 </code></pre></div>
 
@@ -93,10 +93,10 @@ keys in the list.  For the above example, the result dictionary <code>d</code> i
 </code></pre></div>
 
 
-<p>There are many ways to write the code.  I will summarize these techniques below. </p>
-<h3>Basic Way to Count</h3>
+<p>There are many ways to write the code.  I will summarize these techniques&nbsp;below. </p>
+<h3>Basic Way to&nbsp;Count</h3>
 <p>The basic way is to set the d[color] to 0 when the dictionary sees the color 
-first time.  Total line count is 5. </p>
+first time.  Total line count is&nbsp;5. </p>
 <div class="highlight"><pre><span></span><code><span class="n">d</span> <span class="o">=</span> <span class="p">{}</span>
 <span class="k">for</span> <span class="n">color</span> <span class="ow">in</span> <span class="n">colors</span><span class="p">:</span>
     <span class="k">if</span> <span class="n">color</span> <span class="ow">not</span> <span class="ow">in</span> <span class="n">d</span><span class="p">:</span>
@@ -105,19 +105,19 @@ first time.  Total line count is 5. </p>
 </code></pre></div>
 
 
-<h3>Get Method of Dictionary</h3>
+<h3>Get Method of&nbsp;Dictionary</h3>
 <p>If the color is not in the dictionary, using <code>d[color]</code> to access its value raises
 a KeyValue exception.  The dictionary <code>get</code> method returns the second argument 
-when the first argument is not already in the dictionary.  Line count is 3. </p>
+when the first argument is not already in the dictionary.  Line count is&nbsp;3. </p>
 <div class="highlight"><pre><span></span><code><span class="n">d</span> <span class="o">=</span> <span class="p">{}</span>
 <span class="k">for</span> <span class="n">color</span> <span class="ow">in</span> <span class="n">colors</span><span class="p">:</span>
     <span class="n">d</span><span class="p">[</span><span class="n">color</span><span class="p">]</span> <span class="o">=</span> <span class="n">d</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="n">color</span><span class="p">,</span> <span class="mi">0</span><span class="p">)</span> <span class="o">+</span> <span class="mi">1</span>
 </code></pre></div>
 
 
-<h3>Use Defaultdict</h3>
+<h3>Use&nbsp;Defaultdict</h3>
 <p>The standard collections package has a defaultdict class. The class sets a default 
-value for a key.  Line count is still 5. </p>
+value for a key.  Line count is still&nbsp;5. </p>
 <div class="highlight"><pre><span></span><code><span class="kn">import</span> <span class="nn">collections</span>
 <span class="n">d</span> <span class="o">=</span> <span class="n">collections</span><span class="o">.</span><span class="n">defaultdict</span><span class="p">(</span><span class="nb">int</span><span class="p">)</span>
 <span class="k">for</span> <span class="n">color</span> <span class="ow">in</span> <span class="n">colors</span><span class="p">:</span>
@@ -126,10 +126,10 @@ value for a key.  Line count is still 5. </p>
 </code></pre></div>
 
 
-<h3>Try and Except to Handle Exception</h3>
-<p>The above three methods are from Raymond Hettinger's python talk.  The method below
+<h3>Try and Except to Handle&nbsp;Exception</h3>
+<p>The above three methods are from Raymond Hettinger&#8217;s python talk.  The method below
 is from the Real Python article I introduced earlier.  This method takes 6 lines, 
-but the logic is very clear. </p>
+but the logic is very&nbsp;clear. </p>
 <div class="highlight"><pre><span></span><code><span class="n">d</span> <span class="o">=</span><span class="p">{}</span>
 <span class="k">for</span> <span class="n">color</span> <span class="ow">in</span> <span class="n">colors</span><span class="p">:</span>
     <span class="k">try</span><span class="p">:</span>
@@ -139,10 +139,10 @@ but the logic is very clear. </p>
 </code></pre></div>
 
 
-<h3>Setdefault Method of Dictionary</h3>
+<h3>Setdefault Method of&nbsp;Dictionary</h3>
 <p>This method is between the first two methods.  Line count is also between 5 and 3. 
 This method uses dictionary method <code>setdefault</code>, which is also discussed in 
-Raymond Hettinger's python talk</p>
+Raymond Hettinger&#8217;s python&nbsp;talk</p>
 <div class="highlight"><pre><span></span><code><span class="n">d</span><span class="o">=</span><span class="p">{}</span>
 <span class="k">for</span> <span class="n">color</span> <span class="ow">in</span> <span class="n">colors</span><span class="p">:</span>
     <span class="n">d</span><span class="o">.</span><span class="n">setdefault</span><span class="p">(</span><span class="n">color</span><span class="p">,</span> <span class="mi">0</span><span class="p">)</span>
@@ -151,7 +151,7 @@ Raymond Hettinger's python talk</p>
 
 
 <p>Python is very flexible to write once you know the basics, and there are always 
-many ways to solve a problem. </p>
+many ways to solve a&nbsp;problem. </p>
 
     </div>
   </div>

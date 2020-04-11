@@ -14,7 +14,7 @@
     <meta name="author" content="George Zhang" />
     <meta name="keywords" content="python" />
     <meta name="description" content="Pyenv is the tool I use to install multiple versions of python in Linux, and I have a short post on how to install pyenv. I simply use the python …" />
-    <title>Python Pipenv Tool - George Zhang</title>
+    <title>Python Pipenv Tool - George Zhang</title>
   </head>
   <body>
     <!-- navbar -->
@@ -63,7 +63,7 @@
   <div class="row">
     <div class="col-lg-8 mx-auto">   
 
-  <h2>Python Pipenv Tool</h2>
+  <h2>Python Pipenv&nbsp;Tool</h2>
   
   <div class="text-muted mb-2">
     <span>Posted on </span>
@@ -78,18 +78,18 @@
   <p>Pyenv is the tool I use to install multiple versions of python in Linux, and I have 
 <a href="/pyenv-python-tool.html">a short post on how to install pyenv</a>. I simply 
 use the python built-in tool venv to manage virtual environment. It works fine 
-for most tasks. </p>
+for most&nbsp;tasks. </p>
 <p>William Vicent recommends pipenv tool in his <em>Django for Beginners</em> book. Corey Schafer also 
-favors pipenv in this youtube tutorials. I take a close look at the tool and I like it. </p>
+favors pipenv in this youtube tutorials. I take a close look at the tool and I like&nbsp;it. </p>
 <p>Here are the links to two youtube videos and an article on real python website. 
-Those are very nice resources to learn pipenv. </p>
+Those are very nice resources to learn&nbsp;pipenv. </p>
 <ul>
-<li><a href="https://youtu.be/zDYL22QNiWk">Corey Schafer's Pipenv Tutorial</a></li>
-<li><a href="https://youtu.be/GBQAKldqgZs">Pipenv Author Kenneth Reitz's Pycon Talk on Pipenv</a></li>
-<li><a href="https://realpython.com/pipenv-guide/">Pipenv Tutorial on Realpython.com</a> </li>
+<li><a href="https://youtu.be/zDYL22QNiWk">Corey Schafer&#8217;s Pipenv&nbsp;Tutorial</a></li>
+<li><a href="https://youtu.be/GBQAKldqgZs">Pipenv Author Kenneth Reitz&#8217;s Pycon Talk on&nbsp;Pipenv</a></li>
+<li><a href="https://realpython.com/pipenv-guide/">Pipenv Tutorial on&nbsp;Realpython.com</a> </li>
 </ul>
 <p>I will use pipenv to manage virtual environment and packages in my future projects. 
-The shell script file for updating this website has been modified to like this:</p>
+The shell script file for updating this website has been modified to like&nbsp;this:</p>
 <div class="highlight"><pre><span></span><code># commit_change.sh
 if [ -z &quot;$1&quot; ]  # if no command line arg, exit
 then
@@ -110,12 +110,12 @@ git push origin gh-pages
 </code></pre></div>
 
 
-<p>The website is updated with the bash command:</p>
+<p>The website is updated with the bash&nbsp;command:</p>
 <div class="highlight"><pre><span></span><code>source commit_change.sh &quot;git commit message&quot;
 </code></pre></div>
 
 
-<p>Here are some common pipenv commands:</p>
+<p>Here are some common pipenv&nbsp;commands:</p>
 <div class="highlight"><pre><span></span><code>$pip install pipenv      # global install
 $pipenv install requests # virtualenv in ~/.local/share/virtualenvs/...
 $pipenv shell
@@ -140,15 +140,15 @@ $pipenv install --ignore-pipfile
 </code></pre></div>
 
 
-<p>When I am reading Miguel Grinberg's Flask Mega Tutorial Chapter 15 
+<p>When I am reading Miguel Grinberg&#8217;s Flask Mega Tutorial Chapter 15 
 <a href="https://blog.miguelgrinberg.com/post/the-flask-mega-tutorial-part-xv-a-better-application-structure">A Better Application Structure</a>. 
 He recommends to use a python package <code>python-dotenv</code> to load environment variables. 
-Corey Schafer's tutorial video mentioned that pipenv can load environment variables as well. </p>
+Corey Schafer&#8217;s tutorial video mentioned that pipenv can load environment variables as&nbsp;well. </p>
 <p>This <a href="https://pipenv-fork.readthedocs.io/en/latest/advanced.html">Pipenv documentation page</a> 
 has a section <em>Automatic Loading of .env</em>. If a project directory has a .env file, pipenv 
 commands <code>$pipenv shell</code> and <code>$pipenv run</code> will automatically load it. You can set the 
 <code>PIPENV_DOTENV_LOCATION</code> to change the file location or file name. You can also set 
-<code>PIPENV_DONT_LOAD_ENV =1</code> to prevent pipenv from loading the .env file.</p>
+<code>PIPENV_DONT_LOAD_ENV =1</code> to prevent pipenv from loading the .env&nbsp;file.</p>
 
     </div>
   </div>

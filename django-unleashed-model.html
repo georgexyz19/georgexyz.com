@@ -13,8 +13,8 @@
     <link rel="stylesheet" href="/theme/css/custom.css">
     <meta name="author" content="George Zhang" />
     <meta name="keywords" content="django" />
-    <meta name="description" content="Andrew Pinkham&#39;s Django Unleashed is a very good Django book. It covers many aspects of Django Web Framework with an example project. It is not a book for complete beginners …" />
-    <title>Django Unleashed Book Model Diagram - George Zhang</title>
+    <meta name="description" content="Andrew Pinkham’s Django Unleashed is a very good Django book. It covers many aspects of Django Web Framework with an example project. It is not a book for complete …" />
+    <title>Django Unleashed Book Model Diagram - George Zhang</title>
   </head>
   <body>
     <!-- navbar -->
@@ -63,7 +63,7 @@
   <div class="row">
     <div class="col-lg-8 mx-auto">   
 
-  <h2>Django Unleashed Book Model Diagram</h2>
+  <h2>Django Unleashed Book Model&nbsp;Diagram</h2>
   
   <div class="text-muted mb-2">
     <span>Posted on </span>
@@ -75,23 +75,23 @@
        <a href="/tag/django.html">django</a>
   </div>
       
-  <p>Andrew Pinkham's 
+  <p>Andrew Pinkham&#8217;s 
 <a href="https://www.amazon.com/gp/product/0321985079/ref=ppx_od_dt_b_asin_title_s00?ie=UTF8&amp;psc=1"><em>Django Unleashed</em></a>
  is a very good Django book. It covers many aspects of Django Web Framework with an example project. It 
-is not a book for complete beginners. A reader needs to know a little Python and Django basics to get started.</p>
+is not a book for complete beginners. A reader needs to know a little Python and Django basics to get&nbsp;started.</p>
 <p>The Chapter 3 of the book is about Django Models, discussing the example project models. 
 The project has 4 models, 3 many-to-many relations, and 1 many-to-one relation. The book does not 
-include a diagram showing the models and relations. Here is the diagram I draw in Inkscape:</p>
+include a diagram showing the models and relations. Here is the diagram I draw in&nbsp;Inkscape:</p>
 <div style="max-width:800px">
   <img class="img-fluid" src="/images/django-unleashed-models.svg" alt="django unleashed models"> 
 </div>
 
-<p>Here is the link to the <a href="/files/django-unleashed-models.pdf">PDF page</a> of the diagram.</p>
+<p>Here is the link to the <a href="/files/django-unleashed-models.pdf"><span class="caps">PDF</span> page</a> of the&nbsp;diagram.</p>
 <p>The 
 <a href="https://django-extensions.readthedocs.io/">django-extensions</a> has a 
 <a href="https://django-extensions.readthedocs.io/en/latest/graph_models.html">graph_models command</a> which 
-generates similar model diagrams. </p>
-<p>Add the GRAPH_MODELS dictionary to the project settings file. </p>
+generates similar model&nbsp;diagrams. </p>
+<p>Add the GRAPH_MODELS dictionary to the project settings&nbsp;file. </p>
 <div class="highlight"><pre><span></span><code><span class="n">GRAPH_MODELS</span> <span class="o">=</span> <span class="p">{</span>
   <span class="s1">&#39;all_applications&#39;</span><span class="p">:</span> <span class="kc">False</span><span class="p">,</span> 
   <span class="s1">&#39;group_models&#39;</span><span class="p">:</span> <span class="kc">True</span><span class="p">,</span>
@@ -100,7 +100,7 @@ generates similar model diagrams. </p>
 
 
 <p>The extension command depends on the graphviz package and pydot/pyparsing modules.  Install those 
-dependencies in Ubuntu 18.04 and run the <code>python manage.py ...</code> command to generate diagram.</p>
+dependencies in Ubuntu 18.04 and run the <code>python manage.py ...</code> command to generate&nbsp;diagram.</p>
 <div class="highlight"><pre><span></span><code>$sudo apt-get install graphviz
 (env)$pip install pyparsing pydot
 
@@ -108,7 +108,7 @@ dependencies in Ubuntu 18.04 and run the <code>python manage.py ...</code> comma
 </code></pre></div>
 
 
-<p>Here is the result PNG file. </p>
+<p>Here is the result <span class="caps">PNG</span>&nbsp;file. </p>
 <div style="max-width:800px">
   <img class="img-fluid" src="/images/django-unleashed-models.png" alt="django unleashed models"> 
 </div>

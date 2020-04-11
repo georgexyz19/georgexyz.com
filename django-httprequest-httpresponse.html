@@ -13,8 +13,8 @@
     <link rel="stylesheet" href="/theme/css/custom.css">
     <meta name="author" content="George Zhang" />
     <meta name="keywords" content="django" />
-    <meta name="description" content="Django view &#34;is simply a Python function that takes a web request and returns a response.&#34; A typical view function loads template, retrieves some data from database, and returns a …" />
-    <title>Django HttpRequest and HttpResponse - George Zhang</title>
+    <meta name="description" content="Django view “is simply a Python function that takes a web request and returns a response.” A typical view function loads template, retrieves some data from database, and returns a …" />
+    <title>Django HttpRequest and HttpResponse - George Zhang</title>
   </head>
   <body>
     <!-- navbar -->
@@ -63,7 +63,7 @@
   <div class="row">
     <div class="col-lg-8 mx-auto">   
 
-  <h2>Django HttpRequest and HttpResponse</h2>
+  <h2>Django HttpRequest and&nbsp;HttpResponse</h2>
   
   <div class="text-muted mb-2">
     <span>Posted on </span>
@@ -75,12 +75,12 @@
        <a href="/tag/django.html">django</a>
   </div>
       
-  <p>Django view "is simply a Python function that takes a web request and 
-returns a response." A typical view function loads template, retrieves 
+  <p>Django view &#8220;is simply a Python function that takes a web request and 
+returns a response.&#8221; A typical view function loads template, retrieves 
 some data from database, and returns a response. Django 1.3 starts supporting 
 class-based views, which makes writing views easier. The drawback is that 
-the code is not as straightforward to understand as function-based view. </p>
-<p>Here is a typical Django view function from official Django tutorial. </p>
+the code is not as straightforward to understand as function-based&nbsp;view. </p>
+<p>Here is a typical Django view function from official Django&nbsp;tutorial. </p>
 <div class="highlight"><pre><span></span><code><span class="k">def</span> <span class="nf">index</span><span class="p">(</span><span class="n">request</span><span class="p">):</span>
     <span class="n">latest</span> <span class="o">=</span> <span class="n">Question</span><span class="o">.</span><span class="n">objects</span><span class="o">.</span><span class="n">order_by</span><span class="p">(</span><span class="s1">&#39;-pub_date&#39;</span><span class="p">)[:</span><span class="mi">5</span><span class="p">]</span>
     <span class="n">template</span> <span class="o">=</span> <span class="n">loader</span><span class="o">.</span><span class="n">get_template</span><span class="p">(</span><span class="s1">&#39;polls/index.html&#39;</span><span class="p">)</span>
@@ -95,14 +95,14 @@ request to the web server, Django web framework receives the infomation in
 the form of an environ object, and creates the request object.  Yes, Django 
 creates this object and passes it to the view function.  This is a 
 typical example of <em>inversion of control</em>. A web app developer does not have
-control over the flow of a program when using a web framework. </p>
+control over the flow of a program when using a web&nbsp;framework. </p>
 <p>The HttpRequest and HttpResponse classes are defined in the request.py and 
 response.py files in http directory. The response.py file also defines 
-several other classes such as Http404 and HttpResponseRedirect. </p>
+several other classes such as Http404 and&nbsp;HttpResponseRedirect. </p>
 <p>The Django official documentation has 
 <a href="https://docs.djangoproject.com/en/2.2/ref/request-response/">a reference page</a> 
 for HttpRequest and HttpResponse. It is probably to easier to read the source 
-code directly. Here is a list of files in the http directory.</p>
+code directly. Here is a list of files in the http&nbsp;directory.</p>
 <div class="highlight"><pre><span></span><code>george@STK2M3:~/Desktop/django-2.2.2/django$ wc -l http/*.py
    26 http/cookie.py
    21 http/__init__.py
@@ -115,7 +115,7 @@ code directly. Here is a list of files in the http directory.</p>
 
 <p>How do I find this information? The grep command below shows that HttpRequest 
 only appears a few places in Django source code. The wsgi.py file defines the 
-WSGIRequst class as a subclass of HttpRequest. </p>
+WSGIRequst class as a subclass of&nbsp;HttpRequest. </p>
 <div class="highlight"><pre><span></span><code>george@STK2M3:~/Desktop/django-2.2.2/django$ grep -r &quot;HttpRequest&quot; ./
 ./template/context.py:    Create a suitable Context from a plain dict ...
 ./core/handlers/base.py:        &quot;&quot;&quot;Return an HttpResponse object for  ...
@@ -129,7 +129,7 @@ WSGIRequst class as a subclass of HttpRequest. </p>
 
 
 <p>We can then try to find where the WSGIRequest object is defined and passed along 
-to other functions as an argument. </p>
+to other functions as an&nbsp;argument. </p>
 <div class="highlight"><pre><span></span><code>george@STK2M3:~/Desktop/django-2.2.2/django$ grep -rn &quot;WSGIRequest&quot; ./core
 ./core/management/commands/runserver.py:57:   # way to reach WSGIRequestHandler....
 ./core/handlers/wsgi.py:66:class WSGIRequest(HttpRequest):
@@ -139,7 +139,7 @@ to other functions as an argument. </p>
 
 
 <p>In the file wsgi.py line 131, it assigns WSGIRequest class to <code>request_class</code>. 
-Let's try to find where <code>request_class</code> is instantiated. </p>
+Let&#8217;s try to find where <code>request_class</code> is&nbsp;instantiated. </p>
 <div class="highlight"><pre><span></span><code>george@STK2M3:~/Desktop/django-2.2.2/django$ grep -rn &quot;request_class&quot; ./core
 ./core/handlers/wsgi.py:131:    request_class = WSGIRequest
 ./core/handlers/wsgi.py:140:        request = self.request_class(environ)
@@ -147,7 +147,7 @@ Let's try to find where <code>request_class</code> is instantiated. </p>
 
 
 <p>Grep command can also see the lines before and after the target line.  The command 
-below shows the context code. </p>
+below shows the context&nbsp;code. </p>
 <div class="highlight"><pre><span></span><code>george@STK2M3:~/Desktop/django-2.2.2/django$ grep -rn -C 5 &quot;request_class&quot; ./core
 ....
 ./core/handlers/wsgi.py-130-class WSGIHandler(base.BaseHandler):
@@ -172,15 +172,14 @@ below shows the context code. </p>
 <p>The wsgi.py line 141 <code>response = self.get_response(request)</code> is where 
 the request is passed to the view function. It is also where the response created 
 in the view function passed back to the Django. 
-<a href="/django-WSGI.html">The WSGI discussion</a> 
-clearly shows that the <code>environ</code> argument is the one passed on by the web 
-server. </p>
-<p>"The <code>get_response</code> method is where nearly all of the activity happens." James 
-Bennett's article 
+<a href="/django-WSGI.html">The <span class="caps">WSGI</span> discussion</a> 
+clearly shows that the <code>environ</code> argument is the one passed on by the web&nbsp;server. </p>
+<p><span class="dquo">&#8220;</span>The <code>get_response</code> method is where nearly all of the activity happens.&#8221; James 
+Bennett&#8217;s article 
 <a href="https://www.b-list.org/weblog/2006/jun/13/how-django-processes-request/">How Django processes a request</a> 
-has a very detailed discussion on the topic. </p>
+has a very detailed discussion on the&nbsp;topic. </p>
 <p>If you want to find out what information is contained in the reqeust object, the 
-view function below displays the contents. </p>
+view function below displays the&nbsp;contents. </p>
 <div class="highlight"><pre><span></span><code><span class="k">def</span> <span class="nf">display_meta</span><span class="p">(</span><span class="n">request</span><span class="p">):</span>  <span class="c1"># from django book</span>
     <span class="n">values</span> <span class="o">=</span> <span class="n">request</span><span class="o">.</span><span class="n">META</span><span class="o">.</span><span class="n">items</span><span class="p">()</span>
     <span class="n">values</span> <span class="o">=</span> <span class="nb">sorted</span><span class="p">(</span><span class="n">values</span><span class="p">)</span>

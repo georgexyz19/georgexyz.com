@@ -13,8 +13,8 @@
     <link rel="stylesheet" href="/theme/css/custom.css">
     <meta name="author" content="George Zhang" />
     <meta name="keywords" content="python,django" />
-    <meta name="description" content="Django model fields are descriptors. The descriptor is a Python intermediate feature. It is almost impossible to understand FileField and ImageField source code without knowing Python descriptor. Marty Alchin&#39;s book …" />
-    <title>Python Descriptor and Django Model Field - George Zhang</title>
+    <meta name="description" content="Django model fields are descriptors. The descriptor is a Python intermediate feature. It is almost impossible to understand FileField and ImageField source code without knowing Python descriptor. Marty Alchin’s …" />
+    <title>Python Descriptor and Django Model Field - George Zhang</title>
   </head>
   <body>
     <!-- navbar -->
@@ -63,7 +63,7 @@
   <div class="row">
     <div class="col-lg-8 mx-auto">   
 
-  <h2>Python Descriptor and Django Model Field</h2>
+  <h2>Python Descriptor and Django Model&nbsp;Field</h2>
   
   <div class="text-muted mb-2">
     <span>Posted on </span>
@@ -78,29 +78,28 @@
       
   <p>Django model fields are descriptors. The descriptor is a Python intermediate feature. 
 It is almost impossible to understand FileField and ImageField source code 
-without knowing Python descriptor.  Marty Alchin's book <em>Pro Django</em> has 
-a short section on descriptors (Page 31 to 33), but it lacks detail. </p>
-<h3>Descriptor Online Articles</h3>
+without knowing Python descriptor.  Marty Alchin&#8217;s book <em>Pro Django</em> has 
+a short section on descriptors (Page 31 to 33), but it lacks&nbsp;detail. </p>
+<h3>Descriptor Online&nbsp;Articles</h3>
 <p>After some google search, I found several articles on Python descriptors. 
-The first article is Michael Driscoll's 
+The first article is Michael Driscoll&#8217;s 
 <a href="https://www.blog.pythonlibrary.org/2016/06/10/python-201-what-are-descriptors/">Python 201: What are descriptors?</a>, 
 which is a good introduction. The webpage has a link 
-to Ned Batchelder's blog site. I heard Ned Batchelder on 
+to Ned Batchelder&#8217;s blog site. I heard Ned Batchelder on 
 <a href="https://talkpython.fm/">Talk Python To Me Podcase</a> and read his excellent 
 <a href="https://nedbatchelder.com/text/unipain.html">article on Unicode</a> before. His blog post 
-on descriptor is actually recommending a lightning talk and an article by Chris 
-Beaumont. </p>
-<p>Chris Beaumont's article 
+on descriptor is actually recommending a lightning talk and an article by Chris&nbsp;Beaumont. </p>
+<p>Chris Beaumont&#8217;s article 
 <a href="https://nbviewer.jupyter.org/urls/gist.github.com/ChrisBeaumont/5758381/raw/descriptor_writeup.ipynb">Python Descriptors Demystified</a> 
 is possibly the best writing on descriptors.  Many descriptor techniques 
 discussed in the article are directly used in Django Model source code. Here are the main points 
-of the article:</p>
+of the&nbsp;article:</p>
 <ul>
-<li>Descriptors are reusable properties</li>
-<li>Put descriptors at class level</li>
-<li>Keep instance level data instance specific</li>
-<li>Label your descriptor</li>
-<li>Label descriptors with Metaclasses</li>
+<li>Descriptors are reusable&nbsp;properties</li>
+<li>Put descriptors at class&nbsp;level</li>
+<li>Keep instance level data instance&nbsp;specific</li>
+<li>Label your&nbsp;descriptor</li>
+<li>Label descriptors with&nbsp;Metaclasses</li>
 </ul>
 <p>The article itself is not very long, but the content takes time to understand. The article 
 also beriefly discussed property. A short online article 
@@ -110,13 +109,13 @@ Python website has
 <a href="https://realpython.com/python-metaclasses/">a nice introductory article on meta classes</a>. </p>
 <p>Python official documentation has an article 
 <a href="https://docs.python.org/3/howto/descriptor.html">Descriptor HowTo Guide</a> 
-by Raymond Hettinger. This article is not easy and it takes time to digest. </p>
+by Raymond Hettinger. This article is not easy and it takes time to&nbsp;digest. </p>
 <p>Here is the 
 <a href="https://github.com/georgexyz19/PythonDescriptor">link to my Github repo</a> 
-which consists of code examples in those articles. </p>
-<h3>Django Model Code</h3>
-<p>This section is trying to answer the question "how does a class variable 'name' 
-become an instance variable"? The Django source code and line number reference below are from Django 
+which consists of code examples in those&nbsp;articles. </p>
+<h3>Django Model&nbsp;Code</h3>
+<p>This section is trying to answer the question &#8220;how does a class variable &#8216;name&#8217; 
+become an instance variable&#8221;? The Django source code and line number reference below are from Django 
 <a href="https://github.com/django/django/tree/2.1">version 2.1</a>. </p>
 <div class="highlight"><pre><span></span><code><span class="k">class</span> <span class="nc">Book</span><span class="p">(</span><span class="n">models</span><span class="o">.</span><span class="n">Model</span><span class="p">):</span>
     <span class="n">name</span> <span class="o">=</span> <span class="n">models</span><span class="o">.</span><span class="n">CharField</span><span class="p">(</span><span class="n">max_length</span><span class="o">=</span><span class="mi">255</span><span class="p">)</span>
@@ -128,15 +127,15 @@ become an instance variable"? The Django source code and line number reference b
 
 
 <p>The two lines of code below are from base.py ModelBase class (L138-139), which is
-a metaclass for Model.</p>
+a metaclass for&nbsp;Model.</p>
 <div class="highlight"><pre><span></span><code><span class="k">for</span> <span class="n">obj_name</span><span class="p">,</span> <span class="n">obj</span> <span class="ow">in</span> <span class="n">attrs</span><span class="o">.</span><span class="n">items</span><span class="p">():</span>
     <span class="n">new_class</span><span class="o">.</span><span class="n">add_to_class</span><span class="p">(</span><span class="n">obj_name</span><span class="p">,</span> <span class="n">obj</span><span class="p">)</span>
 </code></pre></div>
 
 
 <p>The attrs is the fourth argument to the <code>__new__</code> method in metaclass ModelBase. 
-The obj_name refers to 'name' and obj refers to <code>models.CharField(max_length=255)</code> 
-where name is a field in Book model class. </p>
+The obj_name refers to &#8216;name&#8217; and obj refers to <code>models.CharField(max_length=255)</code> 
+where name is a field in Book model&nbsp;class. </p>
 <div class="highlight"><pre><span></span><code><span class="k">def</span> <span class="fm">__new__</span><span class="p">(</span><span class="bp">cls</span><span class="p">,</span> <span class="n">name</span><span class="p">,</span> <span class="n">bases</span><span class="p">,</span> <span class="n">attrs</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">):</span>
 </code></pre></div>
 
@@ -144,7 +143,7 @@ where name is a field in Book model class. </p>
 <p>The <code>add_to_class</code> method is defined on L301.  The method checks if the 
 value being added has <code>contribute_to_class</code> method, and if it does it will call 
 this method. Otherwise, the method calls <code>setattr</code> to set (name, value) pair 
-as class attribute.  The <code>getattr</code> and <code>setattr</code> are python built-in functions. </p>
+as class attribute.  The <code>getattr</code> and <code>setattr</code> are python built-in&nbsp;functions. </p>
 <div class="highlight"><pre><span></span><code><span class="k">def</span> <span class="nf">add_to_class</span><span class="p">(</span><span class="bp">cls</span><span class="p">,</span> <span class="n">name</span><span class="p">,</span> <span class="n">value</span><span class="p">):</span>
     <span class="c1"># We should call the contribute_to_class method only if it&#39;s bound</span>
     <span class="k">if</span> <span class="ow">not</span> <span class="n">inspect</span><span class="o">.</span><span class="n">isclass</span><span class="p">(</span><span class="n">value</span><span class="p">)</span> <span class="ow">and</span> <span class="nb">hasattr</span><span class="p">(</span><span class="n">value</span><span class="p">,</span> <span class="s1">&#39;contribute_to_class&#39;</span><span class="p">):</span>
@@ -157,14 +156,14 @@ as class attribute.  The <code>getattr</code> and <code>setattr</code> are pytho
 <p>The <code>contribute_to_class</code> method is defined in <code>db/models/fields/__init__.py</code> L727. 
 It is a method in Field class. 
 This is where the actual magic happens.  The self, cls, and name in <code>contribute_to_class</code> 
-are <code>models.CharField(max_length=255)</code>, <code>Book</code>, and <code>name</code>, respectively. </p>
+are <code>models.CharField(max_length=255)</code>, <code>Book</code>, and <code>name</code>,&nbsp;respectively. </p>
 <p>The first thing <code>contribute_to_class</code> does is it takes the value assigned to the 
-class variable and stores it in class attribute _meta, which is an Options object. </p>
+class variable and stores it in class attribute _meta, which is an Options&nbsp;object. </p>
 <p>The second thing it does is to assign an instance of a DeferredAttribute class 
 to this field.  The class is a Descriptor in python. The construction of 
 <code>DeferredAttribute</code> has an argument <code>self.attname</code>, which has the same name of 
 the field.  It can be shown that for descriptor fields the <code>getattr(cls, self.attname, None)</code> 
-function returns None.  The comments indicate that this line is intended for the class method. </p>
+function returns None.  The comments indicate that this line is intended for the class&nbsp;method. </p>
 <div class="highlight"><pre><span></span><code><span class="k">def</span> <span class="nf">contribute_to_class</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="bp">cls</span><span class="p">,</span> <span class="n">name</span><span class="p">,</span> <span class="n">private_only</span><span class="o">=</span><span class="kc">False</span><span class="p">):</span>
     <span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">    Register the field with the model class it belongs to.</span>
@@ -193,7 +192,7 @@ function returns None.  The comments indicate that this line is intended for the
 file L116.  The code for the class is not long, and they are shown below. 
 The instance and cls in <code>__get__</code> method will be a book instance and cls will 
 be Book class. The code in <code>__get__</code> method shows the subtle differences 
-between <code>__dict__</code> attribute and <code>getattr</code> (search tree). </p>
+between <code>__dict__</code> attribute and <code>getattr</code> (search&nbsp;tree). </p>
 <div class="highlight"><pre><span></span><code><span class="k">class</span> <span class="nc">DeferredAttribute</span><span class="p">:</span>
     <span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">    A wrapper for a deferred-loading field. When the value is read from this</span>
@@ -240,7 +239,7 @@ in other articles.  In such a case, the <code>b.name</code> in a statement <code
 refers to instance attribute, which overrides the <code>Book.name</code> class level attribute. 
 The second answer in 
 <a href="https://stackoverflow.com/questions/48537906/how-do-keyword-arguments-interact-with-model-django?rq=1">this stack overflow post</a> 
-discusses this particular issue.  It takes me sometime to understand how it works. </p>
+discusses this particular issue.  It takes me sometime to understand how it&nbsp;works. </p>
 
     </div>
   </div>

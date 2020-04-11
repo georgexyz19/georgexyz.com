@@ -14,7 +14,7 @@
     <meta name="author" content="George Zhang" />
     <meta name="keywords" content="python" />
     <meta name="description" content="Python has a standard library module logging which is a very useful development tool. When a development environment does not have access to command line interface such as writing an …" />
-    <title>Python Standard Library Module Logging - George Zhang</title>
+    <title>Python Standard Library Module Logging - George Zhang</title>
   </head>
   <body>
     <!-- navbar -->
@@ -63,7 +63,7 @@
   <div class="row">
     <div class="col-lg-8 mx-auto">   
 
-  <h2>Python Standard Library Module Logging</h2>
+  <h2>Python Standard Library Module&nbsp;Logging</h2>
   
   <div class="text-muted mb-2">
     <span>Posted on </span>
@@ -79,11 +79,11 @@
 tool.  When a development environment does not have access to command line 
 interface such as writing an extension for Inkscape, a programmer cannot call <code>print</code> 
 function to output intermediate program variables.  Instead, you use logging module
-to monitor program flow. </p>
+to monitor program&nbsp;flow. </p>
 <p>The default logger is named root.  You only need three lines of code to output
 some information to a log file.  Predefined logging levels are debug, info, 
 warning, error, and critical.  By default, root logger only outputs messages
-with a severity level of warning and above. </p>
+with a severity level of warning and&nbsp;above. </p>
 <div class="highlight"><pre><span></span><code><span class="kn">import</span> <span class="nn">logging</span>
 <span class="n">logging</span><span class="o">.</span><span class="n">basicConfig</span><span class="p">(</span><span class="n">level</span><span class="o">=</span><span class="n">logging</span><span class="o">.</span><span class="n">DEBUG</span><span class="p">,</span> <span class="n">filename</span><span class="o">=</span><span class="s1">&#39;logging.txt&#39;</span><span class="p">)</span>
 <span class="n">logging</span><span class="o">.</span><span class="n">debug</span><span class="p">(</span><span class="s1">&#39;This is a debug message&#39;</span><span class="p">)</span>
@@ -94,7 +94,7 @@ with a severity level of warning and above. </p>
 LogRecord, Handler, and Formatter.  Logger class is not instantiated directly. 
 The first time call to module level function  <code>logging.getLogger(name)</code> returns
 a Logger object.  Subsequent calls to the function return a reference to the same 
-Logger object. A typical example looks like this, </p>
+Logger object. A typical example looks like&nbsp;this, </p>
 <div class="highlight"><pre><span></span><code><span class="n">logger</span> <span class="o">=</span> <span class="n">logging</span><span class="o">.</span><span class="n">getLogger</span><span class="p">(</span><span class="vm">__name__</span><span class="p">)</span>
 <span class="n">f_handler</span> <span class="o">=</span> <span class="n">logging</span><span class="o">.</span><span class="n">FileHandler</span><span class="p">(</span><span class="s1">&#39;file.log&#39;</span><span class="p">)</span>  <span class="c1"># StreamHandler</span>
 <span class="n">f_handler</span><span class="o">.</span><span class="n">setLevel</span><span class="p">(</span><span class="n">logging</span><span class="o">.</span><span class="n">ERROR</span><span class="p">)</span>
@@ -110,7 +110,7 @@ dictionary and then load it using <code>fileConfig</code> or <code>dictConfig</c
 <h4>References</h4>
 <p>An article 
 <a href="https://realpython.com/python-logging/">Logging in Python</a> 
-in realpython.com site is a very nice introduction to the topic. </p>
+in realpython.com site is a very nice introduction to the&nbsp;topic. </p>
 <p>Here is a link to the official 
 <a href="https://docs.python.org/3/howto/logging.html">Python logging module document</a>. </p>
 
