@@ -152,12 +152,12 @@ sup {
 }
 
 a {
-  color: #15228a;
+  color: #0017c7;
   text-decoration: none;
   background-color: transparent;
 }
 a:hover {
-  color: #0b1248;
+  color: #000e7b;
   text-decoration: underline;
 }
 
@@ -497,8 +497,8 @@ mark,
 }
 
 code {
-  font-size: 95%;
-  color: #0017c7;
+  font-size: 88%;
+  color: #15228a;
   word-wrap: break-word;
 }
 a > code {
@@ -507,7 +507,7 @@ a > code {
 
 kbd {
   padding: 0.2rem 0.4rem;
-  font-size: 95%;
+  font-size: 88%;
   color: #fff;
   background-color: #212529;
   border-radius: 0.2rem;
@@ -520,7 +520,7 @@ kbd kbd {
 
 pre {
   display: block;
-  font-size: 95%;
+  font-size: 88%;
   color: #212529;
 }
 pre code {
@@ -2871,11 +2871,11 @@ fieldset:disabled a.btn {
 
 .btn-link {
   font-weight: 400;
-  color: #15228a;
+  color: #0017c7;
   text-decoration: none;
 }
 .btn-link:hover {
-  color: #0b1248;
+  color: #000e7b;
   text-decoration: underline;
 }
 .btn-link:focus, .btn-link.focus {
@@ -4536,13 +4536,13 @@ input[type=button].btn-block {
   padding: 0.5rem 0.75rem;
   margin-left: -1px;
   line-height: 1.25;
-  color: #15228a;
+  color: #0017c7;
   background-color: #fff;
   border: 1px solid #dee2e6;
 }
 .page-link:hover {
   z-index: 2;
-  color: #0b1248;
+  color: #000e7b;
   text-decoration: none;
   background-color: #e9ecef;
   border-color: #dee2e6;
