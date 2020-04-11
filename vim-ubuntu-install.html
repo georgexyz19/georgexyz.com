@@ -4,7 +4,8 @@
     <!-- Required meta tags -->
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-    <link rel="stylesheet" href="/theme/css/bootstrap.min.css">
+    <!-- <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous"> -->
+    <link rel="stylesheet" href="/theme/css/bs4min.css">
     <link rel="shortcut icon" type="image/x-icon" href="/theme/images/favicon.ico" >
     <link rel="icon" type="image/x-icon" href="/theme/images/favicon.ico" >
  
@@ -17,7 +18,7 @@
   </head>
   <body>
     <!-- navbar -->
-    <nav class="navbar navbar-expand-md navbar-dark bg-primary">
+    <nav class="navbar navbar-expand-md navbar-light" style="background-color: #e3f2fd;">
       <div class="container">
         <a class="navbar-brand" href="/">George Zhang</a>
         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarColor01" aria-controls="navbarColor01" aria-expanded="false" aria-label="Toggle navigation">
@@ -28,7 +29,7 @@
           <ul class="navbar-nav mr-auto">
             <li class="nav-item">
               <a class="nav-link " 
-                href="/archives.html">Articles</a>
+                href="/articlelist.html">Articles</a>
             </li>
             <li class="nav-item">
               <a class="nav-link pr-3 " 
@@ -80,7 +81,7 @@
 serious work, you need the full version. </p>
 <p>The default version is started via command <code>vi</code>. The <code>vi --version</code> command shows 
 the version information. Note the Line 5 below shows "Small version without GUI". </p>
-<div class="highlight"><pre><span></span>VIM - Vi IMproved 8.0 (2016 Sep 12, compiled Apr 10 2018 21:31:58)
+<div class="highlight"><pre><span></span><code>VIM - Vi IMproved 8.0 (2016 Sep 12, compiled Apr 10 2018 21:31:58)
 Included patches: 1-1453
 Modified by pkg-vim-maintainers@lists.alioth.debian.org
 Compiled by pkg-vim-maintainers@lists.alioth.debian.org
@@ -127,11 +128,11 @@ Compilation: gcc -c -I. -Iproto -DHAVE_CONFIG_H   -Wdate-time  -g -O2
 Linking: gcc   -Wl,-Bsymbolic-functions -Wl,-z,relro -Wl,-z,now -Wl,--as-needed 
 -o vim    -lSM -lICE -lXpm -lXt -lX11 -lXdmcp -lSM -lICE  -lm -ltinfo  -lselinux 
 -lacl -lattr -ldl 
-</pre></div>
+</code></pre></div>
 
 
 <p>If you type command <code>vim</code> in bash, it will tell you that "command vim not found". </p>
-<div class="highlight"><pre><span></span>george@X250:~$ vim
+<div class="highlight"><pre><span></span><code>george@X250:~$ vim
 Command &#39;vim&#39; not found, but can be installed with:
 sudo apt install vim
 sudo apt install vim-gtk3
@@ -140,15 +141,15 @@ sudo apt install neovim
 sudo apt install vim-athena
 sudo apt install vim-gtk
 sudo apt install vim-nox
-</pre></div>
+</code></pre></div>
 
 
 <p>Those three commands remove the existing vim-tiny and install the full version with GUI
 vim-gtk3 in Ubuntu 18.04 or Xubuntu. </p>
-<div class="highlight"><pre><span></span>sudo apt-get remove vim-tiny
+<div class="highlight"><pre><span></span><code>sudo apt-get remove vim-tiny
 sudo apt-get update
 sudo apt-get install vim-gtk3
-</pre></div>
+</code></pre></div>
 
 
 <p>You can then check the vim version by command <code>vim --version</code>. </p>
@@ -160,9 +161,9 @@ sudo apt-get install vim-gtk3
   
    
 
-    <!-- Optional JavaScript -->
-    <!-- jQuery first, then Bootstrap Bundle JS -->
-    <script src="/theme/js/jquery-3.3.1.slim.min.js"></script>
-    <script src="/theme/js/bootstrap.bundle.min.js"></script>
+    <script src="https://code.jquery.com/jquery-3.4.1.slim.min.js" integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js" integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6" crossorigin="anonymous"></script>
+
   </body>
 </html>

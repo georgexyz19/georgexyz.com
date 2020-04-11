@@ -4,7 +4,8 @@
     <!-- Required meta tags -->
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-    <link rel="stylesheet" href="/theme/css/bootstrap.min.css">
+    <!-- <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous"> -->
+    <link rel="stylesheet" href="/theme/css/bs4min.css">
     <link rel="shortcut icon" type="image/x-icon" href="/theme/images/favicon.ico" >
     <link rel="icon" type="image/x-icon" href="/theme/images/favicon.ico" >
  
@@ -17,7 +18,7 @@
   </head>
   <body>
     <!-- navbar -->
-    <nav class="navbar navbar-expand-md navbar-dark bg-primary">
+    <nav class="navbar navbar-expand-md navbar-light" style="background-color: #e3f2fd;">
       <div class="container">
         <a class="navbar-brand" href="/">George Zhang</a>
         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarColor01" aria-controls="navbarColor01" aria-expanded="false" aria-label="Toggle navigation">
@@ -28,7 +29,7 @@
           <ul class="navbar-nav mr-auto">
             <li class="nav-item">
               <a class="nav-link " 
-                href="/archives.html">Articles</a>
+                href="/articlelist.html">Articles</a>
             </li>
             <li class="nav-item">
               <a class="nav-link pr-3 " 
@@ -81,72 +82,72 @@ It is called <em>Counting With Dictionary</em> by Raymond Hettinger in a python 
 <a href="/python-resources.html">A previous blog post</a> has the links 
 to the video and the note. </p>
 <p>Given a list such as colors below,</p>
-<div class="highlight"><pre><span></span><span class="n">colors</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;red&#39;</span><span class="p">,</span> <span class="s1">&#39;green&#39;</span><span class="p">,</span> <span class="s1">&#39;red&#39;</span><span class="p">,</span> <span class="s1">&#39;blue&#39;</span><span class="p">,</span> <span class="s1">&#39;green&#39;</span><span class="p">,</span> <span class="s1">&#39;red&#39;</span><span class="p">]</span>
-</pre></div>
+<div class="highlight"><pre><span></span><code><span class="n">colors</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;red&#39;</span><span class="p">,</span> <span class="s1">&#39;green&#39;</span><span class="p">,</span> <span class="s1">&#39;red&#39;</span><span class="p">,</span> <span class="s1">&#39;blue&#39;</span><span class="p">,</span> <span class="s1">&#39;green&#39;</span><span class="p">,</span> <span class="s1">&#39;red&#39;</span><span class="p">]</span>
+</code></pre></div>
 
 
 <p>the python code should generate a dictionary. The keys of the dictionary are 
 values in the list, and the values of the dictionary are the corresponding number of 
 keys in the list.  For the above example, the result dictionary <code>d</code> is </p>
-<div class="highlight"><pre><span></span><span class="p">{</span><span class="s1">&#39;red&#39;</span><span class="p">:</span> <span class="mi">3</span><span class="p">,</span> <span class="s1">&#39;green&#39;</span><span class="p">:</span> <span class="mi">2</span><span class="p">,</span> <span class="s1">&#39;blue&#39;</span><span class="p">:</span> <span class="mi">1</span><span class="p">}</span>
-</pre></div>
+<div class="highlight"><pre><span></span><code><span class="p">{</span><span class="s1">&#39;red&#39;</span><span class="p">:</span> <span class="mi">3</span><span class="p">,</span> <span class="s1">&#39;green&#39;</span><span class="p">:</span> <span class="mi">2</span><span class="p">,</span> <span class="s1">&#39;blue&#39;</span><span class="p">:</span> <span class="mi">1</span><span class="p">}</span>
+</code></pre></div>
 
 
 <p>There are many ways to write the code.  I will summarize these techniques below. </p>
 <h3>Basic Way to Count</h3>
 <p>The basic way is to set the d[color] to 0 when the dictionary sees the color 
 first time.  Total line count is 5. </p>
-<div class="highlight"><pre><span></span><span class="n">d</span> <span class="o">=</span> <span class="p">{}</span>
+<div class="highlight"><pre><span></span><code><span class="n">d</span> <span class="o">=</span> <span class="p">{}</span>
 <span class="k">for</span> <span class="n">color</span> <span class="ow">in</span> <span class="n">colors</span><span class="p">:</span>
     <span class="k">if</span> <span class="n">color</span> <span class="ow">not</span> <span class="ow">in</span> <span class="n">d</span><span class="p">:</span>
         <span class="n">d</span><span class="p">[</span><span class="n">color</span><span class="p">]</span> <span class="o">=</span> <span class="mi">0</span>
     <span class="n">d</span><span class="p">[</span><span class="n">color</span><span class="p">]</span> <span class="o">+=</span> <span class="mi">1</span>
-</pre></div>
+</code></pre></div>
 
 
 <h3>Get Method of Dictionary</h3>
 <p>If the color is not in the dictionary, using <code>d[color]</code> to access its value raises
 a KeyValue exception.  The dictionary <code>get</code> method returns the second argument 
 when the first argument is not already in the dictionary.  Line count is 3. </p>
-<div class="highlight"><pre><span></span><span class="n">d</span> <span class="o">=</span> <span class="p">{}</span>
+<div class="highlight"><pre><span></span><code><span class="n">d</span> <span class="o">=</span> <span class="p">{}</span>
 <span class="k">for</span> <span class="n">color</span> <span class="ow">in</span> <span class="n">colors</span><span class="p">:</span>
     <span class="n">d</span><span class="p">[</span><span class="n">color</span><span class="p">]</span> <span class="o">=</span> <span class="n">d</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="n">color</span><span class="p">,</span> <span class="mi">0</span><span class="p">)</span> <span class="o">+</span> <span class="mi">1</span>
-</pre></div>
+</code></pre></div>
 
 
 <h3>Use Defaultdict</h3>
 <p>The standard collections package has a defaultdict class. The class sets a default 
 value for a key.  Line count is still 5. </p>
-<div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">collections</span>
+<div class="highlight"><pre><span></span><code><span class="kn">import</span> <span class="nn">collections</span>
 <span class="n">d</span> <span class="o">=</span> <span class="n">collections</span><span class="o">.</span><span class="n">defaultdict</span><span class="p">(</span><span class="nb">int</span><span class="p">)</span>
 <span class="k">for</span> <span class="n">color</span> <span class="ow">in</span> <span class="n">colors</span><span class="p">:</span>
     <span class="n">d</span><span class="p">[</span><span class="n">color</span><span class="p">]</span> <span class="o">+=</span> <span class="mi">1</span>
 <span class="n">d</span> <span class="o">=</span> <span class="nb">dict</span><span class="p">(</span><span class="n">d</span><span class="p">)</span>
-</pre></div>
+</code></pre></div>
 
 
 <h3>Try and Except to Handle Exception</h3>
 <p>The above three methods are from Raymond Hettinger's python talk.  The method below
 is from the Real Python article I introduced earlier.  This method takes 6 lines, 
 but the logic is very clear. </p>
-<div class="highlight"><pre><span></span><span class="n">d</span> <span class="o">=</span><span class="p">{}</span>
+<div class="highlight"><pre><span></span><code><span class="n">d</span> <span class="o">=</span><span class="p">{}</span>
 <span class="k">for</span> <span class="n">color</span> <span class="ow">in</span> <span class="n">colors</span><span class="p">:</span>
     <span class="k">try</span><span class="p">:</span>
         <span class="n">d</span><span class="p">[</span><span class="n">color</span><span class="p">]</span> <span class="o">+=</span> <span class="mi">1</span>
     <span class="k">except</span> <span class="ne">KeyError</span><span class="p">:</span>
         <span class="n">d</span><span class="p">[</span><span class="n">color</span><span class="p">]</span> <span class="o">=</span> <span class="mi">1</span>
-</pre></div>
+</code></pre></div>
 
 
 <h3>Setdefault Method of Dictionary</h3>
 <p>This method is between the first two methods.  Line count is also between 5 and 3. 
 This method uses dictionary method <code>setdefault</code>, which is also discussed in 
 Raymond Hettinger's python talk</p>
-<div class="highlight"><pre><span></span><span class="n">d</span><span class="o">=</span><span class="p">{}</span>
+<div class="highlight"><pre><span></span><code><span class="n">d</span><span class="o">=</span><span class="p">{}</span>
 <span class="k">for</span> <span class="n">color</span> <span class="ow">in</span> <span class="n">colors</span><span class="p">:</span>
     <span class="n">d</span><span class="o">.</span><span class="n">setdefault</span><span class="p">(</span><span class="n">color</span><span class="p">,</span> <span class="mi">0</span><span class="p">)</span>
     <span class="n">d</span><span class="p">[</span><span class="n">color</span><span class="p">]</span> <span class="o">+=</span><span class="mi">1</span> 
-</pre></div>
+</code></pre></div>
 
 
 <p>Python is very flexible to write once you know the basics, and there are always 
@@ -159,9 +160,9 @@ many ways to solve a problem. </p>
   
    
 
-    <!-- Optional JavaScript -->
-    <!-- jQuery first, then Bootstrap Bundle JS -->
-    <script src="/theme/js/jquery-3.3.1.slim.min.js"></script>
-    <script src="/theme/js/bootstrap.bundle.min.js"></script>
+    <script src="https://code.jquery.com/jquery-3.4.1.slim.min.js" integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js" integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6" crossorigin="anonymous"></script>
+
   </body>
 </html>

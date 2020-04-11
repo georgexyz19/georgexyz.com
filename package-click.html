@@ -4,7 +4,8 @@
     <!-- Required meta tags -->
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-    <link rel="stylesheet" href="/theme/css/bootstrap.min.css">
+    <!-- <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous"> -->
+    <link rel="stylesheet" href="/theme/css/bs4min.css">
     <link rel="shortcut icon" type="image/x-icon" href="/theme/images/favicon.ico" >
     <link rel="icon" type="image/x-icon" href="/theme/images/favicon.ico" >
  
@@ -17,7 +18,7 @@
   </head>
   <body>
     <!-- navbar -->
-    <nav class="navbar navbar-expand-md navbar-dark bg-primary">
+    <nav class="navbar navbar-expand-md navbar-light" style="background-color: #e3f2fd;">
       <div class="container">
         <a class="navbar-brand" href="/">George Zhang</a>
         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarColor01" aria-controls="navbarColor01" aria-expanded="false" aria-label="Toggle navigation">
@@ -28,7 +29,7 @@
           <ul class="navbar-nav mr-auto">
             <li class="nav-item">
               <a class="nav-link " 
-                href="/archives.html">Articles</a>
+                href="/articlelist.html">Articles</a>
             </li>
             <li class="nav-item">
               <a class="nav-link pr-3 " 
@@ -92,33 +93,33 @@ Seb Vetter wrote two articles about Click on dbader.org.  This is the first one.
 This is Seb Vetter's second article on dbader.org. Both articles are fantastic. </li>
 </ol>
 <p>Here is what I come up with, </p>
-<div class="highlight"><pre><span></span><span class="c1"># signtool_cli.py</span>
+<div class="highlight"><pre><span></span><code><span class="c1"># signtool_cli.py</span>
 
-<span class="nd">@click.command</span><span class="p">()</span>
-<span class="nd">@click.option</span><span class="p">(</span><span class="s1">&#39;--width&#39;</span><span class="p">,</span> <span class="s1">&#39;-w&#39;</span><span class="p">,</span> <span class="n">default</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span> 
+<span class="nd">@click</span><span class="o">.</span><span class="n">command</span><span class="p">()</span>
+<span class="nd">@click</span><span class="o">.</span><span class="n">option</span><span class="p">(</span><span class="s1">&#39;--width&#39;</span><span class="p">,</span> <span class="s1">&#39;-w&#39;</span><span class="p">,</span> <span class="n">default</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span> 
     <span class="n">help</span><span class="o">=</span><span class="s1">&#39;Width of the sign in inches for output svg&#39;</span> <span class="p">)</span>
-<span class="nd">@click.option</span><span class="p">(</span><span class="s1">&#39;--ratio&#39;</span><span class="p">,</span> <span class="s1">&#39;-r&#39;</span><span class="p">,</span> <span class="n">default</span><span class="o">=</span><span class="mf">1.0</span><span class="p">,</span> 
+<span class="nd">@click</span><span class="o">.</span><span class="n">option</span><span class="p">(</span><span class="s1">&#39;--ratio&#39;</span><span class="p">,</span> <span class="s1">&#39;-r&#39;</span><span class="p">,</span> <span class="n">default</span><span class="o">=</span><span class="mf">1.0</span><span class="p">,</span> 
     <span class="n">help</span><span class="o">=</span><span class="s1">&#39;Ratio to true scale when drawing the sign, default 1.0&#39;</span><span class="p">)</span>
-<span class="nd">@click.argument</span><span class="p">(</span><span class="s1">&#39;filename&#39;</span><span class="p">,</span> <span class="nb">type</span><span class="o">=</span><span class="n">click</span><span class="o">.</span><span class="n">Path</span><span class="p">(</span><span class="n">exists</span><span class="o">=</span><span class="bp">True</span><span class="p">))</span>
-<span class="nd">@click.argument</span><span class="p">(</span><span class="s1">&#39;output_filename&#39;</span><span class="p">,</span> <span class="nb">type</span><span class="o">=</span><span class="n">click</span><span class="o">.</span><span class="n">Path</span><span class="p">(</span><span class="n">writable</span><span class="o">=</span><span class="bp">True</span><span class="p">),</span> 
-    <span class="n">required</span><span class="o">=</span><span class="bp">False</span><span class="p">)</span>
+<span class="nd">@click</span><span class="o">.</span><span class="n">argument</span><span class="p">(</span><span class="s1">&#39;filename&#39;</span><span class="p">,</span> <span class="nb">type</span><span class="o">=</span><span class="n">click</span><span class="o">.</span><span class="n">Path</span><span class="p">(</span><span class="n">exists</span><span class="o">=</span><span class="kc">True</span><span class="p">))</span>
+<span class="nd">@click</span><span class="o">.</span><span class="n">argument</span><span class="p">(</span><span class="s1">&#39;output_filename&#39;</span><span class="p">,</span> <span class="nb">type</span><span class="o">=</span><span class="n">click</span><span class="o">.</span><span class="n">Path</span><span class="p">(</span><span class="n">writable</span><span class="o">=</span><span class="kc">True</span><span class="p">),</span> 
+    <span class="n">required</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
 <span class="k">def</span> <span class="nf">cli</span><span class="p">(</span><span class="n">width</span><span class="p">,</span> <span class="n">ratio</span><span class="p">,</span> <span class="n">filename</span><span class="p">,</span> <span class="n">output_filename</span><span class="p">):</span> 
     <span class="n">stream</span> <span class="o">=</span> <span class="nb">open</span><span class="p">(</span><span class="n">filename</span><span class="p">,</span> <span class="s1">&#39;r&#39;</span><span class="p">)</span>
     <span class="n">d</span> <span class="o">=</span> <span class="n">yaml</span><span class="o">.</span><span class="n">safe_load</span><span class="p">(</span><span class="n">stream</span><span class="p">)</span>
     <span class="o">......</span>
-    <span class="k">if</span> <span class="n">output_filename</span> <span class="ow">is</span> <span class="bp">None</span><span class="p">:</span>
+    <span class="k">if</span> <span class="n">output_filename</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
         <span class="n">output_filename</span> <span class="o">=</span> <span class="n">pathlib</span><span class="o">.</span><span class="n">Path</span><span class="p">(</span><span class="n">filename</span><span class="p">)</span><span class="o">.</span><span class="n">with_suffix</span><span class="p">(</span><span class="s1">&#39;.svg&#39;</span><span class="p">)</span>
     <span class="n">out_file</span> <span class="o">=</span> <span class="nb">open</span><span class="p">(</span><span class="n">output_filename</span><span class="p">,</span> <span class="s1">&#39;w&#39;</span><span class="p">)</span>
     <span class="n">out_file</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="n">output_stream</span><span class="o">.</span><span class="n">getvalue</span><span class="p">())</span>
-    <span class="n">click</span><span class="o">.</span><span class="n">echo</span><span class="p">(</span><span class="n">f</span><span class="s1">&#39;Write the file to {output_filename}&#39;</span><span class="p">)</span>
+    <span class="n">click</span><span class="o">.</span><span class="n">echo</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;Write the file to </span><span class="si">{</span><span class="n">output_filename</span><span class="si">}</span><span class="s1">&#39;</span><span class="p">)</span>
 
 <span class="k">if</span> <span class="vm">__name__</span> <span class="o">==</span> <span class="s1">&#39;__main__&#39;</span><span class="p">:</span>
     <span class="n">cli</span><span class="p">()</span>
-</pre></div>
+</code></pre></div>
 
 
 <p>This is the help message and command to run the app. </p>
-<div class="highlight"><pre><span></span>(dev_cli) george@STK2M3:~/dev_cli$ python signtool_cli.py --help
+<div class="highlight"><pre><span></span><code>(dev_cli) george@STK2M3:~/dev_cli$ python signtool_cli.py --help
 Usage: signtool_cli.py [OPTIONS] FILENAME [OUTPUT_FILENAME]
 
 Options:
@@ -128,21 +129,21 @@ Options:
 
 (dev_cli) ... $ python signtool_cli.py --ratio 0.1 R2-1.yaml 
 Write the file to R2-1.svg
-</pre></div>
+</code></pre></div>
 
 
 <p>I also created a second python file to read all files under a directory and 
 write results to another directory. </p>
-<div class="highlight"><pre><span></span><span class="c1"># signtool_dir.py</span>
+<div class="highlight"><pre><span></span><code><span class="c1"># signtool_dir.py</span>
 
-<span class="nd">@click.command</span><span class="p">()</span>
-<span class="nd">@click.option</span><span class="p">(</span><span class="s1">&#39;--width&#39;</span><span class="p">,</span> <span class="s1">&#39;-w&#39;</span><span class="p">,</span> <span class="n">default</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span> 
+<span class="nd">@click</span><span class="o">.</span><span class="n">command</span><span class="p">()</span>
+<span class="nd">@click</span><span class="o">.</span><span class="n">option</span><span class="p">(</span><span class="s1">&#39;--width&#39;</span><span class="p">,</span> <span class="s1">&#39;-w&#39;</span><span class="p">,</span> <span class="n">default</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span> 
     <span class="n">help</span><span class="o">=</span><span class="s1">&#39;Width of the sign in inches for output svg&#39;</span> <span class="p">)</span>
-<span class="nd">@click.option</span><span class="p">(</span><span class="s1">&#39;--ratio&#39;</span><span class="p">,</span> <span class="s1">&#39;-r&#39;</span><span class="p">,</span> <span class="n">default</span><span class="o">=</span><span class="mf">1.0</span><span class="p">,</span> 
+<span class="nd">@click</span><span class="o">.</span><span class="n">option</span><span class="p">(</span><span class="s1">&#39;--ratio&#39;</span><span class="p">,</span> <span class="s1">&#39;-r&#39;</span><span class="p">,</span> <span class="n">default</span><span class="o">=</span><span class="mf">1.0</span><span class="p">,</span> 
     <span class="n">help</span><span class="o">=</span><span class="s1">&#39;Ratio to true scale when drawing the sign, default 1.0&#39;</span><span class="p">)</span>
-<span class="nd">@click.argument</span><span class="p">(</span><span class="s1">&#39;input_dir&#39;</span><span class="p">,</span> <span class="nb">type</span><span class="o">=</span><span class="n">click</span><span class="o">.</span><span class="n">Path</span><span class="p">(</span><span class="n">exists</span><span class="o">=</span><span class="bp">True</span><span class="p">,</span> <span class="n">dir_okay</span><span class="o">=</span><span class="bp">True</span><span class="p">,</span> 
-    <span class="n">file_okay</span><span class="o">=</span><span class="bp">False</span><span class="p">))</span>
-<span class="nd">@click.argument</span><span class="p">(</span><span class="s1">&#39;output_dir&#39;</span><span class="p">,</span> <span class="nb">type</span><span class="o">=</span><span class="n">click</span><span class="o">.</span><span class="n">Path</span><span class="p">(</span><span class="n">dir_okay</span><span class="o">=</span><span class="bp">True</span><span class="p">),</span> <span class="n">required</span><span class="o">=</span><span class="bp">False</span><span class="p">)</span>
+<span class="nd">@click</span><span class="o">.</span><span class="n">argument</span><span class="p">(</span><span class="s1">&#39;input_dir&#39;</span><span class="p">,</span> <span class="nb">type</span><span class="o">=</span><span class="n">click</span><span class="o">.</span><span class="n">Path</span><span class="p">(</span><span class="n">exists</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">dir_okay</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> 
+    <span class="n">file_okay</span><span class="o">=</span><span class="kc">False</span><span class="p">))</span>
+<span class="nd">@click</span><span class="o">.</span><span class="n">argument</span><span class="p">(</span><span class="s1">&#39;output_dir&#39;</span><span class="p">,</span> <span class="nb">type</span><span class="o">=</span><span class="n">click</span><span class="o">.</span><span class="n">Path</span><span class="p">(</span><span class="n">dir_okay</span><span class="o">=</span><span class="kc">True</span><span class="p">),</span> <span class="n">required</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
 <span class="k">def</span> <span class="nf">cli</span><span class="p">(</span><span class="n">width</span><span class="p">,</span> <span class="n">ratio</span><span class="p">,</span> <span class="n">input_dir</span><span class="p">,</span> <span class="n">output_dir</span><span class="p">):</span>
     <span class="n">pathlist</span> <span class="o">=</span> <span class="n">pathlib</span><span class="o">.</span><span class="n">Path</span><span class="p">(</span><span class="n">input_dir</span><span class="p">)</span><span class="o">.</span><span class="n">glob</span><span class="p">(</span><span class="s1">&#39;**/*.yaml&#39;</span><span class="p">)</span>
     <span class="k">for</span> <span class="n">filename</span> <span class="ow">in</span> <span class="n">pathlist</span><span class="p">:</span>
@@ -150,20 +151,20 @@ write results to another directory. </p>
         <span class="n">d</span> <span class="o">=</span> <span class="n">yaml</span><span class="o">.</span><span class="n">safe_load</span><span class="p">(</span><span class="n">stream</span><span class="p">)</span>
         <span class="n">arg</span> <span class="o">=</span> <span class="n">dict_to_obj</span><span class="p">(</span><span class="n">d</span><span class="p">)</span>
         <span class="o">......</span>
-        <span class="k">if</span> <span class="n">output_dir</span> <span class="ow">is</span> <span class="bp">None</span><span class="p">:</span>
+        <span class="k">if</span> <span class="n">output_dir</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
             <span class="n">output_dir</span> <span class="o">=</span> <span class="n">input_dir</span>
         <span class="n">output_filename</span> <span class="o">=</span> <span class="n">output_dir</span> <span class="o">+</span> <span class="n">pathlib</span><span class="o">.</span><span class="n">Path</span><span class="p">(</span><span class="n">filename</span><span class="p">)</span><span class="o">.</span><span class="n">stem</span> <span class="o">+</span> <span class="s1">&#39;.svg&#39;</span>
         <span class="n">out_file</span> <span class="o">=</span> <span class="nb">open</span><span class="p">(</span><span class="n">output_filename</span><span class="p">,</span> <span class="s1">&#39;w&#39;</span><span class="p">)</span>
         <span class="n">out_file</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="n">output_stream</span><span class="o">.</span><span class="n">getvalue</span><span class="p">())</span>
-        <span class="n">click</span><span class="o">.</span><span class="n">echo</span><span class="p">(</span><span class="n">f</span><span class="s1">&#39;Write the file to {output_filename}&#39;</span><span class="p">)</span>
+        <span class="n">click</span><span class="o">.</span><span class="n">echo</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;Write the file to </span><span class="si">{</span><span class="n">output_filename</span><span class="si">}</span><span class="s1">&#39;</span><span class="p">)</span>
 
 <span class="k">if</span> <span class="vm">__name__</span> <span class="o">==</span> <span class="s1">&#39;__main__&#39;</span><span class="p">:</span>
     <span class="n">cli</span><span class="p">()</span>
-</pre></div>
+</code></pre></div>
 
 
 <p>Here is how to call this Click app.</p>
-<div class="highlight"><pre><span></span>(dev_cli) george@STK2M3:~/dev_cli$ python signtool_dir.py --help
+<div class="highlight"><pre><span></span><code>(dev_cli) george@STK2M3:~/dev_cli$ python signtool_dir.py --help
 Usage: signtool_dir.py [OPTIONS] INPUT_DIR [OUTPUT_DIR]
 
 Options:
@@ -175,7 +176,7 @@ Options:
 Write the file to ./svg/W8-5P.svg
 Write the file to ./svg/R2-1.svg
 ......
-</pre></div>
+</code></pre></div>
 
     </div>
   </div>
@@ -184,9 +185,9 @@ Write the file to ./svg/R2-1.svg
   
    
 
-    <!-- Optional JavaScript -->
-    <!-- jQuery first, then Bootstrap Bundle JS -->
-    <script src="/theme/js/jquery-3.3.1.slim.min.js"></script>
-    <script src="/theme/js/bootstrap.bundle.min.js"></script>
+    <script src="https://code.jquery.com/jquery-3.4.1.slim.min.js" integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js" integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6" crossorigin="anonymous"></script>
+
   </body>
 </html>

@@ -4,7 +4,8 @@
     <!-- Required meta tags -->
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-    <link rel="stylesheet" href="/theme/css/bootstrap.min.css">
+    <!-- <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous"> -->
+    <link rel="stylesheet" href="/theme/css/bs4min.css">
     <link rel="shortcut icon" type="image/x-icon" href="/theme/images/favicon.ico" >
     <link rel="icon" type="image/x-icon" href="/theme/images/favicon.ico" >
  
@@ -17,7 +18,7 @@
   </head>
   <body>
     <!-- navbar -->
-    <nav class="navbar navbar-expand-md navbar-dark bg-primary">
+    <nav class="navbar navbar-expand-md navbar-light" style="background-color: #e3f2fd;">
       <div class="container">
         <a class="navbar-brand" href="/">George Zhang</a>
         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarColor01" aria-controls="navbarColor01" aria-expanded="false" aria-label="Toggle navigation">
@@ -28,7 +29,7 @@
           <ul class="navbar-nav mr-auto">
             <li class="nav-item">
               <a class="nav-link " 
-                href="/archives.html">Articles</a>
+                href="/articlelist.html">Articles</a>
             </li>
             <li class="nav-item">
               <a class="nav-link pr-3 " 
@@ -85,32 +86,32 @@ for its lightweight Xfce desktop environment. </p>
 <a href="https://www.omgubuntu.co.uk/2019/06/linux-mint-19-wine-4-available">Wine 4.0 in Linux Mint 19</a>. 
 Linux developers backported Wine 4.0 to the Linux Mint repositories.  It becomes 
 very easy for users to install Wine 4. Here is the single command to install: </p>
-<div class="highlight"><pre><span></span>$sudo apt install --install-recommends wine-installer
-</pre></div>
+<div class="highlight"><pre><span></span><code>$sudo apt install --install-recommends wine-installer
+</code></pre></div>
 
 
 <p>I find two issues when setting up Linux Mint. The first one is that when I run 
 <code>sudo apt upgrade</code> command after installation, the system reports an error like this:</p>
-<div class="highlight"><pre><span></span>Fetched 902 kB in 3s (247 kB/s)
+<div class="highlight"><pre><span></span><code>Fetched 902 kB in 3s (247 kB/s)
 Preconfiguring packages ...
 dpkg: dependency problems prevent processing triggers for gconf2:
  gconf2 depends on dbus-x11; however:
   Package dbus-x11 is not configured yet
-</pre></div>
+</code></pre></div>
 
 
 <p>A Google search finds 
 <a href="https://forums.linuxmint.com/viewtopic.php?t=276119">a solution</a> 
 posted on Linxu Mint forum.  Running 
 two commands below solves the issue. </p>
-<div class="highlight"><pre><span></span>$sudo dpkg --configure -a
+<div class="highlight"><pre><span></span><code>$sudo dpkg --configure -a
 $sudo apt-get install -f
-</pre></div>
+</code></pre></div>
 
 
 <p>The man pages of dpkg and apt-get have the following paragraphs about those two 
 commands:</p>
-<div class="highlight"><pre><span></span>dpkg
+<div class="highlight"><pre><span></span><code>dpkg
    --configure package...|-a|--pending
     Configure  a  package  which  has  been  unpacked  but  not  yet
     configured.  If -a or --pending is given instead of package, all
@@ -139,7 +140,7 @@ apt-get
     using dpkg --remove to eliminate some of the offending packages).
     Use of this option together with -m may produce an error in some
     situations. Configuration Item: APT::Get::Fix-Broken.
-</pre></div>
+</code></pre></div>
 
 
 <p>The other issue I encountered is that the system does not respond 
@@ -151,7 +152,7 @@ to logitech wireless mouse and keyboard after going into suspend (sleep). </p>
 <p><a href="https://askubuntu.com/questions/848698/wake-up-from-suspend-using-wireless-usb-keyboard-or-mouse-for-any-linux-distro">An article</a> 
 on askubuntu.com provides a working solution.  Here are the commands to make it 
 work:</p>
-<div class="highlight"><pre><span></span>george@STK2M3:~$ grep . /sys/bus/usb/devices/*/product
+<div class="highlight"><pre><span></span><code>george@STK2M3:~$ grep . /sys/bus/usb/devices/*/product
 /sys/bus/usb/devices/1-3/product:USB Receiver     # PORT !!!
 /sys/bus/usb/devices/1-5/product:USB2.0 Hub
 /sys/bus/usb/devices/2-3.1/product:Flash Drive
@@ -178,15 +179,15 @@ Bus 001 Device 001: ID 1d6b:0002 Linux Foundation 2.0 root hub
 
 george@STK2M3:~$ sudo vim /etc/udev/rules.d/10-wakeup.rules 
 [sudo] password for george: 
-</pre></div>
+</code></pre></div>
 
 
 <p>Add the contents below to the 10-wakeup.rules file.  The idVendor and idProduct 
 values are from the <code>lsusb</code> command, and the path <code>/sys/bus/...</code> is from the first 
 grep command.</p>
-<div class="highlight"><pre><span></span>ACTION==&quot;add&quot;, SUBSYSTEM==&quot;usb&quot;, ATTRS{idVendor}==&quot;046d&quot;, ATTRS{idProduct}==&quot;c52b&quot; 
+<div class="highlight"><pre><span></span><code>ACTION==&quot;add&quot;, SUBSYSTEM==&quot;usb&quot;, ATTRS{idVendor}==&quot;046d&quot;, ATTRS{idProduct}==&quot;c52b&quot; 
 RUN+=&quot;/bin/sh -c &#39;echo enabled &gt; /sys/bus/usb/devices/1-3/power/wakeup&#39;&quot;
-</pre></div>
+</code></pre></div>
 
 
 <p>After the above steps, the logitech mouse and keyboard wake up the Linxu Mint just fine. 
@@ -200,9 +201,9 @@ a large improvement for me. </p>
   
    
 
-    <!-- Optional JavaScript -->
-    <!-- jQuery first, then Bootstrap Bundle JS -->
-    <script src="/theme/js/jquery-3.3.1.slim.min.js"></script>
-    <script src="/theme/js/bootstrap.bundle.min.js"></script>
+    <script src="https://code.jquery.com/jquery-3.4.1.slim.min.js" integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js" integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6" crossorigin="anonymous"></script>
+
   </body>
 </html>

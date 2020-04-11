@@ -4,7 +4,8 @@
     <!-- Required meta tags -->
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-    <link rel="stylesheet" href="/theme/css/bootstrap.min.css">
+    <!-- <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous"> -->
+    <link rel="stylesheet" href="/theme/css/bs4min.css">
     <link rel="shortcut icon" type="image/x-icon" href="/theme/images/favicon.ico" >
     <link rel="icon" type="image/x-icon" href="/theme/images/favicon.ico" >
  
@@ -17,7 +18,7 @@
   </head>
   <body>
     <!-- navbar -->
-    <nav class="navbar navbar-expand-md navbar-dark bg-primary">
+    <nav class="navbar navbar-expand-md navbar-light" style="background-color: #e3f2fd;">
       <div class="container">
         <a class="navbar-brand" href="/">George Zhang</a>
         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarColor01" aria-controls="navbarColor01" aria-expanded="false" aria-label="Toggle navigation">
@@ -28,7 +29,7 @@
           <ul class="navbar-nav mr-auto">
             <li class="nav-item">
               <a class="nav-link " 
-                href="/archives.html">Articles</a>
+                href="/articlelist.html">Articles</a>
             </li>
             <li class="nav-item">
               <a class="nav-link pr-3 " 
@@ -88,8 +89,8 @@ is able to extract .7z file into a directory. The 7-zip software also has
 a portable version if you do not want to install it. </p>
 <p>After the file is extracted into this directory, double clicking 
 <code>inkscape.exe</code> starts Inkscape. </p>
-<div class="highlight"><pre><span></span>C:\Users\Username\Documents\inkscape0.92.4
-</pre></div>
+<div class="highlight"><pre><span></span><code>C:\Users\Username\Documents\inkscape0.92.4
+</code></pre></div>
 
 
 <h4>Inkscape User Extension Directory</h4>
@@ -97,8 +98,8 @@ a portable version if you do not want to install it. </p>
 dialog (Ctrl + Shift + p). Choose <code>System</code> on the left, and the right side 
 shows system paths for variables.  The default value 
 for <code>User extensions</code> is,</p>
-<div class="highlight"><pre><span></span>C:\Users\Username\AppData\Roaming\inkscape\extensions
-</pre></div>
+<div class="highlight"><pre><span></span><code>C:\Users\Username\AppData\Roaming\inkscape\extensions
+</code></pre></div>
 
 
 <p>Open this location in File Explorer and copy and paste extension files 
@@ -115,10 +116,10 @@ where <code>inkscape.exe</code> is stored, and copy files into
 this directory. Open file <code>\etc\fonts\conf.d\50-user.conf</code> and add 
 a line <code>&lt;dir&gt;./fonts&lt;/dir&gt;</code> before the last line. Check the new fonts 
 on <code>Text and Font</code> dialog in Inkscape. </p>
-<div class="highlight"><pre><span></span>... 
+<div class="highlight"><pre><span></span><code>... 
 &lt;dir&gt;./fonts&lt;/dir&gt;
 &lt;/fontconfig&gt;
-</pre></div>
+</code></pre></div>
 
 
 <h4>Install Dependencies for Plugin WriteTex</h4>
@@ -142,8 +143,8 @@ a directory. </p>
 <p>Program pdf2svg can be downloaded from 
 <a href="https://github.com/wanglongqi/WriteTeX/releases/download/v1.1/pdf2svg-x64.7z">this github address</a></p>
 <p>Suppose texlive and pdf2svg-x64 directories are stored in this location, </p>
-<div class="highlight"><pre><span></span>C:\Users\Username\Downloads\WriteTex-dep
-</pre></div>
+<div class="highlight"><pre><span></span><code>C:\Users\Username\Downloads\WriteTex-dep
+</code></pre></div>
 
 
 <p>Two directories containing files <code>xelatex.exe</code> and <code>pdf2svg.exe</code> should be 
@@ -151,9 +152,9 @@ added to the system path. In Windows 10 File Explorer, right click <code>This PC
 choose <code>Properties</code>.  Choose <code>Advanced system settings</code> and click <code>Advanced</code>
 tab on the dialog.  Click <code>Environment Variables</code> button and <code>Path</code> variable. 
 Then click <code>Edit</code> and add two directories to the list. </p>
-<div class="highlight"><pre><span></span>C:\Users\Username\Downloads\WriteTex-dep\pdf2svg-x64
+<div class="highlight"><pre><span></span><code>C:\Users\Username\Downloads\WriteTex-dep\pdf2svg-x64
 C:\Users\Username\Downloads\WriteTex-dep\texlive\bin\win32
-</pre></div>
+</code></pre></div>
 
 
 <p>The purpose of above steps is for WriteTex python extension to find 
@@ -162,8 +163,8 @@ C:\Users\Username\Downloads\WriteTex-dep\texlive\bin\win32
 <p>Enter equations between &#92;[ and &#92;] in LaTeX Source box and click <code>Apply</code>. 
 Some LaTeX symbols like <code>\dfrac</code> need AmsTeX.  Add the line below to 
 <code>Preamble File</code> box and toggle box <code>Trade above as contents</code>. </p>
-<div class="highlight"><pre><span></span>\usepackage{amsmath, amsthm, amssymb, amsfonts} 
-</pre></div>
+<div class="highlight"><pre><span></span><code>\usepackage{amsmath, amsthm, amssymb, amsfonts} 
+</code></pre></div>
 
 
 <div style="max-width:400px">
@@ -186,9 +187,9 @@ and drop font files into it.  The fonts will become available in Inkscape. </p>
 as in Windows.  However it is easier to install dependencies for WriteTex. 
 The two commands below install the texlive and pdf2svg programs. 
 The programs are automatically added to the system path. </p>
-<div class="highlight"><pre><span></span>sudo apt-get install texlive
+<div class="highlight"><pre><span></span><code>sudo apt-get install texlive
 sudo apt-get install pdf2svg
-</pre></div>
+</code></pre></div>
 
 
 <p>The texlive installation does not include xelatex.  You change <code>xelatex</code>
@@ -211,9 +212,9 @@ XML code, Inkscape may crash without giving error messages. </p>
   
    
 
-    <!-- Optional JavaScript -->
-    <!-- jQuery first, then Bootstrap Bundle JS -->
-    <script src="/theme/js/jquery-3.3.1.slim.min.js"></script>
-    <script src="/theme/js/bootstrap.bundle.min.js"></script>
+    <script src="https://code.jquery.com/jquery-3.4.1.slim.min.js" integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js" integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6" crossorigin="anonymous"></script>
+
   </body>
 </html>

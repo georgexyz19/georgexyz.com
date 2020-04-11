@@ -4,7 +4,8 @@
     <!-- Required meta tags -->
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-    <link rel="stylesheet" href="/theme/css/bootstrap.min.css">
+    <!-- <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous"> -->
+    <link rel="stylesheet" href="/theme/css/bs4min.css">
     <link rel="shortcut icon" type="image/x-icon" href="/theme/images/favicon.ico" >
     <link rel="icon" type="image/x-icon" href="/theme/images/favicon.ico" >
  
@@ -17,7 +18,7 @@
   </head>
   <body>
     <!-- navbar -->
-    <nav class="navbar navbar-expand-md navbar-dark bg-primary">
+    <nav class="navbar navbar-expand-md navbar-light" style="background-color: #e3f2fd;">
       <div class="container">
         <a class="navbar-brand" href="/">George Zhang</a>
         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarColor01" aria-controls="navbarColor01" aria-expanded="false" aria-label="Toggle navigation">
@@ -28,7 +29,7 @@
           <ul class="navbar-nav mr-auto">
             <li class="nav-item">
               <a class="nav-link " 
-                href="/archives.html">Articles</a>
+                href="/articlelist.html">Articles</a>
             </li>
             <li class="nav-item">
               <a class="nav-link pr-3 " 
@@ -84,7 +85,7 @@ for the app. </p>
 that an email has been successfully sent. The code is easy to understand. 
 The view adds a success message to the message queue. The next web page 
 (redirected page <code>blog_post_list</code>) will show the message.</p>
-<div class="highlight"><pre><span></span><span class="c1"># contact/views.py</span>
+<div class="highlight"><pre><span></span><code><span class="c1"># contact/views.py</span>
 
 <span class="o">...</span>
 <span class="kn">from</span> <span class="nn">django.contrib.messages</span> <span class="kn">import</span> <span class="n">success</span>
@@ -101,12 +102,12 @@ The view adds a success message to the message queue. The next web page
                 <span class="k">return</span> <span class="n">redirect</span><span class="p">(</span><span class="s1">&#39;blog_post_list&#39;</span><span class="p">)</span>             <span class="c1"># &lt;------</span>
         <span class="k">return</span> <span class="n">render</span><span class="p">(</span><span class="n">request</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">template_name</span><span class="p">,</span> 
                       <span class="p">{</span><span class="s1">&#39;form&#39;</span><span class="p">:</span> <span class="n">bound_form</span> <span class="p">}</span> <span class="p">)</span>
-</pre></div>
+</code></pre></div>
 
 
 <p>The code to show the messages is in the base.html file, and all web pages 
 extended from the base.html will show the messages. </p>
-<div class="highlight"><pre><span></span><span class="p">&lt;</span><span class="nt">ul</span><span class="p">&gt;</span>
+<div class="highlight"><pre><span></span><code><span class="p">&lt;</span><span class="nt">ul</span><span class="p">&gt;</span>
   {% for message in messages %}
     {% if message.tags %}
     <span class="p">&lt;</span><span class="nt">li</span> <span class="na">class</span><span class="o">=</span><span class="s">&quot;{{ message.tags }}&quot;</span><span class="p">&gt;</span>
@@ -116,12 +117,12 @@ extended from the base.html will show the messages. </p>
     {{ message }}<span class="p">&lt;/</span><span class="nt">li</span><span class="p">&gt;</span>
   {% endfor %}
 <span class="p">&lt;/</span><span class="nt">ul</span><span class="p">&gt;</span>
-</pre></div>
+</code></pre></div>
 
 
 <p>The code above is very similar to the code shown on the Django official 
 documentation page (shown below). </p>
-<div class="highlight"><pre><span></span>{% if messages %}
+<div class="highlight"><pre><span></span><code>{% if messages %}
 &lt;ul class=&quot;messages&quot;&gt;
     {% for message in messages %}
     &lt;li{% if message.tags %} class=&quot;{{ message.tags }}&quot;{% endif %}&gt;
@@ -129,13 +130,13 @@ documentation page (shown below). </p>
     {% endfor %}
 &lt;/ul&gt;
 {% endif %}
-</pre></div>
+</code></pre></div>
 
 
 <h3>Source Code Files</h3>
 <p>The source code for the messages app is in the django/contrib/messages directory. 
 It consists of 13 python files, and the total line count is 647 in Django 2.2.2.</p>
-<div class="highlight"><pre><span></span>george@STK2M3:~$ find . -name <span class="s1">&#39;*.py&#39;</span> -exec wc -l <span class="o">{}</span> +
+<div class="highlight"><pre><span></span><code>george@STK2M3:~$ find . -name <span class="s1">&#39;*.py&#39;</span> -exec wc -l <span class="o">{}</span> +
    <span class="m">26</span> ./middleware.py
     <span class="m">4</span> ./__init__.py
    <span class="m">21</span> ./constants.py
@@ -150,7 +151,7 @@ It consists of 13 python files, and the total line count is 647 in Django 2.2.2.
   <span class="m">166</span> ./storage/cookie.py
    <span class="m">54</span> ./storage/fallback.py
   <span class="m">647</span> total
-</pre></div>
+</code></pre></div>
 
 
 <h3>Messages App API</h3>
@@ -166,7 +167,7 @@ file defines the API of the messages app, which includes those functions:</p>
 <p>The functions shows that the attribute <code>_message</code> of request is the message 
 storage.</p>
 <p>The constants.py defines a few constants:</p>
-<div class="highlight"><pre><span></span><span class="c1"># messages/constants.py</span>
+<div class="highlight"><pre><span></span><code><span class="c1"># messages/constants.py</span>
 
 <span class="n">DEBUG</span> <span class="o">=</span> <span class="mi">10</span>
 <span class="n">INFO</span> <span class="o">=</span> <span class="mi">20</span>
@@ -189,7 +190,7 @@ storage.</p>
     <span class="s1">&#39;WARNING&#39;</span><span class="p">:</span> <span class="n">WARNING</span><span class="p">,</span>
     <span class="s1">&#39;ERROR&#39;</span><span class="p">:</span> <span class="n">ERROR</span><span class="p">,</span>
 <span class="p">}</span>
-</pre></div>
+</code></pre></div>
 
 
 <p>The middleware.py code is an good example of how to write a middleware for 
@@ -198,7 +199,7 @@ Django. The class derives from MiddlewareMixin and defines two methods
 <code>_messages</code> attribute to the request and <code>process_response</code> stores the messages 
 by calling <code>update</code> method of <code>_message</code> and raises an exception if messages 
 are not all stored.</p>
-<div class="highlight"><pre><span></span><span class="c1"># messages/middleware.py</span>
+<div class="highlight"><pre><span></span><code><span class="c1"># messages/middleware.py</span>
 
 <span class="kn">from</span> <span class="nn">django.conf</span> <span class="kn">import</span> <span class="n">settings</span>
 <span class="kn">from</span> <span class="nn">django.contrib.messages.storage</span> <span class="kn">import</span> <span class="n">default_storage</span>
@@ -226,12 +227,12 @@ are not all stored.</p>
             <span class="k">if</span> <span class="n">unstored_messages</span> <span class="ow">and</span> <span class="n">settings</span><span class="o">.</span><span class="n">DEBUG</span><span class="p">:</span>
                 <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="s1">&#39;Not all temporary messages could be stored.&#39;</span><span class="p">)</span>
         <span class="k">return</span> <span class="n">response</span>
-</pre></div>
+</code></pre></div>
 
 
 <p>The context_processor.py defines a function <code>messages</code> which simply returns a 
 dictionary of two context variables.</p>
-<div class="highlight"><pre><span></span><span class="c1"># messages/context_processor.py </span>
+<div class="highlight"><pre><span></span><code><span class="c1"># messages/context_processor.py </span>
 
 <span class="kn">from</span> <span class="nn">django.contrib.messages.api</span> <span class="kn">import</span> <span class="n">get_messages</span>
 <span class="kn">from</span> <span class="nn">django.contrib.messages.constants</span> <span class="kn">import</span> <span class="n">DEFAULT_LEVELS</span>
@@ -246,7 +247,7 @@ dictionary of two context variables.</p>
         <span class="s1">&#39;messages&#39;</span><span class="p">:</span> <span class="n">get_messages</span><span class="p">(</span><span class="n">request</span><span class="p">),</span>
         <span class="s1">&#39;DEFAULT_MESSAGE_LEVELS&#39;</span><span class="p">:</span> <span class="n">DEFAULT_LEVELS</span><span class="p">,</span>
     <span class="p">}</span>
-</pre></div>
+</code></pre></div>
 
 
 <p>The <code>views.py</code> defines a SuccessMessageMixin, which adds a success message 
@@ -257,7 +258,7 @@ dictionary of level tags. </p>
 <h3>Messages Backend Storage</h3>
 <p>The interesting part of the messages app is its storage. The __init__.py in 
 the storage defines a <code>default_storage</code> function. </p>
-<div class="highlight"><pre><span></span><span class="c1"># messages/storage/__init__.py</span>
+<div class="highlight"><pre><span></span><code><span class="c1"># messages/storage/__init__.py</span>
 
 <span class="kn">from</span> <span class="nn">django.conf</span> <span class="kn">import</span> <span class="n">settings</span>
 <span class="kn">from</span> <span class="nn">django.utils.module_loading</span> <span class="kn">import</span> <span class="n">import_string</span>
@@ -271,19 +272,19 @@ the storage defines a <code>default_storage</code> function. </p>
 <span class="sd">    to avoid accessing the settings at the module level.</span>
 <span class="sd">    &quot;&quot;&quot;</span>
     <span class="k">return</span> <span class="n">import_string</span><span class="p">(</span><span class="n">settings</span><span class="o">.</span><span class="n">MESSAGE_STORAGE</span><span class="p">)(</span><span class="n">request</span><span class="p">)</span>
-</pre></div>
+</code></pre></div>
 
 
 <p>The grep command results show that <code>MESSAGE_STORAGE</code> is assigned FallBackStorage 
 class which is defined in the fallback.py file. </p>
-<div class="highlight"><pre><span></span>george@STK2M3:~/Desktop/django-2.2.2$ grep -nr &#39;MESSAGE_STORAGE&#39; ./
+<div class="highlight"><pre><span></span><code>george@STK2M3:~/Desktop/django-2.2.2$ grep -nr &#39;MESSAGE_STORAGE&#39; ./
 ./django/contrib/messages/storage/__init__.py:9: 
    This isn&#39;t just default_storage = import_string(settings.MESSAGE_STORAGE)
 ./django/contrib/messages/storage/__init__.py:12: 
    return import_string(settings.MESSAGE_STORAGE)(request)
 ./django/conf/global_settings.py:554:MESSAGE_STORAGE = 
    &#39;django.contrib.messages.storage.fallback.FallbackStorage&#39;
-</pre></div>
+</code></pre></div>
 
 
 <p>The <code>import_string</code> function is defined in the module_loading.py file, which 
@@ -322,7 +323,7 @@ the steps in which methods in BaseStorage are called. </p>
 <p>The logic in the <code>update</code> method of BaseStorage is smart. If two consecutive 
 requests add two messages without displaying them, both messages will be 
 stored. Here is the source code. </p>
-<div class="highlight"><pre><span></span><span class="c1"># update method of BaseStorage class</span>
+<div class="highlight"><pre><span></span><code><span class="c1"># update method of BaseStorage class</span>
 <span class="k">def</span> <span class="nf">update</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">response</span><span class="p">):</span>
     <span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">    Store all unread messages.</span>
@@ -336,7 +337,7 @@ stored. Here is the source code. </p>
     <span class="k">elif</span> <span class="bp">self</span><span class="o">.</span><span class="n">added_new</span><span class="p">:</span>
         <span class="n">messages</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_loaded_messages</span> <span class="o">+</span> <span class="bp">self</span><span class="o">.</span><span class="n">_queued_messages</span>
         <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_store</span><span class="p">(</span><span class="n">messages</span><span class="p">,</span> <span class="n">response</span><span class="p">)</span>
-</pre></div>
+</code></pre></div>
 
 
 <h3>Cookies and Sessions</h3>
@@ -359,7 +360,7 @@ to the
 <p>The SessionStorage class does not need to consider the size limit when saving 
 messages, so the code is simpler than in CookieStorage class.  Here is the 
 source code of session.py file. </p>
-<div class="highlight"><pre><span></span><span class="c1"># messages/storage/session.py</span>
+<div class="highlight"><pre><span></span><code><span class="c1"># messages/storage/session.py</span>
 <span class="kn">import</span> <span class="nn">json</span>
 
 <span class="kn">from</span> <span class="nn">django.conf</span> <span class="kn">import</span> <span class="n">settings</span>
@@ -379,7 +380,7 @@ source code of session.py file. </p>
         <span class="k">assert</span> <span class="nb">hasattr</span><span class="p">(</span><span class="n">request</span><span class="p">,</span> <span class="s1">&#39;session&#39;</span><span class="p">),</span> <span class="s2">&quot;The session-based temporary &quot;</span>\
             <span class="s2">&quot;message storage requires session middleware to be installed, &quot;</span>\
             <span class="s2">&quot;and come before the message middleware in the &quot;</span>\
-            <span class="s2">&quot;MIDDLEWARE</span><span class="si">%s</span><span class="s2"> list.&quot;</span> <span class="o">%</span> <span class="p">(</span><span class="s2">&quot;_CLASSES&quot;</span> <span class="k">if</span> <span class="n">settings</span><span class="o">.</span><span class="n">MIDDLEWARE</span> <span class="ow">is</span> <span class="bp">None</span> <span class="k">else</span> <span class="s2">&quot;&quot;</span><span class="p">)</span>
+            <span class="s2">&quot;MIDDLEWARE</span><span class="si">%s</span><span class="s2"> list.&quot;</span> <span class="o">%</span> <span class="p">(</span><span class="s2">&quot;_CLASSES&quot;</span> <span class="k">if</span> <span class="n">settings</span><span class="o">.</span><span class="n">MIDDLEWARE</span> <span class="ow">is</span> <span class="kc">None</span> <span class="k">else</span> <span class="s2">&quot;&quot;</span><span class="p">)</span>
         <span class="nb">super</span><span class="p">()</span><span class="o">.</span><span class="fm">__init__</span><span class="p">(</span><span class="n">request</span><span class="p">,</span> <span class="o">*</span><span class="n">args</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">)</span>
 
     <span class="k">def</span> <span class="nf">_get</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="o">*</span><span class="n">args</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">):</span>
@@ -388,7 +389,7 @@ source code of session.py file. </p>
 <span class="sd">        always stores everything it is given, so return True for the</span>
 <span class="sd">        all_retrieved flag.</span>
 <span class="sd">        &quot;&quot;&quot;</span>
-        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">deserialize_messages</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">request</span><span class="o">.</span><span class="n">session</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">session_key</span><span class="p">)),</span> <span class="bp">True</span>
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">deserialize_messages</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">request</span><span class="o">.</span><span class="n">session</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">session_key</span><span class="p">)),</span> <span class="kc">True</span>
 
     <span class="k">def</span> <span class="nf">_store</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">messages</span><span class="p">,</span> <span class="n">response</span><span class="p">,</span> <span class="o">*</span><span class="n">args</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">):</span>
         <span class="sd">&quot;&quot;&quot;</span>
@@ -397,7 +398,7 @@ source code of session.py file. </p>
         <span class="k">if</span> <span class="n">messages</span><span class="p">:</span>
             <span class="bp">self</span><span class="o">.</span><span class="n">request</span><span class="o">.</span><span class="n">session</span><span class="p">[</span><span class="bp">self</span><span class="o">.</span><span class="n">session_key</span><span class="p">]</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">serialize_messages</span><span class="p">(</span><span class="n">messages</span><span class="p">)</span>
         <span class="k">else</span><span class="p">:</span>
-            <span class="bp">self</span><span class="o">.</span><span class="n">request</span><span class="o">.</span><span class="n">session</span><span class="o">.</span><span class="n">pop</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">session_key</span><span class="p">,</span> <span class="bp">None</span><span class="p">)</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">request</span><span class="o">.</span><span class="n">session</span><span class="o">.</span><span class="n">pop</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">session_key</span><span class="p">,</span> <span class="kc">None</span><span class="p">)</span>
         <span class="k">return</span> <span class="p">[]</span>
 
     <span class="k">def</span> <span class="nf">serialize_messages</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">messages</span><span class="p">):</span>
@@ -408,7 +409,7 @@ source code of session.py file. </p>
         <span class="k">if</span> <span class="n">data</span> <span class="ow">and</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">data</span><span class="p">,</span> <span class="nb">str</span><span class="p">):</span>
             <span class="k">return</span> <span class="n">json</span><span class="o">.</span><span class="n">loads</span><span class="p">(</span><span class="n">data</span><span class="p">,</span> <span class="bp">cls</span><span class="o">=</span><span class="n">MessageDecoder</span><span class="p">)</span>
         <span class="k">return</span> <span class="n">data</span>
-</pre></div>
+</code></pre></div>
 
 
 <h3>Conclusion</h3>
@@ -423,9 +424,9 @@ Django messages app works.   </p>
   
    
 
-    <!-- Optional JavaScript -->
-    <!-- jQuery first, then Bootstrap Bundle JS -->
-    <script src="/theme/js/jquery-3.3.1.slim.min.js"></script>
-    <script src="/theme/js/bootstrap.bundle.min.js"></script>
+    <script src="https://code.jquery.com/jquery-3.4.1.slim.min.js" integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js" integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6" crossorigin="anonymous"></script>
+
   </body>
 </html>

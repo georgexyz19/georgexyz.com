@@ -4,7 +4,8 @@
     <!-- Required meta tags -->
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-    <link rel="stylesheet" href="/theme/css/bootstrap.min.css">
+    <!-- <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous"> -->
+    <link rel="stylesheet" href="/theme/css/bs4min.css">
     <link rel="shortcut icon" type="image/x-icon" href="/theme/images/favicon.ico" >
     <link rel="icon" type="image/x-icon" href="/theme/images/favicon.ico" >
  
@@ -17,7 +18,7 @@
   </head>
   <body>
     <!-- navbar -->
-    <nav class="navbar navbar-expand-md navbar-dark bg-primary">
+    <nav class="navbar navbar-expand-md navbar-light" style="background-color: #e3f2fd;">
       <div class="container">
         <a class="navbar-brand" href="/">George Zhang</a>
         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarColor01" aria-controls="navbarColor01" aria-expanded="false" aria-label="Toggle navigation">
@@ -28,7 +29,7 @@
           <ul class="navbar-nav mr-auto">
             <li class="nav-item">
               <a class="nav-link " 
-                href="/archives.html">Articles</a>
+                href="/articlelist.html">Articles</a>
             </li>
             <li class="nav-item">
               <a class="nav-link pr-3 " 
@@ -88,7 +89,7 @@ materials I have read on this topic. </p>
 is a good starting point to study model and form validation. </p>
 <p>The validator function is a callable that takes a value and raises a 
 ValidationError if not validated. Here is an example from the page:</p>
-<div class="highlight"><pre><span></span>from django.core.exceptions import ValidationError
+<div class="highlight"><pre><span></span><code>from django.core.exceptions import ValidationError
 from django.utils.translation import gettext_lazy as _
 
 def validate_even(value):
@@ -102,7 +103,7 @@ from django.db import models
 
 class MyModel(models.Model):
     even_field = models.IntegerField(validators=[validate_even])
-</pre></div>
+</code></pre></div>
 
 
 <p>The subsection <em>how validators are run</em> on the validator
@@ -128,19 +129,19 @@ three other methods:</p>
 <p>The model <code>save()</code> method does NOT call <code>full_clean()</code> method automatically. 
 A programmer needs to call it manually to trigger model validation like 
 the below code.</p>
-<div class="highlight"><pre><span></span>try:
+<div class="highlight"><pre><span></span><code>try:
     article.full_clean()
 except ValidationError as e:
     ...
     # handle the error
-</pre></div>
+</code></pre></div>
 
 
 <p><a href="https://stackoverflow.com/questions/7366363/adding-custom-django-model-validation">A stack overflow answer</a> 
 shows a typical pattern to conduct custom model validation. The model class overrides the 
 <code>clean()</code> method to provide custom model validation and the <code>save()</code> method 
 to call <code>full_clean</code> method.  The example code is shown below:</p>
-<div class="highlight"><pre><span></span>class BaseModel(models.Model):
+<div class="highlight"><pre><span></span><code>class BaseModel(models.Model):
     # model fields 
 
     def clean(self, *args, **kwargs):
@@ -150,7 +151,7 @@ to call <code>full_clean</code> method.  The example code is shown below:</p>
     def save(self, *args, **kwargs):
         self.full_clean()
         super(BaseModel, self).save(*args, **kwargs)
-</pre></div>
+</code></pre></div>
 
 
 <p><a href="https://stackoverflow.com/questions/42003866/django-validation-at-model-not-forms-level">Another stack overflow answer</a> 
@@ -159,7 +160,7 @@ validator.</p>
 <p>Model field's validation will not kick in unless the <code>full_clean()</code> method 
 is explicitly called. For example, the <code>p2.save()</code> below would not raise an 
 exception when called. </p>
-<div class="highlight"><pre><span></span>class PageModel(models.Model):
+<div class="highlight"><pre><span></span><code>class PageModel(models.Model):
     name = models.CharField(max_length=50)
     slug = models.SlugField(max_length=50)
 
@@ -169,16 +170,16 @@ exception when called. </p>
 &gt;&gt;&gt; p2 = PageModel(name=&#39;Page2&#39;, slug=&#39;page2#$%&#39;)
 &gt;&gt;&gt; p2.save()        # no error
 &gt;&gt;&gt; p2.full_clean()  # raise exception
-</pre></div>
+</code></pre></div>
 
 
 <p>Checking <code>clean_fields()</code> method source code, it has the following lines. 
 The <code>f.clean(...)</code> method calls validation method on a model field.</p>
-<div class="highlight"><pre><span></span>try:
+<div class="highlight"><pre><span></span><code>try:
     setattr(self, f.attname, f.clean(raw_value, self))
 except ValidationError as e:
     errors[f.name] = e.error_list
-</pre></div>
+</code></pre></div>
 
 
 <h3>Form Validation</h3>
@@ -198,13 +199,13 @@ by accessing <code>errors</code> attribute or call <code>full_clean()</code> met
 </ul>
 <p>The same documetation page has several nice examples, which are based on the 
 model shown below:</p>
-<div class="highlight"><pre><span></span>class ContactForm(forms.Form):
+<div class="highlight"><pre><span></span><code>class ContactForm(forms.Form):
     subject = forms.CharField(max_length=100)
     message = forms.CharField()
     sender = forms.EmailField()
     recipients = MultiEmailField()
     cc_myself = forms.BooleanField(required=False)
-</pre></div>
+</code></pre></div>
 
 
 <p>The same page points out that "there are special considerations when overriding 
@@ -232,9 +233,9 @@ defined at the model field level. </p>
   
    
 
-    <!-- Optional JavaScript -->
-    <!-- jQuery first, then Bootstrap Bundle JS -->
-    <script src="/theme/js/jquery-3.3.1.slim.min.js"></script>
-    <script src="/theme/js/bootstrap.bundle.min.js"></script>
+    <script src="https://code.jquery.com/jquery-3.4.1.slim.min.js" integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js" integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6" crossorigin="anonymous"></script>
+
   </body>
 </html>

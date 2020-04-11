@@ -4,7 +4,8 @@
     <!-- Required meta tags -->
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-    <link rel="stylesheet" href="/theme/css/bootstrap.min.css">
+    <!-- <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous"> -->
+    <link rel="stylesheet" href="/theme/css/bs4min.css">
     <link rel="shortcut icon" type="image/x-icon" href="/theme/images/favicon.ico" >
     <link rel="icon" type="image/x-icon" href="/theme/images/favicon.ico" >
  
@@ -17,7 +18,7 @@
   </head>
   <body>
     <!-- navbar -->
-    <nav class="navbar navbar-expand-md navbar-dark bg-primary">
+    <nav class="navbar navbar-expand-md navbar-light" style="background-color: #e3f2fd;">
       <div class="container">
         <a class="navbar-brand" href="/">George Zhang</a>
         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarColor01" aria-controls="navbarColor01" aria-expanded="false" aria-label="Toggle navigation">
@@ -28,7 +29,7 @@
           <ul class="navbar-nav mr-auto">
             <li class="nav-item">
               <a class="nav-link " 
-                href="/archives.html">Articles</a>
+                href="/articlelist.html">Articles</a>
             </li>
             <li class="nav-item">
               <a class="nav-link pr-3 " 
@@ -95,7 +96,7 @@ has step by step guide on how to save emails to a .mbox file.  The python standa
 library modules <em>mailbox</em> and <em>email</em> can read emails in the .mbox file.  I spent
 some time writing a python program, which also parses email content and extracts 
 useful information from emails. The code structure looks like this. </p>
-<div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">mailbox</span>
+<div class="highlight"><pre><span></span><code><span class="kn">import</span> <span class="nn">mailbox</span>
 <span class="kn">import</span> <span class="nn">email.header</span>
 <span class="kn">import</span> <span class="nn">email.utils</span> 
 
@@ -105,11 +106,11 @@ useful information from emails. The code structure looks like this. </p>
 <span class="k">def</span> <span class="nf">parse_html</span><span class="p">(</span><span class="n">message</span><span class="p">):</span>
     <span class="sd">&#39;&#39;&#39;parse a message and return html_content&#39;&#39;&#39;</span>
     <span class="k">if</span> <span class="n">message</span><span class="o">.</span><span class="n">is_multipart</span><span class="p">():</span>
-        <span class="n">content</span> <span class="o">=</span> <span class="s1">&#39;&#39;</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">part</span><span class="o">.</span><span class="n">get_payload</span><span class="p">(</span><span class="n">decode</span><span class="o">=</span><span class="bp">True</span><span class="p">)</span><span class="o">.</span><span class="n">decode</span><span class="p">(</span>
+        <span class="n">content</span> <span class="o">=</span> <span class="s1">&#39;&#39;</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">part</span><span class="o">.</span><span class="n">get_payload</span><span class="p">(</span><span class="n">decode</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span><span class="o">.</span><span class="n">decode</span><span class="p">(</span>
             <span class="s1">&#39;utf-8&#39;</span><span class="p">)</span> <span class="k">for</span> <span class="n">part</span> <span class="ow">in</span> <span class="n">message</span><span class="o">.</span><span class="n">get_payload</span><span class="p">())</span>
         <span class="n">html_content</span> <span class="o">=</span> <span class="n">content</span>
     <span class="k">else</span><span class="p">:</span>
-        <span class="n">content</span> <span class="o">=</span> <span class="n">message</span><span class="o">.</span><span class="n">get_payload</span><span class="p">(</span><span class="n">decode</span><span class="o">=</span><span class="bp">True</span><span class="p">)</span>
+        <span class="n">content</span> <span class="o">=</span> <span class="n">message</span><span class="o">.</span><span class="n">get_payload</span><span class="p">(</span><span class="n">decode</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
         <span class="n">html_content</span> <span class="o">=</span> <span class="n">content</span><span class="o">.</span><span class="n">decode</span><span class="p">(</span><span class="s1">&#39;utf-8&#39;</span><span class="p">)</span>
     <span class="k">return</span> <span class="n">html_content</span>
 
@@ -132,17 +133,17 @@ useful information from emails. The code structure looks like this. </p>
 
 <span class="k">if</span> <span class="vm">__name__</span> <span class="o">==</span> <span class="s1">&#39;__main__&#39;</span><span class="p">:</span>
     <span class="n">mbox</span> <span class="o">=</span> <span class="n">mailbox</span><span class="o">.</span><span class="n">mbox</span><span class="p">(</span><span class="n">path</span><span class="p">)</span>
-    <span class="n">save</span> <span class="o">=</span> <span class="bp">True</span> <span class="c1"># flag for parse emails, not save them</span>
+    <span class="n">save</span> <span class="o">=</span> <span class="kc">True</span> <span class="c1"># flag for parse emails, not save them</span>
     <span class="k">for</span> <span class="n">message</span> <span class="ow">in</span> <span class="n">mbox</span><span class="p">:</span>
         <span class="c1"># code to parse emails</span>
         <span class="n">html</span> <span class="o">=</span> <span class="n">parse_html</span><span class="p">(</span><span class="n">message</span><span class="p">)</span>
         <span class="c1"># ...</span>
         <span class="k">if</span> <span class="n">save</span><span class="p">:</span>
-            <span class="n">fn</span> <span class="o">=</span> <span class="s1">&#39;{}&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span> <span class="o">...</span> <span class="p">)</span>
+            <span class="n">fn</span> <span class="o">=</span> <span class="s1">&#39;</span><span class="si">{}</span><span class="s1">&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span> <span class="o">...</span> <span class="p">)</span>
             <span class="n">f</span> <span class="o">=</span> <span class="nb">open</span><span class="p">(</span><span class="n">fn</span><span class="p">,</span> <span class="s1">&#39;w&#39;</span><span class="p">)</span>
             <span class="n">f</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="n">html</span><span class="p">)</span>
             <span class="n">f</span><span class="o">.</span><span class="n">close</span><span class="p">()</span>            
-</pre></div>
+</code></pre></div>
 
 
 <p>I find a major flaw in this approach a few days later.  The Google archive 
@@ -152,7 +153,7 @@ emails that day.  The system simply gives a message "Please try to create your
 archive again".</p>
 <p>When I am reading the last chapter of Al Sweigart's book, I realize that
 the pyautogui module can be used for this task.  Here is the code to save emails, </p>
-<div class="highlight"><pre><span></span><span class="c1"># save_emails.py by Geroge Zhang on 2/1/2019</span>
+<div class="highlight"><pre><span></span><code><span class="c1"># save_emails.py by Geroge Zhang on 2/1/2019</span>
 <span class="c1"># The GMail window should be in a status shown in SaveEMails.png</span>
 <span class="c1"># The EMails should be in a folder(label), the program clicks next button</span>
 <span class="c1"># This program only works on my laptop</span>
@@ -165,7 +166,7 @@ the pyautogui module can be used for this task.  Here is the code to save emails
 <span class="kn">import</span> <span class="nn">time</span>
 
 <span class="n">pyautogui</span><span class="o">.</span><span class="n">PAUSE</span> <span class="o">=</span> <span class="mf">0.1</span>
-<span class="n">pyautogui</span><span class="o">.</span><span class="n">FAILSAFE</span> <span class="o">=</span> <span class="bp">True</span>
+<span class="n">pyautogui</span><span class="o">.</span><span class="n">FAILSAFE</span> <span class="o">=</span> <span class="kc">True</span>
 
 <span class="n">TOTALEMAILS</span> <span class="o">=</span> <span class="mi">10</span>
 <span class="n">START</span> <span class="o">=</span> <span class="mi">1</span>
@@ -179,48 +180,48 @@ the pyautogui module can be used for this task.  Here is the code to save emails
 <span class="n">closeButton</span> <span class="o">=</span> <span class="p">(</span><span class="mi">470</span><span class="p">,</span> <span class="mi">15</span><span class="p">)</span>
 <span class="n">centerWindow</span> <span class="o">=</span> <span class="p">(</span><span class="mi">683</span><span class="p">,</span> <span class="mi">7</span><span class="p">)</span>
 
-<span class="k">print</span><span class="p">(</span><span class="s1">&#39;&gt;&gt;&gt; 5 Seconds to start &lt;&lt;&lt;&#39;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="s1">&#39;&gt;&gt;&gt; 5 Seconds to start &lt;&lt;&lt;&#39;</span><span class="p">)</span>
 <span class="n">time</span><span class="o">.</span><span class="n">sleep</span><span class="p">(</span><span class="mi">5</span><span class="p">)</span>
 
 <span class="c1">##print(&#39;Click window center to activate Gmail&#39;)</span>
 <span class="c1">##pyautogui.click(centerWindow[0], centerWindow[1])</span>
 
-<span class="k">print</span><span class="p">(</span><span class="s1">&#39;Please click the first email in a label group&#39;</span><span class="p">)</span>
-<span class="k">print</span><span class="p">(</span><span class="s1">&#39;&gt;&gt;&gt; 5 Seconds to start &lt;&lt;&lt;&#39;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="s1">&#39;Please click the first email in a label group&#39;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="s1">&#39;&gt;&gt;&gt; 5 Seconds to start &lt;&lt;&lt;&#39;</span><span class="p">)</span>
 <span class="n">time</span><span class="o">.</span><span class="n">sleep</span><span class="p">(</span><span class="mi">5</span><span class="p">)</span>
 
 <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">START</span><span class="p">,</span> <span class="n">TOTALEMAILS</span> <span class="o">+</span> <span class="n">START</span><span class="p">):</span>
-    <span class="k">print</span><span class="p">(</span><span class="s1">&#39;</span><span class="se">\n</span><span class="s1">Now click the print button&#39;</span><span class="p">)</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;</span><span class="se">\n</span><span class="s1">Now click the print button&#39;</span><span class="p">)</span>
     <span class="n">pyautogui</span><span class="o">.</span><span class="n">click</span><span class="p">(</span><span class="n">printButton</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span> <span class="n">printButton</span><span class="p">[</span><span class="mi">1</span><span class="p">])</span>
     <span class="n">time</span><span class="o">.</span><span class="n">sleep</span><span class="p">(</span><span class="mi">5</span><span class="p">)</span>
 
-    <span class="k">print</span><span class="p">(</span><span class="s1">&#39;Click the Save email button&#39;</span><span class="p">)</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;Click the Save email button&#39;</span><span class="p">)</span>
     <span class="n">pyautogui</span><span class="o">.</span><span class="n">click</span><span class="p">(</span><span class="n">saveButton</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span> <span class="n">saveButton</span><span class="p">[</span><span class="mi">1</span><span class="p">])</span>
     <span class="n">time</span><span class="o">.</span><span class="n">sleep</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span>
 
-    <span class="k">print</span><span class="p">(</span><span class="s1">&#39;Click filename field&#39;</span><span class="p">)</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;Click filename field&#39;</span><span class="p">)</span>
     <span class="n">pyautogui</span><span class="o">.</span><span class="n">click</span><span class="p">(</span><span class="n">filenameBox</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span> <span class="n">filenameBox</span><span class="p">[</span><span class="mi">1</span><span class="p">])</span>
     <span class="n">time</span><span class="o">.</span><span class="n">sleep</span><span class="p">(</span><span class="o">.</span><span class="mi">5</span><span class="p">)</span>
 
     <span class="n">pyautogui</span><span class="o">.</span><span class="n">press</span><span class="p">(</span><span class="s1">&#39;home&#39;</span><span class="p">)</span>
-    <span class="n">filename_prefix</span> <span class="o">=</span> <span class="s1">&#39;{0:03}&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">i</span><span class="p">)</span> <span class="o">+</span> <span class="s1">&#39; - &#39;</span>
+    <span class="n">filename_prefix</span> <span class="o">=</span> <span class="s1">&#39;</span><span class="si">{0:03}</span><span class="s1">&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">i</span><span class="p">)</span> <span class="o">+</span> <span class="s1">&#39; - &#39;</span>
     <span class="n">pyautogui</span><span class="o">.</span><span class="n">typewrite</span><span class="p">(</span><span class="n">filename_prefix</span><span class="p">)</span>
     <span class="n">time</span><span class="o">.</span><span class="n">sleep</span><span class="p">(</span><span class="o">.</span><span class="mi">5</span><span class="p">)</span> 
 
-    <span class="k">print</span><span class="p">(</span><span class="s1">&#39;Click the Save file button&#39;</span><span class="p">)</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;Click the Save file button&#39;</span><span class="p">)</span>
     <span class="n">pyautogui</span><span class="o">.</span><span class="n">click</span><span class="p">(</span><span class="n">saveDialog</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span> <span class="n">saveDialog</span><span class="p">[</span><span class="mi">1</span><span class="p">])</span>
     <span class="n">time</span><span class="o">.</span><span class="n">sleep</span><span class="p">(</span><span class="o">.</span><span class="mi">5</span><span class="p">)</span>
 
-    <span class="k">print</span><span class="p">(</span><span class="s1">&#39;Close the second window&#39;</span><span class="p">)</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;Close the second window&#39;</span><span class="p">)</span>
     <span class="n">pyautogui</span><span class="o">.</span><span class="n">click</span><span class="p">(</span><span class="n">closeButton</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span> <span class="n">closeButton</span><span class="p">[</span><span class="mi">1</span><span class="p">])</span>
     <span class="n">time</span><span class="o">.</span><span class="n">sleep</span><span class="p">(</span><span class="o">.</span><span class="mi">5</span><span class="p">)</span>
 
-    <span class="k">print</span><span class="p">(</span><span class="s1">&#39;Click next button&#39;</span><span class="p">)</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;Click next button&#39;</span><span class="p">)</span>
     <span class="n">pyautogui</span><span class="o">.</span><span class="n">click</span><span class="p">(</span><span class="n">nextButton</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span> <span class="n">nextButton</span><span class="p">[</span><span class="mi">1</span><span class="p">])</span>
     <span class="n">time</span><span class="o">.</span><span class="n">sleep</span><span class="p">(</span><span class="o">.</span><span class="mi">5</span><span class="p">)</span>
 
-<span class="k">print</span><span class="p">(</span><span class="s1">&#39; &gt;&gt;&gt; Done &lt;&lt;&lt; &#39;</span><span class="p">)</span>
-</pre></div>
+<span class="nb">print</span><span class="p">(</span><span class="s1">&#39; &gt;&gt;&gt; Done &lt;&lt;&lt; &#39;</span><span class="p">)</span>
+</code></pre></div>
 
 
 <p>The program is able to save 1500 emails in about four hours.  Depending on the network speed, the
@@ -242,9 +243,9 @@ on a piece of paper and then type those coordinates into the program. </p>
   
    
 
-    <!-- Optional JavaScript -->
-    <!-- jQuery first, then Bootstrap Bundle JS -->
-    <script src="/theme/js/jquery-3.3.1.slim.min.js"></script>
-    <script src="/theme/js/bootstrap.bundle.min.js"></script>
+    <script src="https://code.jquery.com/jquery-3.4.1.slim.min.js" integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js" integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6" crossorigin="anonymous"></script>
+
   </body>
 </html>

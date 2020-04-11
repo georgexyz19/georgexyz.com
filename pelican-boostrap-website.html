@@ -4,7 +4,8 @@
     <!-- Required meta tags -->
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-    <link rel="stylesheet" href="/theme/css/bootstrap.min.css">
+    <!-- <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous"> -->
+    <link rel="stylesheet" href="/theme/css/bs4min.css">
     <link rel="shortcut icon" type="image/x-icon" href="/theme/images/favicon.ico" >
     <link rel="icon" type="image/x-icon" href="/theme/images/favicon.ico" >
  
@@ -17,7 +18,7 @@
   </head>
   <body>
     <!-- navbar -->
-    <nav class="navbar navbar-expand-md navbar-dark bg-primary">
+    <nav class="navbar navbar-expand-md navbar-light" style="background-color: #e3f2fd;">
       <div class="container">
         <a class="navbar-brand" href="/">George Zhang</a>
         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarColor01" aria-controls="navbarColor01" aria-expanded="false" aria-label="Toggle navigation">
@@ -28,7 +29,7 @@
           <ul class="navbar-nav mr-auto">
             <li class="nav-item">
               <a class="nav-link " 
-                href="/archives.html">Articles</a>
+                href="/articlelist.html">Articles</a>
             </li>
             <li class="nav-item">
               <a class="nav-link pr-3 " 
@@ -110,9 +111,9 @@ one output file. </p>
 consists of 14 python files (version 4.0.1).  The source files has 5,670 lines of 
 code. It is a good median size code base to study if you are looking for python 
 project to work on. I have not read all pelican source code yet. </p>
-<div class="highlight"><pre><span></span># bash command to tally pelican source code lines
+<div class="highlight"><pre><span></span><code># bash command to tally pelican source code lines
 find . -maxdepth 1 -name &#39;*.py&#39; -exec wc -l &#39;{}&#39; +
-</pre></div>
+</code></pre></div>
 
 
 <h3>Bootstrap 4</h3>
@@ -132,7 +133,7 @@ code of this theme to get a better understanding on how pelican and pelican them
 <a href="https://hackerthemes.com/kit/">Bootstrap theme kit</a> if you want to customize 
 Bootstrap locally.</p>
 <p>The theme of this website has the following color variables:</p>
-<div class="highlight"><pre><span></span><span class="c1">// _variables.scss </span>
+<div class="highlight"><pre><span></span><code><span class="c1">// _variables.scss </span>
 <span class="nv">$blue</span><span class="o">:</span> <span class="mh">#990000</span><span class="p">;</span>
 <span class="nv">$green</span><span class="o">:</span> <span class="mh">#720027</span><span class="p">;</span>
 <span class="nv">$cyan</span><span class="o">:</span> <span class="mh">#ce4257</span><span class="p">;</span>
@@ -147,7 +148,7 @@ Bootstrap locally.</p>
 <span class="nv">$h6-font-size</span><span class="o">:</span> <span class="nv">$font-size-base</span><span class="p">;</span>
 <span class="nv">$paragraph-margin-bottom</span><span class="o">:</span> <span class="mi">1</span><span class="mf">.1</span><span class="kt">rem</span><span class="p">;</span>
 <span class="nv">$print-page-size</span><span class="o">:</span> <span class="n">letter</span><span class="p">;</span>
-</pre></div>
+</code></pre></div>
 
 
 <p>The pelican-theme github repo collects many themes.  However, it seems to me that
@@ -165,18 +166,18 @@ Make program, but the script tasks.py is written in Python.  The tasks.py
 file is an equivalent of Makefile for GNU Make. </p>
 <p>I usually install Invoke package along with pelican and Markdown packages in a
 python virtual environment. </p>
-<div class="highlight"><pre><span></span><span class="n">python</span> <span class="o">-</span><span class="n">m</span> <span class="n">venv</span> <span class="o">~/.</span><span class="n">venv</span><span class="o">/</span><span class="n">pelican</span>
+<div class="highlight"><pre><span></span><code><span class="n">python</span> <span class="o">-</span><span class="n">m</span> <span class="n">venv</span> <span class="o">~/.</span><span class="n">venv</span><span class="o">/</span><span class="n">pelican</span>
 <span class="n">source</span> <span class="o">~/</span><span class="n">venv</span><span class="o">/</span><span class="n">pelican</span><span class="o">/</span><span class="nb">bin</span><span class="o">/</span><span class="n">activate</span>
 <span class="n">pip</span> <span class="n">install</span> <span class="n">pelican</span> <span class="n">Markdown</span> <span class="n">invoke</span> <span class="n">ghp</span><span class="o">-</span><span class="n">import2</span>
-</pre></div>
+</code></pre></div>
 
 
 <p>The <code>pelican-quickstart</code> command will create a tasks.py file in the project directory. 
 One nice feature of Invoke is that you can run multiple tasks in one command. The 
 command below cleans the <code>output</code> directory, rebuilds the project, and serves the 
 website at <code>http://localhost:8000</code> address. </p>
-<div class="highlight"><pre><span></span>invoke clean build serve
-</pre></div>
+<div class="highlight"><pre><span></span><code>invoke clean build serve
+</code></pre></div>
 
 
 <h3>Website Source Code</h3>
@@ -189,7 +190,7 @@ I followed
 <a href="https://docs.getpelican.com/en/stable/tips.html#publishing-to-github">this pelican documentation page</a>
 and utilized ghp-import python package to streamline the publication process. </p>
 <p>I use the following commands to update posts and github repo. </p>
-<div class="highlight"><pre><span></span>source venv.sh  # load virtual env
+<div class="highlight"><pre><span></span><code>source venv.sh  # load virtual env
 invoke clean build
 git status
 git add -A
@@ -198,7 +199,7 @@ git push origin master # update source code
 
 ghp-import output -b gh-pages
 git push origin gh-pages
-</pre></div>
+</code></pre></div>
 
 
 <p><a href="https://gist.github.com/jedmao/5053440">This github page</a> 
@@ -218,9 +219,9 @@ Google Analytics or similar services to track users. </p>
   
    
 
-    <!-- Optional JavaScript -->
-    <!-- jQuery first, then Bootstrap Bundle JS -->
-    <script src="/theme/js/jquery-3.3.1.slim.min.js"></script>
-    <script src="/theme/js/bootstrap.bundle.min.js"></script>
+    <script src="https://code.jquery.com/jquery-3.4.1.slim.min.js" integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js" integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6" crossorigin="anonymous"></script>
+
   </body>
 </html>

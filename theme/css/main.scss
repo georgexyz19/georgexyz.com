@@ -1,0 +1,62 @@
+// _variables.scss 
+// $blue: #05668d;
+// $green: #028090;
+// $cyan: #00a896;
+// $yellow: #02c39a;
+// $pink: #028090;
+
+// $theme-colors: (
+//     "primary":    $primary,
+//     "secondary":  $secondary,
+//     "success":    $success,
+//     "info":       $info,
+//     "warning":    $warning,
+//     "danger":     $danger,
+//     "light":      $light,
+//     "dark":       $dark
+//   );
+
+$font-size-base: 1.1rem;
+$h5-font-size: $font-size-base * 1.0;
+$h4-font-size: $font-size-base * 1.1;
+$h3-font-size: $font-size-base * 1.4;
+$h2-font-size: $font-size-base * 1.6;
+$h1-font-size: $font-size-base * 1.8;
+
+$paragraph-margin-bottom: 1.2rem;
+$headings-margin-bottom:  1.0rem;
+
+$body-color: #111;
+$headings-color: #333;
+$link-color: #01064d;
+
+
+
+$print-page-size: letter;
+
+// Custom.scss
+// Option B: Include parts of Bootstrap
+
+// Required
+// @import "node_modules/bootstrap/scss/functions";
+// @import "node_modules/bootstrap/scss/variables";
+// @import "node_modules/bootstrap/scss/mixins";
+
+// // Optional
+// @import "node_modules/bootstrap/scss/reboot";
+// @import "node_modules/bootstrap/scss/type";
+// @import "node_modules/bootstrap/scss/images";
+// @import "node_modules/bootstrap/scss/code";
+// @import "node_modules/bootstrap/scss/grid";
+
+
+
+ @import "node_modules/bootstrap/scss/bootstrap";
+
+
+// .main-form {
+//     width: 450px;
+//     margin: auto;
+// }
+
+
