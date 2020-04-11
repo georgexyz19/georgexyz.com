@@ -66,5 +66,6 @@ SUMMARY_MAX_LENGTH = 30
 # link to this file in base.html
 # work computer blocks archives.html web page
 ARCHIVES_SAVE_AS = 'articlelist.html'
+TYPOGRIFY = True
 
 
