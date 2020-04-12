@@ -1,0 +1,163 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <!-- <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous"> -->
+    <link rel="stylesheet" href="/theme/css/bs4min.css">
+    <link rel="shortcut icon" type="image/x-icon" href="/theme/images/favicon.ico" >
+    <link rel="icon" type="image/x-icon" href="/theme/images/favicon.ico" >
+ 
+    <link rel="stylesheet" href="/theme/css/friendly.css">
+    <link rel="stylesheet" href="/theme/css/custom.css">
+    <meta name="author" content="George Zhang" />
+    <meta name="keywords" content="web development,pelican" />
+    <meta name="description" content="This site has been online for more than one year. It is time to revise the pelican theme to present a new look. I spend a few hours revising the …" />
+    <title>New Pelican Theme - George Zhang</title>
+  </head>
+  <body>
+    <!-- navbar -->
+    <nav class="navbar navbar-expand-md navbar-light" style="background-color: #e3f2fd;">
+      <div class="container">
+        <a class="navbar-brand" href="/">George Zhang</a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarColor01" aria-controls="navbarColor01" aria-expanded="false" aria-label="Toggle navigation">
+          <span class="navbar-toggler-icon"></span>
+        </button>
+
+        <div class="collapse navbar-collapse" id="navbarColor01">
+          <ul class="navbar-nav mr-auto">
+            <li class="nav-item">
+              <a class="nav-link " 
+                href="/articlelist.html">Articles</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link pr-3 " 
+                href="/tags.html">Tags</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link pr-3 "
+                 href="/pages/inkscape-tutorial.html">Inkscape Tutorial</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link "
+                   href="/pages/projects.html">Projects</a>
+              </li>
+          </ul>
+
+          <ul class="navbar-nav">
+            <li class="nav-item">
+              <a class="nav-link " 
+                 href="/pages/about.html">About</a>
+            </li>
+          </ul>
+        </div>
+
+      </div>
+    </nav>
+
+   
+  
+<div class="container">
+
+  <div class="row">
+    <div class="col-lg-8 mx-auto">   
+
+  <h2>New Pelican&nbsp;Theme</h2>
+  
+  <div class="text-muted mb-2">
+    <span>Posted on </span>
+    <time datetime="2020-04-11 22:31:00-04:00">
+      Saturday, 04/11/2020 22:31
+    </time>
+    
+     <span>with tags: </span>
+       <a href="/tag/web-development.html">web development</a>
+/       <a href="/tag/pelican.html">pelican</a>
+  </div>
+      
+  <p>This site has been online for more than one year.  It is time to revise the pelican 
+theme to present a new look.  I spend a few hours revising the code, and now 
+it is easier for myself to publish or revise&nbsp;articles.  </p>
+<p>The Bootstrap theme css file is now compiled on my computer.  It is not too difficult to 
+compile Bootstrap scss to css. This 17 minute long youtube video explains it very&nbsp;well. </p>
+<p><a href="https://youtu.be/6Ovw43Dkp44">Bootstrap 4 Theme Customization with&nbsp;Sass</a></p>
+<p>I install Node version of Sass and Minify in Linux Mint with these commands. The Minify 
+tool removes extra blanks and line breaks in the css, and it also works for js and html&nbsp;files.  </p>
+<div class="highlight"><pre><span></span><code><span class="nv">$sudo</span> npm install -g sass
+<span class="nv">$sudo</span> npm install -g minify
+
+<span class="c1">#compile sass to css</span>
+<span class="nv">$sass</span> main.scss main.css
+<span class="nv">$minify</span> main.css &gt; main.min.css
+</code></pre></div>
+
+
+<p>The main.scss for the new theme has those&nbsp;contents. </p>
+<div class="highlight"><pre><span></span><code><span class="nv">$font-size-base</span><span class="o">:</span> <span class="mi">1</span><span class="mf">.1</span><span class="kt">rem</span><span class="p">;</span>
+<span class="nv">$h5-font-size</span><span class="o">:</span> <span class="nv">$font-size-base</span> <span class="o">*</span> <span class="mi">1</span><span class="mf">.0</span><span class="p">;</span>
+<span class="nv">$h4-font-size</span><span class="o">:</span> <span class="nv">$font-size-base</span> <span class="o">*</span> <span class="mi">1</span><span class="mf">.1</span><span class="p">;</span>
+<span class="nv">$h3-font-size</span><span class="o">:</span> <span class="nv">$font-size-base</span> <span class="o">*</span> <span class="mi">1</span><span class="mf">.4</span><span class="p">;</span>
+<span class="nv">$h2-font-size</span><span class="o">:</span> <span class="nv">$font-size-base</span> <span class="o">*</span> <span class="mi">1</span><span class="mf">.6</span><span class="p">;</span>
+<span class="nv">$h1-font-size</span><span class="o">:</span> <span class="nv">$font-size-base</span> <span class="o">*</span> <span class="mi">1</span><span class="mf">.8</span><span class="p">;</span>
+
+<span class="nv">$paragraph-margin-bottom</span><span class="o">:</span> <span class="mi">1</span><span class="mf">.2</span><span class="kt">rem</span><span class="p">;</span>
+<span class="nv">$headings-margin-bottom</span><span class="o">:</span>  <span class="mi">1</span><span class="mf">.0</span><span class="kt">rem</span><span class="p">;</span>
+
+<span class="nv">$body-color</span><span class="o">:</span> <span class="mh">#111</span><span class="p">;</span>
+<span class="nv">$headings-color</span><span class="o">:</span> <span class="mh">#333</span><span class="p">;</span>
+<span class="nv">$link-color</span><span class="o">:</span> <span class="mh">#0017c7</span><span class="p">;</span>
+<span class="nv">$code-color</span><span class="o">:</span> <span class="mh">#15228a</span><span class="p">;</span>
+<span class="nv">$code-font-size</span><span class="o">:</span> <span class="mi">88</span><span class="kt">%</span><span class="p">;</span>
+
+<span class="nv">$print-page-size</span><span class="o">:</span> <span class="n">letter</span><span class="p">;</span>
+</code></pre></div>
+
+
+<p>The light blue color of the navbar is set in the <code>base.html</code> file, which is copied from
+Bootstrap&nbsp;documentation.   </p>
+<div class="highlight"><pre><span></span><code>&lt;nav class=&quot;navbar navbar-expand-md navbar-light&quot; style=&quot;background-color: #e3f2fd;&quot;&gt;
+</code></pre></div>
+
+
+<p>The <code>pelicanconf.py</code> file also has a few changes.  I remove default index.html page and 
+change the previous about page to new homepage.  The Python <code>Typogrify</code> package makes 
+&#8220;double quotes&#8221; and other html elements look&nbsp;better.   </p>
+<div class="highlight"><pre><span></span><code><span class="c1"># DEFAULT_PAGINATION = 3</span>
+<span class="n">INDEX_SAVE_AS</span> <span class="o">=</span> <span class="s1">&#39;&#39;</span>
+<span class="n">SUMMARY_MAX_LENGTH</span> <span class="o">=</span> <span class="mi">30</span>
+
+<span class="c1"># link to this file in base.html</span>
+<span class="c1"># work computer blocks archives.html web page</span>
+<span class="n">ARCHIVES_SAVE_AS</span> <span class="o">=</span> <span class="s1">&#39;articlelist.html&#39;</span>
+<span class="n">TYPOGRIFY</span> <span class="o">=</span> <span class="kc">True</span>
+</code></pre></div>
+
+
+<p>The <code>tasks.py</code> file created by the pelican-quickstart command has a <code>livereload</code> task, which 
+requires installing a Python package with the same name <code>livereload</code>.  The live reload function
+is really nice.  This is something you do not think you need before trying it, but after trying 
+it you fall love with it.  The default setting only watches for markdown and <span class="caps">RST</span> 
+file types, you can add html to the list of files to&nbsp;watch. </p>
+<p>I also change the github repo to <span class="caps">SSH</span> connection instead of <span class="caps">HTTPS</span> connection and add a public
+<span class="caps">SSH</span> key to the github account, so I do not need to type password when I update the github 
+repo.  This stackoverflow question has answers how to do&nbsp;it. </p>
+<p><a href="https://stackoverflow.com/questions/14762034/push-to-github-without-password-using-ssh-key">How to Push to Github with <span class="caps">SSH</span>&nbsp;Key</a></p>
+<p>To end this post, below is a screen shot of this site with old&nbsp;theme.</p>
+<div style="max-width:800px">
+  <img class="img-fluid pb-3" src="/images/homepage2019.png" alt="Old theme"> 
+</div>
+
+    </div>
+  </div>
+
+</div>
+  
+   
+
+    <script src="https://code.jquery.com/jquery-3.4.1.slim.min.js" integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js" integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6" crossorigin="anonymous"></script>
+
+  </body>
+</html>
