@@ -12,13 +12,13 @@ written many years ago with optparse module. I read several articles trying
 to understand how to use optparse and argparse modules. 
 An example discussed in this
 [blog post](https://www.saltycrane.com/blog/2009/09/python-optparse-example/) 
-is excellent and very helpful. 
+is very helpful. 
 
-The article has a simple example with two arguments.  Run the program 
-on command line with arguments shown on that web page.  The results indicate 
-how optparse module is working behind scene. 
+The article has an example program designed with two options.  Run the program 
+on command line with options and arguments shown on that blog, and the results indicate 
+how optparse module works behind scene. 
 
-Following code lines are a rewrite of the example with argparse. 
+Following code is a rewrite of the example with argparse. 
 You can execute similar commands shown below and compare the results. 
 
 ```python
