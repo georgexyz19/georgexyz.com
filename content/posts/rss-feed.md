@@ -8,7 +8,7 @@ note: A short post about RSS/ATOM Feed
 no: 35
 
 The 
-[Pelican document ion](https://docs.getpelican.com/en/4.2.0/themes.html#feeds)
+[Pelican documention](https://docs.getpelican.com/en/4.2.0/themes.html#feeds)
 has a short section on ATOM/RSS feed.  I have seen RSS/ATOM feed links somewhere before, but never paid 
 much attention to them.  A Google search finds these two nice introduction articles. 
 

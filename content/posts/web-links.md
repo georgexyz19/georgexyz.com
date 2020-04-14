@@ -83,6 +83,8 @@ This page has a collection of web links that I visit often.
 
 [reStructuredText Documentation](https://docutils.sourceforge.io/rst.html)
 
+[reStructuredText Cheatsheet on Github](https://github.com/ralsina/rst-cheatsheet/blob/master/rst-cheatsheet.rst)
+
 [Sphinx - Python Documentation Generator](https://www.sphinx-doc.org/en/master/)
 
 [Python Markdown Package](https://python-markdown.github.io/)
