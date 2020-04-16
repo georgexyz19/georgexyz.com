@@ -84,33 +84,33 @@ compile Bootstrap scss to css. This 17 minute long youtube video explains it ver
 <p><a href="https://youtu.be/6Ovw43Dkp44">Bootstrap 4 Theme Customization with&nbsp;Sass</a></p>
 <p>I install Node version of Sass and Minify in Linux Mint with these commands. The Minify 
 tool removes extra blanks and line breaks in the css, and it also works for js and html&nbsp;files.  </p>
-<div class="highlight"><pre><span></span><code><span class="nv">$sudo</span> npm install -g sass
-<span class="nv">$sudo</span> npm install -g minify
+<div class="highlight"><pre><span></span><code>$sudo npm install -g sass
+$sudo npm install -g minify
 
-<span class="c1">#compile sass to css</span>
-<span class="nv">$sass</span> main.scss main.css
-<span class="nv">$minify</span> main.css &gt; main.min.css
+#compile sass to css
+$sass main.scss main.css
+$minify main.css &gt; main.min.css
 </code></pre></div>
 
 
 <p>The main.scss for the new theme has those&nbsp;contents. </p>
-<div class="highlight"><pre><span></span><code><span class="nv">$font-size-base</span><span class="o">:</span> <span class="mi">1</span><span class="mf">.1</span><span class="kt">rem</span><span class="p">;</span>
-<span class="nv">$h5-font-size</span><span class="o">:</span> <span class="nv">$font-size-base</span> <span class="o">*</span> <span class="mi">1</span><span class="mf">.0</span><span class="p">;</span>
-<span class="nv">$h4-font-size</span><span class="o">:</span> <span class="nv">$font-size-base</span> <span class="o">*</span> <span class="mi">1</span><span class="mf">.1</span><span class="p">;</span>
-<span class="nv">$h3-font-size</span><span class="o">:</span> <span class="nv">$font-size-base</span> <span class="o">*</span> <span class="mi">1</span><span class="mf">.4</span><span class="p">;</span>
-<span class="nv">$h2-font-size</span><span class="o">:</span> <span class="nv">$font-size-base</span> <span class="o">*</span> <span class="mi">1</span><span class="mf">.6</span><span class="p">;</span>
-<span class="nv">$h1-font-size</span><span class="o">:</span> <span class="nv">$font-size-base</span> <span class="o">*</span> <span class="mi">1</span><span class="mf">.8</span><span class="p">;</span>
+<div class="highlight"><pre><span></span><code>$font-size-base: 1.1rem;
+$h5-font-size: $font-size-base * 1.0;
+$h4-font-size: $font-size-base * 1.1;
+$h3-font-size: $font-size-base * 1.4;
+$h2-font-size: $font-size-base * 1.6;
+$h1-font-size: $font-size-base * 1.8;
 
-<span class="nv">$paragraph-margin-bottom</span><span class="o">:</span> <span class="mi">1</span><span class="mf">.2</span><span class="kt">rem</span><span class="p">;</span>
-<span class="nv">$headings-margin-bottom</span><span class="o">:</span>  <span class="mi">1</span><span class="mf">.0</span><span class="kt">rem</span><span class="p">;</span>
+$paragraph-margin-bottom: 1.2rem;
+$headings-margin-bottom:  1.0rem;
 
-<span class="nv">$body-color</span><span class="o">:</span> <span class="mh">#111</span><span class="p">;</span>
-<span class="nv">$headings-color</span><span class="o">:</span> <span class="mh">#333</span><span class="p">;</span>
-<span class="nv">$link-color</span><span class="o">:</span> <span class="mh">#0017c7</span><span class="p">;</span>
-<span class="nv">$code-color</span><span class="o">:</span> <span class="mh">#15228a</span><span class="p">;</span>
-<span class="nv">$code-font-size</span><span class="o">:</span> <span class="mi">88</span><span class="kt">%</span><span class="p">;</span>
+$body-color: #111;
+$headings-color: #333;
+$link-color: #0017c7;
+$code-color: #15228a;
+$code-font-size: 88%;
 
-<span class="nv">$print-page-size</span><span class="o">:</span> <span class="n">letter</span><span class="p">;</span>
+$print-page-size: letter;
 </code></pre></div>
 
 
