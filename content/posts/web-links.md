@@ -84,6 +84,8 @@ This page has a collection of web links that I visit often.
 
 [Pelican Resource Links on Full Stack Python](https://www.fullstackpython.com/pelican.html)
 
+[Python Markdown Documentation](https://python-markdown.github.io/)
+
 ### Markdown and RST Reference
 
 [Markdown Cheatsheet on Github](https://github.com/adam-p/markdown-here/wiki/Markdown-Cheatsheet)
@@ -95,8 +97,6 @@ This page has a collection of web links that I visit often.
 [reStructuredText Cheatsheet on Github](https://github.com/ralsina/rst-cheatsheet/blob/master/rst-cheatsheet.rst)
 
 [Sphinx - Python Documentation Generator](https://www.sphinx-doc.org/en/master/)
-
-[Python Markdown Package](https://python-markdown.github.io/)
 
 ### Database
 

@@ -19,7 +19,7 @@ compile Bootstrap scss to css. This 17 minute long youtube video explains it ver
 I install Node version of Sass and Minify in Linux Mint with these commands. The Minify 
 tool removes extra blanks and line breaks in the css, and it also works for js and html files.  
 
-```bash
+```
 $sudo npm install -g sass
 $sudo npm install -g minify
 
@@ -30,7 +30,7 @@ $minify main.css > main.min.css
 
 The main.scss for the new theme has those contents. 
 
-```scss
+```
 $font-size-base: 1.1rem;
 $h5-font-size: $font-size-base * 1.0;
 $h4-font-size: $font-size-base * 1.1;
