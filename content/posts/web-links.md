@@ -74,6 +74,15 @@ This page has a collection of web links that I visit often.
 
 [HTML & CSS Is Hard - Web Book](https://www.internetingishard.com/html-and-css/)
 
+### Pelican Static Site Generator
+
+[Pelican Python Source Code repo](https://github.com/getpelican/pelican)
+
+[Pelican Documentation](https://docs.getpelican.com/en/stable/)
+
+[Full Stack Python Pelican Tutorial](https://www.fullstackpython.com/blog/generating-static-websites-pelican-jinja2-markdown.html)
+
+[Pelican Resource Links on Full Stack Python](https://www.fullstackpython.com/pelican.html)
 
 ### Markdown and RST Reference
 
