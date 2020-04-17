@@ -78,12 +78,12 @@
       
   <p>This site has been online for more than one year.  It is time to revise the pelican 
 theme to present a new look.  I spend a few hours revising the code, and now 
-it is easier for myself to publish or revise&nbsp;articles.  </p>
+it is easier for myself to publish or revise&nbsp;articles. </p>
 <p>The Bootstrap theme css file is now compiled on my computer.  It is not too difficult to 
 compile Bootstrap scss to css. This 17 minute long youtube video explains it very&nbsp;well. </p>
 <p><a href="https://youtu.be/6Ovw43Dkp44">Bootstrap 4 Theme Customization with&nbsp;Sass</a></p>
 <p>I install Node version of Sass and Minify in Linux Mint with these commands. The Minify 
-tool removes extra blanks and line breaks in the css, and it also works for js and html&nbsp;files.  </p>
+tool removes extra blanks and line breaks in the css, and it also works for js and html&nbsp;files. </p>
 <div class="highlight"><pre><span></span><code>$sudo npm install -g sass
 $sudo npm install -g minify
 
@@ -111,18 +111,20 @@ $code-color: #15228a;
 $code-font-size: 88%;
 
 $print-page-size: letter;
+
+@import &quot;node_modules/bootstrap/scss/bootstrap&quot;;
 </code></pre></div>
 
 
 <p>The light blue color of the navbar is set in the <code>base.html</code> file, which is copied from
-Bootstrap&nbsp;documentation.   </p>
+Bootstrap&nbsp;documentation. </p>
 <div class="highlight"><pre><span></span><code>&lt;nav class=&quot;navbar navbar-expand-md navbar-light&quot; style=&quot;background-color: #e3f2fd;&quot;&gt;
 </code></pre></div>
 
 
 <p>The <code>pelicanconf.py</code> file also has a few changes.  I remove default index.html page and 
 change the previous about page to new homepage.  The Python <code>Typogrify</code> package makes 
-&#8220;double quotes&#8221; and other html elements look&nbsp;better.   </p>
+&#8220;double quotes&#8221; and other html elements look&nbsp;better. </p>
 <div class="highlight"><pre><span></span><code><span class="c1"># DEFAULT_PAGINATION = 3</span>
 <span class="n">INDEX_SAVE_AS</span> <span class="o">=</span> <span class="s1">&#39;&#39;</span>
 <span class="n">SUMMARY_MAX_LENGTH</span> <span class="o">=</span> <span class="mi">30</span>
@@ -141,7 +143,7 @@ it you fall love with it.  The default setting only watches for markdown and <sp
 file types, you can add html to the list of files to&nbsp;watch. </p>
 <p>I also change the github repo to <span class="caps">SSH</span> connection instead of <span class="caps">HTTPS</span> connection and add a public
 <span class="caps">SSH</span> key to the github account, so I do not need to type password when I update the github 
-repo.  This stackoverflow question has answers how to do&nbsp;it. </p>
+repo.  This stackoverflow Q/A shows how to do&nbsp;it. </p>
 <p><a href="https://stackoverflow.com/questions/14762034/push-to-github-without-password-using-ssh-key">How to Push to Github with <span class="caps">SSH</span>&nbsp;Key</a></p>
 <p>To end this post, below is a screen shot of this site with old&nbsp;theme.</p>
 <div style="max-width:800px">
