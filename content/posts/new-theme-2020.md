@@ -9,7 +9,7 @@ no: 36
 
 This site has been online for more than one year.  It is time to revise the pelican 
 theme to present a new look.  I spend a few hours revising the code, and now 
-it is easier for myself to publish or revise articles.  
+it is easier for myself to publish or revise articles. 
 
 The Bootstrap theme css file is now compiled on my computer.  It is not too difficult to 
 compile Bootstrap scss to css. This 17 minute long youtube video explains it very well. 
@@ -17,7 +17,7 @@ compile Bootstrap scss to css. This 17 minute long youtube video explains it ver
 [Bootstrap 4 Theme Customization with Sass](https://youtu.be/6Ovw43Dkp44)
 
 I install Node version of Sass and Minify in Linux Mint with these commands. The Minify 
-tool removes extra blanks and line breaks in the css, and it also works for js and html files.  
+tool removes extra blanks and line breaks in the css, and it also works for js and html files. 
 
 ```
 $sudo npm install -g sass
@@ -48,10 +48,13 @@ $code-color: #15228a;
 $code-font-size: 88%;
 
 $print-page-size: letter;
+
+@import "node_modules/bootstrap/scss/bootstrap";
+
 ```
 
 The light blue color of the navbar is set in the `base.html` file, which is copied from
-Bootstrap documentation.   
+Bootstrap documentation. 
 
 ```
 <nav class="navbar navbar-expand-md navbar-light" style="background-color: #e3f2fd;">
@@ -59,7 +62,7 @@ Bootstrap documentation.
 
 The `pelicanconf.py` file also has a few changes.  I remove default index.html page and 
 change the previous about page to new homepage.  The Python `Typogrify` package makes 
-"double quotes" and other html elements look better.   
+"double quotes" and other html elements look better. 
 
 ```python
 # DEFAULT_PAGINATION = 3
@@ -80,7 +83,7 @@ file types, you can add html to the list of files to watch.
 
 I also change the github repo to SSH connection instead of HTTPS connection and add a public
 SSH key to the github account, so I do not need to type password when I update the github 
-repo.  This stackoverflow question has answers how to do it. 
+repo.  This stackoverflow Q/A shows how to do it. 
 
 [How to Push to Github with SSH Key](https://stackoverflow.com/questions/14762034/push-to-github-without-password-using-ssh-key)
 
