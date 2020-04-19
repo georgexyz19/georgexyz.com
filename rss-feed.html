@@ -90,11 +90,20 @@ website and see if there is any new content, content comes to you in one central
 </blockquote>
 <p>The Firefox web browser has an extension Feedbro which is easy to use.  I subscribe five 
 websites I often visit and it works well. Most major websites have <span class="caps">RSS</span> feeds available, and only 
-one website I visit often does not have one.  As for this personal blog site, I do not have 
-many updates and do not plan to provide <span class="caps">RSS</span>&nbsp;feeds. </p>
+one website I visit often does not have&nbsp;one.  </p>
 <div style="max-width:800px">
   <img class="img-fluid pb-3" src="/images/feedbro.png" alt="Feedbro Screenshot"> 
 </div>
+
+<p>It is really easy to provide <span class="caps">RSS</span> feeds for this personal blog site. In the <code>pelicanconf.py</code> file, change 
+the <code>SITEURL</code> and <code>FEED_ALL_ATOM</code> settings to the values shown&nbsp;below.   </p>
+<div class="highlight"><pre><span></span><code>SITEURL = &#39;https://www.georgexyz.com&#39;
+FEED_ALL_ATOM = &#39;feeds/all.atom.xml&#39;
+</code></pre></div>
+
+
+<p>You can subscribe to the <span class="caps">ATOM</span> feed of this website thru this link 
+<a href="https://www.georgexyz.com/feeds/all.atom.xml">https://www.georgexyz.com/feeds/all.atom.xml</a>.</p>
 
     </div>
   </div>
