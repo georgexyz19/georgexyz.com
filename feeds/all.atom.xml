@@ -95,8 +95,10 @@ one website I visit often does not have&amp;nbsp;one.  &lt;/p&gt;
   &lt;img class="img-fluid pb-3" src="/images/feedbro.png" alt="Feedbro Screenshot"&gt; 
 &lt;/div&gt;
 
-&lt;p&gt;It is really easy to provide &lt;span class="caps"&gt;RSS&lt;/span&gt; feeds for this personal blog site. In the &lt;code&gt;pelicanconf.py&lt;/code&gt; file, change 
-the &lt;code&gt;SITEURL&lt;/code&gt; and &lt;code&gt;FEED_ALL_ATOM&lt;/code&gt; settings to the values shown&amp;nbsp;below.   &lt;/p&gt;
+&lt;p&gt;It is really easy to provide &lt;span class="caps"&gt;RSS&lt;/span&gt; feeds for this personal blog site because Pelican can 
+generate feeds. In the pelican setting file, change 
+&lt;code&gt;SITEURL&lt;/code&gt; and &lt;code&gt;FEED_ALL_ATOM&lt;/code&gt; settings to the values shown below to tell Pelican 
+to generate feeds for all blog&amp;nbsp;posts.   &lt;/p&gt;
 &lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;SITEURL = &amp;#39;https://www.georgexyz.com&amp;#39;
 FEED_ALL_ATOM = &amp;#39;feeds/all.atom.xml&amp;#39;
 &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
@@ -198,6 +200,7 @@ which discusses the dictionary with more&amp;nbsp;details. &lt;/li&gt;
 &lt;p&gt;&lt;a href="https://docutils.sourceforge.io/rst.html"&gt;reStructuredText&amp;nbsp;Documentation&lt;/a&gt;&lt;/p&gt;
 &lt;p&gt;&lt;a href="https://github.com/ralsina/rst-cheatsheet/blob/master/rst-cheatsheet.rst"&gt;reStructuredText Cheatsheet on&amp;nbsp;Github&lt;/a&gt;&lt;/p&gt;
 &lt;p&gt;&lt;a href="https://www.sphinx-doc.org/en/master/"&gt;Sphinx - Python Documentation&amp;nbsp;Generator&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;&lt;a href="https://www.devdungeon.com/content/restructuredtext-rst-tutorial-0"&gt;reStructuredText Tutorial on&amp;nbsp;devdungeon.com&lt;/a&gt;&lt;/p&gt;
 &lt;h3&gt;Database&lt;/h3&gt;
 &lt;p&gt;&lt;a href="https://docs.sqlalchemy.org/en/13/"&gt;SQLAlchemy&amp;nbsp;Documentation&lt;/a&gt;&lt;/p&gt;
 &lt;p&gt;&lt;a href="https://www.mysqltutorial.org/"&gt;MySql Tutorial&amp;nbsp;Website&lt;/a&gt;&lt;/p&gt;

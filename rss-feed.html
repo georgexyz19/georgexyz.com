@@ -95,8 +95,10 @@ one website I visit often does not have&nbsp;one.  </p>
   <img class="img-fluid pb-3" src="/images/feedbro.png" alt="Feedbro Screenshot"> 
 </div>
 
-<p>It is really easy to provide <span class="caps">RSS</span> feeds for this personal blog site. In the <code>pelicanconf.py</code> file, change 
-the <code>SITEURL</code> and <code>FEED_ALL_ATOM</code> settings to the values shown&nbsp;below.   </p>
+<p>It is really easy to provide <span class="caps">RSS</span> feeds for this personal blog site because Pelican can 
+generate feeds. In the pelican setting file, change 
+<code>SITEURL</code> and <code>FEED_ALL_ATOM</code> settings to the values shown below to tell Pelican 
+to generate feeds for all blog&nbsp;posts.   </p>
 <div class="highlight"><pre><span></span><code>SITEURL = &#39;https://www.georgexyz.com&#39;
 FEED_ALL_ATOM = &#39;feeds/all.atom.xml&#39;
 </code></pre></div>
