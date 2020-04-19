@@ -98,6 +98,8 @@ This page has a collection of web links that I visit often.
 
 [Sphinx - Python Documentation Generator](https://www.sphinx-doc.org/en/master/)
 
+[reStructuredText Tutorial on devdungeon.com](https://www.devdungeon.com/content/restructuredtext-rst-tutorial-0)
+
 ### Database
 
 [SQLAlchemy Documentation](https://docs.sqlalchemy.org/en/13/)

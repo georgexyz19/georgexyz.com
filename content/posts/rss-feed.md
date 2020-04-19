@@ -28,8 +28,10 @@ one website I visit often does not have one.
   <img class="img-fluid pb-3" src="/images/feedbro.png" alt="Feedbro Screenshot"> 
 </div>
 
-It is really easy to provide RSS feeds for this personal blog site. In the `pelicanconf.py` file, change 
-the `SITEURL` and `FEED_ALL_ATOM` settings to the values shown below.   
+It is really easy to provide RSS feeds for this personal blog site because Pelican can 
+generate feeds. In the pelican setting file, change 
+`SITEURL` and `FEED_ALL_ATOM` settings to the values shown below to tell Pelican 
+to generate feeds for all blog posts.   
 
 ```
 SITEURL = 'https://www.georgexyz.com'
