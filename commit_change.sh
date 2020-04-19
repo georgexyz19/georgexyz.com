@@ -27,7 +27,8 @@ fi
 git pull
 
 # pipenv shell # does not work
-pipenv run invoke clean build # see stack overflow 48056606
+# publish is clean and build with publishconf.py
+pipenv run invoke publish # see stack overflow 48056606
 git status
 git add -A
 git commit -m "$1"

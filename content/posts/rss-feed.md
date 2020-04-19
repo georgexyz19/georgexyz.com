@@ -22,9 +22,19 @@ The first linked article has a sentence which explains the benefit of RSS/ATOM F
 
 The Firefox web browser has an extension Feedbro which is easy to use.  I subscribe five 
 websites I often visit and it works well. Most major websites have RSS feeds available, and only 
-one website I visit often does not have one.  As for this personal blog site, I do not have 
-many updates and do not plan to provide RSS feeds. 
+one website I visit often does not have one.  
 
 <div style="max-width:800px">
   <img class="img-fluid pb-3" src="/images/feedbro.png" alt="Feedbro Screenshot"> 
 </div>
+
+It is really easy to provide RSS feeds for this personal blog site. In the `pelicanconf.py` file, change 
+the `SITEURL` and `FEED_ALL_ATOM` settings to the values shown below.   
+
+```
+SITEURL = 'https://www.georgexyz.com'
+FEED_ALL_ATOM = 'feeds/all.atom.xml'
+```
+
+You can subscribe to the ATOM feed of this website thru this link 
+[https://www.georgexyz.com/feeds/all.atom.xml](https://www.georgexyz.com/feeds/all.atom.xml).
