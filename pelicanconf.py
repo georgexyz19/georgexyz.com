@@ -4,7 +4,7 @@ from __future__ import unicode_literals
 
 AUTHOR = 'George Zhang'
 SITENAME = 'George Zhang'
-SITEURL = ''
+SITEURL = 'https://www.georgexyz.com'
 
 PATH = 'content'
 
@@ -13,7 +13,8 @@ TIMEZONE = 'America/New_York'
 DEFAULT_LANG = 'en'
 
 # Feed generation is usually not desired when developing
-FEED_ALL_ATOM = None
+# FEED_ALL_ATOM = None
+FEED_ALL_ATOM = 'feeds/all.atom.xml'
 CATEGORY_FEED_ATOM = None
 TRANSLATION_FEED_ATOM = None
 AUTHOR_FEED_ATOM = None
