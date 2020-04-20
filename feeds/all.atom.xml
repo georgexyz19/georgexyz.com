@@ -139,11 +139,11 @@ become &lt;code&gt;h3&lt;/code&gt;.  Note the article title heading level &lt;co
 shown in the previous&amp;nbsp;section.&lt;/p&gt;
 &lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;DOCUTILS_SETTINGS = {&amp;#39;initial_header_level&amp;#39;: &amp;#39;3&amp;#39;, }
 &lt;/pre&gt;&lt;/div&gt;
+&lt;/div&gt;
 &lt;div class="section" id="rst-file-of-this-article"&gt;
-&lt;h4&gt;Rst File of This&amp;nbsp;Article&lt;/h4&gt;
+&lt;h3&gt;Rst File of This&amp;nbsp;Article&lt;/h3&gt;
 &lt;p&gt;The rst file of this article is available on github. &lt;a class="reference external" href="https://github.com/georgexyz19/georgexyz.com/blob/master/content/posts/pelican-source-code-plugin.rst"&gt;Click here&lt;/a&gt; to read the source file and click
 &amp;#8220;Raw&amp;#8221; button to see the text&amp;nbsp;file.&lt;/p&gt;
-&lt;/div&gt;
 &lt;/div&gt;
 </content><category term="posts"></category><category term="python"></category><category term="pelican"></category></entry><entry><title>New Pelican Theme</title><link href="https://www.georgexyz.com/new-theme-2020.html" rel="alternate"></link><published>2020-04-11T22:31:00-04:00</published><updated>2020-04-11T22:31:00-04:00</updated><author><name>George Zhang</name></author><id>tag:www.georgexyz.com,2020-04-11:/new-theme-2020.html</id><summary type="html">&lt;p&gt;This site has been online for more than one year.  It is time to revise the pelican 
 theme to present a new look.  I spend a few hours revising the …&lt;/p&gt;</summary><content type="html">&lt;p&gt;This site has been online for more than one year.  It is time to revise the pelican 
