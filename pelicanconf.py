@@ -68,5 +68,7 @@ SUMMARY_MAX_LENGTH = 30
 ARCHIVES_SAVE_AS = 'articlelist.html'
 TYPOGRIFY = True
 
-PLUGIN_PATHS = ['plugin/', ]
-PLUGINS=['headinglower',]
+# PLUGIN_PATHS = ['plugin/', ]
+# PLUGINS=['headinglower',]
+
+DOCUTILS_SETTINGS = {'initial_header_level': '3', }

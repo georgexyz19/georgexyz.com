@@ -18,7 +18,11 @@ The problem is that the top title of an aritle (e.g. "Pelican Source Code and Pl
 on this page) is rendered as :code:`h2` html tag, and section title (e.g. "Pelican Plugin" 
 section below) starts with :code:`h3` tag. It is designed this way since the start of the website. 
 In a markdown file, I can add two :code:`#` to specify a title as :code:`h2`.  There is 
-no easy way to specify the heading levels in rst files.  
+no easy way to specify the heading levels in rst files. 
+
+The same problem is described in this question_ on github.
+
+.. _question: https://github.com/github/markup/issues/567
 
 Pelican Plugin
 ==============
@@ -136,10 +140,50 @@ plugin.
     PLUGIN_PATHS = ['plugin/', ]
     PLUGINS=['headinglower',]
 
+Better Way
+==========
+
+The above method works well and solves my problem.  But there is a better and easier 
+way to solve the exact problem.  Pelican has over 100 settings, and one 
+of them is :code:`DOCUTILS_SETTINGS`.  It is described on the documentation_ page as:
+
+    Extra configuration settings for the docutils publisher (applicable only to 
+    reStructuredText). See Docutils Configuration settings for more details.
+
+The :code:`RstReader` class in :code:`readers.py` file of Pelican source code has a method 
+:code:`_get_publisher`. It has the following lines of code. 
+
+.. code-block:: python
+
+    extra_params = {'initial_header_level': '2',
+                        'syntax_highlight': 'short',
+                        'input_encoding': 'utf-8',
+                        'language_code': self._language_code,
+                        'halt_level': 2,
+                        'traceback': True,
+                        'warning_stream': StringIO(),
+                        'embed_stylesheet': False}
+
+    user_params = self.settings.get('DOCUTILS_SETTINGS')
+    if user_params:
+        extra_params.update(user_params)
+
+I can simply set the :code:`initial_header_level` value to 3 and the problem is solved. 
+Add the following settings in the :code:`pelicanconf.py`, the first section title heading will 
+become :code:`h3`.  Note the article title heading level :code:`h2` is actually set in the 
+:code:`article.html` template file. I also comment out the two plugin settings 
+shown in the previous section.   
+
+.. code-block:: settings
+
+    DOCUTILS_SETTINGS = {'initial_header_level': '3', }
+
+.. _documentation: https://docs.getpelican.com/en/stable/settings.html
+
 Rst File of This Article
 ------------------------
 
-The rst file of this article is availabe on github. `Click here`_ to read the source file and click 
+The rst file of this article is available on github. `Click here`_ to read the source file and click 
 "Raw" button to see the text file. 
 
 .. _Click here: https://github.com/georgexyz19/georgexyz.com/blob/master/content/posts/pelican-source-code-plugin.rst
