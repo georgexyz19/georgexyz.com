@@ -9,6 +9,7 @@ on this page) is rendered as &lt;code&gt;h2&lt;/code&gt; html tag, and section t
 section below) starts with &lt;code&gt;h3&lt;/code&gt; tag. It is designed this way since the start of the website.
 In a markdown file, I can add two &lt;code&gt;#&lt;/code&gt; to specify a title as &lt;code&gt;h2&lt;/code&gt;.  There is
 no easy way to specify the heading levels in rst&amp;nbsp;files.&lt;/p&gt;
+&lt;p&gt;The same problem is described in this &lt;a class="reference external" href="https://github.com/github/markup/issues/567"&gt;question&lt;/a&gt; on&amp;nbsp;github.&lt;/p&gt;
 &lt;div class="section" id="pelican-plugin"&gt;
 &lt;h3&gt;Pelican&amp;nbsp;Plugin&lt;/h3&gt;
 &lt;p&gt;When I am reading Pelican source code, I find that the Pelican class in the
@@ -107,9 +108,40 @@ defined in &lt;code&gt;HTMLTranslator&lt;/code&gt; class of docutils.writers._ht
 PLUGINS=[&amp;#39;headinglower&amp;#39;,]
 &lt;/pre&gt;&lt;/div&gt;
 &lt;/div&gt;
+&lt;/div&gt;
+&lt;div class="section" id="better-way"&gt;
+&lt;h3&gt;Better&amp;nbsp;Way&lt;/h3&gt;
+&lt;p&gt;The above method works well and solves my problem.  But there is a better and easier
+way to solve the exact problem.  Pelican has over 100 settings, and one
+of them is &lt;code&gt;DOCUTILS_SETTINGS&lt;/code&gt;.  It is described on the &lt;a class="reference external" href="https://docs.getpelican.com/en/stable/settings.html"&gt;documentation&lt;/a&gt; page&amp;nbsp;as:&lt;/p&gt;
+&lt;blockquote&gt;
+Extra configuration settings for the docutils publisher (applicable only to
+reStructuredText). See Docutils Configuration settings for more details.&lt;/blockquote&gt;
+&lt;p&gt;The &lt;code&gt;RstReader&lt;/code&gt; class in &lt;code&gt;readers.py&lt;/code&gt; file of Pelican source code has a method
+&lt;code&gt;_get_publisher&lt;/code&gt;. It has the following lines of&amp;nbsp;code.&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="n"&gt;extra_params&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="p"&gt;{&lt;/span&gt;&lt;span class="s1"&gt;&amp;#39;initial_header_level&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt; &lt;span class="s1"&gt;&amp;#39;2&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;
+                    &lt;span class="s1"&gt;&amp;#39;syntax_highlight&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt; &lt;span class="s1"&gt;&amp;#39;short&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;
+                    &lt;span class="s1"&gt;&amp;#39;input_encoding&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt; &lt;span class="s1"&gt;&amp;#39;utf-8&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;
+                    &lt;span class="s1"&gt;&amp;#39;language_code&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt; &lt;span class="bp"&gt;self&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;_language_code&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;
+                    &lt;span class="s1"&gt;&amp;#39;halt_level&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt; &lt;span class="mi"&gt;2&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;
+                    &lt;span class="s1"&gt;&amp;#39;traceback&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt; &lt;span class="kc"&gt;True&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;
+                    &lt;span class="s1"&gt;&amp;#39;warning_stream&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt; &lt;span class="n"&gt;StringIO&lt;/span&gt;&lt;span class="p"&gt;(),&lt;/span&gt;
+                    &lt;span class="s1"&gt;&amp;#39;embed_stylesheet&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt; &lt;span class="kc"&gt;False&lt;/span&gt;&lt;span class="p"&gt;}&lt;/span&gt;
+
+&lt;span class="n"&gt;user_params&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="bp"&gt;self&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;settings&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;get&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="s1"&gt;&amp;#39;DOCUTILS_SETTINGS&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
+&lt;span class="k"&gt;if&lt;/span&gt; &lt;span class="n"&gt;user_params&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt;
+    &lt;span class="n"&gt;extra_params&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;update&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;user_params&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+&lt;p&gt;I can simply set the &lt;code&gt;initial_header_level&lt;/code&gt; value to 3 and the problem is solved.
+Add the following settings in the &lt;code&gt;pelicanconf.py&lt;/code&gt;, the first section title heading will
+become &lt;code&gt;h3&lt;/code&gt;.  Note the article title heading level &lt;code&gt;h2&lt;/code&gt; is actually set in the
+&lt;code&gt;article.html&lt;/code&gt; template file. I also comment out the two plugin settings
+shown in the previous&amp;nbsp;section.&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;DOCUTILS_SETTINGS = {&amp;#39;initial_header_level&amp;#39;: &amp;#39;3&amp;#39;, }
+&lt;/pre&gt;&lt;/div&gt;
 &lt;div class="section" id="rst-file-of-this-article"&gt;
 &lt;h4&gt;Rst File of This&amp;nbsp;Article&lt;/h4&gt;
-&lt;p&gt;The rst file of this article is availabe on github. &lt;a class="reference external" href="https://github.com/georgexyz19/georgexyz.com/blob/master/content/posts/pelican-source-code-plugin.rst"&gt;Click here&lt;/a&gt; to read the source file and click
+&lt;p&gt;The rst file of this article is available on github. &lt;a class="reference external" href="https://github.com/georgexyz19/georgexyz.com/blob/master/content/posts/pelican-source-code-plugin.rst"&gt;Click here&lt;/a&gt; to read the source file and click
 &amp;#8220;Raw&amp;#8221; button to see the text&amp;nbsp;file.&lt;/p&gt;
 &lt;/div&gt;
 &lt;/div&gt;
