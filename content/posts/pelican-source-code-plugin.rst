@@ -181,7 +181,7 @@ shown in the previous section.
 .. _documentation: https://docs.getpelican.com/en/stable/settings.html
 
 Rst File of This Article
-------------------------
+========================
 
 The rst file of this article is available on github. `Click here`_ to read the source file and click 
 "Raw" button to see the text file. 
