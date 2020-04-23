@@ -1,0 +1,208 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <!-- <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous"> -->
+    <link rel="stylesheet" href="/theme/css/bs4min.css">
+    <link rel="shortcut icon" type="image/x-icon" href="https://www.georgexyz.com/theme/images/favicon.ico" >
+    <link rel="icon" type="image/x-icon" href="https://www.georgexyz.com/theme/images/favicon.ico" >
+ 
+    <link rel="stylesheet" href="https://www.georgexyz.com/theme/css/friendly.css">
+    <link rel="stylesheet" href="https://www.georgexyz.com/theme/css/custom.css">
+    <meta name="author" content="George Zhang" />
+    <meta name="keywords" content="python,pelican,software utility" />
+    <meta name="description" content="I am reading Pelican source code. Sometimes I do not have a computer nearby, a I want to print out the source code on paper. The current release of Pelican …" />
+    <title>Print Python Source Code on Paper - George Zhang</title>
+  </head>
+  <body>
+    <!-- navbar -->
+    <nav class="navbar navbar-expand-md navbar-light" style="background-color: #e3f2fd;">
+      <div class="container">
+        <a class="navbar-brand" href="/">George Zhang</a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarColor01" aria-controls="navbarColor01" aria-expanded="false" aria-label="Toggle navigation">
+          <span class="navbar-toggler-icon"></span>
+        </button>
+
+        <div class="collapse navbar-collapse" id="navbarColor01">
+          <ul class="navbar-nav mr-auto">
+            <li class="nav-item">
+              <a class="nav-link " 
+                href="/articlelist.html">Articles</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link pr-3 " 
+                href="/tags.html">Tags</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link pr-3 "
+                 href="/pages/inkscape-tutorial.html">Inkscape Tutorial</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link "
+                   href="/pages/projects.html">Projects</a>
+              </li>
+          </ul>
+
+          <ul class="navbar-nav">
+            <li class="nav-item">
+              <a class="nav-link " 
+                 href="/pages/about.html">About</a>
+            </li>
+          </ul>
+        </div>
+
+      </div>
+    </nav>
+
+   
+  
+<div class="container">
+
+  <div class="row">
+    <div class="col-lg-8 mx-auto">   
+
+  <h2>Print Python Source Code on&nbsp;Paper</h2>
+  
+  <div class="text-muted mb-2">
+    <span>Posted on </span>
+    <time datetime="2020-04-23 09:29:00-04:00">
+      Thursday, 04/23/2020 09:29
+    </time>
+    
+     <span>with tags: </span>
+       <a href="https://www.georgexyz.com/tag/python.html">python</a>
+/       <a href="https://www.georgexyz.com/tag/pelican.html">pelican</a>
+/       <a href="https://www.georgexyz.com/tag/software-utility.html">software utility</a>
+  </div>
+      
+  <p>I am reading Pelican source code. Sometimes I do not have a computer nearby, a I want to
+print out the source code on paper. The current release of Pelican is version 4.2.0. The
+source code is <a class="reference external" href="https://github.com/getpelican/pelican">available on github</a>.</p>
+<p>After you <code>git clone</code> the code to local drive, you can run the following Linux
+command to have a basic idea of the code base. The number of lines of Pelican 4.2 code is
+5,530, which is actually a litter shorter than version 4.0.1 (5,670).  The file
+<code>generators.py</code> is the longest with 936 lines. The main code base has
+14 python&nbsp;files.</p>
+<div class="highlight"><pre><span></span>$ find . -maxdepth 1 -name &#39;*.py&#39; -exec wc -l &#39;{}&#39; + | sort -n
+9 ./__main__.py
+92 ./rstdirectives.py
+129 ./urlwrappers.py
+136 ./cache.py
+140 ./server.py
+160 ./paginator.py
+226 ./log.py
+271 ./writers.py
+560 ./__init__.py
+607 ./contents.py
+662 ./settings.py
+748 ./readers.py
+854 ./utils.py
+936 ./generators.py
+5530 total
+</pre></div>
+<p>A Google search finds this article <a class="reference external" href="https://medium.com/&#64;tashian/print-out-your-code-on-paper-7c760a376bca">Print Out Your Code On Paper</a> on medium.com. The
+author made some good points in the article. It also introduces
+a piece of Unix/Linux command line software called <code>enscript</code>, which can covert
+text code to postscript file. A typical command looks like&nbsp;this,</p>
+<div class="highlight"><pre><span></span>enscript -1rG --line-numbers -p out.ps --highlight=python \
+    -c inputfile.py
+</pre></div>
+<p>A furthur Google search finds <a class="reference external" href="http://manpages.ubuntu.com/manpages/precise/en/man1/enscript.1.html">an online man page</a> for <code>enscript</code>. The page has
+detailed detailed infomation regarding the software options and configuration&nbsp;files.</p>
+<p>The default fancy header configuration file <code>enscript.hdr</code> is stored in the directory
+<code>/usr/share/enscript/</code>. I want to change the date and time on the left corner to
+current date/time. Also I want to change the page number on the right corner to &#8220;number
+of pages processed so far&#8221; rather than the default &#8220;current page numbers&#8221;. An easy way
+is to copy the <code>enscript.hdr</code> to a new <code>enscript_mod.hdr</code> file and copy back
+the modified file to the directory. I only change three lines of code in
+<code>enscript_mod.hdr</code> file.</p>
+<div class="highlight"><pre><span></span>%Format: moddatestr %W
+%Format: modtimestr %C
+%Format: pagenumstr $p
+</pre></div>
+<p>After that, I write a short python script to call the <code>enscript</code> command. The
+python code is shown&nbsp;below.</p>
+<div class="highlight"><pre><span></span><span class="ch">#! python3</span>
+<span class="c1">#</span>
+<span class="c1"># sudo cp enscript_mod.hdr /usr/share/enscript/</span>
+<span class="c1"># the mod hdr file change the file mod date/time to current date/time</span>
+<span class="c1">#</span>
+<span class="c1"># note that the hdr file should be in configuration dir</span>
+<span class="c1"># see ubuntu manpage</span>
+<span class="c1"># http://manpages.ubuntu.com/manpages/precise/en/man1/enscript.1.html</span>
+<span class="c1">#</span>
+<span class="c1"># convert ps to pdf</span>
+<span class="c1"># ps2pdfwr pelican.ps pelican_print.pdf</span>
+
+<span class="kn">import</span> <span class="nn">os</span>
+<span class="kn">import</span> <span class="nn">subprocess</span>
+
+<span class="c1"># result of $ls -S -l *.py</span>
+<span class="n">files</span> <span class="o">=</span><span class="s1">&#39;&#39;&#39;</span>
+<span class="s1">-rw-r--r-- 1 george george 38063 Apr 18 14:56 generators.py</span>
+<span class="s1">-rw-r--r-- 1 george george 28171 Apr 18 14:56 utils.py</span>
+<span class="s1">-rw-r--r-- 1 george george 27331 Apr 18 14:56 readers.py</span>
+<span class="s1">-rw-r--r-- 1 george george 25748 Apr 18 14:56 settings.py</span>
+<span class="s1">-rw-r--r-- 1 george george 22680 Apr 18 14:56 contents.py</span>
+<span class="s1">-rw-r--r-- 1 george george 21857 Apr 18 14:56 __init__.py</span>
+<span class="s1">-rw-r--r-- 1 george george 11161 Apr 18 14:56 writers.py</span>
+<span class="s1">-rw-r--r-- 1 george george  6453 Apr 18 14:56 log.py</span>
+<span class="s1">-rw-r--r-- 1 george george  5385 Apr 18 14:56 paginator.py</span>
+<span class="s1">-rw-r--r-- 1 george george  5133 Apr 18 14:56 server.py</span>
+<span class="s1">-rw-r--r-- 1 george george  4992 Apr 18 14:56 cache.py</span>
+<span class="s1">-rw-r--r-- 1 george george  3803 Apr 18 14:56 urlwrappers.py</span>
+<span class="s1">-rw-r--r-- 1 george george  2951 Apr 18 14:56 rstdirectives.py</span>
+<span class="s1">-rw-r--r-- 1 george george   126 Apr 18 14:56 __main__.py</span>
+<span class="s1">&#39;&#39;&#39;</span>
+
+<span class="k">def</span> <span class="nf">fnlist</span><span class="p">(</span><span class="n">files</span><span class="p">):</span>
+    <span class="n">filenames</span> <span class="o">=</span> <span class="p">[]</span>
+    <span class="n">fns</span> <span class="o">=</span> <span class="n">files</span><span class="o">.</span><span class="n">split</span><span class="p">(</span><span class="s1">&#39;</span><span class="se">\n</span><span class="s1">&#39;</span><span class="p">)</span>
+    <span class="k">for</span> <span class="n">fn</span> <span class="ow">in</span> <span class="n">fns</span><span class="p">:</span>
+        <span class="k">if</span> <span class="n">fn</span><span class="p">:</span>
+            <span class="n">filename</span> <span class="o">=</span> <span class="n">fn</span><span class="p">[</span><span class="mi">46</span><span class="p">:]</span>
+            <span class="k">if</span> <span class="n">filename</span><span class="o">.</span><span class="n">startswith</span><span class="p">(</span><span class="s1">&#39;__&#39;</span><span class="p">):</span>
+                <span class="n">filenames</span><span class="o">.</span><span class="n">insert</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="n">filename</span><span class="p">)</span>
+            <span class="k">else</span><span class="p">:</span>
+                <span class="n">filenames</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">filename</span><span class="p">)</span>
+    <span class="c1"># print(filenames)</span>
+    <span class="k">return</span> <span class="n">filenames</span>
+
+
+<span class="k">def</span> <span class="nf">main</span><span class="p">():</span>
+    <span class="n">cwd</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">getcwd</span><span class="p">()</span>
+    <span class="n">os</span><span class="o">.</span><span class="n">chdir</span><span class="p">(</span><span class="s1">&#39;./pelican/pelican&#39;</span><span class="p">)</span>
+    <span class="n">filenames</span> <span class="o">=</span> <span class="s1">&#39; &#39;</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">fnlist</span><span class="p">(</span><span class="n">files</span><span class="p">))</span>
+    <span class="n">p1</span> <span class="o">=</span> <span class="n">subprocess</span><span class="o">.</span><span class="n">run</span><span class="p">(</span>
+        <span class="s1">&#39;enscript --fancy-header=enscript_mod --line-numbers &#39;</span> <span class="o">+</span> \
+        <span class="s1">&#39;-p ../../pelican_code_print.ps &#39;</span> <span class="o">+</span> \
+        <span class="s1">&#39;--highlight=python &#39;</span> <span class="o">+</span> \
+        <span class="sa">f</span><span class="s1">&#39;--color=1 -c </span><span class="si">{</span><span class="n">filenames</span><span class="si">}</span><span class="s1">&#39;</span><span class="p">,</span>
+        <span class="n">shell</span> <span class="o">=</span> <span class="kc">True</span><span class="p">,</span>
+        <span class="n">capture_output</span> <span class="o">=</span> <span class="kc">True</span>
+    <span class="p">)</span>
+    <span class="nb">print</span><span class="p">(</span><span class="n">p1</span><span class="o">.</span><span class="n">stdout</span><span class="o">.</span><span class="n">decode</span><span class="p">())</span>
+    <span class="n">os</span><span class="o">.</span><span class="n">chdir</span><span class="p">(</span><span class="n">cwd</span><span class="p">)</span>
+
+
+<span class="k">if</span> <span class="vm">__name__</span> <span class="o">==</span> <span class="s1">&#39;__main__&#39;</span><span class="p">:</span>
+    <span class="n">main</span><span class="p">()</span>
+</pre></div>
+<p>After those steps. the final pdf file of Pelican 4.2 source code can be downloaded <a class="reference external" href="/files/pelican_code_print.pdf">here</a>.</p>
+
+
+    </div>
+  </div>
+
+</div>
+  
+   
+
+    <script src="https://code.jquery.com/jquery-3.4.1.slim.min.js" integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js" integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6" crossorigin="anonymous"></script>
+
+  </body>
+</html>

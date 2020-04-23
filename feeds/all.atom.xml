@@ -1,5 +1,120 @@
 <?xml version="1.0" encoding="utf-8"?>
-<feed xmlns="http://www.w3.org/2005/Atom"><title>George Zhang</title><link href="https://www.georgexyz.com/" rel="alternate"></link><link href="https://www.georgexyz.com/feeds/all.atom.xml" rel="self"></link><id>https://www.georgexyz.com/</id><updated>2020-04-19T22:08:00-04:00</updated><entry><title>Pelican Source Code and Plugin</title><link href="https://www.georgexyz.com/pelican-source-code-plugin.html" rel="alternate"></link><published>2020-04-19T22:08:00-04:00</published><updated>2020-04-19T22:08:00-04:00</updated><author><name>George Zhang</name></author><id>tag:www.georgexyz.com,2020-04-19:/pelican-source-code-plugin.html</id><summary type="html">&lt;p&gt;Articles on this website before this one are all written in markdown format. I want to
+<feed xmlns="http://www.w3.org/2005/Atom"><title>George Zhang</title><link href="https://www.georgexyz.com/" rel="alternate"></link><link href="https://www.georgexyz.com/feeds/all.atom.xml" rel="self"></link><id>https://www.georgexyz.com/</id><updated>2020-04-23T09:29:00-04:00</updated><entry><title>Print Python Source Code on Paper</title><link href="https://www.georgexyz.com/print-source-code-paper.html" rel="alternate"></link><published>2020-04-23T09:29:00-04:00</published><updated>2020-04-23T09:29:00-04:00</updated><author><name>George Zhang</name></author><id>tag:www.georgexyz.com,2020-04-23:/print-source-code-paper.html</id><summary type="html">&lt;p&gt;I am reading Pelican source code. Sometimes I do not have a computer nearby, a I want to
+print out the source code on paper. The current release of Pelican …&lt;/p&gt;</summary><content type="html">&lt;p&gt;I am reading Pelican source code. Sometimes I do not have a computer nearby, a I want to
+print out the source code on paper. The current release of Pelican is version 4.2.0. The
+source code is &lt;a class="reference external" href="https://github.com/getpelican/pelican"&gt;available on github&lt;/a&gt;.&lt;/p&gt;
+&lt;p&gt;After you &lt;code&gt;git clone&lt;/code&gt; the code to local drive, you can run the following Linux
+command to have a basic idea of the code base. The number of lines of Pelican 4.2 code is
+5,530, which is actually a litter shorter than version 4.0.1 (5,670).  The file
+&lt;code&gt;generators.py&lt;/code&gt; is the longest with 936 lines. The main code base has
+14 python&amp;nbsp;files.&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;$ find . -maxdepth 1 -name &amp;#39;*.py&amp;#39; -exec wc -l &amp;#39;{}&amp;#39; + | sort -n
+9 ./__main__.py
+92 ./rstdirectives.py
+129 ./urlwrappers.py
+136 ./cache.py
+140 ./server.py
+160 ./paginator.py
+226 ./log.py
+271 ./writers.py
+560 ./__init__.py
+607 ./contents.py
+662 ./settings.py
+748 ./readers.py
+854 ./utils.py
+936 ./generators.py
+5530 total
+&lt;/pre&gt;&lt;/div&gt;
+&lt;p&gt;A Google search finds this article &lt;a class="reference external" href="https://medium.com/&amp;#64;tashian/print-out-your-code-on-paper-7c760a376bca"&gt;Print Out Your Code On Paper&lt;/a&gt; on medium.com. The
+author made some good points in the article. It also introduces
+a piece of Unix/Linux command line software called &lt;code&gt;enscript&lt;/code&gt;, which can covert
+text code to postscript file. A typical command looks like&amp;nbsp;this,&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;enscript -1rG --line-numbers -p out.ps --highlight=python \
+    -c inputfile.py
+&lt;/pre&gt;&lt;/div&gt;
+&lt;p&gt;A furthur Google search finds &lt;a class="reference external" href="http://manpages.ubuntu.com/manpages/precise/en/man1/enscript.1.html"&gt;an online man page&lt;/a&gt; for &lt;code&gt;enscript&lt;/code&gt;. The page has
+detailed detailed infomation regarding the software options and configuration&amp;nbsp;files.&lt;/p&gt;
+&lt;p&gt;The default fancy header configuration file &lt;code&gt;enscript.hdr&lt;/code&gt; is stored in the directory
+&lt;code&gt;/usr/share/enscript/&lt;/code&gt;. I want to change the date and time on the left corner to
+current date/time. Also I want to change the page number on the right corner to &amp;#8220;number
+of pages processed so far&amp;#8221; rather than the default &amp;#8220;current page numbers&amp;#8221;. An easy way
+is to copy the &lt;code&gt;enscript.hdr&lt;/code&gt; to a new &lt;code&gt;enscript_mod.hdr&lt;/code&gt; file and copy back
+the modified file to the directory. I only change three lines of code in
+&lt;code&gt;enscript_mod.hdr&lt;/code&gt; file.&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;%Format: moddatestr %W
+%Format: modtimestr %C
+%Format: pagenumstr $p
+&lt;/pre&gt;&lt;/div&gt;
+&lt;p&gt;After that, I write a short python script to call the &lt;code&gt;enscript&lt;/code&gt; command. The
+python code is shown&amp;nbsp;below.&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="ch"&gt;#! python3&lt;/span&gt;
+&lt;span class="c1"&gt;#&lt;/span&gt;
+&lt;span class="c1"&gt;# sudo cp enscript_mod.hdr /usr/share/enscript/&lt;/span&gt;
+&lt;span class="c1"&gt;# the mod hdr file change the file mod date/time to current date/time&lt;/span&gt;
+&lt;span class="c1"&gt;#&lt;/span&gt;
+&lt;span class="c1"&gt;# note that the hdr file should be in configuration dir&lt;/span&gt;
+&lt;span class="c1"&gt;# see ubuntu manpage&lt;/span&gt;
+&lt;span class="c1"&gt;# http://manpages.ubuntu.com/manpages/precise/en/man1/enscript.1.html&lt;/span&gt;
+&lt;span class="c1"&gt;#&lt;/span&gt;
+&lt;span class="c1"&gt;# convert ps to pdf&lt;/span&gt;
+&lt;span class="c1"&gt;# ps2pdfwr pelican.ps pelican_print.pdf&lt;/span&gt;
+
+&lt;span class="kn"&gt;import&lt;/span&gt; &lt;span class="nn"&gt;os&lt;/span&gt;
+&lt;span class="kn"&gt;import&lt;/span&gt; &lt;span class="nn"&gt;subprocess&lt;/span&gt;
+
+&lt;span class="c1"&gt;# result of $ls -S -l *.py&lt;/span&gt;
+&lt;span class="n"&gt;files&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="s1"&gt;&amp;#39;&amp;#39;&amp;#39;&lt;/span&gt;
+&lt;span class="s1"&gt;-rw-r--r-- 1 george george 38063 Apr 18 14:56 generators.py&lt;/span&gt;
+&lt;span class="s1"&gt;-rw-r--r-- 1 george george 28171 Apr 18 14:56 utils.py&lt;/span&gt;
+&lt;span class="s1"&gt;-rw-r--r-- 1 george george 27331 Apr 18 14:56 readers.py&lt;/span&gt;
+&lt;span class="s1"&gt;-rw-r--r-- 1 george george 25748 Apr 18 14:56 settings.py&lt;/span&gt;
+&lt;span class="s1"&gt;-rw-r--r-- 1 george george 22680 Apr 18 14:56 contents.py&lt;/span&gt;
+&lt;span class="s1"&gt;-rw-r--r-- 1 george george 21857 Apr 18 14:56 __init__.py&lt;/span&gt;
+&lt;span class="s1"&gt;-rw-r--r-- 1 george george 11161 Apr 18 14:56 writers.py&lt;/span&gt;
+&lt;span class="s1"&gt;-rw-r--r-- 1 george george  6453 Apr 18 14:56 log.py&lt;/span&gt;
+&lt;span class="s1"&gt;-rw-r--r-- 1 george george  5385 Apr 18 14:56 paginator.py&lt;/span&gt;
+&lt;span class="s1"&gt;-rw-r--r-- 1 george george  5133 Apr 18 14:56 server.py&lt;/span&gt;
+&lt;span class="s1"&gt;-rw-r--r-- 1 george george  4992 Apr 18 14:56 cache.py&lt;/span&gt;
+&lt;span class="s1"&gt;-rw-r--r-- 1 george george  3803 Apr 18 14:56 urlwrappers.py&lt;/span&gt;
+&lt;span class="s1"&gt;-rw-r--r-- 1 george george  2951 Apr 18 14:56 rstdirectives.py&lt;/span&gt;
+&lt;span class="s1"&gt;-rw-r--r-- 1 george george   126 Apr 18 14:56 __main__.py&lt;/span&gt;
+&lt;span class="s1"&gt;&amp;#39;&amp;#39;&amp;#39;&lt;/span&gt;
+
+&lt;span class="k"&gt;def&lt;/span&gt; &lt;span class="nf"&gt;fnlist&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;files&lt;/span&gt;&lt;span class="p"&gt;):&lt;/span&gt;
+    &lt;span class="n"&gt;filenames&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="p"&gt;[]&lt;/span&gt;
+    &lt;span class="n"&gt;fns&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="n"&gt;files&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;split&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="s1"&gt;&amp;#39;&lt;/span&gt;&lt;span class="se"&gt;\n&lt;/span&gt;&lt;span class="s1"&gt;&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
+    &lt;span class="k"&gt;for&lt;/span&gt; &lt;span class="n"&gt;fn&lt;/span&gt; &lt;span class="ow"&gt;in&lt;/span&gt; &lt;span class="n"&gt;fns&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt;
+        &lt;span class="k"&gt;if&lt;/span&gt; &lt;span class="n"&gt;fn&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt;
+            &lt;span class="n"&gt;filename&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="n"&gt;fn&lt;/span&gt;&lt;span class="p"&gt;[&lt;/span&gt;&lt;span class="mi"&gt;46&lt;/span&gt;&lt;span class="p"&gt;:]&lt;/span&gt;
+            &lt;span class="k"&gt;if&lt;/span&gt; &lt;span class="n"&gt;filename&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;startswith&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="s1"&gt;&amp;#39;__&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;):&lt;/span&gt;
+                &lt;span class="n"&gt;filenames&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;insert&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="mi"&gt;0&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;filename&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
+            &lt;span class="k"&gt;else&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt;
+                &lt;span class="n"&gt;filenames&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;append&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;filename&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
+    &lt;span class="c1"&gt;# print(filenames)&lt;/span&gt;
+    &lt;span class="k"&gt;return&lt;/span&gt; &lt;span class="n"&gt;filenames&lt;/span&gt;
+
+
+&lt;span class="k"&gt;def&lt;/span&gt; &lt;span class="nf"&gt;main&lt;/span&gt;&lt;span class="p"&gt;():&lt;/span&gt;
+    &lt;span class="n"&gt;cwd&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="n"&gt;os&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;getcwd&lt;/span&gt;&lt;span class="p"&gt;()&lt;/span&gt;
+    &lt;span class="n"&gt;os&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;chdir&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="s1"&gt;&amp;#39;./pelican/pelican&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
+    &lt;span class="n"&gt;filenames&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="s1"&gt;&amp;#39; &amp;#39;&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;join&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;fnlist&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;files&lt;/span&gt;&lt;span class="p"&gt;))&lt;/span&gt;
+    &lt;span class="n"&gt;p1&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="n"&gt;subprocess&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;run&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;
+        &lt;span class="s1"&gt;&amp;#39;enscript --fancy-header=enscript_mod --line-numbers &amp;#39;&lt;/span&gt; &lt;span class="o"&gt;+&lt;/span&gt; \
+        &lt;span class="s1"&gt;&amp;#39;-p ../../pelican_code_print.ps &amp;#39;&lt;/span&gt; &lt;span class="o"&gt;+&lt;/span&gt; \
+        &lt;span class="s1"&gt;&amp;#39;--highlight=python &amp;#39;&lt;/span&gt; &lt;span class="o"&gt;+&lt;/span&gt; \
+        &lt;span class="sa"&gt;f&lt;/span&gt;&lt;span class="s1"&gt;&amp;#39;--color=1 -c &lt;/span&gt;&lt;span class="si"&gt;{&lt;/span&gt;&lt;span class="n"&gt;filenames&lt;/span&gt;&lt;span class="si"&gt;}&lt;/span&gt;&lt;span class="s1"&gt;&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;
+        &lt;span class="n"&gt;shell&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="kc"&gt;True&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;
+        &lt;span class="n"&gt;capture_output&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="kc"&gt;True&lt;/span&gt;
+    &lt;span class="p"&gt;)&lt;/span&gt;
+    &lt;span class="nb"&gt;print&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;p1&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;stdout&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;decode&lt;/span&gt;&lt;span class="p"&gt;())&lt;/span&gt;
+    &lt;span class="n"&gt;os&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;chdir&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;cwd&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
+
+
+&lt;span class="k"&gt;if&lt;/span&gt; &lt;span class="vm"&gt;__name__&lt;/span&gt; &lt;span class="o"&gt;==&lt;/span&gt; &lt;span class="s1"&gt;&amp;#39;__main__&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt;
+    &lt;span class="n"&gt;main&lt;/span&gt;&lt;span class="p"&gt;()&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+&lt;p&gt;After those steps. the final pdf file of Pelican 4.2 source code can be downloaded &lt;a class="reference external" href="/files/pelican_code_print.pdf"&gt;here&lt;/a&gt;.&lt;/p&gt;
+</content><category term="posts"></category><category term="python"></category><category term="pelican"></category><category term="software utility"></category></entry><entry><title>Pelican Source Code and Plugin</title><link href="https://www.georgexyz.com/pelican-source-code-plugin.html" rel="alternate"></link><published>2020-04-19T22:08:00-04:00</published><updated>2020-04-19T22:08:00-04:00</updated><author><name>George Zhang</name></author><id>tag:www.georgexyz.com,2020-04-19:/pelican-source-code-plugin.html</id><summary type="html">&lt;p&gt;Articles on this website before this one are all written in markdown format. I want to
 write some articles in reStructuredText (rst) format but the default &lt;code&gt;docutils&lt;/code&gt; tool
 that comes …&lt;/p&gt;</summary><content type="html">&lt;p&gt;Articles on this website before this one are all written in markdown format. I want to
 write some articles in reStructuredText (rst) format but the default &lt;code&gt;docutils&lt;/code&gt; tool
