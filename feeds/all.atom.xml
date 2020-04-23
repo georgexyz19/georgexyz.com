@@ -113,7 +113,8 @@ python code is shown&amp;nbsp;below.&lt;/p&gt;
 &lt;span class="k"&gt;if&lt;/span&gt; &lt;span class="vm"&gt;__name__&lt;/span&gt; &lt;span class="o"&gt;==&lt;/span&gt; &lt;span class="s1"&gt;&amp;#39;__main__&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt;
     &lt;span class="n"&gt;main&lt;/span&gt;&lt;span class="p"&gt;()&lt;/span&gt;
 &lt;/pre&gt;&lt;/div&gt;
-&lt;p&gt;After those steps. the final pdf file of Pelican 4.2 source code can be downloaded &lt;a class="reference external" href="/files/pelican_code_print.pdf"&gt;here&lt;/a&gt;.&lt;/p&gt;
+&lt;p&gt;After those steps. the final pdf file of Pelican 4.2 source code can be downloaded &lt;a class="reference external" href="/files/pelican_code_print.pdf"&gt;here&lt;/a&gt;.
+If you print it out, it will be 98 pages on letter size&amp;nbsp;paper.&lt;/p&gt;
 </content><category term="posts"></category><category term="python"></category><category term="pelican"></category><category term="software utility"></category></entry><entry><title>Pelican Source Code and Plugin</title><link href="https://www.georgexyz.com/pelican-source-code-plugin.html" rel="alternate"></link><published>2020-04-19T22:08:00-04:00</published><updated>2020-04-19T22:08:00-04:00</updated><author><name>George Zhang</name></author><id>tag:www.georgexyz.com,2020-04-19:/pelican-source-code-plugin.html</id><summary type="html">&lt;p&gt;Articles on this website before this one are all written in markdown format. I want to
 write some articles in reStructuredText (rst) format but the default &lt;code&gt;docutils&lt;/code&gt; tool
 that comes …&lt;/p&gt;</summary><content type="html">&lt;p&gt;Articles on this website before this one are all written in markdown format. I want to
