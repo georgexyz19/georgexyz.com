@@ -18,28 +18,33 @@ source code is `available on github`_.
 
 After you :code:`git clone` the code to local drive, you can run the following Linux 
 command to have a basic idea of the code base. The number of lines of Pelican 4.2 code is 
-5,530, which is actually a litter shorter than version 4.0.1 (5,670).  The file 
-:code:`generators.py` is the longest with 936 lines. The main code base has 
-14 python files. 
+5,762.  The file 
+:code:`generators.py` is the longest with 937 lines. The main code base has 
+15 python files. 
 
 .. code-block:: command
 
+    $ git clone https://github.com/getpelican/pelican.git
+    $ git checkout 4.2.0 ## code is on master branch by default
+    $ cd pelican
+
     $ find . -maxdepth 1 -name '*.py' -exec wc -l '{}' + | sort -n
-    9 ./__main__.py
-    92 ./rstdirectives.py
-    129 ./urlwrappers.py
-    136 ./cache.py
-    140 ./server.py
-    160 ./paginator.py
-    226 ./log.py
-    271 ./writers.py
-    560 ./__init__.py
-    607 ./contents.py
-    662 ./settings.py
-    748 ./readers.py
-    854 ./utils.py
-    936 ./generators.py
-    5530 total
+    10 ./__main__.py
+    52 ./signals.py
+    95 ./rstdirectives.py
+    133 ./urlwrappers.py
+    141 ./cache.py
+    143 ./server.py
+    163 ./paginator.py
+    269 ./log.py
+    278 ./writers.py
+    578 ./__init__.py
+    615 ./contents.py
+    668 ./settings.py
+    759 ./readers.py
+    921 ./utils.py
+    937 ./generators.py
+    5762 total
 
 A Google search finds this article `Print Out Your Code On Paper`_ on medium.com. The 
 author made some good points in the article. It also introduces
@@ -94,20 +99,21 @@ python code is shown below.
 
     # result of $ls -S -l *.py
     files ='''
-    -rw-r--r-- 1 george george 38063 Apr 18 14:56 generators.py
-    -rw-r--r-- 1 george george 28171 Apr 18 14:56 utils.py
-    -rw-r--r-- 1 george george 27331 Apr 18 14:56 readers.py
-    -rw-r--r-- 1 george george 25748 Apr 18 14:56 settings.py
-    -rw-r--r-- 1 george george 22680 Apr 18 14:56 contents.py
-    -rw-r--r-- 1 george george 21857 Apr 18 14:56 __init__.py
-    -rw-r--r-- 1 george george 11161 Apr 18 14:56 writers.py
-    -rw-r--r-- 1 george george  6453 Apr 18 14:56 log.py
-    -rw-r--r-- 1 george george  5385 Apr 18 14:56 paginator.py
-    -rw-r--r-- 1 george george  5133 Apr 18 14:56 server.py
-    -rw-r--r-- 1 george george  4992 Apr 18 14:56 cache.py
-    -rw-r--r-- 1 george george  3803 Apr 18 14:56 urlwrappers.py
-    -rw-r--r-- 1 george george  2951 Apr 18 14:56 rstdirectives.py
-    -rw-r--r-- 1 george george   126 Apr 18 14:56 __main__.py
+    -rw-r--r-- 1 george george 38186 Apr 23 17:00 generators.py
+    -rw-r--r-- 1 george george 30603 Apr 23 17:00 utils.py
+    -rw-r--r-- 1 george george 27685 Apr 23 17:00 readers.py
+    -rw-r--r-- 1 george george 25993 Apr 23 17:00 settings.py
+    -rw-r--r-- 1 george george 23017 Apr 23 17:00 contents.py
+    -rw-r--r-- 1 george george 22475 Apr 23 17:00 __init__.py
+    -rw-r--r-- 1 george george 11345 Apr 23 17:00 writers.py
+    -rw-r--r-- 1 george george  8038 Apr 23 17:00 log.py
+    -rw-r--r-- 1 george george  5466 Apr 23 17:00 paginator.py
+    -rw-r--r-- 1 george george  5283 Apr 23 17:00 server.py
+    -rw-r--r-- 1 george george  5247 Apr 23 17:00 cache.py
+    -rw-r--r-- 1 george george  3980 Apr 23 17:00 urlwrappers.py
+    -rw-r--r-- 1 george george  3026 Apr 23 17:00 rstdirectives.py
+    -rw-r--r-- 1 george george  1770 Apr 23 17:00 signals.py
+    -rw-r--r-- 1 george george   165 Apr 23 17:00 __main__.py
     '''
 
     def fnlist(files):
@@ -144,8 +150,8 @@ python code is shown below.
         main()
 
 
-After those steps. the final pdf file of Pelican 4.2 source code can be downloaded here_. 
-If you print it out, it will be 98 pages on letter size paper. 
+After those steps. the final pdf file (277KB) of Pelican 4.2 source code can be downloaded here_. 
+If you print it out, it will be 103 pages on letter size paper. 
 
 .. _here: /files/pelican_code_print.pdf
 
