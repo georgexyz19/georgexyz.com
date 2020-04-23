@@ -144,7 +144,8 @@ python code is shown below.
         main()
 
 
-After those steps. the final pdf file of Pelican 4.2 source code can be downloaded here_.
+After those steps. the final pdf file of Pelican 4.2 source code can be downloaded here_. 
+If you print it out, it will be 98 pages on letter size paper. 
 
 .. _here: /files/pelican_code_print.pdf
 
