@@ -10,7 +10,7 @@ Print Python Source Code on Paper
 :note: python program to print pelican source code
 :no: 38
 
-I am reading Pelican source code. Sometimes I do not have a computer nearby, a I want to 
+I am reading Pelican source code. Sometimes I do not have a computer nearby, and I want to 
 print out the source code on paper. The current release of Pelican is version 4.2.0. The 
 source code is `available on github`_. 
 
