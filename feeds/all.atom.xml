@@ -5,25 +5,30 @@ print out the source code on paper. The current release of Pelican is version 4.
 source code is &lt;a class="reference external" href="https://github.com/getpelican/pelican"&gt;available on github&lt;/a&gt;.&lt;/p&gt;
 &lt;p&gt;After you &lt;code&gt;git clone&lt;/code&gt; the code to local drive, you can run the following Linux
 command to have a basic idea of the code base. The number of lines of Pelican 4.2 code is
-5,530, which is actually a litter shorter than version 4.0.1 (5,670).  The file
-&lt;code&gt;generators.py&lt;/code&gt; is the longest with 936 lines. The main code base has
-14 python&amp;nbsp;files.&lt;/p&gt;
-&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;$ find . -maxdepth 1 -name &amp;#39;*.py&amp;#39; -exec wc -l &amp;#39;{}&amp;#39; + | sort -n
-9 ./__main__.py
-92 ./rstdirectives.py
-129 ./urlwrappers.py
-136 ./cache.py
-140 ./server.py
-160 ./paginator.py
-226 ./log.py
-271 ./writers.py
-560 ./__init__.py
-607 ./contents.py
-662 ./settings.py
-748 ./readers.py
-854 ./utils.py
-936 ./generators.py
-5530 total
+5,762.  The file
+&lt;code&gt;generators.py&lt;/code&gt; is the longest with 937 lines. The main code base has
+15 python&amp;nbsp;files.&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;$ git clone https://github.com/getpelican/pelican.git
+$ git checkout 4.2.0 ## code is on master branch by default
+$ cd pelican
+
+$ find . -maxdepth 1 -name &amp;#39;*.py&amp;#39; -exec wc -l &amp;#39;{}&amp;#39; + | sort -n
+10 ./__main__.py
+52 ./signals.py
+95 ./rstdirectives.py
+133 ./urlwrappers.py
+141 ./cache.py
+143 ./server.py
+163 ./paginator.py
+269 ./log.py
+278 ./writers.py
+578 ./__init__.py
+615 ./contents.py
+668 ./settings.py
+759 ./readers.py
+921 ./utils.py
+937 ./generators.py
+5762 total
 &lt;/pre&gt;&lt;/div&gt;
 &lt;p&gt;A Google search finds this article &lt;a class="reference external" href="https://medium.com/&amp;#64;tashian/print-out-your-code-on-paper-7c760a376bca"&gt;Print Out Your Code On Paper&lt;/a&gt; on medium.com. The
 author made some good points in the article. It also introduces
@@ -64,20 +69,21 @@ python code is shown&amp;nbsp;below.&lt;/p&gt;
 
 &lt;span class="c1"&gt;# result of $ls -S -l *.py&lt;/span&gt;
 &lt;span class="n"&gt;files&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="s1"&gt;&amp;#39;&amp;#39;&amp;#39;&lt;/span&gt;
-&lt;span class="s1"&gt;-rw-r--r-- 1 george george 38063 Apr 18 14:56 generators.py&lt;/span&gt;
-&lt;span class="s1"&gt;-rw-r--r-- 1 george george 28171 Apr 18 14:56 utils.py&lt;/span&gt;
-&lt;span class="s1"&gt;-rw-r--r-- 1 george george 27331 Apr 18 14:56 readers.py&lt;/span&gt;
-&lt;span class="s1"&gt;-rw-r--r-- 1 george george 25748 Apr 18 14:56 settings.py&lt;/span&gt;
-&lt;span class="s1"&gt;-rw-r--r-- 1 george george 22680 Apr 18 14:56 contents.py&lt;/span&gt;
-&lt;span class="s1"&gt;-rw-r--r-- 1 george george 21857 Apr 18 14:56 __init__.py&lt;/span&gt;
-&lt;span class="s1"&gt;-rw-r--r-- 1 george george 11161 Apr 18 14:56 writers.py&lt;/span&gt;
-&lt;span class="s1"&gt;-rw-r--r-- 1 george george  6453 Apr 18 14:56 log.py&lt;/span&gt;
-&lt;span class="s1"&gt;-rw-r--r-- 1 george george  5385 Apr 18 14:56 paginator.py&lt;/span&gt;
-&lt;span class="s1"&gt;-rw-r--r-- 1 george george  5133 Apr 18 14:56 server.py&lt;/span&gt;
-&lt;span class="s1"&gt;-rw-r--r-- 1 george george  4992 Apr 18 14:56 cache.py&lt;/span&gt;
-&lt;span class="s1"&gt;-rw-r--r-- 1 george george  3803 Apr 18 14:56 urlwrappers.py&lt;/span&gt;
-&lt;span class="s1"&gt;-rw-r--r-- 1 george george  2951 Apr 18 14:56 rstdirectives.py&lt;/span&gt;
-&lt;span class="s1"&gt;-rw-r--r-- 1 george george   126 Apr 18 14:56 __main__.py&lt;/span&gt;
+&lt;span class="s1"&gt;-rw-r--r-- 1 george george 38186 Apr 23 17:00 generators.py&lt;/span&gt;
+&lt;span class="s1"&gt;-rw-r--r-- 1 george george 30603 Apr 23 17:00 utils.py&lt;/span&gt;
+&lt;span class="s1"&gt;-rw-r--r-- 1 george george 27685 Apr 23 17:00 readers.py&lt;/span&gt;
+&lt;span class="s1"&gt;-rw-r--r-- 1 george george 25993 Apr 23 17:00 settings.py&lt;/span&gt;
+&lt;span class="s1"&gt;-rw-r--r-- 1 george george 23017 Apr 23 17:00 contents.py&lt;/span&gt;
+&lt;span class="s1"&gt;-rw-r--r-- 1 george george 22475 Apr 23 17:00 __init__.py&lt;/span&gt;
+&lt;span class="s1"&gt;-rw-r--r-- 1 george george 11345 Apr 23 17:00 writers.py&lt;/span&gt;
+&lt;span class="s1"&gt;-rw-r--r-- 1 george george  8038 Apr 23 17:00 log.py&lt;/span&gt;
+&lt;span class="s1"&gt;-rw-r--r-- 1 george george  5466 Apr 23 17:00 paginator.py&lt;/span&gt;
+&lt;span class="s1"&gt;-rw-r--r-- 1 george george  5283 Apr 23 17:00 server.py&lt;/span&gt;
+&lt;span class="s1"&gt;-rw-r--r-- 1 george george  5247 Apr 23 17:00 cache.py&lt;/span&gt;
+&lt;span class="s1"&gt;-rw-r--r-- 1 george george  3980 Apr 23 17:00 urlwrappers.py&lt;/span&gt;
+&lt;span class="s1"&gt;-rw-r--r-- 1 george george  3026 Apr 23 17:00 rstdirectives.py&lt;/span&gt;
+&lt;span class="s1"&gt;-rw-r--r-- 1 george george  1770 Apr 23 17:00 signals.py&lt;/span&gt;
+&lt;span class="s1"&gt;-rw-r--r-- 1 george george   165 Apr 23 17:00 __main__.py&lt;/span&gt;
 &lt;span class="s1"&gt;&amp;#39;&amp;#39;&amp;#39;&lt;/span&gt;
 
 &lt;span class="k"&gt;def&lt;/span&gt; &lt;span class="nf"&gt;fnlist&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;files&lt;/span&gt;&lt;span class="p"&gt;):&lt;/span&gt;
@@ -113,8 +119,8 @@ python code is shown&amp;nbsp;below.&lt;/p&gt;
 &lt;span class="k"&gt;if&lt;/span&gt; &lt;span class="vm"&gt;__name__&lt;/span&gt; &lt;span class="o"&gt;==&lt;/span&gt; &lt;span class="s1"&gt;&amp;#39;__main__&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt;
     &lt;span class="n"&gt;main&lt;/span&gt;&lt;span class="p"&gt;()&lt;/span&gt;
 &lt;/pre&gt;&lt;/div&gt;
-&lt;p&gt;After those steps. the final pdf file of Pelican 4.2 source code can be downloaded &lt;a class="reference external" href="/files/pelican_code_print.pdf"&gt;here&lt;/a&gt;.
-If you print it out, it will be 98 pages on letter size&amp;nbsp;paper.&lt;/p&gt;
+&lt;p&gt;After those steps. the final pdf file (&lt;span class="caps"&gt;277KB&lt;/span&gt;) of Pelican 4.2 source code can be downloaded &lt;a class="reference external" href="/files/pelican_code_print.pdf"&gt;here&lt;/a&gt;.
+If you print it out, it will be 103 pages on letter size&amp;nbsp;paper.&lt;/p&gt;
 </content><category term="posts"></category><category term="python"></category><category term="pelican"></category><category term="software utility"></category></entry><entry><title>Pelican Source Code and Plugin</title><link href="https://www.georgexyz.com/pelican-source-code-plugin.html" rel="alternate"></link><published>2020-04-19T22:08:00-04:00</published><updated>2020-04-19T22:08:00-04:00</updated><author><name>George Zhang</name></author><id>tag:www.georgexyz.com,2020-04-19:/pelican-source-code-plugin.html</id><summary type="html">&lt;p&gt;Articles on this website before this one are all written in markdown format. I want to
 write some articles in reStructuredText (rst) format but the default &lt;code&gt;docutils&lt;/code&gt; tool
 that comes …&lt;/p&gt;</summary><content type="html">&lt;p&gt;Articles on this website before this one are all written in markdown format. I want to
