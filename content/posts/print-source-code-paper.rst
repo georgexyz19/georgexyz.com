@@ -59,7 +59,7 @@ text code to postscript file. A typical command looks like this,
 .. _Print Out Your Code On Paper: https://medium.com/@tashian/print-out-your-code-on-paper-7c760a376bca
 
 A furthur Google search finds `an online man page`_ for :code:`enscript`. The page has 
-detailed detailed infomation regarding the software options and configuration files. 
+detailed infomation regarding the software options and configuration files. 
 
 .. _an online man page: http://manpages.ubuntu.com/manpages/precise/en/man1/enscript.1.html
 
