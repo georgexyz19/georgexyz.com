@@ -38,7 +38,7 @@ text code to postscript file. A typical command looks like&amp;nbsp;this,&lt;/p&
     -c inputfile.py
 &lt;/pre&gt;&lt;/div&gt;
 &lt;p&gt;A furthur Google search finds &lt;a class="reference external" href="http://manpages.ubuntu.com/manpages/precise/en/man1/enscript.1.html"&gt;an online man page&lt;/a&gt; for &lt;code&gt;enscript&lt;/code&gt;. The page has
-detailed detailed infomation regarding the software options and configuration&amp;nbsp;files.&lt;/p&gt;
+detailed infomation regarding the software options and configuration&amp;nbsp;files.&lt;/p&gt;
 &lt;p&gt;The default fancy header configuration file &lt;code&gt;enscript.hdr&lt;/code&gt; is stored in the directory
 &lt;code&gt;/usr/share/enscript/&lt;/code&gt;. I want to change the date and time on the left corner to
 current date/time. Also I want to change the page number on the right corner to &amp;#8220;number
