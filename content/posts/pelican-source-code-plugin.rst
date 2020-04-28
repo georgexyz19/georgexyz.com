@@ -132,7 +132,7 @@ defined in :code:`HTMLTranslator` class of docutils.writers._html_base module.
 Plugin Settings
 ---------------
 
-Add the following settings to the :code:`pelicanconf.py`, the Pelican will automatically load the 
+Add the following settings to the :code:`pelicanconf.py`. Pelican will automatically load the 
 plugin. 
 
 .. code-block:: settings

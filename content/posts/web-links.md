@@ -100,6 +100,8 @@ This page has a collection of web links that I visit often.
 
 [reStructuredText Tutorial on devdungeon.com](https://www.devdungeon.com/content/restructuredtext-rst-tutorial-0)
 
+[docutils Documentation on readthedocs.io](https://docutils.readthedocs.io/en/sphinx-docs/index.html#)
+
 ### Database
 
 [SQLAlchemy Documentation](https://docs.sqlalchemy.org/en/13/)
@@ -109,6 +111,10 @@ This page has a collection of web links that I visit often.
 ### Date and Time
 
 [For a Good Strftime](https://www.foragoodstrftime.com/)
+
+### Others
+
+[Google Input Tools](https://www.google.com/inputtools/try/)
 
 
 
