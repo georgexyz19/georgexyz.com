@@ -1,0 +1,186 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <!-- <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous"> -->
+    <link rel="stylesheet" href="/theme/css/bs4min.css">
+    <link rel="shortcut icon" type="image/x-icon" href="https://www.georgexyz.com/theme/images/favicon.ico" >
+    <link rel="icon" type="image/x-icon" href="https://www.georgexyz.com/theme/images/favicon.ico" >
+<link rel="stylesheet" href="https://www.georgexyz.com/theme/css/friendly.css">
+<link rel="stylesheet" href="https://www.georgexyz.com/theme/css/custom.css">
+<meta name="author" content="George Zhang" />
+<meta name="keywords" content="web development,pelican" />
+<meta name="description" content="The Pelican source code has a related_posts attribute defined in the Generator class. The variable is initialized as a blank list and is not used in the program. I do …" />
+    <title>Pelican Related Posts and Translation - George Zhang</title>
+  </head>
+  <body>
+    <!-- navbar -->
+    <nav class="navbar navbar-expand-md navbar-light" style="background-color: #e3f2fd;">
+      <div class="container">
+        <a class="navbar-brand" href="/">George Zhang</a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarColor01" aria-controls="navbarColor01" aria-expanded="false" aria-label="Toggle navigation">
+          <span class="navbar-toggler-icon"></span>
+        </button>
+
+        <div class="collapse navbar-collapse" id="navbarColor01">
+          <ul class="navbar-nav mr-auto">
+            <li class="nav-item">
+              <a class="nav-link " 
+                href="/articlelist.html">Articles</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link pr-3 " 
+                href="/tags.html">Tags</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link pr-3 "
+                 href="/pages/inkscape-tutorial.html">Inkscape Tutorial</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link "
+                   href="/pages/projects.html">Projects</a>
+              </li>
+          </ul>
+
+          <ul class="navbar-nav">
+            <li class="nav-item">
+              <a class="nav-link " 
+                 href="/pages/about.html">About</a>
+            </li>
+          </ul>
+        </div>
+
+      </div>
+    </nav>
+
+   
+
+<div class="container">
+
+  <div class="row">
+    <div class="col-lg-8 mx-auto">
+
+      <h2>Pelican Related Posts and&nbsp;Translation</h2>
+
+      <div class="text-muted mb-2">
+        <span>Posted on </span>
+        <time datetime="2020-04-28 12:02:00-04:00">
+          Tuesday, 04/28/2020 12:02
+        </time>
+
+        <span>with tags: </span>
+        <a href="https://www.georgexyz.com/tag/web-development.html">web development</a>
+/        <a href="https://www.georgexyz.com/tag/pelican.html">pelican</a>
+      </div>
+
+      <p>The Pelican source code has a related_posts attribute defined in the <code>Generator</code> class. The variable 
+is initialized as a blank list and is not used in the program. I do a Google search and find 
+a plugin called <code>related_posts</code> in the pelican plugin repo. The <code>related_posts</code> plugin has a 
+<a href="https://github.com/getpelican/pelican-plugins/tree/master/related_posts">one page documentation</a>.</p>
+<h3>Related Posts&nbsp;Plugin</h3>
+<p>Related posts could be a useful function for a blog site like this.  When I start a new blog post, 
+it is often related to a previous post.  It&#8217;s logical to add links to previous related posts 
+either on a sidebar or at the bottom of the new article. Here are the steps to setup the&nbsp;plugin. </p>
+<ul>
+<li>Create a sub-directory <code>plugin</code> in the project directory. Copy the <code>related_posts</code> directory
+  to the <code>plugin</code>. It includes three files <code>__init__.py</code>, <code>related_posts.py</code>, and <code>Readme.rst</code>. </li>
+<li>In this site, posts with same tags should not be counted as related posts, so I comment out 
+  the lines 37 to 53 in the <code>related_posts.py</code> file. </li>
+<li>Add the following settings to <code>pelicanconf.py</code>. </li>
+</ul>
+<div class="ml-5">
+
+<div class="highlight"><pre><span></span><code>PLUGIN_PATHS = [&#39;plugin/&#39;, ]
+PLUGINS=[&#39;related_posts&#39;,]
+</code></pre></div>
+
+
+</div>
+
+<ul>
+<li>Add the following html snippet to the <code>article.html</code> template file after statement <code>{{ article.content }}</code>. </li>
+</ul>
+<div class="ml-5">
+
+<div class="highlight"><pre><span></span><code>{% if article.related_posts %}
+&lt;div class=&quot;mt-5 border-top&quot;&gt;
+  &lt;h3&gt;Related Posts:&lt;/h3&gt;
+  &lt;ul&gt;
+    {% for related_post in article.related_posts %}
+    &lt;li&gt;&lt;a href=&quot;{{ SITEURL }}/{{ related_post.url }}&quot;&gt;
+      {{ related_post.title }}&lt;/a&gt;&lt;/li&gt;
+    {% endfor %}
+  &lt;/ul&gt;
+&lt;/div&gt;
+{% endif %}
+</code></pre></div>
+
+
+</div>
+
+<ul>
+<li>Add a meta field to the post. The contents of the field are slugs of previous&nbsp;posts. </li>
+</ul>
+<div class="ml-5">
+
+<div class="highlight"><pre><span></span><code>related_posts: print-source-code-paper, pelican-source-code-plugin, ...
+</code></pre></div>
+
+
+</div>
+
+<p>After those steps, each article will have a section &#8220;Related Posts&#8221; like on this page 
+if the post includes a meta field <code>related_posts</code>. </p>
+<h3>Translation</h3>
+<p>This site does not have any translated articles. But I find it is not difficult to 
+translate articles to other languages with Pelican after reading the source&nbsp;code. </p>
+<p>You can set a meta field <code>lang: zh</code> for a translated article.  The article should 
+have the same slug as the original one. Then on the <code>artilce.html</code> template, you 
+can add the following html&nbsp;snippet. </p>
+<div class="highlight"><pre><span></span><code>{% if article.translations %}
+  &lt;hr&gt;
+  {% for art in article.translations %}
+      &lt;p&gt;&lt;a href=&quot;{{ art.url }}&quot;&gt;{{ art.title }}&lt;/a&gt; in language
+      {% if art.lang == &#39;en&#39; %} 
+          English
+      {% elif art.lang == &#39;zh&#39; %}
+          Chinese
+      {% endif %} 
+      &lt;/p&gt;
+  {% endfor %}
+{% endif %}
+</code></pre></div>
+
+
+<p>The page will have a link to the translated article in another language.  Interestingly 
+enough, the web site severed under <code>invoke livereload</code> or <code>pelican -l</code> command does not
+have correct encoding for Chinese characters. But the encoding is correct when I open 
+the generated html files directly in Firefox browser.  I plan to translate some 
+future articles on this site to Chinese when I feel they worth the&nbsp;effort. </p>
+
+      <div class="mt-5 border-top">
+        <h3>Related Posts:</h3>
+        <ul>
+          <li><a href="https://www.georgexyz.com/print-source-code-paper.html">Print Python Source Code on&nbsp;Paper</a></li>
+          <li><a href="https://www.georgexyz.com/pelican-source-code-plugin.html">Pelican Source Code and&nbsp;Plugin</a></li>
+          <li><a href="https://www.georgexyz.com/new-theme-2020.html">New Pelican&nbsp;Theme</a></li>
+          <li><a href="https://www.georgexyz.com/pelican-boostrap-website.html">Create Static Website With Pelican And&nbsp;Bootstrap</a></li>
+        </ul>
+      </div>
+
+
+    </div>
+  </div>
+
+</div>
+
+   
+
+    <script src="https://code.jquery.com/jquery-3.4.1.slim.min.js" integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js" integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6" crossorigin="anonymous"></script>
+
+  </body>
+</html>
