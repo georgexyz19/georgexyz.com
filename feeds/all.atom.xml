@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<feed xmlns="http://www.w3.org/2005/Atom"><title>George Zhang</title><link href="https://www.georgexyz.com/" rel="alternate"></link><link href="https://www.georgexyz.com/feeds/all.atom.xml" rel="self"></link><id>https://www.georgexyz.com/</id><updated>2020-04-28T12:02:00-04:00</updated><entry><title>Pelican Related Posts and Translation</title><link href="https://www.georgexyz.com/pelican-related-posts-translation.html" rel="alternate"></link><published>2020-04-28T12:02:00-04:00</published><updated>2020-04-28T12:02:00-04:00</updated><author><name>George Zhang</name></author><id>tag:www.georgexyz.com,2020-04-28:/pelican-related-posts-translation.html</id><summary type="html">&lt;p&gt;The Pelican source code has a related_posts attribute defined in the &lt;code&gt;Generator&lt;/code&gt; class. The variable 
+<feed xmlns="http://www.w3.org/2005/Atom"><title>George Zhang</title><link href="https://www.georgexyz.com/" rel="alternate"></link><link href="https://www.georgexyz.com/feeds/all.atom.xml" rel="self"></link><id>https://www.georgexyz.com/</id><updated>2020-04-30T12:58:00-04:00</updated><entry><title>Pelican Related Posts and Translation</title><link href="https://www.georgexyz.com/pelican-related-posts-translation.html" rel="alternate"></link><published>2020-04-28T12:02:00-04:00</published><updated>2020-04-28T12:02:00-04:00</updated><author><name>George Zhang</name></author><id>tag:www.georgexyz.com,2020-04-28:/pelican-related-posts-translation.html</id><summary type="html">&lt;p&gt;The Pelican source code has a related_posts attribute defined in the &lt;code&gt;Generator&lt;/code&gt; class. The variable 
 is initialized as a blank list and is not used in the program. I do …&lt;/p&gt;</summary><content type="html">&lt;p&gt;The Pelican source code has a related_posts attribute defined in the &lt;code&gt;Generator&lt;/code&gt; class. The variable 
 is initialized as a blank list and is not used in the program. I do a Google search and find 
 a plugin called &lt;code&gt;related_posts&lt;/code&gt; in the pelican plugin repo. The &lt;code&gt;related_posts&lt;/code&gt; plugin has a 
@@ -61,7 +61,7 @@ if the post includes a meta field &lt;code&gt;related_posts&lt;/code&gt;. &lt;/p
 &lt;h3&gt;Translation&lt;/h3&gt;
 &lt;p&gt;This site does not have any translated articles. But I find it is not difficult to 
 translate articles to other languages with Pelican after reading the source&amp;nbsp;code. &lt;/p&gt;
-&lt;p&gt;You can set a meta field &lt;code&gt;lang: zh&lt;/code&gt; for a translated article.  The article should 
+&lt;p&gt;You can set a meta field such as &lt;code&gt;lang: zh&lt;/code&gt; for a translated article.  The article should 
 have the same slug as the original one. Then on the &lt;code&gt;artilce.html&lt;/code&gt; template, you 
 can add the following html&amp;nbsp;snippet. &lt;/p&gt;
 &lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;{% if article.translations %}
@@ -533,6 +533,7 @@ which discusses the dictionary with more&amp;nbsp;details. &lt;/li&gt;
 &lt;p&gt;&lt;a href="https://youtu.be/OSGv2VnC0go"&gt;Transforming Code into Beautiful, Idiomatic Python Youtube&amp;nbsp;Video&lt;/a&gt;&lt;/p&gt;
 &lt;p&gt;&lt;a href="https://github.com/JeffPaine/beautiful_idiomatic_python"&gt;Transforming Code into Beautiful, Idiomatic Python&amp;nbsp;Code&lt;/a&gt;&lt;/p&gt;
 &lt;p&gt;&lt;a href="https://developers.google.com/edu/python/"&gt;Google&amp;#8217;s Python&amp;nbsp;Class&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;&lt;a href="https://pymotw.com/3/"&gt;Python 3 Module of the Week&amp;nbsp;PyMOTW-3&lt;/a&gt;&lt;/p&gt;
 &lt;h3&gt;Javascript&amp;nbsp;Language&lt;/h3&gt;
 &lt;p&gt;&lt;a href="https://eloquentjavascript.net/"&gt;Eloquent&amp;nbsp;Javascript&lt;/a&gt;&lt;/p&gt;
 &lt;p&gt;&lt;a href="https://javascript.info/"&gt;The Modern Javascript Tutorial&amp;nbsp;Javascript.info&lt;/a&gt;&lt;/p&gt;
@@ -1795,13 +1796,13 @@ in pattern. Here is a list of common regex special characters in&amp;nbsp;Python
 &lt;li&gt;\s : white&amp;nbsp;space&lt;/li&gt;
 &lt;li&gt;* : zero or&amp;nbsp;more&lt;/li&gt;
 &lt;li&gt;+ : one or&amp;nbsp;more&lt;/li&gt;
-&lt;/ul&gt;</content><category term="posts"></category><category term="linux"></category><category term="software utility"></category></entry><entry><title>Django Pagination</title><link href="https://www.georgexyz.com/django-pagination.html" rel="alternate"></link><published>2019-07-17T10:05:00-04:00</published><updated>2019-07-17T10:29:00-04:00</updated><author><name>George Zhang</name></author><id>tag:www.georgexyz.com,2019-07-17:/django-pagination.html</id><summary type="html">&lt;p&gt;Merriam-Webster dictionary defines pagination as &amp;#8220;the action of paging&amp;#8221;. In web 
+&lt;/ul&gt;</content><category term="posts"></category><category term="linux"></category><category term="software utility"></category></entry><entry><title>Django Pagination</title><link href="https://www.georgexyz.com/django-pagination.html" rel="alternate"></link><published>2019-07-17T10:05:00-04:00</published><updated>2020-04-30T12:58:00-04:00</updated><author><name>George Zhang</name></author><id>tag:www.georgexyz.com,2019-07-17:/django-pagination.html</id><summary type="html">&lt;p&gt;Merriam-Webster dictionary defines pagination as &amp;#8220;the action of paging&amp;#8221;. In web 
 design world, pagination means separating a large list of contents onto 
-different pages for easy web navigation. The top …&lt;/p&gt;</summary><content type="html">&lt;p&gt;Merriam-Webster dictionary defines pagination as &amp;#8220;the action of paging&amp;#8221;. In web 
+different pages for easy web&amp;nbsp;navigation.   &lt;/p&gt;
+&lt;p&gt;Django provides …&lt;/p&gt;</summary><content type="html">&lt;p&gt;Merriam-Webster dictionary defines pagination as &amp;#8220;the action of paging&amp;#8221;. In web 
 design world, pagination means separating a large list of contents onto 
-different pages for easy web navigation. The top level &lt;strong&gt;Blog&lt;/strong&gt; page on this 
-site uses pagination (3 post previews per&amp;nbsp;page).  &lt;/p&gt;
-&lt;p&gt;Django provides a few classes that help you manage pagination.  The office documentation has 
+different pages for easy web&amp;nbsp;navigation.   &lt;/p&gt;
+&lt;p&gt;Django provides a few classes that help you manage pagination.  The official documentation has 
 &lt;a href="https://docs.djangoproject.com/en/2.2/topics/pagination/"&gt;one page on Pagination&lt;/a&gt;.
 The source code is in one file django/core/paginator.py, which has 195 lines 
 (version 2.2.2). The Paginator and Page classes defined in this file are very 
