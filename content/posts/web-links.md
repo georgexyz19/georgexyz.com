@@ -58,6 +58,8 @@ This page has a collection of web links that I visit often.
 
 [Google's Python Class](https://developers.google.com/edu/python/)
 
+[Python 3 Module of the Week PyMOTW-3](https://pymotw.com/3/)
+
 
 ### Javascript Language
 

@@ -66,7 +66,7 @@ if the post includes a meta field `related_posts`.
 This site does not have any translated articles. But I find it is not difficult to 
 translate articles to other languages with Pelican after reading the source code. 
 
-You can set a meta field `lang: zh` for a translated article.  The article should 
+You can set a meta field such as `lang: zh` for a translated article.  The article should 
 have the same slug as the original one. Then on the `artilce.html` template, you 
 can add the following html snippet. 
 

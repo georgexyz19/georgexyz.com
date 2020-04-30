@@ -2,17 +2,16 @@ title: Django Pagination
 slug: django-pagination
 meta: This post discusses django pagination
 date: 2019-07-17 10:05
-modified: 2019-07-17 10:29
+modified: 2020-04-30 12:58
 tags: django
 note: this note is based on a previous hard copy note 3/4/19
 no: 19
 
 Merriam-Webster dictionary defines pagination as "the action of paging". In web 
 design world, pagination means separating a large list of contents onto 
-different pages for easy web navigation. The top level **Blog** page on this 
-site uses pagination (3 post previews per page).  
+different pages for easy web navigation.   
 
-Django provides a few classes that help you manage pagination.  The office documentation has 
+Django provides a few classes that help you manage pagination.  The official documentation has 
 [one page on Pagination](https://docs.djangoproject.com/en/2.2/topics/pagination/).
 The source code is in one file django/core/paginator.py, which has 195 lines 
 (version 2.2.2). The Paginator and Page classes defined in this file are very 
