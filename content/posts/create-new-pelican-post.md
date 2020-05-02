@@ -14,9 +14,10 @@ generates a starter project which includes `pelicanconf.py`, `publishconf.py`,
 example on how to create similar programs. 
 
 It is not difficult to write a program which generates a new Pelican starter
-post. The benefit of the program is that it can automatically fill some meta fields.  
+post. The benefit of the program is that it can automatically fill some meta fields. 
 It can also present a list of tags that already used in other posts, and the user 
-can pick one of more tags from the list. In addition, each post will have consistent meta fields. I write the 
+can pick one of more tags from the list. In addition, each post will have 
+consistent meta fields. I write the 
 [`newpost.py` python program](https://github.com/georgexyz19/georgexyz.com/blob/master/newpost.py) 
 for this purpose.  
 
@@ -33,8 +34,8 @@ Please answer the following questions so this script can generate the post.
 > Where do you want to save the markdown file? [content/posts] 
 > What will be the title of this post? [NEW TITLE] Python Program 
         to Create New Pelican Post
-> What will be the slug of this post? [python-program-to-create-new-pelican-post]
-        create-new-pelican-post
+> What will be the slug of this post? [python-program-to-create
+        -new-pelican-post]create-new-pelican-post
 > What will be the date/time of the post? [2020-05-02 15:47] 
 ```
 
@@ -64,7 +65,8 @@ for your own site.
     15 -> ubuntu
     16 -> vim
     17 -> web development
-> Choose one or more tags (e.g. 1, 4) 0 to enter new tag(s) [0] 11, 12
+> Choose one or more tags (e.g. 1, 4) 0 to enter new tag(s) 
+        [0] 11, 12
 > Do you want to add related posts? (y/N) y
 > Posts with same tags (choose one or more) 
     1 -> Pelican Related Posts and&nbsp;Translation
@@ -73,9 +75,10 @@ for your own site.
     ......
 > Choose one or more articles (e.g. 1, 3) 0 to cancel [0] 1
 > Add a number for the post (start from 1) [41] 
-> Add a short note to yourself for this post? [note to be added] A post about 
-        how to create new Pelican post.
-> Write the first sentence of the article [This is the first sentence ...] 
+> Add a short note to yourself for this post? [note to be added] 
+        A post about how to create new Pelican post.
+> Write the first sentence of the article [This is the 
+        first sentence ...] 
 Done. Your new post is available at content/posts
 (georgexyz.com) george@desktop:~/Desktop/desktop/georgexyz.com$ 
 ```
