@@ -1,0 +1,166 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <!-- <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous"> -->
+    <link rel="stylesheet" href="/theme/css/bs4min.css">
+    <link rel="shortcut icon" type="image/x-icon" href="https://www.georgexyz.com/theme/images/favicon.ico" >
+    <link rel="icon" type="image/x-icon" href="https://www.georgexyz.com/theme/images/favicon.ico" >
+<link rel="stylesheet" href="https://www.georgexyz.com/theme/css/friendly.css">
+<link rel="stylesheet" href="https://www.georgexyz.com/theme/css/custom.css">
+<meta name="author" content="George Zhang" />
+<meta name="keywords" content="pelican,python" />
+<meta name="description" content="Pelican static site generator comes with a nice command pelican-quickstart. It generates a starter project which includes pelicanconf.py, publishconf.py, tasks.py, and other files and directories. The source …" />
+    <title>Python Program to Create New Pelican Post - George Zhang</title>
+  </head>
+  <body>
+    <!-- navbar -->
+    <nav class="navbar navbar-expand-md navbar-light" style="background-color: #e3f2fd;">
+      <div class="container">
+        <a class="navbar-brand" href="/">George Zhang</a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarColor01" aria-controls="navbarColor01" aria-expanded="false" aria-label="Toggle navigation">
+          <span class="navbar-toggler-icon"></span>
+        </button>
+
+        <div class="collapse navbar-collapse" id="navbarColor01">
+          <ul class="navbar-nav mr-auto">
+            <li class="nav-item">
+              <a class="nav-link " 
+                href="/articlelist.html">Articles</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link pr-3 " 
+                href="/tags.html">Tags</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link pr-3 "
+                 href="/pages/inkscape-tutorial.html">Inkscape Tutorial</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link "
+                   href="/pages/projects.html">Projects</a>
+              </li>
+          </ul>
+
+          <ul class="navbar-nav">
+            <li class="nav-item">
+              <a class="nav-link " 
+                 href="/pages/about.html">About</a>
+            </li>
+          </ul>
+        </div>
+
+      </div>
+    </nav>
+
+   
+
+<div class="container">
+
+  <div class="row">
+    <div class="col-lg-8 mx-auto">
+
+      <h2>Python Program to Create New Pelican&nbsp;Post</h2>
+
+      <div class="text-muted mb-2">
+        <span>Posted on </span>
+        <time datetime="2020-05-02 15:47:00-04:00">
+          Saturday, 05/02/2020 15:47
+        </time>
+
+        <span>with tags: </span>
+        <a href="https://www.georgexyz.com/tag/pelican.html">pelican</a>
+/        <a href="https://www.georgexyz.com/tag/python.html">python</a>
+      </div>
+
+      <p>Pelican static site generator comes with a nice command <code>pelican-quickstart</code>. It 
+generates a starter project which includes <code>pelicanconf.py</code>, <code>publishconf.py</code>, 
+<code>tasks.py</code>, and other files and directories.  The source code is in the 
+<code>pelican_quickstart.py</code> file under the tools directory. The code is a nice 
+example on how to create similar&nbsp;programs. </p>
+<p>It is not difficult to write a program which generates a new Pelican starter
+post. The benefit of the program is that it can automatically fill some meta fields.<br>
+It can also present a list of tags that already used in other posts, and the user 
+can pick one of more tags from the list. In addition, each post will have consistent meta fields. I write the 
+<a href="https://github.com/georgexyz19/georgexyz.com/blob/master/newpost.py"><code>newpost.py</code> python program</a> 
+for this&nbsp;purpose.  </p>
+<p>Here is how to run the&nbsp;program. </p>
+<div class="highlight"><pre><span></span><code>(georgexyz.com) george@desktop:~/Desktop/georgexyz.com$ python newpost.py 
+Welcome to pelican-post v4.2.0.
+
+This script will help you create a new pelican post.
+
+Please answer the following questions so this script can generate the post.
+
+&gt; Where do you want to save the markdown file? [content/posts] 
+&gt; What will be the title of this post? [NEW TITLE] Python Program 
+        to Create New Pelican Post
+&gt; What will be the slug of this post? [python-program-to-create-new-pelican-post]
+        create-new-pelican-post
+&gt; What will be the date/time of the post? [2020-05-02 15:47] 
+</code></pre></div>
+
+
+<p>The <code>newpost.py</code> program calls Pelican itself to read all existing posts and 
+presents the tags on a list.  Before using the program, I usually open the 
+<a href="https://georgexyz.com/tags.html">&#8220;Tags&#8221; page</a> of my blog website to pick one 
+or more tags for the new post. The program can also generate a <code>related_posts</code> 
+meta field if a user chooses to do so.  Feel free to copy and modify the program 
+for your own&nbsp;site.</p>
+<div class="highlight"><pre><span></span><code>&gt; Tags already used in other posts (choose one or more): 
+    1 -&gt; WSGI
+    2 -&gt; bash
+    3 -&gt; books
+    4 -&gt; bootstrap
+    5 -&gt; django
+    6 -&gt; flask
+    7 -&gt; inkscape
+    8 -&gt; javascript
+    9 -&gt; linux
+    10 -&gt; linux mint
+    11 -&gt; pelican
+    12 -&gt; python
+    13 -&gt; software utility
+    14 -&gt; traffic engineering
+    15 -&gt; ubuntu
+    16 -&gt; vim
+    17 -&gt; web development
+&gt; Choose one or more tags (e.g. 1, 4) 0 to enter new tag(s) [0] 11, 12
+&gt; Do you want to add related posts? (y/N) y
+&gt; Posts with same tags (choose one or more) 
+    1 -&gt; Pelican Related Posts and&amp;nbsp;Translation
+    2 -&gt; Print Python Source Code on&amp;nbsp;Paper
+    3 -&gt; Pelican Source Code and&amp;nbsp;Plugin
+    ......
+&gt; Choose one or more articles (e.g. 1, 3) 0 to cancel [0] 1
+&gt; Add a number for the post (start from 1) [41] 
+&gt; Add a short note to yourself for this post? [note to be added] A post about 
+        how to create new Pelican post.
+&gt; Write the first sentence of the article [This is the first sentence ...] 
+Done. Your new post is available at content/posts
+(georgexyz.com) george@desktop:~/Desktop/desktop/georgexyz.com$ 
+</code></pre></div>
+
+      <div class="mt-5 border-top">
+        <h3>Related Posts:</h3>
+        <ul>
+          <li><a href="https://www.georgexyz.com/pelican-related-posts-translation.html">Pelican Related Posts and&nbsp;Translation</a></li>
+        </ul>
+      </div>
+
+
+    </div>
+  </div>
+
+</div>
+
+   
+
+    <script src="https://code.jquery.com/jquery-3.4.1.slim.min.js" integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js" integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6" crossorigin="anonymous"></script>
+
+  </body>
+</html>
