@@ -22,7 +22,7 @@ The first linked article has a sentence which explains the benefit of RSS/ATOM F
 
 The Firefox web browser has an extension Feedbro which is easy to use.  I subscribe five 
 websites I often visit and it works well. Most major websites have RSS feeds available, and only 
-one website I visit often does not have one.  
+one website I visit often does not have one. 
 
 <div style="max-width:800px">
   <img class="img-fluid pb-3" src="/images/feedbro.png" alt="Feedbro Screenshot"> 
@@ -31,7 +31,7 @@ one website I visit often does not have one.
 It is really easy to provide RSS feeds for this personal blog site because Pelican can 
 generate feeds. In the pelican setting file, change 
 `SITEURL` and `FEED_ALL_ATOM` settings to the values shown below to tell Pelican 
-to generate feeds for all blog posts.   
+to generate feeds for all blog posts. 
 
 ```
 SITEURL = 'https://www.georgexyz.com'
