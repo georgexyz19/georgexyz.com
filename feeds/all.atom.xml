@@ -7,9 +7,10 @@ generates a starter project which includes &lt;code&gt;pelicanconf.py&lt;/code&g
 &lt;code&gt;pelican_quickstart.py&lt;/code&gt; file under the tools directory. The code is a nice 
 example on how to create similar&amp;nbsp;programs. &lt;/p&gt;
 &lt;p&gt;It is not difficult to write a program which generates a new Pelican starter
-post. The benefit of the program is that it can automatically fill some meta fields.&lt;br&gt;
+post. The benefit of the program is that it can automatically fill some meta fields. 
 It can also present a list of tags that already used in other posts, and the user 
-can pick one of more tags from the list. In addition, each post will have consistent meta fields. I write the 
+can pick one of more tags from the list. In addition, each post will have 
+consistent meta fields. I write the 
 &lt;a href="https://github.com/georgexyz19/georgexyz.com/blob/master/newpost.py"&gt;&lt;code&gt;newpost.py&lt;/code&gt; python program&lt;/a&gt; 
 for this&amp;nbsp;purpose.  &lt;/p&gt;
 &lt;p&gt;Here is how to run the&amp;nbsp;program. &lt;/p&gt;
@@ -23,8 +24,8 @@ Please answer the following questions so this script can generate the post.
 &amp;gt; Where do you want to save the markdown file? [content/posts] 
 &amp;gt; What will be the title of this post? [NEW TITLE] Python Program 
         to Create New Pelican Post
-&amp;gt; What will be the slug of this post? [python-program-to-create-new-pelican-post]
-        create-new-pelican-post
+&amp;gt; What will be the slug of this post? [python-program-to-create
+        -new-pelican-post]create-new-pelican-post
 &amp;gt; What will be the date/time of the post? [2020-05-02 15:47] 
 &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
 
@@ -53,7 +54,8 @@ for your own&amp;nbsp;site.&lt;/p&gt;
     15 -&amp;gt; ubuntu
     16 -&amp;gt; vim
     17 -&amp;gt; web development
-&amp;gt; Choose one or more tags (e.g. 1, 4) 0 to enter new tag(s) [0] 11, 12
+&amp;gt; Choose one or more tags (e.g. 1, 4) 0 to enter new tag(s) 
+        [0] 11, 12
 &amp;gt; Do you want to add related posts? (y/N) y
 &amp;gt; Posts with same tags (choose one or more) 
     1 -&amp;gt; Pelican Related Posts and&amp;amp;nbsp;Translation
@@ -62,9 +64,10 @@ for your own&amp;nbsp;site.&lt;/p&gt;
     ......
 &amp;gt; Choose one or more articles (e.g. 1, 3) 0 to cancel [0] 1
 &amp;gt; Add a number for the post (start from 1) [41] 
-&amp;gt; Add a short note to yourself for this post? [note to be added] A post about 
-        how to create new Pelican post.
-&amp;gt; Write the first sentence of the article [This is the first sentence ...] 
+&amp;gt; Add a short note to yourself for this post? [note to be added] 
+        A post about how to create new Pelican post.
+&amp;gt; Write the first sentence of the article [This is the 
+        first sentence ...] 
 Done. Your new post is available at content/posts
 (georgexyz.com) george@desktop:~/Desktop/desktop/georgexyz.com$ 
 &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;</content><category term="posts"></category><category term="pelican"></category><category term="python"></category></entry><entry><title>Pelican Related Posts and Translation</title><link href="https://www.georgexyz.com/pelican-related-posts-translation.html" rel="alternate"></link><published>2020-04-28T12:02:00-04:00</published><updated>2020-04-28T12:02:00-04:00</updated><author><name>George Zhang</name></author><id>tag:www.georgexyz.com,2020-04-28:/pelican-related-posts-translation.html</id><summary type="html">&lt;p&gt;The Pelican source code has a related_posts attribute defined in the &lt;code&gt;Generator&lt;/code&gt; class. The variable 
