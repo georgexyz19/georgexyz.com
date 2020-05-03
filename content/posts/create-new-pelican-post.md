@@ -7,16 +7,15 @@ note: A post about how to create new Pelican post.
 related_posts: pelican-related-posts-translation
 no: 41
 
-Pelican static site generator comes with a nice command `pelican-quickstart`. It 
-generates a starter project which includes `pelicanconf.py`, `publishconf.py`, 
-`tasks.py`, and other files and directories.  The source code is in the 
-`pelican_quickstart.py` file under the tools directory. The code is a nice 
-example on how to create similar programs. 
+Pelican comes with a nice command line tool `pelican-quickstart`. It 
+generates a starter project including `pelicanconf.py`, `publishconf.py`, 
+`tasks.py`, and other files and directories.  The source code file 
+`pelican_quickstart.py` is a nice example on how to create similar programs. 
 
 It is not difficult to write a program which generates a new Pelican starter
 post. The benefit of the program is that it can automatically fill some meta fields. 
 It can also present a list of tags that already used in other posts, and the user 
-can pick one of more tags from the list. In addition, each post will have 
+can pick one or more tags from the list. In addition, each post will have 
 consistent meta fields. I write the 
 [`newpost.py` python program](https://github.com/georgexyz19/georgexyz.com/blob/master/newpost.py) 
 for this purpose.  
