@@ -1,15 +1,14 @@
 <?xml version="1.0" encoding="utf-8"?>
-<feed xmlns="http://www.w3.org/2005/Atom"><title>George Zhang</title><link href="https://www.georgexyz.com/" rel="alternate"></link><link href="https://www.georgexyz.com/feeds/all.atom.xml" rel="self"></link><id>https://www.georgexyz.com/</id><updated>2020-05-02T15:47:00-04:00</updated><entry><title>Python Program to Create New Pelican Post</title><link href="https://www.georgexyz.com/create-new-pelican-post.html" rel="alternate"></link><published>2020-05-02T15:47:00-04:00</published><updated>2020-05-02T15:47:00-04:00</updated><author><name>George Zhang</name></author><id>tag:www.georgexyz.com,2020-05-02:/create-new-pelican-post.html</id><summary type="html">&lt;p&gt;Pelican static site generator comes with a nice command &lt;code&gt;pelican-quickstart&lt;/code&gt;. It 
-generates a starter project which includes &lt;code&gt;pelicanconf.py&lt;/code&gt;, &lt;code&gt;publishconf.py&lt;/code&gt;, 
-&lt;code&gt;tasks.py&lt;/code&gt;, and other files and directories.  The source …&lt;/p&gt;</summary><content type="html">&lt;p&gt;Pelican static site generator comes with a nice command &lt;code&gt;pelican-quickstart&lt;/code&gt;. It 
-generates a starter project which includes &lt;code&gt;pelicanconf.py&lt;/code&gt;, &lt;code&gt;publishconf.py&lt;/code&gt;, 
-&lt;code&gt;tasks.py&lt;/code&gt;, and other files and directories.  The source code is in the 
-&lt;code&gt;pelican_quickstart.py&lt;/code&gt; file under the tools directory. The code is a nice 
-example on how to create similar&amp;nbsp;programs. &lt;/p&gt;
+<feed xmlns="http://www.w3.org/2005/Atom"><title>George Zhang</title><link href="https://www.georgexyz.com/" rel="alternate"></link><link href="https://www.georgexyz.com/feeds/all.atom.xml" rel="self"></link><id>https://www.georgexyz.com/</id><updated>2020-05-02T15:47:00-04:00</updated><entry><title>Python Program to Create New Pelican Post</title><link href="https://www.georgexyz.com/create-new-pelican-post.html" rel="alternate"></link><published>2020-05-02T15:47:00-04:00</published><updated>2020-05-02T15:47:00-04:00</updated><author><name>George Zhang</name></author><id>tag:www.georgexyz.com,2020-05-02:/create-new-pelican-post.html</id><summary type="html">&lt;p&gt;Pelican comes with a nice command line tool &lt;code&gt;pelican-quickstart&lt;/code&gt;. It 
+generates a starter project including &lt;code&gt;pelicanconf.py&lt;/code&gt;, &lt;code&gt;publishconf.py&lt;/code&gt;, 
+&lt;code&gt;tasks.py&lt;/code&gt;, and other files and directories.  The source code file …&lt;/p&gt;</summary><content type="html">&lt;p&gt;Pelican comes with a nice command line tool &lt;code&gt;pelican-quickstart&lt;/code&gt;. It 
+generates a starter project including &lt;code&gt;pelicanconf.py&lt;/code&gt;, &lt;code&gt;publishconf.py&lt;/code&gt;, 
+&lt;code&gt;tasks.py&lt;/code&gt;, and other files and directories.  The source code file 
+&lt;code&gt;pelican_quickstart.py&lt;/code&gt; is a nice example on how to create similar&amp;nbsp;programs. &lt;/p&gt;
 &lt;p&gt;It is not difficult to write a program which generates a new Pelican starter
 post. The benefit of the program is that it can automatically fill some meta fields. 
 It can also present a list of tags that already used in other posts, and the user 
-can pick one of more tags from the list. In addition, each post will have 
+can pick one or more tags from the list. In addition, each post will have 
 consistent meta fields. I write the 
 &lt;a href="https://github.com/georgexyz19/georgexyz.com/blob/master/newpost.py"&gt;&lt;code&gt;newpost.py&lt;/code&gt; python program&lt;/a&gt; 
 for this&amp;nbsp;purpose.  &lt;/p&gt;
