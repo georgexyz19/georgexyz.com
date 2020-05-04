@@ -136,29 +136,23 @@ if the post includes a meta field <code>related_posts</code>. </p>
 <h3>Translation</h3>
 <p>This site does not have any translated articles. But I find it is not difficult to 
 translate articles to other languages with Pelican after reading the source&nbsp;code. </p>
-<p>You can set a meta field such as <code>lang: zh</code> for a translated article.  The article should 
-have the same slug as the original one. Then on the <code>artilce.html</code> template, you 
-can add the following html&nbsp;snippet. </p>
+<p>You can set a meta field such as <code>lang: es</code> for a translated article.  The article should 
+have the same slug as the original one. Then, you can add the following html snippet on 
+the <code>artilce.html</code> template. The page will have a link to the translated 
+article in another&nbsp;language. </p>
 <div class="highlight"><pre><span></span><code>{% if article.translations %}
   &lt;hr&gt;
   {% for art in article.translations %}
       &lt;p&gt;&lt;a href=&quot;{{ art.url }}&quot;&gt;{{ art.title }}&lt;/a&gt; in language
       {% if art.lang == &#39;en&#39; %} 
           English
-      {% elif art.lang == &#39;zh&#39; %}
-          Chinese
+      {% elif art.lang == &#39;es&#39; %}
+          Spanish
       {% endif %} 
       &lt;/p&gt;
   {% endfor %}
 {% endif %}
 </code></pre></div>
-
-
-<p>The page will have a link to the translated article in another language.  Interestingly 
-enough, the web site severed under <code>invoke livereload</code> or <code>pelican -l</code> command does not
-have correct encoding for Chinese characters. But the encoding is correct when I open 
-the generated html files directly in Firefox browser.  I plan to translate some 
-future articles on this site to Chinese when I feel they worth the&nbsp;effort. </p>
 
       <div class="mt-5 border-top">
         <h3>Related Posts:</h3>
