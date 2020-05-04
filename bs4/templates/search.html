@@ -1,0 +1,54 @@
+{% extends "base.html" %}
+
+{% block customcss %}
+<link href="https://fonts.googleapis.com/css?family=Squada+One|Source+Code+Pro|Merriweather:300|Abril+Fatface"
+    rel="stylesheet">
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+
+<script src="/theme/tipuesearch/tipuesearch_set.js"></script>
+<script src="/tipuesearch_content.js"></script>
+<link rel="stylesheet" href="/theme/tipuesearch/tipuesearch.css">
+<script src="/theme/tipuesearch/tipuesearch.js"></script>
+
+{% endblock %}
+
+{% block title %}Search - {{ SITENAME }}{% endblock %}
+
+{% block content %}
+<div class="container">
+    <div style="padding-top: 36px;">
+        <h2>Search Articles:</h2>
+        <form>
+            <div class="tipue_search_group">
+                <input type="text" name="q" id="tipue_search_input" pattern=".{3,}" title="At least 3 characters"
+                    required><button type="submit" class="tipue_search_button">
+                    <div class="tipue_search_icon">&#9906;</div>
+                </button>
+            </div>
+        </form>
+    </div>
+
+    <div style="padding-top: 36px; padding-bottom: 36px;" id="tipue_search_content"></div>
+
+</div>
+
+
+{% endblock %}
+
+{% block customjs %}
+    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js" integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6" crossorigin="anonymous"></script>
+<script>
+    $(document).ready(function () {
+        $('#tipue_search_input').tipuesearch(
+            {
+                'mode': 'json',
+                'show': 15,
+                'newWindow': false
+            }
+        );
+        $("#tipue_search_input").focus();
+    });
+    
+</script>
+{% endblock %}

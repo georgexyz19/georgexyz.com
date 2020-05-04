@@ -69,7 +69,8 @@ ARCHIVES_SAVE_AS = 'articlelist.html'
 TYPOGRIFY = True
 
 PLUGIN_PATHS = ['plugin/', ]
-PLUGINS=['related_posts',]
+PLUGINS=['related_posts', 'tipue_search']
+DIRECT_TEMPLATES = ['index', 'tags', 'categories', 'authors', 'archives', 'search']
 
 
 DOCUTILS_SETTINGS = {'initial_header_level': '3', }

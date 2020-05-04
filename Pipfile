@@ -12,6 +12,7 @@ invoke = "*"
 ghp-import2 = "*"
 livereload = "*"
 typogrify = "*"
+beautifulsoup4 = "*"
 
 [requires]
 python_version = "3.7"
