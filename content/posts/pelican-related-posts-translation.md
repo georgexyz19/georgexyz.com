@@ -66,9 +66,10 @@ if the post includes a meta field `related_posts`.
 This site does not have any translated articles. But I find it is not difficult to 
 translate articles to other languages with Pelican after reading the source code. 
 
-You can set a meta field such as `lang: zh` for a translated article.  The article should 
-have the same slug as the original one. Then on the `artilce.html` template, you 
-can add the following html snippet. 
+You can set a meta field such as `lang: es` for a translated article.  The article should 
+have the same slug as the original one. Then, you can add the following html snippet on 
+the `artilce.html` template. The page will have a link to the translated 
+article in another language. 
 
 ```
 {% if article.translations %}
@@ -77,18 +78,13 @@ can add the following html snippet.
       <p><a href="{{ art.url }}">{{ art.title }}</a> in language
       {% if art.lang == 'en' %} 
           English
-      {% elif art.lang == 'zh' %}
-          Chinese
+      {% elif art.lang == 'es' %}
+          Spanish
       {% endif %} 
       </p>
   {% endfor %}
 {% endif %}
 ```
 
-The page will have a link to the translated article in another language.  Interestingly 
-enough, the web site severed under `invoke livereload` or `pelican -l` command does not
-have correct encoding for Chinese characters. But the encoding is correct when I open 
-the generated html files directly in Firefox browser.  I plan to translate some 
-future articles on this site to Chinese when I feel they worth the effort. 
 
 
