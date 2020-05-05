@@ -1,0 +1,147 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <link rel="stylesheet" href="/theme/css/bs4min.css">
+    <link rel="shortcut icon" type="image/x-icon" href="/theme/images/favicon.ico" >
+    <link rel="icon" type="image/x-icon" href="/theme/images/favicon.ico" >
+<link rel="stylesheet" href="https://www.georgexyz.com/theme/css/friendly.css">
+<link rel="stylesheet" href="https://www.georgexyz.com/theme/css/custom.css">
+<meta name="author" content="George Zhang" />
+<meta name="keywords" content="javascript,pelican,web development" />
+<meta name="description" content="Pelican has a very nice documentation site. However Pelican itself is not the tool that generates the site, instead it is created with the Sphinx python documentation tool. The site …" />
+    <title>Tipue Search for Pelican Web Site - George Zhang</title>
+  </head>
+  <body>
+    <!-- navbar -->
+    <nav class="navbar navbar-expand-md navbar-light" style="background-color: #e3f2fd;">
+      <div class="container">
+        <a class="navbar-brand" href="/">George Zhang</a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarColor01" aria-controls="navbarColor01" aria-expanded="false" aria-label="Toggle navigation">
+          <span class="navbar-toggler-icon"></span>
+        </button>
+
+        <div class="collapse navbar-collapse" id="navbarColor01">
+          <ul class="navbar-nav mr-auto">
+            <li class="nav-item">
+              <a class="nav-link " 
+                href="/articlelist.html">Articles</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link pr-3 " 
+                href="/tags.html">Tags</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link pr-3 "
+                 href="/pages/inkscape-tutorial.html">Inkscape Tutorial</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link "
+                   href="/pages/projects.html">Projects</a>
+              </li>
+          </ul>
+
+          <ul class="navbar-nav">
+            <li class="nav-item">
+              <a class="nav-link " 
+                 href="/pages/about.html">About</a>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </nav>
+
+   
+
+<div class="container">
+
+  <div class="row">
+    <div class="col-lg-8 mx-auto">
+
+      <h2>Tipue Search for Pelican Web&nbsp;Site</h2>
+
+      <div class="text-muted mb-2">
+        <span>Posted on </span>
+        <time datetime="2020-05-04 22:10:00-04:00">
+          Monday, 05/04/2020 22:10
+        </time>
+
+        <span>with tags: </span>
+        <a href="https://www.georgexyz.com/tag/javascript.html">javascript</a>
+/        <a href="https://www.georgexyz.com/tag/pelican.html">pelican</a>
+/        <a href="https://www.georgexyz.com/tag/web-development.html">web development</a>
+      </div>
+
+      <p>Pelican has a very nice <a href="https://docs.getpelican.com/en/stable/">documentation site</a>. 
+However Pelican itself is not the tool that 
+generates the site, instead it is created with the Sphinx python documentation tool. 
+The site has a nice search function. I wonder how to add such a search feature 
+to a static&nbsp;site.</p>
+<p>A little online research reveals that Pelican plugin github repo has a 
+<a href="https://github.com/getpelican/pelican-plugins/tree/master/tipue_search">tipue-search</a> 
+plugin. The Tipue Search tool itself has <a href="https://tipue.com/search/">a nice website</a> 
+and documentation. I spend a few hours reading the documention and try to figure out 
+how this tool&nbsp;works. </p>
+<p>The tipue-search Pelican plugin creates a js file <code>tipuesearch_content.js</code> which 
+defines a js variable <code>tipuesearch</code>. The variable is assigned a large js object 
+containing all search data. The plugin uses BeautifulSoup to parse html 
+title and content of posts and pages generated in Pelican.  The size of the file <code>tipuesearch_content.js</code> 
+obviously depends on the number of pages on a website.  The 41 posts on this 
+site result in a 144 <span class="caps">KB</span> js&nbsp;file.  </p>
+<p>The Tipue Search tool is mainly a js program.  The web page will download the 
+<code>tipuesearch_content.js</code> file first, and Tipue Search tool will search the data 
+and present the results on the page. The package also includes a nice <span class="caps">CSS</span> 
+file which formats the search box and search results. Below are the steps on 
+how to setup the tool for a blog site like this&nbsp;one. </p>
+<ul>
+<li>Install BeautifulSoup in python virtual environment. Copy tipue_search directory (
+   include three files <code>__init__.py</code>, <code>README.rst</code>, and <code>tipue_search.py</code>)
+   to the plugin subdirectory under project&nbsp;directory. </li>
+<li>Revise one line and add one additional line of code in <code>pelicanconf.py</code>. Pelican
+  will load the plugin and generate the <code>tipuesearch_content.js</code> file in output&nbsp;directory. </li>
+</ul>
+<div class="ml-5">
+
+<div class="highlight"><pre><span></span><code>PLUGIN_PATHS = [&#39;plugin/&#39;, ]
+PLUGINS=[&#39;related_posts&#39;, &#39;tipue_search&#39;]
+DIRECT_TEMPLATES = [&#39;index&#39;, &#39;tags&#39;, &#39;categories&#39;, 
+    &#39;authors&#39;, &#39;archives&#39;, &#39;search&#39;]
+</code></pre></div>
+
+
+</div>
+
+<ul>
+<li>Add a <code>search.html</code> file to the theme templates directory 
+(<a href="https://github.com/georgexyz19/georgexyz.com/blob/master/bs4/templates/search.html">see file on github repo</a>).
+The contents
+   of this file is very similar to the demo page of Tipue Search. I also adjusted 
+   a few lines of code in <code>base.html</code> to fit the needs of this new <code>search.html</code> file. 
+   Pelican will automatically generate a corresponding <code>search.html</code> in output&nbsp;directory. </li>
+<li>Copy Tipue Search tool directory <code>tipuesearch</code> (including 4 js files and 1 css file) to theme static directory. Pelican will automatically copy them to <code>theme/tipuesearch</code> under output
+directory during site&nbsp;generation. </li>
+<li>Add a link on the Articles page and Tags page which will open the <code>search.html</code> page. </li>
+</ul>
+<p>If you want to try out the Tipue Search tool, click the <a href="/search.html">link here</a>. </p>
+<div class="mt-5 border-top">
+  <h3>Related:</h3>
+  <ul>
+    <li><a href="/search.html">Search&nbsp;Tool</a></li>
+  </ul>
+</div>
+
+
+
+    </div>
+  </div>
+
+</div>
+
+   
+    <script src="https://code.jquery.com/jquery-3.4.1.slim.min.js" integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js" integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6" crossorigin="anonymous"></script>
+  </body>
+</html>

@@ -1,5 +1,64 @@
 <?xml version="1.0" encoding="utf-8"?>
-<feed xmlns="http://www.w3.org/2005/Atom"><title>George Zhang</title><link href="https://www.georgexyz.com/" rel="alternate"></link><link href="https://www.georgexyz.com/feeds/all.atom.xml" rel="self"></link><id>https://www.georgexyz.com/</id><updated>2020-05-02T15:47:00-04:00</updated><entry><title>Python Program to Create New Pelican Post</title><link href="https://www.georgexyz.com/create-new-pelican-post.html" rel="alternate"></link><published>2020-05-02T15:47:00-04:00</published><updated>2020-05-02T15:47:00-04:00</updated><author><name>George Zhang</name></author><id>tag:www.georgexyz.com,2020-05-02:/create-new-pelican-post.html</id><summary type="html">&lt;p&gt;Pelican comes with a nice command line tool &lt;code&gt;pelican-quickstart&lt;/code&gt;. It 
+<feed xmlns="http://www.w3.org/2005/Atom"><title>George Zhang</title><link href="https://www.georgexyz.com/" rel="alternate"></link><link href="https://www.georgexyz.com/feeds/all.atom.xml" rel="self"></link><id>https://www.georgexyz.com/</id><updated>2020-05-04T22:10:00-04:00</updated><entry><title>Tipue Search for Pelican Web Site</title><link href="https://www.georgexyz.com/tipue-search-pelican.html" rel="alternate"></link><published>2020-05-04T22:10:00-04:00</published><updated>2020-05-04T22:10:00-04:00</updated><author><name>George Zhang</name></author><id>tag:www.georgexyz.com,2020-05-04:/tipue-search-pelican.html</id><summary type="html">&lt;p&gt;Pelican has a very nice &lt;a href="https://docs.getpelican.com/en/stable/"&gt;documentation site&lt;/a&gt;. 
+However Pelican itself is not the tool that 
+generates the site, instead it is created with the Sphinx python documentation tool. 
+The site …&lt;/p&gt;</summary><content type="html">&lt;p&gt;Pelican has a very nice &lt;a href="https://docs.getpelican.com/en/stable/"&gt;documentation site&lt;/a&gt;. 
+However Pelican itself is not the tool that 
+generates the site, instead it is created with the Sphinx python documentation tool. 
+The site has a nice search function. I wonder how to add such a search feature 
+to a static&amp;nbsp;site.&lt;/p&gt;
+&lt;p&gt;A little online research reveals that Pelican plugin github repo has a 
+&lt;a href="https://github.com/getpelican/pelican-plugins/tree/master/tipue_search"&gt;tipue-search&lt;/a&gt; 
+plugin. The Tipue Search tool itself has &lt;a href="https://tipue.com/search/"&gt;a nice website&lt;/a&gt; 
+and documentation. I spend a few hours reading the documention and try to figure out 
+how this tool&amp;nbsp;works. &lt;/p&gt;
+&lt;p&gt;The tipue-search Pelican plugin creates a js file &lt;code&gt;tipuesearch_content.js&lt;/code&gt; which 
+defines a js variable &lt;code&gt;tipuesearch&lt;/code&gt;. The variable is assigned a large js object 
+containing all search data. The plugin uses BeautifulSoup to parse html 
+title and content of posts and pages generated in Pelican.  The size of the file &lt;code&gt;tipuesearch_content.js&lt;/code&gt; 
+obviously depends on the number of pages on a website.  The 41 posts on this 
+site result in a 144 &lt;span class="caps"&gt;KB&lt;/span&gt; js&amp;nbsp;file.  &lt;/p&gt;
+&lt;p&gt;The Tipue Search tool is mainly a js program.  The web page will download the 
+&lt;code&gt;tipuesearch_content.js&lt;/code&gt; file first, and Tipue Search tool will search the data 
+and present the results on the page. The package also includes a nice &lt;span class="caps"&gt;CSS&lt;/span&gt; 
+file which formats the search box and search results. Below are the steps on 
+how to setup the tool for a blog site like this&amp;nbsp;one. &lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;Install BeautifulSoup in python virtual environment. Copy tipue_search directory (
+   include three files &lt;code&gt;__init__.py&lt;/code&gt;, &lt;code&gt;README.rst&lt;/code&gt;, and &lt;code&gt;tipue_search.py&lt;/code&gt;)
+   to the plugin subdirectory under project&amp;nbsp;directory. &lt;/li&gt;
+&lt;li&gt;Revise one line and add one additional line of code in &lt;code&gt;pelicanconf.py&lt;/code&gt;. Pelican
+  will load the plugin and generate the &lt;code&gt;tipuesearch_content.js&lt;/code&gt; file in output&amp;nbsp;directory. &lt;/li&gt;
+&lt;/ul&gt;
+&lt;div class="ml-5"&gt;
+
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;PLUGIN_PATHS = [&amp;#39;plugin/&amp;#39;, ]
+PLUGINS=[&amp;#39;related_posts&amp;#39;, &amp;#39;tipue_search&amp;#39;]
+DIRECT_TEMPLATES = [&amp;#39;index&amp;#39;, &amp;#39;tags&amp;#39;, &amp;#39;categories&amp;#39;, 
+    &amp;#39;authors&amp;#39;, &amp;#39;archives&amp;#39;, &amp;#39;search&amp;#39;]
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;/div&gt;
+
+&lt;ul&gt;
+&lt;li&gt;Add a &lt;code&gt;search.html&lt;/code&gt; file to the theme templates directory 
+(&lt;a href="https://github.com/georgexyz19/georgexyz.com/blob/master/bs4/templates/search.html"&gt;see file on github repo&lt;/a&gt;).
+The contents
+   of this file is very similar to the demo page of Tipue Search. I also adjusted 
+   a few lines of code in &lt;code&gt;base.html&lt;/code&gt; to fit the needs of this new &lt;code&gt;search.html&lt;/code&gt; file. 
+   Pelican will automatically generate a corresponding &lt;code&gt;search.html&lt;/code&gt; in output&amp;nbsp;directory. &lt;/li&gt;
+&lt;li&gt;Copy Tipue Search tool directory &lt;code&gt;tipuesearch&lt;/code&gt; (including 4 js files and 1 css file) to theme static directory. Pelican will automatically copy them to &lt;code&gt;theme/tipuesearch&lt;/code&gt; under output
+directory during site&amp;nbsp;generation. &lt;/li&gt;
+&lt;li&gt;Add a link on the Articles page and Tags page which will open the &lt;code&gt;search.html&lt;/code&gt; page. &lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;If you want to try out the Tipue Search tool, click the &lt;a href="/search.html"&gt;link here&lt;/a&gt;. &lt;/p&gt;
+&lt;div class="mt-5 border-top"&gt;
+  &lt;h3&gt;Related:&lt;/h3&gt;
+  &lt;ul&gt;
+    &lt;li&gt;&lt;a href="/search.html"&gt;Search&amp;nbsp;Tool&lt;/a&gt;&lt;/li&gt;
+  &lt;/ul&gt;
+&lt;/div&gt;</content><category term="posts"></category><category term="javascript"></category><category term="pelican"></category><category term="web development"></category></entry><entry><title>Python Program to Create New Pelican Post</title><link href="https://www.georgexyz.com/create-new-pelican-post.html" rel="alternate"></link><published>2020-05-02T15:47:00-04:00</published><updated>2020-05-02T15:47:00-04:00</updated><author><name>George Zhang</name></author><id>tag:www.georgexyz.com,2020-05-02:/create-new-pelican-post.html</id><summary type="html">&lt;p&gt;Pelican comes with a nice command line tool &lt;code&gt;pelican-quickstart&lt;/code&gt;. It 
 generates a starter project including &lt;code&gt;pelicanconf.py&lt;/code&gt;, &lt;code&gt;publishconf.py&lt;/code&gt;, 
 &lt;code&gt;tasks.py&lt;/code&gt;, and other files and directories.  The source code file …&lt;/p&gt;</summary><content type="html">&lt;p&gt;Pelican comes with a nice command line tool &lt;code&gt;pelican-quickstart&lt;/code&gt;. It 
 generates a starter project including &lt;code&gt;pelicanconf.py&lt;/code&gt;, &lt;code&gt;publishconf.py&lt;/code&gt;, 
