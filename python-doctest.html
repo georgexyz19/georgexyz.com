@@ -12,7 +12,7 @@
 <meta name="author" content="George Zhang" />
 <meta name="keywords" content="python" />
 <meta name="description" content="Python doctest is easier to use than unittest and pytest. A developer writes the test cases in the documentation and doctest module verifies the results. There are examples in the …" />
-    <title>Python Doctest - George Zhang</title>
+    <title>Python Doctest - George Zhang</title>
   </head>
   <body>
     <!-- navbar -->
@@ -60,7 +60,7 @@
   <div class="row">
     <div class="col-lg-8 mx-auto">
 
-      <h2>Python&nbsp;Doctest</h2>
+      <h2>Python Doctest</h2>
 
       <div class="text-muted mb-2">
         <span>Posted on </span>
@@ -75,12 +75,12 @@
       <p>Python doctest is easier to use than unittest and pytest. A developer writes the 
 test cases in the documentation and doctest module verifies the results. There are 
 examples in the <em>Fluent Python</em> book that use doctest, but I have not seen them 
-used&nbsp;often. </p>
+used often. </p>
 <p>The Python Module of The Week web site has 
 <a href="https://pymotw.com/3/doctest/">a page on doctest</a>.  It is a nice introduction on
-how to use doctest. The doctest module is useful in some&nbsp;situations. </p>
+how to use doctest. The doctest module is useful in some situations. </p>
 <p>Below is a python file which includes a single function. The function has a docstring
-which also serves as&nbsp;doctest. </p>
+which also serves as doctest. </p>
 <div class="highlight"><pre><span></span><code><span class="ch">#!/usr/bin/env python</span>
 
 <span class="c1"># nested_sum adds up elements from a list of lists of integers</span>
@@ -101,12 +101,12 @@ which also serves as&nbsp;doctest. </p>
 
 <p>Run the python file with the following command in bash. Note the <code>-m</code> option 
 loads doctest module. The <code>-v</code> option represents verbose. Without the <code>-v</code> 
-option, the command outputs&nbsp;nothing.</p>
+option, the command outputs nothing.</p>
 <div class="highlight"><pre><span></span><code>python -m doctest -v nested_sum.py 
 </code></pre></div>
 
 
-<p>Here are the doctest&nbsp;results:</p>
+<p>Here are the doctest results:</p>
 <div class="highlight"><pre><span></span><code>Trying:
     t = [[1, 2], [3], [4, 5, 6]]
 Expecting nothing

@@ -12,7 +12,7 @@
 <meta name="author" content="George Zhang" />
 <meta name="keywords" content="django" />
 <meta name="description" content="Django has a built-in template system. It is relatively easy to understand, and the source code is not as complicated as other parts of Django. This article is a summary …" />
-    <title>A Close Look at Django Template System - George Zhang</title>
+    <title>A Close Look at Django Template System - George Zhang</title>
   </head>
   <body>
     <!-- navbar -->
@@ -60,7 +60,7 @@
   <div class="row">
     <div class="col-lg-8 mx-auto">
 
-      <h2>A Close Look at Django Template&nbsp;System</h2>
+      <h2>A Close Look at Django Template System</h2>
 
       <div class="text-muted mb-2">
         <span>Posted on </span>
@@ -74,9 +74,9 @@
 
       <p>Django has a built-in template system. It is relatively easy to understand, and 
 the source code is not as complicated as other parts of Django. This article is 
-a summary of the notes I took  when studying the&nbsp;system. </p>
-<h3>Official&nbsp;Documentation</h3>
-<p>The online Django documentation has 5 pages dedicated to&nbsp;template. </p>
+a summary of the notes I took  when studying the system. </p>
+<h3>Official Documentation</h3>
+<p>The online Django documentation has 5 pages dedicated to template. </p>
 <ul>
 <li>Intro to template (<a href="https://docs.djangoproject.com/en/2.2/topics/templates/">link</a>)</li>
 <li>Template language reference (<a href="https://docs.djangoproject.com/en/2.2/ref/templates/language/">link</a>) </li>
@@ -85,10 +85,10 @@ a summary of the notes I took  when studying the&nbsp;system. </p>
 <li>Custom tags and filters (<a href="https://docs.djangoproject.com/en/2.2/howto/custom-template-tags/">link</a>)</li>
 </ul>
 <p>A Django application developer probably does not need to know all of those details. 
-But it is always a good thing for programmers to know how things work behind the&nbsp;scene. </p>
-<h3>Template Language&nbsp;Summary</h3>
+But it is always a good thing for programmers to know how things work behind the scene. </p>
+<h3>Template Language Summary</h3>
 <p>Django Template Language (<span class="caps">DTL</span>) syntax mainly consists of three elements: variable, 
-tag, and filter. Here are some&nbsp;examples:</p>
+tag, and filter. Here are some examples:</p>
 <p><strong>variable</strong></p>
 <div class="highlight"><pre><span></span><code>{{ variable }}
 {{ tag.name }}
@@ -118,14 +118,14 @@ tag, and filter. Here are some&nbsp;examples:</p>
 </code></pre></div>
 
 
-<p><em>other filters</em>:  title, pluralize, truncatewords:20,&nbsp;default:&#8221;base.html&#8221;</p>
-<h3>How to Load&nbsp;Templates</h3>
-<h4>Method&nbsp;1</h4>
+<p><em>other filters</em>:  title, pluralize, truncatewords:20, default:&#8221;base.html&#8221;</p>
+<h3>How to Load Templates</h3>
+<h4>Method 1</h4>
 <p>The django.template.loader module defines <code>get_template</code> and <code>select_template</code> 
 functions. Both functions can load template files and render them agaist a dict. 
 The difference is that <code>get_template</code> accepts a template name and 
 <code>select_template</code> accepts a list of template names. Here is an example from 
-Django official&nbsp;tutorial. </p>
+Django official tutorial. </p>
 <div class="highlight"><pre><span></span><code><span class="k">def</span> <span class="nf">index</span><span class="p">(</span><span class="n">request</span><span class="p">):</span>
     <span class="n">latest_question_list</span> <span class="o">=</span> <span class="n">Question</span><span class="o">.</span><span class="n">objects</span><span class="o">.</span><span class="n">order_by</span><span class="p">(</span><span class="s1">&#39;-pub_date&#39;</span><span class="p">)[:</span><span class="mi">5</span><span class="p">]</span>
     <span class="n">template</span> <span class="o">=</span> <span class="n">loader</span><span class="o">.</span><span class="n">get_template</span><span class="p">(</span><span class="s1">&#39;polls/index.html&#39;</span><span class="p">)</span>
@@ -136,9 +136,9 @@ Django official&nbsp;tutorial. </p>
 </code></pre></div>
 
 
-<h4>Method&nbsp;2</h4>
+<h4>Method 2</h4>
 <p>The more common code is to use the <code>render</code> function defined in django.shortcuts 
-module in&nbsp;views.  </p>
+module in views.  </p>
 <div class="highlight"><pre><span></span><code><span class="kn">from</span> <span class="nn">django.shortcuts</span> <span class="kn">import</span> <span class="n">render</span>
 <span class="o">...</span>
 <span class="k">return</span> <span class="n">render</span><span class="p">(</span><span class="n">request</span><span class="p">,</span> <span class="s1">&#39;template_name.html&#39;</span><span class="p">,</span> <span class="p">{</span><span class="s1">&#39;tag&#39;</span><span class="p">:</span> <span class="n">tag</span><span class="p">})</span>
@@ -147,7 +147,7 @@ module in&nbsp;views.  </p>
 
 <p>The <code>render</code> function itself (Django2.2.2 source code) is very simple and short. 
 It calls <code>render_to_string</code> function in django.template.loader module, which in 
-turn calls <code>get_template</code> or <code>select_template</code> depending on&nbsp;template_name. </p>
+turn calls <code>get_template</code> or <code>select_template</code> depending on template_name. </p>
 <div class="highlight"><pre><span></span><code><span class="c1"># in django.shortcuts</span>
 <span class="k">def</span> <span class="nf">render</span><span class="p">(</span><span class="n">request</span><span class="p">,</span> <span class="n">template_name</span><span class="p">,</span> <span class="n">context</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">content_type</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> 
            <span class="n">status</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">using</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
@@ -173,9 +173,9 @@ turn calls <code>get_template</code> or <code>select_template</code> depending o
 </code></pre></div>
 
 
-<h4>Method&nbsp;3</h4>
+<h4>Method 3</h4>
 <p>The django.template module has two classes Template and Context. Those 
-are template system&#8217;s lower level APIs. Here is an&nbsp;example:</p>
+are template system&#8217;s lower level APIs. Here is an example:</p>
 <div class="highlight"><pre><span></span><code>from django.template import Template, Context
 template = Template(&#39;Hi, my name is {{ name }}.&#39;)
 context = Context({&#39;name&#39;: &#39;Andrew&#39;})
@@ -184,13 +184,13 @@ template.render(context)
 </code></pre></div>
 
 
-<h3>Template System Source&nbsp;Code</h3>
+<h3>Template System Source Code</h3>
 <p>The source code for Django template system is in django/template directory, and 
-consists of 26 python&nbsp;files. </p>
+consists of 26 python files. </p>
 <p>Bash command <code>wc</code> outputs number of lines in a file. We know that total number 
 of lines of Django template system code is 5,863 (Django 2.2.2). The output 
 below also shows that two files <code>base.py</code> and <code>defaulttags.py</code> have over 1,000 
-lines of code&nbsp;each. </p>
+lines of code each. </p>
 <div class="highlight"><pre><span></span><code>george@STK2M3:~/django-2.2.2/django/template$ wc -l *.py
   1044 base.py
     81 context_processors.py

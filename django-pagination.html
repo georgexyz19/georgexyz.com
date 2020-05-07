@@ -11,8 +11,8 @@
 <link rel="stylesheet" href="https://www.georgexyz.com/theme/css/custom.css">
 <meta name="author" content="George Zhang" />
 <meta name="keywords" content="django" />
-<meta name="description" content="Merriam-Webster dictionary defines pagination as “the action of paging”. In web design world, pagination means separating a large list of contents onto different pages for easy web navigation. Django provides …" />
-    <title>Django Pagination - George Zhang</title>
+<meta name="description" content="Merriam-Webster dictionary defines pagination as “the action of paging”. In web design world, pagination means separating a large list of contents onto different pages for easy web navigation. Django provides …" />
+    <title>Django Pagination - George Zhang</title>
   </head>
   <body>
     <!-- navbar -->
@@ -60,7 +60,7 @@
   <div class="row">
     <div class="col-lg-8 mx-auto">
 
-      <h2>Django&nbsp;Pagination</h2>
+      <h2>Django Pagination</h2>
 
       <div class="text-muted mb-2">
         <span>Posted on </span>
@@ -74,23 +74,23 @@
 
       <p>Merriam-Webster dictionary defines pagination as &#8220;the action of paging&#8221;. In web 
 design world, pagination means separating a large list of contents onto 
-different pages for easy web&nbsp;navigation.   </p>
+different pages for easy web navigation.   </p>
 <p>Django provides a few classes that help you manage pagination.  The official documentation has 
 <a href="https://docs.djangoproject.com/en/2.2/topics/pagination/">one page on Pagination</a>.
 The source code is in one file django/core/paginator.py, which has 195 lines 
 (version 2.2.2). The Paginator and Page classes defined in this file are very 
-good python class&nbsp;examples. </p>
-<p>The Paginator class has those public&nbsp;methods:</p>
+good python class examples. </p>
+<p>The Paginator class has those public methods:</p>
 <ul>
 <li>validate_number</li>
-<li>get_page : calls page method, handles&nbsp;exception</li>
-<li>page : page number is&nbsp;1-based</li>
-<li>count :&nbsp;cached_property</li>
+<li>get_page : calls page method, handles exception</li>
+<li>page : page number is 1-based</li>
+<li>count : cached_property</li>
 <li>num_pages</li>
 <li>page_range</li>
 </ul>
 <p>The Page class is derived from collections.abc.Sequence, and it has those 
-public&nbsp;methods:</p>
+public methods:</p>
 <ul>
 <li>has_next</li>
 <li>has_previous</li>
@@ -101,17 +101,17 @@ public&nbsp;methods:</p>
 <li>end_index</li>
 </ul>
 <p>The Page class also defines <code>__len__</code> and <code>__getitem__</code> methods, and it has 
-three attributes: object_list, number, and&nbsp;paginator.</p>
+three attributes: object_list, number, and paginator.</p>
 <p>Chapter 14 of <em>Django Unleashed</em> book covers how to use the django pagination 
 in detail. An online article 
 <a href="https://simpleisbetterthancomplex.com/tutorial/2016/08/03/how-to-paginate-with-django.html">How to Paginate with Django</a> 
 is also a nice summary on how to use paginator.  In class based views, all 
-it takes is to add one line of code to use Django&nbsp;paginator.</p>
+it takes is to add one line of code to use Django paginator.</p>
 <div class="highlight"><pre><span></span><code><span class="n">paginate_by</span> <span class="o">=</span> <span class="mi">10</span>
 </code></pre></div>
 
 
-<p>The template will be rendered with a context object with those&nbsp;contents:</p>
+<p>The template will be rendered with a context object with those contents:</p>
 <div class="highlight"><pre><span></span><code>context = {
             &#39;paginator&#39;: paginator,
             &#39;page_obj&#39;: page,

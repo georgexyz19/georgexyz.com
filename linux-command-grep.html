@@ -12,7 +12,7 @@
 <meta name="author" content="George Zhang" />
 <meta name="keywords" content="linux,software utility" />
 <meta name="description" content="Grep command searches file contents to find lines that contain a pattern. The pattern is described in Regular Expression (regex) language. Here are three youtube video links about Grep and …" />
-    <title>Linux Command Grep - George Zhang</title>
+    <title>Linux Command Grep - George Zhang</title>
   </head>
   <body>
     <!-- navbar -->
@@ -60,7 +60,7 @@
   <div class="row">
     <div class="col-lg-8 mx-auto">
 
-      <h2>Linux Command&nbsp;Grep</h2>
+      <h2>Linux Command Grep</h2>
 
       <div class="text-muted mb-2">
         <span>Posted on </span>
@@ -75,16 +75,16 @@
 
       <p>Grep command searches file contents to find lines that contain a pattern.  The 
 pattern is described in Regular Expression (regex) language. Here are three 
-youtube video links about Grep and regular&nbsp;expressions. </p>
+youtube video links about Grep and regular expressions. </p>
 <ul>
-<li><a href="https://www.youtube.com/watch?v=NTfOnGZUZDk">Brian Kernighan Youtube Talk on&nbsp;Grep</a></li>
-<li><a href="https://youtu.be/VGgTmxXp7xQ">Corey Schafer Linux Terminal Tutorial for&nbsp;Grep</a></li>
-<li><a href="https://youtu.be/kWyoYtvJpe4">Nick Parlante&#8217;s Python Regex&nbsp;Video</a></li>
+<li><a href="https://www.youtube.com/watch?v=NTfOnGZUZDk">Brian Kernighan Youtube Talk on Grep</a></li>
+<li><a href="https://youtu.be/VGgTmxXp7xQ">Corey Schafer Linux Terminal Tutorial for Grep</a></li>
+<li><a href="https://youtu.be/kWyoYtvJpe4">Nick Parlante&#8217;s Python Regex Video</a></li>
 </ul>
 <p>Ryan&#8217;s Tutorials website has <a href="https://ryanstutorials.net/linuxtutorial/grep.php">a nice introduction</a> 
 to <em>Grep and Regular Expression</em>.  Note egrep is a shortcut to <code>grep -E</code> in 
 Ubuntu. The man page of grep describes that &#8220;in <span class="caps">GNU</span> grep there is no difference 
-in available functionality between basic and  extended&nbsp;syntaxes&#8221;. </p>
+in available functionality between basic and  extended syntaxes&#8221;. </p>
 <div class="highlight"><pre><span></span><code>$which egrep
 /bin/egrep
 $file /bin/egrep
@@ -95,33 +95,33 @@ exec grep -E &quot;$@&quot;
 </code></pre></div>
 
 
-<p>Here is a very simple grep&nbsp;example:</p>
+<p>Here is a very simple grep example:</p>
 <div class="highlight"><pre><span></span><code>$grep &quot;Jane Williams&quot; filename.txt
 </code></pre></div>
 
 
-<p>The grep command has many options. A few common ones&nbsp;are:</p>
+<p>The grep command has many options. A few common ones are:</p>
 <ul>
-<li>-w : Whole&nbsp;word</li>
-<li>-i : ignore&nbsp;case</li>
-<li>-n  : line&nbsp;number</li>
-<li>-B 4 : 4 lines&nbsp;before</li>
-<li>-A 4 : 4 lines&nbsp;after</li>
-<li>-C 2 : 2 lines before, 2 lines&nbsp;after</li>
+<li>-w : Whole word</li>
+<li>-i : ignore case</li>
+<li>-n  : line number</li>
+<li>-B 4 : 4 lines before</li>
+<li>-A 4 : 4 lines after</li>
+<li>-C 2 : 2 lines before, 2 lines after</li>
 </ul>
 <p>The <code>filename.txt</code> in the above example could be either <code>./*</code> or <code>./*.txt</code>. </p>
-<p>For example, this command will search current directory and&nbsp;subdirectories. </p>
+<p>For example, this command will search current directory and subdirectories. </p>
 <div class="highlight"><pre><span></span><code>$grep -winr &quot;Jane Williams&quot; ./
 </code></pre></div>
 
 
-<p>Here are a few more&nbsp;options:</p>
+<p>Here are a few more options:</p>
 <ul>
-<li>-r :&nbsp;recursive</li>
-<li>-l : file name&nbsp;only</li>
-<li>-c : count, print a&nbsp;count</li>
+<li>-r : recursive</li>
+<li>-l : file name only</li>
+<li>-c : count, print a count</li>
 </ul>
-<p>You can use pipes to search the results of another&nbsp;command.</p>
+<p>You can use pipes to search the results of another command.</p>
 <div class="highlight"><pre><span></span><code>$history | grep &quot;git commit&quot;
 </code></pre></div>
 
@@ -129,14 +129,14 @@ exec grep -E &quot;$@&quot;
 <p>The grep <code>-P</code> option interprets the pattern as a Perl-compatible regex. The 
 Python and Perl &#8220;essentially has the same regex syntax&#8221;.  So with the <code>-P</code> 
 option turned on, the grep command will accept Python style special characters 
-in pattern. Here is a list of common regex special characters in&nbsp;Python:</p>
+in pattern. Here is a list of common regex special characters in Python:</p>
 <ul>
-<li>.(dot) : any&nbsp;char</li>
-<li>\w : word char&nbsp;&#8216;A-Za-z0-9_&#8217;</li>
-<li>\d :&nbsp;digit</li>
-<li>\s : white&nbsp;space</li>
-<li>* : zero or&nbsp;more</li>
-<li>+ : one or&nbsp;more</li>
+<li>.(dot) : any char</li>
+<li>\w : word char &#8216;A-Za-z0-9_&#8217;</li>
+<li>\d : digit</li>
+<li>\s : white space</li>
+<li>* : zero or more</li>
+<li>+ : one or more</li>
 </ul>
 
 

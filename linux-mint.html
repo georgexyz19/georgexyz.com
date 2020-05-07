@@ -12,7 +12,7 @@
 <meta name="author" content="George Zhang" />
 <meta name="keywords" content="linux,linux mint" />
 <meta name="description" content="I have been using Xubuntu since version 17.10. This week I read some articles on Linux Mint and I decided to give it a try. It is not a …" />
-    <title>Setup Linux Mint on a New Computer - George Zhang</title>
+    <title>Setup Linux Mint on a New Computer - George Zhang</title>
   </head>
   <body>
     <!-- navbar -->
@@ -60,7 +60,7 @@
   <div class="row">
     <div class="col-lg-8 mx-auto">
 
-      <h2>Setup Linux Mint on a New&nbsp;Computer</h2>
+      <h2>Setup Linux Mint on a New Computer</h2>
 
       <div class="text-muted mb-2">
         <span>Posted on </span>
@@ -75,20 +75,20 @@
 
       <p>I have been using Xubuntu since version 17.10. This week I read some articles on 
 Linux Mint and I decided to give it a try. It is not a big change because Linux 
-Mint is an ubuntu based&nbsp;distro. </p>
+Mint is an ubuntu based distro. </p>
 <p>Linux Mint has a very nice user interface built on 
 Cinnamon desktop system. It definitely looks better than Xubuntu which is known 
-for its lightweight Xfce desktop&nbsp;environment. </p>
+for its lightweight Xfce desktop environment. </p>
 <p>Omg!ubuntu website has an article about 
 <a href="https://www.omgubuntu.co.uk/2019/06/linux-mint-19-wine-4-available">Wine 4.0 in Linux Mint 19</a>. 
 Linux developers backported Wine 4.0 to the Linux Mint repositories.  It becomes 
-very easy for users to install Wine 4. Here is the single command to&nbsp;install: </p>
+very easy for users to install Wine 4. Here is the single command to install: </p>
 <div class="highlight"><pre><span></span><code>$sudo apt install --install-recommends wine-installer
 </code></pre></div>
 
 
 <p>I find two issues when setting up Linux Mint. The first one is that when I run 
-<code>sudo apt upgrade</code> command after installation, the system reports an error like&nbsp;this:</p>
+<code>sudo apt upgrade</code> command after installation, the system reports an error like this:</p>
 <div class="highlight"><pre><span></span><code>Fetched 902 kB in 3s (247 kB/s)
 Preconfiguring packages ...
 dpkg: dependency problems prevent processing triggers for gconf2:
@@ -100,13 +100,14 @@ dpkg: dependency problems prevent processing triggers for gconf2:
 <p>A Google search finds 
 <a href="https://forums.linuxmint.com/viewtopic.php?t=276119">a solution</a> 
 posted on Linxu Mint forum.  Running 
-two commands below solves the&nbsp;issue. </p>
+two commands below solves the issue. </p>
 <div class="highlight"><pre><span></span><code>$sudo dpkg --configure -a
 $sudo apt-get install -f
 </code></pre></div>
 
 
-<p>The man pages of dpkg and apt-get have the following paragraphs about those two&nbsp;commands:</p>
+<p>The man pages of dpkg and apt-get have the following paragraphs about those two 
+commands:</p>
 <div class="highlight"><pre><span></span><code>dpkg
    --configure package...|-a|--pending
     Configure  a  package  which  has  been  unpacked  but  not  yet
@@ -140,13 +141,14 @@ apt-get
 
 
 <p>The other issue I encountered is that the system does not respond 
-to logitech wireless mouse and keyboard after going into suspend&nbsp;(sleep). </p>
+to logitech wireless mouse and keyboard after going into suspend (sleep). </p>
 <div style="max-width:800px">
   <img class="img-fluid pb-3" src="/images/logitech-k375s-m585.jpg" alt="keyboard mouse"> 
 </div>
 
 <p><a href="https://askubuntu.com/questions/848698/wake-up-from-suspend-using-wireless-usb-keyboard-or-mouse-for-any-linux-distro">An article</a> 
-on askubuntu.com provides a working solution.  Here are the commands to make it&nbsp;work:</p>
+on askubuntu.com provides a working solution.  Here are the commands to make it 
+work:</p>
 <div class="highlight"><pre><span></span><code>george@STK2M3:~$ grep . /sys/bus/usb/devices/*/product
 /sys/bus/usb/devices/1-3/product:USB Receiver     # PORT !!!
 /sys/bus/usb/devices/1-5/product:USB2.0 Hub
@@ -179,7 +181,7 @@ george@STK2M3:~$ sudo vim /etc/udev/rules.d/10-wakeup.rules
 
 <p>Add the contents below to the 10-wakeup.rules file.  The idVendor and idProduct 
 values are from the <code>lsusb</code> command, and the path <code>/sys/bus/...</code> is from the first 
-grep&nbsp;command.</p>
+grep command.</p>
 <div class="highlight"><pre><span></span><code>ACTION==&quot;add&quot;, SUBSYSTEM==&quot;usb&quot;, ATTRS{idVendor}==&quot;046d&quot;, ATTRS{idProduct}==&quot;c52b&quot; 
 RUN+=&quot;/bin/sh -c &#39;echo enabled &gt; /sys/bus/usb/devices/1-3/power/wakeup&#39;&quot;
 </code></pre></div>
@@ -187,7 +189,7 @@ RUN+=&quot;/bin/sh -c &#39;echo enabled &gt; /sys/bus/usb/devices/1-3/power/wake
 
 <p>After the above steps, the logitech mouse and keyboard wake up the Linxu Mint just fine. 
 I never got the sleep/wakeup function working properly in Xubuntu system. So, this is 
-a large improvement for&nbsp;me. </p>
+a large improvement for me. </p>
 
 
 

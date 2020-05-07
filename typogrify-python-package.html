@@ -1,0 +1,151 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <link rel="stylesheet" href="/theme/css/bs4min.css">
+    <link rel="shortcut icon" type="image/x-icon" href="/theme/images/favicon.ico" >
+    <link rel="icon" type="image/x-icon" href="/theme/images/favicon.ico" >
+<link rel="stylesheet" href="https://www.georgexyz.com/theme/css/friendly.css">
+<link rel="stylesheet" href="https://www.georgexyz.com/theme/css/custom.css">
+<meta name="author" content="George Zhang" />
+<meta name="keywords" content="pelican,web development" />
+<meta name="description" content="Typogrify Python package is automatically called within Pelican when the setting TYPOGRIFY is true. The typogrify function is called in Readers.read_file method of readers.py file. The function acts …" />
+    <title>Typogrify Python Package - George Zhang</title>
+  </head>
+  <body>
+    <!-- navbar -->
+    <nav class="navbar navbar-expand-md navbar-light" style="background-color: #e3f2fd;">
+      <div class="container">
+        <a class="navbar-brand" href="/">George Zhang</a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarColor01" aria-controls="navbarColor01" aria-expanded="false" aria-label="Toggle navigation">
+          <span class="navbar-toggler-icon"></span>
+        </button>
+
+        <div class="collapse navbar-collapse" id="navbarColor01">
+          <ul class="navbar-nav mr-auto">
+            <li class="nav-item">
+              <a class="nav-link " 
+                href="/articlelist.html">Articles</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link pr-3 " 
+                href="/tags.html">Tags</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link pr-3 "
+                 href="/pages/inkscape-tutorial.html">Inkscape Tutorial</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link "
+                   href="/pages/projects.html">Projects</a>
+              </li>
+          </ul>
+
+          <ul class="navbar-nav">
+            <li class="nav-item">
+              <a class="nav-link " 
+                 href="/pages/about.html">About</a>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </nav>
+
+   
+
+<div class="container">
+
+  <div class="row">
+    <div class="col-lg-8 mx-auto">
+
+      <h2>Typogrify Python Package</h2>
+
+      <div class="text-muted mb-2">
+        <span>Posted on </span>
+        <time datetime="2020-05-07 08:58:00-04:00">
+          Thursday, 05/07/2020 08:58
+        </time>
+
+        <span>with tags: </span>
+        <a href="https://www.georgexyz.com/tag/pelican.html">pelican</a>
+/        <a href="https://www.georgexyz.com/tag/web-development.html">web development</a>
+      </div>
+
+      <p>Typogrify Python package is automatically called within Pelican when the setting 
+<code>TYPOGRIFY</code> is true. The <code>typogrify</code> function is called in <code>Readers.read_file</code> 
+method of <code>readers.py</code> file. The function acts as a filter and the code looks like 
+this. </p>
+<div class="highlight"><pre><span></span><code>content, metadata = read(filename)
+if setting[&#39;TYPOGRIFY&#39;]:
+    from typogrify.filters import typogrify
+    content = typogrify(content)
+    metadata[&#39;title&#39;] = typogrify(metadata[&#39;title&#39;])
+    metadata[&#39;summary&#39;] = typogrify(metadata[&#39;summary&#39;]) 
+</code></pre></div>
+
+
+<p>The <code>typogrify</code> function calls other 5 filters in the package: <code>amp</code>, <code>smartypants</code>, <code>caps</code>, 
+<code>initial_quotes</code>, and <code>widont</code>. 
+<a href="https://github.com/mintchaos/typogrify">The documentation</a> 
+on github is clear on what <code>amp</code>, <code>caps</code>, and <code>initial_quotes</code> do. </p>
+<p>The <code>smartypants</code> filter is the most important one in <code>Typogrify</code> package. It is a 
+separate Python package, which is a port of SmartyPants 
+Perl program written by John Gruber (who is known as the inventor of the Markdown language). 
+The <code>smartypants</code> <a href="https://github.com/leohemsted/smartypants.py">documentation on github</a> 
+has information on how to use the Python package. 
+The documentation on John Gruber&#8217;s website is more clear on what the program does. </p>
+<blockquote>
+<p>SmartyPants can perform the following transformations:</p>
+<ul>
+<li>Straight quotes (<code>"</code> and<code>'</code>) into “curly” quote <span class="caps">HTML</span> entities</li>
+<li>Backticks-style quotes (<code>``</code>like this<code>''</code>) into “curly” quote <span class="caps">HTML</span> entities</li>
+<li>Dashes (&#8220;<code>--</code>&#8221; and &#8220;<code>---</code><span class="dquo">&#8220;</span>) into en- and em-dash entities</li>
+<li>Three consecutive dots (&#8220;<code>...</code><span class="dquo">&#8220;</span>) into an ellipsis entity</li>
+</ul>
+</blockquote>
+<p>The <code>widont</code> filter is also interesting. It is &#8220;based on Shaun Inman&#8217;s <span class="caps">PHP</span> utility 
+of the same name, replaces the space between the last two words in a string with 
+<code>&amp;</code><code>nbsp;</code> to avoid a final line of text with only one word&#8221;. 
+I do not need this filter for this blog site, so I write a short Pelican plugin to remove 
+the <code>widont</code> filter. Here is the code. </p>
+<div class="highlight"><pre><span></span><code>from pelican import logger
+from pelican import signals
+
+from typogrify import filters
+from typogrify.filters import process_ignores, applyfilters
+
+def init_rmwidont(sender):
+    logger.debug(&#39;Init rmwidont Plugin&#39;)
+
+def register():
+    signals.initialized.connect(init_rmwidont)
+
+    def typogrify(text, ignore_tags=None):
+        section_list = process_ignores(text, ignore_tags)
+        rendered_text = &quot;&quot;
+        for text_item, should_process in section_list:
+            if should_process:
+                rendered_text += applyfilters(text_item)
+            else:
+                rendered_text += text_item
+        ## Remove widont here 
+        return rendered_text # widont(rendered_text)
+
+    filters.typogrify = typogrify
+</code></pre></div>
+
+
+
+    </div>
+  </div>
+
+</div>
+
+   
+    <script src="https://code.jquery.com/jquery-3.4.1.slim.min.js" integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js" integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6" crossorigin="anonymous"></script>
+  </body>
+</html>

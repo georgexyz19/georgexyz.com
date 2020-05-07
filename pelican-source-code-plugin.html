@@ -12,7 +12,7 @@
 <meta name="author" content="George Zhang" />
 <meta name="keywords" content="python,pelican" />
 <meta name="description" content="Articles on this website before this one are all written in markdown format. I want to write some articles in reStructuredText (rst) format but the default docutils tool that comes …" />
-    <title>Pelican Source Code and Plugin - George Zhang</title>
+    <title>Pelican Source Code and Plugin - George Zhang</title>
   </head>
   <body>
     <!-- navbar -->
@@ -60,7 +60,7 @@
   <div class="row">
     <div class="col-lg-8 mx-auto">
 
-      <h2>Pelican Source Code and&nbsp;Plugin</h2>
+      <h2>Pelican Source Code and Plugin</h2>
 
       <div class="text-muted mb-2">
         <span>Posted on </span>
@@ -75,18 +75,18 @@
 
       <p>Articles on this website before this one are all written in markdown format. I want to
 write some articles in reStructuredText (rst) format but the default <code>docutils</code> tool
-that comes with Pelican has a flaw causing me to stay away from the rst&nbsp;format.</p>
+that comes with Pelican has a flaw causing me to stay away from the rst format.</p>
 <p>The problem is that the top title of an aritle (e.g. &#8220;Pelican Source Code and Plugin&#8221;
 on this page) is rendered as <code>h2</code> html tag, and section title (e.g. &#8220;Pelican Plugin&#8221;
 section below) starts with <code>h3</code> tag. It is designed this way since the start of the website.
 In a markdown file, I can add two <code>#</code> to specify a title as <code>h2</code>.  There is
-no easy way to specify the heading levels in rst&nbsp;files.</p>
-<p>The same problem is described in this <a class="reference external" href="https://github.com/github/markup/issues/567">question</a> on&nbsp;github.</p>
+no easy way to specify the heading levels in rst files.</p>
+<p>The same problem is described in this <a class="reference external" href="https://github.com/github/markup/issues/567">question</a> on github.</p>
 <div class="section" id="pelican-plugin">
-<h3>Pelican&nbsp;Plugin</h3>
+<h3>Pelican Plugin</h3>
 <p>When I am reading Pelican source code, I find that the Pelican class in the
 <code>__init__.py</code> file has an <code>init_plugins</code> method. This method calls each plugin&#8217;s
-register function as shown&nbsp;below.</p>
+register function as shown below.</p>
 <div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">init_plugins</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
     <span class="bp">self</span><span class="o">.</span><span class="n">plugins</span> <span class="o">=</span> <span class="p">[]</span>
     <span class="o">......</span>
@@ -96,24 +96,24 @@ register function as shown&nbsp;below.</p>
         <span class="bp">self</span><span class="o">.</span><span class="n">plugins</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">plugin</span><span class="p">)</span>
 </pre></div>
 <p>The Pelican plugin page has an existing plugin <code>headerid</code> which implements a similar
-function.  It adds anchor tags to headings in rst&nbsp;files.</p>
+function.  It adds anchor tags to headings in rst files.</p>
 </div>
 <div class="section" id="override-docutils-method">
-<h3>Override Docutils&nbsp;Method</h3>
+<h3>Override Docutils Method</h3>
 <p>Google searching class names
 in the <code>headerid</code> plugin lead me to a very nice article
 <a class="reference external" href="https://www.devdungeon.com/content/restructuredtext-rst-tutorial-0">reStructureText(<span class="caps">RST</span>) Tutorial</a>.
 This article discusses the exact same heading problem I have with the rst format and
 has code examples on how to solve it.  It becomes easy for me to modify the code in
 this article to a Pelican plugin which is very similar to <code>headerid</code>.  I name this new
-Pelican plugin <code>headinglower</code> which lowers the heading levels in rst&nbsp;files.</p>
+Pelican plugin <code>headinglower</code> which lowers the heading levels in rst files.</p>
 <div class="section" id="headinglower-code">
-<h4>Headinglower&nbsp;Code</h4>
-<p>The <code>headinglower</code> plugin has two files. The <code>__init__.py</code> file only has one line of&nbsp;code.</p>
+<h4>Headinglower Code</h4>
+<p>The <code>headinglower</code> plugin has two files. The <code>__init__.py</code> file only has one line of code.</p>
 <div class="highlight"><pre><span></span><span class="c1"># __init__.py</span>
 <span class="kn">from</span> <span class="nn">.headinglower</span> <span class="kn">import</span> <span class="o">*</span>
 </pre></div>
-<p>The <code>headinglower.py</code> file has the following&nbsp;code.</p>
+<p>The <code>headinglower.py</code> file has the following code.</p>
 <div class="highlight"><pre><span></span><span class="c1"># headinglower.py</span>
 <span class="kn">from</span> <span class="nn">pelican</span> <span class="kn">import</span> <span class="n">readers</span><span class="p">,</span> <span class="n">logger</span>
 <span class="kn">from</span> <span class="nn">pelican.readers</span> <span class="kn">import</span> <span class="n">PelicanHTMLTranslator</span>
@@ -171,26 +171,27 @@ Pelican plugin <code>headinglower</code> which lowers the heading levels in rst&
     <span class="n">readers</span><span class="o">.</span><span class="n">PelicanHTMLTranslator</span> <span class="o">=</span> <span class="n">ModPelicanHTMLTranslator</span>
 </pre></div>
 <p>The code add a method <code>visit_title</code> to the PelicanHTMLTranslator class.  It overrides a method
-defined in <code>HTMLTranslator</code> class of docutils.writers._html_base&nbsp;module.</p>
+defined in <code>HTMLTranslator</code> class of docutils.writers._html_base module.</p>
 </div>
 <div class="section" id="plugin-settings">
-<h4>Plugin&nbsp;Settings</h4>
-<p>Add the following settings to the <code>pelicanconf.py</code>. Pelican will automatically load the&nbsp;plugin.</p>
+<h4>Plugin Settings</h4>
+<p>Add the following settings to the <code>pelicanconf.py</code>. Pelican will automatically load the
+plugin.</p>
 <div class="highlight"><pre><span></span>PLUGIN_PATHS = [&#39;plugin/&#39;, ]
 PLUGINS=[&#39;headinglower&#39;,]
 </pre></div>
 </div>
 </div>
 <div class="section" id="better-way">
-<h3>Better&nbsp;Way</h3>
+<h3>Better Way</h3>
 <p>The above method works well and solves my problem.  But there is a better and easier
 way to solve the exact problem.  Pelican has over 100 settings, and one
-of them is <code>DOCUTILS_SETTINGS</code>.  It is described on the <a class="reference external" href="https://docs.getpelican.com/en/stable/settings.html">documentation</a> page&nbsp;as:</p>
+of them is <code>DOCUTILS_SETTINGS</code>.  It is described on the <a class="reference external" href="https://docs.getpelican.com/en/stable/settings.html">documentation</a> page as:</p>
 <blockquote>
 Extra configuration settings for the docutils publisher (applicable only to
 reStructuredText). See Docutils Configuration settings for more details.</blockquote>
 <p>The <code>RstReader</code> class in <code>readers.py</code> file of Pelican source code has a method
-<code>_get_publisher</code>. It has the following lines of&nbsp;code.</p>
+<code>_get_publisher</code>. It has the following lines of code.</p>
 <div class="highlight"><pre><span></span><span class="n">extra_params</span> <span class="o">=</span> <span class="p">{</span><span class="s1">&#39;initial_header_level&#39;</span><span class="p">:</span> <span class="s1">&#39;2&#39;</span><span class="p">,</span>
                     <span class="s1">&#39;syntax_highlight&#39;</span><span class="p">:</span> <span class="s1">&#39;short&#39;</span><span class="p">,</span>
                     <span class="s1">&#39;input_encoding&#39;</span><span class="p">:</span> <span class="s1">&#39;utf-8&#39;</span><span class="p">,</span>
@@ -208,14 +209,14 @@ reStructuredText). See Docutils Configuration settings for more details.</blockq
 Add the following settings in the <code>pelicanconf.py</code>, the first section title heading will
 become <code>h3</code>.  Note the article title heading level <code>h2</code> is actually set in the
 <code>article.html</code> template file. I also comment out the two plugin settings
-shown in the previous&nbsp;section.</p>
+shown in the previous section.</p>
 <div class="highlight"><pre><span></span>DOCUTILS_SETTINGS = {&#39;initial_header_level&#39;: &#39;3&#39;, }
 </pre></div>
 </div>
 <div class="section" id="rst-file-of-this-article">
-<h3>Rst File of This&nbsp;Article</h3>
+<h3>Rst File of This Article</h3>
 <p>The rst file of this article is available on github. <a class="reference external" href="https://github.com/georgexyz19/georgexyz.com/blob/master/content/posts/pelican-source-code-plugin.rst">Click here</a> to read the source file and click
-&#8220;Raw&#8221; button to see the text&nbsp;file.</p>
+&#8220;Raw&#8221; button to see the text file.</p>
 </div>
 
 

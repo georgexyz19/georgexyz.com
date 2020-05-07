@@ -12,7 +12,7 @@
 <meta name="author" content="George Zhang" />
 <meta name="keywords" content="web development,pelican" />
 <meta name="description" content="The Pelican source code has a related_posts attribute defined in the Generator class. The variable is initialized as a blank list and is not used in the program. I do …" />
-    <title>Pelican Related Posts and Translation - George Zhang</title>
+    <title>Pelican Related Posts and Translation - George Zhang</title>
   </head>
   <body>
     <!-- navbar -->
@@ -60,7 +60,7 @@
   <div class="row">
     <div class="col-lg-8 mx-auto">
 
-      <h2>Pelican Related Posts and&nbsp;Translation</h2>
+      <h2>Pelican Related Posts and Translation</h2>
 
       <div class="text-muted mb-2">
         <span>Posted on </span>
@@ -77,10 +77,10 @@
 is initialized as a blank list and is not used in the program. I do a Google search and find 
 a plugin called <code>related_posts</code> in the pelican plugin repo. The <code>related_posts</code> plugin has a 
 <a href="https://github.com/getpelican/pelican-plugins/tree/master/related_posts">one page documentation</a>.</p>
-<h3>Related Posts&nbsp;Plugin</h3>
+<h3>Related Posts Plugin</h3>
 <p>Related posts could be a useful function for a blog site like this.  When I start a new blog post, 
 it is often related to a previous post.  It&#8217;s logical to add links to previous related posts 
-either on a sidebar or at the bottom of the new article. Here are the steps to setup the&nbsp;plugin. </p>
+either on a sidebar or at the bottom of the new article. Here are the steps to setup the plugin. </p>
 <ul>
 <li>Create a sub-directory <code>plugin</code> in the project directory. Copy the <code>related_posts</code> directory
   to the <code>plugin</code>. It includes three files <code>__init__.py</code>, <code>related_posts.py</code>, and <code>Readme.rst</code>. </li>
@@ -119,7 +119,7 @@ PLUGINS=[&#39;related_posts&#39;,]
 </div>
 
 <ul>
-<li>Add a meta field to the post. The contents of the field are slugs of previous&nbsp;posts. </li>
+<li>Add a meta field to the post. The contents of the field are slugs of previous posts. </li>
 </ul>
 <div class="ml-5">
 
@@ -133,11 +133,11 @@ PLUGINS=[&#39;related_posts&#39;,]
 if the post includes a meta field <code>related_posts</code>. </p>
 <h3>Translation</h3>
 <p>This site does not have any translated articles. But I find it is not difficult to 
-translate articles to other languages with Pelican after reading the source&nbsp;code. </p>
+translate articles to other languages with Pelican after reading the source code. </p>
 <p>You can set a meta field such as <code>lang: es</code> for a translated article.  The article should 
 have the same slug as the original one. Then, you can add the following html snippet on 
 the <code>artilce.html</code> template. The page will have a link to the translated 
-article in another&nbsp;language. </p>
+article in another language. </p>
 <div class="highlight"><pre><span></span><code>{% if article.translations %}
   &lt;hr&gt;
   {% for art in article.translations %}
@@ -155,10 +155,10 @@ article in another&nbsp;language. </p>
       <div class="mt-5 border-top">
         <h3>Related Posts:</h3>
         <ul>
-          <li><a href="https://www.georgexyz.com/print-source-code-paper.html">Print Python Source Code on&nbsp;Paper</a></li>
-          <li><a href="https://www.georgexyz.com/pelican-source-code-plugin.html">Pelican Source Code and&nbsp;Plugin</a></li>
-          <li><a href="https://www.georgexyz.com/new-theme-2020.html">New Pelican&nbsp;Theme</a></li>
-          <li><a href="https://www.georgexyz.com/pelican-boostrap-website.html">Create Static Website With Pelican And&nbsp;Bootstrap</a></li>
+          <li><a href="https://www.georgexyz.com/print-source-code-paper.html">Print Python Source Code on Paper</a></li>
+          <li><a href="https://www.georgexyz.com/pelican-source-code-plugin.html">Pelican Source Code and Plugin</a></li>
+          <li><a href="https://www.georgexyz.com/new-theme-2020.html">New Pelican Theme</a></li>
+          <li><a href="https://www.georgexyz.com/pelican-boostrap-website.html">Create Static Website With Pelican And Bootstrap</a></li>
         </ul>
       </div>
 

@@ -12,7 +12,7 @@
 <meta name="author" content="George Zhang" />
 <meta name="keywords" content="python,pelican,software utility" />
 <meta name="description" content="I am reading Pelican source code. Sometimes I do not have a computer nearby, and I want to print out the source code on paper. The current release of Pelican …" />
-    <title>Print Python Source Code on Paper - George Zhang</title>
+    <title>Print Python Source Code on Paper - George Zhang</title>
   </head>
   <body>
     <!-- navbar -->
@@ -60,7 +60,7 @@
   <div class="row">
     <div class="col-lg-8 mx-auto">
 
-      <h2>Print Python Source Code on&nbsp;Paper</h2>
+      <h2>Print Python Source Code on Paper</h2>
 
       <div class="text-muted mb-2">
         <span>Posted on </span>
@@ -81,7 +81,7 @@ source code is <a class="reference external" href="https://github.com/getpelican
 command to have a basic idea of the code base. The number of lines of Pelican 4.2 code is
 5,762.  The file
 <code>generators.py</code> is the longest with 937 lines. The main code base has
-15 python&nbsp;files.</p>
+15 python files.</p>
 <div class="highlight"><pre><span></span>$ git clone https://github.com/getpelican/pelican.git
 $ git checkout 4.2.0 ## code is on master branch by default
 $ cd pelican
@@ -107,12 +107,12 @@ $ find . -maxdepth 1 -name &#39;*.py&#39; -exec wc -l &#39;{}&#39; + | sort -n
 <p>A Google search finds this article <a class="reference external" href="https://medium.com/&#64;tashian/print-out-your-code-on-paper-7c760a376bca">Print Out Your Code On Paper</a> on medium.com. The
 author made some good points in the article. It also introduces
 a piece of Unix/Linux command line software called <code>enscript</code>, which can covert
-text code to postscript file. A typical command looks like&nbsp;this,</p>
+text code to postscript file. A typical command looks like this,</p>
 <div class="highlight"><pre><span></span>enscript -1rG --line-numbers -p out.ps --highlight=python \
     -c inputfile.py
 </pre></div>
 <p>A furthur Google search finds <a class="reference external" href="http://manpages.ubuntu.com/manpages/precise/en/man1/enscript.1.html">an online man page</a> for <code>enscript</code>. The page has
-detailed infomation regarding the software options and configuration&nbsp;files.</p>
+detailed infomation regarding the software options and configuration files.</p>
 <p>The default fancy header configuration file <code>enscript.hdr</code> is stored in the directory
 <code>/usr/share/enscript/</code>. I want to change the date and time on the left corner to
 current date/time. Also I want to change the page number on the right corner to &#8220;number
@@ -125,7 +125,7 @@ the modified file to the directory. I only change three lines of code in
 %Format: pagenumstr $p
 </pre></div>
 <p>After that, I write a short python script to call the <code>enscript</code> command. The
-python code is shown&nbsp;below.</p>
+python code is shown below.</p>
 <div class="highlight"><pre><span></span><span class="ch">#! python3</span>
 <span class="c1">#</span>
 <span class="c1"># sudo cp enscript_mod.hdr /usr/share/enscript/</span>
@@ -194,7 +194,7 @@ python code is shown&nbsp;below.</p>
     <span class="n">main</span><span class="p">()</span>
 </pre></div>
 <p>After those steps. the final pdf file (<span class="caps">277KB</span>) of Pelican 4.2 source code can be downloaded <a class="reference external" href="/files/pelican_code_print.pdf">here</a>.
-If you print it out, it will be 103 pages on letter size&nbsp;paper.</p>
+If you print it out, it will be 103 pages on letter size paper.</p>
 
 
 
