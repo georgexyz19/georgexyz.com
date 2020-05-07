@@ -69,12 +69,15 @@ This page has a collection of web links that I visit often.
 
 [Javascript Moment (Momentjs) Date and Time Display Library](https://momentjs.com/)
 
+[Tipue Search Tool](https://tipue.com/search/)
+
 
 ### HTML and CSS
 
 [Front End Web Framework Bootstrap](https://getbootstrap.com/)
 
 [HTML & CSS Is Hard - Web Book](https://www.internetingishard.com/html-and-css/)
+
 
 ### Pelican Static Site Generator
 
@@ -87,6 +90,7 @@ This page has a collection of web links that I visit often.
 [Pelican Resource Links on Full Stack Python](https://www.fullstackpython.com/pelican.html)
 
 [Python Markdown Documentation](https://python-markdown.github.io/)
+
 
 ### Markdown and RST Reference
 
@@ -113,6 +117,8 @@ This page has a collection of web links that I visit often.
 ### Date and Time
 
 [For a Good Strftime](https://www.foragoodstrftime.com/)
+
+[Python datetime Module in PyMOTW-3](https://pymotw.com/3/datetime/) 
 
 ### Others
 
