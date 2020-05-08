@@ -1,5 +1,96 @@
 <?xml version="1.0" encoding="utf-8"?>
-<feed xmlns="http://www.w3.org/2005/Atom"><title>George Zhang</title><link href="https://www.georgexyz.com/" rel="alternate"></link><link href="https://www.georgexyz.com/feeds/all.atom.xml" rel="self"></link><id>https://www.georgexyz.com/</id><updated>2020-05-07T08:58:00-04:00</updated><entry><title>Typogrify Python Package</title><link href="https://www.georgexyz.com/typogrify-python-package.html" rel="alternate"></link><published>2020-05-07T08:58:00-04:00</published><updated>2020-05-07T08:58:00-04:00</updated><author><name>George Zhang</name></author><id>tag:www.georgexyz.com,2020-05-07:/typogrify-python-package.html</id><summary type="html">&lt;p&gt;Typogrify Python package is automatically called within Pelican when the setting 
+<feed xmlns="http://www.w3.org/2005/Atom"><title>George Zhang</title><link href="https://www.georgexyz.com/" rel="alternate"></link><link href="https://www.georgexyz.com/feeds/all.atom.xml" rel="self"></link><id>https://www.georgexyz.com/</id><updated>2020-05-08T09:49:00-04:00</updated><entry><title>Pelican Cache Module</title><link href="https://www.georgexyz.com/pelican-cache-module.html" rel="alternate"></link><published>2020-05-08T09:49:00-04:00</published><updated>2020-05-08T09:49:00-04:00</updated><author><name>George Zhang</name></author><id>tag:www.georgexyz.com,2020-05-08:/pelican-cache-module.html</id><summary type="html">&lt;p&gt;Pelican cache module (&lt;a href="https://github.com/getpelican/pelican/blob/4.2.0/pelican/cache.py"&gt;cache.py&lt;/a&gt;) 
+is relatively independent of other modules. It uses pickle module 
+to serialize data and logger module to output debug and warning message. The module 
+defines …&lt;/p&gt;</summary><content type="html">&lt;p&gt;Pelican cache module (&lt;a href="https://github.com/getpelican/pelican/blob/4.2.0/pelican/cache.py"&gt;cache.py&lt;/a&gt;) 
+is relatively independent of other modules. It uses pickle module 
+to serialize data and logger module to output debug and warning message. The module 
+defines two classes &lt;code&gt;FileDataCacher&lt;/code&gt; and &lt;code&gt;FileStampDataCacher&lt;/code&gt;, and the &lt;code&gt;FileStampDataCacher&lt;/code&gt; class 
+adds file stamp to serialized data. File stamp could be modified time or a hash value of file content. 
+Both classes have four methods &lt;code&gt;__init__&lt;/code&gt;, &lt;code&gt;get_cached_data&lt;/code&gt;, &lt;code&gt;cache_data&lt;/code&gt;, and &lt;code&gt;save_cache&lt;/code&gt;. 
+The concept code below shows how they work. &lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;content = get_cached_data(path)
+if content is None:
+    content = read(path)
+    cache_data(path, content)
+    save_cache()
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;p&gt;The Pelican documentation has a section 
+&amp;#8220;&lt;a href="https://docs.getpelican.com/en/stable/settings.html?highlight=cache#reading-only-modified-content"&gt;Reading only modified content&lt;/a&gt;&amp;#8221; 
+on how to use caching. You should at least set those two setting values to &lt;code&gt;True&lt;/code&gt; to 
+turn on caching. &lt;/p&gt;
+&lt;dl&gt;
+&lt;dt&gt;CACHE_CONTENT&lt;/dt&gt;
+&lt;dd&gt;True to save cache; default is False.&lt;/dd&gt;
+&lt;dt&gt;LOAD_CONTENT_CACHE&lt;/dt&gt;
+&lt;dd&gt;True to load cache; default is False.&lt;/dd&gt;
+&lt;/dl&gt;
+&lt;p&gt;Other cache related settings are list below. &lt;/p&gt;
+&lt;dl&gt;
+&lt;dt&gt;CACHE_PATH&lt;/dt&gt;
+&lt;dd&gt;default is &lt;code&gt;cache&lt;/code&gt;; caching files are saved in this directory.&lt;/dd&gt;
+&lt;dt&gt;CONTENT_CACHING_LAYER&lt;/dt&gt;
+&lt;dd&gt;&lt;code&gt;Readers&lt;/code&gt; and &lt;code&gt;CachingGenerators&lt;/code&gt; classes are derived from &lt;code&gt;FileStampDataCacher&lt;/code&gt;. You can 
+set the value to &amp;#8216;reader&amp;#8217; or &amp;#8216;generator&amp;#8217;; default value is &lt;code&gt;reader&lt;/code&gt;. &lt;/dd&gt;
+&lt;dt&gt;GZIP_CACHE&lt;/dt&gt;
+&lt;dd&gt;use &lt;span class="caps"&gt;GZIP&lt;/span&gt; package to compress caching file; default is True. &lt;/dd&gt;
+&lt;dt&gt;CHECK_MODIFIED_METHOD&lt;/dt&gt;
+&lt;dd&gt;method to check if a file is modified sincing last caching; default is &lt;code&gt;mtime&lt;/code&gt;.  The 
+value can be a method name in &lt;code&gt;hashlib&lt;/code&gt; module such as &lt;code&gt;md5&lt;/code&gt; or &lt;code&gt;sha256&lt;/code&gt;. &lt;/dd&gt;
+&lt;/dl&gt;
+&lt;p&gt;The initialization method of both classes has four arguments. Unfortunately those 
+arguments do not have default values, which make them difficult to use in other 
+python projects. These 4 arguments are listed below.  It seems that only &lt;code&gt;cache_path&lt;/code&gt; 
+argument is mandatory. &lt;/p&gt;
+&lt;!-- use definition list, add css for dl in custom.css --&gt;
+
+&lt;dl&gt;
+&lt;dt&gt;settings&lt;/dt&gt;
+&lt;dd&gt;a dict of settings, a few keys &lt;code&gt;CACHE_PATH&lt;/code&gt;, &lt;code&gt;GZIP_CACHE&lt;/code&gt;, and &lt;code&gt;CHECK_MODIFIED_METHOD&lt;/code&gt; are required for the class. &lt;/dd&gt;
+&lt;dt&gt;cache_path&lt;/dt&gt;
+&lt;dd&gt;the file name to cache.&lt;/dd&gt;
+&lt;dt&gt;caching_policy&lt;/dt&gt;
+&lt;dd&gt;bool value to decide saving cache. &lt;/dd&gt;
+&lt;dt&gt;load_policy&lt;/dt&gt;
+&lt;dd&gt;bool value to decide loading cache. &lt;/dd&gt;
+&lt;/dl&gt;
+&lt;p&gt;You can derive a class from &lt;code&gt;FileStampDataCacher&lt;/code&gt; and add default values for three 
+arguments of &lt;code&gt;__init__&lt;/code&gt; method. &lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;&lt;span class="kn"&gt;from&lt;/span&gt; &lt;span class="nn"&gt;pelican.cache&lt;/span&gt; &lt;span class="kn"&gt;import&lt;/span&gt; &lt;span class="n"&gt;FileStampDataCacher&lt;/span&gt;
+
+&lt;span class="k"&gt;class&lt;/span&gt; &lt;span class="nc"&gt;FileCacher&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;FileStampDataCacher&lt;/span&gt;&lt;span class="p"&gt;):&lt;/span&gt;
+    &lt;span class="k"&gt;def&lt;/span&gt; &lt;span class="fm"&gt;__init__&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="bp"&gt;self&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;cache_name&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;settings&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="p"&gt;{&lt;/span&gt;
+                    &lt;span class="s1"&gt;&amp;#39;CACHE_PATH&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt; &lt;span class="s1"&gt;&amp;#39;cache&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; 
+                    &lt;span class="s1"&gt;&amp;#39;GZIP_CACHE&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt; &lt;span class="kc"&gt;True&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;
+                    &lt;span class="s1"&gt;&amp;#39;CHECK_MODIFIED_METHOD&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt; &lt;span class="s1"&gt;&amp;#39;mtime&amp;#39;&lt;/span&gt; 
+                    &lt;span class="c1"&gt;# or sha256, sha512 &lt;/span&gt;
+                &lt;span class="p"&gt;},&lt;/span&gt; &lt;span class="n"&gt;caching_policy&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="kc"&gt;True&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;load_policy&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="kc"&gt;True&lt;/span&gt;&lt;span class="p"&gt;):&lt;/span&gt;
+        &lt;span class="nb"&gt;super&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;FileCacher&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="bp"&gt;self&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="fm"&gt;__init__&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;
+            &lt;span class="n"&gt;settings&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;cache_name&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;caching_policy&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;load_policy&lt;/span&gt;
+        &lt;span class="p"&gt;)&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;p&gt;Here is an exmple to test the derived class. &lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;&lt;span class="k"&gt;if&lt;/span&gt; &lt;span class="vm"&gt;__name__&lt;/span&gt; &lt;span class="o"&gt;==&lt;/span&gt; &lt;span class="s1"&gt;&amp;#39;__main__&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt;
+
+    &lt;span class="n"&gt;cacher&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="n"&gt;FileCacher&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="s1"&gt;&amp;#39;cache_file&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt; &lt;span class="c1"&gt;# filename of cache&lt;/span&gt;
+    &lt;span class="n"&gt;content&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="n"&gt;cacher&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;get_cached_data&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="s1"&gt;&amp;#39;./pelican_help.txt&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
+    &lt;span class="nb"&gt;print&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="sa"&gt;f&lt;/span&gt;&lt;span class="s1"&gt;&amp;#39;content is &lt;/span&gt;&lt;span class="si"&gt;{&lt;/span&gt;&lt;span class="n"&gt;content&lt;/span&gt;&lt;span class="si"&gt;}&lt;/span&gt;&lt;span class="s1"&gt;&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
+    &lt;span class="k"&gt;if&lt;/span&gt; &lt;span class="n"&gt;content&lt;/span&gt; &lt;span class="ow"&gt;is&lt;/span&gt; &lt;span class="kc"&gt;None&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt;
+        &lt;span class="k"&gt;with&lt;/span&gt; &lt;span class="nb"&gt;open&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="s1"&gt;&amp;#39;./pelican_help.txt&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="s1"&gt;&amp;#39;r&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt; &lt;span class="k"&gt;as&lt;/span&gt; &lt;span class="n"&gt;f&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt;
+            &lt;span class="n"&gt;content&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="n"&gt;f&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;read&lt;/span&gt;&lt;span class="p"&gt;()&lt;/span&gt;
+        &lt;span class="n"&gt;cacher&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;cache_data&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="s1"&gt;&amp;#39;./pelican_help.txt&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;content&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
+        &lt;span class="n"&gt;cacher&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;save_cache&lt;/span&gt;&lt;span class="p"&gt;()&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;p&gt;The Pelican documentation cautions the use of cache module. The &lt;code&gt;cache.py&lt;/code&gt; file 
+in Pelican 4.2.0 has not been modified since 2015. It may be useful 
+when a website has thousands of pages.  I personally do not have a use case 
+for the cache module yet. &lt;/p&gt;</content><category term="posts"></category><category term="pelican"></category><category term="python"></category></entry><entry><title>Typogrify Python Package</title><link href="https://www.georgexyz.com/typogrify-python-package.html" rel="alternate"></link><published>2020-05-07T08:58:00-04:00</published><updated>2020-05-07T08:58:00-04:00</updated><author><name>George Zhang</name></author><id>tag:www.georgexyz.com,2020-05-07:/typogrify-python-package.html</id><summary type="html">&lt;p&gt;Typogrify Python package is automatically called within Pelican when the setting 
 &lt;code&gt;TYPOGRIFY&lt;/code&gt; is true. The &lt;code&gt;typogrify&lt;/code&gt; function is called in &lt;code&gt;Readers.read_file&lt;/code&gt; 
 method of &lt;code&gt;readers.py&lt;/code&gt; file. The function acts …&lt;/p&gt;</summary><content type="html">&lt;p&gt;Typogrify Python package is automatically called within Pelican when the setting 
 &lt;code&gt;TYPOGRIFY&lt;/code&gt; is true. The &lt;code&gt;typogrify&lt;/code&gt; function is called in &lt;code&gt;Readers.read_file&lt;/code&gt; 

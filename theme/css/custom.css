@@ -79,3 +79,33 @@ body {
     margin-top: 500px;
     
 }
+
+
+dl {
+  margin-left: 1.5rem;
+  list-style-position: outside;
+}
+
+dd {
+    display: inline;
+}
+
+dd:after {
+    display: block;
+    content: ''; 
+    margin-bottom: 0.25rem;
+}
+
+dt {
+  font-family: SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace;
+  font-size: 1em;
+  font-size: 88%;
+  color: #15228a;
+  word-wrap: break-word;
+  display: inline;
+  font-weight: normal;
+}
+
+dt:after {
+    content: ':';
+}
