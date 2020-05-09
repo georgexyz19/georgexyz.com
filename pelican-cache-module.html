@@ -76,9 +76,10 @@
       <p>Pelican cache module (<a href="https://github.com/getpelican/pelican/blob/4.2.0/pelican/cache.py">cache.py</a>) 
 is relatively independent of other modules. It uses pickle module 
 to serialize data and logger module to output debug and warning message. The module 
-defines two classes <code>FileDataCacher</code> and <code>FileStampDataCacher</code>, and the <code>FileStampDataCacher</code> class 
+defines two classes <code>FileDataCacher</code> and <code>FileStampDataCacher</code>. The <code>FileStampDataCacher</code> class derives from 
+<code>FileDataCacher</code> class and
 adds file stamp to serialized data. File stamp could be modified time or a hash value of file content. 
-Both classes have four methods <code>__init__</code>, <code>get_cached_data</code>, <code>cache_data</code>, and <code>save_cache</code>. 
+The classes have four methods <code>__init__</code>, <code>get_cached_data</code>, <code>cache_data</code>, and <code>save_cache</code>. 
 The concept code below shows how they work. </p>
 <div class="highlight"><pre><span></span><code>content = get_cached_data(path)
 if content is None:
@@ -98,7 +99,7 @@ turn on caching. </p>
 <dt>LOAD_CONTENT_CACHE</dt>
 <dd>True to load cache; default is False.</dd>
 </dl>
-<p>Other cache related settings are list below. </p>
+<p>Other cache related settings are listed below. </p>
 <dl>
 <dt>CACHE_PATH</dt>
 <dd>default is <code>cache</code>; caching files are saved in this directory.</dd>

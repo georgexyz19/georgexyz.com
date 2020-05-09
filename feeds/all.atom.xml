@@ -5,9 +5,10 @@ to serialize data and logger module to output debug and warning message. The mod
 defines …&lt;/p&gt;</summary><content type="html">&lt;p&gt;Pelican cache module (&lt;a href="https://github.com/getpelican/pelican/blob/4.2.0/pelican/cache.py"&gt;cache.py&lt;/a&gt;) 
 is relatively independent of other modules. It uses pickle module 
 to serialize data and logger module to output debug and warning message. The module 
-defines two classes &lt;code&gt;FileDataCacher&lt;/code&gt; and &lt;code&gt;FileStampDataCacher&lt;/code&gt;, and the &lt;code&gt;FileStampDataCacher&lt;/code&gt; class 
+defines two classes &lt;code&gt;FileDataCacher&lt;/code&gt; and &lt;code&gt;FileStampDataCacher&lt;/code&gt;. The &lt;code&gt;FileStampDataCacher&lt;/code&gt; class derives from 
+&lt;code&gt;FileDataCacher&lt;/code&gt; class and
 adds file stamp to serialized data. File stamp could be modified time or a hash value of file content. 
-Both classes have four methods &lt;code&gt;__init__&lt;/code&gt;, &lt;code&gt;get_cached_data&lt;/code&gt;, &lt;code&gt;cache_data&lt;/code&gt;, and &lt;code&gt;save_cache&lt;/code&gt;. 
+The classes have four methods &lt;code&gt;__init__&lt;/code&gt;, &lt;code&gt;get_cached_data&lt;/code&gt;, &lt;code&gt;cache_data&lt;/code&gt;, and &lt;code&gt;save_cache&lt;/code&gt;. 
 The concept code below shows how they work. &lt;/p&gt;
 &lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;content = get_cached_data(path)
 if content is None:
@@ -27,7 +28,7 @@ turn on caching. &lt;/p&gt;
 &lt;dt&gt;LOAD_CONTENT_CACHE&lt;/dt&gt;
 &lt;dd&gt;True to load cache; default is False.&lt;/dd&gt;
 &lt;/dl&gt;
-&lt;p&gt;Other cache related settings are list below. &lt;/p&gt;
+&lt;p&gt;Other cache related settings are listed below. &lt;/p&gt;
 &lt;dl&gt;
 &lt;dt&gt;CACHE_PATH&lt;/dt&gt;
 &lt;dd&gt;default is &lt;code&gt;cache&lt;/code&gt;; caching files are saved in this directory.&lt;/dd&gt;
