@@ -10,9 +10,10 @@ no: 44
 Pelican cache module ([cache.py](https://github.com/getpelican/pelican/blob/4.2.0/pelican/cache.py)) 
 is relatively independent of other modules. It uses pickle module 
 to serialize data and logger module to output debug and warning message. The module 
-defines two classes `FileDataCacher` and `FileStampDataCacher`, and the `FileStampDataCacher` class 
+defines two classes `FileDataCacher` and `FileStampDataCacher`. The `FileStampDataCacher` class derives from 
+`FileDataCacher` class and
 adds file stamp to serialized data. File stamp could be modified time or a hash value of file content. 
-Both classes have four methods `__init__`, `get_cached_data`, `cache_data`, and `save_cache`. 
+The classes have four methods `__init__`, `get_cached_data`, `cache_data`, and `save_cache`. 
 The concept code below shows how they work. 
 
 ```
@@ -34,7 +35,7 @@ CACHE_CONTENT
  LOAD_CONTENT_CACHE
 : True to load cache; default is False.
 
-Other cache related settings are list below. 
+Other cache related settings are listed below. 
 
 CACHE_PATH
 : default is `cache`; caching files are saved in this directory.
