@@ -34,8 +34,8 @@ The documentation on John Gruber's website is more clear on what the program doe
 
 > SmartyPants can perform the following transformations:
 > 
-> - Straight quotes (<code>"</code> and<code>'</code>) into “curly” quote HTML entities
-> - Backticks-style quotes (<code>``</code>like this<code>''</code>) into “curly” quote HTML entities
+> - Straight quotes (<code>"</code> and<code>'</code>) into "curly" quote HTML entities
+> - Backticks-style quotes (<code>``</code>like this<code>''</code>) into "curly" quote HTML entities
 > - Dashes ("<code>--</code>" and "<code>---</code>") into en- and em-dash entities
 > - Three consecutive dots ("<code>...</code>") into an ellipsis entity
 
