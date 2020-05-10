@@ -1,5 +1,22 @@
 <?xml version="1.0" encoding="utf-8"?>
-<feed xmlns="http://www.w3.org/2005/Atom"><title>George Zhang</title><link href="https://www.georgexyz.com/" rel="alternate"></link><link href="https://www.georgexyz.com/feeds/all.atom.xml" rel="self"></link><id>https://www.georgexyz.com/</id><updated>2020-05-08T09:49:00-04:00</updated><entry><title>Pelican Cache Module</title><link href="https://www.georgexyz.com/pelican-cache-module.html" rel="alternate"></link><published>2020-05-08T09:49:00-04:00</published><updated>2020-05-08T09:49:00-04:00</updated><author><name>George Zhang</name></author><id>tag:www.georgexyz.com,2020-05-08:/pelican-cache-module.html</id><summary type="html">&lt;p&gt;Pelican cache module (&lt;a href="https://github.com/getpelican/pelican/blob/4.2.0/pelican/cache.py"&gt;cache.py&lt;/a&gt;) 
+<feed xmlns="http://www.w3.org/2005/Atom"><title>George Zhang</title><link href="https://www.georgexyz.com/" rel="alternate"></link><link href="https://www.georgexyz.com/feeds/all.atom.xml" rel="self"></link><id>https://www.georgexyz.com/</id><updated>2020-05-10T10:54:00-04:00</updated><entry><title>GIMP Tips</title><link href="https://www.georgexyz.com/gimp-tips.html" rel="alternate"></link><published>2020-05-10T10:54:00-04:00</published><updated>2020-05-10T10:54:00-04:00</updated><author><name>George Zhang</name></author><id>tag:www.georgexyz.com,2020-05-10:/gimp-tips.html</id><summary type="html">&lt;p&gt;&lt;span class="caps"&gt;GIMP&lt;/span&gt; is a free and open source image manipulation software. I only use a small subset of functions 
+of the software.  Here are some tips I keep a record for …&lt;/p&gt;</summary><content type="html">&lt;p&gt;&lt;span class="caps"&gt;GIMP&lt;/span&gt; is a free and open source image manipulation software. I only use a small subset of functions 
+of the software.  Here are some tips I keep a record for myself. &lt;/p&gt;
+&lt;h3&gt;Move Pixels In An Area&lt;/h3&gt;
+&lt;p&gt;&lt;code&gt;Ctrl + Alt + Move Selection&lt;/code&gt; is the shortcut to move selected area of an image.  &lt;span class="caps"&gt;GIMP&lt;/span&gt; adds a 
+&amp;#8220;Floating selection&amp;#8221; temporary layer in the layer dialog.  After you make the change, click the 
+mouse in another area to confirm the move. The temporary layer merges onto the main layer. &lt;/p&gt;
+&lt;h3&gt;Add White Background After Deleting An Area&lt;/h3&gt;
+&lt;p&gt;Sometimes &lt;span class="caps"&gt;GIMP&lt;/span&gt; leaves a hole on an image when you delete the pixels in an area. Choose menu 
+item &lt;code&gt;Layer&lt;/code&gt; &amp;gt; &lt;code&gt;Transparency&lt;/code&gt; &amp;gt; &lt;code&gt;Remove Alpha Channel&lt;/code&gt; and the area will show white background.&lt;/p&gt;
+&lt;h3&gt;Remove Background Grey Hue&lt;/h3&gt;
+&lt;p&gt;Some scanned image file has a grey hue on the background. The &lt;code&gt;Colors&lt;/code&gt; &amp;gt; &lt;code&gt;Curves&lt;/code&gt; tool can be 
+used to remove the background. &lt;/p&gt;
+&lt;div style="max-width:400px"&gt;
+  &lt;img class="img-fluid pb-3" src="/images/gimp/gimp-curve-r.png" alt="gimp curve"&gt; 
+&lt;/div&gt;
+
+&lt;p class="text-muted"&gt;This article will be continuously updated (last update: 5/10/2020). &lt;p&gt;</content><category term="posts"></category><category term="software utility"></category></entry><entry><title>Pelican Cache Module</title><link href="https://www.georgexyz.com/pelican-cache-module.html" rel="alternate"></link><published>2020-05-08T09:49:00-04:00</published><updated>2020-05-08T09:49:00-04:00</updated><author><name>George Zhang</name></author><id>tag:www.georgexyz.com,2020-05-08:/pelican-cache-module.html</id><summary type="html">&lt;p&gt;Pelican cache module (&lt;a href="https://github.com/getpelican/pelican/blob/4.2.0/pelican/cache.py"&gt;cache.py&lt;/a&gt;) 
 is relatively independent of other modules. It uses pickle module 
 to serialize data and logger module to output debug and warning message. The module 
 defines …&lt;/p&gt;</summary><content type="html">&lt;p&gt;Pelican cache module (&lt;a href="https://github.com/getpelican/pelican/blob/4.2.0/pelican/cache.py"&gt;cache.py&lt;/a&gt;) 
@@ -119,8 +136,8 @@ The documentation on John Gruber&amp;#8217;s website is more clear on what the p
 &lt;blockquote&gt;
 &lt;p&gt;SmartyPants can perform the following transformations:&lt;/p&gt;
 &lt;ul&gt;
-&lt;li&gt;Straight quotes (&lt;code&gt;"&lt;/code&gt; and&lt;code&gt;'&lt;/code&gt;) into “curly” quote &lt;span class="caps"&gt;HTML&lt;/span&gt; entities&lt;/li&gt;
-&lt;li&gt;Backticks-style quotes (&lt;code&gt;``&lt;/code&gt;like this&lt;code&gt;''&lt;/code&gt;) into “curly” quote &lt;span class="caps"&gt;HTML&lt;/span&gt; entities&lt;/li&gt;
+&lt;li&gt;Straight quotes (&lt;code&gt;"&lt;/code&gt; and&lt;code&gt;'&lt;/code&gt;) into &amp;#8220;curly&amp;#8221; quote &lt;span class="caps"&gt;HTML&lt;/span&gt; entities&lt;/li&gt;
+&lt;li&gt;Backticks-style quotes (&lt;code&gt;``&lt;/code&gt;like this&lt;code&gt;''&lt;/code&gt;) into &amp;#8220;curly&amp;#8221; quote &lt;span class="caps"&gt;HTML&lt;/span&gt; entities&lt;/li&gt;
 &lt;li&gt;Dashes (&amp;#8220;&lt;code&gt;--&lt;/code&gt;&amp;#8221; and &amp;#8220;&lt;code&gt;---&lt;/code&gt;&lt;span class="dquo"&gt;&amp;#8220;&lt;/span&gt;) into en- and em-dash entities&lt;/li&gt;
 &lt;li&gt;Three consecutive dots (&amp;#8220;&lt;code&gt;...&lt;/code&gt;&lt;span class="dquo"&gt;&amp;#8220;&lt;/span&gt;) into an ellipsis entity&lt;/li&gt;
 &lt;/ul&gt;
