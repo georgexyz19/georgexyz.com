@@ -45,7 +45,7 @@
         <dc:format>image/svg+xml</dc:format>
         <dc:type
            rdf:resource="http://purl.org/dc/dcmitype/StillImage" />
-        <dc:title></dc:title>
+        <dc:title />
       </cc:Work>
     </rdf:RDF>
   </metadata>
@@ -101,14 +101,10 @@
      id="text1225"
      y="175.95277"
      x="218.71165"
-     style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:condensed;font-size:18.66666603px;line-height:1.10000002;font-family:Arial;-inkscape-font-specification:'Arial, Condensed';font-variant-ligatures:normal;font-variant-caps:normal;font-variant-numeric:normal;font-feature-settings:normal;text-align:center;letter-spacing:0px;word-spacing:0px;writing-mode:lr-tb;text-anchor:middle;fill:#ff0000;fill-opacity:1;stroke:none;"
+     style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:condensed;font-size:18.66666667px;line-height:1.10000002;font-family:Arial;-inkscape-font-specification:'Arial, Condensed';font-variant-ligatures:normal;font-variant-caps:normal;font-variant-numeric:normal;font-feature-settings:normal;text-align:center;letter-spacing:0px;word-spacing:0px;writing-mode:lr;text-anchor:middle;fill:#ff0000;fill-opacity:1;stroke:none;"
      xml:space="preserve"><tspan
        sodipodi:role="line"
-       id="tspan1227"
-       x="172.04955"
-       y="175.95277">Remove Pixel </tspan><tspan
+       id="tspan25">Remove Pixels </tspan><tspan
        sodipodi:role="line"
-       id="tspan1229"
-       x="172.04955"
-       y="196.48611">In This Area </tspan></text>
+       id="tspan27">In This Area </tspan></text>
 </svg>

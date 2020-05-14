@@ -1,0 +1,132 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <link rel="stylesheet" href="/theme/css/bs4min.css">
+    <link rel="shortcut icon" type="image/x-icon" href="/theme/images/favicon.ico" >
+    <link rel="icon" type="image/x-icon" href="/theme/images/favicon.ico" >
+<link rel="stylesheet" href="https://www.georgexyz.com/theme/css/friendly.css">
+<link rel="stylesheet" href="https://www.georgexyz.com/theme/css/custom.css">
+<meta name="author" content="George Zhang" />
+<meta name="keywords" content="software utility" />
+<meta name="description" content="A few years ago I purchased a Fujitsu fi-7160 document scanner for home use. Occasionally I use it to scan a few pages at home and I only use very …" />
+    <title>Fujitsu Scanner Fi-7160 Software - George Zhang</title>
+  </head>
+  <body>
+    <!-- navbar -->
+    <nav class="navbar navbar-expand-md navbar-light" style="background-color: #e3f2fd;">
+      <div class="container">
+        <a class="navbar-brand" href="/">George Zhang</a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarColor01" aria-controls="navbarColor01" aria-expanded="false" aria-label="Toggle navigation">
+          <span class="navbar-toggler-icon"></span>
+        </button>
+
+        <div class="collapse navbar-collapse" id="navbarColor01">
+          <ul class="navbar-nav mr-auto">
+            <li class="nav-item">
+              <a class="nav-link " 
+                href="/articlelist.html">Articles</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link pr-3 " 
+                href="/tags.html">Tags</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link pr-3 "
+                 href="/pages/inkscape-tutorial.html">Inkscape Tutorial</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link "
+                   href="/pages/projects.html">Projects</a>
+              </li>
+          </ul>
+
+          <ul class="navbar-nav">
+            <li class="nav-item">
+              <a class="nav-link " 
+                 href="/pages/about.html">About</a>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </nav>
+
+   
+
+<div class="container">
+
+  <div class="row">
+    <div class="col-lg-8 mx-auto">
+
+      <h2>Fujitsu Scanner Fi-7160 Software</h2>
+
+      <div class="text-muted mb-2">
+        <span>Posted on </span>
+        <time datetime="2020-05-14 12:46:00-04:00">
+          Thursday, 05/14/2020 12:46
+        </time>
+
+        <span>with tags: </span>
+        <a href="https://www.georgexyz.com/tag/software-utility.html">software utility</a>
+      </div>
+
+      <p>A few years ago I purchased a Fujitsu fi-7160 document scanner for home use. Occasionally I 
+use it to scan a few pages at home and I only use very basic function. The scanner is used much often 
+in the past few weeks since I start working from home. </p>
+<p>The scanner itself is excellent, however the software coming with it and instructions are 
+horrible. Yesterday I spent a few hours trying to figure out the software. The Fijitsu website 
+has a list of drivers and applications to download. Here is a screenshot of the list. </p>
+<div style="max-width: 800px">
+  <img class="img-fluid pb-3" src="/images/fi-7160/fi7160-software-list.png" alt="fi software list"> 
+</div>
+
+<p>My computer still has very old version of software that was installed from a <span class="caps">CD</span> in the original 
+package. The last item on the above list &#8220;fi Series Online Update 1.2.23&#8221; 
+will automatically update several software to latest version and updated firmware of
+the scanner. After trying out items on the list and doing some Google searches, 
+here are my understanding on how they work. </p>
+<dl>
+<dt>PaperStream Capture</dt>
+<dd>main scan software provided by Fujitsu. You can configure the scanner such as resolution,
+paper size, punch hole removal etc. in this software. </dd>
+<dt>PaperStream <span class="caps">IP</span> (<span class="caps">TWAIN</span> and <span class="caps">ISIS</span>)</dt>
+<dd>scanner driver for Windows, needed for scanner to work.</dd>
+<dt>ScanSnap Manager</dt>
+<dd>this software configures how the Scan/Enter button work. Need reboot computer after installation
+for it to work.</dd>
+<dt><span class="caps">ABBYY</span> FineReader</dt>
+<dd>third party <span class="caps">OCR</span> software, which work with <em>ScanSnap Manager</em>.</dd>
+<dt>ScandAll <span class="caps">PRO</span></dt>
+<dd>third party software which is similar to a strip down version of Adobe Acrobat, 
+not as powerful as <em>PaperStream Capture</em>. </dd>
+<dt>Scanner Central Admin (agent and console)</dt>
+<dd>this software seems to upload scanned documents to a network location, not useful
+for me. </dd>
+<dt>Scan to Microsoft SharePoint</dt>
+<dd>it is also network related. </dd>
+</dl>
+<p>I found a <a href="https://youtu.be/PgW-ILyIVik">youtube video</a> on how to configure <span class="caps">ABBYY</span> FineReader 
+with ScanSnap Manager and use the <span class="caps">OCR</span> function.  You can configure the scan button to automatically
+scan the document, perform <span class="caps">OCR</span>, and save it to a specified folder. </p>
+<div style="max-width: 350px">
+  <img class="img-fluid pb-3" src="/images/fi-7160/fi7160-software-scansnap.png" alt="scansnap"> 
+</div>
+
+<p>The tricky part is that the ScanSnap Manager software is disabled until you reboot the computer. 
+It takes me quite sometime to figure that out.</p>
+
+
+
+    </div>
+  </div>
+
+</div>
+
+   
+    <script src="https://code.jquery.com/jquery-3.4.1.slim.min.js" integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js" integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6" crossorigin="anonymous"></script>
+  </body>
+</html>

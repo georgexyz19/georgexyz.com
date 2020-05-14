@@ -1,5 +1,49 @@
 <?xml version="1.0" encoding="utf-8"?>
-<feed xmlns="http://www.w3.org/2005/Atom"><title>George Zhang</title><link href="https://www.georgexyz.com/" rel="alternate"></link><link href="https://www.georgexyz.com/feeds/all.atom.xml" rel="self"></link><id>https://www.georgexyz.com/</id><updated>2020-05-10T10:54:00-04:00</updated><entry><title>GIMP Tips</title><link href="https://www.georgexyz.com/gimp-tips.html" rel="alternate"></link><published>2020-05-10T10:54:00-04:00</published><updated>2020-05-10T10:54:00-04:00</updated><author><name>George Zhang</name></author><id>tag:www.georgexyz.com,2020-05-10:/gimp-tips.html</id><summary type="html">&lt;p&gt;&lt;span class="caps"&gt;GIMP&lt;/span&gt; is a free and open source image manipulation software. I only use a small subset of functions 
+<feed xmlns="http://www.w3.org/2005/Atom"><title>George Zhang</title><link href="https://www.georgexyz.com/" rel="alternate"></link><link href="https://www.georgexyz.com/feeds/all.atom.xml" rel="self"></link><id>https://www.georgexyz.com/</id><updated>2020-05-14T12:46:00-04:00</updated><entry><title>Fujitsu Scanner Fi-7160 Software</title><link href="https://www.georgexyz.com/scanner-fi-7160.html" rel="alternate"></link><published>2020-05-14T12:46:00-04:00</published><updated>2020-05-14T12:46:00-04:00</updated><author><name>George Zhang</name></author><id>tag:www.georgexyz.com,2020-05-14:/scanner-fi-7160.html</id><summary type="html">&lt;p&gt;A few years ago I purchased a Fujitsu fi-7160 document scanner for home use. Occasionally I 
+use it to scan a few pages at home and I only use very …&lt;/p&gt;</summary><content type="html">&lt;p&gt;A few years ago I purchased a Fujitsu fi-7160 document scanner for home use. Occasionally I 
+use it to scan a few pages at home and I only use very basic function. The scanner is used much often 
+in the past few weeks since I start working from home. &lt;/p&gt;
+&lt;p&gt;The scanner itself is excellent, however the software coming with it and instructions are 
+horrible. Yesterday I spent a few hours trying to figure out the software. The Fijitsu website 
+has a list of drivers and applications to download. Here is a screenshot of the list. &lt;/p&gt;
+&lt;div style="max-width: 800px"&gt;
+  &lt;img class="img-fluid pb-3" src="/images/fi-7160/fi7160-software-list.png" alt="fi software list"&gt; 
+&lt;/div&gt;
+
+&lt;p&gt;My computer still has very old version of software that was installed from a &lt;span class="caps"&gt;CD&lt;/span&gt; in the original 
+package. The last item on the above list &amp;#8220;fi Series Online Update 1.2.23&amp;#8221; 
+will automatically update several software to latest version and updated firmware of
+the scanner. After trying out items on the list and doing some Google searches, 
+here are my understanding on how they work. &lt;/p&gt;
+&lt;dl&gt;
+&lt;dt&gt;PaperStream Capture&lt;/dt&gt;
+&lt;dd&gt;main scan software provided by Fujitsu. You can configure the scanner such as resolution,
+paper size, punch hole removal etc. in this software. &lt;/dd&gt;
+&lt;dt&gt;PaperStream &lt;span class="caps"&gt;IP&lt;/span&gt; (&lt;span class="caps"&gt;TWAIN&lt;/span&gt; and &lt;span class="caps"&gt;ISIS&lt;/span&gt;)&lt;/dt&gt;
+&lt;dd&gt;scanner driver for Windows, needed for scanner to work.&lt;/dd&gt;
+&lt;dt&gt;ScanSnap Manager&lt;/dt&gt;
+&lt;dd&gt;this software configures how the Scan/Enter button work. Need reboot computer after installation
+for it to work.&lt;/dd&gt;
+&lt;dt&gt;&lt;span class="caps"&gt;ABBYY&lt;/span&gt; FineReader&lt;/dt&gt;
+&lt;dd&gt;third party &lt;span class="caps"&gt;OCR&lt;/span&gt; software, which work with &lt;em&gt;ScanSnap Manager&lt;/em&gt;.&lt;/dd&gt;
+&lt;dt&gt;ScandAll &lt;span class="caps"&gt;PRO&lt;/span&gt;&lt;/dt&gt;
+&lt;dd&gt;third party software which is similar to a strip down version of Adobe Acrobat, 
+not as powerful as &lt;em&gt;PaperStream Capture&lt;/em&gt;. &lt;/dd&gt;
+&lt;dt&gt;Scanner Central Admin (agent and console)&lt;/dt&gt;
+&lt;dd&gt;this software seems to upload scanned documents to a network location, not useful
+for me. &lt;/dd&gt;
+&lt;dt&gt;Scan to Microsoft SharePoint&lt;/dt&gt;
+&lt;dd&gt;it is also network related. &lt;/dd&gt;
+&lt;/dl&gt;
+&lt;p&gt;I found a &lt;a href="https://youtu.be/PgW-ILyIVik"&gt;youtube video&lt;/a&gt; on how to configure &lt;span class="caps"&gt;ABBYY&lt;/span&gt; FineReader 
+with ScanSnap Manager and use the &lt;span class="caps"&gt;OCR&lt;/span&gt; function.  You can configure the scan button to automatically
+scan the document, perform &lt;span class="caps"&gt;OCR&lt;/span&gt;, and save it to a specified folder. &lt;/p&gt;
+&lt;div style="max-width: 350px"&gt;
+  &lt;img class="img-fluid pb-3" src="/images/fi-7160/fi7160-software-scansnap.png" alt="scansnap"&gt; 
+&lt;/div&gt;
+
+&lt;p&gt;The tricky part is that the ScanSnap Manager software is disabled until you reboot the computer. 
+It takes me quite sometime to figure that out.&lt;/p&gt;</content><category term="posts"></category><category term="software utility"></category></entry><entry><title>GIMP Tips</title><link href="https://www.georgexyz.com/gimp-tips.html" rel="alternate"></link><published>2020-05-10T10:54:00-04:00</published><updated>2020-05-10T10:54:00-04:00</updated><author><name>George Zhang</name></author><id>tag:www.georgexyz.com,2020-05-10:/gimp-tips.html</id><summary type="html">&lt;p&gt;&lt;span class="caps"&gt;GIMP&lt;/span&gt; is a free and open source image manipulation software. I only use a small subset of functions 
 of the software.  Here are some tips I keep a record for …&lt;/p&gt;</summary><content type="html">&lt;p&gt;&lt;span class="caps"&gt;GIMP&lt;/span&gt; is a free and open source image manipulation software. I only use a small subset of functions 
 of the software.  Here are some tips I keep a record for myself. &lt;/p&gt;
 &lt;h3&gt;Move Pixels In An Area&lt;/h3&gt;
