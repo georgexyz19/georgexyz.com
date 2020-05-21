@@ -57,5 +57,6 @@ scan the document, perform OCR, and save it to a specified folder.
   <img class="img-fluid pb-3" src="/images/fi-7160/fi7160-software-scansnap.png" alt="scansnap"> 
 </div> 
 
-The tricky part is that the ScanSnap Manager software is disabled until you reboot the computer. 
-It takes me quite sometime to figure that out.
+The tricky part is that the ScanSnap Manager software is disabled if PaperStream Capture is open. 
+You need to exit PaperStream Capture before enable Scansnap Manager. It takes me sometime to figure 
+that out.
