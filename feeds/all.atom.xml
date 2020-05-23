@@ -1,5 +1,103 @@
 <?xml version="1.0" encoding="utf-8"?>
-<feed xmlns="http://www.w3.org/2005/Atom"><title>George Zhang</title><link href="https://www.georgexyz.com/" rel="alternate"></link><link href="https://www.georgexyz.com/feeds/all.atom.xml" rel="self"></link><id>https://www.georgexyz.com/</id><updated>2020-05-14T12:46:00-04:00</updated><entry><title>Fujitsu Scanner Fi-7160 Software</title><link href="https://www.georgexyz.com/scanner-fi-7160.html" rel="alternate"></link><published>2020-05-14T12:46:00-04:00</published><updated>2020-05-14T12:46:00-04:00</updated><author><name>George Zhang</name></author><id>tag:www.georgexyz.com,2020-05-14:/scanner-fi-7160.html</id><summary type="html">&lt;p&gt;A few years ago I purchased a Fujitsu fi-7160 document scanner for home use. Occasionally I 
+<feed xmlns="http://www.w3.org/2005/Atom"><title>George Zhang</title><link href="https://www.georgexyz.com/" rel="alternate"></link><link href="https://www.georgexyz.com/feeds/all.atom.xml" rel="self"></link><id>https://www.georgexyz.com/</id><updated>2020-05-22T16:49:00-04:00</updated><entry><title>Code Highlighting in Pelican</title><link href="https://www.georgexyz.com/code-highlight-in-pelican.html" rel="alternate"></link><published>2020-05-22T16:49:00-04:00</published><updated>2020-05-22T16:49:00-04:00</updated><author><name>George Zhang</name></author><id>tag:www.georgexyz.com,2020-05-22:/code-highlight-in-pelican.html</id><summary type="html">&lt;p&gt;It is easy getting confused about code highlighting when reading Pelican 
+documentation. It mentions keywords like &lt;code&gt;CodeHilite&lt;/code&gt; and &lt;code&gt;Pygments&lt;/code&gt; without 
+much explanation. When I am reviewing my Pelican notes, I …&lt;/p&gt;</summary><content type="html">&lt;p&gt;It is easy getting confused about code highlighting when reading Pelican 
+documentation. It mentions keywords like &lt;code&gt;CodeHilite&lt;/code&gt; and &lt;code&gt;Pygments&lt;/code&gt; without 
+much explanation. When I am reviewing my Pelican notes, I decide to 
+spend a little time to figure out how code highlighting works in Pelican or 
+more broadly in Python. &lt;/p&gt;
+&lt;p&gt;The &lt;code&gt;CodeHilite&lt;/code&gt; is an extension for Python package &lt;code&gt;Markdown&lt;/code&gt;. When you run 
+the command &lt;code&gt;pip install markdown&lt;/code&gt;, the installed package includes the 
+&lt;code&gt;CodeHilite&lt;/code&gt; because it is a standard &lt;code&gt;Markdown&lt;/code&gt; extension. Confusing enough, 
+the documentation for &lt;code&gt;Markdown&lt;/code&gt; package calls itself &lt;code&gt;Python-Markdown&lt;/code&gt;. You 
+can see the documentation for &lt;code&gt;CodeHilite&lt;/code&gt; on 
+&lt;a href="https://python-markdown.github.io/extensions/code_hilite/"&gt;this webpage&lt;/a&gt;. 
+The summary says that &amp;#8220;the CodeHilite extension adds code/syntax highlighting 
+to standard Python-Markdown code blocks using Pygments.&amp;#8221; It is still not very 
+clear on what it actually does. &lt;/p&gt;
+&lt;p&gt;On the same documentation page, there are two example &lt;code&gt;Pygments&lt;/code&gt; commands from 
+the command line. &lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;pygmentize -S default -f html -a .codehilite &amp;gt; styles.css
+pygmentize -L style
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;p&gt;The first command creates a &lt;span class="caps"&gt;CSS&lt;/span&gt; file &lt;code&gt;styles.css&lt;/code&gt; with &lt;code&gt;default&lt;/code&gt; style.  The 
+&lt;code&gt;-f html&lt;/code&gt; option specifies the formatter and &lt;code&gt;-a .codehilite&lt;/code&gt; option specifies 
+a class in the &lt;code&gt;styles.css&lt;/code&gt; file. The second command lists all the styles 
+that comes with &lt;code&gt;Pygments&lt;/code&gt; package. &lt;/p&gt;
+&lt;p&gt;After running the first command, the generated &lt;code&gt;styles.css&lt;/code&gt; file has 69 lines of 
+&lt;span class="caps"&gt;CSS&lt;/span&gt; rules. The &lt;code&gt;.codehilite&lt;/code&gt; class is specified by the &lt;code&gt;-a&lt;/code&gt; option on the 
+command line. &lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="nc"&gt;codehilite&lt;/span&gt; &lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="nc"&gt;hll&lt;/span&gt; &lt;span class="p"&gt;{&lt;/span&gt; &lt;span class="k"&gt;background-color&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt; &lt;span class="mh"&gt;#ffffcc&lt;/span&gt; &lt;span class="p"&gt;}&lt;/span&gt;
+&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="nc"&gt;codehilite&lt;/span&gt;  &lt;span class="p"&gt;{&lt;/span&gt; &lt;span class="k"&gt;background&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt; &lt;span class="mh"&gt;#f8f8f8&lt;/span&gt;&lt;span class="p"&gt;;&lt;/span&gt; &lt;span class="p"&gt;}&lt;/span&gt;
+&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="nc"&gt;codehilite&lt;/span&gt; &lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="nc"&gt;c&lt;/span&gt; &lt;span class="p"&gt;{&lt;/span&gt; &lt;span class="k"&gt;color&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt; &lt;span class="mh"&gt;#408080&lt;/span&gt;&lt;span class="p"&gt;;&lt;/span&gt; &lt;span class="k"&gt;font-style&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt; &lt;span class="kc"&gt;italic&lt;/span&gt; &lt;span class="p"&gt;}&lt;/span&gt; &lt;span class="c"&gt;/* Comment */&lt;/span&gt;
+&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="nc"&gt;codehilite&lt;/span&gt; &lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="nc"&gt;err&lt;/span&gt; &lt;span class="p"&gt;{&lt;/span&gt; &lt;span class="k"&gt;border&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt; &lt;span class="mi"&gt;1&lt;/span&gt;&lt;span class="kt"&gt;px&lt;/span&gt; &lt;span class="kc"&gt;solid&lt;/span&gt; &lt;span class="mh"&gt;#FF0000&lt;/span&gt; &lt;span class="p"&gt;}&lt;/span&gt; &lt;span class="c"&gt;/* Error */&lt;/span&gt;
+&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="nc"&gt;codehilite&lt;/span&gt; &lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="nc"&gt;k&lt;/span&gt; &lt;span class="p"&gt;{&lt;/span&gt; &lt;span class="k"&gt;color&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt; &lt;span class="mh"&gt;#008000&lt;/span&gt;&lt;span class="p"&gt;;&lt;/span&gt; &lt;span class="k"&gt;font-weight&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt; &lt;span class="kc"&gt;bold&lt;/span&gt; &lt;span class="p"&gt;}&lt;/span&gt; &lt;span class="c"&gt;/* Keyword */&lt;/span&gt;
+&lt;span class="o"&gt;...&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;p&gt;The Pelican default configuration dictionary has a key &lt;code&gt;MARKDOWN&lt;/code&gt;, and the 
+corresponding value is shown below. &lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;&lt;span class="s1"&gt;&amp;#39;MARKDOWN&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt; &lt;span class="p"&gt;{&lt;/span&gt;&lt;span class="s1"&gt;&amp;#39;extension_configs&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt; 
+    &lt;span class="p"&gt;{&lt;/span&gt;&lt;span class="s1"&gt;&amp;#39;markdown.extensions.codehilite&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt; 
+        &lt;span class="p"&gt;{&lt;/span&gt;&lt;span class="s1"&gt;&amp;#39;css_class&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt; &lt;span class="s1"&gt;&amp;#39;highlight&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;},&lt;/span&gt;
+     &lt;span class="s1"&gt;&amp;#39;markdown.extensions.extra&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt; &lt;span class="p"&gt;{},&lt;/span&gt;
+     &lt;span class="s1"&gt;&amp;#39;markdown.extensions.meta&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt; &lt;span class="p"&gt;{}},&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;p&gt;It specifies a default &lt;span class="caps"&gt;CSS&lt;/span&gt; class value &lt;code&gt;highlight&lt;/code&gt;. The Python &lt;code&gt;Markdown&lt;/code&gt; 
+package transforms code block in a markdown file to html segment like below. 
+The &lt;code&gt;CodeHilite&lt;/code&gt; plugin does the work, and it actually calls the &lt;code&gt;Pygments&lt;/code&gt; 
+package to generate the html code. Specifically, Line 122 of the &lt;code&gt;CodeHilite&lt;/code&gt; 
+plugin source code file 
+&lt;a href="https://github.com/Python-Markdown/markdown/blob/master/markdown/extensions/codehilite.py"&gt;codehilite.py&lt;/a&gt; 
+calls &lt;code&gt;highlight&lt;/code&gt; function in the &lt;code&gt;Pygments&lt;/code&gt; package. &lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;&lt;span class="p"&gt;&amp;lt;&lt;/span&gt;&lt;span class="nt"&gt;div&lt;/span&gt; &lt;span class="na"&gt;class&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="s"&gt;&amp;quot;highlight&amp;quot;&lt;/span&gt;&lt;span class="p"&gt;&amp;gt;&lt;/span&gt;
+  &lt;span class="p"&gt;&amp;lt;&lt;/span&gt;&lt;span class="nt"&gt;pre&lt;/span&gt;&lt;span class="p"&gt;&amp;gt;&lt;/span&gt;
+    &lt;span class="p"&gt;&amp;lt;&lt;/span&gt;&lt;span class="nt"&gt;code&lt;/span&gt;&lt;span class="p"&gt;&amp;gt;&lt;/span&gt;
+      &lt;span class="p"&gt;&amp;lt;&lt;/span&gt;&lt;span class="nt"&gt;span&lt;/span&gt; &lt;span class="na"&gt;class&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="s"&gt;&amp;quot;k&amp;quot;&lt;/span&gt;&lt;span class="p"&gt;&amp;gt;&lt;/span&gt;if&lt;span class="p"&gt;&amp;lt;/&lt;/span&gt;&lt;span class="nt"&gt;span&lt;/span&gt;&lt;span class="p"&gt;&amp;gt;&lt;/span&gt; 
+      &lt;span class="p"&gt;&amp;lt;&lt;/span&gt;&lt;span class="nt"&gt;span&lt;/span&gt; &lt;span class="na"&gt;class&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="s"&gt;&amp;quot;vm&amp;quot;&lt;/span&gt;&lt;span class="p"&gt;&amp;gt;&lt;/span&gt;__name__&lt;span class="p"&gt;&amp;lt;/&lt;/span&gt;&lt;span class="nt"&gt;span&lt;/span&gt;&lt;span class="p"&gt;&amp;gt;&lt;/span&gt; 
+      ...
+    &lt;span class="p"&gt;&amp;lt;/&lt;/span&gt;&lt;span class="nt"&gt;code&lt;/span&gt;&lt;span class="p"&gt;&amp;gt;&lt;/span&gt;
+  &lt;span class="p"&gt;&amp;lt;/&lt;/span&gt;&lt;span class="nt"&gt;pre&lt;/span&gt;&lt;span class="p"&gt;&amp;gt;&lt;/span&gt;
+&lt;span class="p"&gt;&amp;lt;/&lt;/span&gt;&lt;span class="nt"&gt;div&lt;/span&gt;&lt;span class="p"&gt;&amp;gt;&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;p&gt;The html template should link to the &lt;code&gt;styles.css&lt;/code&gt; file discussed earlier in 
+the article, so the generated html code section has the specified &lt;span class="caps"&gt;CSS&lt;/span&gt; styles. 
+If you use default Pelican configuration, the &lt;code&gt;-a .codehilite&lt;/code&gt; option of the 
+first pygmentize command should be &lt;code&gt;-a highlight&lt;/code&gt;. &lt;/p&gt;
+&lt;p&gt;It is also interesting to find that the &lt;code&gt;Markdown&lt;/code&gt; Python package does not 
+list &lt;code&gt;Pygments&lt;/code&gt; package as a dependent, 
+while &lt;code&gt;Pelican&lt;/code&gt; itself lists &lt;code&gt;Pygments&lt;/code&gt; as a dependent. If you use pipenv 
+manage virtual environment, the command &lt;code&gt;pipenv graph&lt;/code&gt; lists dependent packages
+as follows. &lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;Markdown==3.2.1
+  - setuptools [required: &amp;gt;=36, installed: 46.1.3]
+pelican==4.2.0
+  - blinker [required: Any, installed: 1.4]
+  - docutils [required: Any, installed: 0.16]
+  - feedgenerator [required: &amp;gt;=1.9, installed: 1.9.1]
+    - pytz [required: &amp;gt;=0a, installed: 2020.1]
+    - six [required: Any, installed: 1.14.0]
+  - jinja2 [required: &amp;gt;=2.7, installed: 2.11.2]
+    - MarkupSafe [required: &amp;gt;=0.23, installed: 1.1.1]
+  - pygments [required: Any, installed: 2.6.1]
+  - python-dateutil [required: Any, installed: 2.8.1]
+    - six [required: &amp;gt;=1.5, installed: 1.14.0]
+  - pytz [required: &amp;gt;=0a, installed: 2020.1]
+  - six [required: &amp;gt;=1.4, installed: 1.14.0]
+  - unidecode [required: Any, installed: 1.1.1]
+...
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;p&gt;This page has five code sections, and you can see code highlighting 
+effects in the middle three sections. &lt;/p&gt;</content><category term="posts"></category><category term="pelican"></category></entry><entry><title>Fujitsu Scanner Fi-7160 Software</title><link href="https://www.georgexyz.com/scanner-fi-7160.html" rel="alternate"></link><published>2020-05-14T12:46:00-04:00</published><updated>2020-05-14T12:46:00-04:00</updated><author><name>George Zhang</name></author><id>tag:www.georgexyz.com,2020-05-14:/scanner-fi-7160.html</id><summary type="html">&lt;p&gt;A few years ago I purchased a Fujitsu fi-7160 document scanner for home use. Occasionally I 
 use it to scan a few pages at home and I only use very …&lt;/p&gt;</summary><content type="html">&lt;p&gt;A few years ago I purchased a Fujitsu fi-7160 document scanner for home use. Occasionally I 
 use it to scan a few pages at home and I only use very basic function. The scanner is used much often 
 in the past few weeks since I start working from home. &lt;/p&gt;
