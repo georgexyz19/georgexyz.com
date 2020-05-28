@@ -70,7 +70,7 @@ calls &lt;code&gt;highlight&lt;/code&gt; function in the &lt;code&gt;Pygments&lt
 &lt;p&gt;The html template should link to the &lt;code&gt;styles.css&lt;/code&gt; file discussed earlier in 
 the article, so the generated html code section has the specified &lt;span class="caps"&gt;CSS&lt;/span&gt; styles. 
 If you use default Pelican configuration, the &lt;code&gt;-a .codehilite&lt;/code&gt; option of the 
-first pygmentize command should be &lt;code&gt;-a highlight&lt;/code&gt;. &lt;/p&gt;
+first pygmentize command should be &lt;code&gt;-a .highlight&lt;/code&gt;. &lt;/p&gt;
 &lt;p&gt;It is also interesting to find that the &lt;code&gt;Markdown&lt;/code&gt; Python package does not 
 list &lt;code&gt;Pygments&lt;/code&gt; package as a dependent, 
 while &lt;code&gt;Pelican&lt;/code&gt; itself lists &lt;code&gt;Pygments&lt;/code&gt; as a dependent. If you use pipenv 
@@ -3432,7 +3432,8 @@ themes are produced by hobbyists during spare time. &lt;/p&gt;
 &lt;a href="https://www.pexels.com/"&gt;pexels.com&lt;/a&gt;, 
 which is a very nice website for free photos. The icons on the Projects page are from 
 &lt;a href="https://pixabay.com/"&gt;pixabay.com&lt;/a&gt;, and are modified with &lt;span class="caps"&gt;GIMP&lt;/span&gt;. The favicon is 
-generated and downloaded from &lt;a href="https://favicon.io/"&gt;favicon.io website&lt;/a&gt;. &lt;/p&gt;
+generated and downloaded from &lt;a href="https://favicon.io/"&gt;favicon.io website&lt;/a&gt;. Some 
+vector graphics are downloaded from &lt;a href="https://openclipart.org/"&gt;openclipart.org&lt;/a&gt;. &lt;/p&gt;
 &lt;h3&gt;Invoke Package&lt;/h3&gt;
 &lt;p&gt;&lt;a href="http://docs.pyinvoke.org/en/1.2/getting-started.html"&gt;Invoke package&lt;/a&gt;
 &amp;#8220;is a Python task execution tool and library&amp;#8221;. It is similar to &lt;span class="caps"&gt;GNU&lt;/span&gt; 
