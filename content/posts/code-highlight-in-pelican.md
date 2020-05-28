@@ -82,7 +82,7 @@ calls `highlight` function in the `Pygments` package.
 The html template should link to the `styles.css` file discussed earlier in 
 the article, so the generated html code section has the specified CSS styles. 
 If you use default Pelican configuration, the `-a .codehilite` option of the 
-first pygmentize command should be `-a highlight`. 
+first pygmentize command should be `-a .highlight`. 
 
 It is also interesting to find that the `Markdown` Python package does not 
 list `Pygments` package as a dependent, 

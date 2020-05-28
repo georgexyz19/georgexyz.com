@@ -102,7 +102,8 @@ The three images on the homepage are downloaded from
 [pexels.com](https://www.pexels.com/), 
 which is a very nice website for free photos. The icons on the Projects page are from 
 [pixabay.com](https://pixabay.com/), and are modified with GIMP. The favicon is 
-generated and downloaded from [favicon.io website](https://favicon.io/). 
+generated and downloaded from [favicon.io website](https://favicon.io/). Some 
+vector graphics are downloaded from [openclipart.org](https://openclipart.org/). 
 
 ### Invoke Package
 
