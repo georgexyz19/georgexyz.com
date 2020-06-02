@@ -11,8 +11,8 @@
 <link rel="stylesheet" href="https://www.georgexyz.com/theme/css/custom.css">
 <meta name="author" content="George Zhang" />
 <meta name="keywords" content="vim,ubuntu,linux" />
-<meta name="description" content="Ubuntu 18.04 comes with a stripped down version of Vim. If you want to use Vim for serious work, you need the full version. The default version is started …" />
-    <title>Vim Full Version Installation in Ubuntu - George Zhang</title>
+<meta name="description" content="Ubuntu 18.04 comes with a stripped down version of Vim. If you want to use Vim for serious work, you want the full version. Vim Installation The default version …" />
+    <title>Vim Full Version Installation in Ubuntu and Tips - George Zhang</title>
   </head>
   <body>
     <!-- navbar -->
@@ -60,7 +60,7 @@
   <div class="row">
     <div class="col-lg-8 mx-auto">
 
-      <h2>Vim Full Version Installation in Ubuntu</h2>
+      <h2>Vim Full Version Installation in Ubuntu and Tips</h2>
 
       <div class="text-muted mb-2">
         <span>Posted on </span>
@@ -75,7 +75,8 @@
       </div>
 
       <p>Ubuntu 18.04 comes with a stripped down version of Vim. If you want to use Vim for 
-serious work, you need the full version. </p>
+serious work, you want the full version. </p>
+<h3>Vim Installation</h3>
 <p>The default version is started via command <code>vi</code>. The <code>vi --version</code> command shows 
 the version information. Note the Line 5 below shows &#8220;Small version without <span class="caps">GUI</span>&#8221;. </p>
 <div class="highlight"><pre><span></span><code>VIM - Vi IMproved 8.0 (2016 Sep 12, compiled Apr 10 2018 21:31:58)
@@ -85,33 +86,7 @@ Compiled by pkg-vim-maintainers@lists.alioth.debian.org
 Small version without GUI.  Features included (+) or not (-):
 +acl               -extra_search      -mouse_netterm     -tag_old_static
 -arabic            -farsi             -mouse_sgr         -tag_any_white
--autocmd           -file_in_path      -mouse_sysmouse    -tcl
--autoservername    -find_in_path      -mouse_urxvt       -termguicolors
--balloon_eval      -float             -mouse_xterm       -terminal
--balloon_eval_term -folding           +multi_byte        +terminfo
--browse            -footer            -multi_lang        -termresponse
-+builtin_terms     +fork()            -mzscheme          -textobjects
--byte_offset       -gettext           -netbeans_intg     -timers
--channel           -hangul_input      -num64             -title
--cindent           +iconv             +packages          -toolbar
--clientserver      -insert_expand     -path_extra        -user_commands
--clipboard         -job               -perl              +vertsplit
--cmdline_compl     +jumplist          -persistent_undo   -virtualedit
-+cmdline_hist      -keymap            -printer           +visual
--cmdline_info      -lambda            -profile           -visualextra
--comments          -langmap           -python            -viminfo
--conceal           -libcall           -python3           -vreplace
--cryptv            -linebreak         -quickfix          +wildignore
--cscope            -lispindent        -reltime           -wildmenu
--cursorbind        -listcmds          -rightleft         +windows
--cursorshape       -localmap          -ruby              +writebackup
--dialog            -lua               -scrollbind        -X11
--diff              -menu              -signs             +xfontset
--digraphs          -mksession         -smartindent       -xim
--dnd               -modify_fname      -startuptime       -xpm
--ebcdic            -mouse             -statusline        -xsmp
--emacs_tags        -mouse_dec         -sun_workshop      -xterm_clipboard
--eval              -mouse_gpm         -syntax            -xterm_save
+...
 +ex_extra          -mouse_jsbterm     +tag_binary 
    system vimrc file: &quot;$VIM/vimrc&quot;
      user vimrc file: &quot;$HOME/.vimrc&quot;
@@ -120,11 +95,7 @@ Small version without GUI.  Features included (+) or not (-):
        defaults file: &quot;$VIMRUNTIME/defaults.vim&quot;
   fall-back for $VIM: &quot;/usr/share/vim&quot;
 Compilation: gcc -c -I. -Iproto -DHAVE_CONFIG_H   -Wdate-time  -g -O2 
--fdebug-prefix-map=/build/vim-NQEcoP/vim-8.0.1453=. -fstack-protector-strong 
--Wformat -Werror=format-security -DTINY_VIMRC -U_FORTIFY_SOURCE -D_FORTIFY_SOURCE=1 
-Linking: gcc   -Wl,-Bsymbolic-functions -Wl,-z,relro -Wl,-z,now -Wl,--as-needed 
--o vim    -lSM -lICE -lXpm -lXt -lX11 -lXdmcp -lSM -lICE  -lm -ltinfo  -lselinux 
--lacl -lattr -ldl 
+-fdebug-prefix-map=/build/vim-NQEcoP/vim-8.0.1453=. -fstack-...
 </code></pre></div>
 
 
@@ -150,6 +121,46 @@ sudo apt-get install vim-gtk3
 
 
 <p>You can then check the vim version by command <code>vim --version</code>. </p>
+<h3>Vim Tips</h3>
+<h4>Startup</h4>
+<p>Vim loads <code>~/.vimrc</code> by default, and you can change the behavior by using <code>-u</code> option on 
+command line.</p>
+<div class="highlight"><pre><span></span><code>$vim -u ~/.simple.vimrc filename
+$vim -u NONE  # do not load any config file
+</code></pre></div>
+
+
+<h4>Fuzzy Find</h4>
+<p>The following two settings help the <code>:find</code> command to do file fuzzy finding. </p>
+<div class="highlight"><pre><span></span><code>set path+=**
+set wildmenu
+:find *cache # Press Tab key to find file name with cache
+</code></pre></div>
+
+
+<h4>Auto Complete</h4>
+<p>Vim itself has auto complete function built in. In the insert mode, you can type a 
+few letters such as &#8216;Com&#8217;, and then press <code>^n</code> to bring up auto complete menu. It 
+is very handy when you are programming because you often need to type variable and 
+class names multiple times on a file. </p>
+<dl>
+<dt>^x^n</dt>
+<dd>Search in this file, ^ represents Ctrl key </dd>
+<dt>^x^f</dt>
+<dd>Search filename</dd>
+<dt>^x^]</dt>
+<dd>Search tag</dd>
+<dt>^n</dt>
+<dd>search by default</dd>
+<dt>^n  ^p</dt>
+<dd>next prev on the menu</dd>
+</dl>
+<h4>Current Filename</h4>
+<p>Command <code>^g</code> shows the name of the current file. Or you can type the following vim 
+commands. </p>
+<div class="highlight"><pre><span></span><code>:echo @%
+:!ls %:p  # will show absolute path of file
+</code></pre></div>
 
 
 
