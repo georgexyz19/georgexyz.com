@@ -1,13 +1,13 @@
 title: A Collection of Web Links
 slug: web-links
-meta: April 1 post 
+meta: April 1 post
 date: 2020-04-01 23:30
 modified: 2020-04-09 08:54
 tags: web development
 note: A short post on April 1, 2020
 no: 34
 
-This page has a collection of web links that I visit often. 
+This page has a collection of web links that I visit often.
 
 ### Flask Web Framework
 
@@ -59,6 +59,8 @@ This page has a collection of web links that I visit often.
 [Google's Python Class](https://developers.google.com/edu/python/)
 
 [Python 3 Module of the Week PyMOTW-3](https://pymotw.com/3/)
+
+[The Python Tutorial on python.org](https://docs.python.org/3/tutorial/index.html)
 
 
 ### Javascript Language
@@ -118,7 +120,7 @@ This page has a collection of web links that I visit often.
 
 [For a Good Strftime](https://www.foragoodstrftime.com/)
 
-[Python datetime Module in PyMOTW-3](https://pymotw.com/3/datetime/) 
+[Python datetime Module in PyMOTW-3](https://pymotw.com/3/datetime/)
 
 ### Others
 

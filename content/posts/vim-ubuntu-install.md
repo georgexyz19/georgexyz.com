@@ -1,13 +1,15 @@
-title: Vim Full Version Installation in Ubuntu
+title: Vim Full Version Installation in Ubuntu and Tips
 slug: vim-ubuntu-install
 meta: Vim Ubuntu Installation Guide
 tags: vim, ubuntu, linux
 date: 2019-04-01 12:45
-modified: 2019-04-01 12:45
+modified: 2020-06-02 16:24
 
 
 Ubuntu 18.04 comes with a stripped down version of Vim. If you want to use Vim for 
-serious work, you need the full version. 
+serious work, you want the full version. 
+
+### Vim Installation
 
 The default version is started via command `vi`. The `vi --version` command shows 
 the version information. Note the Line 5 below shows "Small version without GUI". 
@@ -20,33 +22,7 @@ Compiled by pkg-vim-maintainers@lists.alioth.debian.org
 Small version without GUI.  Features included (+) or not (-):
 +acl               -extra_search      -mouse_netterm     -tag_old_static
 -arabic            -farsi             -mouse_sgr         -tag_any_white
--autocmd           -file_in_path      -mouse_sysmouse    -tcl
--autoservername    -find_in_path      -mouse_urxvt       -termguicolors
--balloon_eval      -float             -mouse_xterm       -terminal
--balloon_eval_term -folding           +multi_byte        +terminfo
--browse            -footer            -multi_lang        -termresponse
-+builtin_terms     +fork()            -mzscheme          -textobjects
--byte_offset       -gettext           -netbeans_intg     -timers
--channel           -hangul_input      -num64             -title
--cindent           +iconv             +packages          -toolbar
--clientserver      -insert_expand     -path_extra        -user_commands
--clipboard         -job               -perl              +vertsplit
--cmdline_compl     +jumplist          -persistent_undo   -virtualedit
-+cmdline_hist      -keymap            -printer           +visual
--cmdline_info      -lambda            -profile           -visualextra
--comments          -langmap           -python            -viminfo
--conceal           -libcall           -python3           -vreplace
--cryptv            -linebreak         -quickfix          +wildignore
--cscope            -lispindent        -reltime           -wildmenu
--cursorbind        -listcmds          -rightleft         +windows
--cursorshape       -localmap          -ruby              +writebackup
--dialog            -lua               -scrollbind        -X11
--diff              -menu              -signs             +xfontset
--digraphs          -mksession         -smartindent       -xim
--dnd               -modify_fname      -startuptime       -xpm
--ebcdic            -mouse             -statusline        -xsmp
--emacs_tags        -mouse_dec         -sun_workshop      -xterm_clipboard
--eval              -mouse_gpm         -syntax            -xterm_save
+...
 +ex_extra          -mouse_jsbterm     +tag_binary 
    system vimrc file: "$VIM/vimrc"
      user vimrc file: "$HOME/.vimrc"
@@ -55,11 +31,7 @@ Small version without GUI.  Features included (+) or not (-):
        defaults file: "$VIMRUNTIME/defaults.vim"
   fall-back for $VIM: "/usr/share/vim"
 Compilation: gcc -c -I. -Iproto -DHAVE_CONFIG_H   -Wdate-time  -g -O2 
--fdebug-prefix-map=/build/vim-NQEcoP/vim-8.0.1453=. -fstack-protector-strong 
--Wformat -Werror=format-security -DTINY_VIMRC -U_FORTIFY_SOURCE -D_FORTIFY_SOURCE=1 
-Linking: gcc   -Wl,-Bsymbolic-functions -Wl,-z,relro -Wl,-z,now -Wl,--as-needed 
--o vim    -lSM -lICE -lXpm -lXt -lX11 -lXdmcp -lSM -lICE  -lm -ltinfo  -lselinux 
--lacl -lattr -ldl 
+-fdebug-prefix-map=/build/vim-NQEcoP/vim-8.0.1453=. -fstack-...
 
 ```
 
@@ -87,4 +59,60 @@ sudo apt-get install vim-gtk3
 ```
 
 You can then check the vim version by command `vim --version`. 
+
+### Vim Tips
+
+#### Startup
+
+Vim loads `~/.vimrc` by default, and you can change the behavior by using `-u` option on 
+command line.
+
+```
+$vim -u ~/.simple.vimrc filename
+$vim -u NONE  # do not load any config file
+```
+
+#### Fuzzy Find
+
+The following two settings help the `:find` command to do file fuzzy finding. 
+
+```
+set path+=**
+set wildmenu
+:find *cache # Press Tab key to find file name with cache
+```
+
+#### Auto Complete
+
+Vim itself has auto complete function built in. In the insert mode, you can type a 
+few letters such as 'Com', and then press `^n` to bring up auto complete menu. It 
+is very handy when you are programming because you often need to type variable and 
+class names multiple times on a file. 
+
+^x^n
+: Search in this file, ^ represents Ctrl key 
+
+^x^f
+: Search filename
+
+^x^]
+: Search tag
+
+^n
+: search by default
+
+^n  ^p
+: next prev on the menu
+
+#### Current Filename
+
+Command `^g` shows the name of the current file. Or you can type the following vim 
+commands. 
+
+```
+:echo @%
+:!ls %:p  # will show absolute path of file
+```
+
+
 
