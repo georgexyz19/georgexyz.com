@@ -42,7 +42,7 @@ george@X250:~$ vim
 Command 'vim' not found, but can be installed with:
 sudo apt install vim
 sudo apt install vim-gtk3
-sudo apt install vim-tiny 
+sudo apt install vim-tiny
 sudo apt install neovim
 sudo apt install vim-athena
 sudo apt install vim-gtk
@@ -60,6 +60,30 @@ sudo apt-get install vim-gtk3
 
 You can then check the vim version by command `vim --version`. 
 
+### Basic Vim Settings
+
+Vim automatically loads `~/.vimrc` file during startup. Some default settings of vim 
+do not make sense. Below are some most basic vim settings. 
+
+```
+" ~/.simple.vimrc file; $vim -u ~/.simple.vimrc to load
+set nocompatible              " required
+filetype plugin on
+syntax enable
+
+"path and find, fuzzy file finder
+set path+=**  " search subdir recursively, find ...
+set wildmenu
+
+set number " show line numbers
+
+" Set ignore case, highlight, and incremental searches
+set ignorecase
+set hlsearch
+set incsearch
+
+```
+
 ### Vim Tips
 
 #### Startup
@@ -72,6 +96,23 @@ $vim -u ~/.simple.vimrc filename
 $vim -u NONE  # do not load any config file
 ```
 
+#### Set Initial Console Window Size
+
+On Linux terminal, you can use `set lines=50 columns=100` to set initial console size. 
+I have those lines in my `~/.vimrc` file. 
+
+```
+if exists("+lines")
+  set lines=80
+endif
+if exists("+columns")
+  set columns=120
+endif
+```
+
+Source: [an article](https://vim.fandom.com/wiki/Maximize_or_set_initial_window_size) on fandom.com
+
+
 #### Fuzzy Find
 
 The following two settings help the `:find` command to do file fuzzy finding. 
@@ -81,6 +122,8 @@ set path+=**
 set wildmenu
 :find *cache # Press Tab key to find file name with cache
 ```
+
+Source: [a video talk](https://youtu.be/XA2WjJbmmoM) on youtube
 
 #### Auto Complete
 
@@ -114,5 +157,43 @@ commands.
 :!ls %:p  # will show absolute path of file
 ```
 
+#### Navigation
+
+Keys `h j k l` are the basic navigation commands in noraml mode. Commands `w b e` 
+jump cursor to next word, begin of word, or end of word. Other common navigation 
+commands are listed below. 
+
+gg
+: move cursor to top
+
+G
+: move cursor to bottom
+
+:`<n>`
+: jump cursor to line number n, or `<n>G`
+
+^e
+: show an extra line
+
+^y
+: opposite of ^e
+
+^d
+: move down half screen
+
+^u
+: move up half screen
+
+%
+: matching ( { or [
+
+H
+: move cursor to top
+
+M
+: move cursor to middle
+
+L
+: move cursor to low corner
 
 
