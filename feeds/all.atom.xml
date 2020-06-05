@@ -4486,4 +4486,14 @@ commands are listed below. &lt;/p&gt;
 &lt;dd&gt;move cursor to middle&lt;/dd&gt;
 &lt;dt&gt;L&lt;/dt&gt;
 &lt;dd&gt;move cursor to low corner&lt;/dd&gt;
-&lt;/dl&gt;</content><category term="posts"></category><category term="vim"></category><category term="ubuntu"></category><category term="linux"></category></entry></feed>
+&lt;/dl&gt;
+&lt;h4&gt;Common Commands&lt;/h4&gt;
+&lt;p&gt;Vim is in a different league comparing to other text editors. It does not have 
+some common commands other editors have. But some of those commands are so 
+common, it is better to customize vim to support them. For example, the 
+command &lt;code&gt;:saveas&lt;/code&gt; is sometimes very convenient. The commands below add 
+&lt;code&gt;Ctrl+s&lt;/code&gt; shortcut for saving file.  &lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;noremap &amp;lt;silent&amp;gt; &amp;lt;C-S&amp;gt;  :update&amp;lt;CR&amp;gt;
+vnoremap &amp;lt;silent&amp;gt; &amp;lt;C-S&amp;gt; :&amp;lt;C-C&amp;gt;:update&amp;lt;CR&amp;gt;
+inoremap &amp;lt;silent&amp;gt; &amp;lt;C-S&amp;gt; &amp;lt;C-O&amp;gt;:update&amp;lt;CR&amp;gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;</content><category term="posts"></category><category term="vim"></category><category term="ubuntu"></category><category term="linux"></category></entry></feed>

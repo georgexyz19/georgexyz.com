@@ -226,6 +226,16 @@ commands are listed below. </p>
 <dt>L</dt>
 <dd>move cursor to low corner</dd>
 </dl>
+<h4>Common Commands</h4>
+<p>Vim is in a different league comparing to other text editors. It does not have 
+some common commands other editors have. But some of those commands are so 
+common, it is better to customize vim to support them. For example, the 
+command <code>:saveas</code> is sometimes very convenient. The commands below add 
+<code>Ctrl+s</code> shortcut for saving file.  </p>
+<div class="highlight"><pre><span></span><code>noremap &lt;silent&gt; &lt;C-S&gt;  :update&lt;CR&gt;
+vnoremap &lt;silent&gt; &lt;C-S&gt; :&lt;C-C&gt;:update&lt;CR&gt;
+inoremap &lt;silent&gt; &lt;C-S&gt; &lt;C-O&gt;:update&lt;CR&gt;
+</code></pre></div>
 
 
 
