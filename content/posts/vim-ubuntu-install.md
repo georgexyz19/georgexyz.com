@@ -196,4 +196,17 @@ M
 L
 : move cursor to low corner
 
+#### Common Commands
+
+Vim is in a different league comparing to other text editors. It does not have 
+some common commands other editors have. But some of those commands are so 
+common, it is better to customize vim to support them. For example, the 
+command `:saveas` is sometimes very convenient. The commands below add 
+`Ctrl+s` shortcut for saving file.  
+
+```
+noremap <silent> <C-S>  :update<CR>
+vnoremap <silent> <C-S> :<C-C>:update<CR>
+inoremap <silent> <C-S> <C-O>:update<CR>
+```
 
