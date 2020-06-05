@@ -104,7 +104,7 @@ Compilation: gcc -c -I. -Iproto -DHAVE_CONFIG_H   -Wdate-time  -g -O2
 Command &#39;vim&#39; not found, but can be installed with:
 sudo apt install vim
 sudo apt install vim-gtk3
-sudo apt install vim-tiny 
+sudo apt install vim-tiny
 sudo apt install neovim
 sudo apt install vim-athena
 sudo apt install vim-gtk
@@ -121,6 +121,27 @@ sudo apt-get install vim-gtk3
 
 
 <p>You can then check the vim version by command <code>vim --version</code>. </p>
+<h3>Basic Vim Settings</h3>
+<p>Vim automatically loads <code>~/.vimrc</code> file during startup. Some default settings of vim 
+do not make sense. Below are some most basic vim settings. </p>
+<div class="highlight"><pre><span></span><code>&quot; ~/.simple.vimrc file; $vim -u ~/.simple.vimrc to load
+set nocompatible              &quot; required
+filetype plugin on
+syntax enable
+
+&quot;path and find, fuzzy file finder
+set path+=**  &quot; search subdir recursively, find ...
+set wildmenu
+
+set number &quot; show line numbers
+
+&quot; Set ignore case, highlight, and incremental searches
+set ignorecase
+set hlsearch
+set incsearch
+</code></pre></div>
+
+
 <h3>Vim Tips</h3>
 <h4>Startup</h4>
 <p>Vim loads <code>~/.vimrc</code> by default, and you can change the behavior by using <code>-u</code> option on 
@@ -130,6 +151,19 @@ $vim -u NONE  # do not load any config file
 </code></pre></div>
 
 
+<h4>Set Initial Console Window Size</h4>
+<p>On Linux terminal, you can use <code>set lines=50 columns=100</code> to set initial console size. 
+I have those lines in my <code>~/.vimrc</code> file. </p>
+<div class="highlight"><pre><span></span><code>if exists(&quot;+lines&quot;)
+  set lines=80
+endif
+if exists(&quot;+columns&quot;)
+  set columns=120
+endif
+</code></pre></div>
+
+
+<p>Source: <a href="https://vim.fandom.com/wiki/Maximize_or_set_initial_window_size">an article</a> on fandom.com</p>
 <h4>Fuzzy Find</h4>
 <p>The following two settings help the <code>:find</code> command to do file fuzzy finding. </p>
 <div class="highlight"><pre><span></span><code>set path+=**
@@ -138,6 +172,7 @@ set wildmenu
 </code></pre></div>
 
 
+<p>Source: <a href="https://youtu.be/XA2WjJbmmoM">a video talk</a> on youtube</p>
 <h4>Auto Complete</h4>
 <p>Vim itself has auto complete function built in. In the insert mode, you can type a 
 few letters such as &#8216;Com&#8217;, and then press <code>^n</code> to bring up auto complete menu. It 
@@ -161,6 +196,36 @@ commands. </p>
 <div class="highlight"><pre><span></span><code>:echo @%
 :!ls %:p  # will show absolute path of file
 </code></pre></div>
+
+
+<h4>Navigation</h4>
+<p>Keys <code>h j k l</code> are the basic navigation commands in noraml mode. Commands <code>w b e</code> 
+jump cursor to next word, begin of word, or end of word. Other common navigation 
+commands are listed below. </p>
+<dl>
+<dt>gg</dt>
+<dd>move cursor to top</dd>
+<dt>G</dt>
+<dd>move cursor to bottom</dd>
+<dt>:<code>&lt;n&gt;</code></dt>
+<dd>jump cursor to line number n, or <code>&lt;n&gt;G</code></dd>
+<dt>^e</dt>
+<dd>show an extra line</dd>
+<dt>^y</dt>
+<dd>opposite of ^e</dd>
+<dt>^d</dt>
+<dd>move down half screen</dd>
+<dt>^u</dt>
+<dd>move up half screen</dd>
+<dt>%</dt>
+<dd>matching ( { or [</dd>
+<dt>H</dt>
+<dd>move cursor to top</dd>
+<dt>M</dt>
+<dd>move cursor to middle</dd>
+<dt>L</dt>
+<dd>move cursor to low corner</dd>
+</dl>
 
 
 
