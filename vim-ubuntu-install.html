@@ -163,7 +163,7 @@ endif
 </code></pre></div>
 
 
-<p>Source: <a href="https://vim.fandom.com/wiki/Maximize_or_set_initial_window_size">an article</a> on fandom.com</p>
+<p><em>Source: <a href="https://vim.fandom.com/wiki/Maximize_or_set_initial_window_size">an article</a> on fandom.com.</em></p>
 <h4>Fuzzy Find</h4>
 <p>The following two settings help the <code>:find</code> command to do file fuzzy finding. </p>
 <div class="highlight"><pre><span></span><code>set path+=**
@@ -172,7 +172,7 @@ set wildmenu
 </code></pre></div>
 
 
-<p>Source: <a href="https://youtu.be/XA2WjJbmmoM">a video talk</a> on youtube</p>
+<p><em>Source: <a href="https://youtu.be/XA2WjJbmmoM">a video talk</a> on youtube.</em></p>
 <h4>Auto Complete</h4>
 <p>Vim itself has auto complete function built in. In the insert mode, you can type a 
 few letters such as &#8216;Com&#8217;, and then press <code>^n</code> to bring up auto complete menu. It 
@@ -199,7 +199,7 @@ commands. </p>
 
 
 <h4>Navigation</h4>
-<p>Keys <code>h j k l</code> are the basic navigation commands in noraml mode. Commands <code>w b e</code> 
+<p>Keys <code>h j k l</code> are the basic navigation commands in normal mode. Commands <code>w b e</code> 
 jump cursor to next word, begin of word, or end of word. Other common navigation 
 commands are listed below. </p>
 <dl>
@@ -230,12 +230,39 @@ commands are listed below. </p>
 <p>Vim is in a different league comparing to other text editors. It does not have 
 some common commands other editors have. But some of those commands are so 
 common, it is better to customize vim to support them. For example, the 
-command <code>:saveas</code> is sometimes very convenient. The commands below add 
+command <code>:saveas</code> is sometimes very convenient. The settings below add 
 <code>Ctrl+s</code> shortcut for saving file.  </p>
 <div class="highlight"><pre><span></span><code>noremap &lt;silent&gt; &lt;C-S&gt;  :update&lt;CR&gt;
 vnoremap &lt;silent&gt; &lt;C-S&gt; :&lt;C-C&gt;:update&lt;CR&gt;
 inoremap &lt;silent&gt; &lt;C-S&gt; &lt;C-O&gt;:update&lt;CR&gt;
 </code></pre></div>
+
+
+<h4>Spell Check</h4>
+<p>Vim has a built in spell checker. You use <code>set spell</code> to turn it on 
+and <code>set nospell</code> to turn it off.  Here are some other commands on how to 
+use it.</p>
+<dl>
+<dt>setlocal spell</dt>
+<dd>for current buffer only</dd>
+<dt>]s</dt>
+<dd>move to next misspelled word</dd>
+<dt>[s</dt>
+<dd>previous misspelled word</dd>
+<dt>z=</dt>
+<dd>cursor on the word, list of suggested words</dd>
+<dt>zg</dt>
+<dd>the word is correct, add it to personal dictionary</dd>
+</dl>
+<p>The <code>spelllang</code> settings is to specify the language, and the default is <code>en</code>. 
+You can set it to <code>en_us</code> to specify American English. You can also use 
+<code>spellfile</code> setting to specify a personal dictionary file for <code>zg</code> command. </p>
+<p><em>Source: <a href="https://www.linux.com/training-tutorials/using-spell-checking-vim/">an article</a> on linux.com <span class="amp">&amp;</span> 
+<a href="http://thejakeharding.com/tutorial/2012/06/13/using-spell-check-in-vim.html">a blog post</a> by Jake Harding.</em></p>
+<h4><span class="caps">GNOME</span> Terminal Shortcuts</h4>
+<p>The Linux Mint comes with Gnome teminal. You can open additional tabs by pressing
+shortcut <code>Ctrl + Shift + t</code>, and move to next tab by pressing <code>Ctrl + PageDown</code>. 
+This does not necessarily relate to Vim, but I often use them so they are listed here. </p>
 
 
 
