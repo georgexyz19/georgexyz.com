@@ -4414,7 +4414,7 @@ do not make sense. Below are some most basic vim settings. &lt;/p&gt;
 &lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;&amp;quot; ~/.simple.vimrc file; $vim -u ~/.simple.vimrc to load
 set nocompatible              &amp;quot; required
 filetype plugin on
-syntax enable
+syntax enable   &amp;quot; or syntax off/on
 
 &amp;quot;path and find, fuzzy file finder
 set path+=**  &amp;quot; search subdir recursively, find ...
@@ -4547,6 +4547,26 @@ You can set it to &lt;code&gt;en_us&lt;/code&gt; to specify American English. Yo
 &lt;p&gt;&lt;em&gt;Source: &lt;a href="https://www.linux.com/training-tutorials/using-spell-checking-vim/"&gt;an article&lt;/a&gt; on linux.com &lt;span class="amp"&gt;&amp;amp;&lt;/span&gt; 
 &lt;a href="http://thejakeharding.com/tutorial/2012/06/13/using-spell-check-in-vim.html"&gt;a blog post&lt;/a&gt; by Jake Harding.&lt;/em&gt;&lt;/p&gt;
 &lt;h4&gt;&lt;span class="caps"&gt;GNOME&lt;/span&gt; Terminal Shortcuts&lt;/h4&gt;
-&lt;p&gt;The Linux Mint comes with Gnome teminal. You can open additional tabs by pressing
+&lt;p&gt;The Linux Mint comes with Gnome terminal. You can open additional tabs by pressing
 shortcut &lt;code&gt;Ctrl + Shift + t&lt;/code&gt;, and move to next tab by pressing &lt;code&gt;Ctrl + PageDown&lt;/code&gt;. 
-This does not necessarily relate to Vim, but I often use them so they are listed here. &lt;/p&gt;</content><category term="posts"></category><category term="vim"></category><category term="ubuntu"></category><category term="linux"></category></entry></feed>
+This does not necessarily relate to Vim, but I often use them so they are listed here. &lt;/p&gt;
+&lt;h4&gt;Copy and Paste via Clipboard&lt;/h4&gt;
+&lt;p&gt;Copying texts to and from Vim using the &lt;code&gt;Ctrl + c&lt;/code&gt; and &lt;code&gt;Ctrl + v&lt;/code&gt; does not work. 
+You could use Gnome terminal shortcuts &lt;code&gt;Ctrl + Shift + c&lt;/code&gt; and &lt;code&gt;Ctrl + Shift + v&lt;/code&gt;, 
+but sometimes it does not work very well. &lt;/p&gt;
+&lt;p&gt;I often use the &lt;em&gt;clipboard register&lt;/em&gt; to copy and paste texts in and out of Vim. Here 
+are the steps to copy texts into Vim, &lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;Copy texts in another problem such as Firefox.&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;Alt + Tab&lt;/code&gt; switch focus to Vim.&lt;/li&gt;
+&lt;li&gt;Use command &lt;code&gt;"+p&lt;/code&gt; to paste the texts.&lt;/li&gt;
+&lt;/ol&gt;
+&lt;p&gt;Here are the steps to copy texts out of Vim to another program.&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;Use &lt;code&gt;v&lt;/code&gt; command to visually select texts in Vim.&lt;/li&gt;
+&lt;li&gt;Type command &lt;code&gt;"+y&lt;/code&gt; to copy the texts to clipboard.&lt;/li&gt;
+&lt;li&gt;In another program, use &lt;code&gt;Ctrl + v&lt;/code&gt; to paste the texts. &lt;/li&gt;
+&lt;/ol&gt;
+&lt;p&gt;There is an &lt;a href="https://superuser.com/questions/61226/configure-vim-for-copy-and-paste-keyboard-shortcuts-from-system-buffer-in-ubuntu"&gt;online Q&amp;amp;A&lt;/a&gt;
+on how to map &lt;code&gt;Ctrl + c&lt;/code&gt; and &lt;code&gt;Ctrl + v&lt;/code&gt; to copy and paste behavior, but I have not 
+set it up in my &lt;code&gt;.vimrc&lt;/code&gt; file. &lt;/p&gt;</content><category term="posts"></category><category term="vim"></category><category term="ubuntu"></category><category term="linux"></category></entry></feed>

@@ -127,7 +127,7 @@ do not make sense. Below are some most basic vim settings. </p>
 <div class="highlight"><pre><span></span><code>&quot; ~/.simple.vimrc file; $vim -u ~/.simple.vimrc to load
 set nocompatible              &quot; required
 filetype plugin on
-syntax enable
+syntax enable   &quot; or syntax off/on
 
 &quot;path and find, fuzzy file finder
 set path+=**  &quot; search subdir recursively, find ...
@@ -260,9 +260,29 @@ You can set it to <code>en_us</code> to specify American English. You can also u
 <p><em>Source: <a href="https://www.linux.com/training-tutorials/using-spell-checking-vim/">an article</a> on linux.com <span class="amp">&amp;</span> 
 <a href="http://thejakeharding.com/tutorial/2012/06/13/using-spell-check-in-vim.html">a blog post</a> by Jake Harding.</em></p>
 <h4><span class="caps">GNOME</span> Terminal Shortcuts</h4>
-<p>The Linux Mint comes with Gnome teminal. You can open additional tabs by pressing
+<p>The Linux Mint comes with Gnome terminal. You can open additional tabs by pressing
 shortcut <code>Ctrl + Shift + t</code>, and move to next tab by pressing <code>Ctrl + PageDown</code>. 
 This does not necessarily relate to Vim, but I often use them so they are listed here. </p>
+<h4>Copy and Paste via Clipboard</h4>
+<p>Copying texts to and from Vim using the <code>Ctrl + c</code> and <code>Ctrl + v</code> does not work. 
+You could use Gnome terminal shortcuts <code>Ctrl + Shift + c</code> and <code>Ctrl + Shift + v</code>, 
+but sometimes it does not work very well. </p>
+<p>I often use the <em>clipboard register</em> to copy and paste texts in and out of Vim. Here 
+are the steps to copy texts into Vim, </p>
+<ol>
+<li>Copy texts in another problem such as Firefox.</li>
+<li><code>Alt + Tab</code> switch focus to Vim.</li>
+<li>Use command <code>"+p</code> to paste the texts.</li>
+</ol>
+<p>Here are the steps to copy texts out of Vim to another program.</p>
+<ol>
+<li>Use <code>v</code> command to visually select texts in Vim.</li>
+<li>Type command <code>"+y</code> to copy the texts to clipboard.</li>
+<li>In another program, use <code>Ctrl + v</code> to paste the texts. </li>
+</ol>
+<p>There is an <a href="https://superuser.com/questions/61226/configure-vim-for-copy-and-paste-keyboard-shortcuts-from-system-buffer-in-ubuntu">online Q&amp;A</a>
+on how to map <code>Ctrl + c</code> and <code>Ctrl + v</code> to copy and paste behavior, but I have not 
+set it up in my <code>.vimrc</code> file. </p>
 
 
 
