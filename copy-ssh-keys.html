@@ -1,0 +1,112 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <link rel="stylesheet" href="/theme/css/bs4min.css">
+    <link rel="shortcut icon" type="image/x-icon" href="/theme/images/favicon.ico" >
+    <link rel="icon" type="image/x-icon" href="/theme/images/favicon.ico" >
+<link rel="stylesheet" href="https://www.georgexyz.com/theme/css/friendly.css">
+<link rel="stylesheet" href="https://www.georgexyz.com/theme/css/custom.css">
+<meta name="author" content="George Zhang" />
+<meta name="keywords" content="software utility" />
+<meta name="description" content="I followed Miguel Grinberg’s tutorial setting up an SSH key on my desktop using ssh-keygen. I thought I could simply copy the private key id_rsa and public key id_rsa …" />
+    <title>Copy SSH Keys to A New Computer - George Zhang</title>
+  </head>
+  <body>
+    <!-- navbar -->
+    <nav class="navbar navbar-expand-md navbar-light" style="background-color: #e3f2fd;">
+      <div class="container">
+        <a class="navbar-brand" href="/">George Zhang</a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarColor01" aria-controls="navbarColor01" aria-expanded="false" aria-label="Toggle navigation">
+          <span class="navbar-toggler-icon"></span>
+        </button>
+
+        <div class="collapse navbar-collapse" id="navbarColor01">
+          <ul class="navbar-nav mr-auto">
+            <li class="nav-item">
+              <a class="nav-link " 
+                href="/articlelist.html">Articles</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link pr-3 " 
+                href="/tags.html">Tags</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link pr-3 "
+                 href="/pages/inkscape-tutorial.html">Inkscape Tutorial</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link "
+                   href="/pages/projects.html">Projects</a>
+              </li>
+          </ul>
+
+          <ul class="navbar-nav">
+            <li class="nav-item">
+              <a class="nav-link " 
+                 href="/pages/about.html">About</a>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </nav>
+
+   
+
+<div class="container">
+
+  <div class="row">
+    <div class="col-lg-8 mx-auto">
+
+      <h2>Copy <span class="caps">SSH</span> Keys to A New Computer</h2>
+
+      <div class="text-muted mb-2">
+        <span>Posted on </span>
+        <time datetime="2020-06-07 10:24:00-04:00">
+          Sunday, 06/07/2020 10:24
+        </time>
+
+        <span>with tags: </span>
+        <a href="https://www.georgexyz.com/tag/software-utility.html">software utility</a>
+      </div>
+
+      <p>I followed 
+<a href="https://blog.miguelgrinberg.com/post/the-flask-mega-tutorial-part-xvii-deployment-on-linux">Miguel Grinberg&#8217;s tutorial</a> 
+setting up an <span class="caps">SSH</span> key on my desktop using <code>ssh-keygen</code>. I thought I could simply copy the 
+private key <code>id_rsa</code> and public key <code>id_rsa.pub</code> to <code>~/.ssh</code> directory on a new computer 
+and <span class="caps">SSH</span> would work as on the first computer. </p>
+<p>It does not work. I googled and found a 
+<a href="https://askubuntu.com/questions/4830/easiest-way-to-copy-ssh-keys-to-another-machine">Q&amp;A</a> 
+on askubuntu.com. There are many answers to the question but only an answer by Victor Timoftil 
+is related to what I am looking for. The simple answer is that, </p>
+<blockquote>
+<p>Move <code>~/.ssh</code> to the new machine and run <code>ssh-add</code>. <span class="caps">DONE</span>!</p>
+</blockquote>
+<p>The long answer is that, </p>
+<blockquote>
+<ol>
+<li>In the old machine, take the folder ~/.ssh to an <span class="caps">USB</span> drive, or to any other storage you like.</li>
+<li>On the new machine, put the folder under ~ aka /home/$<span class="caps">USER</span>.</li>
+<li>Run ssh-add, on the new machine done.</li>
+</ol>
+</blockquote>
+<p>I copy the two <span class="caps">SSH</span> keys files to a flash drive that is formatted as ntfs format. The key files 
+are having new permission <code>777</code>. The <code>ssh-add</code> command will show an error for that. I have to 
+use <code>chmod 500</code> command to change file permissions. Also the <code>ssh-add</code> will ask a passphrase 
+which is entered when you create the keys. </p>
+
+
+
+    </div>
+  </div>
+
+</div>
+
+   
+    <script src="https://code.jquery.com/jquery-3.4.1.slim.min.js" integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js" integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6" crossorigin="anonymous"></script>
+  </body>
+</html>

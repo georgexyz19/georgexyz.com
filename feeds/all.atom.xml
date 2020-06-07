@@ -1,5 +1,31 @@
 <?xml version="1.0" encoding="utf-8"?>
-<feed xmlns="http://www.w3.org/2005/Atom"><title>George Zhang</title><link href="https://www.georgexyz.com/" rel="alternate"></link><link href="https://www.georgexyz.com/feeds/all.atom.xml" rel="self"></link><id>https://www.georgexyz.com/</id><updated>2020-06-02T16:24:00-04:00</updated><entry><title>Code Highlighting in Pelican</title><link href="https://www.georgexyz.com/code-highlight-in-pelican.html" rel="alternate"></link><published>2020-05-22T16:49:00-04:00</published><updated>2020-05-22T16:49:00-04:00</updated><author><name>George Zhang</name></author><id>tag:www.georgexyz.com,2020-05-22:/code-highlight-in-pelican.html</id><summary type="html">&lt;p&gt;It is easy getting confused about code highlighting when reading Pelican 
+<feed xmlns="http://www.w3.org/2005/Atom"><title>George Zhang</title><link href="https://www.georgexyz.com/" rel="alternate"></link><link href="https://www.georgexyz.com/feeds/all.atom.xml" rel="self"></link><id>https://www.georgexyz.com/</id><updated>2020-06-07T10:24:00-04:00</updated><entry><title>Copy SSH Keys to A New Computer</title><link href="https://www.georgexyz.com/copy-ssh-keys.html" rel="alternate"></link><published>2020-06-07T10:24:00-04:00</published><updated>2020-06-07T10:24:00-04:00</updated><author><name>George Zhang</name></author><id>tag:www.georgexyz.com,2020-06-07:/copy-ssh-keys.html</id><summary type="html">&lt;p&gt;I followed 
+&lt;a href="https://blog.miguelgrinberg.com/post/the-flask-mega-tutorial-part-xvii-deployment-on-linux"&gt;Miguel Grinberg&amp;#8217;s tutorial&lt;/a&gt; 
+setting up an &lt;span class="caps"&gt;SSH&lt;/span&gt; key on my desktop using &lt;code&gt;ssh-keygen&lt;/code&gt;. I thought I could simply copy the 
+private key &lt;code&gt;id_rsa&lt;/code&gt; and public key &lt;code&gt;id_rsa …&lt;/code&gt;&lt;/p&gt;</summary><content type="html">&lt;p&gt;I followed 
+&lt;a href="https://blog.miguelgrinberg.com/post/the-flask-mega-tutorial-part-xvii-deployment-on-linux"&gt;Miguel Grinberg&amp;#8217;s tutorial&lt;/a&gt; 
+setting up an &lt;span class="caps"&gt;SSH&lt;/span&gt; key on my desktop using &lt;code&gt;ssh-keygen&lt;/code&gt;. I thought I could simply copy the 
+private key &lt;code&gt;id_rsa&lt;/code&gt; and public key &lt;code&gt;id_rsa.pub&lt;/code&gt; to &lt;code&gt;~/.ssh&lt;/code&gt; directory on a new computer 
+and &lt;span class="caps"&gt;SSH&lt;/span&gt; would work as on the first computer. &lt;/p&gt;
+&lt;p&gt;It does not work. I googled and found a 
+&lt;a href="https://askubuntu.com/questions/4830/easiest-way-to-copy-ssh-keys-to-another-machine"&gt;Q&amp;amp;A&lt;/a&gt; 
+on askubuntu.com. There are many answers to the question but only an answer by Victor Timoftil 
+is related to what I am looking for. The simple answer is that, &lt;/p&gt;
+&lt;blockquote&gt;
+&lt;p&gt;Move &lt;code&gt;~/.ssh&lt;/code&gt; to the new machine and run &lt;code&gt;ssh-add&lt;/code&gt;. &lt;span class="caps"&gt;DONE&lt;/span&gt;!&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;p&gt;The long answer is that, &lt;/p&gt;
+&lt;blockquote&gt;
+&lt;ol&gt;
+&lt;li&gt;In the old machine, take the folder ~/.ssh to an &lt;span class="caps"&gt;USB&lt;/span&gt; drive, or to any other storage you like.&lt;/li&gt;
+&lt;li&gt;On the new machine, put the folder under ~ aka /home/$&lt;span class="caps"&gt;USER&lt;/span&gt;.&lt;/li&gt;
+&lt;li&gt;Run ssh-add, on the new machine done.&lt;/li&gt;
+&lt;/ol&gt;
+&lt;/blockquote&gt;
+&lt;p&gt;I copy the two &lt;span class="caps"&gt;SSH&lt;/span&gt; keys files to a flash drive that is formatted as ntfs format. The key files 
+are having new permission &lt;code&gt;777&lt;/code&gt;. The &lt;code&gt;ssh-add&lt;/code&gt; command will show an error for that. I have to 
+use &lt;code&gt;chmod 500&lt;/code&gt; command to change file permissions. Also the &lt;code&gt;ssh-add&lt;/code&gt; will ask a passphrase 
+which is entered when you create the keys. &lt;/p&gt;</content><category term="posts"></category><category term="software utility"></category></entry><entry><title>Code Highlighting in Pelican</title><link href="https://www.georgexyz.com/code-highlight-in-pelican.html" rel="alternate"></link><published>2020-05-22T16:49:00-04:00</published><updated>2020-05-22T16:49:00-04:00</updated><author><name>George Zhang</name></author><id>tag:www.georgexyz.com,2020-05-22:/code-highlight-in-pelican.html</id><summary type="html">&lt;p&gt;It is easy getting confused about code highlighting when reading Pelican 
 documentation. It mentions keywords like &lt;code&gt;CodeHilite&lt;/code&gt; and &lt;code&gt;Pygments&lt;/code&gt; without 
 much explanation. When I am reviewing my Pelican notes, I …&lt;/p&gt;</summary><content type="html">&lt;p&gt;It is easy getting confused about code highlighting when reading Pelican 
 documentation. It mentions keywords like &lt;code&gt;CodeHilite&lt;/code&gt; and &lt;code&gt;Pygments&lt;/code&gt; without 
