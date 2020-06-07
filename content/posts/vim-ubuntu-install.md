@@ -69,7 +69,7 @@ do not make sense. Below are some most basic vim settings.
 " ~/.simple.vimrc file; $vim -u ~/.simple.vimrc to load
 set nocompatible              " required
 filetype plugin on
-syntax enable
+syntax enable   " or syntax off/on
 
 "path and find, fuzzy file finder
 set path+=**  " search subdir recursively, find ...
@@ -240,9 +240,40 @@ You can set it to `en_us` to specify American English. You can also use
 
 #### GNOME Terminal Shortcuts
 
-The Linux Mint comes with Gnome teminal. You can open additional tabs by pressing
+The Linux Mint comes with Gnome terminal. You can open additional tabs by pressing
 shortcut `Ctrl + Shift + t`, and move to next tab by pressing `Ctrl + PageDown`. 
 This does not necessarily relate to Vim, but I often use them so they are listed here. 
+
+
+#### Copy and Paste via Clipboard
+
+Copying texts to and from Vim using the `Ctrl + c` and `Ctrl + v` does not work. 
+You could use Gnome terminal shortcuts `Ctrl + Shift + c` and `Ctrl + Shift + v`, 
+but sometimes it does not work very well. 
+
+I often use the *clipboard register* to copy and paste texts in and out of Vim. Here 
+are the steps to copy texts into Vim, 
+
+1. Copy texts in another problem such as Firefox.
+2. `Alt + Tab` switch focus to Vim.
+3. Use command `"+p` to paste the texts.
+
+Here are the steps to copy texts out of Vim to another program.
+
+1. Use `v` command to visually select texts in Vim.
+2. Type command `"+y` to copy the texts to clipboard.
+3. In another program, use `Ctrl + v` to paste the texts. 
+
+There is an [online Q&A](https://superuser.com/questions/61226/configure-vim-for-copy-and-paste-keyboard-shortcuts-from-system-buffer-in-ubuntu)
+on how to map `Ctrl + c` and `Ctrl + v` to copy and paste behavior, but I have not 
+set it up in my `.vimrc` file. 
+
+
+
+
+
+
+
 
 
 
