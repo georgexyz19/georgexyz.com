@@ -1,0 +1,152 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <link rel="stylesheet" href="/theme/css/bs4min.css">
+    <link rel="shortcut icon" type="image/x-icon" href="/theme/images/favicon.ico" >
+    <link rel="icon" type="image/x-icon" href="/theme/images/favicon.ico" >
+<link rel="stylesheet" href="https://www.georgexyz.com/theme/css/friendly.css">
+<link rel="stylesheet" href="https://www.georgexyz.com/theme/css/custom.css">
+<meta name="author" content="George Zhang" />
+<meta name="keywords" content="software utility,vim" />
+<meta name="description" content="Youtube has a nice video Learning Vim In A Week, and I watch it every few months to refresh my Vim skills. In the video the presenter suggests people to …" />
+    <title>Adding .vimrc Dotfile to Github - George Zhang</title>
+  </head>
+  <body>
+    <!-- navbar -->
+    <nav class="navbar navbar-expand-md navbar-light" style="background-color: #e3f2fd;">
+      <div class="container">
+        <a class="navbar-brand" href="/">George Zhang</a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarColor01" aria-controls="navbarColor01" aria-expanded="false" aria-label="Toggle navigation">
+          <span class="navbar-toggler-icon"></span>
+        </button>
+
+        <div class="collapse navbar-collapse" id="navbarColor01">
+          <ul class="navbar-nav mr-auto">
+            <li class="nav-item">
+              <a class="nav-link " 
+                href="/articlelist.html">Articles</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link pr-3 " 
+                href="/tags.html">Tags</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link pr-3 "
+                 href="/pages/inkscape-tutorial.html">Inkscape Tutorial</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link "
+                   href="/pages/projects.html">Projects</a>
+              </li>
+          </ul>
+
+          <ul class="navbar-nav">
+            <li class="nav-item">
+              <a class="nav-link " 
+                 href="/pages/about.html">About</a>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </nav>
+
+   
+
+<div class="container">
+
+  <div class="row">
+    <div class="col-lg-8 mx-auto">
+
+      <h2>Adding .vimrc Dotfile to Github</h2>
+
+      <div class="text-muted mb-2">
+        <span>Posted on </span>
+        <time datetime="2020-06-09 09:01:00-04:00">
+          Tuesday, 06/09/2020 09:01
+        </time>
+
+        <span>with tags: </span>
+        <a href="https://www.georgexyz.com/tag/software-utility.html">software utility</a>
+/        <a href="https://www.georgexyz.com/tag/vim.html">vim</a>
+      </div>
+
+      <p>Youtube has a nice video <a href="https://youtu.be/_NUO4JEtkDw">Learning Vim In A Week</a>, and I watch it 
+every few months to refresh my Vim skills. In the video the presenter suggests people to 
+version control dotfiles such as <code>.vimrc</code>, which is the setting file Vim loads during startup. 
+There is <a href="https://dotfiles.github.io/">a website</a> 
+dedicated to this topic. </p>
+<p>Dotfiles seem to be different than normal files in a regular github repo. I googled and found 
+<a href="https://stackoverflow.com/questions/18197705/adding-your-vim-vimrc-to-github-aka-dot-files">a stackoverflow post</a> 
+which discusses the exact same issue. The accepted answer seems a reasonable start point, so I create 
+<a href="https://github.com/georgexyz19/dotfiles">a github repo</a> 
+and start a directory containing <code>.vimrc</code> and <code>.simple</code> dot files.  The answer also suggests 
+to create symbol links in home directory to the dot files. However, I find it does not work 
+well. When I use <code>vim -u ~/.simple</code> command to load a specific dot file, Vim reports an error. 
+Instead the hard links should be used here. You simply use <code>ln file link</code> command to create 
+hard links instead of <code>ln -s ...</code> command.  </p>
+<p>When adding files to git version control, the command <code>git add .</code> should be used. The command 
+<code>git add *</code> will not work because <code>*</code> does not expand to include dot files. </p>
+<p>I also wrote a short python script <code>newlinks.py</code> to automatically create the hard links in the 
+home directory. The program is not long and the source code is listed below. </p>
+<div class="highlight"><pre><span></span><code><span class="ch">#! python3</span>
+
+<span class="sd">&#39;&#39;&#39;</span>
+<span class="sd">Create hard links in ~/ or home directory.</span>
+<span class="sd">The purpose is to track the .dot file by git and github</span>
+
+<span class="sd">Use:</span>
+
+<span class="sd">git add .</span>
+<span class="sd">git commit -m &quot;message&quot;</span>
+<span class="sd">git push origin master</span>
+
+<span class="sd">to update git repo</span>
+
+<span class="sd">After you git clone the repo</span>
+<span class="sd">run $python3 newlinks.py to create hard links in home dir.</span>
+
+<span class="sd">Written by George Zhang on 6/8/20</span>
+<span class="sd">&#39;&#39;&#39;</span>
+
+<span class="kn">import</span> <span class="nn">os</span>
+<span class="kn">import</span> <span class="nn">subprocess</span>
+
+<span class="k">def</span> <span class="nf">main</span><span class="p">():</span>
+    <span class="n">abspath</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">abspath</span><span class="p">(</span><span class="vm">__file__</span><span class="p">)</span> 
+    <span class="n">dname</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">dirname</span><span class="p">(</span><span class="n">abspath</span><span class="p">)</span>
+    <span class="n">os</span><span class="o">.</span><span class="n">chdir</span><span class="p">(</span><span class="n">dname</span><span class="p">)</span>
+
+    <span class="n">filenames</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">listdir</span><span class="p">()</span>
+
+    <span class="k">for</span> <span class="n">f</span> <span class="ow">in</span> <span class="n">filenames</span><span class="p">:</span>
+        <span class="k">if</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">isfile</span><span class="p">(</span><span class="n">f</span><span class="p">)</span> <span class="ow">and</span> <span class="n">f</span><span class="o">.</span><span class="n">startswith</span><span class="p">(</span><span class="s1">&#39;.&#39;</span><span class="p">)</span> <span class="ow">and</span> <span class="ow">not</span> <span class="n">f</span><span class="o">.</span><span class="n">endswith</span><span class="p">(</span><span class="s1">&#39;.swp&#39;</span><span class="p">):</span>
+            <span class="c1"># ln command</span>
+            <span class="c1"># os module has link and symlink function</span>
+            <span class="n">p1</span> <span class="o">=</span> <span class="n">subprocess</span><span class="o">.</span><span class="n">run</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;ln -f </span><span class="si">{</span><span class="n">f</span><span class="si">}</span><span class="s1"> ~/</span><span class="si">{</span><span class="n">f</span><span class="si">}</span><span class="s1">&#39;</span><span class="p">,</span> <span class="n">shell</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">capture_output</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span> 
+            <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;running command: &#39;</span><span class="p">,</span> <span class="sa">f</span><span class="s1">&#39;ln -f </span><span class="si">{</span><span class="n">f</span><span class="si">}</span><span class="s1"> ~/</span><span class="si">{</span><span class="n">f</span><span class="si">}</span><span class="s1">&#39;</span><span class="p">,</span> <span class="n">end</span><span class="o">=</span><span class="s1">&#39; --&gt; &#39;</span><span class="p">)</span>
+            <span class="k">if</span> <span class="n">p1</span><span class="o">.</span><span class="n">returncode</span> <span class="o">==</span> <span class="mi">0</span><span class="p">:</span>
+                <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;Success!&#39;</span><span class="p">)</span>
+
+    <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;DONE!!!&#39;</span><span class="p">)</span>   
+
+
+<span class="k">if</span> <span class="vm">__name__</span> <span class="o">==</span> <span class="s1">&#39;__main__&#39;</span><span class="p">:</span>
+    <span class="n">main</span><span class="p">()</span>
+</code></pre></div>
+
+
+
+    </div>
+  </div>
+
+</div>
+
+   
+    <script src="https://code.jquery.com/jquery-3.4.1.slim.min.js" integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js" integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6" crossorigin="anonymous"></script>
+  </body>
+</html>

@@ -1,5 +1,68 @@
 <?xml version="1.0" encoding="utf-8"?>
-<feed xmlns="http://www.w3.org/2005/Atom"><title>George Zhang</title><link href="https://www.georgexyz.com/" rel="alternate"></link><link href="https://www.georgexyz.com/feeds/all.atom.xml" rel="self"></link><id>https://www.georgexyz.com/</id><updated>2020-06-07T10:24:00-04:00</updated><entry><title>Copy SSH Keys to A New Computer</title><link href="https://www.georgexyz.com/copy-ssh-keys.html" rel="alternate"></link><published>2020-06-07T10:24:00-04:00</published><updated>2020-06-07T10:24:00-04:00</updated><author><name>George Zhang</name></author><id>tag:www.georgexyz.com,2020-06-07:/copy-ssh-keys.html</id><summary type="html">&lt;p&gt;I followed 
+<feed xmlns="http://www.w3.org/2005/Atom"><title>George Zhang</title><link href="https://www.georgexyz.com/" rel="alternate"></link><link href="https://www.georgexyz.com/feeds/all.atom.xml" rel="self"></link><id>https://www.georgexyz.com/</id><updated>2020-06-09T09:01:00-04:00</updated><entry><title>Adding .vimrc Dotfile to Github</title><link href="https://www.georgexyz.com/adding-vimrc-dotfile-to-github.html" rel="alternate"></link><published>2020-06-09T09:01:00-04:00</published><updated>2020-06-09T09:01:00-04:00</updated><author><name>George Zhang</name></author><id>tag:www.georgexyz.com,2020-06-09:/adding-vimrc-dotfile-to-github.html</id><summary type="html">&lt;p&gt;Youtube has a nice video &lt;a href="https://youtu.be/_NUO4JEtkDw"&gt;Learning Vim In A Week&lt;/a&gt;, and I watch it 
+every few months to refresh my Vim skills. In the video the presenter suggests people to …&lt;/p&gt;</summary><content type="html">&lt;p&gt;Youtube has a nice video &lt;a href="https://youtu.be/_NUO4JEtkDw"&gt;Learning Vim In A Week&lt;/a&gt;, and I watch it 
+every few months to refresh my Vim skills. In the video the presenter suggests people to 
+version control dotfiles such as &lt;code&gt;.vimrc&lt;/code&gt;, which is the setting file Vim loads during startup. 
+There is &lt;a href="https://dotfiles.github.io/"&gt;a website&lt;/a&gt; 
+dedicated to this topic. &lt;/p&gt;
+&lt;p&gt;Dotfiles seem to be different than normal files in a regular github repo. I googled and found 
+&lt;a href="https://stackoverflow.com/questions/18197705/adding-your-vim-vimrc-to-github-aka-dot-files"&gt;a stackoverflow post&lt;/a&gt; 
+which discusses the exact same issue. The accepted answer seems a reasonable start point, so I create 
+&lt;a href="https://github.com/georgexyz19/dotfiles"&gt;a github repo&lt;/a&gt; 
+and start a directory containing &lt;code&gt;.vimrc&lt;/code&gt; and &lt;code&gt;.simple&lt;/code&gt; dot files.  The answer also suggests 
+to create symbol links in home directory to the dot files. However, I find it does not work 
+well. When I use &lt;code&gt;vim -u ~/.simple&lt;/code&gt; command to load a specific dot file, Vim reports an error. 
+Instead the hard links should be used here. You simply use &lt;code&gt;ln file link&lt;/code&gt; command to create 
+hard links instead of &lt;code&gt;ln -s ...&lt;/code&gt; command.  &lt;/p&gt;
+&lt;p&gt;When adding files to git version control, the command &lt;code&gt;git add .&lt;/code&gt; should be used. The command 
+&lt;code&gt;git add *&lt;/code&gt; will not work because &lt;code&gt;*&lt;/code&gt; does not expand to include dot files. &lt;/p&gt;
+&lt;p&gt;I also wrote a short python script &lt;code&gt;newlinks.py&lt;/code&gt; to automatically create the hard links in the 
+home directory. The program is not long and the source code is listed below. &lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;&lt;span class="ch"&gt;#! python3&lt;/span&gt;
+
+&lt;span class="sd"&gt;&amp;#39;&amp;#39;&amp;#39;&lt;/span&gt;
+&lt;span class="sd"&gt;Create hard links in ~/ or home directory.&lt;/span&gt;
+&lt;span class="sd"&gt;The purpose is to track the .dot file by git and github&lt;/span&gt;
+
+&lt;span class="sd"&gt;Use:&lt;/span&gt;
+
+&lt;span class="sd"&gt;git add .&lt;/span&gt;
+&lt;span class="sd"&gt;git commit -m &amp;quot;message&amp;quot;&lt;/span&gt;
+&lt;span class="sd"&gt;git push origin master&lt;/span&gt;
+
+&lt;span class="sd"&gt;to update git repo&lt;/span&gt;
+
+&lt;span class="sd"&gt;After you git clone the repo&lt;/span&gt;
+&lt;span class="sd"&gt;run $python3 newlinks.py to create hard links in home dir.&lt;/span&gt;
+
+&lt;span class="sd"&gt;Written by George Zhang on 6/8/20&lt;/span&gt;
+&lt;span class="sd"&gt;&amp;#39;&amp;#39;&amp;#39;&lt;/span&gt;
+
+&lt;span class="kn"&gt;import&lt;/span&gt; &lt;span class="nn"&gt;os&lt;/span&gt;
+&lt;span class="kn"&gt;import&lt;/span&gt; &lt;span class="nn"&gt;subprocess&lt;/span&gt;
+
+&lt;span class="k"&gt;def&lt;/span&gt; &lt;span class="nf"&gt;main&lt;/span&gt;&lt;span class="p"&gt;():&lt;/span&gt;
+    &lt;span class="n"&gt;abspath&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="n"&gt;os&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;path&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;abspath&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="vm"&gt;__file__&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt; 
+    &lt;span class="n"&gt;dname&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="n"&gt;os&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;path&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;dirname&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;abspath&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
+    &lt;span class="n"&gt;os&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;chdir&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;dname&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
+
+    &lt;span class="n"&gt;filenames&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="n"&gt;os&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;listdir&lt;/span&gt;&lt;span class="p"&gt;()&lt;/span&gt;
+
+    &lt;span class="k"&gt;for&lt;/span&gt; &lt;span class="n"&gt;f&lt;/span&gt; &lt;span class="ow"&gt;in&lt;/span&gt; &lt;span class="n"&gt;filenames&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt;
+        &lt;span class="k"&gt;if&lt;/span&gt; &lt;span class="n"&gt;os&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;path&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;isfile&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;f&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt; &lt;span class="ow"&gt;and&lt;/span&gt; &lt;span class="n"&gt;f&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;startswith&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="s1"&gt;&amp;#39;.&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt; &lt;span class="ow"&gt;and&lt;/span&gt; &lt;span class="ow"&gt;not&lt;/span&gt; &lt;span class="n"&gt;f&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;endswith&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="s1"&gt;&amp;#39;.swp&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;):&lt;/span&gt;
+            &lt;span class="c1"&gt;# ln command&lt;/span&gt;
+            &lt;span class="c1"&gt;# os module has link and symlink function&lt;/span&gt;
+            &lt;span class="n"&gt;p1&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="n"&gt;subprocess&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;run&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="sa"&gt;f&lt;/span&gt;&lt;span class="s1"&gt;&amp;#39;ln -f &lt;/span&gt;&lt;span class="si"&gt;{&lt;/span&gt;&lt;span class="n"&gt;f&lt;/span&gt;&lt;span class="si"&gt;}&lt;/span&gt;&lt;span class="s1"&gt; ~/&lt;/span&gt;&lt;span class="si"&gt;{&lt;/span&gt;&lt;span class="n"&gt;f&lt;/span&gt;&lt;span class="si"&gt;}&lt;/span&gt;&lt;span class="s1"&gt;&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;shell&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="kc"&gt;True&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;capture_output&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="kc"&gt;True&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt; 
+            &lt;span class="nb"&gt;print&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="s1"&gt;&amp;#39;running command: &amp;#39;&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="sa"&gt;f&lt;/span&gt;&lt;span class="s1"&gt;&amp;#39;ln -f &lt;/span&gt;&lt;span class="si"&gt;{&lt;/span&gt;&lt;span class="n"&gt;f&lt;/span&gt;&lt;span class="si"&gt;}&lt;/span&gt;&lt;span class="s1"&gt; ~/&lt;/span&gt;&lt;span class="si"&gt;{&lt;/span&gt;&lt;span class="n"&gt;f&lt;/span&gt;&lt;span class="si"&gt;}&lt;/span&gt;&lt;span class="s1"&gt;&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;end&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="s1"&gt;&amp;#39; --&amp;gt; &amp;#39;&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
+            &lt;span class="k"&gt;if&lt;/span&gt; &lt;span class="n"&gt;p1&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;returncode&lt;/span&gt; &lt;span class="o"&gt;==&lt;/span&gt; &lt;span class="mi"&gt;0&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt;
+                &lt;span class="nb"&gt;print&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="s1"&gt;&amp;#39;Success!&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
+
+    &lt;span class="nb"&gt;print&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="s1"&gt;&amp;#39;DONE!!!&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;   
+
+
+&lt;span class="k"&gt;if&lt;/span&gt; &lt;span class="vm"&gt;__name__&lt;/span&gt; &lt;span class="o"&gt;==&lt;/span&gt; &lt;span class="s1"&gt;&amp;#39;__main__&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt;
+    &lt;span class="n"&gt;main&lt;/span&gt;&lt;span class="p"&gt;()&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;</content><category term="posts"></category><category term="software utility"></category><category term="vim"></category></entry><entry><title>Copy SSH Keys to A New Computer</title><link href="https://www.georgexyz.com/copy-ssh-keys.html" rel="alternate"></link><published>2020-06-07T10:24:00-04:00</published><updated>2020-06-07T10:24:00-04:00</updated><author><name>George Zhang</name></author><id>tag:www.georgexyz.com,2020-06-07:/copy-ssh-keys.html</id><summary type="html">&lt;p&gt;I followed 
 &lt;a href="https://blog.miguelgrinberg.com/post/the-flask-mega-tutorial-part-xvii-deployment-on-linux"&gt;Miguel Grinberg&amp;#8217;s tutorial&lt;/a&gt; 
 setting up an &lt;span class="caps"&gt;SSH&lt;/span&gt; key on my desktop using &lt;code&gt;ssh-keygen&lt;/code&gt;. I thought I could simply copy the 
 private key &lt;code&gt;id_rsa&lt;/code&gt; and public key &lt;code&gt;id_rsa …&lt;/code&gt;&lt;/p&gt;</summary><content type="html">&lt;p&gt;I followed 
@@ -9,7 +72,7 @@ private key &lt;code&gt;id_rsa&lt;/code&gt; and public key &lt;code&gt;id_rsa.pu
 and &lt;span class="caps"&gt;SSH&lt;/span&gt; would work as on the first computer. &lt;/p&gt;
 &lt;p&gt;It does not work. I googled and found a 
 &lt;a href="https://askubuntu.com/questions/4830/easiest-way-to-copy-ssh-keys-to-another-machine"&gt;Q&amp;amp;A&lt;/a&gt; 
-on askubuntu.com. There are many answers to the question but only an answer by Victor Timoftil 
+on askubuntu.com. There are many answers to the question but only the answer by Victor Timoftil 
 is related to what I am looking for. The simple answer is that, &lt;/p&gt;
 &lt;blockquote&gt;
 &lt;p&gt;Move &lt;code&gt;~/.ssh&lt;/code&gt; to the new machine and run &lt;code&gt;ssh-add&lt;/code&gt;. &lt;span class="caps"&gt;DONE&lt;/span&gt;!&lt;/p&gt;
@@ -22,10 +85,11 @@ is related to what I am looking for. The simple answer is that, &lt;/p&gt;
 &lt;li&gt;Run ssh-add, on the new machine done.&lt;/li&gt;
 &lt;/ol&gt;
 &lt;/blockquote&gt;
-&lt;p&gt;I copy the two &lt;span class="caps"&gt;SSH&lt;/span&gt; keys files to a flash drive that is formatted as ntfs format. The key files 
+&lt;p&gt;I copy the two &lt;span class="caps"&gt;SSH&lt;/span&gt; keys files vie a flash drive that is formatted as ntfs format. The key files 
 are having new permission &lt;code&gt;777&lt;/code&gt;. The &lt;code&gt;ssh-add&lt;/code&gt; command will show an error for that. I have to 
 use &lt;code&gt;chmod 500&lt;/code&gt; command to change file permissions. Also the &lt;code&gt;ssh-add&lt;/code&gt; will ask a passphrase 
-which is entered when you create the keys. &lt;/p&gt;</content><category term="posts"></category><category term="software utility"></category></entry><entry><title>Code Highlighting in Pelican</title><link href="https://www.georgexyz.com/code-highlight-in-pelican.html" rel="alternate"></link><published>2020-05-22T16:49:00-04:00</published><updated>2020-05-22T16:49:00-04:00</updated><author><name>George Zhang</name></author><id>tag:www.georgexyz.com,2020-05-22:/code-highlight-in-pelican.html</id><summary type="html">&lt;p&gt;It is easy getting confused about code highlighting when reading Pelican 
+which is entered when you create the keys. It seems to be a safety feature to prevent someone 
+stealing the two key files.   &lt;/p&gt;</content><category term="posts"></category><category term="software utility"></category></entry><entry><title>Code Highlighting in Pelican</title><link href="https://www.georgexyz.com/code-highlight-in-pelican.html" rel="alternate"></link><published>2020-05-22T16:49:00-04:00</published><updated>2020-05-22T16:49:00-04:00</updated><author><name>George Zhang</name></author><id>tag:www.georgexyz.com,2020-05-22:/code-highlight-in-pelican.html</id><summary type="html">&lt;p&gt;It is easy getting confused about code highlighting when reading Pelican 
 documentation. It mentions keywords like &lt;code&gt;CodeHilite&lt;/code&gt; and &lt;code&gt;Pygments&lt;/code&gt; without 
 much explanation. When I am reviewing my Pelican notes, I …&lt;/p&gt;</summary><content type="html">&lt;p&gt;It is easy getting confused about code highlighting when reading Pelican 
 documentation. It mentions keywords like &lt;code&gt;CodeHilite&lt;/code&gt; and &lt;code&gt;Pygments&lt;/code&gt; without 
@@ -4550,6 +4614,10 @@ You can set it to &lt;code&gt;en_us&lt;/code&gt; to specify American English. Yo
 &lt;p&gt;The Linux Mint comes with Gnome terminal. You can open additional tabs by pressing
 shortcut &lt;code&gt;Ctrl + Shift + t&lt;/code&gt;, and move to next tab by pressing &lt;code&gt;Ctrl + PageDown&lt;/code&gt;. 
 This does not necessarily relate to Vim, but I often use them so they are listed here. &lt;/p&gt;
+&lt;p&gt;Another useful terminal shortcut is &lt;code&gt;Ctrl + z&lt;/code&gt; which puts current application Vim 
+in the background and suspended. After running some bash commands, you can type &lt;code&gt;fg&lt;/code&gt; 
+command to bring Vim back to foreground. Or you can use &lt;code&gt;:!&lt;/code&gt; followed by a bash 
+command to execute the command inside Vim. &lt;/p&gt;
 &lt;h4&gt;Copy and Paste via Clipboard&lt;/h4&gt;
 &lt;p&gt;Copying texts to and from Vim using the &lt;code&gt;Ctrl + c&lt;/code&gt; and &lt;code&gt;Ctrl + v&lt;/code&gt; does not work. 
 You could use Gnome terminal shortcuts &lt;code&gt;Ctrl + Shift + c&lt;/code&gt; and &lt;code&gt;Ctrl + Shift + v&lt;/code&gt;, 
@@ -4557,7 +4625,7 @@ but sometimes it does not work very well. &lt;/p&gt;
 &lt;p&gt;I often use the &lt;em&gt;clipboard register&lt;/em&gt; to copy and paste texts in and out of Vim. Here 
 are the steps to copy texts into Vim, &lt;/p&gt;
 &lt;ol&gt;
-&lt;li&gt;Copy texts in another problem such as Firefox.&lt;/li&gt;
+&lt;li&gt;Copy texts in another program such as Firefox.&lt;/li&gt;
 &lt;li&gt;&lt;code&gt;Alt + Tab&lt;/code&gt; switch focus to Vim.&lt;/li&gt;
 &lt;li&gt;Use command &lt;code&gt;"+p&lt;/code&gt; to paste the texts.&lt;/li&gt;
 &lt;/ol&gt;

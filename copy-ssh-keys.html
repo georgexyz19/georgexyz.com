@@ -79,7 +79,7 @@ private key <code>id_rsa</code> and public key <code>id_rsa.pub</code> to <code>
 and <span class="caps">SSH</span> would work as on the first computer. </p>
 <p>It does not work. I googled and found a 
 <a href="https://askubuntu.com/questions/4830/easiest-way-to-copy-ssh-keys-to-another-machine">Q&amp;A</a> 
-on askubuntu.com. There are many answers to the question but only an answer by Victor Timoftil 
+on askubuntu.com. There are many answers to the question but only the answer by Victor Timoftil 
 is related to what I am looking for. The simple answer is that, </p>
 <blockquote>
 <p>Move <code>~/.ssh</code> to the new machine and run <code>ssh-add</code>. <span class="caps">DONE</span>!</p>
@@ -92,10 +92,11 @@ is related to what I am looking for. The simple answer is that, </p>
 <li>Run ssh-add, on the new machine done.</li>
 </ol>
 </blockquote>
-<p>I copy the two <span class="caps">SSH</span> keys files to a flash drive that is formatted as ntfs format. The key files 
+<p>I copy the two <span class="caps">SSH</span> keys files vie a flash drive that is formatted as ntfs format. The key files 
 are having new permission <code>777</code>. The <code>ssh-add</code> command will show an error for that. I have to 
 use <code>chmod 500</code> command to change file permissions. Also the <code>ssh-add</code> will ask a passphrase 
-which is entered when you create the keys. </p>
+which is entered when you create the keys. It seems to be a safety feature to prevent someone 
+stealing the two key files.   </p>
 
 
 
