@@ -244,6 +244,11 @@ The Linux Mint comes with Gnome terminal. You can open additional tabs by pressi
 shortcut `Ctrl + Shift + t`, and move to next tab by pressing `Ctrl + PageDown`. 
 This does not necessarily relate to Vim, but I often use them so they are listed here. 
 
+Another useful terminal shortcut is `Ctrl + z` which puts current application Vim 
+in the background and suspended. After running some bash commands, you can type `fg` 
+command to bring Vim back to foreground. Or you can use `:!` followed by a bash 
+command to execute the command inside Vim. 
+
 
 #### Copy and Paste via Clipboard
 
@@ -254,7 +259,7 @@ but sometimes it does not work very well.
 I often use the *clipboard register* to copy and paste texts in and out of Vim. Here 
 are the steps to copy texts into Vim, 
 
-1. Copy texts in another problem such as Firefox.
+1. Copy texts in another program such as Firefox.
 2. `Alt + Tab` switch focus to Vim.
 3. Use command `"+p` to paste the texts.
 
@@ -267,9 +272,6 @@ Here are the steps to copy texts out of Vim to another program.
 There is an [online Q&A](https://superuser.com/questions/61226/configure-vim-for-copy-and-paste-keyboard-shortcuts-from-system-buffer-in-ubuntu)
 on how to map `Ctrl + c` and `Ctrl + v` to copy and paste behavior, but I have not 
 set it up in my `.vimrc` file. 
-
-
-
 
 
 

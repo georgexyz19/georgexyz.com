@@ -14,7 +14,7 @@ and SSH would work as on the first computer.
 
 It does not work. I googled and found a 
 [Q&A](https://askubuntu.com/questions/4830/easiest-way-to-copy-ssh-keys-to-another-machine) 
-on askubuntu.com. There are many answers to the question but only an answer by Victor Timoftil 
+on askubuntu.com. There are many answers to the question but only the answer by Victor Timoftil 
 is related to what I am looking for. The simple answer is that, 
 
 >    Move `~/.ssh` to the new machine and run `ssh-add`. DONE!
@@ -27,10 +27,11 @@ The long answer is that,
 >    3. Run ssh-add, on the new machine done.
 
 
-I copy the two SSH keys files to a flash drive that is formatted as ntfs format. The key files 
+I copy the two SSH keys files vie a flash drive that is formatted as ntfs format. The key files 
 are having new permission `777`. The `ssh-add` command will show an error for that. I have to 
 use `chmod 500` command to change file permissions. Also the `ssh-add` will ask a passphrase 
-which is entered when you create the keys. 
+which is entered when you create the keys. It seems to be a safety feature to prevent someone 
+stealing the two key files.   
 
 
 
