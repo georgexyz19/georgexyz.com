@@ -180,15 +180,19 @@ is very handy when you are programming because you often need to type variable a
 class names multiple times on a file. </p>
 <dl>
 <dt>^x^n</dt>
-<dd>Search in this file, ^ represents Ctrl key </dd>
+<dd>search in this file, ^ represents Ctrl key </dd>
 <dt>^x^f</dt>
-<dd>Search filename</dd>
+<dd>search filename</dd>
 <dt>^x^]</dt>
-<dd>Search tag</dd>
+<dd>search tag</dd>
 <dt>^n</dt>
 <dd>search by default</dd>
 <dt>^n  ^p</dt>
 <dd>next prev on the menu</dd>
+<dt>^y</dt>
+<dd>confirm selection, yes</dd>
+<dt>^e</dt>
+<dd>exit menu</dd>
 </dl>
 <h4>Current Filename</h4>
 <p>Command <code>^g</code> shows the name of the current file. Or you can type the following vim 
@@ -219,25 +223,41 @@ commands are listed below. </p>
 <dd>move up half screen</dd>
 <dt>%</dt>
 <dd>matching ( { or [</dd>
-<dt>H</dt>
-<dd>move cursor to top</dd>
-<dt>M</dt>
-<dd>move cursor to middle</dd>
-<dt>L</dt>
-<dd>move cursor to low corner</dd>
+<dt>H, M, L</dt>
+<dd>move cursor to top, middle, and lower corner</dd>
+<dt>^o</dt>
+<dd>go to old cursor position</dd>
+<dt>^i</dt>
+<dd>go to next cursor position</dd>
 </dl>
 <h4>Common Commands</h4>
 <p>Vim is in a different league comparing to other text editors. It does not have 
 some common commands other editors have. But some of those commands are so 
 common, it is better to customize vim to support them. For example, the 
-command <code>:saveas</code> is sometimes very convenient. The settings below add 
-<code>Ctrl+s</code> shortcut for saving file.  </p>
+command <code>:saveas</code> is sometimes very convenient. </p>
+<p>The settings below add <code>Ctrl+s</code> shortcut for saving file.  Command <code>:update</code> is 
+like <code>:write</code>, but only write when buffer has been modified.</p>
 <div class="highlight"><pre><span></span><code>noremap &lt;silent&gt; &lt;C-S&gt;  :update&lt;CR&gt;
 vnoremap &lt;silent&gt; &lt;C-S&gt; :&lt;C-C&gt;:update&lt;CR&gt;
 inoremap &lt;silent&gt; &lt;C-S&gt; &lt;C-O&gt;:update&lt;CR&gt;
 </code></pre></div>
 
 
+<p>This shortcut also needs a setting in <code>.bashrc</code> file to work. </p>
+<div class="highlight"><pre><span></span><code>stty -ixon  # stop tele-typewriter, 
+            # -ixon enable xon/xoff flow control -i
+</code></pre></div>
+
+
+<p>By default command <code>^s</code> freezes vim in Ubuntu Linux, and <code>^q</code> un-freeze it. 
+This <a href="">stackoverflow Q&amp;A</a> 
+explains it very well. </p>
+<blockquote>
+<p><code>Ctrl + s</code> is a common command to terminals to stop updating, it was a way to slow 
+the output so you could read it on terminals that did not have a scrollback 
+buffer. <code>Ctrl + q</code> command gets terminal going again. Put this line in .bashrc to 
+disable flow control for terminal entirely.</p>
+</blockquote>
 <h4>Spell Check</h4>
 <p>Vim has a built in spell checker. You use <code>set spell</code> to turn it on 
 and <code>set nospell</code> to turn it off.  Here are some other commands on how to 
@@ -287,6 +307,17 @@ are the steps to copy texts into Vim, </p>
 <p>There is an <a href="https://superuser.com/questions/61226/configure-vim-for-copy-and-paste-keyboard-shortcuts-from-system-buffer-in-ubuntu">online Q&amp;A</a>
 on how to map <code>Ctrl + c</code> and <code>Ctrl + v</code> to copy and paste behavior, but I have not 
 set it up in my <code>.vimrc</code> file. </p>
+<h4>Work Sessions</h4>
+<p>When you have 10 or more text files open in Vim and need to reboot your computer, you 
+can use session commands to save the Vim work status and load them later.</p>
+<dl>
+<dt>mksession ~/work1.session</dt>
+<dd>save the current work status</dd>
+<dt>source ~/work1.session</dt>
+<dd>load the saved session in Vim</dd>
+<dt>vim -S ~/work1.session</dt>
+<dd>bash command to load vim and work session</dd>
+</dl>
 
 
 

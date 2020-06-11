@@ -4531,15 +4531,19 @@ is very handy when you are programming because you often need to type variable a
 class names multiple times on a file. &lt;/p&gt;
 &lt;dl&gt;
 &lt;dt&gt;^x^n&lt;/dt&gt;
-&lt;dd&gt;Search in this file, ^ represents Ctrl key &lt;/dd&gt;
+&lt;dd&gt;search in this file, ^ represents Ctrl key &lt;/dd&gt;
 &lt;dt&gt;^x^f&lt;/dt&gt;
-&lt;dd&gt;Search filename&lt;/dd&gt;
+&lt;dd&gt;search filename&lt;/dd&gt;
 &lt;dt&gt;^x^]&lt;/dt&gt;
-&lt;dd&gt;Search tag&lt;/dd&gt;
+&lt;dd&gt;search tag&lt;/dd&gt;
 &lt;dt&gt;^n&lt;/dt&gt;
 &lt;dd&gt;search by default&lt;/dd&gt;
 &lt;dt&gt;^n  ^p&lt;/dt&gt;
 &lt;dd&gt;next prev on the menu&lt;/dd&gt;
+&lt;dt&gt;^y&lt;/dt&gt;
+&lt;dd&gt;confirm selection, yes&lt;/dd&gt;
+&lt;dt&gt;^e&lt;/dt&gt;
+&lt;dd&gt;exit menu&lt;/dd&gt;
 &lt;/dl&gt;
 &lt;h4&gt;Current Filename&lt;/h4&gt;
 &lt;p&gt;Command &lt;code&gt;^g&lt;/code&gt; shows the name of the current file. Or you can type the following vim 
@@ -4570,25 +4574,41 @@ commands are listed below. &lt;/p&gt;
 &lt;dd&gt;move up half screen&lt;/dd&gt;
 &lt;dt&gt;%&lt;/dt&gt;
 &lt;dd&gt;matching ( { or [&lt;/dd&gt;
-&lt;dt&gt;H&lt;/dt&gt;
-&lt;dd&gt;move cursor to top&lt;/dd&gt;
-&lt;dt&gt;M&lt;/dt&gt;
-&lt;dd&gt;move cursor to middle&lt;/dd&gt;
-&lt;dt&gt;L&lt;/dt&gt;
-&lt;dd&gt;move cursor to low corner&lt;/dd&gt;
+&lt;dt&gt;H, M, L&lt;/dt&gt;
+&lt;dd&gt;move cursor to top, middle, and lower corner&lt;/dd&gt;
+&lt;dt&gt;^o&lt;/dt&gt;
+&lt;dd&gt;go to old cursor position&lt;/dd&gt;
+&lt;dt&gt;^i&lt;/dt&gt;
+&lt;dd&gt;go to next cursor position&lt;/dd&gt;
 &lt;/dl&gt;
 &lt;h4&gt;Common Commands&lt;/h4&gt;
 &lt;p&gt;Vim is in a different league comparing to other text editors. It does not have 
 some common commands other editors have. But some of those commands are so 
 common, it is better to customize vim to support them. For example, the 
-command &lt;code&gt;:saveas&lt;/code&gt; is sometimes very convenient. The settings below add 
-&lt;code&gt;Ctrl+s&lt;/code&gt; shortcut for saving file.  &lt;/p&gt;
+command &lt;code&gt;:saveas&lt;/code&gt; is sometimes very convenient. &lt;/p&gt;
+&lt;p&gt;The settings below add &lt;code&gt;Ctrl+s&lt;/code&gt; shortcut for saving file.  Command &lt;code&gt;:update&lt;/code&gt; is 
+like &lt;code&gt;:write&lt;/code&gt;, but only write when buffer has been modified.&lt;/p&gt;
 &lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;noremap &amp;lt;silent&amp;gt; &amp;lt;C-S&amp;gt;  :update&amp;lt;CR&amp;gt;
 vnoremap &amp;lt;silent&amp;gt; &amp;lt;C-S&amp;gt; :&amp;lt;C-C&amp;gt;:update&amp;lt;CR&amp;gt;
 inoremap &amp;lt;silent&amp;gt; &amp;lt;C-S&amp;gt; &amp;lt;C-O&amp;gt;:update&amp;lt;CR&amp;gt;
 &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
 
 
+&lt;p&gt;This shortcut also needs a setting in &lt;code&gt;.bashrc&lt;/code&gt; file to work. &lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;stty -ixon  # stop tele-typewriter, 
+            # -ixon enable xon/xoff flow control -i
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;p&gt;By default command &lt;code&gt;^s&lt;/code&gt; freezes vim in Ubuntu Linux, and &lt;code&gt;^q&lt;/code&gt; un-freeze it. 
+This &lt;a href=""&gt;stackoverflow Q&amp;amp;A&lt;/a&gt; 
+explains it very well. &lt;/p&gt;
+&lt;blockquote&gt;
+&lt;p&gt;&lt;code&gt;Ctrl + s&lt;/code&gt; is a common command to terminals to stop updating, it was a way to slow 
+the output so you could read it on terminals that did not have a scrollback 
+buffer. &lt;code&gt;Ctrl + q&lt;/code&gt; command gets terminal going again. Put this line in .bashrc to 
+disable flow control for terminal entirely.&lt;/p&gt;
+&lt;/blockquote&gt;
 &lt;h4&gt;Spell Check&lt;/h4&gt;
 &lt;p&gt;Vim has a built in spell checker. You use &lt;code&gt;set spell&lt;/code&gt; to turn it on 
 and &lt;code&gt;set nospell&lt;/code&gt; to turn it off.  Here are some other commands on how to 
@@ -4637,4 +4657,15 @@ are the steps to copy texts into Vim, &lt;/p&gt;
 &lt;/ol&gt;
 &lt;p&gt;There is an &lt;a href="https://superuser.com/questions/61226/configure-vim-for-copy-and-paste-keyboard-shortcuts-from-system-buffer-in-ubuntu"&gt;online Q&amp;amp;A&lt;/a&gt;
 on how to map &lt;code&gt;Ctrl + c&lt;/code&gt; and &lt;code&gt;Ctrl + v&lt;/code&gt; to copy and paste behavior, but I have not 
-set it up in my &lt;code&gt;.vimrc&lt;/code&gt; file. &lt;/p&gt;</content><category term="posts"></category><category term="vim"></category><category term="ubuntu"></category><category term="linux"></category></entry></feed>
+set it up in my &lt;code&gt;.vimrc&lt;/code&gt; file. &lt;/p&gt;
+&lt;h4&gt;Work Sessions&lt;/h4&gt;
+&lt;p&gt;When you have 10 or more text files open in Vim and need to reboot your computer, you 
+can use session commands to save the Vim work status and load them later.&lt;/p&gt;
+&lt;dl&gt;
+&lt;dt&gt;mksession ~/work1.session&lt;/dt&gt;
+&lt;dd&gt;save the current work status&lt;/dd&gt;
+&lt;dt&gt;source ~/work1.session&lt;/dt&gt;
+&lt;dd&gt;load the saved session in Vim&lt;/dd&gt;
+&lt;dt&gt;vim -S ~/work1.session&lt;/dt&gt;
+&lt;dd&gt;bash command to load vim and work session&lt;/dd&gt;
+&lt;/dl&gt;</content><category term="posts"></category><category term="vim"></category><category term="ubuntu"></category><category term="linux"></category></entry></feed>
