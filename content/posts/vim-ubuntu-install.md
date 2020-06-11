@@ -133,19 +133,25 @@ is very handy when you are programming because you often need to type variable a
 class names multiple times on a file. 
 
 ^x^n
-: Search in this file, ^ represents Ctrl key 
+: search in this file, ^ represents Ctrl key 
 
 ^x^f
-: Search filename
+: search filename
 
 ^x^]
-: Search tag
+: search tag
 
 ^n
 : search by default
 
 ^n  ^p
 : next prev on the menu
+
+^y
+: confirm selection, yes
+
+^e
+: exit menu
 
 #### Current Filename
 
@@ -187,28 +193,47 @@ G
 %
 : matching ( { or [
 
-H
-: move cursor to top
+H, M, L
+: move cursor to top, middle, and lower corner
 
-M
-: move cursor to middle
+^o
+: go to old cursor position
 
-L
-: move cursor to low corner
+^i
+: go to next cursor position
 
 #### Common Commands
 
 Vim is in a different league comparing to other text editors. It does not have 
 some common commands other editors have. But some of those commands are so 
 common, it is better to customize vim to support them. For example, the 
-command `:saveas` is sometimes very convenient. The settings below add 
-`Ctrl+s` shortcut for saving file.  
+command `:saveas` is sometimes very convenient. 
+
+The settings below add `Ctrl+s` shortcut for saving file.  Command `:update` is 
+like `:write`, but only write when buffer has been modified.
 
 ```
 noremap <silent> <C-S>  :update<CR>
 vnoremap <silent> <C-S> :<C-C>:update<CR>
 inoremap <silent> <C-S> <C-O>:update<CR>
 ```
+
+This shortcut also needs a setting in `.bashrc` file to work. 
+
+```
+stty -ixon  # stop tele-typewriter, 
+            # -ixon enable xon/xoff flow control -i
+```
+
+By default command `^s` freezes vim in Ubuntu Linux, and `^q` un-freeze it. 
+This [stackoverflow Q&A]() 
+explains it very well. 
+
+> `Ctrl + s` is a common command to terminals to stop updating, it was a way to slow 
+> the output so you could read it on terminals that did not have a scrollback 
+> buffer. `Ctrl + q` command gets terminal going again. Put this line in .bashrc to 
+> disable flow control for terminal entirely.
+
 
 #### Spell Check
 
@@ -274,8 +299,18 @@ on how to map `Ctrl + c` and `Ctrl + v` to copy and paste behavior, but I have n
 set it up in my `.vimrc` file. 
 
 
+#### Work Sessions
 
+When you have 10 or more text files open in Vim and need to reboot your computer, you 
+can use session commands to save the Vim work status and load them later.
 
+mksession ~/work1.session
+: save the current work status
 
+source ~/work1.session
+: load the saved session in Vim
+
+vim -S ~/work1.session
+: bash command to load vim and work session
 
 
