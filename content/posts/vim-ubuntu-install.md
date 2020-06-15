@@ -304,10 +304,10 @@ set it up in my `.vimrc` file.
 When you have 10 or more text files open in Vim and need to reboot your computer, you 
 can use session commands to save the Vim work status and load them later.
 
-mksession ~/work1.session
+:mksession ~/work1.session
 : save the current work status
 
-source ~/work1.session
+:source ~/work1.session
 : load the saved session in Vim
 
 vim -S ~/work1.session

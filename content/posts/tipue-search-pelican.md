@@ -15,7 +15,7 @@ to a static site.
 A little online research reveals that Pelican plugin github repo has a 
 [tipue-search](https://github.com/getpelican/pelican-plugins/tree/master/tipue_search) 
 plugin. The Tipue Search tool itself has [a nice website](https://tipue.com/search/) 
-and documentation. I spend a few hours reading the documention and try to figure out 
+and documentation. I spend a few hours reading the documentation and try to figure out 
 how this tool works. 
 
 The tipue-search Pelican plugin creates a js file `tipuesearch_content.js` which 
@@ -59,12 +59,20 @@ directory during site generation.
 
 If you want to try out the Tipue Search tool, click the [link here](/search.html). 
 
+After adding the tipue search to this blog site, I find the search function is really 
+convenient even for a small blog site like this. I use it all the time to find 
+articles I write before. Every web site should provide some kind of search 
+function for users. 
+ 
+ 
+
 <div class="mt-5 border-top">
   <h3>Related:</h3>
   <ul>
     <li><a href="/search.html">Search Tool</a></li>
   </ul>
 </div>
+
 
 
 

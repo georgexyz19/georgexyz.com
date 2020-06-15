@@ -91,3 +91,17 @@ for color in colors:
 Python is very flexible to write once you know the basics, and there are always 
 many ways to solve a problem. 
 
+### Counter Class in collections Module
+
+When I am browsing `collections` module 
+[documentation on python.org](https://docs.python.org/3.8/library/collections.html), 
+I find a `Counter` class which is 'a counter tool provided to support convenient 
+and rapid tallies'. 
+
+```python
+from collections import Counter
+cnt = Counter(colors)
+d = dict(cnt)
+```
+
+This method is probably the easiest and the line count is only 3. 
