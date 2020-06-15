@@ -149,6 +149,18 @@ Raymond Hettinger&#8217;s python talk</p>
 
 <p>Python is very flexible to write once you know the basics, and there are always 
 many ways to solve a problem. </p>
+<h3>Counter Class in collections Module</h3>
+<p>When I am browsing <code>collections</code> module 
+<a href="https://docs.python.org/3.8/library/collections.html">documentation on python.org</a>, 
+I find a <code>Counter</code> class which is &#8216;a counter tool provided to support convenient 
+and rapid tallies&#8217;. </p>
+<div class="highlight"><pre><span></span><code><span class="kn">from</span> <span class="nn">collections</span> <span class="kn">import</span> <span class="n">Counter</span>
+<span class="n">cnt</span> <span class="o">=</span> <span class="n">Counter</span><span class="p">(</span><span class="n">colors</span><span class="p">)</span>
+<span class="n">d</span> <span class="o">=</span> <span class="nb">dict</span><span class="p">(</span><span class="n">cnt</span><span class="p">)</span>
+</code></pre></div>
+
+
+<p>This method is probably the easiest and the line count is only 3. </p>
 
 
 

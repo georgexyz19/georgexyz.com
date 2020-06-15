@@ -415,7 +415,7 @@ to a static site.&lt;/p&gt;
 &lt;p&gt;A little online research reveals that Pelican plugin github repo has a 
 &lt;a href="https://github.com/getpelican/pelican-plugins/tree/master/tipue_search"&gt;tipue-search&lt;/a&gt; 
 plugin. The Tipue Search tool itself has &lt;a href="https://tipue.com/search/"&gt;a nice website&lt;/a&gt; 
-and documentation. I spend a few hours reading the documention and try to figure out 
+and documentation. I spend a few hours reading the documentation and try to figure out 
 how this tool works. &lt;/p&gt;
 &lt;p&gt;The tipue-search Pelican plugin creates a js file &lt;code&gt;tipuesearch_content.js&lt;/code&gt; which 
 defines a js variable &lt;code&gt;tipuesearch&lt;/code&gt;. The variable is assigned a large js object 
@@ -459,6 +459,10 @@ directory during site generation. &lt;/li&gt;
 &lt;li&gt;Add a link on the Articles page and Tags page which will open the &lt;code&gt;search.html&lt;/code&gt; page. &lt;/li&gt;
 &lt;/ul&gt;
 &lt;p&gt;If you want to try out the Tipue Search tool, click the &lt;a href="/search.html"&gt;link here&lt;/a&gt;. &lt;/p&gt;
+&lt;p&gt;After adding the tipue search to this blog site, I find the search function is really 
+convenient even for a small blog site like this. I use it all the time to find 
+articles I write before. Every web site should provide some kind of search 
+function for users. &lt;/p&gt;
 &lt;div class="mt-5 border-top"&gt;
   &lt;h3&gt;Related:&lt;/h3&gt;
   &lt;ul&gt;
@@ -1316,7 +1320,19 @@ Raymond Hettinger&amp;#8217;s python talk&lt;/p&gt;
 
 
 &lt;p&gt;Python is very flexible to write once you know the basics, and there are always 
-many ways to solve a problem. &lt;/p&gt;</content><category term="posts"></category><category term="python"></category></entry><entry><title>Click Python Package</title><link href="https://www.georgexyz.com/package-click.html" rel="alternate"></link><published>2020-02-18T14:39:00-05:00</published><updated>2020-02-18T14:39:00-05:00</updated><author><name>George Zhang</name></author><id>tag:www.georgexyz.com,2020-02-18:/package-click.html</id><summary type="html">&lt;p&gt;I am reading Miguel Grinberg&amp;#8217;s 
+many ways to solve a problem. &lt;/p&gt;
+&lt;h3&gt;Counter Class in collections Module&lt;/h3&gt;
+&lt;p&gt;When I am browsing &lt;code&gt;collections&lt;/code&gt; module 
+&lt;a href="https://docs.python.org/3.8/library/collections.html"&gt;documentation on python.org&lt;/a&gt;, 
+I find a &lt;code&gt;Counter&lt;/code&gt; class which is &amp;#8216;a counter tool provided to support convenient 
+and rapid tallies&amp;#8217;. &lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;&lt;span class="kn"&gt;from&lt;/span&gt; &lt;span class="nn"&gt;collections&lt;/span&gt; &lt;span class="kn"&gt;import&lt;/span&gt; &lt;span class="n"&gt;Counter&lt;/span&gt;
+&lt;span class="n"&gt;cnt&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="n"&gt;Counter&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;colors&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
+&lt;span class="n"&gt;d&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="nb"&gt;dict&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;cnt&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;p&gt;This method is probably the easiest and the line count is only 3. &lt;/p&gt;</content><category term="posts"></category><category term="python"></category></entry><entry><title>Click Python Package</title><link href="https://www.georgexyz.com/package-click.html" rel="alternate"></link><published>2020-02-18T14:39:00-05:00</published><updated>2020-02-18T14:39:00-05:00</updated><author><name>George Zhang</name></author><id>tag:www.georgexyz.com,2020-02-18:/package-click.html</id><summary type="html">&lt;p&gt;I am reading Miguel Grinberg&amp;#8217;s 
 &lt;a href="https://blog.miguelgrinberg.com/post/the-flask-mega-tutorial-part-i-hello-world"&gt;Flask Mega Tutorial&lt;/a&gt; 
 and &lt;em&gt;Flask Web Development&lt;/em&gt; book and converting OpenSignTool to a flask app. The 
 &lt;a href="https://click.palletsprojects.com/en/7.x/"&gt;Click package&lt;/a&gt; is one of the
@@ -4662,9 +4678,9 @@ set it up in my &lt;code&gt;.vimrc&lt;/code&gt; file. &lt;/p&gt;
 &lt;p&gt;When you have 10 or more text files open in Vim and need to reboot your computer, you 
 can use session commands to save the Vim work status and load them later.&lt;/p&gt;
 &lt;dl&gt;
-&lt;dt&gt;mksession ~/work1.session&lt;/dt&gt;
+&lt;dt&gt;:mksession ~/work1.session&lt;/dt&gt;
 &lt;dd&gt;save the current work status&lt;/dd&gt;
-&lt;dt&gt;source ~/work1.session&lt;/dt&gt;
+&lt;dt&gt;:source ~/work1.session&lt;/dt&gt;
 &lt;dd&gt;load the saved session in Vim&lt;/dd&gt;
 &lt;dt&gt;vim -S ~/work1.session&lt;/dt&gt;
 &lt;dd&gt;bash command to load vim and work session&lt;/dd&gt;
