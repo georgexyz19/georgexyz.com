@@ -33,6 +33,10 @@ use `chmod 500` command to change file permissions. Also the `ssh-add` will ask 
 which is entered when you create the keys. It seems to be a safety feature to prevent someone 
 stealing the two key files.   
 
-
+Update (6/28/2020): I find the above method is not a good practice of handling SSH keys. It is better to 
+generate new private and public keys in a new computer and copy the new public key to the 
+server according to 
+[a Q&A post](https://superuser.com/questions/332510/how-to-transfer-my-ssh-keys-to-another-machine/332513). 
+The server will have two public keys for the same user. 
 
 
