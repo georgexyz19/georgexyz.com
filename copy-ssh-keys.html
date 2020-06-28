@@ -97,6 +97,11 @@ are having new permission <code>777</code>. The <code>ssh-add</code> command wil
 use <code>chmod 500</code> command to change file permissions. Also the <code>ssh-add</code> will ask a passphrase 
 which is entered when you create the keys. It seems to be a safety feature to prevent someone 
 stealing the two key files.   </p>
+<p>Update (6/28/2020): I find the above method is not a good practice of handling <span class="caps">SSH</span> keys. It is better to 
+generate new private and public keys in a new computer and copy the new public key to the 
+server according to 
+<a href="https://superuser.com/questions/332510/how-to-transfer-my-ssh-keys-to-another-machine/332513">a Q&amp;A post</a>. 
+The server will have two public keys for the same user. </p>
 
 
 
