@@ -1,5 +1,66 @@
 <?xml version="1.0" encoding="utf-8"?>
-<feed xmlns="http://www.w3.org/2005/Atom"><title>George Zhang</title><link href="https://www.georgexyz.com/" rel="alternate"></link><link href="https://www.georgexyz.com/feeds/all.atom.xml" rel="self"></link><id>https://www.georgexyz.com/</id><updated>2020-06-09T09:01:00-04:00</updated><entry><title>Adding .vimrc Dotfile to Github</title><link href="https://www.georgexyz.com/adding-vimrc-dotfile-to-github.html" rel="alternate"></link><published>2020-06-09T09:01:00-04:00</published><updated>2020-06-09T09:01:00-04:00</updated><author><name>George Zhang</name></author><id>tag:www.georgexyz.com,2020-06-09:/adding-vimrc-dotfile-to-github.html</id><summary type="html">&lt;p&gt;Youtube has a nice video &lt;a href="https://youtu.be/_NUO4JEtkDw"&gt;Learning Vim In A Week&lt;/a&gt;, and I watch it 
+<feed xmlns="http://www.w3.org/2005/Atom"><title>George Zhang</title><link href="https://www.georgexyz.com/" rel="alternate"></link><link href="https://www.georgexyz.com/feeds/all.atom.xml" rel="self"></link><id>https://www.georgexyz.com/</id><updated>2020-06-28T00:02:00-04:00</updated><entry><title>Home Woodwork Projects</title><link href="https://www.georgexyz.com/home-woodwork-projects.html" rel="alternate"></link><published>2020-06-28T00:02:00-04:00</published><updated>2020-06-28T00:02:00-04:00</updated><author><name>George Zhang</name></author><id>tag:www.georgexyz.com,2020-06-28:/home-woodwork-projects.html</id><summary type="html">&lt;p&gt;I took a brief time off computers and worked on a few simple wood projects 
+at home during my spare time. &lt;/p&gt;
+&lt;h4&gt;Garden Wood Frame&lt;/h4&gt;
+&lt;p&gt;The first project is building wood …&lt;/p&gt;</summary><content type="html">&lt;p&gt;I took a brief time off computers and worked on a few simple wood projects 
+at home during my spare time. &lt;/p&gt;
+&lt;h4&gt;Garden Wood Frame&lt;/h4&gt;
+&lt;p&gt;The first project is building wood frames for 
+string bean plants in our backyard. The materials are 16 1&amp;#8221;x2&amp;#8221;x8&amp;#8217; pressure 
+treated board from Home Depot. They are about $2 each and total cost is 
+less than $35. Here is a photo of the frames. &lt;/p&gt;
+&lt;div style="max-width:800px"&gt;
+  &lt;img class="img-fluid" src="/images/string-bean-frame.jpg" alt="string bean frame"&gt; 
+&lt;/div&gt;
+
+&lt;h4&gt;Backyard Shoe Rack&lt;/h4&gt;
+&lt;p&gt;The second project is building a backyard shoe rack.  A few other options 
+are considered before setting on this one. The materials are recycled 
+pallet wood and 6 hooks ($1 ea) from Home Depot. The hooks are mounted 
+about 45 degrees into the wood. &lt;/p&gt;
+&lt;div style="max-width:800px"&gt;
+  &lt;img class="img-fluid" src="/images/shoe-rack.jpg" alt="shoe rack"&gt; 
+&lt;/div&gt;
+
+&lt;h4&gt;Under Deck Swing&lt;/h4&gt;
+&lt;p&gt;The neighborhood playground is closed nowadays, so we decide to build an 
+under deck swing in the backyard. The number of components are more than 
+I thought. Here is a list of materials for the toddler swing. The total 
+material cost is about $100. &lt;/p&gt;
+&lt;dl&gt;
+&lt;dt&gt;Toddler swing&lt;/dt&gt;
+&lt;dd&gt;Step2 infant to toddler swing from amazon - $37&lt;/dd&gt;
+&lt;dt&gt;Swing hanger&lt;/dt&gt;
+&lt;dd&gt;Jungle Gym Kingdom heavy duty swing hanger from amazon - $29&lt;/dd&gt;
+&lt;dt&gt;Wood&lt;/dt&gt;
+&lt;dd&gt;2&amp;#8221;x6&amp;#8221;x8&amp;#8217; pressure treated wood from Home Depot - $7&lt;/dd&gt;
+&lt;dt&gt;Chain&lt;/dt&gt;
+&lt;dd&gt;3/16&amp;#8221; x 3&amp;#8217; two chains - $12&lt;/dd&gt;
+&lt;dt&gt;Screws&lt;/dt&gt;
+&lt;dd&gt;1/2&amp;#8221; x 4 &amp;#8221; four lag screw - $5&lt;/dd&gt;
+&lt;dt&gt;Screws&lt;/dt&gt;
+&lt;dd&gt;5/16&amp;#8221; x 4-1/2&amp;#8221; ten lag screw - $7.4&lt;/dd&gt;
+&lt;/dl&gt;
+&lt;div style="max-width:600px"&gt;
+  &lt;img class="img-fluid" src="/images/toddler-swing.jpg" alt="toddler swing"&gt; 
+&lt;/div&gt;
+
+&lt;p&gt;We have some materials left over from this project such as wood and 
+lag screws, so we decide to build a simple swing/bench near the 
+toddler swing. This time uses a much cheaper swing hanger from Home 
+Depot. It has a weight rating of 450 lbs which is more than enough 
+for us.  &lt;/p&gt;
+&lt;dl&gt;
+&lt;dt&gt;Swing&lt;/dt&gt;
+&lt;dd&gt;2&amp;#8221;x6&amp;#8221;x8&amp;#8217; wood left over from other project with white paint&lt;/dd&gt;
+&lt;dt&gt;Hanger&lt;/dt&gt;
+&lt;dd&gt;Everbilt porch swing chain kit - $17&lt;/dd&gt;
+&lt;dt&gt;Hook and Washer&lt;/dt&gt;
+&lt;dd&gt;1/4&amp;#8221; x 4-1/4&amp;#8221; steel hook and 1/4&amp;#8221; x 1-1/4&amp;#8221; fender washer - $6&lt;/dd&gt;
+&lt;/dl&gt;
+&lt;div style="max-width:600px"&gt;
+  &lt;img class="img-fluid" src="/images/swing-2.jpg" alt="swing"&gt; 
+&lt;/div&gt;</content><category term="posts"></category><category term="woodwork"></category></entry><entry><title>Adding .vimrc Dotfile to Github</title><link href="https://www.georgexyz.com/adding-vimrc-dotfile-to-github.html" rel="alternate"></link><published>2020-06-09T09:01:00-04:00</published><updated>2020-06-09T09:01:00-04:00</updated><author><name>George Zhang</name></author><id>tag:www.georgexyz.com,2020-06-09:/adding-vimrc-dotfile-to-github.html</id><summary type="html">&lt;p&gt;Youtube has a nice video &lt;a href="https://youtu.be/_NUO4JEtkDw"&gt;Learning Vim In A Week&lt;/a&gt;, and I watch it 
 every few months to refresh my Vim skills. In the video the presenter suggests people to …&lt;/p&gt;</summary><content type="html">&lt;p&gt;Youtube has a nice video &lt;a href="https://youtu.be/_NUO4JEtkDw"&gt;Learning Vim In A Week&lt;/a&gt;, and I watch it 
 every few months to refresh my Vim skills. In the video the presenter suggests people to 
 version control dotfiles such as &lt;code&gt;.vimrc&lt;/code&gt;, which is the setting file Vim loads during startup. 
