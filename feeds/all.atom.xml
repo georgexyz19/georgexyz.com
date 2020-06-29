@@ -49,10 +49,10 @@ material cost is about $100. &lt;/p&gt;
 lag screws, so we decide to build a simple swing/bench near the 
 toddler swing. This time uses a much cheaper swing hanger from Home 
 Depot. It has a weight rating of 450 lbs which is more than enough 
-for us.  &lt;/p&gt;
+for us. &lt;/p&gt;
 &lt;dl&gt;
 &lt;dt&gt;Swing&lt;/dt&gt;
-&lt;dd&gt;2&amp;#8221;x6&amp;#8221;x8&amp;#8217; wood left over from other project with white paint&lt;/dd&gt;
+&lt;dd&gt;2&amp;#8221;x8&amp;#8221;x8&amp;#8217; wood (22 in long) with white paint&lt;/dd&gt;
 &lt;dt&gt;Hanger&lt;/dt&gt;
 &lt;dd&gt;Everbilt porch swing chain kit - $17&lt;/dd&gt;
 &lt;dt&gt;Hook and Washer&lt;/dt&gt;
@@ -4761,6 +4761,8 @@ that command &lt;code&gt;:!ls&lt;/code&gt; will execute a single bash command &l
 represents alternate buffer. You can switch between the current buffer and 
 alternate buffer. The &lt;code&gt;+&lt;/code&gt; symbol on the list represents the file has been 
 modified but not saved.  The commands listed below are for navigating between buffers.&lt;/p&gt;
+&lt;p&gt;When writting Python programs in Vim, you can run the command &lt;code&gt;:!python3 %&lt;/code&gt; 
+to run the current file. &lt;/p&gt;
 &lt;dl&gt;
 &lt;dt&gt;:bnext, bprevious, bfirst, blast&lt;/dt&gt;
 &lt;dd&gt;next, previous, first, and last buffer&lt;/dd&gt;
