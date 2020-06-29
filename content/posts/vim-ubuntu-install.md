@@ -324,6 +324,9 @@ represents alternate buffer. You can switch between the current buffer and
 alternate buffer. The `+` symbol on the list represents the file has been 
 modified but not saved.  The commands listed below are for navigating between buffers.
 
+When writting Python programs in Vim, you can run the command `:!python3 %` 
+to run the current file. 
+
 :bnext, bprevious, bfirst, blast
 : next, previous, first, and last buffer
 
