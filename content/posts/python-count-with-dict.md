@@ -64,7 +64,7 @@ d = dict(d)
 
 ### Try and Except to Handle Exception
 The above three methods are from Raymond Hettinger's python talk.  The method below
-is from the Real Python article I introduced earlier.  This method takes 6 lines, 
+is from the *Real Python* article I introduced earlier.  This method takes 6 lines, 
 but the logic is very clear. 
 
 ```python
@@ -79,7 +79,7 @@ for color in colors:
 ### Setdefault Method of Dictionary
 This method is between the first two methods.  Line count is also between 5 and 3. 
 This method uses dictionary method `setdefault`, which is also discussed in 
-Raymond Hettinger's python talk
+Raymond Hettinger's python talk.
 
 ```python
 d={}
@@ -95,8 +95,8 @@ many ways to solve a problem.
 
 When I am browsing `collections` module 
 [documentation on python.org](https://docs.python.org/3.8/library/collections.html), 
-I find a `Counter` class which is 'a counter tool provided to support convenient 
-and rapid tallies'. 
+I find a `Counter` class which is "a counter tool provided to support convenient 
+and rapid tallies". 
 
 ```python
 from collections import Counter
