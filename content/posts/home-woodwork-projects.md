@@ -64,10 +64,10 @@ We have some materials left over from this project such as wood and
 lag screws, so we decide to build a simple swing/bench near the 
 toddler swing. This time uses a much cheaper swing hanger from Home 
 Depot. It has a weight rating of 450 lbs which is more than enough 
-for us.  
+for us. 
 
 Swing
-: 2"x6"x8' wood left over from other project with white paint
+: 2"x8"x8' wood (22 in long) with white paint
 
 Hanger
 : Everbilt porch swing chain kit - $17
