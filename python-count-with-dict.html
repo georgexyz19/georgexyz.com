@@ -125,7 +125,7 @@ value for a key.  Line count is still 5. </p>
 
 <h3>Try and Except to Handle Exception</h3>
 <p>The above three methods are from Raymond Hettinger&#8217;s python talk.  The method below
-is from the Real Python article I introduced earlier.  This method takes 6 lines, 
+is from the <em>Real Python</em> article I introduced earlier.  This method takes 6 lines, 
 but the logic is very clear. </p>
 <div class="highlight"><pre><span></span><code><span class="n">d</span> <span class="o">=</span><span class="p">{}</span>
 <span class="k">for</span> <span class="n">color</span> <span class="ow">in</span> <span class="n">colors</span><span class="p">:</span>
@@ -139,7 +139,7 @@ but the logic is very clear. </p>
 <h3>Setdefault Method of Dictionary</h3>
 <p>This method is between the first two methods.  Line count is also between 5 and 3. 
 This method uses dictionary method <code>setdefault</code>, which is also discussed in 
-Raymond Hettinger&#8217;s python talk</p>
+Raymond Hettinger&#8217;s python talk.</p>
 <div class="highlight"><pre><span></span><code><span class="n">d</span><span class="o">=</span><span class="p">{}</span>
 <span class="k">for</span> <span class="n">color</span> <span class="ow">in</span> <span class="n">colors</span><span class="p">:</span>
     <span class="n">d</span><span class="o">.</span><span class="n">setdefault</span><span class="p">(</span><span class="n">color</span><span class="p">,</span> <span class="mi">0</span><span class="p">)</span>
@@ -152,8 +152,8 @@ many ways to solve a problem. </p>
 <h3>Counter Class in collections Module</h3>
 <p>When I am browsing <code>collections</code> module 
 <a href="https://docs.python.org/3.8/library/collections.html">documentation on python.org</a>, 
-I find a <code>Counter</code> class which is &#8216;a counter tool provided to support convenient 
-and rapid tallies&#8217;. </p>
+I find a <code>Counter</code> class which is &#8220;a counter tool provided to support convenient 
+and rapid tallies&#8221;. </p>
 <div class="highlight"><pre><span></span><code><span class="kn">from</span> <span class="nn">collections</span> <span class="kn">import</span> <span class="n">Counter</span>
 <span class="n">cnt</span> <span class="o">=</span> <span class="n">Counter</span><span class="p">(</span><span class="n">colors</span><span class="p">)</span>
 <span class="n">d</span> <span class="o">=</span> <span class="nb">dict</span><span class="p">(</span><span class="n">cnt</span><span class="p">)</span>

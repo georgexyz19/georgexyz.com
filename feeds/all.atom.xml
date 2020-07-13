@@ -1363,7 +1363,7 @@ value for a key.  Line count is still 5. &lt;/p&gt;
 
 &lt;h3&gt;Try and Except to Handle Exception&lt;/h3&gt;
 &lt;p&gt;The above three methods are from Raymond Hettinger&amp;#8217;s python talk.  The method below
-is from the Real Python article I introduced earlier.  This method takes 6 lines, 
+is from the &lt;em&gt;Real Python&lt;/em&gt; article I introduced earlier.  This method takes 6 lines, 
 but the logic is very clear. &lt;/p&gt;
 &lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;&lt;span class="n"&gt;d&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="p"&gt;{}&lt;/span&gt;
 &lt;span class="k"&gt;for&lt;/span&gt; &lt;span class="n"&gt;color&lt;/span&gt; &lt;span class="ow"&gt;in&lt;/span&gt; &lt;span class="n"&gt;colors&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt;
@@ -1377,7 +1377,7 @@ but the logic is very clear. &lt;/p&gt;
 &lt;h3&gt;Setdefault Method of Dictionary&lt;/h3&gt;
 &lt;p&gt;This method is between the first two methods.  Line count is also between 5 and 3. 
 This method uses dictionary method &lt;code&gt;setdefault&lt;/code&gt;, which is also discussed in 
-Raymond Hettinger&amp;#8217;s python talk&lt;/p&gt;
+Raymond Hettinger&amp;#8217;s python talk.&lt;/p&gt;
 &lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;&lt;span class="n"&gt;d&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="p"&gt;{}&lt;/span&gt;
 &lt;span class="k"&gt;for&lt;/span&gt; &lt;span class="n"&gt;color&lt;/span&gt; &lt;span class="ow"&gt;in&lt;/span&gt; &lt;span class="n"&gt;colors&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt;
     &lt;span class="n"&gt;d&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;setdefault&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;color&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="mi"&gt;0&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
@@ -1390,8 +1390,8 @@ many ways to solve a problem. &lt;/p&gt;
 &lt;h3&gt;Counter Class in collections Module&lt;/h3&gt;
 &lt;p&gt;When I am browsing &lt;code&gt;collections&lt;/code&gt; module 
 &lt;a href="https://docs.python.org/3.8/library/collections.html"&gt;documentation on python.org&lt;/a&gt;, 
-I find a &lt;code&gt;Counter&lt;/code&gt; class which is &amp;#8216;a counter tool provided to support convenient 
-and rapid tallies&amp;#8217;. &lt;/p&gt;
+I find a &lt;code&gt;Counter&lt;/code&gt; class which is &amp;#8220;a counter tool provided to support convenient 
+and rapid tallies&amp;#8221;. &lt;/p&gt;
 &lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;&lt;span class="kn"&gt;from&lt;/span&gt; &lt;span class="nn"&gt;collections&lt;/span&gt; &lt;span class="kn"&gt;import&lt;/span&gt; &lt;span class="n"&gt;Counter&lt;/span&gt;
 &lt;span class="n"&gt;cnt&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="n"&gt;Counter&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;colors&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
 &lt;span class="n"&gt;d&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="nb"&gt;dict&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;cnt&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
