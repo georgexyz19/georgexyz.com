@@ -39,4 +39,10 @@ server according to
 [a Q&A post](https://superuser.com/questions/332510/how-to-transfer-my-ssh-keys-to-another-machine/332513). 
 The server will have two public keys for the same user. 
 
+Update 2 (7/21/2020): In order to add a second public key to the github, an additional step 
+"add your SSH key to the ssh-agent" is needed when generating the key. Follow instructions on 
+those two github web pages.
+
+* [Generating a new SSH key and adding it to the ssh-agent](https://docs.github.com/en/github/authenticating-to-github/generating-a-new-ssh-key-and-adding-it-to-the-ssh-agent)
+* [Adding a new SSH key to your Github account](https://docs.github.com/en/github/authenticating-to-github/adding-a-new-ssh-key-to-your-github-account)
 
