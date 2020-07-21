@@ -7,8 +7,8 @@ note: some python code
 no: 51
 
 Raymond Hettinger once said "if you mutate something while you're iterating over it, 
-you're living in a state of sin and deserve what ever happens to you". Recent version 
-of Python actually does not allow you change a dictionary while looping over it. Here is 
+you're living in a state of sin and deserve whatever happens to you". Recent version 
+of Python actually does not allow you mutate a dictionary while looping over it. Here are  
 some test code. 
 
 ```python
@@ -34,6 +34,30 @@ RuntimeError: dictionary changed size during iteration
 ```
 
 Sometimes "mutate while looping" is necessary and it can make code simpler. Here is 
-an example from Al Sweigart's *Automate The Boring Stuff With Python* book.
+an example (modified) from 
+[Chapter 6](https://automatetheboringstuff.com/2e/chapter6/) 
+of Al Sweigart's *Automate The Boring Stuff With Python* book.
 
-To be continued...
+```python
+def prefix(word):
+    prefixnonletters = ''
+    while len(word) > 0 and not word[0].isalpha():
+        prefixnonletters += word[0]
+        word = word[1:]
+    return prefixnonletters, word
+```
+
+This function separates a word (e.g., '123word') into two parts: the prefix non-letter 
+part ('123') and following letter part ('word'). The code loops over the input word and mutates it 
+in the loop body. It is difficult to write the function in other ways. One alternative 
+way I can think of is to use regular expression. 
+
+```python
+def prefix_re(word):
+    import re
+    m = re.match(r'([^A-Za-z]+)(\w*)', word)
+    if m:
+        return m.group(2), m.group(2)
+    else:
+        return '', word
+```
