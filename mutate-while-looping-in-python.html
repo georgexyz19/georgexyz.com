@@ -11,7 +11,7 @@
 <link rel="stylesheet" href="https://www.georgexyz.com/theme/css/custom.css">
 <meta name="author" content="George Zhang" />
 <meta name="keywords" content="python" />
-<meta name="description" content="Raymond Hettinger once said “if you mutate something while you’re iterating over it, you’re living in a state of sin and deserve what ever happens to you”. Recent …" />
+<meta name="description" content="Raymond Hettinger once said “if you mutate something while you’re iterating over it, you’re living in a state of sin and deserve whatever happens to you”. Recent version …" />
     <title>Mutate While Looping in Python - George Zhang</title>
   </head>
   <body>
@@ -73,8 +73,8 @@
       </div>
 
       <p>Raymond Hettinger once said &#8220;if you mutate something while you&#8217;re iterating over it, 
-you&#8217;re living in a state of sin and deserve what ever happens to you&#8221;. Recent version 
-of Python actually does not allow you change a dictionary while looping over it. Here is 
+you&#8217;re living in a state of sin and deserve whatever happens to you&#8221;. Recent version 
+of Python actually does not allow you mutate a dictionary while looping over it. Here are<br>
 some test code. </p>
 <div class="highlight"><pre><span></span><code><span class="n">Python</span> <span class="mf">3.7</span><span class="o">.</span><span class="mi">4</span> <span class="p">(</span><span class="n">default</span><span class="p">,</span> <span class="n">Sep</span> <span class="mi">20</span> <span class="mi">2019</span><span class="p">,</span> <span class="mi">00</span><span class="p">:</span><span class="mi">15</span><span class="p">:</span><span class="mi">38</span><span class="p">)</span> 
 <span class="p">[</span><span class="n">GCC</span> <span class="mf">7.4</span><span class="o">.</span><span class="mi">0</span><span class="p">]</span> <span class="n">on</span> <span class="n">linux</span>
@@ -98,8 +98,30 @@ some test code. </p>
 
 
 <p>Sometimes &#8220;mutate while looping&#8221; is necessary and it can make code simpler. Here is 
-an example from Al Sweigart&#8217;s <em>Automate The Boring Stuff With Python</em> book.</p>
-<p>To be continued&#8230;</p>
+an example (modified) from 
+<a href="https://automatetheboringstuff.com/2e/chapter6/">Chapter 6</a> 
+of Al Sweigart&#8217;s <em>Automate The Boring Stuff With Python</em> book.</p>
+<div class="highlight"><pre><span></span><code><span class="k">def</span> <span class="nf">prefix</span><span class="p">(</span><span class="n">word</span><span class="p">):</span>
+    <span class="n">prefixnonletters</span> <span class="o">=</span> <span class="s1">&#39;&#39;</span>
+    <span class="k">while</span> <span class="nb">len</span><span class="p">(</span><span class="n">word</span><span class="p">)</span> <span class="o">&gt;</span> <span class="mi">0</span> <span class="ow">and</span> <span class="ow">not</span> <span class="n">word</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">isalpha</span><span class="p">():</span>
+        <span class="n">prefixnonletters</span> <span class="o">+=</span> <span class="n">word</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
+        <span class="n">word</span> <span class="o">=</span> <span class="n">word</span><span class="p">[</span><span class="mi">1</span><span class="p">:]</span>
+    <span class="k">return</span> <span class="n">prefixnonletters</span><span class="p">,</span> <span class="n">word</span>
+</code></pre></div>
+
+
+<p>This function separates a word (e.g., &#8216;123word&#8217;) into two parts: the prefix non-letter 
+part (&#8216;123&#8217;) and following letter part (&#8216;word&#8217;). The code loops over the input word and mutates it 
+in the loop body. It is difficult to write the function in other ways. One alternative 
+way I can think of is to use regular expression. </p>
+<div class="highlight"><pre><span></span><code><span class="k">def</span> <span class="nf">prefix_re</span><span class="p">(</span><span class="n">word</span><span class="p">):</span>
+    <span class="kn">import</span> <span class="nn">re</span>
+    <span class="n">m</span> <span class="o">=</span> <span class="n">re</span><span class="o">.</span><span class="n">match</span><span class="p">(</span><span class="sa">r</span><span class="s1">&#39;([^A-Za-z]+)(\w*)&#39;</span><span class="p">,</span> <span class="n">word</span><span class="p">)</span>
+    <span class="k">if</span> <span class="n">m</span><span class="p">:</span>
+        <span class="k">return</span> <span class="n">m</span><span class="o">.</span><span class="n">group</span><span class="p">(</span><span class="mi">2</span><span class="p">),</span> <span class="n">m</span><span class="o">.</span><span class="n">group</span><span class="p">(</span><span class="mi">2</span><span class="p">)</span>
+    <span class="k">else</span><span class="p">:</span>
+        <span class="k">return</span> <span class="s1">&#39;&#39;</span><span class="p">,</span> <span class="n">word</span>
+</code></pre></div>
 
 
 

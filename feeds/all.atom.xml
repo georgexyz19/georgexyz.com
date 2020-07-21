@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="utf-8"?>
 <feed xmlns="http://www.w3.org/2005/Atom"><title>George Zhang</title><link href="https://www.georgexyz.com/" rel="alternate"></link><link href="https://www.georgexyz.com/feeds/all.atom.xml" rel="self"></link><id>https://www.georgexyz.com/</id><updated>2020-07-21T00:47:00-04:00</updated><entry><title>Mutate While Looping in Python</title><link href="https://www.georgexyz.com/mutate-while-looping-in-python.html" rel="alternate"></link><published>2020-07-21T00:47:00-04:00</published><updated>2020-07-21T00:47:00-04:00</updated><author><name>George Zhang</name></author><id>tag:www.georgexyz.com,2020-07-21:/mutate-while-looping-in-python.html</id><summary type="html">&lt;p&gt;Raymond Hettinger once said &amp;#8220;if you mutate something while you&amp;#8217;re iterating over it, 
-you&amp;#8217;re living in a state of sin and deserve what ever happens to you&amp;#8221;. Recent …&lt;/p&gt;</summary><content type="html">&lt;p&gt;Raymond Hettinger once said &amp;#8220;if you mutate something while you&amp;#8217;re iterating over it, 
-you&amp;#8217;re living in a state of sin and deserve what ever happens to you&amp;#8221;. Recent version 
-of Python actually does not allow you change a dictionary while looping over it. Here is 
+you&amp;#8217;re living in a state of sin and deserve whatever happens to you&amp;#8221;. Recent version …&lt;/p&gt;</summary><content type="html">&lt;p&gt;Raymond Hettinger once said &amp;#8220;if you mutate something while you&amp;#8217;re iterating over it, 
+you&amp;#8217;re living in a state of sin and deserve whatever happens to you&amp;#8221;. Recent version 
+of Python actually does not allow you mutate a dictionary while looping over it. Here are&lt;br&gt;
 some test code. &lt;/p&gt;
 &lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;&lt;span class="n"&gt;Python&lt;/span&gt; &lt;span class="mf"&gt;3.7&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="mi"&gt;4&lt;/span&gt; &lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;default&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;Sep&lt;/span&gt; &lt;span class="mi"&gt;20&lt;/span&gt; &lt;span class="mi"&gt;2019&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="mi"&gt;00&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt;&lt;span class="mi"&gt;15&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt;&lt;span class="mi"&gt;38&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt; 
 &lt;span class="p"&gt;[&lt;/span&gt;&lt;span class="n"&gt;GCC&lt;/span&gt; &lt;span class="mf"&gt;7.4&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="mi"&gt;0&lt;/span&gt;&lt;span class="p"&gt;]&lt;/span&gt; &lt;span class="n"&gt;on&lt;/span&gt; &lt;span class="n"&gt;linux&lt;/span&gt;
@@ -26,8 +26,30 @@ some test code. &lt;/p&gt;
 
 
 &lt;p&gt;Sometimes &amp;#8220;mutate while looping&amp;#8221; is necessary and it can make code simpler. Here is 
-an example from Al Sweigart&amp;#8217;s &lt;em&gt;Automate The Boring Stuff With Python&lt;/em&gt; book.&lt;/p&gt;
-&lt;p&gt;To be continued&amp;#8230;&lt;/p&gt;</content><category term="posts"></category><category term="python"></category></entry><entry><title>Home Woodwork Projects</title><link href="https://www.georgexyz.com/home-woodwork-projects.html" rel="alternate"></link><published>2020-06-28T00:02:00-04:00</published><updated>2020-06-28T00:02:00-04:00</updated><author><name>George Zhang</name></author><id>tag:www.georgexyz.com,2020-06-28:/home-woodwork-projects.html</id><summary type="html">&lt;p&gt;I took a brief time off computers and worked on a few simple wood projects 
+an example (modified) from 
+&lt;a href="https://automatetheboringstuff.com/2e/chapter6/"&gt;Chapter 6&lt;/a&gt; 
+of Al Sweigart&amp;#8217;s &lt;em&gt;Automate The Boring Stuff With Python&lt;/em&gt; book.&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;&lt;span class="k"&gt;def&lt;/span&gt; &lt;span class="nf"&gt;prefix&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;word&lt;/span&gt;&lt;span class="p"&gt;):&lt;/span&gt;
+    &lt;span class="n"&gt;prefixnonletters&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="s1"&gt;&amp;#39;&amp;#39;&lt;/span&gt;
+    &lt;span class="k"&gt;while&lt;/span&gt; &lt;span class="nb"&gt;len&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;word&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt; &lt;span class="o"&gt;&amp;gt;&lt;/span&gt; &lt;span class="mi"&gt;0&lt;/span&gt; &lt;span class="ow"&gt;and&lt;/span&gt; &lt;span class="ow"&gt;not&lt;/span&gt; &lt;span class="n"&gt;word&lt;/span&gt;&lt;span class="p"&gt;[&lt;/span&gt;&lt;span class="mi"&gt;0&lt;/span&gt;&lt;span class="p"&gt;]&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;isalpha&lt;/span&gt;&lt;span class="p"&gt;():&lt;/span&gt;
+        &lt;span class="n"&gt;prefixnonletters&lt;/span&gt; &lt;span class="o"&gt;+=&lt;/span&gt; &lt;span class="n"&gt;word&lt;/span&gt;&lt;span class="p"&gt;[&lt;/span&gt;&lt;span class="mi"&gt;0&lt;/span&gt;&lt;span class="p"&gt;]&lt;/span&gt;
+        &lt;span class="n"&gt;word&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="n"&gt;word&lt;/span&gt;&lt;span class="p"&gt;[&lt;/span&gt;&lt;span class="mi"&gt;1&lt;/span&gt;&lt;span class="p"&gt;:]&lt;/span&gt;
+    &lt;span class="k"&gt;return&lt;/span&gt; &lt;span class="n"&gt;prefixnonletters&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;word&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;p&gt;This function separates a word (e.g., &amp;#8216;123word&amp;#8217;) into two parts: the prefix non-letter 
+part (&amp;#8216;123&amp;#8217;) and following letter part (&amp;#8216;word&amp;#8217;). The code loops over the input word and mutates it 
+in the loop body. It is difficult to write the function in other ways. One alternative 
+way I can think of is to use regular expression. &lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;&lt;span class="k"&gt;def&lt;/span&gt; &lt;span class="nf"&gt;prefix_re&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;word&lt;/span&gt;&lt;span class="p"&gt;):&lt;/span&gt;
+    &lt;span class="kn"&gt;import&lt;/span&gt; &lt;span class="nn"&gt;re&lt;/span&gt;
+    &lt;span class="n"&gt;m&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="n"&gt;re&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;match&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="sa"&gt;r&lt;/span&gt;&lt;span class="s1"&gt;&amp;#39;([^A-Za-z]+)(\w*)&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;word&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
+    &lt;span class="k"&gt;if&lt;/span&gt; &lt;span class="n"&gt;m&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt;
+        &lt;span class="k"&gt;return&lt;/span&gt; &lt;span class="n"&gt;m&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;group&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="mi"&gt;2&lt;/span&gt;&lt;span class="p"&gt;),&lt;/span&gt; &lt;span class="n"&gt;m&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;group&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="mi"&gt;2&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
+    &lt;span class="k"&gt;else&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt;
+        &lt;span class="k"&gt;return&lt;/span&gt; &lt;span class="s1"&gt;&amp;#39;&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;word&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;</content><category term="posts"></category><category term="python"></category></entry><entry><title>Home Woodwork Projects</title><link href="https://www.georgexyz.com/home-woodwork-projects.html" rel="alternate"></link><published>2020-06-28T00:02:00-04:00</published><updated>2020-06-28T00:02:00-04:00</updated><author><name>George Zhang</name></author><id>tag:www.georgexyz.com,2020-06-28:/home-woodwork-projects.html</id><summary type="html">&lt;p&gt;I took a brief time off computers and worked on a few simple wood projects 
 at home during my spare time. &lt;/p&gt;
 &lt;h4&gt;Garden Wood Frame&lt;/h4&gt;
 &lt;p&gt;The first project is building wood …&lt;/p&gt;</summary><content type="html">&lt;p&gt;I took a brief time off computers and worked on a few simple wood projects 
