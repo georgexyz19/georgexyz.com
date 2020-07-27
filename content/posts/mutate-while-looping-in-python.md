@@ -57,7 +57,7 @@ def prefix_re(word):
     import re
     m = re.match(r'([^A-Za-z]+)(\w*)', word)
     if m:
-        return m.group(2), m.group(2)
+        return m.group(1), m.group(2)
     else:
         return '', word
 ```
