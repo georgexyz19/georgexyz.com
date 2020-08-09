@@ -1,9 +1,9 @@
-title: Vim Full Version Installation in Ubuntu and Tips
-slug: vim-ubuntu-install
-meta: Vim Ubuntu Installation Guide
-tags: vim, ubuntu, linux
+title: Vim Tips
+slug: vim-tips
+meta: Vim Installation And Vim Tips
+tags: vim, tip, linux
 date: 2019-04-01 12:45
-modified: 2020-06-02 16:24
+modified: 2020-08-09 17:37
 
 
 Ubuntu 18.04 comes with a stripped down version of Vim. If you want to use Vim for 
@@ -13,6 +13,7 @@ serious work, you want the full version.
 
 The default version is started via command `vi`. The `vi --version` command shows 
 the version information. Note the Line 5 below shows "Small version without GUI". 
+The output also contains the list of setting files Vim will load during startup. 
 
 ```
 VIM - Vi IMproved 8.0 (2016 Sep 12, compiled Apr 10 2018 21:31:58)
@@ -36,19 +37,6 @@ Compilation: gcc -c -I. -Iproto -DHAVE_CONFIG_H   -Wdate-time  -g -O2
 ```
 
 If you type command `vim` in bash, it will tell you that "command vim not found". 
-
-```
-george@X250:~$ vim
-Command 'vim' not found, but can be installed with:
-sudo apt install vim
-sudo apt install vim-gtk3
-sudo apt install vim-tiny
-sudo apt install neovim
-sudo apt install vim-athena
-sudo apt install vim-gtk
-sudo apt install vim-nox
-```
-
 Those three commands remove the existing vim-tiny and install the full version with GUI
 vim-gtk3 in Ubuntu 18.04 or Xubuntu. 
 
