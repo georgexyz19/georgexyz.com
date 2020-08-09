@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<feed xmlns="http://www.w3.org/2005/Atom"><title>George Zhang</title><link href="https://www.georgexyz.com/" rel="alternate"></link><link href="https://www.georgexyz.com/feeds/all.atom.xml" rel="self"></link><id>https://www.georgexyz.com/</id><updated>2020-07-21T00:47:00-04:00</updated><entry><title>Mutate While Looping in Python</title><link href="https://www.georgexyz.com/mutate-while-looping-in-python.html" rel="alternate"></link><published>2020-07-21T00:47:00-04:00</published><updated>2020-07-21T00:47:00-04:00</updated><author><name>George Zhang</name></author><id>tag:www.georgexyz.com,2020-07-21:/mutate-while-looping-in-python.html</id><summary type="html">&lt;p&gt;Raymond Hettinger once said &amp;#8220;if you mutate something while you&amp;#8217;re iterating over it, 
+<feed xmlns="http://www.w3.org/2005/Atom"><title>George Zhang</title><link href="https://www.georgexyz.com/" rel="alternate"></link><link href="https://www.georgexyz.com/feeds/all.atom.xml" rel="self"></link><id>https://www.georgexyz.com/</id><updated>2020-08-09T17:37:00-04:00</updated><entry><title>Mutate While Looping in Python</title><link href="https://www.georgexyz.com/mutate-while-looping-in-python.html" rel="alternate"></link><published>2020-07-21T00:47:00-04:00</published><updated>2020-07-21T00:47:00-04:00</updated><author><name>George Zhang</name></author><id>tag:www.georgexyz.com,2020-07-21:/mutate-while-looping-in-python.html</id><summary type="html">&lt;p&gt;Raymond Hettinger once said &amp;#8220;if you mutate something while you&amp;#8217;re iterating over it, 
 you&amp;#8217;re living in a state of sin and deserve whatever happens to you&amp;#8221;. Recent version …&lt;/p&gt;</summary><content type="html">&lt;p&gt;Raymond Hettinger once said &amp;#8220;if you mutate something while you&amp;#8217;re iterating over it, 
 you&amp;#8217;re living in a state of sin and deserve whatever happens to you&amp;#8221;. Recent version 
 of Python actually does not allow you mutate a dictionary while looping over it. Here are&lt;br&gt;
@@ -4561,14 +4561,15 @@ python argparse_example.py --xhtml --cssfile=mystyle.css myfile.html
 
 
 &lt;p&gt;The argparse module contains many other options.  Here is a link to 
-&lt;a href="https://docs.python.org/3/howto/argparse.html"&gt;Python argparse Offical Doc&lt;/a&gt;.&lt;/p&gt;</content><category term="posts"></category><category term="python"></category></entry><entry><title>Vim Full Version Installation in Ubuntu and Tips</title><link href="https://www.georgexyz.com/vim-ubuntu-install.html" rel="alternate"></link><published>2019-04-01T12:45:00-04:00</published><updated>2020-06-02T16:24:00-04:00</updated><author><name>George Zhang</name></author><id>tag:www.georgexyz.com,2019-04-01:/vim-ubuntu-install.html</id><summary type="html">&lt;p&gt;Ubuntu 18.04 comes with a stripped down version of Vim. If you want to use Vim for 
+&lt;a href="https://docs.python.org/3/howto/argparse.html"&gt;Python argparse Offical Doc&lt;/a&gt;.&lt;/p&gt;</content><category term="posts"></category><category term="python"></category></entry><entry><title>Vim Tips</title><link href="https://www.georgexyz.com/vim-tips.html" rel="alternate"></link><published>2019-04-01T12:45:00-04:00</published><updated>2020-08-09T17:37:00-04:00</updated><author><name>George Zhang</name></author><id>tag:www.georgexyz.com,2019-04-01:/vim-tips.html</id><summary type="html">&lt;p&gt;Ubuntu 18.04 comes with a stripped down version of Vim. If you want to use Vim for 
 serious work, you want the full version. &lt;/p&gt;
 &lt;h3&gt;Vim Installation&lt;/h3&gt;
 &lt;p&gt;The default version …&lt;/p&gt;</summary><content type="html">&lt;p&gt;Ubuntu 18.04 comes with a stripped down version of Vim. If you want to use Vim for 
 serious work, you want the full version. &lt;/p&gt;
 &lt;h3&gt;Vim Installation&lt;/h3&gt;
 &lt;p&gt;The default version is started via command &lt;code&gt;vi&lt;/code&gt;. The &lt;code&gt;vi --version&lt;/code&gt; command shows 
-the version information. Note the Line 5 below shows &amp;#8220;Small version without &lt;span class="caps"&gt;GUI&lt;/span&gt;&amp;#8221;. &lt;/p&gt;
+the version information. Note the Line 5 below shows &amp;#8220;Small version without &lt;span class="caps"&gt;GUI&lt;/span&gt;&amp;#8221;. 
+The output also contains the list of setting files Vim will load during startup. &lt;/p&gt;
 &lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;VIM - Vi IMproved 8.0 (2016 Sep 12, compiled Apr 10 2018 21:31:58)
 Included patches: 1-1453
 Modified by pkg-vim-maintainers@lists.alioth.debian.org
@@ -4589,20 +4590,8 @@ Compilation: gcc -c -I. -Iproto -DHAVE_CONFIG_H   -Wdate-time  -g -O2
 &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
 
 
-&lt;p&gt;If you type command &lt;code&gt;vim&lt;/code&gt; in bash, it will tell you that &amp;#8220;command vim not found&amp;#8221;. &lt;/p&gt;
-&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;george@X250:~$ vim
-Command &amp;#39;vim&amp;#39; not found, but can be installed with:
-sudo apt install vim
-sudo apt install vim-gtk3
-sudo apt install vim-tiny
-sudo apt install neovim
-sudo apt install vim-athena
-sudo apt install vim-gtk
-sudo apt install vim-nox
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
-
-
-&lt;p&gt;Those three commands remove the existing vim-tiny and install the full version with &lt;span class="caps"&gt;GUI&lt;/span&gt;
+&lt;p&gt;If you type command &lt;code&gt;vim&lt;/code&gt; in bash, it will tell you that &amp;#8220;command vim not found&amp;#8221;. 
+Those three commands remove the existing vim-tiny and install the full version with &lt;span class="caps"&gt;GUI&lt;/span&gt;
 vim-gtk3 in Ubuntu 18.04 or Xubuntu. &lt;/p&gt;
 &lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;sudo apt-get remove vim-tiny
 sudo apt-get update
@@ -4849,4 +4838,4 @@ au VimLeave * silent! !xmodmap -e &amp;#39;clear Lock&amp;#39;
 &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
 
 
-&lt;p&gt;&lt;em&gt;Source: &lt;a href="https://stackoverflow.com/questions/2176532/how-to-map-caps-lock-key-in-vim"&gt;an stackoverflow Q&amp;amp;A&lt;/a&gt;&lt;/em&gt;&lt;/p&gt;</content><category term="posts"></category><category term="vim"></category><category term="ubuntu"></category><category term="linux"></category></entry></feed>
+&lt;p&gt;&lt;em&gt;Source: &lt;a href="https://stackoverflow.com/questions/2176532/how-to-map-caps-lock-key-in-vim"&gt;an stackoverflow Q&amp;amp;A&lt;/a&gt;&lt;/em&gt;&lt;/p&gt;</content><category term="posts"></category><category term="vim"></category><category term="tip"></category><category term="linux"></category></entry></feed>

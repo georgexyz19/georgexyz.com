@@ -10,9 +10,9 @@
 <link rel="stylesheet" href="https://www.georgexyz.com/theme/css/friendly.css">
 <link rel="stylesheet" href="https://www.georgexyz.com/theme/css/custom.css">
 <meta name="author" content="George Zhang" />
-<meta name="keywords" content="vim,ubuntu,linux" />
+<meta name="keywords" content="vim,tip,linux" />
 <meta name="description" content="Ubuntu 18.04 comes with a stripped down version of Vim. If you want to use Vim for serious work, you want the full version. Vim Installation The default version …" />
-    <title>Vim Full Version Installation in Ubuntu and Tips - George Zhang</title>
+    <title>Vim Tips - George Zhang</title>
   </head>
   <body>
     <!-- navbar -->
@@ -60,7 +60,7 @@
   <div class="row">
     <div class="col-lg-8 mx-auto">
 
-      <h2>Vim Full Version Installation in Ubuntu and Tips</h2>
+      <h2>Vim Tips</h2>
 
       <div class="text-muted mb-2">
         <span>Posted on </span>
@@ -70,7 +70,7 @@
 
         <span>with tags: </span>
         <a href="https://www.georgexyz.com/tag/vim.html">vim</a>
-/        <a href="https://www.georgexyz.com/tag/ubuntu.html">ubuntu</a>
+/        <a href="https://www.georgexyz.com/tag/tip.html">tip</a>
 /        <a href="https://www.georgexyz.com/tag/linux.html">linux</a>
       </div>
 
@@ -78,7 +78,8 @@
 serious work, you want the full version. </p>
 <h3>Vim Installation</h3>
 <p>The default version is started via command <code>vi</code>. The <code>vi --version</code> command shows 
-the version information. Note the Line 5 below shows &#8220;Small version without <span class="caps">GUI</span>&#8221;. </p>
+the version information. Note the Line 5 below shows &#8220;Small version without <span class="caps">GUI</span>&#8221;. 
+The output also contains the list of setting files Vim will load during startup. </p>
 <div class="highlight"><pre><span></span><code>VIM - Vi IMproved 8.0 (2016 Sep 12, compiled Apr 10 2018 21:31:58)
 Included patches: 1-1453
 Modified by pkg-vim-maintainers@lists.alioth.debian.org
@@ -99,20 +100,8 @@ Compilation: gcc -c -I. -Iproto -DHAVE_CONFIG_H   -Wdate-time  -g -O2
 </code></pre></div>
 
 
-<p>If you type command <code>vim</code> in bash, it will tell you that &#8220;command vim not found&#8221;. </p>
-<div class="highlight"><pre><span></span><code>george@X250:~$ vim
-Command &#39;vim&#39; not found, but can be installed with:
-sudo apt install vim
-sudo apt install vim-gtk3
-sudo apt install vim-tiny
-sudo apt install neovim
-sudo apt install vim-athena
-sudo apt install vim-gtk
-sudo apt install vim-nox
-</code></pre></div>
-
-
-<p>Those three commands remove the existing vim-tiny and install the full version with <span class="caps">GUI</span>
+<p>If you type command <code>vim</code> in bash, it will tell you that &#8220;command vim not found&#8221;. 
+Those three commands remove the existing vim-tiny and install the full version with <span class="caps">GUI</span>
 vim-gtk3 in Ubuntu 18.04 or Xubuntu. </p>
 <div class="highlight"><pre><span></span><code>sudo apt-get remove vim-tiny
 sudo apt-get update
