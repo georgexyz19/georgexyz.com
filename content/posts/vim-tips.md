@@ -33,7 +33,6 @@ Small version without GUI.  Features included (+) or not (-):
   fall-back for $VIM: "/usr/share/vim"
 Compilation: gcc -c -I. -Iproto -DHAVE_CONFIG_H   -Wdate-time  -g -O2 
 -fdebug-prefix-map=/build/vim-NQEcoP/vim-8.0.1453=. -fstack-...
-
 ```
 
 If you type command `vim` in bash, it will tell you that "command vim not found". 
@@ -91,10 +90,10 @@ I have those lines in my `~/.vimrc` file.
 
 ```
 if exists("+lines")
-  set lines=80
+  set lines=32
 endif
 if exists("+columns")
-  set columns=120
+  set columns=108
 endif
 ```
 
