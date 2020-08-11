@@ -354,9 +354,9 @@ au VimLeave * silent! !xmodmap -e 'clear Lock'
 
 #### Vim Command to Reflow Texts to 80 Columns. 
 
-When writting articles in Vim, I often need to reflow texts after editing.  The
-first step is to set the `textwidth`, and the second step is to select texts
-and reflow with command `gq`. 
+When writting articles in Vim, I often need to reflow texts after editing. To
+reflow texts, the first step is to set the `textwidth` and the second step is
+to select texts and reflow with command `gq`. 
 
 You can set the `textwidth` to 80 (:set textwidth=80 or :set tw=80), then use
 `gg` to move cursor to the start of the file and type `gqG` to reflow to the
