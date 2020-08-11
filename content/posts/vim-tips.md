@@ -337,11 +337,11 @@ to run the current file.
 
 #### Map Caps Lock Key
 
-Some people recommend to map Caps Lock key to Esc key when using Vim. Stackoverflow 
-has a Q&A on how to do it. The following two lines of code in .vimrc file will 
-do the trick. When leaving Vim, it will remap the key back to Caps Lock. The 
-xmodmap software is already installed in Linux Mint, so no installation is 
-needed. 
+Some people recommend to map Caps Lock key to Esc key when using Vim.
+Stackoverflow has a Q&A on how to do it. The following two lines of code in
+.vimrc file will do the trick. When leaving Vim, it will remap the key back to
+Caps Lock. The xmodmap software is already installed in Linux Mint, so no
+installation is needed. 
 
 ```
 au VimEnter * silent! !xmodmap -e 'clear Lock' 
@@ -351,4 +351,20 @@ au VimLeave * silent! !xmodmap -e 'clear Lock'
 ```
 
 *Source: [an stackoverflow Q&A](https://stackoverflow.com/questions/2176532/how-to-map-caps-lock-key-in-vim)*
+
+#### Vim Command to Reflow Texts to 80 Columns. 
+
+When writting articles in Vim, I often need to reflow texts after editing.  The
+first step is to set the `textwidth`, and the second step is to select texts
+and reflow with command `gq`. 
+
+You can set the `textwidth` to 80 (:set textwidth=80 or :set tw=80), then use
+`gg` to move cursor to the start of the file and type `gqG` to reflow to the
+end of the article. The command `gq` also works with visual selections.  You
+can use command `vipgq` to select the paragraph first and then reflow. Or you
+can use `gqap` to reflow current paragraph, and `gq}` reflow texts from current
+cursor to end of the paragraph. You can select a paragraph by typing `vip` or
+`vap` 
+
+*Source: [an stackoverflow Q&A](https://stackoverflow.com/questions/3033423/vim-command-to-restructure-force-text-to-80-columns)*
 
