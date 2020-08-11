@@ -4840,9 +4840,9 @@ au VimLeave * silent! !xmodmap -e &amp;#39;clear Lock&amp;#39;
 
 &lt;p&gt;&lt;em&gt;Source: &lt;a href="https://stackoverflow.com/questions/2176532/how-to-map-caps-lock-key-in-vim"&gt;an stackoverflow Q&amp;amp;A&lt;/a&gt;&lt;/em&gt;&lt;/p&gt;
 &lt;h4&gt;Vim Command to Reflow Texts to 80 Columns.&lt;/h4&gt;
-&lt;p&gt;When writting articles in Vim, I often need to reflow texts after editing.  The
-first step is to set the &lt;code&gt;textwidth&lt;/code&gt;, and the second step is to select texts
-and reflow with command &lt;code&gt;gq&lt;/code&gt;. &lt;/p&gt;
+&lt;p&gt;When writting articles in Vim, I often need to reflow texts after editing. To
+reflow texts, the first step is to set the &lt;code&gt;textwidth&lt;/code&gt; and the second step is
+to select texts and reflow with command &lt;code&gt;gq&lt;/code&gt;. &lt;/p&gt;
 &lt;p&gt;You can set the &lt;code&gt;textwidth&lt;/code&gt; to 80 (:set textwidth=80 or :set tw=80), then use
 &lt;code&gt;gg&lt;/code&gt; to move cursor to the start of the file and type &lt;code&gt;gqG&lt;/code&gt; to reflow to the
 end of the article. The command &lt;code&gt;gq&lt;/code&gt; also works with visual selections.  You
