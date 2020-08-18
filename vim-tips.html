@@ -113,21 +113,37 @@ sudo apt-get install vim-gtk3
 <h3>Basic Vim Settings</h3>
 <p>Vim automatically loads <code>~/.vimrc</code> file during startup. Some default settings of vim 
 do not make sense. Below are some most basic vim settings. </p>
-<div class="highlight"><pre><span></span><code>&quot; ~/.simple.vimrc file; $vim -u ~/.simple.vimrc to load
+<div class="highlight"><pre><span></span><code>&quot; ~/.vimrc file
+
 set nocompatible              &quot; required
 filetype plugin on
-syntax enable   &quot; or syntax off/on
+syntax enable
 
 &quot;path and find, fuzzy file finder
 set path+=**  &quot; search subdir recursively, find ...
 set wildmenu
 
-set number &quot; show line numbers
+set number
 
 &quot; Set ignore case, highlight, and incremental searches
 set ignorecase
 set hlsearch
 set incsearch
+
+if exists(&quot;+lines&quot;)
+  set lines=32
+endif
+if exists(&quot;+columns&quot;)
+  set columns=108
+endif
+
+&quot; Ctrl + s to save file
+noremap &lt;silent&gt; &lt;C-S&gt;  :update&lt;CR&gt;
+vnoremap &lt;silent&gt; &lt;C-S&gt; :&lt;C-C&gt;:update&lt;CR&gt;
+inoremap &lt;silent&gt; &lt;C-S&gt; &lt;C-O&gt;:update&lt;CR&gt;
+
+&quot;shortcut ^l to mute highlighting
+nnoremap &lt;silent&gt; &lt;C-l&gt; :&lt;C-u&gt;nohlsearch&lt;CR&gt;&lt;C-l&gt;
 </code></pre></div>
 
 
@@ -218,6 +234,8 @@ commands are listed below. </p>
 <dd>go to old cursor position</dd>
 <dt>^i</dt>
 <dd>go to next cursor position</dd>
+<dt>gj</dt>
+<dd>move down one displayed line when a long line is auto wrapped</dd>
 </dl>
 <h4>Common Shortcuts</h4>
 <p>Vim is in a different league comparing to other text editors. It does not have 
@@ -277,9 +295,12 @@ in the background and suspended. After running some bash commands, you can type 
 command to bring Vim back to foreground. Or you can use <code>:!</code> followed by a bash 
 command to execute the command inside Vim. </p>
 <h4>Copy and Paste via Clipboard</h4>
-<p>Copying texts to and from Vim using the <code>Ctrl + c</code> and <code>Ctrl + v</code> does not work. 
-You could use Gnome terminal shortcuts <code>Ctrl + Shift + c</code> and <code>Ctrl + Shift + v</code>, 
-but sometimes it does not work very well. </p>
+<p>Copying texts to and from Vim using the <code>Ctrl + c</code> and <code>Ctrl + v</code> does not work.
+The command <code>^c</code> is to generate a signal which tells the current process to
+terminate, and command <code>^v</code> invokes &#8220;verbatim insert&#8221; in bash (see <a href="https://www.howtogeek.com/440558/how-to-copy-and-paste-text-at-linuxs-bash-shell/">an online
+article</a>) .
+You could use Gnome terminal shortcuts <code>Ctrl + Shift + c</code> and <code>Ctrl + Shift +
+v</code>, but sometimes it does not work very well. </p>
 <p>I often use the <em>clipboard register</em> (<code>"+</code>) to copy and paste texts in and out of Vim. Here 
 are the steps to copy texts into Vim, </p>
 <ol>
@@ -291,11 +312,11 @@ are the steps to copy texts into Vim, </p>
 <ol>
 <li>Use <code>v</code> command to visually select texts in Vim.</li>
 <li>Type command <code>"+y</code> to copy the texts to clipboard.</li>
-<li>In another program, use <code>Ctrl + v</code> to paste the texts. </li>
+<li>In another program, use <code>^v</code> to paste the texts. </li>
 </ol>
 <p>There is an 
 <a href="https://superuser.com/questions/61226/configure-vim-for-copy-and-paste-keyboard-shortcuts-from-system-buffer-in-ubuntu">online Q&amp;A</a>
-on how to map <code>Ctrl + c</code> and <code>Ctrl + v</code> to copy and paste behavior, but I have not 
+on how to map <code>^c</code> and <code>^v</code> to copy and paste behavior, but I have not 
 set it up in my <code>.vimrc</code> file. </p>
 <h4>Work Sessions</h4>
 <p>When you have 10 or more text files open in Vim and need to reboot your computer, you 
