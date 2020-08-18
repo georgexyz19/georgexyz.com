@@ -53,21 +53,37 @@ Vim automatically loads `~/.vimrc` file during startup. Some default settings of
 do not make sense. Below are some most basic vim settings. 
 
 ```
-" ~/.simple.vimrc file; $vim -u ~/.simple.vimrc to load
+" ~/.vimrc file
+
 set nocompatible              " required
 filetype plugin on
-syntax enable   " or syntax off/on
+syntax enable
 
 "path and find, fuzzy file finder
 set path+=**  " search subdir recursively, find ...
 set wildmenu
 
-set number " show line numbers
+set number
 
 " Set ignore case, highlight, and incremental searches
 set ignorecase
 set hlsearch
 set incsearch
+
+if exists("+lines")
+  set lines=32
+endif
+if exists("+columns")
+  set columns=108
+endif
+
+" Ctrl + s to save file
+noremap <silent> <C-S>  :update<CR>
+vnoremap <silent> <C-S> :<C-C>:update<CR>
+inoremap <silent> <C-S> <C-O>:update<CR>
+
+"shortcut ^l to mute highlighting
+nnoremap <silent> <C-l> :<C-u>nohlsearch<CR><C-l>
 
 ```
 
@@ -189,6 +205,9 @@ H, M, L
 ^i
 : go to next cursor position
 
+gj
+: move down one displayed line when a long line is auto wrapped
+
 #### Common Shortcuts
 
 Vim is in a different league comparing to other text editors. It does not have 
@@ -263,9 +282,12 @@ command to execute the command inside Vim.
 
 #### Copy and Paste via Clipboard
 
-Copying texts to and from Vim using the `Ctrl + c` and `Ctrl + v` does not work. 
-You could use Gnome terminal shortcuts `Ctrl + Shift + c` and `Ctrl + Shift + v`, 
-but sometimes it does not work very well. 
+Copying texts to and from Vim using the `Ctrl + c` and `Ctrl + v` does not work.
+The command `^c` is to generate a signal which tells the current process to
+terminate, and command `^v` invokes "verbatim insert" in bash (see [an online
+article](https://www.howtogeek.com/440558/how-to-copy-and-paste-text-at-linuxs-bash-shell/)) .
+You could use Gnome terminal shortcuts `Ctrl + Shift + c` and `Ctrl + Shift +
+v`, but sometimes it does not work very well. 
 
 I often use the *clipboard register* (`"+`) to copy and paste texts in and out of Vim. Here 
 are the steps to copy texts into Vim, 
@@ -278,12 +300,13 @@ Here are the steps to copy texts out of Vim to another program.
 
 1. Use `v` command to visually select texts in Vim.
 2. Type command `"+y` to copy the texts to clipboard.
-3. In another program, use `Ctrl + v` to paste the texts. 
+3. In another program, use `^v` to paste the texts. 
 
 There is an 
 [online Q&A](https://superuser.com/questions/61226/configure-vim-for-copy-and-paste-keyboard-shortcuts-from-system-buffer-in-ubuntu)
-on how to map `Ctrl + c` and `Ctrl + v` to copy and paste behavior, but I have not 
+on how to map `^c` and `^v` to copy and paste behavior, but I have not 
 set it up in my `.vimrc` file. 
+
 
 #### Work Sessions
 
