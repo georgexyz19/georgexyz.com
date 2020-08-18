@@ -32,3 +32,18 @@ command and simply use `venv` to manage virtual environment.
 pyenv global 3.7.3
 python -m venv ~/.venv/pelican
 ``` 
+
+Here are a list of some other common commands.
+
+```
+pyenv install --list |grep " 3\.[78]"
+pyenv install -v 3.7.7
+pyenv uninstall 3.7.7
+ls ~/.pyenv/versions
+pyenv versions
+pyenv global 2.7.15 # or system
+pyenv local 3.7.7
+cat ~/.pyenv/version
+pyenv virtualenv ...
+```
+
