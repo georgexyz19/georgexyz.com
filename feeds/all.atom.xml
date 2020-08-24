@@ -355,24 +355,39 @@ scan the document, perform &lt;span class="caps"&gt;OCR&lt;/span&gt;, and save i
 
 &lt;p&gt;The tricky part is that the ScanSnap Manager software is disabled if PaperStream Capture is open. 
 You need to exit PaperStream Capture before enable Scansnap Manager. It takes me sometime to figure 
-that out.&lt;/p&gt;</content><category term="posts"></category><category term="software utility"></category></entry><entry><title>GIMP Tips</title><link href="https://www.georgexyz.com/gimp-tips.html" rel="alternate"></link><published>2020-05-10T10:54:00-04:00</published><updated>2020-05-10T10:54:00-04:00</updated><author><name>George Zhang</name></author><id>tag:www.georgexyz.com,2020-05-10:/gimp-tips.html</id><summary type="html">&lt;p&gt;&lt;span class="caps"&gt;GIMP&lt;/span&gt; is a free and open source image manipulation software. I only use a small subset of functions 
-of the software.  Here are some tips I keep a record for …&lt;/p&gt;</summary><content type="html">&lt;p&gt;&lt;span class="caps"&gt;GIMP&lt;/span&gt; is a free and open source image manipulation software. I only use a small subset of functions 
-of the software.  Here are some tips I keep a record for myself. &lt;/p&gt;
+that out.&lt;/p&gt;</content><category term="posts"></category><category term="software utility"></category></entry><entry><title>GIMP Tips</title><link href="https://www.georgexyz.com/gimp-tips.html" rel="alternate"></link><published>2020-05-10T10:54:00-04:00</published><updated>2020-05-10T10:54:00-04:00</updated><author><name>George Zhang</name></author><id>tag:www.georgexyz.com,2020-05-10:/gimp-tips.html</id><summary type="html">&lt;p&gt;&lt;span class="caps"&gt;GIMP&lt;/span&gt; is a free and open source image manipulation software. I only use a small
+subset of functions of the software.  Here are some tips I keep a record for …&lt;/p&gt;</summary><content type="html">&lt;p&gt;&lt;span class="caps"&gt;GIMP&lt;/span&gt; is a free and open source image manipulation software. I only use a small
+subset of functions of the software.  Here are some tips I keep a record for
+myself. &lt;/p&gt;
 &lt;h3&gt;Move Pixels In An Area&lt;/h3&gt;
-&lt;p&gt;&lt;code&gt;Ctrl + Alt + Move Selection&lt;/code&gt; is the shortcut to move selected area of an image.  &lt;span class="caps"&gt;GIMP&lt;/span&gt; adds a 
-&amp;#8220;Floating selection&amp;#8221; temporary layer in the layer dialog.  After you make the change, click the 
-mouse in another area to confirm the move. The temporary layer merges onto the main layer. &lt;/p&gt;
+&lt;p&gt;&lt;code&gt;Ctrl + Alt + Move Selection&lt;/code&gt; is the shortcut to move selected area of an image.
+&lt;span class="caps"&gt;GIMP&lt;/span&gt; adds a &amp;#8220;Floating selection&amp;#8221; temporary layer in the layer dialog.  After you
+make the change, click the mouse in another area to confirm the move. The
+temporary layer merges onto the main layer. &lt;/p&gt;
 &lt;h3&gt;Add White Background After Deleting An Area&lt;/h3&gt;
-&lt;p&gt;Sometimes &lt;span class="caps"&gt;GIMP&lt;/span&gt; leaves a hole on an image when you delete the pixels in an area. Choose menu 
-item &lt;code&gt;Layer&lt;/code&gt; &amp;gt; &lt;code&gt;Transparency&lt;/code&gt; &amp;gt; &lt;code&gt;Remove Alpha Channel&lt;/code&gt; and the area will show white background.&lt;/p&gt;
+&lt;p&gt;Sometimes &lt;span class="caps"&gt;GIMP&lt;/span&gt; leaves a hole on an image when you delete the pixels in an area.
+Choose menu item &lt;code&gt;Layer&lt;/code&gt; &amp;gt; &lt;code&gt;Transparency&lt;/code&gt; &amp;gt; &lt;code&gt;Remove Alpha Channel&lt;/code&gt; and the area
+will show white background.&lt;/p&gt;
 &lt;h3&gt;Remove Background Grey Hue&lt;/h3&gt;
-&lt;p&gt;Some scanned image file has a grey hue on the background. The &lt;code&gt;Colors&lt;/code&gt; &amp;gt; &lt;code&gt;Curves&lt;/code&gt; tool can be 
-used to remove the background. &lt;/p&gt;
+&lt;p&gt;Some scanned image file has a grey hue on the background. The &lt;code&gt;Colors&lt;/code&gt; &amp;gt;
+&lt;code&gt;Curves&lt;/code&gt; tool can be used to remove the background. &lt;/p&gt;
 &lt;div style="max-width:400px"&gt;
   &lt;img class="img-fluid pb-3" src="/images/gimp/gimp-curve-r.png" alt="gimp curve"&gt; 
 &lt;/div&gt;
 
-&lt;p class="text-muted"&gt;This article will be continuously updated (last update: 5/10/2020). &lt;p&gt;</content><category term="posts"></category><category term="software utility"></category></entry><entry><title>Pelican Cache Module</title><link href="https://www.georgexyz.com/pelican-cache-module.html" rel="alternate"></link><published>2020-05-08T09:49:00-04:00</published><updated>2020-05-08T09:49:00-04:00</updated><author><name>George Zhang</name></author><id>tag:www.georgexyz.com,2020-05-08:/pelican-cache-module.html</id><summary type="html">&lt;p&gt;Pelican cache module (&lt;a href="https://github.com/getpelican/pelican/blob/4.2.0/pelican/cache.py"&gt;cache.py&lt;/a&gt;) 
+&lt;h3&gt;Resize Image to a Certain Size&lt;/h3&gt;
+&lt;p&gt;If you want a scanned plan image file to be a certain size such as Arch D (36&amp;#8221;
+x 24&amp;#8221;) size, you can follow those steps. &lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;Click on menu &lt;code&gt;Image&lt;/code&gt; &amp;gt; &lt;code&gt;Canvas Size&lt;/code&gt; to resize image to on a larger canvas
+   (e.g., 36&amp;#8221; x 24&amp;#8221;), choose white background and center the image.&lt;/li&gt;
+&lt;li&gt;Select an area of image including the borders.  &lt;/li&gt;
+&lt;li&gt;Copy and paste the image pixels onto a new layer. &lt;/li&gt;
+&lt;li&gt;Choose menu item &lt;code&gt;Layer&lt;/code&gt; &amp;gt; &lt;code&gt;Scale Layer&lt;/code&gt; to enlarge the layer to canvas size.
+   It seem that setting &lt;code&gt;Interpolation&lt;/code&gt; to None works better for scanned plans.&lt;/li&gt;
+&lt;li&gt;Merge down the image layer to the background layer. &lt;/li&gt;
+&lt;/ol&gt;
+&lt;p class="text-muted"&gt;This article will be continuously updated (last update: 8/24/2020). &lt;p&gt;</content><category term="posts"></category><category term="software utility"></category></entry><entry><title>Pelican Cache Module</title><link href="https://www.georgexyz.com/pelican-cache-module.html" rel="alternate"></link><published>2020-05-08T09:49:00-04:00</published><updated>2020-05-08T09:49:00-04:00</updated><author><name>George Zhang</name></author><id>tag:www.georgexyz.com,2020-05-08:/pelican-cache-module.html</id><summary type="html">&lt;p&gt;Pelican cache module (&lt;a href="https://github.com/getpelican/pelican/blob/4.2.0/pelican/cache.py"&gt;cache.py&lt;/a&gt;) 
 is relatively independent of other modules. It uses pickle module 
 to serialize data and logger module to output debug and warning message. The module 
 defines …&lt;/p&gt;</summary><content type="html">&lt;p&gt;Pelican cache module (&lt;a href="https://github.com/getpelican/pelican/blob/4.2.0/pelican/cache.py"&gt;cache.py&lt;/a&gt;) 

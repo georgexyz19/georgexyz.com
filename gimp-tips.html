@@ -72,23 +72,38 @@
         <a href="https://www.georgexyz.com/tag/software-utility.html">software utility</a>
       </div>
 
-      <p><span class="caps">GIMP</span> is a free and open source image manipulation software. I only use a small subset of functions 
-of the software.  Here are some tips I keep a record for myself. </p>
+      <p><span class="caps">GIMP</span> is a free and open source image manipulation software. I only use a small
+subset of functions of the software.  Here are some tips I keep a record for
+myself. </p>
 <h3>Move Pixels In An Area</h3>
-<p><code>Ctrl + Alt + Move Selection</code> is the shortcut to move selected area of an image.  <span class="caps">GIMP</span> adds a 
-&#8220;Floating selection&#8221; temporary layer in the layer dialog.  After you make the change, click the 
-mouse in another area to confirm the move. The temporary layer merges onto the main layer. </p>
+<p><code>Ctrl + Alt + Move Selection</code> is the shortcut to move selected area of an image.
+<span class="caps">GIMP</span> adds a &#8220;Floating selection&#8221; temporary layer in the layer dialog.  After you
+make the change, click the mouse in another area to confirm the move. The
+temporary layer merges onto the main layer. </p>
 <h3>Add White Background After Deleting An Area</h3>
-<p>Sometimes <span class="caps">GIMP</span> leaves a hole on an image when you delete the pixels in an area. Choose menu 
-item <code>Layer</code> &gt; <code>Transparency</code> &gt; <code>Remove Alpha Channel</code> and the area will show white background.</p>
+<p>Sometimes <span class="caps">GIMP</span> leaves a hole on an image when you delete the pixels in an area.
+Choose menu item <code>Layer</code> &gt; <code>Transparency</code> &gt; <code>Remove Alpha Channel</code> and the area
+will show white background.</p>
 <h3>Remove Background Grey Hue</h3>
-<p>Some scanned image file has a grey hue on the background. The <code>Colors</code> &gt; <code>Curves</code> tool can be 
-used to remove the background. </p>
+<p>Some scanned image file has a grey hue on the background. The <code>Colors</code> &gt;
+<code>Curves</code> tool can be used to remove the background. </p>
 <div style="max-width:400px">
   <img class="img-fluid pb-3" src="/images/gimp/gimp-curve-r.png" alt="gimp curve"> 
 </div>
 
-<p class="text-muted">This article will be continuously updated (last update: 5/10/2020). <p>
+<h3>Resize Image to a Certain Size</h3>
+<p>If you want a scanned plan image file to be a certain size such as Arch D (36&#8221;
+x 24&#8221;) size, you can follow those steps. </p>
+<ol>
+<li>Click on menu <code>Image</code> &gt; <code>Canvas Size</code> to resize image to on a larger canvas
+   (e.g., 36&#8221; x 24&#8221;), choose white background and center the image.</li>
+<li>Select an area of image including the borders.  </li>
+<li>Copy and paste the image pixels onto a new layer. </li>
+<li>Choose menu item <code>Layer</code> &gt; <code>Scale Layer</code> to enlarge the layer to canvas size.
+   It seem that setting <code>Interpolation</code> to None works better for scanned plans.</li>
+<li>Merge down the image layer to the background layer. </li>
+</ol>
+<p class="text-muted">This article will be continuously updated (last update: 8/24/2020). <p>
 
 
 
