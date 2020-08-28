@@ -138,6 +138,24 @@ in pattern. Here is a list of common regex special characters in Python:</p>
 <li>* : zero or more</li>
 <li>+ : one or more</li>
 </ul>
+<div style="margin-bottom:.4in;"></div>
+
+<hr>
+
+<p><em>Update on 8/28/2020:</em></p>
+<p>Today I want to see how many blog posts I have written this year and compare the number with last year. 
+I want to search <code>date: 2020-</code>, but find grep does not like the character <code>-</code>.  A Google search 
+with phrases &#8220;grep search dash&#8221; finds 
+<a href="https://stackoverflow.com/questions/2427913/how-can-i-grep-for-a-string-that-begins-with-a-dash-hyphen">an stackoverflow post</a>.
+It turns out that the dash character needs to escape twice like this <code>date: 2020\\-</code>. So the command 
+to tally blog posts becomes like this,  </p>
+<div class="highlight"><pre><span></span><code>grep -r &quot;date: 2020\\-&quot; | wc -l
+grep -r &quot;date: 2019\\-&quot; | wc -l
+</code></pre></div>
+
+
+<p>The result is 26 v.s. 26. The 2019 only covers 9 months starting from 4/1 and 2020 covers 8 months 
+so far, so it is close. </p>
 
 
 

@@ -2539,7 +2539,25 @@ in pattern. Here is a list of common regex special characters in Python:&lt;/p&g
 &lt;li&gt;\s : white space&lt;/li&gt;
 &lt;li&gt;* : zero or more&lt;/li&gt;
 &lt;li&gt;+ : one or more&lt;/li&gt;
-&lt;/ul&gt;</content><category term="posts"></category><category term="linux"></category><category term="software utility"></category></entry><entry><title>Django Pagination</title><link href="https://www.georgexyz.com/django-pagination.html" rel="alternate"></link><published>2019-07-17T10:05:00-04:00</published><updated>2020-04-30T12:58:00-04:00</updated><author><name>George Zhang</name></author><id>tag:www.georgexyz.com,2019-07-17:/django-pagination.html</id><summary type="html">&lt;p&gt;Merriam-Webster dictionary defines pagination as &amp;#8220;the action of paging&amp;#8221;. In web 
+&lt;/ul&gt;
+&lt;div style="margin-bottom:.4in;"&gt;&lt;/div&gt;
+
+&lt;hr&gt;
+
+&lt;p&gt;&lt;em&gt;Update on 8/28/2020:&lt;/em&gt;&lt;/p&gt;
+&lt;p&gt;Today I want to see how many blog posts I have written this year and compare the number with last year. 
+I want to search &lt;code&gt;date: 2020-&lt;/code&gt;, but find grep does not like the character &lt;code&gt;-&lt;/code&gt;.  A Google search 
+with phrases &amp;#8220;grep search dash&amp;#8221; finds 
+&lt;a href="https://stackoverflow.com/questions/2427913/how-can-i-grep-for-a-string-that-begins-with-a-dash-hyphen"&gt;an stackoverflow post&lt;/a&gt;.
+It turns out that the dash character needs to escape twice like this &lt;code&gt;date: 2020\\-&lt;/code&gt;. So the command 
+to tally blog posts becomes like this,  &lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;grep -r &amp;quot;date: 2020\\-&amp;quot; | wc -l
+grep -r &amp;quot;date: 2019\\-&amp;quot; | wc -l
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;p&gt;The result is 26 v.s. 26. The 2019 only covers 9 months starting from 4/1 and 2020 covers 8 months 
+so far, so it is close. &lt;/p&gt;</content><category term="posts"></category><category term="linux"></category><category term="software utility"></category></entry><entry><title>Django Pagination</title><link href="https://www.georgexyz.com/django-pagination.html" rel="alternate"></link><published>2019-07-17T10:05:00-04:00</published><updated>2020-04-30T12:58:00-04:00</updated><author><name>George Zhang</name></author><id>tag:www.georgexyz.com,2019-07-17:/django-pagination.html</id><summary type="html">&lt;p&gt;Merriam-Webster dictionary defines pagination as &amp;#8220;the action of paging&amp;#8221;. In web 
 design world, pagination means separating a large list of contents onto 
 different pages for easy web navigation.   &lt;/p&gt;
 &lt;p&gt;Django provides …&lt;/p&gt;</summary><content type="html">&lt;p&gt;Merriam-Webster dictionary defines pagination as &amp;#8220;the action of paging&amp;#8221;. In web 
