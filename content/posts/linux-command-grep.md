@@ -77,6 +77,24 @@ in pattern. Here is a list of common regex special characters in Python:
 * \* : zero or more
 * \+ : one or more
 
+<div style="margin-bottom:.4in;"></div>
+<hr>
 
+*Update on 8/28/2020:*
+
+Today I want to see how many blog posts I have written this year and compare the number with last year. 
+I want to search `date: 2020-`, but find grep does not like the character `-`.  A Google search 
+with phrases "grep search dash" finds 
+[an stackoverflow post](https://stackoverflow.com/questions/2427913/how-can-i-grep-for-a-string-that-begins-with-a-dash-hyphen).
+It turns out that the dash character needs to escape twice like this `date: 2020\\-`. So the command 
+to tally blog posts becomes like this,  
+
+```
+grep -r "date: 2020\\-" | wc -l
+grep -r "date: 2019\\-" | wc -l
+```
+
+The result is 26 v.s. 26. The 2019 only covers 9 months starting from 4/1 and 2020 covers 8 months 
+so far, so it is close. 
 
 
