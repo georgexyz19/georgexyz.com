@@ -1,5 +1,54 @@
 <?xml version="1.0" encoding="utf-8"?>
-<feed xmlns="http://www.w3.org/2005/Atom"><title>George Zhang</title><link href="https://www.georgexyz.com/" rel="alternate"></link><link href="https://www.georgexyz.com/feeds/all.atom.xml" rel="self"></link><id>https://www.georgexyz.com/</id><updated>2020-08-09T17:37:00-04:00</updated><entry><title>Mutate While Looping in Python</title><link href="https://www.georgexyz.com/mutate-while-looping-in-python.html" rel="alternate"></link><published>2020-07-21T00:47:00-04:00</published><updated>2020-07-21T00:47:00-04:00</updated><author><name>George Zhang</name></author><id>tag:www.georgexyz.com,2020-07-21:/mutate-while-looping-in-python.html</id><summary type="html">&lt;p&gt;Raymond Hettinger once said &amp;#8220;if you mutate something while you&amp;#8217;re iterating over it, 
+<feed xmlns="http://www.w3.org/2005/Atom"><title>George Zhang</title><link href="https://www.georgexyz.com/" rel="alternate"></link><link href="https://www.georgexyz.com/feeds/all.atom.xml" rel="self"></link><id>https://www.georgexyz.com/</id><updated>2020-08-28T03:17:00-04:00</updated><entry><title>Change Boot Order with GRUB 2</title><link href="https://www.georgexyz.com/change-boot-order-with-grub-2.html" rel="alternate"></link><published>2020-08-28T03:17:00-04:00</published><updated>2020-08-28T03:17:00-04:00</updated><author><name>George Zhang</name></author><id>tag:www.georgexyz.com,2020-08-28:/change-boot-order-with-grub-2.html</id><summary type="html">&lt;p&gt;My laptop has both Windows 10 and Linux Mint installed. Sometimes I want the laptop boots into 
+Windows by default. After a little online research, I find that I need …&lt;/p&gt;</summary><content type="html">&lt;p&gt;My laptop has both Windows 10 and Linux Mint installed. Sometimes I want the laptop boots into 
+Windows by default. After a little online research, I find that I need to change the settings of 
+the boot loader software &lt;span class="caps"&gt;GRUB&lt;/span&gt; 2. &lt;/p&gt;
+&lt;p&gt;After reading the 
+&lt;a href="https://www.gnu.org/software/grub/manual/grub/grub.html"&gt;online grub manual&lt;/a&gt; 
+for one hour or so, I am still not sure how to do it. Fortunately, I find 
+&lt;a href="https://www.dedoimedo.com/computers/grub-2.html"&gt;an excellent &lt;span class="caps"&gt;GRUB&lt;/span&gt; tutorial&lt;/a&gt; 
+on dedoimedo.com, which explains the &lt;span class="caps"&gt;GRUB&lt;/span&gt; 2 very well. &lt;/p&gt;
+&lt;p&gt;Basically, the &lt;span class="caps"&gt;GRUB&lt;/span&gt; 2 software reads the &lt;code&gt;grub.cfg&lt;/code&gt; configuration file in &lt;code&gt;/boot/grub/&lt;/code&gt; 
+directory. However you should not modify this file directly. Instead, the file is generate with 
+a linux command like this. &lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;sudo grub-mkconfig -o grub.cfg 
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;p&gt;The &lt;code&gt;grub-mkconfig&lt;/code&gt; tool will load setting files in &lt;code&gt;/etc/grub.d/&lt;/code&gt; directory and setting 
+file &lt;code&gt;/etc/default/grub&lt;/code&gt;.  A user should change the those files and run &lt;code&gt;grub-mkconfig&lt;/code&gt; to 
+generate the final &lt;code&gt;grub.cfg&lt;/code&gt; file. &lt;/p&gt;
+&lt;p&gt;Here is the file list under &lt;code&gt;/etc/grub.d&lt;/code&gt; directory in my laptop.&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;george@T450:/etc/grub.d$ ls -la
+total 108
+-rwxr-xr-x   1 root root 10046 Mar 18  2019 00_header
+-rwxr-xr-x   1 root root  6258 Mar 18  2019 05_debian_theme
+-rwxr-xr-x   1 root root 12059 Aug  4 23:46 09_os-prober
+-rwxr-xr-x   1 root root 12693 Mar 18  2019 10_linux
+-rwxr-xr-x   1 root root 11298 Mar 18  2019 20_linux_xen
+-rwxr-xr-x   1 root root  1992 Jan 28  2016 20_memtest86+
+-rw-r--r--   1 root root 12059 Mar 18  2019 30_os-prober
+-rwxr-xr-x   1 root root  1418 Mar 18  2019 30_uefi-firmware
+-rwxr-xr-x   1 root root   214 Mar 18  2019 40_custom
+-rwxr-xr-x   1 root root   216 Mar 18  2019 41_custom
+-rw-r--r--   1 root root   483 Mar 18  2019 README
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;p&gt;Reading the &lt;code&gt;/boot/grub/grub.cfg&lt;/code&gt; file a little bit, I find the &lt;code&gt;30_os-prober&lt;/code&gt; is the configuration
+file to read the Windows. I made a copy the file and named the new copy &lt;code&gt;09_os-prober&lt;/code&gt;, then I turned
+the execution bit off for &lt;code&gt;30_os-prober&lt;/code&gt;. Note boot order is based on the first two digits of file
+names in this directory.  The commands are like this, &lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;sudo cp 30_os-prober 09_os-prober
+sudo chmod -x 30_os-prober
+sudo grub-mkconfig -o /boot/grub/grub.cfg 
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;p&gt;Now reboot the computer and the boot screen looks like this, &lt;/p&gt;
+&lt;div style="max-width:800px"&gt;
+  &lt;img class="img-fluid pb-3" src="/images/boot_order.jpg" alt="boot order"&gt; 
+&lt;/div&gt;</content><category term="posts"></category><category term="linux"></category><category term="software utility"></category></entry><entry><title>Mutate While Looping in Python</title><link href="https://www.georgexyz.com/mutate-while-looping-in-python.html" rel="alternate"></link><published>2020-07-21T00:47:00-04:00</published><updated>2020-07-21T00:47:00-04:00</updated><author><name>George Zhang</name></author><id>tag:www.georgexyz.com,2020-07-21:/mutate-while-looping-in-python.html</id><summary type="html">&lt;p&gt;Raymond Hettinger once said &amp;#8220;if you mutate something while you&amp;#8217;re iterating over it, 
 you&amp;#8217;re living in a state of sin and deserve whatever happens to you&amp;#8221;. Recent version …&lt;/p&gt;</summary><content type="html">&lt;p&gt;Raymond Hettinger once said &amp;#8220;if you mutate something while you&amp;#8217;re iterating over it, 
 you&amp;#8217;re living in a state of sin and deserve whatever happens to you&amp;#8221;. Recent version 
 of Python actually does not allow you mutate a dictionary while looping over it. Here are&lt;br&gt;
