@@ -1,5 +1,19 @@
 <?xml version="1.0" encoding="utf-8"?>
-<feed xmlns="http://www.w3.org/2005/Atom"><title>George Zhang</title><link href="https://www.georgexyz.com/" rel="alternate"></link><link href="https://www.georgexyz.com/feeds/all.atom.xml" rel="self"></link><id>https://www.georgexyz.com/</id><updated>2020-08-28T03:17:00-04:00</updated><entry><title>Change Boot Order with GRUB 2</title><link href="https://www.georgexyz.com/change-boot-order-with-grub-2.html" rel="alternate"></link><published>2020-08-28T03:17:00-04:00</published><updated>2020-08-28T03:17:00-04:00</updated><author><name>George Zhang</name></author><id>tag:www.georgexyz.com,2020-08-28:/change-boot-order-with-grub-2.html</id><summary type="html">&lt;p&gt;My laptop has both Windows 10 and Linux Mint installed. Sometimes I want the laptop booting into 
+<feed xmlns="http://www.w3.org/2005/Atom"><title>George Zhang</title><link href="https://www.georgexyz.com/" rel="alternate"></link><link href="https://www.georgexyz.com/feeds/all.atom.xml" rel="self"></link><id>https://www.georgexyz.com/</id><updated>2020-08-29T10:40:00-04:00</updated><entry><title>Web Development Notes</title><link href="https://www.georgexyz.com/web-development-notes.html" rel="alternate"></link><published>2020-08-29T10:40:00-04:00</published><updated>2020-08-29T10:40:00-04:00</updated><author><name>George Zhang</name></author><id>tag:www.georgexyz.com,2020-08-29:/web-development-notes.html</id><summary type="html">&lt;p&gt;I am going to assemble some notes for web development in this post.  It is mainly for 
+myself and I will keep updating this post. &lt;/p&gt;
+&lt;h4&gt;Force Firefox to Refresh&lt;/h4&gt;
+&lt;p&gt;There …&lt;/p&gt;</summary><content type="html">&lt;p&gt;I am going to assemble some notes for web development in this post.  It is mainly for 
+myself and I will keep updating this post. &lt;/p&gt;
+&lt;h4&gt;Force Firefox to Refresh&lt;/h4&gt;
+&lt;p&gt;There are two quick ways to refresh web page in Firefox browser. &lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;Press &lt;code&gt;Shift&lt;/code&gt; key and click refresh (reload) button,&lt;/li&gt;
+&lt;li&gt;Shortcut is &lt;code&gt;Ctrl + Shift + r&lt;/code&gt;.&lt;/li&gt;
+&lt;/ol&gt;
+&lt;p&gt;The fresh button is the third one on the image shown below: 
+&lt;div style="max-width:800px"&gt;
+  &lt;img class="img-fluid pb-3" src="/images/refresh-button.png" alt="ff refresh button"&gt;
+&lt;/div&gt;&lt;/p&gt;</content><category term="posts"></category><category term="web development"></category></entry><entry><title>Change Boot Order with GRUB 2</title><link href="https://www.georgexyz.com/change-boot-order-with-grub-2.html" rel="alternate"></link><published>2020-08-28T03:17:00-04:00</published><updated>2020-08-28T03:17:00-04:00</updated><author><name>George Zhang</name></author><id>tag:www.georgexyz.com,2020-08-28:/change-boot-order-with-grub-2.html</id><summary type="html">&lt;p&gt;My laptop has both Windows 10 and Linux Mint installed. Sometimes I want the laptop booting into 
 Windows by default. After a little online research, I find that I need …&lt;/p&gt;</summary><content type="html">&lt;p&gt;My laptop has both Windows 10 and Linux Mint installed. Sometimes I want the laptop booting into 
 Windows by default. After a little online research, I find that I need to change the settings of 
 boot loader software &lt;span class="caps"&gt;GRUB&lt;/span&gt; 2. &lt;/p&gt;
