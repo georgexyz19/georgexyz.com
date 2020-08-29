@@ -11,7 +11,7 @@
 <link rel="stylesheet" href="https://www.georgexyz.com/theme/css/custom.css">
 <meta name="author" content="George Zhang" />
 <meta name="keywords" content="linux,software utility" />
-<meta name="description" content="My laptop has both Windows 10 and Linux Mint installed. Sometimes I want the laptop boots into Windows by default. After a little online research, I find that I need …" />
+<meta name="description" content="My laptop has both Windows 10 and Linux Mint installed. Sometimes I want the laptop booting into Windows by default. After a little online research, I find that I need …" />
     <title>Change Boot Order with GRUB 2 - George Zhang</title>
   </head>
   <body>
@@ -73,30 +73,30 @@
 /        <a href="https://www.georgexyz.com/tag/software-utility.html">software utility</a>
       </div>
 
-      <p>My laptop has both Windows 10 and Linux Mint installed. Sometimes I want the laptop boots into 
+      <p>My laptop has both Windows 10 and Linux Mint installed. Sometimes I want the laptop booting into 
 Windows by default. After a little online research, I find that I need to change the settings of 
-the boot loader software <span class="caps">GRUB</span> 2. </p>
+boot loader software <span class="caps">GRUB</span> 2. </p>
 <p>After reading the 
 <a href="https://www.gnu.org/software/grub/manual/grub/grub.html">online grub manual</a> 
 for one hour or so, I am still not sure how to do it. Fortunately, I find 
 <a href="https://www.dedoimedo.com/computers/grub-2.html">an excellent <span class="caps">GRUB</span> tutorial</a> 
 on dedoimedo.com, which explains the <span class="caps">GRUB</span> 2 very well. </p>
-<p>Basically, the <span class="caps">GRUB</span> 2 software reads the <code>grub.cfg</code> configuration file in <code>/boot/grub/</code> 
-directory. However you should not modify this file directly. Instead, the file is generate with 
-a linux command like this. </p>
+<p>Basically, the <span class="caps">GRUB</span> 2 software reads the <code>grub.cfg</code> configuration file in <code>/boot/grub/</code> directory.
+However you should not modify this file directly. Instead, the file is generated with a linux
+command like this. </p>
 <div class="highlight"><pre><span></span><code>sudo grub-mkconfig -o grub.cfg 
 </code></pre></div>
 
 
 <p>The <code>grub-mkconfig</code> tool will load setting files in <code>/etc/grub.d/</code> directory and setting 
-file <code>/etc/default/grub</code>.  A user should change the those files and run <code>grub-mkconfig</code> to 
+file <code>/etc/default/grub</code>.  A user should change those files and run <code>grub-mkconfig</code> to 
 generate the final <code>grub.cfg</code> file. </p>
 <p>Here is the file list under <code>/etc/grub.d</code> directory in my laptop.</p>
 <div class="highlight"><pre><span></span><code>george@T450:/etc/grub.d$ ls -la
 total 108
 -rwxr-xr-x   1 root root 10046 Mar 18  2019 00_header
 -rwxr-xr-x   1 root root  6258 Mar 18  2019 05_debian_theme
--rwxr-xr-x   1 root root 12059 Aug  4 23:46 09_os-prober
+-rwxr-xr-x   1 root root 12059 Aug  4 23:46 09_os-prober &lt;-- added
 -rwxr-xr-x   1 root root 12693 Mar 18  2019 10_linux
 -rwxr-xr-x   1 root root 11298 Mar 18  2019 20_linux_xen
 -rwxr-xr-x   1 root root  1992 Jan 28  2016 20_memtest86+
@@ -109,9 +109,9 @@ total 108
 
 
 <p>Reading the <code>/boot/grub/grub.cfg</code> file a little bit, I find the <code>30_os-prober</code> is the configuration
-file to read the Windows. I made a copy the file and named the new copy <code>09_os-prober</code>, then I turned
-the execution bit off for <code>30_os-prober</code>. Note boot order is based on the first two digits of file
-names in this directory.  The commands are like this, </p>
+file to read the Windows. I made a copy the file and named the new copy <code>09_os-prober</code>, then I
+turned the execution bit off for <code>30_os-prober</code>. Note the boot order is based on the first two
+digits of file names in this directory.  The commands are like this, </p>
 <div class="highlight"><pre><span></span><code>sudo cp 30_os-prober 09_os-prober
 sudo chmod -x 30_os-prober
 sudo grub-mkconfig -o /boot/grub/grub.cfg 

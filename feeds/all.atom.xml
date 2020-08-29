@@ -1,29 +1,29 @@
 <?xml version="1.0" encoding="utf-8"?>
-<feed xmlns="http://www.w3.org/2005/Atom"><title>George Zhang</title><link href="https://www.georgexyz.com/" rel="alternate"></link><link href="https://www.georgexyz.com/feeds/all.atom.xml" rel="self"></link><id>https://www.georgexyz.com/</id><updated>2020-08-28T03:17:00-04:00</updated><entry><title>Change Boot Order with GRUB 2</title><link href="https://www.georgexyz.com/change-boot-order-with-grub-2.html" rel="alternate"></link><published>2020-08-28T03:17:00-04:00</published><updated>2020-08-28T03:17:00-04:00</updated><author><name>George Zhang</name></author><id>tag:www.georgexyz.com,2020-08-28:/change-boot-order-with-grub-2.html</id><summary type="html">&lt;p&gt;My laptop has both Windows 10 and Linux Mint installed. Sometimes I want the laptop boots into 
-Windows by default. After a little online research, I find that I need …&lt;/p&gt;</summary><content type="html">&lt;p&gt;My laptop has both Windows 10 and Linux Mint installed. Sometimes I want the laptop boots into 
+<feed xmlns="http://www.w3.org/2005/Atom"><title>George Zhang</title><link href="https://www.georgexyz.com/" rel="alternate"></link><link href="https://www.georgexyz.com/feeds/all.atom.xml" rel="self"></link><id>https://www.georgexyz.com/</id><updated>2020-08-28T03:17:00-04:00</updated><entry><title>Change Boot Order with GRUB 2</title><link href="https://www.georgexyz.com/change-boot-order-with-grub-2.html" rel="alternate"></link><published>2020-08-28T03:17:00-04:00</published><updated>2020-08-28T03:17:00-04:00</updated><author><name>George Zhang</name></author><id>tag:www.georgexyz.com,2020-08-28:/change-boot-order-with-grub-2.html</id><summary type="html">&lt;p&gt;My laptop has both Windows 10 and Linux Mint installed. Sometimes I want the laptop booting into 
+Windows by default. After a little online research, I find that I need …&lt;/p&gt;</summary><content type="html">&lt;p&gt;My laptop has both Windows 10 and Linux Mint installed. Sometimes I want the laptop booting into 
 Windows by default. After a little online research, I find that I need to change the settings of 
-the boot loader software &lt;span class="caps"&gt;GRUB&lt;/span&gt; 2. &lt;/p&gt;
+boot loader software &lt;span class="caps"&gt;GRUB&lt;/span&gt; 2. &lt;/p&gt;
 &lt;p&gt;After reading the 
 &lt;a href="https://www.gnu.org/software/grub/manual/grub/grub.html"&gt;online grub manual&lt;/a&gt; 
 for one hour or so, I am still not sure how to do it. Fortunately, I find 
 &lt;a href="https://www.dedoimedo.com/computers/grub-2.html"&gt;an excellent &lt;span class="caps"&gt;GRUB&lt;/span&gt; tutorial&lt;/a&gt; 
 on dedoimedo.com, which explains the &lt;span class="caps"&gt;GRUB&lt;/span&gt; 2 very well. &lt;/p&gt;
-&lt;p&gt;Basically, the &lt;span class="caps"&gt;GRUB&lt;/span&gt; 2 software reads the &lt;code&gt;grub.cfg&lt;/code&gt; configuration file in &lt;code&gt;/boot/grub/&lt;/code&gt; 
-directory. However you should not modify this file directly. Instead, the file is generate with 
-a linux command like this. &lt;/p&gt;
+&lt;p&gt;Basically, the &lt;span class="caps"&gt;GRUB&lt;/span&gt; 2 software reads the &lt;code&gt;grub.cfg&lt;/code&gt; configuration file in &lt;code&gt;/boot/grub/&lt;/code&gt; directory.
+However you should not modify this file directly. Instead, the file is generated with a linux
+command like this. &lt;/p&gt;
 &lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;sudo grub-mkconfig -o grub.cfg 
 &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
 
 
 &lt;p&gt;The &lt;code&gt;grub-mkconfig&lt;/code&gt; tool will load setting files in &lt;code&gt;/etc/grub.d/&lt;/code&gt; directory and setting 
-file &lt;code&gt;/etc/default/grub&lt;/code&gt;.  A user should change the those files and run &lt;code&gt;grub-mkconfig&lt;/code&gt; to 
+file &lt;code&gt;/etc/default/grub&lt;/code&gt;.  A user should change those files and run &lt;code&gt;grub-mkconfig&lt;/code&gt; to 
 generate the final &lt;code&gt;grub.cfg&lt;/code&gt; file. &lt;/p&gt;
 &lt;p&gt;Here is the file list under &lt;code&gt;/etc/grub.d&lt;/code&gt; directory in my laptop.&lt;/p&gt;
 &lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;george@T450:/etc/grub.d$ ls -la
 total 108
 -rwxr-xr-x   1 root root 10046 Mar 18  2019 00_header
 -rwxr-xr-x   1 root root  6258 Mar 18  2019 05_debian_theme
--rwxr-xr-x   1 root root 12059 Aug  4 23:46 09_os-prober
+-rwxr-xr-x   1 root root 12059 Aug  4 23:46 09_os-prober &amp;lt;-- added
 -rwxr-xr-x   1 root root 12693 Mar 18  2019 10_linux
 -rwxr-xr-x   1 root root 11298 Mar 18  2019 20_linux_xen
 -rwxr-xr-x   1 root root  1992 Jan 28  2016 20_memtest86+
@@ -36,9 +36,9 @@ total 108
 
 
 &lt;p&gt;Reading the &lt;code&gt;/boot/grub/grub.cfg&lt;/code&gt; file a little bit, I find the &lt;code&gt;30_os-prober&lt;/code&gt; is the configuration
-file to read the Windows. I made a copy the file and named the new copy &lt;code&gt;09_os-prober&lt;/code&gt;, then I turned
-the execution bit off for &lt;code&gt;30_os-prober&lt;/code&gt;. Note boot order is based on the first two digits of file
-names in this directory.  The commands are like this, &lt;/p&gt;
+file to read the Windows. I made a copy the file and named the new copy &lt;code&gt;09_os-prober&lt;/code&gt;, then I
+turned the execution bit off for &lt;code&gt;30_os-prober&lt;/code&gt;. Note the boot order is based on the first two
+digits of file names in this directory.  The commands are like this, &lt;/p&gt;
 &lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;sudo cp 30_os-prober 09_os-prober
 sudo chmod -x 30_os-prober
 sudo grub-mkconfig -o /boot/grub/grub.cfg 
@@ -4943,7 +4943,7 @@ to run the current file. &lt;/p&gt;
 &lt;dd&gt;switch between current buffer and alternate buffer&lt;/dd&gt;
 &lt;/dl&gt;
 &lt;h4&gt;Map Caps Lock Key&lt;/h4&gt;
-&lt;p&gt;Some people recommend to map Caps Lock key to Esc key when using Vim.
+&lt;p&gt;Some people recommend to map CapsLock key to Esc key when using Vim.
 Stackoverflow has a Q&amp;amp;A on how to do it. The following two lines of code in
 .vimrc file will do the trick. When leaving Vim, it will remap the key back to
 Caps Lock. The xmodmap software is already installed in Linux Mint, so no
@@ -4955,16 +4955,18 @@ au VimLeave * silent! !xmodmap -e &amp;#39;clear Lock&amp;#39;
 &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
 
 
+&lt;p&gt;I have been used to press &lt;code&gt;Esc&lt;/code&gt; key to enter normal mode, and I find the 
+CapsLock key is not as straightforward as the Escape key.&lt;/p&gt;
 &lt;p&gt;&lt;em&gt;Source: &lt;a href="https://stackoverflow.com/questions/2176532/how-to-map-caps-lock-key-in-vim"&gt;an stackoverflow Q&amp;amp;A&lt;/a&gt;&lt;/em&gt;&lt;/p&gt;
 &lt;h4&gt;Vim Command to Reflow Texts to 80 Columns.&lt;/h4&gt;
-&lt;p&gt;When writting articles in Vim, I often need to reflow texts after editing. To
+&lt;p&gt;When writting articles in Vim, I often need to reflow texts after some editing. To
 reflow texts, the first step is to set the &lt;code&gt;textwidth&lt;/code&gt; and the second step is
 to select texts and reflow with command &lt;code&gt;gq&lt;/code&gt;. &lt;/p&gt;
 &lt;p&gt;You can set the &lt;code&gt;textwidth&lt;/code&gt; to 80 (:set textwidth=80 or :set tw=80), then use
-&lt;code&gt;gg&lt;/code&gt; to move cursor to the start of the file and type &lt;code&gt;gqG&lt;/code&gt; to reflow to the
-end of the article. The command &lt;code&gt;gq&lt;/code&gt; also works with visual selections.  You
+&lt;code&gt;gg&lt;/code&gt; to move cursor to the start of the file and type &lt;code&gt;gqG&lt;/code&gt; to reflow 
+the whole article. The command &lt;code&gt;gq&lt;/code&gt; also works with visual selection.  You
 can use command &lt;code&gt;vipgq&lt;/code&gt; to select the paragraph first and then reflow. Or you
 can use &lt;code&gt;gqap&lt;/code&gt; to reflow current paragraph, and &lt;code&gt;gq}&lt;/code&gt; reflow texts from current
-cursor to end of the paragraph. You can select a paragraph by typing &lt;code&gt;vip&lt;/code&gt; or
+cursor to end of the paragraph. Note you can select a paragraph by typing &lt;code&gt;vip&lt;/code&gt; or
 &lt;code&gt;vap&lt;/code&gt; &lt;/p&gt;
 &lt;p&gt;&lt;em&gt;Source: &lt;a href="https://stackoverflow.com/questions/3033423/vim-command-to-restructure-force-text-to-80-columns"&gt;an stackoverflow Q&amp;amp;A&lt;/a&gt;&lt;/em&gt;&lt;/p&gt;</content><category term="posts"></category><category term="vim"></category><category term="tip"></category><category term="linux"></category></entry></feed>
