@@ -394,3 +394,8 @@ cursor to end of the paragraph. Note you can select a paragraph by typing `vip` 
 
 *Source: [an stackoverflow Q&A](https://stackoverflow.com/questions/3033423/vim-command-to-restructure-force-text-to-80-columns)*
 
+#### Links and References
+
+[Vim Cheat Sheet](https://vim.rtorr.com/) 
+is a nice single web page which includes command vim commands.
+
