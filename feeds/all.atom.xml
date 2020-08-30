@@ -4983,6 +4983,11 @@ can use command &lt;code&gt;vipgq&lt;/code&gt; to select the paragraph first and
 can use &lt;code&gt;gqap&lt;/code&gt; to reflow current paragraph, and &lt;code&gt;gq}&lt;/code&gt; reflow texts from current
 cursor to end of the paragraph. Note you can select a paragraph by typing &lt;code&gt;vip&lt;/code&gt; or
 &lt;code&gt;vap&lt;/code&gt; &lt;/p&gt;
+&lt;p&gt;Command &lt;code&gt;gw&lt;/code&gt; is similar to &lt;code&gt;gq&lt;/code&gt;.  Here is the quote from help page. &lt;/p&gt;
+&lt;blockquote&gt;
+&lt;p&gt;gw: Format the lines that {motion} moves over. Similar to 
+gq but puts the cursor back at the same position in the text. &lt;/p&gt;
+&lt;/blockquote&gt;
 &lt;p&gt;&lt;em&gt;Source: &lt;a href="https://stackoverflow.com/questions/3033423/vim-command-to-restructure-force-text-to-80-columns"&gt;an stackoverflow Q&amp;amp;A&lt;/a&gt;&lt;/em&gt;&lt;/p&gt;
 &lt;h4&gt;Links and References&lt;/h4&gt;
 &lt;p&gt;&lt;a href="https://vim.rtorr.com/"&gt;Vim Cheat Sheet&lt;/a&gt; 
