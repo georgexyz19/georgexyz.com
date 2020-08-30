@@ -392,6 +392,11 @@ can use `gqap` to reflow current paragraph, and `gq}` reflow texts from current
 cursor to end of the paragraph. Note you can select a paragraph by typing `vip` or
 `vap` 
 
+Command `gw` is similar to `gq`.  Here is the quote from help page. 
+
+> gw: Format the lines that {motion} moves over. Similar to 
+> gq but puts the cursor back at the same position in the text. 
+
 *Source: [an stackoverflow Q&A](https://stackoverflow.com/questions/3033423/vim-command-to-restructure-force-text-to-80-columns)*
 
 #### Links and References
