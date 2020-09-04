@@ -135,3 +135,10 @@ RUN+="/bin/sh -c 'echo enabled > /sys/bus/usb/devices/1-3/power/wakeup'"
 After the above steps, the logitech mouse and keyboard wake up the Linxu Mint just fine. 
 I never got the sleep/wakeup function working properly in Xubuntu system. So, this is 
 a large improvement for me. 
+
+**Update: 9/4/2020**
+
+Linux Mint 20 has been released for a few months now.  I install a copy 
+in my desktop and it is awesome.  Here is 
+[a link to install Wine 5 in Linux Mint 20](http://ubuntuhandbook.org/index.php/2020/07/onstall-wine-5-12-ubuntu-20-04-linux-mint-20/). 
+I follow the steps and it works well. 
