@@ -3392,7 +3392,12 @@ RUN+=&amp;quot;/bin/sh -c &amp;#39;echo enabled &amp;gt; /sys/bus/usb/devices/1-
 
 &lt;p&gt;After the above steps, the logitech mouse and keyboard wake up the Linxu Mint just fine. 
 I never got the sleep/wakeup function working properly in Xubuntu system. So, this is 
-a large improvement for me. &lt;/p&gt;</content><category term="posts"></category><category term="linux"></category><category term="linux mint"></category></entry><entry><title>Good Python Learning Resources</title><link href="https://www.georgexyz.com/python-resources.html" rel="alternate"></link><published>2019-06-10T09:58:00-04:00</published><updated>2019-06-10T09:58:00-04:00</updated><author><name>George Zhang</name></author><id>tag:www.georgexyz.com,2019-06-10:/python-resources.html</id><summary type="html">&lt;p&gt;This post describes some good python resources that I found useful. Python has many 
+a large improvement for me. &lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;Update: 9/4/2020&lt;/strong&gt;&lt;/p&gt;
+&lt;p&gt;Linux Mint 20 has been released for a few months now.  I install a copy 
+in my desktop and it is awesome.  Here is 
+&lt;a href="http://ubuntuhandbook.org/index.php/2020/07/onstall-wine-5-12-ubuntu-20-04-linux-mint-20/"&gt;a link to install Wine 5 in Linux Mint 20&lt;/a&gt;. 
+I follow the steps and it works well. &lt;/p&gt;</content><category term="posts"></category><category term="linux"></category><category term="linux mint"></category></entry><entry><title>Good Python Learning Resources</title><link href="https://www.georgexyz.com/python-resources.html" rel="alternate"></link><published>2019-06-10T09:58:00-04:00</published><updated>2019-06-10T09:58:00-04:00</updated><author><name>George Zhang</name></author><id>tag:www.georgexyz.com,2019-06-10:/python-resources.html</id><summary type="html">&lt;p&gt;This post describes some good python resources that I found useful. Python has many 
 resources, sometimes it becomes difficult for people to figure out which are good 
 and which are …&lt;/p&gt;</summary><content type="html">&lt;p&gt;This post describes some good python resources that I found useful. Python has many 
 resources, sometimes it becomes difficult for people to figure out which are good 
