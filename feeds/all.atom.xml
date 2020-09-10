@@ -4974,8 +4974,8 @@ au VimLeave * silent! !xmodmap -e &amp;#39;clear Lock&amp;#39;
 &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
 
 
-&lt;p&gt;I have been used to press &lt;code&gt;Esc&lt;/code&gt; key to enter normal mode, and I find the 
-CapsLock key is not as straightforward as the Escape key.&lt;/p&gt;
+&lt;p&gt;I am used to press &lt;code&gt;Esc&lt;/code&gt; key to enter normal mode, and I find the 
+Caps Lock key is not as straightforward as the Escape key.&lt;/p&gt;
 &lt;p&gt;&lt;em&gt;Source: &lt;a href="https://stackoverflow.com/questions/2176532/how-to-map-caps-lock-key-in-vim"&gt;an stackoverflow Q&amp;amp;A&lt;/a&gt;&lt;/em&gt;&lt;/p&gt;
 &lt;h4&gt;Vim Command to Reflow Texts to 80 Columns.&lt;/h4&gt;
 &lt;p&gt;When writting articles in Vim, I often need to reflow texts after some editing. To
