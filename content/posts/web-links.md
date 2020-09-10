@@ -116,6 +116,12 @@ This page has a collection of web links that I visit often.
 
 [MySql Tutorial Website](https://www.mysqltutorial.org/)
 
+### Git and Github
+
+[An Intro to Git and Github for Beginners (Tutorial) by Meghan Nelson](https://product.hubspot.com/blog/git-and-github-tutorial-for-beginners)
+
+[A Visual Git Reference](http://marklodato.github.io/visual-git-guide/index-en.html)
+
 ### Date and Time
 
 [For a Good Strftime](https://www.foragoodstrftime.com/)
