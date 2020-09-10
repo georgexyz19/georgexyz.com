@@ -120,6 +120,8 @@ This page has a collection of web links that I visit often.
 
 [An Intro to Git and Github for Beginners (Tutorial) by Meghan Nelson](https://product.hubspot.com/blog/git-and-github-tutorial-for-beginners)
 
+[Into to Git and Github for Python Developers on Realpython.com](https://realpython.com/python-git-github-intro/)
+
 [A Visual Git Reference](http://marklodato.github.io/visual-git-guide/index-en.html)
 
 ### Date and Time
