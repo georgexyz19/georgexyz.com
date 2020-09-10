@@ -373,8 +373,8 @@ au VimLeave * silent! !xmodmap -e 'clear Lock'
     -e 'keycode 0x42 = Caps_Lock'
 ```
 
-I have been used to press `Esc` key to enter normal mode, and I find the 
-CapsLock key is not as straightforward as the Escape key.
+I am used to press `Esc` key to enter normal mode, and I find the 
+Caps Lock key is not as straightforward as the Escape key.
 
 *Source: [an stackoverflow Q&A](https://stackoverflow.com/questions/2176532/how-to-map-caps-lock-key-in-vim)*
 
