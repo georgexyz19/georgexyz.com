@@ -1,5 +1,47 @@
 <?xml version="1.0" encoding="utf-8"?>
-<feed xmlns="http://www.w3.org/2005/Atom"><title>George Zhang</title><link href="https://www.georgexyz.com/" rel="alternate"></link><link href="https://www.georgexyz.com/feeds/all.atom.xml" rel="self"></link><id>https://www.georgexyz.com/</id><updated>2020-08-29T10:40:00-04:00</updated><entry><title>Web Development Notes</title><link href="https://www.georgexyz.com/web-development-notes.html" rel="alternate"></link><published>2020-08-29T10:40:00-04:00</published><updated>2020-08-29T10:40:00-04:00</updated><author><name>George Zhang</name></author><id>tag:www.georgexyz.com,2020-08-29:/web-development-notes.html</id><summary type="html">&lt;p&gt;I am going to assemble some notes for web development in this post.  It is mainly for 
+<feed xmlns="http://www.w3.org/2005/Atom"><title>George Zhang</title><link href="https://www.georgexyz.com/" rel="alternate"></link><link href="https://www.georgexyz.com/feeds/all.atom.xml" rel="self"></link><id>https://www.georgexyz.com/</id><updated>2020-09-11T10:01:00-04:00</updated><entry><title>Linux Mint Applications</title><link href="https://www.georgexyz.com/linux-mint-applications.html" rel="alternate"></link><published>2020-09-11T10:01:00-04:00</published><updated>2020-09-11T10:01:00-04:00</updated><author><name>George Zhang</name></author><id>tag:www.georgexyz.com,2020-09-11:/linux-mint-applications.html</id><summary type="html">&lt;p&gt;I have been using Linux Mint for over a year.  It is the time to get more
+serious and examine applications that are popular in Linux Mint. Below is
+&lt;em&gt;System …&lt;/em&gt;&lt;/p&gt;</summary><content type="html">&lt;p&gt;I have been using Linux Mint for over a year.  It is the time to get more
+serious and examine applications that are popular in Linux Mint. Below is
+&lt;em&gt;System Info&lt;/em&gt; app screen which shows the &lt;span class="caps"&gt;OS&lt;/span&gt; version and other related info.  I
+will keep updating this post to add more contents. &lt;/p&gt;
+&lt;div style="max-width:800px"&gt;
+  &lt;img class="img-fluid pb-3" src="/images/lm-apps/sysinfo.png" alt="Sys Info"&gt;
+&lt;/div&gt;
+
+&lt;h3&gt;&lt;span class="caps"&gt;GNOME&lt;/span&gt; Terminal&lt;/h3&gt;
+&lt;p&gt;Linux Mint comes with &lt;em&gt;&lt;span class="caps"&gt;GNOME&lt;/span&gt; Terminal&lt;/em&gt; emulator. It is called &lt;em&gt;Terminal&lt;/em&gt; on the
+desktop menu. Most of my work in Linux Mint are conducted through this program.
+One nice thing about the &lt;em&gt;Terminal&lt;/em&gt; program is the integration with the desktop 
+system, and it can be launched through the context menu &lt;em&gt;Open in Terminal&lt;/em&gt;. &lt;/p&gt;
+&lt;div style="max-width:800px"&gt;
+  &lt;img class="img-fluid pb-3" src="/images/lm-apps/context-menu.png"
+alt="Context Menu"&gt;
+&lt;/div&gt;
+
+&lt;p&gt;The version in Linux Mint 20 is 3.26.1.1. Below is a &lt;em&gt;Terminal&lt;/em&gt; window in 
+default size 80 * 24.&lt;/p&gt;
+&lt;div style="max-width:800px"&gt;
+  &lt;img class="img-fluid pb-3" src="/images/lm-apps/terminal.png"
+alt="Terminal window"&gt;
+&lt;/div&gt;
+
+&lt;p&gt;Here is the About window when you choose menu Help -&amp;gt; About.  &lt;/p&gt;
+&lt;div style="max-width:800px"&gt;
+  &lt;img class="img-fluid pb-3" src="/images/lm-apps/terminal-about.png"
+alt="Terminal About"&gt;
+&lt;/div&gt;
+
+&lt;p&gt;The program has nice help system if you choose the menu Help -&amp;gt; Contents. The
+help system is better than most other programs out there. The &amp;#8220;Overview of a
+terminal&amp;#8221; section has definitions for terms like &lt;em&gt;Terminal&lt;/em&gt;, &lt;em&gt;Shell&lt;/em&gt;, &lt;em&gt;Prompt&lt;/em&gt;. &lt;/p&gt;
+&lt;div style="max-width:800px"&gt;
+  &lt;img class="img-fluid pb-3" src="/images/lm-apps/help-contents.png"
+alt="Help Contents"&gt;
+&lt;/div&gt;
+
+&lt;p&gt;The &lt;em&gt;Use tabs&lt;/em&gt; section introduces &lt;em&gt;Ctrl + Shift + t&lt;/em&gt; shortcut to open a new tab
+and &lt;em&gt;Ctrl + Shift + w&lt;/em&gt; shortcut to close a tab. &lt;/p&gt;</content><category term="posts"></category><category term="linux"></category><category term="linux mint"></category><category term="software utility"></category></entry><entry><title>Web Development Notes</title><link href="https://www.georgexyz.com/web-development-notes.html" rel="alternate"></link><published>2020-08-29T10:40:00-04:00</published><updated>2020-08-29T10:40:00-04:00</updated><author><name>George Zhang</name></author><id>tag:www.georgexyz.com,2020-08-29:/web-development-notes.html</id><summary type="html">&lt;p&gt;I am going to assemble some notes for web development in this post.  It is mainly for 
 myself and I will keep updating this post. &lt;/p&gt;
 &lt;h4&gt;Force Firefox to Refresh&lt;/h4&gt;
 &lt;p&gt;There …&lt;/p&gt;</summary><content type="html">&lt;p&gt;I am going to assemble some notes for web development in this post.  It is mainly for 
