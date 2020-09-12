@@ -28,29 +28,29 @@ alt="Context Menu">
 </div>
 
 
-The version in Linux Mint 20 is 3.26.1.1. Below is a *Terminal* window in 
-default size 80 * 24.
+Below is a *Terminal* window in default size 80 * 24.
 
 <div style="max-width:800px">
   <img class="img-fluid pb-3" src="/images/lm-apps/terminal.png"
 alt="Terminal window">
 </div>
 
-Here is the About window when you choose menu Help -> About.  
+The version in Linux Mint 20 is 3.26.1.1. Here is the About window when you
+choose menu Help -> About.  
 
 <div style="max-width:800px">
   <img class="img-fluid pb-3" src="/images/lm-apps/terminal-about.png"
 alt="Terminal About">
 </div>
 
-The program has nice help system if you choose the menu Help -> Contents. The
-help system is better than most other programs out there. The "Overview of a
-terminal" section has definitions for terms like *Terminal*, *Shell*, *Prompt*. 
+The program has a better than average help system when you choose the menu Help
+-> Contents.  The "Overview of a terminal" section has definitions for terms
+such as *Terminal*, *Shell*, *Prompt*. 
 
 <div style="max-width:800px">
   <img class="img-fluid pb-3" src="/images/lm-apps/help-contents.png"
 alt="Help Contents">
 </div>
 
-The *Use tabs* section introduces *Ctrl + Shift + t* shortcut to open a new tab
-and *Ctrl + Shift + w* shortcut to close a tab. 
+The *Use tabs* section explains that *Ctrl + Shift + t* shortcut is to open new
+tab and *Ctrl + Shift + w* shortcut is to close a tab. 
