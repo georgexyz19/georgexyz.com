@@ -41,7 +41,39 @@ alt="Help Contents"&gt;
 &lt;/div&gt;
 
 &lt;p&gt;The &lt;em&gt;Use tabs&lt;/em&gt; section explains that &lt;em&gt;Ctrl + Shift + t&lt;/em&gt; shortcut is to open new
-tab and &lt;em&gt;Ctrl + Shift + w&lt;/em&gt; shortcut is to close a tab. &lt;/p&gt;</content><category term="posts"></category><category term="linux"></category><category term="linux mint"></category><category term="software utility"></category></entry><entry><title>Web Development Notes</title><link href="https://www.georgexyz.com/web-development-notes.html" rel="alternate"></link><published>2020-08-29T10:40:00-04:00</published><updated>2020-08-29T10:40:00-04:00</updated><author><name>George Zhang</name></author><id>tag:www.georgexyz.com,2020-08-29:/web-development-notes.html</id><summary type="html">&lt;p&gt;I am going to assemble some notes for web development in this post.  It is mainly for 
+tab and &lt;em&gt;Ctrl + Shift + w&lt;/em&gt; shortcut is to close a tab. &lt;/p&gt;
+&lt;hr/&gt;
+
+&lt;h3&gt;&lt;span class="caps"&gt;GNOME&lt;/span&gt; Screenshot&lt;/h3&gt;
+&lt;p&gt;The Linux Mint 20 comes with a screenshot app which is actually part of &lt;span class="caps"&gt;GNOME&lt;/span&gt;
+desktop system. The official name is &lt;em&gt;gnome-screenshot&lt;/em&gt;. Below is the version
+info under the Terminal. &lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;george@george-desktop:~$ gnome-screenshot --version
+gnome-screenshot 3.36.0
+george@george-desktop:~$ ls -la $(which gnome-screenshot)
+-rwxr-xr-x 1 root root 88824 Apr 27 06:21 /usr/bin/gnome-screenshot
+
+george@george-desktop:~$ gnome-screenshot --help
+Usage:
+  gnome-screenshot [OPTION…]
+...
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;p&gt;When I am researching this app online, I find an online article saying that
+&lt;span class="caps"&gt;GIMP&lt;/span&gt; also has a screenshot funtion built in.  You can open the screenshot
+window by clicking menu item File -&amp;gt; Create -&amp;gt; Screenshot.  The first figure below
+is a screenshot of &lt;em&gt;gnome-screenshot&lt;/em&gt; window and the second figure is a
+screenshot of &lt;span class="caps"&gt;GIMP&lt;/span&gt; screenshot window. &lt;/p&gt;
+&lt;div style="max-width:800px"&gt;
+  &lt;img class="img-fluid pb-3" src="/images/lm-apps/lm-screenshot.png"
+alt="LM screenshot app"&gt;
+&lt;/div&gt;
+
+&lt;div style="max-width:800px"&gt;
+  &lt;img class="img-fluid pb-3" src="/images/lm-apps/Gimp-screenshot.png"
+alt="Gimp screenshot"&gt;
+&lt;/div&gt;</content><category term="posts"></category><category term="linux"></category><category term="linux mint"></category><category term="software utility"></category></entry><entry><title>Web Development Notes</title><link href="https://www.georgexyz.com/web-development-notes.html" rel="alternate"></link><published>2020-08-29T10:40:00-04:00</published><updated>2020-08-29T10:40:00-04:00</updated><author><name>George Zhang</name></author><id>tag:www.georgexyz.com,2020-08-29:/web-development-notes.html</id><summary type="html">&lt;p&gt;I am going to assemble some notes for web development in this post.  It is mainly for 
 myself and I will keep updating this post. &lt;/p&gt;
 &lt;h4&gt;Force Firefox to Refresh&lt;/h4&gt;
 &lt;p&gt;There …&lt;/p&gt;</summary><content type="html">&lt;p&gt;I am going to assemble some notes for web development in this post.  It is mainly for 
