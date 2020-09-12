@@ -19,29 +19,29 @@ system, and it can be launched through the context menu &lt;em&gt;Open in Termin
 alt="Context Menu"&gt;
 &lt;/div&gt;
 
-&lt;p&gt;The version in Linux Mint 20 is 3.26.1.1. Below is a &lt;em&gt;Terminal&lt;/em&gt; window in 
-default size 80 * 24.&lt;/p&gt;
+&lt;p&gt;Below is a &lt;em&gt;Terminal&lt;/em&gt; window in default size 80 * 24.&lt;/p&gt;
 &lt;div style="max-width:800px"&gt;
   &lt;img class="img-fluid pb-3" src="/images/lm-apps/terminal.png"
 alt="Terminal window"&gt;
 &lt;/div&gt;
 
-&lt;p&gt;Here is the About window when you choose menu Help -&amp;gt; About.  &lt;/p&gt;
+&lt;p&gt;The version in Linux Mint 20 is 3.26.1.1. Here is the About window when you
+choose menu Help -&amp;gt; About.  &lt;/p&gt;
 &lt;div style="max-width:800px"&gt;
   &lt;img class="img-fluid pb-3" src="/images/lm-apps/terminal-about.png"
 alt="Terminal About"&gt;
 &lt;/div&gt;
 
-&lt;p&gt;The program has nice help system if you choose the menu Help -&amp;gt; Contents. The
-help system is better than most other programs out there. The &amp;#8220;Overview of a
-terminal&amp;#8221; section has definitions for terms like &lt;em&gt;Terminal&lt;/em&gt;, &lt;em&gt;Shell&lt;/em&gt;, &lt;em&gt;Prompt&lt;/em&gt;. &lt;/p&gt;
+&lt;p&gt;The program has a better than average help system when you choose the menu Help
+-&amp;gt; Contents.  The &amp;#8220;Overview of a terminal&amp;#8221; section has definitions for terms
+such as &lt;em&gt;Terminal&lt;/em&gt;, &lt;em&gt;Shell&lt;/em&gt;, &lt;em&gt;Prompt&lt;/em&gt;. &lt;/p&gt;
 &lt;div style="max-width:800px"&gt;
   &lt;img class="img-fluid pb-3" src="/images/lm-apps/help-contents.png"
 alt="Help Contents"&gt;
 &lt;/div&gt;
 
-&lt;p&gt;The &lt;em&gt;Use tabs&lt;/em&gt; section introduces &lt;em&gt;Ctrl + Shift + t&lt;/em&gt; shortcut to open a new tab
-and &lt;em&gt;Ctrl + Shift + w&lt;/em&gt; shortcut to close a tab. &lt;/p&gt;</content><category term="posts"></category><category term="linux"></category><category term="linux mint"></category><category term="software utility"></category></entry><entry><title>Web Development Notes</title><link href="https://www.georgexyz.com/web-development-notes.html" rel="alternate"></link><published>2020-08-29T10:40:00-04:00</published><updated>2020-08-29T10:40:00-04:00</updated><author><name>George Zhang</name></author><id>tag:www.georgexyz.com,2020-08-29:/web-development-notes.html</id><summary type="html">&lt;p&gt;I am going to assemble some notes for web development in this post.  It is mainly for 
+&lt;p&gt;The &lt;em&gt;Use tabs&lt;/em&gt; section explains that &lt;em&gt;Ctrl + Shift + t&lt;/em&gt; shortcut is to open new
+tab and &lt;em&gt;Ctrl + Shift + w&lt;/em&gt; shortcut is to close a tab. &lt;/p&gt;</content><category term="posts"></category><category term="linux"></category><category term="linux mint"></category><category term="software utility"></category></entry><entry><title>Web Development Notes</title><link href="https://www.georgexyz.com/web-development-notes.html" rel="alternate"></link><published>2020-08-29T10:40:00-04:00</published><updated>2020-08-29T10:40:00-04:00</updated><author><name>George Zhang</name></author><id>tag:www.georgexyz.com,2020-08-29:/web-development-notes.html</id><summary type="html">&lt;p&gt;I am going to assemble some notes for web development in this post.  It is mainly for 
 myself and I will keep updating this post. &lt;/p&gt;
 &lt;h4&gt;Force Firefox to Refresh&lt;/h4&gt;
 &lt;p&gt;There …&lt;/p&gt;</summary><content type="html">&lt;p&gt;I am going to assemble some notes for web development in this post.  It is mainly for 
