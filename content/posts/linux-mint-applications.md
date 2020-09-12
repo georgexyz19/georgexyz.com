@@ -54,3 +54,40 @@ alt="Help Contents">
 
 The *Use tabs* section explains that *Ctrl + Shift + t* shortcut is to open new
 tab and *Ctrl + Shift + w* shortcut is to close a tab. 
+
+<hr/>
+
+###GNOME Screenshot
+
+The Linux Mint 20 comes with a screenshot app which is actually part of GNOME
+desktop system. The official name is *gnome-screenshot*. Below is the version
+info under the Terminal. 
+
+```
+george@george-desktop:~$ gnome-screenshot --version
+gnome-screenshot 3.36.0
+george@george-desktop:~$ ls -la $(which gnome-screenshot)
+-rwxr-xr-x 1 root root 88824 Apr 27 06:21 /usr/bin/gnome-screenshot
+
+george@george-desktop:~$ gnome-screenshot --help
+Usage:
+  gnome-screenshot [OPTION…]
+...
+
+``` 
+
+When I am researching this app online, I find an online article saying that
+GIMP also has a screenshot funtion built in.  You can open the screenshot
+window by clicking menu item File -> Create -> Screenshot.  The first figure below
+is a screenshot of *gnome-screenshot* window and the second figure is a
+screenshot of GIMP screenshot window. 
+ 
+<div style="max-width:800px">
+  <img class="img-fluid pb-3" src="/images/lm-apps/lm-screenshot.png"
+alt="LM screenshot app">
+</div>
+
+<div style="max-width:800px">
+  <img class="img-fluid pb-3" src="/images/lm-apps/Gimp-screenshot.png"
+alt="Gimp screenshot">
+</div>
