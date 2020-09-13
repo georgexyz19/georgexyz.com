@@ -389,6 +389,21 @@ cursor to end of the paragraph. Note you can select a paragraph by typing <code>
 gq but puts the cursor back at the same position in the text. </p>
 </blockquote>
 <p><em>Source: <a href="https://stackoverflow.com/questions/3033423/vim-command-to-restructure-force-text-to-80-columns">an stackoverflow Q&amp;A</a></em></p>
+<h4>Run Commands on Multiple Lines</h4>
+<p>If you want to run a normal mode command on a range of lines, you can use the
+<code>normal</code> command.  For example if you want to comment out line 4 to 6 of
+.bashrc file, you can use <code>V</code> to select those lines and apply command
+<code>:'&lt;,'&gt;normal i#</code> to insert a character (#) in font of each line.  </p>
+<div class="highlight"><pre><span></span><code># Load pyenv automatically by adding
+# the following to ~/.bashrc:
+
+export PATH=&quot;/home/george/.pyenv/bin:$PATH&quot;
+eval &quot;$(pyenv init -)&quot;
+eval &quot;$(pyenv virtualenv-init -)&quot;
+</code></pre></div>
+
+
+<p><em>Source: Practical Vim Second Editor by Drew Neil Page 63, Tip 30</em></p>
 <h4>Links and References</h4>
 <p><a href="https://vim.rtorr.com/">Vim Cheat Sheet</a> 
 is a nice single web page which includes command vim commands.</p>

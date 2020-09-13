@@ -63,8 +63,7 @@ Usage:
 &lt;p&gt;When I am researching this app online, I find an online article saying that
 &lt;span class="caps"&gt;GIMP&lt;/span&gt; also has a screenshot funtion built in.  You can open the screenshot
 window by clicking menu item File -&amp;gt; Create -&amp;gt; Screenshot.  The first figure below
-is a screenshot of &lt;em&gt;gnome-screenshot&lt;/em&gt; window and the second figure is a
-screenshot of &lt;span class="caps"&gt;GIMP&lt;/span&gt; screenshot window. &lt;/p&gt;
+is &lt;em&gt;gnome-screenshot&lt;/em&gt; window and the second figure is &lt;span class="caps"&gt;GIMP&lt;/span&gt; screenshot window. &lt;/p&gt;
 &lt;div style="max-width:800px"&gt;
   &lt;img class="img-fluid pb-3" src="/images/lm-apps/lm-screenshot.png"
 alt="LM screenshot app"&gt;
@@ -1372,8 +1371,9 @@ which discusses the dictionary with more details. &lt;/li&gt;
 &lt;p&gt;&lt;a href="https://www.mysqltutorial.org/"&gt;MySql Tutorial Website&lt;/a&gt;&lt;/p&gt;
 &lt;h3&gt;Git and Github&lt;/h3&gt;
 &lt;p&gt;&lt;a href="https://product.hubspot.com/blog/git-and-github-tutorial-for-beginners"&gt;An Intro to Git and Github for Beginners (Tutorial) by Meghan Nelson&lt;/a&gt;&lt;/p&gt;
-&lt;p&gt;&lt;a href="https://realpython.com/python-git-github-intro/"&gt;Into to Git and Github for Python Developers on Realpython.com&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;&lt;a href="https://realpython.com/python-git-github-intro/"&gt;Intro to Git and Github for Python Developers on Realpython.com&lt;/a&gt;&lt;/p&gt;
 &lt;p&gt;&lt;a href="http://marklodato.github.io/visual-git-guide/index-en.html"&gt;A Visual Git Reference&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;&lt;a href="https://www.youtube.com/watch?v=HVsySz-h9r4&amp;amp;list=PL-osiE80TeTuRUfjRe54Eea17-YfnOOAx"&gt;Git Tutorial Youtube Video by Corey Schafer&lt;/a&gt;&lt;/p&gt;
 &lt;h3&gt;Date and Time&lt;/h3&gt;
 &lt;p&gt;&lt;a href="https://www.foragoodstrftime.com/"&gt;For a Good Strftime&lt;/a&gt;&lt;/p&gt;
 &lt;p&gt;&lt;a href="https://pymotw.com/3/datetime/"&gt;Python datetime Module in PyMOTW-3&lt;/a&gt;&lt;/p&gt;
@@ -2226,12 +2226,12 @@ below) in addition to common ones like Tab, Arrow Up, Arrow Down. &lt;/p&gt;
 &lt;ol&gt;
 &lt;li&gt;&lt;code&gt;Ctrl + a&lt;/code&gt; : Move cursor to the beginning of the line&lt;/li&gt;
 &lt;li&gt;&lt;code&gt;Ctrl + e&lt;/code&gt; : Move cursor to the end&lt;/li&gt;
-&lt;li&gt;&lt;code&gt;Ctrl + r&lt;/code&gt; : Search command history&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;Ctrl + r&lt;/code&gt; : Search command history (Reverse incremental search)&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;Ctrl + j&lt;/code&gt; : Work with &lt;code&gt;Ctrl + r&lt;/code&gt;, copy command to command line&lt;/li&gt;
 &lt;li&gt;&lt;code&gt;Ctrl + k&lt;/code&gt; : Delete from cursor to the end of the line&lt;/li&gt;
 &lt;li&gt;&lt;code&gt;Ctrl + u&lt;/code&gt; : Delete from the beginning of the line to cursor&lt;/li&gt;
 &lt;li&gt;&lt;code&gt;Ctrl + l&lt;/code&gt; : Clear the screen&lt;/li&gt;
 &lt;li&gt;&lt;code&gt;Ctrl + t&lt;/code&gt; : Transpose two character&lt;/li&gt;
-&lt;li&gt;&lt;code&gt;Ctrl + o&lt;/code&gt; : Return, bring next line in history to command line&lt;/li&gt;
 &lt;/ol&gt;
 &lt;p&gt;A reddit post 
 &amp;#8220;&lt;a href="https://www.reddit.com/r/vim/comments/a65qfe/do_you_use_bash_vi_mode/"&gt;do you use bash vi mode&lt;/a&gt;&amp;#8221; 
@@ -5072,6 +5072,21 @@ cursor to end of the paragraph. Note you can select a paragraph by typing &lt;co
 gq but puts the cursor back at the same position in the text. &lt;/p&gt;
 &lt;/blockquote&gt;
 &lt;p&gt;&lt;em&gt;Source: &lt;a href="https://stackoverflow.com/questions/3033423/vim-command-to-restructure-force-text-to-80-columns"&gt;an stackoverflow Q&amp;amp;A&lt;/a&gt;&lt;/em&gt;&lt;/p&gt;
+&lt;h4&gt;Run Commands on Multiple Lines&lt;/h4&gt;
+&lt;p&gt;If you want to run a normal mode command on a range of lines, you can use the
+&lt;code&gt;normal&lt;/code&gt; command.  For example if you want to comment out line 4 to 6 of
+.bashrc file, you can use &lt;code&gt;V&lt;/code&gt; to select those lines and apply command
+&lt;code&gt;:'&amp;lt;,'&amp;gt;normal i#&lt;/code&gt; to insert a character (#) in font of each line.  &lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;# Load pyenv automatically by adding
+# the following to ~/.bashrc:
+
+export PATH=&amp;quot;/home/george/.pyenv/bin:$PATH&amp;quot;
+eval &amp;quot;$(pyenv init -)&amp;quot;
+eval &amp;quot;$(pyenv virtualenv-init -)&amp;quot;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;p&gt;&lt;em&gt;Source: Practical Vim Second Editor by Drew Neil Page 63, Tip 30&lt;/em&gt;&lt;/p&gt;
 &lt;h4&gt;Links and References&lt;/h4&gt;
 &lt;p&gt;&lt;a href="https://vim.rtorr.com/"&gt;Vim Cheat Sheet&lt;/a&gt; 
 is a nice single web page which includes command vim commands.&lt;/p&gt;</content><category term="posts"></category><category term="vim"></category><category term="tip"></category><category term="linux"></category></entry></feed>
