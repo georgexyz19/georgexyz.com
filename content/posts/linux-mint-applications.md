@@ -79,8 +79,7 @@ Usage:
 When I am researching this app online, I find an online article saying that
 GIMP also has a screenshot funtion built in.  You can open the screenshot
 window by clicking menu item File -> Create -> Screenshot.  The first figure below
-is a screenshot of *gnome-screenshot* window and the second figure is a
-screenshot of GIMP screenshot window. 
+is *gnome-screenshot* window and the second figure is GIMP screenshot window. 
  
 <div style="max-width:800px">
   <img class="img-fluid pb-3" src="/images/lm-apps/lm-screenshot.png"

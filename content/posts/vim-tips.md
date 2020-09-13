@@ -399,6 +399,25 @@ Command `gw` is similar to `gq`.  Here is the quote from help page.
 
 *Source: [an stackoverflow Q&A](https://stackoverflow.com/questions/3033423/vim-command-to-restructure-force-text-to-80-columns)*
 
+#### Run Commands on Multiple Lines
+
+If you want to run a normal mode command on a range of lines, you can use the
+`normal` command.  For example if you want to comment out line 4 to 6 of
+.bashrc file, you can use `V` to select those lines and apply command
+`:'<,'>normal i# ` to insert a character (#) in font of each line.  
+
+```
+# Load pyenv automatically by adding
+# the following to ~/.bashrc:
+
+export PATH="/home/george/.pyenv/bin:$PATH"
+eval "$(pyenv init -)"
+eval "$(pyenv virtualenv-init -)"
+
+```
+
+*Source: Practical Vim Second Editor by Drew Neil Page 63, Tip 30*
+
 #### Links and References
 
 [Vim Cheat Sheet](https://vim.rtorr.com/) 

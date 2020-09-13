@@ -32,12 +32,12 @@ below) in addition to common ones like Tab, Arrow Up, Arrow Down.
 
 1. `Ctrl + a` : Move cursor to the beginning of the line
 2. `Ctrl + e` : Move cursor to the end
-3. `Ctrl + r` : Search command history
-4. `Ctrl + k` : Delete from cursor to the end of the line
-5. `Ctrl + u` : Delete from the beginning of the line to cursor
-6. `Ctrl + l` : Clear the screen
-7. `Ctrl + t` : Transpose two character
-8. `Ctrl + o` : Return, bring next line in history to command line
+3. `Ctrl + r` : Search command history (Reverse incremental search)
+4. `Ctrl + j` : Work with `Ctrl + r`, copy command to command line
+5. `Ctrl + k` : Delete from cursor to the end of the line
+6. `Ctrl + u` : Delete from the beginning of the line to cursor
+7. `Ctrl + l` : Clear the screen
+8. `Ctrl + t` : Transpose two character
 
 A reddit post 
 "[do you use bash vi mode](https://www.reddit.com/r/vim/comments/a65qfe/do_you_use_bash_vi_mode/)" 
