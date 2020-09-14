@@ -72,7 +72,37 @@ alt="LM screenshot app"&gt;
 &lt;div style="max-width:800px"&gt;
   &lt;img class="img-fluid pb-3" src="/images/lm-apps/Gimp-screenshot.png"
 alt="Gimp screenshot"&gt;
-&lt;/div&gt;</content><category term="posts"></category><category term="linux"></category><category term="linux mint"></category><category term="software utility"></category></entry><entry><title>Web Development Notes</title><link href="https://www.georgexyz.com/web-development-notes.html" rel="alternate"></link><published>2020-08-29T10:40:00-04:00</published><updated>2020-08-29T10:40:00-04:00</updated><author><name>George Zhang</name></author><id>tag:www.georgexyz.com,2020-08-29:/web-development-notes.html</id><summary type="html">&lt;p&gt;I am going to assemble some notes for web development in this post.  It is mainly for 
+&lt;/div&gt;
+
+&lt;hr/&gt;
+
+&lt;h3&gt;Pix - Image Viewer and Browser Utility&lt;/h3&gt;
+&lt;p&gt;Pix is a simple image viewer and browser app in Linux Mint.  It also has very
+basic yet useful photo editing ability.  &lt;/p&gt;
+&lt;div style="max-width:800px"&gt;
+  &lt;img class="img-fluid pb-3" src="/images/lm-apps/pix-screen.png"
+alt="pix screenshot"&gt;
+&lt;/div&gt;
+
+&lt;p&gt;The Resize and Crop functions are neat when you are emailing a photo to
+someone.  The other useful editing function is to &lt;em&gt;Delete Metadata&lt;/em&gt; of a photo
+before posting it online. It is always a good idea to remove the metadata of
+photos from your cell phon:. &lt;/p&gt;
+&lt;div style="max-width:800px"&gt;
+  &lt;img class="img-fluid pb-3" src="/images/lm-apps/pix-edit.png"
+alt="pix edit menu"&gt;
+&lt;/div&gt;
+
+&lt;div style="max-width:800px"&gt;
+  &lt;img class="img-fluid pb-3" src="/images/lm-apps/pix-metadata.png"
+alt="pix metadata removal"&gt;
+&lt;/div&gt;
+
+&lt;p&gt;The Pix app is a product of Linux Mint team.  The 
+&lt;a href="https://github.com/linuxmint/pix"&gt;source code of the app&lt;/a&gt; 
+is posted on Github. It is part of &amp;#8220;X-Apps&amp;#8221; project, and you can 
+&lt;a href="https://linuxmint-developer-guide.readthedocs.io/en/latest/xapps.html"&gt;read more about&lt;/a&gt; 
+it on Linux Mint Developer Guide website.   &lt;/p&gt;</content><category term="posts"></category><category term="linux"></category><category term="linux mint"></category><category term="software utility"></category></entry><entry><title>Web Development Notes</title><link href="https://www.georgexyz.com/web-development-notes.html" rel="alternate"></link><published>2020-08-29T10:40:00-04:00</published><updated>2020-08-29T10:40:00-04:00</updated><author><name>George Zhang</name></author><id>tag:www.georgexyz.com,2020-08-29:/web-development-notes.html</id><summary type="html">&lt;p&gt;I am going to assemble some notes for web development in this post.  It is mainly for 
 myself and I will keep updating this post. &lt;/p&gt;
 &lt;h4&gt;Force Firefox to Refresh&lt;/h4&gt;
 &lt;p&gt;There …&lt;/p&gt;</summary><content type="html">&lt;p&gt;I am going to assemble some notes for web development in this post.  It is mainly for 
