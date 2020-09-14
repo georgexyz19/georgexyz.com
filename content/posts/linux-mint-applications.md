@@ -90,3 +90,38 @@ alt="LM screenshot app">
   <img class="img-fluid pb-3" src="/images/lm-apps/Gimp-screenshot.png"
 alt="Gimp screenshot">
 </div>
+
+<hr/>
+
+###Pix - Image Viewer and Browser Utility
+
+Pix is a simple image viewer and browser app in Linux Mint.  It also has very
+basic yet useful photo editing ability.  
+
+<div style="max-width:800px">
+  <img class="img-fluid pb-3" src="/images/lm-apps/pix-screen.png"
+alt="pix screenshot">
+</div>
+
+
+The Resize and Crop functions are neat when you are emailing a photo to
+someone.  The other useful editing function is to *Delete Metadata* of a photo
+before posting it online. It is always a good idea to remove the metadata of
+photos from your cell phon:. 
+
+<div style="max-width:800px">
+  <img class="img-fluid pb-3" src="/images/lm-apps/pix-edit.png"
+alt="pix edit menu">
+</div>
+
+<div style="max-width:800px">
+  <img class="img-fluid pb-3" src="/images/lm-apps/pix-metadata.png"
+alt="pix metadata removal">
+</div>
+
+The Pix app is a product of Linux Mint team.  The 
+[source code of the app](https://github.com/linuxmint/pix) 
+is posted on Github. It is part of "X-Apps" project, and you can 
+[read more about](https://linuxmint-developer-guide.readthedocs.io/en/latest/xapps.html) 
+it on Linux Mint Developer Guide website.   
+
