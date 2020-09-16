@@ -126,6 +126,9 @@ This page has a collection of web links that I visit often.
 
 [Git Tutorial Youtube Video by Corey Schafer](https://www.youtube.com/watch?v=HVsySz-h9r4&list=PL-osiE80TeTuRUfjRe54Eea17-YfnOOAx)
 
+[Git Command Reference on git-scm.com](https://git-scm.com/docs)
+
+
 ### Date and Time
 
 [For a Good Strftime](https://www.foragoodstrftime.com/)

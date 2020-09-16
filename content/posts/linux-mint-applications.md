@@ -107,7 +107,7 @@ alt="pix screenshot">
 The Resize and Crop functions are neat when you are emailing a photo to
 someone.  The other useful editing function is to *Delete Metadata* of a photo
 before posting it online. It is always a good idea to remove the metadata of
-photos from your cell phon:. 
+photos from your cell phone. 
 
 <div style="max-width:800px">
   <img class="img-fluid pb-3" src="/images/lm-apps/pix-edit.png"
