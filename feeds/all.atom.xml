@@ -87,7 +87,7 @@ alt="pix screenshot"&gt;
 &lt;p&gt;The Resize and Crop functions are neat when you are emailing a photo to
 someone.  The other useful editing function is to &lt;em&gt;Delete Metadata&lt;/em&gt; of a photo
 before posting it online. It is always a good idea to remove the metadata of
-photos from your cell phon:. &lt;/p&gt;
+photos from your cell phone. &lt;/p&gt;
 &lt;div style="max-width:800px"&gt;
   &lt;img class="img-fluid pb-3" src="/images/lm-apps/pix-edit.png"
 alt="pix edit menu"&gt;
@@ -1404,6 +1404,7 @@ which discusses the dictionary with more details. &lt;/li&gt;
 &lt;p&gt;&lt;a href="https://realpython.com/python-git-github-intro/"&gt;Intro to Git and Github for Python Developers on Realpython.com&lt;/a&gt;&lt;/p&gt;
 &lt;p&gt;&lt;a href="http://marklodato.github.io/visual-git-guide/index-en.html"&gt;A Visual Git Reference&lt;/a&gt;&lt;/p&gt;
 &lt;p&gt;&lt;a href="https://www.youtube.com/watch?v=HVsySz-h9r4&amp;amp;list=PL-osiE80TeTuRUfjRe54Eea17-YfnOOAx"&gt;Git Tutorial Youtube Video by Corey Schafer&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;&lt;a href="https://git-scm.com/docs"&gt;Git Command Reference on git-scm.com&lt;/a&gt;&lt;/p&gt;
 &lt;h3&gt;Date and Time&lt;/h3&gt;
 &lt;p&gt;&lt;a href="https://www.foragoodstrftime.com/"&gt;For a Good Strftime&lt;/a&gt;&lt;/p&gt;
 &lt;p&gt;&lt;a href="https://pymotw.com/3/datetime/"&gt;Python datetime Module in PyMOTW-3&lt;/a&gt;&lt;/p&gt;
