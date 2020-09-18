@@ -4,6 +4,7 @@ date: 2020-09-11 10:01
 modified: 2020-09-11 10:01
 tags: linux, linux mint, software utility
 note: discuss linux mint applications
+status: draft
 no: 54
 
 I have been using Linux Mint for over a year.  It is the time to get more
