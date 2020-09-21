@@ -416,7 +416,7 @@ eval "$(pyenv virtualenv-init -)"
 
 ```
 
-*Source: Practical Vim Second Editor by Drew Neil Page 63, Tip 30*
+*Source: Practical Vim Second Edition by Drew Neil Page 63, Tip 30*
 
 #### Links and References
 
