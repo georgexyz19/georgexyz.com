@@ -1,5 +1,61 @@
 <?xml version="1.0" encoding="utf-8"?>
-<feed xmlns="http://www.w3.org/2005/Atom"><title>George Zhang</title><link href="https://www.georgexyz.com/" rel="alternate"></link><link href="https://www.georgexyz.com/feeds/all.atom.xml" rel="self"></link><id>https://www.georgexyz.com/</id><updated>2020-08-29T10:40:00-04:00</updated><entry><title>Web Development Notes</title><link href="https://www.georgexyz.com/web-development-notes.html" rel="alternate"></link><published>2020-08-29T10:40:00-04:00</published><updated>2020-08-29T10:40:00-04:00</updated><author><name>George Zhang</name></author><id>tag:www.georgexyz.com,2020-08-29:/web-development-notes.html</id><summary type="html">&lt;p&gt;I am going to assemble some notes for web development in this post.  It is mainly for 
+<feed xmlns="http://www.w3.org/2005/Atom"><title>George Zhang</title><link href="https://www.georgexyz.com/" rel="alternate"></link><link href="https://www.georgexyz.com/feeds/all.atom.xml" rel="self"></link><id>https://www.georgexyz.com/</id><updated>2020-09-21T13:54:00-04:00</updated><entry><title>A Case of Linux Mint Crash</title><link href="https://www.georgexyz.com/a-case-of-linux-mint-crash.html" rel="alternate"></link><published>2020-09-21T13:54:00-04:00</published><updated>2020-09-21T13:54:00-04:00</updated><author><name>George Zhang</name></author><id>tag:www.georgexyz.com,2020-09-21:/a-case-of-linux-mint-crash.html</id><summary type="html">&lt;p&gt;Last night my main computer with Linux Mint 20 crashed and I was really worried
+that I might lose the files I had been working on.  After many google searches …&lt;/p&gt;</summary><content type="html">&lt;p&gt;Last night my main computer with Linux Mint 20 crashed and I was really worried
+that I might lose the files I had been working on.  After many google searches,
+I found a solution and knew why it happened.  &lt;/p&gt;
+&lt;p&gt;The computer did not respond to mouse or keyboard input so I had to hold down
+the power key for a few seconds to shut it off.  When the computer restarted,
+it showed the Linux Mint login screen but the system did not let me log in. I
+tried a few times entering my password and also tried to restart the computer,
+but still could not log in. &lt;/p&gt;
+&lt;p&gt;After some google searches, I found this online post&lt;/p&gt;
+&lt;p&gt;&lt;a href="https://forums.linuxmint.com/viewtopic.php?f=57&amp;amp;t=261704"&gt;(&lt;span class="caps"&gt;SOLVED&lt;/span&gt;) Cannot Login (login loop)&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;I followed the answer by Lohengrines, did the following steps, and logged 
+into the system.&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;In login screen, switch to terminal by pressing &amp;#8220;Ctrl + Alt + F2&amp;#8221;&lt;/li&gt;
+&lt;li&gt;Run the command &lt;code&gt;sudo tune2fs -m0 /dev/sda2&lt;/code&gt;&lt;/li&gt;
+&lt;li&gt;Switch back to login screen &amp;#8220;Ctrl + Alt + F7&amp;#8221;&lt;/li&gt;
+&lt;li&gt;Login with user name and password&lt;/li&gt;
+&lt;/ol&gt;
+&lt;p&gt;There were previous discussions on the same topic on Linux Mint Forum.  This
+post had more information.&lt;/p&gt;
+&lt;p&gt;&lt;a href="https://forums.linuxmint.com/viewtopic.php?f=90&amp;amp;t=253502"&gt;Disk full, unable to login. I need help (&lt;span class="caps"&gt;SOLVED&lt;/span&gt;)&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;As suggested on the above post, when I ran the command &lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;df -h
+sudo du -h -d 1 / | sort -n  
+  # this is for 1 level of dir under root /
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;p&gt;I found two huge files under /var/log directory.  It turned out that both
+&lt;code&gt;syslog&lt;/code&gt; and &lt;code&gt;kern.log&lt;/code&gt; files were of &lt;span class="caps"&gt;40GB&lt;/span&gt;+ sizes. And the disk was full and
+that was the reason I could not login.  &lt;/p&gt;
+&lt;p&gt;Unfortunately I could not simply delete those two files.  How to remove them? 
+There was another post for that. &lt;/p&gt;
+&lt;p&gt;&lt;a href="https://forums.linuxmint.com/viewtopic.php?t=233943"&gt;Var/log file way too large&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;The following command cleared the two files to 0 byte:&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;sudo su
+&amp;gt; /var/log/syslog
+&amp;gt; /var/log/kern.log
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;p&gt;After that the disk showed a free space of &lt;span class="caps"&gt;90GB&lt;/span&gt;. I also ran the command 
+below to change the reserved disk blocks percent back to 5 percent. &lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;sudo tune2fs -m5 /dev/sda2
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;p&gt;I have a large 30 inch Dell U3011 monitor I bought a few years ago. The desktop 
+connects to the monitor via a displayport cable.  I also connect my laptop to 
+the monitor through the same cable. I simply unplug the cable from desktop and 
+plug it to the laptop. &lt;/p&gt;
+&lt;p&gt;Last night, I did not turn off the desktop when unplugging the monitor cable.
+Linux Mint 20 system started outputting the same error messages again and
+again.  It eventually filled up the disk. That was the reason I could not log
+into the system. Thought it was painful, I did learn something from this 
+crash experience.&lt;/p&gt;</content><category term="posts"></category><category term="linux"></category><category term="linux mint"></category></entry><entry><title>Web Development Notes</title><link href="https://www.georgexyz.com/web-development-notes.html" rel="alternate"></link><published>2020-08-29T10:40:00-04:00</published><updated>2020-08-29T10:40:00-04:00</updated><author><name>George Zhang</name></author><id>tag:www.georgexyz.com,2020-08-29:/web-development-notes.html</id><summary type="html">&lt;p&gt;I am going to assemble some notes for web development in this post.  It is mainly for 
 myself and I will keep updating this post. &lt;/p&gt;
 &lt;h4&gt;Force Firefox to Refresh&lt;/h4&gt;
 &lt;p&gt;There …&lt;/p&gt;</summary><content type="html">&lt;p&gt;I am going to assemble some notes for web development in this post.  It is mainly for 
@@ -5014,7 +5070,7 @@ eval &amp;quot;$(pyenv virtualenv-init -)&amp;quot;
 &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
 
 
-&lt;p&gt;&lt;em&gt;Source: Practical Vim Second Editor by Drew Neil Page 63, Tip 30&lt;/em&gt;&lt;/p&gt;
+&lt;p&gt;&lt;em&gt;Source: Practical Vim Second Edition by Drew Neil Page 63, Tip 30&lt;/em&gt;&lt;/p&gt;
 &lt;h4&gt;Links and References&lt;/h4&gt;
 &lt;p&gt;&lt;a href="https://vim.rtorr.com/"&gt;Vim Cheat Sheet&lt;/a&gt; 
 is a nice single web page which includes command vim commands.&lt;/p&gt;</content><category term="posts"></category><category term="vim"></category><category term="tip"></category><category term="linux"></category></entry></feed>

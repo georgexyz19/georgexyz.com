@@ -1,0 +1,145 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <link rel="stylesheet" href="/theme/css/bs4min.css">
+    <link rel="shortcut icon" type="image/x-icon" href="/theme/images/favicon.ico" >
+    <link rel="icon" type="image/x-icon" href="/theme/images/favicon.ico" >
+<link rel="stylesheet" href="https://www.georgexyz.com/theme/css/friendly.css">
+<link rel="stylesheet" href="https://www.georgexyz.com/theme/css/custom.css">
+<meta name="author" content="George Zhang" />
+<meta name="keywords" content="linux,linux mint" />
+<meta name="description" content="Last night my main computer with Linux Mint 20 crashed and I was really worried that I might lose the files I had been working on. After many google searches …" />
+    <title>A Case of Linux Mint Crash - George Zhang</title>
+  </head>
+  <body>
+    <!-- navbar -->
+    <nav class="navbar navbar-expand-md navbar-light" style="background-color: #e3f2fd;">
+      <div class="container">
+        <a class="navbar-brand" href="/">George Zhang</a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarColor01" aria-controls="navbarColor01" aria-expanded="false" aria-label="Toggle navigation">
+          <span class="navbar-toggler-icon"></span>
+        </button>
+
+        <div class="collapse navbar-collapse" id="navbarColor01">
+          <ul class="navbar-nav mr-auto">
+            <li class="nav-item">
+              <a class="nav-link " 
+                href="/articlelist.html">Articles</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link pr-3 " 
+                href="/tags.html">Tags</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link pr-3 "
+                 href="/pages/inkscape-tutorial.html">Inkscape Tutorial</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link "
+                   href="/pages/projects.html">Projects</a>
+              </li>
+          </ul>
+
+          <ul class="navbar-nav">
+            <li class="nav-item">
+              <a class="nav-link " 
+                 href="/pages/about.html">About</a>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </nav>
+
+   
+
+<div class="container">
+
+  <div class="row">
+    <div class="col-lg-8 mx-auto">
+
+      <h2>A Case of Linux Mint Crash</h2>
+
+      <div class="text-muted mb-2">
+        <span>Posted on </span>
+        <time datetime="2020-09-21 13:54:00-04:00">
+          Monday, 09/21/2020 13:54
+        </time>
+
+        <span>with tags: </span>
+        <a href="https://www.georgexyz.com/tag/linux.html">linux</a>
+/        <a href="https://www.georgexyz.com/tag/linux-mint.html">linux mint</a>
+      </div>
+
+      <p>Last night my main computer with Linux Mint 20 crashed and I was really worried
+that I might lose the files I had been working on.  After many google searches,
+I found a solution and knew why it happened.  </p>
+<p>The computer did not respond to mouse or keyboard input so I had to hold down
+the power key for a few seconds to shut it off.  When the computer restarted,
+it showed the Linux Mint login screen but the system did not let me log in. I
+tried a few times entering my password and also tried to restart the computer,
+but still could not log in. </p>
+<p>After some google searches, I found this online post</p>
+<p><a href="https://forums.linuxmint.com/viewtopic.php?f=57&amp;t=261704">(<span class="caps">SOLVED</span>) Cannot Login (login loop)</a></p>
+<p>I followed the answer by Lohengrines, did the following steps, and logged 
+into the system.</p>
+<ol>
+<li>In login screen, switch to terminal by pressing &#8220;Ctrl + Alt + F2&#8221;</li>
+<li>Run the command <code>sudo tune2fs -m0 /dev/sda2</code></li>
+<li>Switch back to login screen &#8220;Ctrl + Alt + F7&#8221;</li>
+<li>Login with user name and password</li>
+</ol>
+<p>There were previous discussions on the same topic on Linux Mint Forum.  This
+post had more information.</p>
+<p><a href="https://forums.linuxmint.com/viewtopic.php?f=90&amp;t=253502">Disk full, unable to login. I need help (<span class="caps">SOLVED</span>)</a></p>
+<p>As suggested on the above post, when I ran the command </p>
+<div class="highlight"><pre><span></span><code>df -h
+sudo du -h -d 1 / | sort -n  
+  # this is for 1 level of dir under root /
+</code></pre></div>
+
+
+<p>I found two huge files under /var/log directory.  It turned out that both
+<code>syslog</code> and <code>kern.log</code> files were of <span class="caps">40GB</span>+ sizes. And the disk was full and
+that was the reason I could not login.  </p>
+<p>Unfortunately I could not simply delete those two files.  How to remove them? 
+There was another post for that. </p>
+<p><a href="https://forums.linuxmint.com/viewtopic.php?t=233943">Var/log file way too large</a></p>
+<p>The following command cleared the two files to 0 byte:</p>
+<div class="highlight"><pre><span></span><code>sudo su
+&gt; /var/log/syslog
+&gt; /var/log/kern.log
+</code></pre></div>
+
+
+<p>After that the disk showed a free space of <span class="caps">90GB</span>. I also ran the command 
+below to change the reserved disk blocks percent back to 5 percent. </p>
+<div class="highlight"><pre><span></span><code>sudo tune2fs -m5 /dev/sda2
+</code></pre></div>
+
+
+<p>I have a large 30 inch Dell U3011 monitor I bought a few years ago. The desktop 
+connects to the monitor via a displayport cable.  I also connect my laptop to 
+the monitor through the same cable. I simply unplug the cable from desktop and 
+plug it to the laptop. </p>
+<p>Last night, I did not turn off the desktop when unplugging the monitor cable.
+Linux Mint 20 system started outputting the same error messages again and
+again.  It eventually filled up the disk. That was the reason I could not log
+into the system. Thought it was painful, I did learn something from this 
+crash experience.</p>
+
+
+
+    </div>
+  </div>
+
+</div>
+
+   
+    <script src="https://code.jquery.com/jquery-3.4.1.slim.min.js" integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js" integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6" crossorigin="anonymous"></script>
+  </body>
+</html>
