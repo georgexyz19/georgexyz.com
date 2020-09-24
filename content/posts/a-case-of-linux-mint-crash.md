@@ -77,7 +77,7 @@ into the system. Thought it was painful, I did learn something from this
 crash experience.
 
 Update (9/24/2020): The computer crashed again today and the reason I wrote above 
-was be accurate. I added a `maxsize 10M` setting to the configuration file following 
+was not correct. I added a `maxsize 10M` setting to the configuration file following 
 this 
 [stackoverflow post](https://stackoverflow.com/questions/35638219/ubuntu-large-syslog-and-kern-log-files).
 I also updated the system to the latest.  
