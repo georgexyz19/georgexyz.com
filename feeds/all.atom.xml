@@ -55,7 +55,12 @@ plug it to the laptop. &lt;/p&gt;
 Linux Mint 20 system started outputting the same error messages again and
 again.  It eventually filled up the disk. That was the reason I could not log
 into the system. Thought it was painful, I did learn something from this 
-crash experience.&lt;/p&gt;</content><category term="posts"></category><category term="linux"></category><category term="linux mint"></category></entry><entry><title>Web Development Notes</title><link href="https://www.georgexyz.com/web-development-notes.html" rel="alternate"></link><published>2020-08-29T10:40:00-04:00</published><updated>2020-08-29T10:40:00-04:00</updated><author><name>George Zhang</name></author><id>tag:www.georgexyz.com,2020-08-29:/web-development-notes.html</id><summary type="html">&lt;p&gt;I am going to assemble some notes for web development in this post.  It is mainly for 
+crash experience.&lt;/p&gt;
+&lt;p&gt;Update (9/24/2020): The computer crashed again today and the reason I wrote above 
+was be accurate. I added a &lt;code&gt;maxsize 10M&lt;/code&gt; setting to the configuration file following 
+this 
+&lt;a href="https://stackoverflow.com/questions/35638219/ubuntu-large-syslog-and-kern-log-files"&gt;stackoverflow post&lt;/a&gt;.
+I also updated the system to the latest.  &lt;/p&gt;</content><category term="posts"></category><category term="linux"></category><category term="linux mint"></category></entry><entry><title>Web Development Notes</title><link href="https://www.georgexyz.com/web-development-notes.html" rel="alternate"></link><published>2020-08-29T10:40:00-04:00</published><updated>2020-08-29T10:40:00-04:00</updated><author><name>George Zhang</name></author><id>tag:www.georgexyz.com,2020-08-29:/web-development-notes.html</id><summary type="html">&lt;p&gt;I am going to assemble some notes for web development in this post.  It is mainly for 
 myself and I will keep updating this post. &lt;/p&gt;
 &lt;h4&gt;Force Firefox to Refresh&lt;/h4&gt;
 &lt;p&gt;There …&lt;/p&gt;</summary><content type="html">&lt;p&gt;I am going to assemble some notes for web development in this post.  It is mainly for 
