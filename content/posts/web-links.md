@@ -128,6 +128,8 @@ This page has a collection of web links that I visit often.
 
 [Git Command Reference on git-scm.com](https://git-scm.com/docs)
 
+[Pro Git Book on git-scm.com](https://git-scm.com/book/en/v2)
+
 
 ### Date and Time
 
