@@ -1,0 +1,125 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <link rel="stylesheet" href="/theme/css/bs4min.css">
+    <link rel="shortcut icon" type="image/x-icon" href="/theme/images/favicon.ico" >
+    <link rel="icon" type="image/x-icon" href="/theme/images/favicon.ico" >
+<link rel="stylesheet" href="https://www.georgexyz.com/theme/css/friendly.css">
+<link rel="stylesheet" href="https://www.georgexyz.com/theme/css/custom.css">
+<meta name="author" content="George Zhang" />
+<meta name="keywords" content="hardware,linux" />
+<meta name="description" content="When reconfiguring my home WIFI router this week, I have a thought to setup a home file sharing drive. The Raspberry Pi 3B+ and a case I bought one or …" />
+    <title>Home File Sharing with Raspberry Pi - George Zhang</title>
+  </head>
+  <body>
+    <!-- navbar -->
+    <nav class="navbar navbar-expand-md navbar-light" style="background-color: #e3f2fd;">
+      <div class="container">
+        <a class="navbar-brand" href="/">George Zhang</a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarColor01" aria-controls="navbarColor01" aria-expanded="false" aria-label="Toggle navigation">
+          <span class="navbar-toggler-icon"></span>
+        </button>
+
+        <div class="collapse navbar-collapse" id="navbarColor01">
+          <ul class="navbar-nav mr-auto">
+            <li class="nav-item">
+              <a class="nav-link " 
+                href="/articlelist.html">Articles</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link pr-3 " 
+                href="/tags.html">Tags</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link pr-3 "
+                 href="/pages/inkscape-tutorial.html">Inkscape Tutorial</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link "
+                   href="/pages/projects.html">Projects</a>
+              </li>
+          </ul>
+
+          <ul class="navbar-nav">
+            <li class="nav-item">
+              <a class="nav-link " 
+                 href="/pages/about.html">About</a>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </nav>
+
+   
+
+<div class="container">
+
+  <div class="row">
+    <div class="col-lg-8 mx-auto">
+
+      <h2>Home File Sharing with Raspberry Pi</h2>
+
+      <div class="text-muted mb-2">
+        <span>Posted on </span>
+        <time datetime="2020-09-26 23:27:00-04:00">
+          Saturday, 09/26/2020 23:27
+        </time>
+
+        <span>with tags: </span>
+        <a href="https://www.georgexyz.com/tag/hardware.html">hardware</a>
+/        <a href="https://www.georgexyz.com/tag/linux.html">linux</a>
+      </div>
+
+      <p>When reconfiguring my home <span class="caps">WIFI</span> router this week, I have a thought to setup a
+home file sharing drive. The Raspberry Pi 3B+ and a case I bought one or two 
+years ago has been collecting dust in a drawer for quite some time. It is 
+time to bring them out and get some use out of them.</p>
+<p>My original plan is to connect a retired <span class="caps">SSD</span> to the <span class="caps">PI</span> via an <span class="caps">USB</span> adapter. It would
+be a little messy to handle the cable and the exposed <span class="caps">SSD</span> drive. So I decide to 
+use a Samsung <span class="caps">64GB</span> <span class="caps">USB</span> flash drive which is also retired. </p>
+<p>The two articles linked below are on the top of Google search.</p>
+<p><a href="https://www.pcmag.com/how-to/how-to-turn-a-raspberry-pi-into-a-nas-for-whole-home-file-sharing">Pcmag.com - How to Turn a Raspberry Pi Into a <span class="caps">NAS</span> for Whole-Home File Sharing</a></p>
+<p><a href="https://magpi.raspberrypi.org/articles/build-a-raspberry-pi-nas">Magpi - Build a Raspberry Pi <span class="caps">NAS</span></a></p>
+<p>After reading the two articles, it seems that the first one suites my needs 
+better. The first tutorial is quite good but I still run into a few problems. 
+Below are some notes I have when setting up the Pi. </p>
+<ol>
+<li>The Raspberry Pi 3B+ needs a 3A or 2.5A power supply. If the <span class="caps">USB</span> power charger
+   does not provide enough voltage, the Pi will start and then automatically shut off.</li>
+<li>The my cell phone quick charger has 3A voltage output and it 
+   works well with Pi.</li>
+<li>The <span class="caps">USB</span> stick does not work with <code>sudo mkfs</code> command in the tutorial. 
+   I have to use Linux Mint desktop app <em><span class="caps">USB</span> Stick Formatter</em> to format 
+   it to <span class="caps">EXT4</span> first and then connect it to Pi. </li>
+<li>I tried both full version desktop Raspberry Pi <span class="caps">OS</span> and Lite minimal version. 
+   It seems that the full version is easy to setup <span class="caps">WIFI</span>, <span class="caps">SSH</span>, and 
+   other settings.</li>
+<li>Even though it is possible to setup the Pi without a monitor, it is much 
+   easier to connect it to monitor and do initial setup. </li>
+<li>The network drive speed is not so fast and it is between 0.5M/s to 2M/s.
+   But it is good enough for me to share files among computers and my phone. </li>
+<li>Android file manager app <em>Cx File Explorer</em> can access network drive with 
+   <span class="caps">SMB</span> protocol. </li>
+<li>Use address <code>\\raspberrypi</code> in Windows and <code>smb://raspberrypi</code> in Linux 
+   to access the shared drive. </li>
+</ol>
+<div style="max-width:800px">
+  <img class="img-fluid pb-3" src="/images/usb_formatter.png" alt="USB Formatter">
+</div>
+
+
+
+    </div>
+  </div>
+
+</div>
+
+   
+    <script src="https://code.jquery.com/jquery-3.4.1.slim.min.js" integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js" integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6" crossorigin="anonymous"></script>
+  </body>
+</html>

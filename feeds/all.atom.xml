@@ -1,5 +1,41 @@
 <?xml version="1.0" encoding="utf-8"?>
-<feed xmlns="http://www.w3.org/2005/Atom"><title>George Zhang</title><link href="https://www.georgexyz.com/" rel="alternate"></link><link href="https://www.georgexyz.com/feeds/all.atom.xml" rel="self"></link><id>https://www.georgexyz.com/</id><updated>2020-09-21T13:54:00-04:00</updated><entry><title>A Case of Linux Mint Crash</title><link href="https://www.georgexyz.com/a-case-of-linux-mint-crash.html" rel="alternate"></link><published>2020-09-21T13:54:00-04:00</published><updated>2020-09-21T13:54:00-04:00</updated><author><name>George Zhang</name></author><id>tag:www.georgexyz.com,2020-09-21:/a-case-of-linux-mint-crash.html</id><summary type="html">&lt;p&gt;Last night my main computer with Linux Mint 20 crashed and I was really worried
+<feed xmlns="http://www.w3.org/2005/Atom"><title>George Zhang</title><link href="https://www.georgexyz.com/" rel="alternate"></link><link href="https://www.georgexyz.com/feeds/all.atom.xml" rel="self"></link><id>https://www.georgexyz.com/</id><updated>2020-09-26T23:27:00-04:00</updated><entry><title>Home File Sharing with Raspberry Pi</title><link href="https://www.georgexyz.com/home-file-sharing.html" rel="alternate"></link><published>2020-09-26T23:27:00-04:00</published><updated>2020-09-26T23:27:00-04:00</updated><author><name>George Zhang</name></author><id>tag:www.georgexyz.com,2020-09-26:/home-file-sharing.html</id><summary type="html">&lt;p&gt;When reconfiguring my home &lt;span class="caps"&gt;WIFI&lt;/span&gt; router this week, I have a thought to setup a
+home file sharing drive. The Raspberry Pi 3B+ and a case I bought one or …&lt;/p&gt;</summary><content type="html">&lt;p&gt;When reconfiguring my home &lt;span class="caps"&gt;WIFI&lt;/span&gt; router this week, I have a thought to setup a
+home file sharing drive. The Raspberry Pi 3B+ and a case I bought one or two 
+years ago has been collecting dust in a drawer for quite some time. It is 
+time to bring them out and get some use out of them.&lt;/p&gt;
+&lt;p&gt;My original plan is to connect a retired &lt;span class="caps"&gt;SSD&lt;/span&gt; to the &lt;span class="caps"&gt;PI&lt;/span&gt; via an &lt;span class="caps"&gt;USB&lt;/span&gt; adapter. It would
+be a little messy to handle the cable and the exposed &lt;span class="caps"&gt;SSD&lt;/span&gt; drive. So I decide to 
+use a Samsung &lt;span class="caps"&gt;64GB&lt;/span&gt; &lt;span class="caps"&gt;USB&lt;/span&gt; flash drive which is also retired. &lt;/p&gt;
+&lt;p&gt;The two articles linked below are on the top of Google search.&lt;/p&gt;
+&lt;p&gt;&lt;a href="https://www.pcmag.com/how-to/how-to-turn-a-raspberry-pi-into-a-nas-for-whole-home-file-sharing"&gt;Pcmag.com - How to Turn a Raspberry Pi Into a &lt;span class="caps"&gt;NAS&lt;/span&gt; for Whole-Home File Sharing&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;&lt;a href="https://magpi.raspberrypi.org/articles/build-a-raspberry-pi-nas"&gt;Magpi - Build a Raspberry Pi &lt;span class="caps"&gt;NAS&lt;/span&gt;&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;After reading the two articles, it seems that the first one suites my needs 
+better. The first tutorial is quite good but I still run into a few problems. 
+Below are some notes I have when setting up the Pi. &lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;The Raspberry Pi 3B+ needs a 3A or 2.5A power supply. If the &lt;span class="caps"&gt;USB&lt;/span&gt; power charger
+   does not provide enough voltage, the Pi will start and then automatically shut off.&lt;/li&gt;
+&lt;li&gt;The my cell phone quick charger has 3A voltage output and it 
+   works well with Pi.&lt;/li&gt;
+&lt;li&gt;The &lt;span class="caps"&gt;USB&lt;/span&gt; stick does not work with &lt;code&gt;sudo mkfs&lt;/code&gt; command in the tutorial. 
+   I have to use Linux Mint desktop app &lt;em&gt;&lt;span class="caps"&gt;USB&lt;/span&gt; Stick Formatter&lt;/em&gt; to format 
+   it to &lt;span class="caps"&gt;EXT4&lt;/span&gt; first and then connect it to Pi. &lt;/li&gt;
+&lt;li&gt;I tried both full version desktop Raspberry Pi &lt;span class="caps"&gt;OS&lt;/span&gt; and Lite minimal version. 
+   It seems that the full version is easy to setup &lt;span class="caps"&gt;WIFI&lt;/span&gt;, &lt;span class="caps"&gt;SSH&lt;/span&gt;, and 
+   other settings.&lt;/li&gt;
+&lt;li&gt;Even though it is possible to setup the Pi without a monitor, it is much 
+   easier to connect it to monitor and do initial setup. &lt;/li&gt;
+&lt;li&gt;The network drive speed is not so fast and it is between 0.5M/s to 2M/s.
+   But it is good enough for me to share files among computers and my phone. &lt;/li&gt;
+&lt;li&gt;Android file manager app &lt;em&gt;Cx File Explorer&lt;/em&gt; can access network drive with 
+   &lt;span class="caps"&gt;SMB&lt;/span&gt; protocol. &lt;/li&gt;
+&lt;li&gt;Use address &lt;code&gt;\\raspberrypi&lt;/code&gt; in Windows and &lt;code&gt;smb://raspberrypi&lt;/code&gt; in Linux 
+   to access the shared drive. &lt;/li&gt;
+&lt;/ol&gt;
+&lt;div style="max-width:800px"&gt;
+  &lt;img class="img-fluid pb-3" src="/images/usb_formatter.png" alt="USB Formatter"&gt;
+&lt;/div&gt;</content><category term="posts"></category><category term="hardware"></category><category term="linux"></category></entry><entry><title>A Case of Linux Mint Crash</title><link href="https://www.georgexyz.com/a-case-of-linux-mint-crash.html" rel="alternate"></link><published>2020-09-21T13:54:00-04:00</published><updated>2020-09-21T13:54:00-04:00</updated><author><name>George Zhang</name></author><id>tag:www.georgexyz.com,2020-09-21:/a-case-of-linux-mint-crash.html</id><summary type="html">&lt;p&gt;Last night my main computer with Linux Mint 20 crashed and I was really worried
 that I might lose the files I had been working on.  After many google searches …&lt;/p&gt;</summary><content type="html">&lt;p&gt;Last night my main computer with Linux Mint 20 crashed and I was really worried
 that I might lose the files I had been working on.  After many google searches,
 I found a solution and knew why it happened.  &lt;/p&gt;
