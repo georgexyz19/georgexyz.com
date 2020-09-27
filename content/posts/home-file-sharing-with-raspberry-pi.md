@@ -48,3 +48,11 @@ Below are some notes I have when setting up the Pi.
 <div style="max-width:800px">
   <img class="img-fluid pb-3" src="/images/usb_formatter.png" alt="USB Formatter">
 </div>
+
+<div style="max-width:400px">
+  <img class="img-fluid pb-3" src="/images/pi.jpg" alt="Raspberry pi">
+</div>
+
+<div style="max-width:400px">
+  <img class="img-fluid pb-3" src="/images/pi_ac.jpg" alt="Raspberry adapter">
+</div>
