@@ -1,5 +1,20 @@
 <?xml version="1.0" encoding="utf-8"?>
-<feed xmlns="http://www.w3.org/2005/Atom"><title>George Zhang</title><link href="https://www.georgexyz.com/" rel="alternate"></link><link href="https://www.georgexyz.com/feeds/all.atom.xml" rel="self"></link><id>https://www.georgexyz.com/</id><updated>2020-09-26T23:27:00-04:00</updated><entry><title>Home File Sharing with Raspberry Pi</title><link href="https://www.georgexyz.com/home-file-sharing.html" rel="alternate"></link><published>2020-09-26T23:27:00-04:00</published><updated>2020-09-26T23:27:00-04:00</updated><author><name>George Zhang</name></author><id>tag:www.georgexyz.com,2020-09-26:/home-file-sharing.html</id><summary type="html">&lt;p&gt;When reconfiguring my home &lt;span class="caps"&gt;WIFI&lt;/span&gt; router this week, I have a thought to setup a
+<feed xmlns="http://www.w3.org/2005/Atom"><title>George Zhang</title><link href="https://www.georgexyz.com/" rel="alternate"></link><link href="https://www.georgexyz.com/feeds/all.atom.xml" rel="self"></link><id>https://www.georgexyz.com/</id><updated>2020-09-30T10:23:00-04:00</updated><entry><title>Two Git Books</title><link href="https://www.georgexyz.com/two-git-books.html" rel="alternate"></link><published>2020-09-30T10:23:00-04:00</published><updated>2020-09-30T10:23:00-04:00</updated><author><name>George Zhang</name></author><id>tag:www.georgexyz.com,2020-09-30:/two-git-books.html</id><summary type="html">&lt;p&gt;This post is about two Git books I recently read.  Git is a complicated tool 
+which is not easy to figure out simply by Google searching. &lt;/p&gt;
+&lt;p&gt;I start with the …&lt;/p&gt;</summary><content type="html">&lt;p&gt;This post is about two Git books I recently read.  Git is a complicated tool 
+which is not easy to figure out simply by Google searching. &lt;/p&gt;
+&lt;p&gt;I start with the O&amp;#8217;Reilly book &lt;em&gt;Version Control with Git 2nd ed&lt;/em&gt; by Jon Loeliger 
+and Matthew McCullough. The book is good, and examples in chapters 5 and 6 
+are especially nice. However, the book is not an easy read. I read the first 
+12 chapters carefully and skim the rest chapters. &lt;/p&gt;
+&lt;p&gt;Then I read the more popular book &lt;a href="https://git-scm.com/book/en/v2"&gt;&lt;em&gt;Pro Git&lt;/em&gt;&lt;/a&gt;
+written by Scott Chacon and Ben Straub.  Scott Chacon is one of
+the founders of github.  The book is freely available on official git website
+git-scm.com. This book is excellent.  I especially like the workflow sections
+in chapter 5 because those materials are not easy to find online.  I read
+the first 6 chapters twice and skim the rest book.  This book is also more
+practical for engineers, and you can use the book as a reference for daily
+projects. If you only have time for one book, this is the one to get. &lt;/p&gt;</content><category term="posts"></category><category term="books"></category><category term="software utility"></category></entry><entry><title>Home File Sharing with Raspberry Pi</title><link href="https://www.georgexyz.com/home-file-sharing.html" rel="alternate"></link><published>2020-09-26T23:27:00-04:00</published><updated>2020-09-26T23:27:00-04:00</updated><author><name>George Zhang</name></author><id>tag:www.georgexyz.com,2020-09-26:/home-file-sharing.html</id><summary type="html">&lt;p&gt;When reconfiguring my home &lt;span class="caps"&gt;WIFI&lt;/span&gt; router this week, I have a thought to setup a
 home file sharing drive. The Raspberry Pi 3B+ and a case I bought one or …&lt;/p&gt;</summary><content type="html">&lt;p&gt;When reconfiguring my home &lt;span class="caps"&gt;WIFI&lt;/span&gt; router this week, I have a thought to setup a
 home file sharing drive. The Raspberry Pi 3B+ and a case I bought one or two 
 years ago has been collecting dust in a drawer for quite some time. It is 
