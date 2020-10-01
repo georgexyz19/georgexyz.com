@@ -4335,6 +4335,17 @@ pyenv global 2.7.15 # or system
 pyenv local 3.7.7
 cat ~/.pyenv/version
 pyenv virtualenv ...
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;p&gt;&lt;strong&gt;Update on 10/1/2020&lt;/strong&gt; Pyenv needs an update if you do not use it to 
+install new Python versions for some time. Otherwise the new Python 
+versions do not show up on the list. The commands to update pyenv 
+are on the Github readme page. &lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;cd $(pyenv root)
+git fetch
+git tag
+git checkout v1.2.20
 &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;</content><category term="posts"></category><category term="python"></category><category term="ubuntu"></category></entry><entry><title>Setup Inkscape in Windows and Ubuntu</title><link href="https://www.georgexyz.com/inkscape-setup.html" rel="alternate"></link><published>2019-04-07T20:23:00-04:00</published><updated>2019-04-07T20:23:00-04:00</updated><author><name>George Zhang</name></author><id>tag:www.georgexyz.com,2019-04-07:/inkscape-setup.html</id><summary type="html">&lt;p&gt;Inkscape software is easy to install in both Windows and Ubuntu.  However it is 
 a little difficult for beginners to figure out how to customize the software. 
 This article discusses …&lt;/p&gt;</summary><content type="html">&lt;p&gt;Inkscape software is easy to install in both Windows and Ubuntu.  However it is 
