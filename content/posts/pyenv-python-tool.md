@@ -17,7 +17,8 @@ includes everything from pyenv installation to pyenv configuration.
 
 The only thing to note is that a user needs to install some dependencies
 in Ubuntu before running pyenv.  If you omit this step, python
-building process will fail without warnings or errors. 
+building process will fail without warnings or errors.  This could 
+become very frustrating. 
 
 ```
 sudo apt-get install -y make build-essential libssl-dev zlib1g-dev \
