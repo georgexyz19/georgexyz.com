@@ -47,3 +47,14 @@ cat ~/.pyenv/version
 pyenv virtualenv ...
 ```
 
+**Update on 10/1/2020** Pyenv needs an update if you do not use it to 
+install new Python versions for some time. Otherwise the new Python 
+versions do not show up on the list. The commands to update pyenv 
+are on the Github readme page. 
+
+```
+cd $(pyenv root)
+git fetch
+git tag
+git checkout v1.2.20
+```
