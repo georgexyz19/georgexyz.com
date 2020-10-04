@@ -4,10 +4,10 @@
 
 The shell script *commit_change.sh* automates the blog publishing.  After
 writing a new post or editing an existing post, run command `source
-commit_change.sh "git commit msg"` to make git commit and push to github. The
-website is hosted on github, and it will be automatically updated. 
+commit_change.sh "git commit msg"` to make git commit and push it to github. The
+website is hosted on Github Pages, and it will be automatically updated. 
 
-To setup the environment in a new computer, run those commands
+Run those commands to setup the environment on a new computer.
 
 ```
 pip install pipenv  # install it globally
