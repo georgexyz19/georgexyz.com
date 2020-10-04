@@ -23,3 +23,10 @@ the first 6 chapters twice and skim the rest book.  This book is also more
 practical for engineers, and you can use the book as a reference for daily
 projects. If you only have time for one book, this is the one to get. 
  
+One benefit I get from reading the two books is that I can easily understand
+the *Source Control* panel in Visual Studio Code. It is very neat VS Code has 
+version control system built in. 
+
+<div style="max-width:800px">
+  <img class="img-fluid pb-3" src="/images/vs_code_vcs.png" alt="vs code vcs"> 
+</div>
