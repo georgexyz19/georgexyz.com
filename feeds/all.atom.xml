@@ -14,7 +14,13 @@ git-scm.com. This book is excellent.  I especially like the workflow sections
 in chapter 5 because those materials are not easy to find online.  I read
 the first 6 chapters twice and skim the rest book.  This book is also more
 practical for engineers, and you can use the book as a reference for daily
-projects. If you only have time for one book, this is the one to get. &lt;/p&gt;</content><category term="posts"></category><category term="books"></category><category term="software utility"></category></entry><entry><title>Home File Sharing with Raspberry Pi</title><link href="https://www.georgexyz.com/home-file-sharing.html" rel="alternate"></link><published>2020-09-26T23:27:00-04:00</published><updated>2020-09-26T23:27:00-04:00</updated><author><name>George Zhang</name></author><id>tag:www.georgexyz.com,2020-09-26:/home-file-sharing.html</id><summary type="html">&lt;p&gt;When reconfiguring my home &lt;span class="caps"&gt;WIFI&lt;/span&gt; router this week, I have a thought to setup a
+projects. If you only have time for one book, this is the one to get. &lt;/p&gt;
+&lt;p&gt;One benefit I get from reading the two books is that I can easily understand
+the &lt;em&gt;Source Control&lt;/em&gt; panel in Visual Studio Code. It is very neat &lt;span class="caps"&gt;VS&lt;/span&gt; Code has 
+version control system built in. &lt;/p&gt;
+&lt;div style="max-width:800px"&gt;
+  &lt;img class="img-fluid pb-3" src="/images/vs_code_vcs.png" alt="vs code vcs"&gt; 
+&lt;/div&gt;</content><category term="posts"></category><category term="books"></category><category term="software utility"></category></entry><entry><title>Home File Sharing with Raspberry Pi</title><link href="https://www.georgexyz.com/home-file-sharing.html" rel="alternate"></link><published>2020-09-26T23:27:00-04:00</published><updated>2020-09-26T23:27:00-04:00</updated><author><name>George Zhang</name></author><id>tag:www.georgexyz.com,2020-09-26:/home-file-sharing.html</id><summary type="html">&lt;p&gt;When reconfiguring my home &lt;span class="caps"&gt;WIFI&lt;/span&gt; router this week, I have a thought to setup a
 home file sharing drive. The Raspberry Pi 3B+ and a case I bought one or …&lt;/p&gt;</summary><content type="html">&lt;p&gt;When reconfiguring my home &lt;span class="caps"&gt;WIFI&lt;/span&gt; router this week, I have a thought to setup a
 home file sharing drive. The Raspberry Pi 3B+ and a case I bought one or two 
 years ago has been collecting dust in a drawer for quite some time. It is 
@@ -4311,7 +4317,8 @@ versions of python in Ubuntu system. &lt;/p&gt;
 includes everything from pyenv installation to pyenv configuration. &lt;/p&gt;
 &lt;p&gt;The only thing to note is that a user needs to install some dependencies
 in Ubuntu before running pyenv.  If you omit this step, python
-building process will fail without warnings or errors. &lt;/p&gt;
+building process will fail without warnings or errors.  This could 
+become very frustrating. &lt;/p&gt;
 &lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;sudo apt-get install -y make build-essential libssl-dev zlib1g-dev \
 libbz2-dev libreadline-dev libsqlite3-dev wget curl llvm libncurses5-dev \
 libncursesw5-dev xz-utils tk-dev libffi-dev liblzma-dev python-openssl 
