@@ -4,6 +4,7 @@ date: 2020-06-28 00:02
 modified: 2020-06-28 00:02
 tags: woodwork
 note: a post about recent woodwork projects
+status: draft
 no: 50
 
 I took a brief time off computers and worked on a few simple wood projects 
