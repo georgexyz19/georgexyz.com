@@ -37,7 +37,7 @@ Below are some notes I have when setting up the Pi. &lt;/p&gt;
 &lt;ol&gt;
 &lt;li&gt;The Raspberry Pi 3B+ needs a 3A or 2.5A power supply. If the &lt;span class="caps"&gt;USB&lt;/span&gt; power charger
    does not provide enough voltage, the Pi will start and then automatically shut off.&lt;/li&gt;
-&lt;li&gt;The my cell phone quick charger has 3A voltage output and it 
+&lt;li&gt;My cell phone quick charger has 3A voltage output and it 
    works well with Pi.&lt;/li&gt;
 &lt;li&gt;The &lt;span class="caps"&gt;USB&lt;/span&gt; stick does not work with &lt;code&gt;sudo mkfs&lt;/code&gt; command in the tutorial. 
    I have to use Linux Mint desktop app &lt;em&gt;&lt;span class="caps"&gt;USB&lt;/span&gt; Stick Formatter&lt;/em&gt; to format 
@@ -48,7 +48,7 @@ Below are some notes I have when setting up the Pi. &lt;/p&gt;
 &lt;li&gt;Even though it is possible to setup the Pi without a monitor, it is much 
    easier to connect it to monitor and do initial setup. &lt;/li&gt;
 &lt;li&gt;The network drive speed is not so fast and it is between 0.5M/s to 2M/s.
-   But it is good enough for me to share files among computers and my phone. &lt;/li&gt;
+   But it is good enough for sharing files among home computers and my phone. &lt;/li&gt;
 &lt;li&gt;Android file manager app &lt;em&gt;Cx File Explorer&lt;/em&gt; can access network drive with 
    &lt;span class="caps"&gt;SMB&lt;/span&gt; protocol. &lt;/li&gt;
 &lt;li&gt;Use address &lt;code&gt;\\raspberrypi&lt;/code&gt; in Windows and &lt;code&gt;smb://raspberrypi&lt;/code&gt; in Linux 
