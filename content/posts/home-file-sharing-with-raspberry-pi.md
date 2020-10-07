@@ -28,7 +28,7 @@ Below are some notes I have when setting up the Pi.
 
 1. The Raspberry Pi 3B+ needs a 3A or 2.5A power supply. If the USB power charger
    does not provide enough voltage, the Pi will start and then automatically shut off.
-2. The my cell phone quick charger has 3A voltage output and it 
+2. My cell phone quick charger has 3A voltage output and it 
    works well with Pi.
 3. The USB stick does not work with `sudo mkfs` command in the tutorial. 
    I have to use Linux Mint desktop app *USB Stick Formatter* to format 
@@ -39,7 +39,7 @@ Below are some notes I have when setting up the Pi.
 5. Even though it is possible to setup the Pi without a monitor, it is much 
    easier to connect it to monitor and do initial setup. 
 6. The network drive speed is not so fast and it is between 0.5M/s to 2M/s.
-   But it is good enough for me to share files among computers and my phone. 
+   But it is good enough for sharing files among home computers and my phone. 
 7. Android file manager app *Cx File Explorer* can access network drive with 
    SMB protocol. 
 8. Use address `\\raspberrypi` in Windows and `smb://raspberrypi` in Linux 
