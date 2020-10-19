@@ -518,14 +518,14 @@ x 24&amp;#8221;), you can follow those steps. &lt;/p&gt;
 &lt;/ol&gt;
 &lt;p class="text-muted"&gt;This article will be continuously updated (last update: 8/24/2020). &lt;p&gt;</content><category term="posts"></category><category term="software utility"></category></entry><entry><title>Pelican Cache Module</title><link href="https://www.georgexyz.com/pelican-cache-module.html" rel="alternate"></link><published>2020-05-08T09:49:00-04:00</published><updated>2020-05-08T09:49:00-04:00</updated><author><name>George Zhang</name></author><id>tag:www.georgexyz.com,2020-05-08:/pelican-cache-module.html</id><summary type="html">&lt;p&gt;Pelican cache module (&lt;a href="https://github.com/getpelican/pelican/blob/4.2.0/pelican/cache.py"&gt;cache.py&lt;/a&gt;) 
 is relatively independent of other modules. It uses pickle module 
-to serialize data and logger module to output debug and warning message. The module 
+to serialize data and logger module to output debug and warning messages. The module 
 defines …&lt;/p&gt;</summary><content type="html">&lt;p&gt;Pelican cache module (&lt;a href="https://github.com/getpelican/pelican/blob/4.2.0/pelican/cache.py"&gt;cache.py&lt;/a&gt;) 
 is relatively independent of other modules. It uses pickle module 
-to serialize data and logger module to output debug and warning message. The module 
+to serialize data and logger module to output debug and warning messages. The module 
 defines two classes &lt;code&gt;FileDataCacher&lt;/code&gt; and &lt;code&gt;FileStampDataCacher&lt;/code&gt;. The &lt;code&gt;FileStampDataCacher&lt;/code&gt; class derives from 
-&lt;code&gt;FileDataCacher&lt;/code&gt; class and
+&lt;code&gt;FileDataCacher&lt;/code&gt; and
 adds file stamp to serialized data. File stamp could be modified time or a hash value of file content. 
-The classes have four methods &lt;code&gt;__init__&lt;/code&gt;, &lt;code&gt;get_cached_data&lt;/code&gt;, &lt;code&gt;cache_data&lt;/code&gt;, and &lt;code&gt;save_cache&lt;/code&gt;. 
+Both classes have four methods &lt;code&gt;__init__&lt;/code&gt;, &lt;code&gt;get_cached_data&lt;/code&gt;, &lt;code&gt;cache_data&lt;/code&gt;, and &lt;code&gt;save_cache&lt;/code&gt;. 
 The concept code below shows how they work. &lt;/p&gt;
 &lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;content = get_cached_data(path)
 if content is None:

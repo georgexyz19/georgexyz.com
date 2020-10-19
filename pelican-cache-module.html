@@ -11,7 +11,7 @@
 <link rel="stylesheet" href="https://www.georgexyz.com/theme/css/custom.css">
 <meta name="author" content="George Zhang" />
 <meta name="keywords" content="pelican,python" />
-<meta name="description" content="Pelican cache module (cache.py) is relatively independent of other modules. It uses pickle module to serialize data and logger module to output debug and warning message. The module defines …" />
+<meta name="description" content="Pelican cache module (cache.py) is relatively independent of other modules. It uses pickle module to serialize data and logger module to output debug and warning messages. The module defines …" />
     <title>Pelican Cache Module - George Zhang</title>
   </head>
   <body>
@@ -75,11 +75,11 @@
 
       <p>Pelican cache module (<a href="https://github.com/getpelican/pelican/blob/4.2.0/pelican/cache.py">cache.py</a>) 
 is relatively independent of other modules. It uses pickle module 
-to serialize data and logger module to output debug and warning message. The module 
+to serialize data and logger module to output debug and warning messages. The module 
 defines two classes <code>FileDataCacher</code> and <code>FileStampDataCacher</code>. The <code>FileStampDataCacher</code> class derives from 
-<code>FileDataCacher</code> class and
+<code>FileDataCacher</code> and
 adds file stamp to serialized data. File stamp could be modified time or a hash value of file content. 
-The classes have four methods <code>__init__</code>, <code>get_cached_data</code>, <code>cache_data</code>, and <code>save_cache</code>. 
+Both classes have four methods <code>__init__</code>, <code>get_cached_data</code>, <code>cache_data</code>, and <code>save_cache</code>. 
 The concept code below shows how they work. </p>
 <div class="highlight"><pre><span></span><code>content = get_cached_data(path)
 if content is None:
