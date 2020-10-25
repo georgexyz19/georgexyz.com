@@ -4703,7 +4703,7 @@ An example discussed in this
 &lt;a href="https://www.saltycrane.com/blog/2009/09/python-optparse-example/"&gt;blog post&lt;/a&gt; 
 is very helpful. &lt;/p&gt;
 &lt;p&gt;The article has an example program designed with two options.  Run the program 
-on command line with options and arguments shown on that blog, and the results indicate 
+on command line with options and arguments shown on that blog, and it shows 
 how optparse module works behind scene. &lt;/p&gt;
 &lt;p&gt;Following code is a rewrite of the example with argparse. 
 You can execute similar commands shown below and compare the results. &lt;/p&gt;
