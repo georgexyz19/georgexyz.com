@@ -4,6 +4,7 @@ meta: Resources on learning python package click
 date: 2020-02-18 14:39
 modified: 2020-02-18 14:39
 tags: python, flask
+related_posts: python-argparse
 note: 28
 
 I am reading Miguel Grinberg's 
@@ -115,3 +116,5 @@ Write the file to ./svg/W8-5P.svg
 Write the file to ./svg/R2-1.svg
 ......
 ```
+
+

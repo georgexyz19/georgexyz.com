@@ -15,7 +15,7 @@ An example discussed in this
 is very helpful. 
 
 The article has an example program designed with two options.  Run the program 
-on command line with options and arguments shown on that blog, and the results indicate 
+on command line with options and arguments shown on that blog, and it shows 
 how optparse module works behind scene. 
 
 Following code is a rewrite of the example with argparse. 
