@@ -36,16 +36,20 @@ Some scanned image file has a grey hue on the background. The `Colors` >
 ### Resize Image to a Certain Size
 
 If you want to resize a scanned plan image file to a certain size such as Arch D (36"
-x 24"), you can follow those steps. 
+x 24"), you can follow those steps (revised on 10/30/2020). 
 
-1. Click on menu item `Image` > `Canvas Size` to resize canvas to a larger
-   size (e.g., 36" x 24"), and choose white background and center the image.
-2. Select an area of image including the borders.  
-3. Copy and paste the image pixels onto a new layer. 
-4. Choose menu item `Layer` > `Scale Layer` to enlarge the layer to canvas
-   size.  It seem that setting `Interpolation` to None works better for scanned
-   plans.
-5. Merge down the image layer to the background layer. 
+1. Select an area on the image and use `Image` > `Crop to Selection` to 
+   crop to the selected area. 
+2. Choose menu item `Image` > `Scale Image`, and lock the `Width` and 
+   `Height` ratio on the dialog box, and enter the width or height to 
+   desired width (e.g., 36") or desired height. If you enter the width
+   36" in this step, the height should be less than 24". 
+3. Click menu item `Image` > `Canvas Size`, and unlock the ratio. Resize
+   the canvas size to the final size such as 36" x 24". Also click the 
+   `Center` button on the dialog box. 
+4. The image will have some transparent areas on the top and bottom, or
+   Ton the left and right. On the layer panel, add a new layer and choose
+   `Layer Fill Type` value `White`. Put this new layer below the existing
+   layer and merge the existing layer down. 
 
-
-<p class="text-muted">This article will be continuously updated (last update: 8/24/2020). <p>
+<p class="text-muted">This article will be continuously updated (last update: 10/30/2020). <p>
