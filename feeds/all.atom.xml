@@ -91,7 +91,8 @@ The method makes changes to some settings and calls the &lt;code&gt;main&lt;/cod
 
 &lt;p&gt;The &lt;code&gt;FlaskGroup&lt;/code&gt; is derived from &lt;code&gt;AppGroup&lt;/code&gt; class which is defined on Line 431. The &lt;code&gt;AppGroup&lt;/code&gt; 
 in turn is derived from &lt;code&gt;click.Group&lt;/code&gt; class defined in &lt;code&gt;core.py&lt;/code&gt; file in click package. The 
-class derivation tree is shown below. &lt;/p&gt;
+class derivation tree is shown below.  The &lt;code&gt;main&lt;/code&gt; method in super class mentioned above is 
+defined all the way up in &lt;code&gt;click.BaseCommand&lt;/code&gt; class.   &lt;/p&gt;
 &lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;FlaskGroup                      cli.py Line 462
   AppGroup                      cli.py Line 431
     click.Group                 click/core.py Line 1331
@@ -101,7 +102,42 @@ class derivation tree is shown below. &lt;/p&gt;
 &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
 
 
-&lt;p&gt;I am stopping here and will continure tomorrow 11:&lt;span class="caps"&gt;28PM&lt;/span&gt;. &lt;/p&gt;</content><category term="posts"></category><category term="flask"></category></entry><entry><title>Flask Application And Request Contexts</title><link href="https://www.georgexyz.com/flask-application-and-request-contexts.html" rel="alternate"></link><published>2020-10-29T09:13:00-04:00</published><updated>2020-10-29T09:13:00-04:00</updated><author><name>George Zhang</name></author><id>tag:www.georgexyz.com,2020-10-29:/flask-application-and-request-contexts.html</id><summary type="html">&lt;p&gt;Application and request contexts are one of the hard to understand concepts in Flask. 
+&lt;p&gt;Let&amp;#8217;s get back to the &lt;code&gt;flask/cli.py&lt;/code&gt; file and take a look at &lt;code&gt;AppGroup&lt;/code&gt; class. The 
+&lt;code&gt;AppGroup&lt;/code&gt; class overrides two methods (decorators) &lt;code&gt;command&lt;/code&gt; and &lt;code&gt;group&lt;/code&gt;.  It 
+changes the behavior of the standard &lt;code&gt;command&lt;/code&gt; decorator so that it automatically 
+wraps the functions in &lt;code&gt;with_appcontext&lt;/code&gt;. You can see examples of how those two 
+decorators are used on the
+&lt;a href="https://click.palletsprojects.com/en/7.x/commands/"&gt;click documentation&lt;/a&gt; page. &lt;/p&gt;
+&lt;p&gt;The &lt;code&gt;FlaskGroup&lt;/code&gt; class overrides &lt;code&gt;get_command&lt;/code&gt; and &lt;code&gt;list_commands&lt;/code&gt; methods in addition 
+to the &lt;code&gt;main&lt;/code&gt; method. The 
+&lt;a href="https://click.palletsprojects.com/en/7.x/commands/"&gt;click documentation&lt;/a&gt; 
+has a section &lt;em&gt;Custom Multi Commands&lt;/em&gt; and the example in this section also overrides
+those two methods. &lt;/p&gt;
+&lt;p&gt;The actual &lt;code&gt;run&lt;/code&gt; command is defined on Line 828 and the function is &lt;code&gt;run_command&lt;/code&gt;. 
+The command &lt;code&gt;run&lt;/code&gt; becomes part of flask built in commands loaded by default.&lt;br&gt;
+The code which loads the built in commands is in the &lt;code&gt;FlaskGroup.get_command&lt;/code&gt;.  &lt;/p&gt;
+&lt;p&gt;The &lt;code&gt;run_command&lt;/code&gt; function look like this.  It calls the &lt;code&gt;run_simple&lt;/code&gt; function in 
+werkzeug module and starts the development server. &lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;&lt;span class="nd"&gt;@click&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;command&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="s2"&gt;&amp;quot;run&amp;quot;&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;short_help&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="s2"&gt;&amp;quot;Run a development server.&amp;quot;&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
+&lt;span class="nd"&gt;@click&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;option&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="s2"&gt;&amp;quot;--host&amp;quot;&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="s2"&gt;&amp;quot;-h&amp;quot;&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;default&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="s2"&gt;&amp;quot;127.0.0.1&amp;quot;&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="o"&gt;...&lt;/span&gt;&lt;span class="s2"&gt;&amp;quot;)&lt;/span&gt;
+&lt;span class="o"&gt;...&lt;/span&gt;
+&lt;span class="nd"&gt;@pass_script_info&lt;/span&gt;
+&lt;span class="k"&gt;def&lt;/span&gt; &lt;span class="nf"&gt;run_command&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;info&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;host&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;port&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="o"&gt;...&lt;/span&gt;&lt;span class="p"&gt;):&lt;/span&gt;
+    &lt;span class="sd"&gt;&amp;quot;&amp;quot;&amp;quot;Run a local development server.&amp;quot;&amp;quot;&amp;quot;&lt;/span&gt;
+    &lt;span class="o"&gt;......&lt;/span&gt;
+    &lt;span class="n"&gt;show_server_banner&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;get_env&lt;/span&gt;&lt;span class="p"&gt;(),&lt;/span&gt; &lt;span class="n"&gt;debug&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;info&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;app_import_path&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;eager_loading&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
+    &lt;span class="n"&gt;app&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="n"&gt;DispatchingApp&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;info&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;load_app&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;use_eager_loading&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="n"&gt;eager_loading&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
+
+    &lt;span class="kn"&gt;from&lt;/span&gt; &lt;span class="nn"&gt;werkzeug.serving&lt;/span&gt; &lt;span class="kn"&gt;import&lt;/span&gt; &lt;span class="n"&gt;run_simple&lt;/span&gt;
+    &lt;span class="n"&gt;run_simple&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;host&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;port&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;app&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="o"&gt;......&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;p&gt;The &lt;code&gt;shell&lt;/code&gt; and &lt;code&gt;routes&lt;/code&gt; commands are defined on Line 864 and Line 899 of 
+the &lt;code&gt;cli.py&lt;/code&gt; file.   &lt;/p&gt;
+&lt;p&gt;The Flask documentation has a page 
+&lt;a href="https://flask.palletsprojects.com/en/1.1.x/cli/"&gt;Command Line Interface&lt;/a&gt; 
+which has very good info on Flask &lt;span class="caps"&gt;CLI&lt;/span&gt;. &lt;/p&gt;</content><category term="posts"></category><category term="flask"></category></entry><entry><title>Flask Application And Request Contexts</title><link href="https://www.georgexyz.com/flask-application-and-request-contexts.html" rel="alternate"></link><published>2020-10-29T09:13:00-04:00</published><updated>2020-10-29T09:13:00-04:00</updated><author><name>George Zhang</name></author><id>tag:www.georgexyz.com,2020-10-29:/flask-application-and-request-contexts.html</id><summary type="html">&lt;p&gt;Application and request contexts are one of the hard to understand concepts in Flask. 
 They are easy for programmers to use, but they are not easy to understand. The 
 implementation …&lt;/p&gt;</summary><content type="html">&lt;p&gt;Application and request contexts are one of the hard to understand concepts in Flask. 
 They are easy for programmers to use, but they are not easy to understand. The 
