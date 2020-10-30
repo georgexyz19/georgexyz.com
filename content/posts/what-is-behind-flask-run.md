@@ -104,7 +104,8 @@ def main(self, *args, **kwargs):
 
 The `FlaskGroup` is derived from `AppGroup` class which is defined on Line 431. The `AppGroup` 
 in turn is derived from `click.Group` class defined in `core.py` file in click package. The 
-class derivation tree is shown below. 
+class derivation tree is shown below.  The `main` method in super class mentioned above is 
+defined all the way up in `click.BaseCommand` class.   
 
 ```
 FlaskGroup                      cli.py Line 462
@@ -115,6 +116,47 @@ FlaskGroup                      cli.py Line 462
           click.BaseCommand          /core.py Line 631
 ```
 
-I am stopping here and will continure tomorrow 11:28PM. 
+Let's get back to the `flask/cli.py` file and take a look at `AppGroup` class. The 
+`AppGroup` class overrides two methods (decorators) `command` and `group`.  It 
+changes the behavior of the standard `command` decorator so that it automatically 
+wraps the functions in `with_appcontext`. You can see examples of how those two 
+decorators are used on the
+[click documentation](https://click.palletsprojects.com/en/7.x/commands/) page. 
+
+The `FlaskGroup` class overrides `get_command` and `list_commands` methods in addition 
+to the `main` method. The 
+[click documentation](https://click.palletsprojects.com/en/7.x/commands/) 
+has a section *Custom Multi Commands* and the example in this section also overrides
+those two methods. 
+
+The actual `run` command is defined on Line 828 and the function is `run_command`. 
+The command `run` becomes part of flask built in commands loaded by default.  
+The code which loads the built in commands is in the `FlaskGroup.get_command`.  
+
+The `run_command` function look like this.  It calls the `run_simple` function in 
+werkzeug module and starts the development server. 
+
+```python
+@click.command("run", short_help="Run a development server.")
+@click.option("--host", "-h", default="127.0.0.1", ...")
+...
+@pass_script_info
+def run_command(info, host, port, ...):
+    """Run a local development server."""
+    ......
+    show_server_banner(get_env(), debug, info.app_import_path, eager_loading)
+    app = DispatchingApp(info.load_app, use_eager_loading=eager_loading)
+
+    from werkzeug.serving import run_simple
+    run_simple(host, port, app, ......)
+```
+
+The `shell` and `routes` commands are defined on Line 864 and Line 899 of 
+the `cli.py` file.   
+
+The Flask documentation has a page 
+[Command Line Interface](https://flask.palletsprojects.com/en/1.1.x/cli/) 
+which has very good info on Flask CLI. 
+
 
 
