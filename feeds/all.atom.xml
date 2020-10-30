@@ -659,18 +659,23 @@ will show white background.&lt;/p&gt;
 
 &lt;h3&gt;Resize Image to a Certain Size&lt;/h3&gt;
 &lt;p&gt;If you want to resize a scanned plan image file to a certain size such as Arch D (36&amp;#8221;
-x 24&amp;#8221;), you can follow those steps. &lt;/p&gt;
+x 24&amp;#8221;), you can follow those steps (revised on 10/30/2020). &lt;/p&gt;
 &lt;ol&gt;
-&lt;li&gt;Click on menu item &lt;code&gt;Image&lt;/code&gt; &amp;gt; &lt;code&gt;Canvas Size&lt;/code&gt; to resize canvas to a larger
-   size (e.g., 36&amp;#8221; x 24&amp;#8221;), and choose white background and center the image.&lt;/li&gt;
-&lt;li&gt;Select an area of image including the borders.  &lt;/li&gt;
-&lt;li&gt;Copy and paste the image pixels onto a new layer. &lt;/li&gt;
-&lt;li&gt;Choose menu item &lt;code&gt;Layer&lt;/code&gt; &amp;gt; &lt;code&gt;Scale Layer&lt;/code&gt; to enlarge the layer to canvas
-   size.  It seem that setting &lt;code&gt;Interpolation&lt;/code&gt; to None works better for scanned
-   plans.&lt;/li&gt;
-&lt;li&gt;Merge down the image layer to the background layer. &lt;/li&gt;
+&lt;li&gt;Select an area on the image and use &lt;code&gt;Image&lt;/code&gt; &amp;gt; &lt;code&gt;Crop to Selection&lt;/code&gt; to 
+   crop to the selected area. &lt;/li&gt;
+&lt;li&gt;Choose menu item &lt;code&gt;Image&lt;/code&gt; &amp;gt; &lt;code&gt;Scale Image&lt;/code&gt;, and lock the &lt;code&gt;Width&lt;/code&gt; and 
+   &lt;code&gt;Height&lt;/code&gt; ratio on the dialog box, and enter the width or height to 
+   desired width (e.g., 36&amp;#8221;) or desired height. If you enter the width
+   36&amp;#8221; in this step, the height should be less than 24&amp;#8221;. &lt;/li&gt;
+&lt;li&gt;Click menu item &lt;code&gt;Image&lt;/code&gt; &amp;gt; &lt;code&gt;Canvas Size&lt;/code&gt;, and unlock the ratio. Resize
+   the canvas size to the final size such as 36&amp;#8221; x 24&amp;#8221;. Also click the 
+   &lt;code&gt;Center&lt;/code&gt; button on the dialog box. &lt;/li&gt;
+&lt;li&gt;The image will have some transparent areas on the top and bottom, or
+   Ton the left and right. On the layer panel, add a new layer and choose
+   &lt;code&gt;Layer Fill Type&lt;/code&gt; value &lt;code&gt;White&lt;/code&gt;. Put this new layer below the existing
+   layer and merge the existing layer down. &lt;/li&gt;
 &lt;/ol&gt;
-&lt;p class="text-muted"&gt;This article will be continuously updated (last update: 8/24/2020). &lt;p&gt;</content><category term="posts"></category><category term="software utility"></category></entry><entry><title>Pelican Cache Module</title><link href="https://www.georgexyz.com/pelican-cache-module.html" rel="alternate"></link><published>2020-05-08T09:49:00-04:00</published><updated>2020-05-08T09:49:00-04:00</updated><author><name>George Zhang</name></author><id>tag:www.georgexyz.com,2020-05-08:/pelican-cache-module.html</id><summary type="html">&lt;p&gt;Pelican cache module (&lt;a href="https://github.com/getpelican/pelican/blob/4.2.0/pelican/cache.py"&gt;cache.py&lt;/a&gt;) 
+&lt;p class="text-muted"&gt;This article will be continuously updated (last update: 10/30/2020). &lt;p&gt;</content><category term="posts"></category><category term="software utility"></category></entry><entry><title>Pelican Cache Module</title><link href="https://www.georgexyz.com/pelican-cache-module.html" rel="alternate"></link><published>2020-05-08T09:49:00-04:00</published><updated>2020-05-08T09:49:00-04:00</updated><author><name>George Zhang</name></author><id>tag:www.georgexyz.com,2020-05-08:/pelican-cache-module.html</id><summary type="html">&lt;p&gt;Pelican cache module (&lt;a href="https://github.com/getpelican/pelican/blob/4.2.0/pelican/cache.py"&gt;cache.py&lt;/a&gt;) 
 is relatively independent of other modules. It uses pickle module 
 to serialize data and logger module to output debug and warning messages. The module 
 defines …&lt;/p&gt;</summary><content type="html">&lt;p&gt;Pelican cache module (&lt;a href="https://github.com/getpelican/pelican/blob/4.2.0/pelican/cache.py"&gt;cache.py&lt;/a&gt;) 
