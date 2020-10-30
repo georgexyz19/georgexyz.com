@@ -1,5 +1,107 @@
 <?xml version="1.0" encoding="utf-8"?>
-<feed xmlns="http://www.w3.org/2005/Atom"><title>George Zhang</title><link href="https://www.georgexyz.com/" rel="alternate"></link><link href="https://www.georgexyz.com/feeds/all.atom.xml" rel="self"></link><id>https://www.georgexyz.com/</id><updated>2020-10-29T09:13:00-04:00</updated><entry><title>Flask Application And Request Contexts</title><link href="https://www.georgexyz.com/flask-application-and-request-contexts.html" rel="alternate"></link><published>2020-10-29T09:13:00-04:00</published><updated>2020-10-29T09:13:00-04:00</updated><author><name>George Zhang</name></author><id>tag:www.georgexyz.com,2020-10-29:/flask-application-and-request-contexts.html</id><summary type="html">&lt;p&gt;Application and request contexts are one of the hard to understand concepts in Flask. 
+<feed xmlns="http://www.w3.org/2005/Atom"><title>George Zhang</title><link href="https://www.georgexyz.com/" rel="alternate"></link><link href="https://www.georgexyz.com/feeds/all.atom.xml" rel="self"></link><id>https://www.georgexyz.com/</id><updated>2020-10-29T22:06:00-04:00</updated><entry><title>What Is Behind Flask Run Command</title><link href="https://www.georgexyz.com/what-is-behind-flask-run.html" rel="alternate"></link><published>2020-10-29T22:06:00-04:00</published><updated>2020-10-29T22:06:00-04:00</updated><author><name>George Zhang</name></author><id>tag:www.georgexyz.com,2020-10-29:/what-is-behind-flask-run.html</id><summary type="html">&lt;p&gt;Chapter 2  of Miguel Grinberg&amp;#8217;s &lt;em&gt;Flask Web Development&lt;/em&gt; describes how to run a basic Flask app. 
+Suppose you have a basic Flask app like below (from the book). &lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;&lt;span class="kn"&gt;from …&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;</summary><content type="html">&lt;p&gt;Chapter 2  of Miguel Grinberg&amp;#8217;s &lt;em&gt;Flask Web Development&lt;/em&gt; describes how to run a basic Flask app. 
+Suppose you have a basic Flask app like below (from the book). &lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;&lt;span class="kn"&gt;from&lt;/span&gt; &lt;span class="nn"&gt;flask&lt;/span&gt; &lt;span class="kn"&gt;import&lt;/span&gt; &lt;span class="n"&gt;Flask&lt;/span&gt;
+&lt;span class="n"&gt;app&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="n"&gt;Flask&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="vm"&gt;__name__&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
+
+&lt;span class="nd"&gt;@app&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;route&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="s1"&gt;&amp;#39;/&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
+&lt;span class="k"&gt;def&lt;/span&gt; &lt;span class="nf"&gt;index&lt;/span&gt;&lt;span class="p"&gt;():&lt;/span&gt;
+    &lt;span class="k"&gt;return&lt;/span&gt; &lt;span class="s1"&gt;&amp;#39;&amp;lt;h1&amp;gt;Hello World&amp;lt;/h1&amp;gt;&amp;#39;&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;p&gt;You can use the Python 3 build in venv module to create a virtual environment like below. &lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;$ python -m venv ven
+$ source venv/bin/activate
+$ pip install flask
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;p&gt;Here is output of &lt;code&gt;flask freeze&lt;/code&gt; command.  The &lt;code&gt;pip install&lt;/code&gt; command also installs Flask dependencies.  &lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;click==7.1.2
+Flask==1.1.2
+itsdangerous==1.1.0
+Jinja2==2.11.2
+MarkupSafe==1.1.1
+Werkzeug==1.0.1
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;p&gt;Then you can setup two environment variables and type &lt;code&gt;flask run&lt;/code&gt; to start the app. But what happens 
+when you start the command &lt;code&gt;flask run&lt;/code&gt;?  I am trying to figure out the answer and this article records 
+my efforts. &lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;$ export FLASK_APP=hello.py
+$ export FLASK_ENV=development
+$ flask run
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;p&gt;When you run the command &lt;code&gt;pip install flask&lt;/code&gt;, the pip system installs a &lt;code&gt;flask&lt;/code&gt; python script in the 
+&lt;code&gt;venv/bin/&lt;/code&gt; directory.  You can think of &lt;code&gt;flask&lt;/code&gt; as a command and &lt;code&gt;run&lt;/code&gt; as an argument to the command. 
+The &lt;code&gt;run&lt;/code&gt; part is actually a sub-command.  You can run &lt;code&gt;flask --help&lt;/code&gt; to find out other available 
+sub-commands. &lt;/p&gt;
+&lt;p&gt;The &lt;code&gt;flask&lt;/code&gt; script file in &lt;code&gt;venv/bin/&lt;/code&gt; directory only has a few lines as shown below. The script is 
+calling the &lt;code&gt;main()&lt;/code&gt; function in the flask.cli module. &lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;import re
+import sys
+
+from flask.cli import main
+
+if __name__ == &amp;#39;__main__&amp;#39;:
+    sys.argv[0] = re.sub(r&amp;#39;(-script\.pyw?|\.exe)?$&amp;#39;, &amp;#39;&amp;#39;, sys.argv[0])
+    sys.exit(main())
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;p&gt;Let&amp;#8217;s open the &lt;code&gt;cli.py&lt;/code&gt; file in &lt;code&gt;venv\lib\python3.8\site-packages\flask&lt;/code&gt; directory. Line 965 
+defines the &lt;code&gt;main&lt;/code&gt; function. Here the &lt;code&gt;as_module&lt;/code&gt; argument is &lt;code&gt;False&lt;/code&gt; and the main funtion 
+calls &lt;code&gt;cli.main&lt;/code&gt; method with two arguments args=[&amp;#8216;run&amp;#8217;, ] and prog_name=None. The &lt;code&gt;cli&lt;/code&gt; part 
+of &lt;code&gt;cli.main&lt;/code&gt; method call is an object of FlaskGroup class which is defined on Line 945.  &lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;def main(as_module=False):
+    # TODO omit sys.argv once ... is fixed
+    cli.main(args=sys.argv[1:], 
+        prog_name=&amp;quot;python -m flask&amp;quot; if as_module else None)
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;p&gt;Here things become complicated and I have not figured everything out.  The FlaskGroup class 
+is defined on Line 462 and it has a main method defined on Line 567 (code shown below). 
+The method makes changes to some settings and calls the &lt;code&gt;main&lt;/code&gt; method in super class.   &lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;def main(self, *args, **kwargs):
+
+    os.environ[&amp;quot;FLASK_RUN_FROM_CLI&amp;quot;] = &amp;quot;true&amp;quot;
+
+    if get_load_dotenv(self.load_dotenv):
+        load_dotenv()
+
+    obj = kwargs.get(&amp;quot;obj&amp;quot;)
+
+    if obj is None:
+        obj = ScriptInfo(
+            create_app=self.create_app, set_debug_flag=self.set_debug_flag
+        )
+
+    kwargs[&amp;quot;obj&amp;quot;] = obj
+    kwargs.setdefault(&amp;quot;auto_envvar_prefix&amp;quot;, &amp;quot;FLASK&amp;quot;)
+    return super(FlaskGroup, self).main(*args, **kwargs)
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;p&gt;The &lt;code&gt;FlaskGroup&lt;/code&gt; is derived from &lt;code&gt;AppGroup&lt;/code&gt; class which is defined on Line 431. The &lt;code&gt;AppGroup&lt;/code&gt; 
+in turn is derived from &lt;code&gt;click.Group&lt;/code&gt; class defined in &lt;code&gt;core.py&lt;/code&gt; file in click package. The 
+class derivation tree is shown below. &lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;FlaskGroup                      cli.py Line 462
+  AppGroup                      cli.py Line 431
+    click.Group                 click/core.py Line 1331
+      click.MultiCommand             /core.py Line 1069
+        click.Command                /core.py Line 832
+          click.BaseCommand          /core.py Line 631
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;p&gt;I am stopping here and will continure tomorrow 11:&lt;span class="caps"&gt;28PM&lt;/span&gt;. &lt;/p&gt;</content><category term="posts"></category><category term="flask"></category></entry><entry><title>Flask Application And Request Contexts</title><link href="https://www.georgexyz.com/flask-application-and-request-contexts.html" rel="alternate"></link><published>2020-10-29T09:13:00-04:00</published><updated>2020-10-29T09:13:00-04:00</updated><author><name>George Zhang</name></author><id>tag:www.georgexyz.com,2020-10-29:/flask-application-and-request-contexts.html</id><summary type="html">&lt;p&gt;Application and request contexts are one of the hard to understand concepts in Flask. 
 They are easy for programmers to use, but they are not easy to understand. The 
 implementation …&lt;/p&gt;</summary><content type="html">&lt;p&gt;Application and request contexts are one of the hard to understand concepts in Flask. 
 They are easy for programmers to use, but they are not easy to understand. The 

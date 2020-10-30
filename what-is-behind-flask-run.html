@@ -1,0 +1,189 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <link rel="stylesheet" href="/theme/css/bs4min.css">
+    <link rel="shortcut icon" type="image/x-icon" href="/theme/images/favicon.ico" >
+    <link rel="icon" type="image/x-icon" href="/theme/images/favicon.ico" >
+<link rel="stylesheet" href="https://www.georgexyz.com/theme/css/friendly.css">
+<link rel="stylesheet" href="https://www.georgexyz.com/theme/css/custom.css">
+<meta name="author" content="George Zhang" />
+<meta name="keywords" content="flask" />
+<meta name="description" content="Chapter 2 of Miguel Grinberg’s Flask Web Development describes how to run a basic Flask app. Suppose you have a basic Flask app like below (from the book). from …" />
+    <title>What Is Behind Flask Run Command - George Zhang</title>
+  </head>
+  <body>
+    <!-- navbar -->
+    <nav class="navbar navbar-expand-md navbar-light" style="background-color: #e3f2fd;">
+      <div class="container">
+        <a class="navbar-brand" href="/">George Zhang</a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarColor01" aria-controls="navbarColor01" aria-expanded="false" aria-label="Toggle navigation">
+          <span class="navbar-toggler-icon"></span>
+        </button>
+
+        <div class="collapse navbar-collapse" id="navbarColor01">
+          <ul class="navbar-nav mr-auto">
+            <li class="nav-item">
+              <a class="nav-link " 
+                href="/articlelist.html">Articles</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link pr-3 " 
+                href="/tags.html">Tags</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link pr-3 "
+                 href="/pages/inkscape-tutorial.html">Inkscape Tutorial</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link "
+                   href="/pages/projects.html">Projects</a>
+              </li>
+          </ul>
+
+          <ul class="navbar-nav">
+            <li class="nav-item">
+              <a class="nav-link " 
+                 href="/pages/about.html">About</a>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </nav>
+
+   
+
+<div class="container">
+
+  <div class="row">
+    <div class="col-lg-8 mx-auto">
+
+      <h2>What Is Behind Flask Run Command</h2>
+
+      <div class="text-muted mb-2">
+        <span>Posted on </span>
+        <time datetime="2020-10-29 22:06:00-04:00">
+          Thursday, 10/29/2020 22:06
+        </time>
+
+        <span>with tags: </span>
+        <a href="https://www.georgexyz.com/tag/flask.html">flask</a>
+      </div>
+
+      <p>Chapter 2  of Miguel Grinberg&#8217;s <em>Flask Web Development</em> describes how to run a basic Flask app. 
+Suppose you have a basic Flask app like below (from the book). </p>
+<div class="highlight"><pre><span></span><code><span class="kn">from</span> <span class="nn">flask</span> <span class="kn">import</span> <span class="n">Flask</span>
+<span class="n">app</span> <span class="o">=</span> <span class="n">Flask</span><span class="p">(</span><span class="vm">__name__</span><span class="p">)</span>
+
+<span class="nd">@app</span><span class="o">.</span><span class="n">route</span><span class="p">(</span><span class="s1">&#39;/&#39;</span><span class="p">)</span>
+<span class="k">def</span> <span class="nf">index</span><span class="p">():</span>
+    <span class="k">return</span> <span class="s1">&#39;&lt;h1&gt;Hello World&lt;/h1&gt;&#39;</span>
+</code></pre></div>
+
+
+<p>You can use the Python 3 build in venv module to create a virtual environment like below. </p>
+<div class="highlight"><pre><span></span><code>$ python -m venv ven
+$ source venv/bin/activate
+$ pip install flask
+</code></pre></div>
+
+
+<p>Here is output of <code>flask freeze</code> command.  The <code>pip install</code> command also installs Flask dependencies.  </p>
+<div class="highlight"><pre><span></span><code>click==7.1.2
+Flask==1.1.2
+itsdangerous==1.1.0
+Jinja2==2.11.2
+MarkupSafe==1.1.1
+Werkzeug==1.0.1
+</code></pre></div>
+
+
+<p>Then you can setup two environment variables and type <code>flask run</code> to start the app. But what happens 
+when you start the command <code>flask run</code>?  I am trying to figure out the answer and this article records 
+my efforts. </p>
+<div class="highlight"><pre><span></span><code>$ export FLASK_APP=hello.py
+$ export FLASK_ENV=development
+$ flask run
+</code></pre></div>
+
+
+<p>When you run the command <code>pip install flask</code>, the pip system installs a <code>flask</code> python script in the 
+<code>venv/bin/</code> directory.  You can think of <code>flask</code> as a command and <code>run</code> as an argument to the command. 
+The <code>run</code> part is actually a sub-command.  You can run <code>flask --help</code> to find out other available 
+sub-commands. </p>
+<p>The <code>flask</code> script file in <code>venv/bin/</code> directory only has a few lines as shown below. The script is 
+calling the <code>main()</code> function in the flask.cli module. </p>
+<div class="highlight"><pre><span></span><code>import re
+import sys
+
+from flask.cli import main
+
+if __name__ == &#39;__main__&#39;:
+    sys.argv[0] = re.sub(r&#39;(-script\.pyw?|\.exe)?$&#39;, &#39;&#39;, sys.argv[0])
+    sys.exit(main())
+</code></pre></div>
+
+
+<p>Let&#8217;s open the <code>cli.py</code> file in <code>venv\lib\python3.8\site-packages\flask</code> directory. Line 965 
+defines the <code>main</code> function. Here the <code>as_module</code> argument is <code>False</code> and the main funtion 
+calls <code>cli.main</code> method with two arguments args=[&#8216;run&#8217;, ] and prog_name=None. The <code>cli</code> part 
+of <code>cli.main</code> method call is an object of FlaskGroup class which is defined on Line 945.  </p>
+<div class="highlight"><pre><span></span><code>def main(as_module=False):
+    # TODO omit sys.argv once ... is fixed
+    cli.main(args=sys.argv[1:], 
+        prog_name=&quot;python -m flask&quot; if as_module else None)
+</code></pre></div>
+
+
+<p>Here things become complicated and I have not figured everything out.  The FlaskGroup class 
+is defined on Line 462 and it has a main method defined on Line 567 (code shown below). 
+The method makes changes to some settings and calls the <code>main</code> method in super class.   </p>
+<div class="highlight"><pre><span></span><code>def main(self, *args, **kwargs):
+
+    os.environ[&quot;FLASK_RUN_FROM_CLI&quot;] = &quot;true&quot;
+
+    if get_load_dotenv(self.load_dotenv):
+        load_dotenv()
+
+    obj = kwargs.get(&quot;obj&quot;)
+
+    if obj is None:
+        obj = ScriptInfo(
+            create_app=self.create_app, set_debug_flag=self.set_debug_flag
+        )
+
+    kwargs[&quot;obj&quot;] = obj
+    kwargs.setdefault(&quot;auto_envvar_prefix&quot;, &quot;FLASK&quot;)
+    return super(FlaskGroup, self).main(*args, **kwargs)
+</code></pre></div>
+
+
+<p>The <code>FlaskGroup</code> is derived from <code>AppGroup</code> class which is defined on Line 431. The <code>AppGroup</code> 
+in turn is derived from <code>click.Group</code> class defined in <code>core.py</code> file in click package. The 
+class derivation tree is shown below. </p>
+<div class="highlight"><pre><span></span><code>FlaskGroup                      cli.py Line 462
+  AppGroup                      cli.py Line 431
+    click.Group                 click/core.py Line 1331
+      click.MultiCommand             /core.py Line 1069
+        click.Command                /core.py Line 832
+          click.BaseCommand          /core.py Line 631
+</code></pre></div>
+
+
+<p>I am stopping here and will continure tomorrow 11:<span class="caps">28PM</span>. </p>
+
+
+
+    </div>
+  </div>
+
+</div>
+
+   
+    <script src="https://code.jquery.com/jquery-3.4.1.slim.min.js" integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js" integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6" crossorigin="anonymous"></script>
+  </body>
+</html>
