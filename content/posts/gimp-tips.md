@@ -48,7 +48,7 @@ x 24"), you can follow those steps (revised on 10/30/2020).
    the canvas size to the final size such as 36" x 24". Also click the 
    `Center` button on the dialog box. 
 4. The image will have some transparent areas on the top and bottom, or
-   Ton the left and right. On the layer panel, add a new layer and choose
+   on the left and right. On the layer panel, add a new layer and choose
    `Layer Fill Type` value `White`. Put this new layer below the existing
    layer and merge the existing layer down. 
 
