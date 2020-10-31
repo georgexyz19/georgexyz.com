@@ -10,7 +10,7 @@
 <link rel="stylesheet" href="https://www.georgexyz.com/theme/css/friendly.css">
 <link rel="stylesheet" href="https://www.georgexyz.com/theme/css/custom.css">
 <meta name="author" content="George Zhang" />
-<meta name="keywords" content="django,WSGI" />
+<meta name="keywords" content="WSGI,django,flask" />
 <meta name="description" content="WSGI is an abbreviation for Web Server Gateway Interface, which is a “simple calling convention for web servers to forward requests to web applications for frameworks written in Python.” WSGI …" />
     <title>What is WSGI? - George Zhang</title>
   </head>
@@ -69,17 +69,20 @@
         </time>
 
         <span>with tags: </span>
-        <a href="https://www.georgexyz.com/tag/django.html">django</a>
-/        <a href="https://www.georgexyz.com/tag/wsgi.html">WSGI</a>
+        <a href="https://www.georgexyz.com/tag/wsgi.html">WSGI</a>
+/        <a href="https://www.georgexyz.com/tag/django.html">django</a>
+/        <a href="https://www.georgexyz.com/tag/flask.html">flask</a>
       </div>
 
       <p><span class="caps">WSGI</span> is an abbreviation for Web Server Gateway Interface, which is a &#8220;simple calling 
 convention for web servers to forward requests to web applications for frameworks written
 in Python.&#8221;   <span class="caps">WSGI</span> is part of Python ecosystem.  It was originally specified in <span class="caps">PEP</span>-333
-in 2003, and was updated to <span class="caps">PEP</span>-3333 for python 3 in 2010.   Python standard library even 
-has a wsgiref package (<span class="caps">WSGI</span> reference server) built in. </p>
-<p>Why do we need to know <span class="caps">WSGI</span>? A Django web app is essentially an <span class="caps">WSGI</span> app. A
-web framework like Django adds many other functions such as database handling and 
+in 2003, and was updated to 
+<a href="https://www.python.org/dev/peps/pep-3333/"><span class="caps">PEP</span>-3333</a> 
+for python 3 in 2010.   Python standard library even has a wsgiref package (<span class="caps">WSGI</span> 
+reference server) built in. </p>
+<p>Why do we need to know <span class="caps">WSGI</span>? A Django/Flask web app is essentially an <span class="caps">WSGI</span> app. A
+web framework like Django/Flask adds many other functions such as database handling and 
 template processing to generate html files. It helps a developer understand 
 how web framework works behind the scene. </p>
 <p>The best writing on <span class="caps">WSGI</span> is probably 
@@ -87,12 +90,22 @@ how web framework works behind the scene. </p>
 by Armin Ronacher, who is the creator of Flask web framework and many other open 
 source Python packages.   Three code examples in this article are fantastic 
 prototypes showing how <span class="caps">WSGI</span> and web framework work. </p>
-<p>I would suggest anyone who is interested to read the article multiple times to get a good understanding 
+<p>I would suggest anyone who is interested in this topic to read the article multiple times 
+to get a good understanding 
 of the topic.  The article was written in 2007 with Python 2.  A developer needs to
 make small changes to the code for Python 3.  Here is the 
 <a href="https://github.com/georgexyz19/WSGI_example_code">link to github repo</a> 
 which contains code I modified for Python 3.</p>
+<p>You can run the <span class="caps">WSGI</span> app with a real server like <a href="https://gunicorn.org/">gunicorn</a>. 
+Install gunicorn in the virtual environment and run the server with commands shown below.  When run the app with gunicorn, the <code>environ</code> dictionary variable has 29 keys, and it has 82 keys with <code>wsgiref</code> server. </p>
+<div class="highlight"><pre><span></span><code>$ pip install gunicorn
+$ gunicorn -w 4 get_started:hello_world
+</code></pre></div>
+
+
 <h3>References</h3>
+<p><a href="https://www.python.org/dev/peps/pep-3333/"><span class="caps">PEP</span> 3333 - Python Web Server Gateway Interface v1.0.1</a> 
+on Python.org. </p>
 <p>Full Stack Python website has 
 <a href="https://www.fullstackpython.com/wsgi-servers.html">an <span class="caps">WSGI</span> article</a> 
 which includes links to many other articles. </p>

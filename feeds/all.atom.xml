@@ -3851,10 +3851,12 @@ convention for web servers to forward requests to web applications for framework
 in Python.&amp;#8221;   &lt;span class="caps"&gt;WSGI …&lt;/span&gt;&lt;/p&gt;</summary><content type="html">&lt;p&gt;&lt;span class="caps"&gt;WSGI&lt;/span&gt; is an abbreviation for Web Server Gateway Interface, which is a &amp;#8220;simple calling 
 convention for web servers to forward requests to web applications for frameworks written
 in Python.&amp;#8221;   &lt;span class="caps"&gt;WSGI&lt;/span&gt; is part of Python ecosystem.  It was originally specified in &lt;span class="caps"&gt;PEP&lt;/span&gt;-333
-in 2003, and was updated to &lt;span class="caps"&gt;PEP&lt;/span&gt;-3333 for python 3 in 2010.   Python standard library even 
-has a wsgiref package (&lt;span class="caps"&gt;WSGI&lt;/span&gt; reference server) built in. &lt;/p&gt;
-&lt;p&gt;Why do we need to know &lt;span class="caps"&gt;WSGI&lt;/span&gt;? A Django web app is essentially an &lt;span class="caps"&gt;WSGI&lt;/span&gt; app. A
-web framework like Django adds many other functions such as database handling and 
+in 2003, and was updated to 
+&lt;a href="https://www.python.org/dev/peps/pep-3333/"&gt;&lt;span class="caps"&gt;PEP&lt;/span&gt;-3333&lt;/a&gt; 
+for python 3 in 2010.   Python standard library even has a wsgiref package (&lt;span class="caps"&gt;WSGI&lt;/span&gt; 
+reference server) built in. &lt;/p&gt;
+&lt;p&gt;Why do we need to know &lt;span class="caps"&gt;WSGI&lt;/span&gt;? A Django/Flask web app is essentially an &lt;span class="caps"&gt;WSGI&lt;/span&gt; app. A
+web framework like Django/Flask adds many other functions such as database handling and 
 template processing to generate html files. It helps a developer understand 
 how web framework works behind the scene. &lt;/p&gt;
 &lt;p&gt;The best writing on &lt;span class="caps"&gt;WSGI&lt;/span&gt; is probably 
@@ -3862,17 +3864,27 @@ how web framework works behind the scene. &lt;/p&gt;
 by Armin Ronacher, who is the creator of Flask web framework and many other open 
 source Python packages.   Three code examples in this article are fantastic 
 prototypes showing how &lt;span class="caps"&gt;WSGI&lt;/span&gt; and web framework work. &lt;/p&gt;
-&lt;p&gt;I would suggest anyone who is interested to read the article multiple times to get a good understanding 
+&lt;p&gt;I would suggest anyone who is interested in this topic to read the article multiple times 
+to get a good understanding 
 of the topic.  The article was written in 2007 with Python 2.  A developer needs to
 make small changes to the code for Python 3.  Here is the 
 &lt;a href="https://github.com/georgexyz19/WSGI_example_code"&gt;link to github repo&lt;/a&gt; 
 which contains code I modified for Python 3.&lt;/p&gt;
+&lt;p&gt;You can run the &lt;span class="caps"&gt;WSGI&lt;/span&gt; app with a real server like &lt;a href="https://gunicorn.org/"&gt;gunicorn&lt;/a&gt;. 
+Install gunicorn in the virtual environment and run the server with commands shown below.  When run the app with gunicorn, the &lt;code&gt;environ&lt;/code&gt; dictionary variable has 29 keys, and it has 82 keys with &lt;code&gt;wsgiref&lt;/code&gt; server. &lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;$ pip install gunicorn
+$ gunicorn -w 4 get_started:hello_world
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+
+
 &lt;h3&gt;References&lt;/h3&gt;
+&lt;p&gt;&lt;a href="https://www.python.org/dev/peps/pep-3333/"&gt;&lt;span class="caps"&gt;PEP&lt;/span&gt; 3333 - Python Web Server Gateway Interface v1.0.1&lt;/a&gt; 
+on Python.org. &lt;/p&gt;
 &lt;p&gt;Full Stack Python website has 
 &lt;a href="https://www.fullstackpython.com/wsgi-servers.html"&gt;an &lt;span class="caps"&gt;WSGI&lt;/span&gt; article&lt;/a&gt; 
 which includes links to many other articles. &lt;/p&gt;
 &lt;p&gt;&lt;a href="https://www.appdynamics.com/blog/engineering/an-introduction-to-python-wsgi-servers-part-1/"&gt;An online article&lt;/a&gt; 
-by Kevin Goldberg dicusses several &lt;span class="caps"&gt;WSGI&lt;/span&gt; web servers. &lt;/p&gt;</content><category term="posts"></category><category term="django"></category><category term="WSGI"></category></entry><entry><title>Django Unleashed Book Model Diagram</title><link href="https://www.georgexyz.com/django-unleashed-model.html" rel="alternate"></link><published>2019-04-23T07:47:00-04:00</published><updated>2019-04-29T13:37:00-04:00</updated><author><name>George Zhang</name></author><id>tag:www.georgexyz.com,2019-04-23:/django-unleashed-model.html</id><summary type="html">&lt;p&gt;Andrew Pinkham&amp;#8217;s 
+by Kevin Goldberg dicusses several &lt;span class="caps"&gt;WSGI&lt;/span&gt; web servers. &lt;/p&gt;</content><category term="posts"></category><category term="WSGI"></category><category term="django"></category><category term="flask"></category></entry><entry><title>Django Unleashed Book Model Diagram</title><link href="https://www.georgexyz.com/django-unleashed-model.html" rel="alternate"></link><published>2019-04-23T07:47:00-04:00</published><updated>2019-04-29T13:37:00-04:00</updated><author><name>George Zhang</name></author><id>tag:www.georgexyz.com,2019-04-23:/django-unleashed-model.html</id><summary type="html">&lt;p&gt;Andrew Pinkham&amp;#8217;s 
 &lt;a href="https://www.amazon.com/gp/product/0321985079/ref=ppx_od_dt_b_asin_title_s00?ie=UTF8&amp;amp;psc=1"&gt;&lt;em&gt;Django Unleashed&lt;/em&gt;&lt;/a&gt;
  is a very good Django book. It covers many aspects of Django Web Framework with an example project. It 
 is not a book for complete …&lt;/p&gt;</summary><content type="html">&lt;p&gt;Andrew Pinkham&amp;#8217;s 
