@@ -11,8 +11,8 @@
 <link rel="stylesheet" href="https://www.georgexyz.com/theme/css/custom.css">
 <meta name="author" content="George Zhang" />
 <meta name="keywords" content="hardware,linux" />
-<meta name="description" content="When reconfiguring my home WIFI router this week, I have a thought to setup a home file sharing drive. The Raspberry Pi 3B+ and a case I bought one or …" />
-    <title>Home File Sharing with Raspberry Pi - George Zhang</title>
+<meta name="description" content="When reconfiguring my home WIFI router this week, I have a thought to setup a home file sharing network drive. I try the Raspberry Pi approach first, and upgrade to …" />
+    <title>Home File Sharing - George Zhang</title>
   </head>
   <body>
     <!-- navbar -->
@@ -60,7 +60,7 @@
   <div class="row">
     <div class="col-lg-8 mx-auto">
 
-      <h2>Home File Sharing with Raspberry Pi</h2>
+      <h2>Home File Sharing</h2>
 
       <div class="text-muted mb-2">
         <span>Posted on </span>
@@ -74,7 +74,11 @@
       </div>
 
       <p>When reconfiguring my home <span class="caps">WIFI</span> router this week, I have a thought to setup a
-home file sharing drive. The Raspberry Pi 3B+ and a case I bought one or two 
+home file sharing network drive.  I try the Raspberry Pi approach first, and 
+upgrade to a dedicated <span class="caps">NAS</span> (Network Attached Storage) device Synology 220j 
+a few weeks later. </p>
+<h3>Raspberry Pi 3B+</h3>
+<p>The Raspberry Pi 3B+ and a case I bought one or two 
 years ago has been collecting dust in a drawer for quite some time. It is 
 time to bring them out and get some use out of them.</p>
 <p>My original plan is to connect a retired <span class="caps">SSD</span> to the <span class="caps">PI</span> via an <span class="caps">USB</span> adapter. It would
@@ -117,6 +121,44 @@ Below are some notes I have when setting up the Pi. </p>
 <div style="max-width:400px">
   <img class="img-fluid pb-3" src="/images/pi_ac.jpg" alt="Raspberry adapter">
 </div>
+
+<h3>Synology 220j <span class="caps">NAS</span></h3>
+<p>The Synology 220j two bay <span class="caps">NAS</span> is on sale a few weeks ago and I get one.  The setup 
+process is easy and fast. I install two 2.5 inch laptop hard drives in it, and
+watch those two youtube vidoes.  About one hour later, the <span class="caps">NAS</span> is up and running.  </p>
+<p><a href="https://youtu.be/rjgRjOf70us">Synology DS220j Review by StorageReview - Youtube</a></p>
+<p><a href="https://youtu.be/nOnpFYQjaOQ">Synology <span class="caps">DS220J</span> <span class="caps">NAS</span> - The Best Way to Store <span class="amp">&amp;</span> Backup your Data</a></p>
+<p>Here are the steps to mount the nas in Linux Mint.  The idea is mainly from 
+<a href="https://forums.linuxmint.com/viewtopic.php?t=302368">a post on linux mint online forum</a>. </p>
+<ul>
+<li>Edit the <code>/etc/fstab</code> to add a mounting point, and add the line to the end of the file. This 
+assumes that you name the Synology device as <code>nas</code>. </li>
+</ul>
+<div class="ml-5">
+
+<div class="highlight"><pre><span></span><code>//nas.local/home/ /media/synology cifs \
+   credentials=/etc/samba/credentials,uid=1000,gid=1000 0 0 
+</code></pre></div>
+
+
+</div>
+
+<ul>
+<li>Edit the <code>/etc/samba/credentials</code> file to add username and password. </li>
+</ul>
+<div class="ml-5">
+
+<div class="highlight"><pre><span></span><code>username=&lt;username&gt;
+password=&lt;pwd&gt;
+</code></pre></div>
+
+
+</div>
+
+<ul>
+<li>Type command <code>sudo mkdir /media/synology</code> to create the mounting directory. </li>
+<li>Run command <code>sudo mount -a</code> to activate the new line in <code>/etc/fstab</code>.  </li>
+</ul>
 
 
 

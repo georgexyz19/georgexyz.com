@@ -174,9 +174,14 @@ the &lt;em&gt;Source Control&lt;/em&gt; panel in Visual Studio Code. It is very 
 version control system built in. &lt;/p&gt;
 &lt;div style="max-width:800px"&gt;
   &lt;img class="img-fluid pb-3" src="/images/vs_code_vcs.png" alt="vs code vcs"&gt; 
-&lt;/div&gt;</content><category term="posts"></category><category term="books"></category><category term="software utility"></category></entry><entry><title>Home File Sharing with Raspberry Pi</title><link href="https://www.georgexyz.com/home-file-sharing.html" rel="alternate"></link><published>2020-09-26T23:27:00-04:00</published><updated>2020-09-26T23:27:00-04:00</updated><author><name>George Zhang</name></author><id>tag:www.georgexyz.com,2020-09-26:/home-file-sharing.html</id><summary type="html">&lt;p&gt;When reconfiguring my home &lt;span class="caps"&gt;WIFI&lt;/span&gt; router this week, I have a thought to setup a
-home file sharing drive. The Raspberry Pi 3B+ and a case I bought one or …&lt;/p&gt;</summary><content type="html">&lt;p&gt;When reconfiguring my home &lt;span class="caps"&gt;WIFI&lt;/span&gt; router this week, I have a thought to setup a
-home file sharing drive. The Raspberry Pi 3B+ and a case I bought one or two 
+&lt;/div&gt;</content><category term="posts"></category><category term="books"></category><category term="software utility"></category></entry><entry><title>Home File Sharing</title><link href="https://www.georgexyz.com/home-file-sharing.html" rel="alternate"></link><published>2020-09-26T23:27:00-04:00</published><updated>2020-09-26T23:27:00-04:00</updated><author><name>George Zhang</name></author><id>tag:www.georgexyz.com,2020-09-26:/home-file-sharing.html</id><summary type="html">&lt;p&gt;When reconfiguring my home &lt;span class="caps"&gt;WIFI&lt;/span&gt; router this week, I have a thought to setup a
+home file sharing network drive.  I try the Raspberry Pi approach first, and 
+upgrade to …&lt;/p&gt;</summary><content type="html">&lt;p&gt;When reconfiguring my home &lt;span class="caps"&gt;WIFI&lt;/span&gt; router this week, I have a thought to setup a
+home file sharing network drive.  I try the Raspberry Pi approach first, and 
+upgrade to a dedicated &lt;span class="caps"&gt;NAS&lt;/span&gt; (Network Attached Storage) device Synology 220j 
+a few weeks later. &lt;/p&gt;
+&lt;h3&gt;Raspberry Pi 3B+&lt;/h3&gt;
+&lt;p&gt;The Raspberry Pi 3B+ and a case I bought one or two 
 years ago has been collecting dust in a drawer for quite some time. It is 
 time to bring them out and get some use out of them.&lt;/p&gt;
 &lt;p&gt;My original plan is to connect a retired &lt;span class="caps"&gt;SSD&lt;/span&gt; to the &lt;span class="caps"&gt;PI&lt;/span&gt; via an &lt;span class="caps"&gt;USB&lt;/span&gt; adapter. It would
@@ -218,7 +223,45 @@ Below are some notes I have when setting up the Pi. &lt;/p&gt;
 
 &lt;div style="max-width:400px"&gt;
   &lt;img class="img-fluid pb-3" src="/images/pi_ac.jpg" alt="Raspberry adapter"&gt;
-&lt;/div&gt;</content><category term="posts"></category><category term="hardware"></category><category term="linux"></category></entry><entry><title>A Case of Linux Mint Crash</title><link href="https://www.georgexyz.com/a-case-of-linux-mint-crash.html" rel="alternate"></link><published>2020-09-21T13:54:00-04:00</published><updated>2020-09-21T13:54:00-04:00</updated><author><name>George Zhang</name></author><id>tag:www.georgexyz.com,2020-09-21:/a-case-of-linux-mint-crash.html</id><summary type="html">&lt;p&gt;Last night my main computer with Linux Mint 20 crashed and I was really worried
+&lt;/div&gt;
+
+&lt;h3&gt;Synology 220j &lt;span class="caps"&gt;NAS&lt;/span&gt;&lt;/h3&gt;
+&lt;p&gt;The Synology 220j two bay &lt;span class="caps"&gt;NAS&lt;/span&gt; is on sale a few weeks ago and I get one.  The setup 
+process is easy and fast. I install two 2.5 inch laptop hard drives in it, and
+watch those two youtube vidoes.  About one hour later, the &lt;span class="caps"&gt;NAS&lt;/span&gt; is up and running.  &lt;/p&gt;
+&lt;p&gt;&lt;a href="https://youtu.be/rjgRjOf70us"&gt;Synology DS220j Review by StorageReview - Youtube&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;&lt;a href="https://youtu.be/nOnpFYQjaOQ"&gt;Synology &lt;span class="caps"&gt;DS220J&lt;/span&gt; &lt;span class="caps"&gt;NAS&lt;/span&gt; - The Best Way to Store &lt;span class="amp"&gt;&amp;amp;&lt;/span&gt; Backup your Data&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;Here are the steps to mount the nas in Linux Mint.  The idea is mainly from 
+&lt;a href="https://forums.linuxmint.com/viewtopic.php?t=302368"&gt;a post on linux mint online forum&lt;/a&gt;. &lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;Edit the &lt;code&gt;/etc/fstab&lt;/code&gt; to add a mounting point, and add the line to the end of the file. This 
+assumes that you name the Synology device as &lt;code&gt;nas&lt;/code&gt;. &lt;/li&gt;
+&lt;/ul&gt;
+&lt;div class="ml-5"&gt;
+
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;//nas.local/home/ /media/synology cifs \
+   credentials=/etc/samba/credentials,uid=1000,gid=1000 0 0 
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;/div&gt;
+
+&lt;ul&gt;
+&lt;li&gt;Edit the &lt;code&gt;/etc/samba/credentials&lt;/code&gt; file to add username and password. &lt;/li&gt;
+&lt;/ul&gt;
+&lt;div class="ml-5"&gt;
+
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;username=&amp;lt;username&amp;gt;
+password=&amp;lt;pwd&amp;gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;/div&gt;
+
+&lt;ul&gt;
+&lt;li&gt;Type command &lt;code&gt;sudo mkdir /media/synology&lt;/code&gt; to create the mounting directory. &lt;/li&gt;
+&lt;li&gt;Run command &lt;code&gt;sudo mount -a&lt;/code&gt; to activate the new line in &lt;code&gt;/etc/fstab&lt;/code&gt;.  &lt;/li&gt;
+&lt;/ul&gt;</content><category term="posts"></category><category term="hardware"></category><category term="linux"></category></entry><entry><title>A Case of Linux Mint Crash</title><link href="https://www.georgexyz.com/a-case-of-linux-mint-crash.html" rel="alternate"></link><published>2020-09-21T13:54:00-04:00</published><updated>2020-09-21T13:54:00-04:00</updated><author><name>George Zhang</name></author><id>tag:www.georgexyz.com,2020-09-21:/a-case-of-linux-mint-crash.html</id><summary type="html">&lt;p&gt;Last night my main computer with Linux Mint 20 crashed and I was really worried
 that I might lose the files I had been working on.  After many google searches …&lt;/p&gt;</summary><content type="html">&lt;p&gt;Last night my main computer with Linux Mint 20 crashed and I was really worried
 that I might lose the files I had been working on.  After many google searches,
 I found a solution and knew why it happened.  &lt;/p&gt;
