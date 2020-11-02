@@ -8,13 +8,13 @@ related_posts: django-WSGI, flask-application-and-request-contexts
 no: 59
 
 The Flask class is defined in the app.py module.   The class has a `__call__` method 
-defined on Line 2460.  If you have an object `app` which is an instance of Flask class,
-you can treat the object as a function (or callable). When you are calling it `app(...)`, 
+defined on Line 2460.  If you have an object `app` that is an instance of Flask class,
+you can treat the object as a function (or callable). When you call the object `app(...)`, 
 it will actually run the code in `__call__` method.  
 
 The `__call__` method in Flask class is simply calling another method `wsgi_app`, which 
 I will discuss in this article.  The code in the method is not long (list below) 
-because it just calls a few other method. 
+because it just calls a few other methods. 
 
 ```python
 def wsgi_app(self, environ, start_response):
@@ -69,7 +69,7 @@ method.
 
 The class defines a property `g` for easy access to the variable on the app stack. 
 The main methods of the class is `push` and `pop` defined on Lines 355 and 398. 
-To understand those two methods, you can read 
+To better understand those two methods, you can read 
 [Patrick Kennedy's article](https://testdriven.io/blog/flask-contexts-advanced/). 
 The interesting part of `push` method is that session is part of the request 
 context object and is initialized here.  The `_request_ctx_stack` object is 
