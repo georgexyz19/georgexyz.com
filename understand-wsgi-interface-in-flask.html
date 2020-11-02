@@ -1,0 +1,185 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <link rel="stylesheet" href="/theme/css/bs4min.css">
+    <link rel="shortcut icon" type="image/x-icon" href="/theme/images/favicon.ico" >
+    <link rel="icon" type="image/x-icon" href="/theme/images/favicon.ico" >
+<link rel="stylesheet" href="https://www.georgexyz.com/theme/css/friendly.css">
+<link rel="stylesheet" href="https://www.georgexyz.com/theme/css/custom.css">
+<meta name="author" content="George Zhang" />
+<meta name="keywords" content="WSGI,flask" />
+<meta name="description" content="The Flask class is defined in the app.py module. The class has a __call__ method defined on Line 2460. If you have an object app which is an instance …" />
+    <title>Understand WSGI Interface in Flask - George Zhang</title>
+  </head>
+  <body>
+    <!-- navbar -->
+    <nav class="navbar navbar-expand-md navbar-light" style="background-color: #e3f2fd;">
+      <div class="container">
+        <a class="navbar-brand" href="/">George Zhang</a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarColor01" aria-controls="navbarColor01" aria-expanded="false" aria-label="Toggle navigation">
+          <span class="navbar-toggler-icon"></span>
+        </button>
+
+        <div class="collapse navbar-collapse" id="navbarColor01">
+          <ul class="navbar-nav mr-auto">
+            <li class="nav-item">
+              <a class="nav-link " 
+                href="/articlelist.html">Articles</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link pr-3 " 
+                href="/tags.html">Tags</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link pr-3 "
+                 href="/pages/inkscape-tutorial.html">Inkscape Tutorial</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link "
+                   href="/pages/projects.html">Projects</a>
+              </li>
+          </ul>
+
+          <ul class="navbar-nav">
+            <li class="nav-item">
+              <a class="nav-link " 
+                 href="/pages/about.html">About</a>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </nav>
+
+   
+
+<div class="container">
+
+  <div class="row">
+    <div class="col-lg-8 mx-auto">
+
+      <h2>Understand <span class="caps">WSGI</span> Interface in Flask</h2>
+
+      <div class="text-muted mb-2">
+        <span>Posted on </span>
+        <time datetime="2020-11-01 22:48:00-05:00">
+          Sunday, 11/01/2020 22:48
+        </time>
+
+        <span>with tags: </span>
+        <a href="https://www.georgexyz.com/tag/wsgi.html">WSGI</a>
+/        <a href="https://www.georgexyz.com/tag/flask.html">flask</a>
+      </div>
+
+      <p>The Flask class is defined in the app.py module.   The class has a <code>__call__</code> method 
+defined on Line 2460.  If you have an object <code>app</code> which is an instance of Flask class,
+you can treat the object as a function (or callable). When you are calling it <code>app(...)</code>, 
+it will actually run the code in <code>__call__</code> method.  </p>
+<p>The <code>__call__</code> method in Flask class is simply calling another method <code>wsgi_app</code>, which 
+I will discuss in this article.  The code in the method is not long (list below) 
+because it just calls a few other method. </p>
+<div class="highlight"><pre><span></span><code><span class="k">def</span> <span class="nf">wsgi_app</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">environ</span><span class="p">,</span> <span class="n">start_response</span><span class="p">):</span>
+    <span class="n">ctx</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">request_context</span><span class="p">(</span><span class="n">environ</span><span class="p">)</span>
+    <span class="n">error</span> <span class="o">=</span> <span class="kc">None</span>
+    <span class="k">try</span><span class="p">:</span>
+        <span class="k">try</span><span class="p">:</span>
+            <span class="n">ctx</span><span class="o">.</span><span class="n">push</span><span class="p">()</span>
+            <span class="n">response</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">full_dispatch_request</span><span class="p">()</span>
+        <span class="k">except</span> <span class="ne">Exception</span> <span class="k">as</span> <span class="n">e</span><span class="p">:</span>
+            <span class="n">error</span> <span class="o">=</span> <span class="n">e</span>
+            <span class="n">response</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">handle_exception</span><span class="p">(</span><span class="n">e</span><span class="p">)</span>
+        <span class="k">except</span><span class="p">:</span>  <span class="c1"># noqa: B001</span>
+            <span class="n">error</span> <span class="o">=</span> <span class="n">sys</span><span class="o">.</span><span class="n">exc_info</span><span class="p">()[</span><span class="mi">1</span><span class="p">]</span>
+            <span class="k">raise</span>
+        <span class="k">return</span> <span class="n">response</span><span class="p">(</span><span class="n">environ</span><span class="p">,</span> <span class="n">start_response</span><span class="p">)</span>
+    <span class="k">finally</span><span class="p">:</span>
+        <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">should_ignore_error</span><span class="p">(</span><span class="n">error</span><span class="p">):</span>
+            <span class="n">error</span> <span class="o">=</span> <span class="kc">None</span>
+        <span class="n">ctx</span><span class="o">.</span><span class="n">auto_pop</span><span class="p">(</span><span class="n">error</span><span class="p">)</span>
+</code></pre></div>
+
+
+<p>If you ignore the exception handling code for a minute, the code is not too difficult to 
+understand.</p>
+<p>Let&#8217;s look the first line of the method in detail.  </p>
+<div class="highlight"><pre><span></span><code><span class="n">ctx</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">request_context</span><span class="p">(</span><span class="n">environ</span><span class="p">)</span>
+</code></pre></div>
+
+
+<p>The <code>request_context</code> method is defined on Line 2345, and the method is returning a 
+<code>RequestContext</code> object. Notice the first argument to the <code>RequestContext</code> constructor is 
+<code>self</code>, which is an instance of the Flask class.  </p>
+<div class="highlight"><pre><span></span><code><span class="k">def</span> <span class="nf">request_context</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">environ</span><span class="p">):</span>
+    <span class="k">return</span> <span class="n">RequestContext</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">environ</span><span class="p">)</span>
+</code></pre></div>
+
+
+<p>The <code>RequestContext</code> class is defined on Line 255 of the ctx.py module.  The first 
+sentence of the class documentation states that &#8220;the request context contains all 
+request relevant information&#8221;. Let&#8217;s look at the class members defined in <code>__init__</code> 
+method. </p>
+<ul>
+<li>self.app</li>
+<li>self.request</li>
+<li>self.url_adapter</li>
+<li>self.flashes</li>
+<li>self.session</li>
+<li>self.preserved = Flase</li>
+</ul>
+<p>The class defines a property <code>g</code> for easy access to the variable on the app stack. 
+The main methods of the class is <code>push</code> and <code>pop</code> defined on Lines 355 and 398. 
+To understand those two methods, you can read 
+<a href="https://testdriven.io/blog/flask-contexts-advanced/">Patrick Kennedy&#8217;s article</a>. 
+The interesting part of <code>push</code> method is that session is part of the request 
+context object and is initialized here.  The <code>_request_ctx_stack</code> object is 
+a global variable defined in global.py module.  </p>
+<div class="highlight"><pre><span></span><code><span class="k">def</span> <span class="nf">push</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+    <span class="n">app_ctx</span> <span class="o">=</span> <span class="n">_app_ctx_stack</span><span class="o">.</span><span class="n">top</span>
+    <span class="k">if</span> <span class="n">app_ctx</span> <span class="ow">is</span> <span class="kc">None</span> <span class="ow">or</span> <span class="n">app_ctx</span><span class="o">.</span><span class="n">app</span> <span class="o">!=</span> <span class="bp">self</span><span class="o">.</span><span class="n">app</span><span class="p">:</span>
+        <span class="n">app_ctx</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">app</span><span class="o">.</span><span class="n">app_context</span><span class="p">()</span>
+        <span class="n">app_ctx</span><span class="o">.</span><span class="n">push</span><span class="p">()</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_implicit_app_ctx_stack</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">app_ctx</span><span class="p">)</span>
+    <span class="k">else</span><span class="p">:</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_implicit_app_ctx_stack</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="kc">None</span><span class="p">)</span>
+
+    <span class="k">if</span> <span class="nb">hasattr</span><span class="p">(</span><span class="n">sys</span><span class="p">,</span> <span class="s2">&quot;exc_clear&quot;</span><span class="p">):</span>
+        <span class="n">sys</span><span class="o">.</span><span class="n">exc_clear</span><span class="p">()</span>
+
+    <span class="n">_request_ctx_stack</span><span class="o">.</span><span class="n">push</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span>
+
+    <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">session</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
+        <span class="n">session_interface</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">app</span><span class="o">.</span><span class="n">session_interface</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">session</span> <span class="o">=</span> <span class="n">session_interface</span><span class="o">.</span><span class="n">open_session</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">app</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">request</span><span class="p">)</span>
+
+        <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">session</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">session</span> <span class="o">=</span> <span class="n">session_interface</span><span class="o">.</span><span class="n">make_null_session</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">app</span><span class="p">)</span>
+
+    <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">url_adapter</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">match_request</span><span class="p">()</span>
+</code></pre></div>
+
+
+<p>I will stop here for now and look at other code in <code>wsgi_app</code> at a later time.   </p>
+
+      <div class="mt-5 border-top">
+        <h3>Related Posts:</h3>
+        <ul>
+          <li><a href="https://www.georgexyz.com/django-WSGI.html">What is <span class="caps">WSGI</span>?</a></li>
+          <li><a href="https://www.georgexyz.com/flask-application-and-request-contexts.html">Flask Application And Request Contexts</a></li>
+        </ul>
+      </div>
+
+
+    </div>
+  </div>
+
+</div>
+
+   
+    <script src="https://code.jquery.com/jquery-3.4.1.slim.min.js" integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js" integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6" crossorigin="anonymous"></script>
+  </body>
+</html>
