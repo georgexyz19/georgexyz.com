@@ -4724,7 +4724,16 @@ I checked the &lt;span class="caps"&gt;SVG&lt;/span&gt; file line by line and fo
 had wrong &lt;span class="caps"&gt;XML&lt;/span&gt; format. It somehow slipped into the drawing file. 
 Once the element was removed, the &lt;span class="caps"&gt;SVG&lt;/span&gt; file worked
 fine. The lesson learned was that when an &lt;span class="caps"&gt;SVG&lt;/span&gt; file contains corrupted
-&lt;span class="caps"&gt;XML&lt;/span&gt; code, Inkscape may crash without giving error messages. &lt;/p&gt;</content><category term="posts"></category><category term="inkscape"></category><category term="ubuntu"></category></entry><entry><title>Highway Geometric Design - Horizontal and Vertical Alignment Equations</title><link href="https://www.georgexyz.com/geometric-design-equations.html" rel="alternate"></link><published>2019-04-07T14:49:00-04:00</published><updated>2019-04-07T14:49:00-04:00</updated><author><name>George Zhang</name></author><id>tag:www.georgexyz.com,2019-04-07:/geometric-design-equations.html</id><summary type="html">&lt;p&gt;Horizontal and vertical curves are important concepts in a highway design class. 
+&lt;span class="caps"&gt;XML&lt;/span&gt; code, Inkscape may crash without giving error messages. &lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;Update on 11/2/2020&lt;/strong&gt;&lt;/p&gt;
+&lt;p&gt;I am working on a drawing in Inkscape (Windows) today and I cannot save
+the file as pdf.  The Inkscape simply pops up a dialog saying &amp;#8220;internal 
+error&amp;#8221; and exits.  I copy the file to a Linux Mint computer and I can 
+save the file as pdf, but the generated pdf file does not have the background image. 
+It turns out that I used the clip (menu Object &amp;gt; Clip &amp;gt; Set) funciton to 
+crop out the image. Once I remove the clip, the file saves to pdf fine. &lt;/p&gt;
+&lt;p&gt;The lesson is that it is better to use &lt;span class="caps"&gt;GIMP&lt;/span&gt; or other application to 
+crop out background image.  The clip function in Inkscape is not so reliable. &lt;/p&gt;</content><category term="posts"></category><category term="inkscape"></category><category term="ubuntu"></category></entry><entry><title>Highway Geometric Design - Horizontal and Vertical Alignment Equations</title><link href="https://www.georgexyz.com/geometric-design-equations.html" rel="alternate"></link><published>2019-04-07T14:49:00-04:00</published><updated>2019-04-07T14:49:00-04:00</updated><author><name>George Zhang</name></author><id>tag:www.georgexyz.com,2019-04-07:/geometric-design-equations.html</id><summary type="html">&lt;p&gt;Horizontal and vertical curves are important concepts in a highway design class. 
 However, many textbooks do not explain how to derive  equations.  When I 
 was preparing for Professional Engineering (&lt;span class="caps"&gt;PE …&lt;/span&gt;&lt;/p&gt;</summary><content type="html">&lt;p&gt;Horizontal and vertical curves are important concepts in a highway design class. 
 However, many textbooks do not explain how to derive  equations.  When I 
