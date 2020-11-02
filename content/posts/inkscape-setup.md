@@ -165,3 +165,15 @@ Once the element was removed, the SVG file worked
 fine. The lesson learned was that when an SVG file contains corrupted
 XML code, Inkscape may crash without giving error messages. 
 
+**Update on 11/2/2020**
+
+I am working on a drawing in Inkscape (Windows) today and I cannot save
+the file as pdf.  The Inkscape simply pops up a dialog saying "internal 
+error" and exits.  I copy the file to a Linux Mint computer and I can 
+save the file as pdf, but the generated pdf file does not have the background image. 
+It turns out that I used the clip (menu Object > Clip > Set) funciton to 
+crop out the image. Once I remove the clip, the file saves to pdf fine. 
+
+The lesson is that it is better to use GIMP or other application to 
+crop out background image.  The clip function in Inkscape is not so reliable. 
+
