@@ -1,12 +1,12 @@
 <?xml version="1.0" encoding="utf-8"?>
 <feed xmlns="http://www.w3.org/2005/Atom"><title>George Zhang</title><link href="https://www.georgexyz.com/" rel="alternate"></link><link href="https://www.georgexyz.com/feeds/all.atom.xml" rel="self"></link><id>https://www.georgexyz.com/</id><updated>2020-11-01T22:48:00-05:00</updated><entry><title>Understand WSGI Interface in Flask</title><link href="https://www.georgexyz.com/understand-wsgi-interface-in-flask.html" rel="alternate"></link><published>2020-11-01T22:48:00-05:00</published><updated>2020-11-01T22:48:00-05:00</updated><author><name>George Zhang</name></author><id>tag:www.georgexyz.com,2020-11-01:/understand-wsgi-interface-in-flask.html</id><summary type="html">&lt;p&gt;The Flask class is defined in the app.py module.   The class has a &lt;code&gt;__call__&lt;/code&gt; method 
-defined on Line 2460.  If you have an object &lt;code&gt;app&lt;/code&gt; which is an instance …&lt;/p&gt;</summary><content type="html">&lt;p&gt;The Flask class is defined in the app.py module.   The class has a &lt;code&gt;__call__&lt;/code&gt; method 
-defined on Line 2460.  If you have an object &lt;code&gt;app&lt;/code&gt; which is an instance of Flask class,
-you can treat the object as a function (or callable). When you are calling it &lt;code&gt;app(...)&lt;/code&gt;, 
+defined on Line 2460.  If you have an object &lt;code&gt;app&lt;/code&gt; that is an instance …&lt;/p&gt;</summary><content type="html">&lt;p&gt;The Flask class is defined in the app.py module.   The class has a &lt;code&gt;__call__&lt;/code&gt; method 
+defined on Line 2460.  If you have an object &lt;code&gt;app&lt;/code&gt; that is an instance of Flask class,
+you can treat the object as a function (or callable). When you call the object &lt;code&gt;app(...)&lt;/code&gt;, 
 it will actually run the code in &lt;code&gt;__call__&lt;/code&gt; method.  &lt;/p&gt;
 &lt;p&gt;The &lt;code&gt;__call__&lt;/code&gt; method in Flask class is simply calling another method &lt;code&gt;wsgi_app&lt;/code&gt;, which 
 I will discuss in this article.  The code in the method is not long (list below) 
-because it just calls a few other method. &lt;/p&gt;
+because it just calls a few other methods. &lt;/p&gt;
 &lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;&lt;span class="k"&gt;def&lt;/span&gt; &lt;span class="nf"&gt;wsgi_app&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="bp"&gt;self&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;environ&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;start_response&lt;/span&gt;&lt;span class="p"&gt;):&lt;/span&gt;
     &lt;span class="n"&gt;ctx&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="bp"&gt;self&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;request_context&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;environ&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
     &lt;span class="n"&gt;error&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="kc"&gt;None&lt;/span&gt;
@@ -57,7 +57,7 @@ method. &lt;/p&gt;
 &lt;/ul&gt;
 &lt;p&gt;The class defines a property &lt;code&gt;g&lt;/code&gt; for easy access to the variable on the app stack. 
 The main methods of the class is &lt;code&gt;push&lt;/code&gt; and &lt;code&gt;pop&lt;/code&gt; defined on Lines 355 and 398. 
-To understand those two methods, you can read 
+To better understand those two methods, you can read 
 &lt;a href="https://testdriven.io/blog/flask-contexts-advanced/"&gt;Patrick Kennedy&amp;#8217;s article&lt;/a&gt;. 
 The interesting part of &lt;code&gt;push&lt;/code&gt; method is that session is part of the request 
 context object and is initialized here.  The &lt;code&gt;_request_ctx_stack&lt;/code&gt; object is 

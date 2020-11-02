@@ -11,7 +11,7 @@
 <link rel="stylesheet" href="https://www.georgexyz.com/theme/css/custom.css">
 <meta name="author" content="George Zhang" />
 <meta name="keywords" content="WSGI,flask" />
-<meta name="description" content="The Flask class is defined in the app.py module. The class has a __call__ method defined on Line 2460. If you have an object app which is an instance …" />
+<meta name="description" content="The Flask class is defined in the app.py module. The class has a __call__ method defined on Line 2460. If you have an object app that is an instance …" />
     <title>Understand WSGI Interface in Flask - George Zhang</title>
   </head>
   <body>
@@ -74,12 +74,12 @@
       </div>
 
       <p>The Flask class is defined in the app.py module.   The class has a <code>__call__</code> method 
-defined on Line 2460.  If you have an object <code>app</code> which is an instance of Flask class,
-you can treat the object as a function (or callable). When you are calling it <code>app(...)</code>, 
+defined on Line 2460.  If you have an object <code>app</code> that is an instance of Flask class,
+you can treat the object as a function (or callable). When you call the object <code>app(...)</code>, 
 it will actually run the code in <code>__call__</code> method.  </p>
 <p>The <code>__call__</code> method in Flask class is simply calling another method <code>wsgi_app</code>, which 
 I will discuss in this article.  The code in the method is not long (list below) 
-because it just calls a few other method. </p>
+because it just calls a few other methods. </p>
 <div class="highlight"><pre><span></span><code><span class="k">def</span> <span class="nf">wsgi_app</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">environ</span><span class="p">,</span> <span class="n">start_response</span><span class="p">):</span>
     <span class="n">ctx</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">request_context</span><span class="p">(</span><span class="n">environ</span><span class="p">)</span>
     <span class="n">error</span> <span class="o">=</span> <span class="kc">None</span>
@@ -130,7 +130,7 @@ method. </p>
 </ul>
 <p>The class defines a property <code>g</code> for easy access to the variable on the app stack. 
 The main methods of the class is <code>push</code> and <code>pop</code> defined on Lines 355 and 398. 
-To understand those two methods, you can read 
+To better understand those two methods, you can read 
 <a href="https://testdriven.io/blog/flask-contexts-advanced/">Patrick Kennedy&#8217;s article</a>. 
 The interesting part of <code>push</code> method is that session is part of the request 
 context object and is initialized here.  The <code>_request_ctx_stack</code> object is 
