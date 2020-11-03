@@ -11,8 +11,8 @@
 <link rel="stylesheet" href="https://www.georgexyz.com/theme/css/custom.css">
 <meta name="author" content="George Zhang" />
 <meta name="keywords" content="WSGI,flask" />
-<meta name="description" content="The Flask class is defined in the app.py module. The class has a __call__ method defined on Line 2460. If you have an object app that is an instance …" />
-    <title>Understand WSGI Interface in Flask - George Zhang</title>
+<meta name="description" content="The Flask class is defined in the app.py module. The class has a __call__ method defined on Line 2460 (Flask version 1.1.2). If you have an object …" />
+    <title>Understand WSGI Interface and Request Context in Flask - George Zhang</title>
   </head>
   <body>
     <!-- navbar -->
@@ -60,7 +60,7 @@
   <div class="row">
     <div class="col-lg-8 mx-auto">
 
-      <h2>Understand <span class="caps">WSGI</span> Interface in Flask</h2>
+      <h2>Understand <span class="caps">WSGI</span> Interface and Request Context in Flask</h2>
 
       <div class="text-muted mb-2">
         <span>Posted on </span>
@@ -74,7 +74,8 @@
       </div>
 
       <p>The Flask class is defined in the app.py module.   The class has a <code>__call__</code> method 
-defined on Line 2460.  If you have an object <code>app</code> that is an instance of Flask class,
+defined on Line 2460 (Flask version 1.1.2).  If you have an object <code>app</code> that is an 
+instance of Flask class,
 you can treat the object as a function (or callable). When you call the object <code>app(...)</code>, 
 it will actually run the code in <code>__call__</code> method.  </p>
 <p>The <code>__call__</code> method in Flask class is simply calling another method <code>wsgi_app</code>, which 

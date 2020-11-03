@@ -1,7 +1,52 @@
 <?xml version="1.0" encoding="utf-8"?>
-<feed xmlns="http://www.w3.org/2005/Atom"><title>George Zhang</title><link href="https://www.georgexyz.com/" rel="alternate"></link><link href="https://www.georgexyz.com/feeds/all.atom.xml" rel="self"></link><id>https://www.georgexyz.com/</id><updated>2020-11-01T22:48:00-05:00</updated><entry><title>Understand WSGI Interface in Flask</title><link href="https://www.georgexyz.com/understand-wsgi-interface-in-flask.html" rel="alternate"></link><published>2020-11-01T22:48:00-05:00</published><updated>2020-11-01T22:48:00-05:00</updated><author><name>George Zhang</name></author><id>tag:www.georgexyz.com,2020-11-01:/understand-wsgi-interface-in-flask.html</id><summary type="html">&lt;p&gt;The Flask class is defined in the app.py module.   The class has a &lt;code&gt;__call__&lt;/code&gt; method 
-defined on Line 2460.  If you have an object &lt;code&gt;app&lt;/code&gt; that is an instance …&lt;/p&gt;</summary><content type="html">&lt;p&gt;The Flask class is defined in the app.py module.   The class has a &lt;code&gt;__call__&lt;/code&gt; method 
-defined on Line 2460.  If you have an object &lt;code&gt;app&lt;/code&gt; that is an instance of Flask class,
+<feed xmlns="http://www.w3.org/2005/Atom"><title>George Zhang</title><link href="https://www.georgexyz.com/" rel="alternate"></link><link href="https://www.georgexyz.com/feeds/all.atom.xml" rel="self"></link><id>https://www.georgexyz.com/</id><updated>2020-11-03T15:19:00-05:00</updated><entry><title>Flask Application Context</title><link href="https://www.georgexyz.com/flask-application-context.html" rel="alternate"></link><published>2020-11-03T15:19:00-05:00</published><updated>2020-11-03T15:19:00-05:00</updated><author><name>George Zhang</name></author><id>tag:www.georgexyz.com,2020-11-03:/flask-application-context.html</id><summary type="html">&lt;p&gt;The &lt;code&gt;push&lt;/code&gt; method of &lt;code&gt;RequestContext&lt;/code&gt; class has those two lines of code (Lines 373 and 374)
+listed below. 
+It pushes the application context variable &lt;code&gt;app_ctx&lt;/code&gt; when a request context is …&lt;/p&gt;</summary><content type="html">&lt;p&gt;The &lt;code&gt;push&lt;/code&gt; method of &lt;code&gt;RequestContext&lt;/code&gt; class has those two lines of code (Lines 373 and 374)
+listed below. 
+It pushes the application context variable &lt;code&gt;app_ctx&lt;/code&gt; when a request context is pushed. &lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;app_ctx = self.app.app_context()
+app_ctx.push()
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;p&gt;The &lt;code&gt;app_context&lt;/code&gt; method of &lt;code&gt;Flask&lt;/code&gt; class is defined on Line 2324 in app.py file. The method 
+is really simple and the code is shown below. It initializes an &lt;code&gt;AppContext&lt;/code&gt; object and returns
+it.  &lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;def app_context(self):
+    return AppContext(self)
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;p&gt;The &lt;code&gt;AppContext&lt;/code&gt; class is however defined on Line 205 of ctx.py file.  The code in &lt;code&gt;__init__&lt;/code&gt; 
+method of &lt;code&gt;AppContext&lt;/code&gt; class is shown below. &lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;class AppContext(object):
+    def __init__(self, app):
+        self.app = app
+        self.url_adapter = app.create_url_adapter(None)
+        self.g = app.app_ctx_globals_class()
+
+        # Like request context, app contexts can be pushed multiple times
+        # but there a basic &amp;quot;refcount&amp;quot; is enough to track them.
+        self._refcnt = 0
+    ......
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;p&gt;The &lt;code&gt;AppContext&lt;/code&gt; class defines 4 member variables &lt;code&gt;self.app&lt;/code&gt;, &lt;code&gt;self.url_adapter&lt;/code&gt;, 
+&lt;code&gt;self.g&lt;/code&gt;, and &lt;code&gt;self._refcnt&lt;/code&gt;.  The interesting variable is &lt;code&gt;self.g&lt;/code&gt;, which is 
+an instance of &lt;code&gt;_AppCtxGlobals&lt;/code&gt; class defined on Line 28 of ctx.py file.  Because 
+it is a class object, you can set any attribute on the object like this. &lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;g.user = User(...)
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;p&gt;The &lt;code&gt;push&lt;/code&gt; and &lt;code&gt;pop&lt;/code&gt; methods of &lt;code&gt;AppContext&lt;/code&gt; class is simpler than the methods in 
+&lt;code&gt;RequestContext&lt;/code&gt; class. It pushes or pops the object on the &lt;code&gt;_app_ctx_stack&lt;/code&gt; 
+global variable defined in &lt;code&gt;globals.py&lt;/code&gt;.&lt;/p&gt;
+&lt;p&gt;I will discuss the &lt;code&gt;self.url_adapter&lt;/code&gt; in a later article. &lt;/p&gt;</content><category term="posts"></category><category term="flask"></category></entry><entry><title>Understand WSGI Interface and Request Context in Flask</title><link href="https://www.georgexyz.com/understand-wsgi-interface-in-flask.html" rel="alternate"></link><published>2020-11-01T22:48:00-05:00</published><updated>2020-11-01T22:48:00-05:00</updated><author><name>George Zhang</name></author><id>tag:www.georgexyz.com,2020-11-01:/understand-wsgi-interface-in-flask.html</id><summary type="html">&lt;p&gt;The Flask class is defined in the app.py module.   The class has a &lt;code&gt;__call__&lt;/code&gt; method 
+defined on Line 2460 (Flask version 1.1.2).  If you have an object …&lt;/p&gt;</summary><content type="html">&lt;p&gt;The Flask class is defined in the app.py module.   The class has a &lt;code&gt;__call__&lt;/code&gt; method 
+defined on Line 2460 (Flask version 1.1.2).  If you have an object &lt;code&gt;app&lt;/code&gt; that is an 
+instance of Flask class,
 you can treat the object as a function (or callable). When you call the object &lt;code&gt;app(...)&lt;/code&gt;, 
 it will actually run the code in &lt;code&gt;__call__&lt;/code&gt; method.  &lt;/p&gt;
 &lt;p&gt;The &lt;code&gt;__call__&lt;/code&gt; method in Flask class is simply calling another method &lt;code&gt;wsgi_app&lt;/code&gt;, which 
@@ -238,11 +283,14 @@ in more details than other articles. &lt;/p&gt;
 &lt;p&gt;Article - &lt;a href="https://testdriven.io/blog/flask-contexts-advanced/"&gt;Deep Dive into Flask&amp;#8217;s Application and Request Contexts&lt;/a&gt;&lt;/p&gt;
 &lt;p&gt;Presentation on Youtube - &lt;a href="https://www.youtube.com/watch?v=fq8y-9UHjyk&amp;amp;ab_channel=FlaskCon2020"&gt;Demystifying Flask&amp;#8217;s Application and Request Contexts with pytest&lt;/a&gt;&lt;/p&gt;
 &lt;p&gt;The article above needs some background knowledge on Python threading.  The realpython 
-website has an excellent article on threading by Jim Anderson. The article covers most threading topics on the official Python threading documentation. &lt;/p&gt;
+website has an excellent article on threading by Jim Anderson. The article covers most threading topics in the official Python threading documentation. &lt;/p&gt;
 &lt;p&gt;Realpython.com - &lt;a href="https://realpython.com/intro-to-python-threading/"&gt;An Intro to Threading in Python&lt;/a&gt;&lt;/p&gt;
 &lt;p&gt;Python.org - &lt;a href="https://docs.python.org/3/library/threading.html#thread-local-data"&gt;Threading - Thread-based Parallelism&lt;/a&gt;&lt;/p&gt;
-&lt;p&gt;Above is what I have read on the topic.  I will continue to read articles and 
-Flask source code in this topic and update the post. &lt;/p&gt;</content><category term="posts"></category><category term="flask"></category><category term="python"></category></entry><entry><title>Two Git Books</title><link href="https://www.georgexyz.com/two-git-books.html" rel="alternate"></link><published>2020-09-30T10:23:00-04:00</published><updated>2020-09-30T10:23:00-04:00</updated><author><name>George Zhang</name></author><id>tag:www.georgexyz.com,2020-09-30:/two-git-books.html</id><summary type="html">&lt;p&gt;This post is about two Git books I recently read.  Git is a complicated tool 
+&lt;p&gt;The Flask documentation has one page for application context and another page for request context. 
+The documentation pages are not written in a tutorial style and not easy to understand if you do not 
+read the code, but they are good and accurate.&lt;/p&gt;
+&lt;p&gt;Flask documentation page - &lt;a href="https://flask.palletsprojects.com/en/1.1.x/appcontext/"&gt;The Application Context&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;Flask documentation page - &lt;a href="https://flask.palletsprojects.com/en/1.1.x/reqcontext/"&gt;The Request Context&lt;/a&gt; &lt;/p&gt;</content><category term="posts"></category><category term="flask"></category><category term="python"></category></entry><entry><title>Two Git Books</title><link href="https://www.georgexyz.com/two-git-books.html" rel="alternate"></link><published>2020-09-30T10:23:00-04:00</published><updated>2020-09-30T10:23:00-04:00</updated><author><name>George Zhang</name></author><id>tag:www.georgexyz.com,2020-09-30:/two-git-books.html</id><summary type="html">&lt;p&gt;This post is about two Git books I recently read.  Git is a complicated tool 
 which is not easy to figure out simply by Google searching. &lt;/p&gt;
 &lt;p&gt;I start with the …&lt;/p&gt;</summary><content type="html">&lt;p&gt;This post is about two Git books I recently read.  Git is a complicated tool 
 which is not easy to figure out simply by Google searching. &lt;/p&gt;
