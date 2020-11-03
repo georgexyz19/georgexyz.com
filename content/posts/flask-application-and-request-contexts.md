@@ -20,14 +20,20 @@ Article - [Deep Dive into Flask's Application and Request Contexts](https://test
 Presentation on Youtube - [Demystifying Flask's Application and Request Contexts with pytest](https://www.youtube.com/watch?v=fq8y-9UHjyk&ab_channel=FlaskCon2020)
 
 The article above needs some background knowledge on Python threading.  The realpython 
-website has an excellent article on threading by Jim Anderson. The article covers most threading topics on the official Python threading documentation. 
+website has an excellent article on threading by Jim Anderson. The article covers most threading topics in the official Python threading documentation. 
 
 Realpython.com - [An Intro to Threading in Python](https://realpython.com/intro-to-python-threading/)
 
 Python.org - [Threading - Thread-based Parallelism](https://docs.python.org/3/library/threading.html#thread-local-data)
 
-Above is what I have read on the topic.  I will continue to read articles and 
-Flask source code in this topic and update the post. 
+The Flask documentation has one page for application context and another page for request context. 
+The documentation pages are not written in a tutorial style and not easy to understand if you do not 
+read the code, but they are good and accurate.
+
+Flask documentation page - [The Application Context](https://flask.palletsprojects.com/en/1.1.x/appcontext/)
+
+Flask documentation page - [The Request Context](https://flask.palletsprojects.com/en/1.1.x/reqcontext/) 
+
 
 
  

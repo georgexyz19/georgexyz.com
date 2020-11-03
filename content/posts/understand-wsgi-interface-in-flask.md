@@ -1,4 +1,4 @@
-title: Understand WSGI Interface in Flask
+title: Understand WSGI Interface and Request Context in Flask
 slug: understand-wsgi-interface-in-flask
 date: 2020-11-01 22:48
 modified: 2020-11-01 22:48
@@ -8,7 +8,8 @@ related_posts: django-WSGI, flask-application-and-request-contexts
 no: 59
 
 The Flask class is defined in the app.py module.   The class has a `__call__` method 
-defined on Line 2460.  If you have an object `app` that is an instance of Flask class,
+defined on Line 2460 (Flask version 1.1.2).  If you have an object `app` that is an 
+instance of Flask class,
 you can treat the object as a function (or callable). When you call the object `app(...)`, 
 it will actually run the code in `__call__` method.  
 
