@@ -7,9 +7,9 @@ note: look at Flask AppContext code
 related_posts: understand-wsgi-interface-in-flask, django-WSGI
 no: 60
 
-The `push` method of `RequestContext` class has those two lines of code (Lines 373 and 374)
-listed below. 
-It pushes the application context variable `app_ctx` when a request context is pushed. 
+The `push` method of `RequestContext` class has those two lines of code (Lines 373 and 374 of 
+ctx.py module in Flask 1.1.2) listed below. It pushes the application context 
+variable `app_ctx` when a request context is pushed. 
 
 ```
 app_ctx = self.app.app_context()
@@ -41,7 +41,7 @@ class AppContext(object):
     ......
 ```
 
-The `AppContext` class defines 4 member variables `self.app`, `self.url_adapter`, 
+The `AppContext` class defines 4 instance variables `self.app`, `self.url_adapter`, 
 `self.g`, and `self._refcnt`.  The interesting variable is `self.g`, which is 
 an instance of `_AppCtxGlobals` class defined on Line 28 of ctx.py file.  Because 
 it is a class object, you can set any attribute on the object like this. 
@@ -50,7 +50,7 @@ it is a class object, you can set any attribute on the object like this.
 g.user = User(...)
 ```
 
-The `push` and `pop` methods of `AppContext` class is simpler than the methods in 
+The `push` and `pop` methods of `AppContext` class is simpler than methods in 
 `RequestContext` class. It pushes or pops the object on the `_app_ctx_stack` 
 global variable defined in `globals.py`.
 
