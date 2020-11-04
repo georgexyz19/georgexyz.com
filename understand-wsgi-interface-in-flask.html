@@ -119,7 +119,7 @@ understand.</p>
 
 <p>The <code>RequestContext</code> class is defined on Line 255 of the ctx.py module.  The first 
 sentence of the class documentation states that &#8220;the request context contains all 
-request relevant information&#8221;. Let&#8217;s look at the class members defined in <code>__init__</code> 
+request relevant information&#8221;. Let&#8217;s look at the instance variables defined in <code>__init__</code> 
 method. </p>
 <ul>
 <li>self.app</li>
@@ -127,10 +127,10 @@ method. </p>
 <li>self.url_adapter</li>
 <li>self.flashes</li>
 <li>self.session</li>
-<li>self.preserved = Flase</li>
+<li>self.preserved = False</li>
 </ul>
 <p>The class defines a property <code>g</code> for easy access to the variable on the app stack. 
-The main methods of the class is <code>push</code> and <code>pop</code> defined on Lines 355 and 398. 
+The main methods of the class are <code>push</code> and <code>pop</code> defined on Lines 355 and 398. 
 To better understand those two methods, you can read 
 <a href="https://testdriven.io/blog/flask-contexts-advanced/">Patrick Kennedy&#8217;s article</a>. 
 The interesting part of <code>push</code> method is that session is part of the request 
