@@ -26,7 +26,7 @@ $ source venv/bin/activate
 $ pip install flask
 ```
 
-Here is output of `flask freeze` command.  The `pip install` command also installs Flask dependencies.  
+Here is output of `pip freeze` command.  The `pip install` command also installs Flask dependencies.  
 
 ```
 click==7.1.2
