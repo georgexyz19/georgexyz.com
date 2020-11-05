@@ -152,7 +152,7 @@ $ pip install flask
 &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
 
 
-&lt;p&gt;Here is output of &lt;code&gt;flask freeze&lt;/code&gt; command.  The &lt;code&gt;pip install&lt;/code&gt; command also installs Flask dependencies.  &lt;/p&gt;
+&lt;p&gt;Here is output of &lt;code&gt;pip freeze&lt;/code&gt; command.  The &lt;code&gt;pip install&lt;/code&gt; command also installs Flask dependencies.  &lt;/p&gt;
 &lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;click==7.1.2
 Flask==1.1.2
 itsdangerous==1.1.0
