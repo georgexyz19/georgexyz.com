@@ -1,0 +1,125 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <link rel="stylesheet" href="/theme/css/bs4min.css">
+    <link rel="shortcut icon" type="image/x-icon" href="/theme/images/favicon.ico" >
+    <link rel="icon" type="image/x-icon" href="/theme/images/favicon.ico" >
+<link rel="stylesheet" href="https://www.georgexyz.com/theme/css/friendly.css">
+<link rel="stylesheet" href="https://www.georgexyz.com/theme/css/custom.css">
+<meta name="author" content="George Zhang" />
+<meta name="keywords" content="flask,python" />
+<meta name="description" content="URL Mapping is not a big topic in Flask. The Flask documentation has a very short section on URL Route Registrations. Miguel Grinberg’s Flask Web Development (2nd) book only …" />
+    <title>URL Mapping in Flask - George Zhang</title>
+  </head>
+  <body>
+    <!-- navbar -->
+    <nav class="navbar navbar-expand-md navbar-light" style="background-color: #e3f2fd;">
+      <div class="container">
+        <a class="navbar-brand" href="/">George Zhang</a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarColor01" aria-controls="navbarColor01" aria-expanded="false" aria-label="Toggle navigation">
+          <span class="navbar-toggler-icon"></span>
+        </button>
+
+        <div class="collapse navbar-collapse" id="navbarColor01">
+          <ul class="navbar-nav mr-auto">
+            <li class="nav-item">
+              <a class="nav-link " 
+                href="/articlelist.html">Articles</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link pr-3 " 
+                href="/tags.html">Tags</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link pr-3 "
+                 href="/pages/inkscape-tutorial.html">Inkscape Tutorial</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link "
+                   href="/pages/projects.html">Projects</a>
+              </li>
+          </ul>
+
+          <ul class="navbar-nav">
+            <li class="nav-item">
+              <a class="nav-link " 
+                 href="/pages/about.html">About</a>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </nav>
+
+   
+
+<div class="container">
+
+  <div class="row">
+    <div class="col-lg-8 mx-auto">
+
+      <h2><span class="caps">URL</span> Mapping in Flask</h2>
+
+      <div class="text-muted mb-2">
+        <span>Posted on </span>
+        <time datetime="2020-11-05 22:38:00-05:00">
+          Thursday, 11/05/2020 22:38
+        </time>
+
+        <span>with tags: </span>
+        <a href="https://www.georgexyz.com/tag/flask.html">flask</a>
+/        <a href="https://www.georgexyz.com/tag/python.html">python</a>
+      </div>
+
+      <p><span class="caps">URL</span> Mapping is not a big topic in Flask.  The Flask documentation has a very short 
+section on <a href="https://flask.palletsprojects.com/en/1.1.x/api/#url-route-registrations"><span class="caps">URL</span> Route Registrations</a>. 
+Miguel Grinberg&#8217;s <em>Flask Web Development (2nd)</em> book only discusses the topic briefly on pages 8-9 and 36-38. 
+The <code>route</code> decorator is very straightforward to work with in Flask.  </p>
+<div class="highlight"><pre><span></span><code>@app.route(&#39;/)
+def index():
+    ....
+
+@app.route(&#39;/user/&lt;name&gt;&#39;)
+def user(name):
+    ....
+</code></pre></div>
+
+
+<p>You can define the route function first and call <code>add_url_rule</code> method of Flask class to 
+add the url rule.</p>
+<div class="highlight"><pre><span></span><code>def index():
+    ....
+
+app.add_url_rule(&#39;/&#39;, &#39;index&#39;, index)
+</code></pre></div>
+
+
+<p>If the <span class="caps">URL</span> mapping is only one directional which maps a <span class="caps">URL</span> route to a function, the Python code 
+implementing the function should not be very complicated.  The <span class="caps">URL</span> mapping can also do reverse mapping. 
+When you have an end point name <code>index</code>, you can call <code>url_for('index')</code> to get the <span class="caps">URL</span> route <code>/</code>, or
+call <code>url_for('user', name='john')</code> to get the route <code>/user/john</code>. </p>
+<p>Let&#8217;s take a quick look at the Flask code related to <span class="caps">URL</span> Mapping.</p>
+<p>To be continued &#8230;&#8230;.</p>
+
+      <div class="mt-5 border-top">
+        <h3>Related Posts:</h3>
+        <ul>
+          <li><a href="https://www.georgexyz.com/understand-wsgi-interface-in-flask.html">Understand <span class="caps">WSGI</span> Interface and Request Context in Flask</a></li>
+          <li><a href="https://www.georgexyz.com/django-WSGI.html">What is <span class="caps">WSGI</span>?</a></li>
+        </ul>
+      </div>
+
+
+    </div>
+  </div>
+
+</div>
+
+   
+    <script src="https://code.jquery.com/jquery-3.4.1.slim.min.js" integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js" integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6" crossorigin="anonymous"></script>
+  </body>
+</html>
