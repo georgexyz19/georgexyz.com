@@ -11,7 +11,7 @@
 <link rel="stylesheet" href="https://www.georgexyz.com/theme/css/custom.css">
 <meta name="author" content="George Zhang" />
 <meta name="keywords" content="flask,python" />
-<meta name="description" content="URL Mapping is not a big topic in Flask. The Flask documentation has a very short section on URL Route Registrations. Miguel Grinberg’s Flask Web Development (2nd) book only …" />
+<meta name="description" content="URL Mapping (or URL Routing) is not a big topic in Flask. The Flask documentation has a very short section on URL Route Registrations. Miguel Grinberg’s Flask Web Development …" />
     <title>URL Mapping in Flask - George Zhang</title>
   </head>
   <body>
@@ -73,35 +73,136 @@
 /        <a href="https://www.georgexyz.com/tag/python.html">python</a>
       </div>
 
-      <p><span class="caps">URL</span> Mapping is not a big topic in Flask.  The Flask documentation has a very short 
+      <p><span class="caps">URL</span> Mapping (or <span class="caps">URL</span> Routing) is not a big topic in Flask.  The Flask documentation has a very short 
 section on <a href="https://flask.palletsprojects.com/en/1.1.x/api/#url-route-registrations"><span class="caps">URL</span> Route Registrations</a>. 
 Miguel Grinberg&#8217;s <em>Flask Web Development (2nd)</em> book only discusses the topic briefly on pages 8-9 and 36-38. 
-The <code>route</code> decorator is very straightforward to work with in Flask.  </p>
-<div class="highlight"><pre><span></span><code>@app.route(&#39;/)
-def index():
-    ....
+The <code>route</code> decorator is very straightforward to use in Flask.  </p>
+<div class="highlight"><pre><span></span><code><span class="nd">@app</span><span class="o">.</span><span class="n">route</span><span class="p">(</span><span class="s1">&#39;/)</span>
+<span class="k">def</span> <span class="nf">index</span><span class="p">():</span>
+    <span class="o">....</span>
 
-@app.route(&#39;/user/&lt;name&gt;&#39;)
-def user(name):
-    ....
+<span class="nd">@app</span><span class="o">.</span><span class="n">route</span><span class="p">(</span><span class="s1">&#39;/user/&lt;name&gt;&#39;</span><span class="p">)</span>
+<span class="k">def</span> <span class="nf">user</span><span class="p">(</span><span class="n">name</span><span class="p">):</span>
+    <span class="o">....</span>
 </code></pre></div>
 
 
 <p>You can define the route function first and call <code>add_url_rule</code> method of Flask class to 
 add the url rule.</p>
-<div class="highlight"><pre><span></span><code>def index():
-    ....
+<div class="highlight"><pre><span></span><code><span class="k">def</span> <span class="nf">index</span><span class="p">():</span>
+    <span class="o">....</span>
 
-app.add_url_rule(&#39;/&#39;, &#39;index&#39;, index)
+<span class="n">app</span><span class="o">.</span><span class="n">add_url_rule</span><span class="p">(</span><span class="s1">&#39;/&#39;</span><span class="p">,</span> <span class="s1">&#39;index&#39;</span><span class="p">,</span> <span class="n">index</span><span class="p">)</span>
 </code></pre></div>
 
 
-<p>If the <span class="caps">URL</span> mapping is only one directional which maps a <span class="caps">URL</span> route to a function, the Python code 
-implementing the function should not be very complicated.  The <span class="caps">URL</span> mapping can also do reverse mapping. 
+<p>If the <span class="caps">URL</span> mapping is only one directional that maps a <span class="caps">URL</span> route to a function, the Python code 
+implementing it should not be very complicated.  The <span class="caps">URL</span> mapping can also do reverse mapping. 
 When you have an end point name <code>index</code>, you can call <code>url_for('index')</code> to get the <span class="caps">URL</span> route <code>/</code>, or
 call <code>url_for('user', name='john')</code> to get the route <code>/user/john</code>. </p>
-<p>Let&#8217;s take a quick look at the Flask code related to <span class="caps">URL</span> Mapping.</p>
-<p>To be continued &#8230;&#8230;.</p>
+<p>Let&#8217;s look at the Flask source code to find out more about <span class="caps">URL</span> mapping.  The <code>__init__</code> method 
+of Flask class defines an instance variable <code>url_map</code> on Line 582.  </p>
+<div class="highlight"><pre><span></span><code><span class="bp">self</span><span class="o">.</span><span class="n">url_map</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">url_map_class</span><span class="p">()</span>
+<span class="bp">self</span><span class="o">.</span><span class="n">url_map</span><span class="o">.</span><span class="n">host_matching</span> <span class="o">=</span> <span class="n">host_matching</span>
+</code></pre></div>
+
+
+<p>The <code>url_map_class</code> is a class variable defined on Line 366 which is <code>Map</code> class imported 
+from <code>werkzeug.routing</code> module. </p>
+<p>The <code>add_url_rule</code> method is defined on Line 1177 in app.py module.  The method is quite 
+long, and part of the code is shown below. </p>
+<div class="highlight"><pre><span></span><code><span class="k">if</span> <span class="n">endpoint</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
+    <span class="n">endpoint</span> <span class="o">=</span> <span class="n">_endpoint_from_view_func</span><span class="p">(</span><span class="n">view_func</span><span class="p">)</span>
+<span class="o">...</span>
+<span class="n">rule</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">url_rule_class</span><span class="p">(</span><span class="n">rule</span><span class="p">,</span> <span class="n">methods</span><span class="o">=</span><span class="n">methods</span><span class="p">,</span> <span class="o">**</span><span class="n">options</span><span class="p">)</span>
+<span class="o">...</span>
+<span class="bp">self</span><span class="o">.</span><span class="n">url_map</span><span class="o">.</span><span class="n">add</span><span class="p">(</span><span class="n">rule</span><span class="p">)</span>
+<span class="o">...</span>
+
+<span class="k">if</span> <span class="n">view_func</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
+    <span class="o">...</span>
+    <span class="bp">self</span><span class="o">.</span><span class="n">view_functions</span><span class="p">[</span><span class="n">endpoint</span><span class="p">]</span> <span class="o">=</span> <span class="n">view_func</span>
+</code></pre></div>
+
+
+<p>The <code>url_rule_class</code> is referring to <code>Rule</code> class imported from <code>werkzeug.routing</code>.<br>
+The <code>view_functions</code> is one of the instance variables (dictionary) of Flask class 
+defined on Line 444. </p>
+<p>The <code>route</code> decorator is defined on Line 1288.  It calls the <code>add_url_method</code> method, 
+and the code is shown below. </p>
+<div class="highlight"><pre><span></span><code><span class="k">def</span> <span class="nf">route</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">rule</span><span class="p">,</span> <span class="o">**</span><span class="n">options</span><span class="p">):</span>
+        <span class="k">def</span> <span class="nf">decorator</span><span class="p">(</span><span class="n">f</span><span class="p">):</span>
+            <span class="n">endpoint</span> <span class="o">=</span> <span class="n">options</span><span class="o">.</span><span class="n">pop</span><span class="p">(</span><span class="s2">&quot;endpoint&quot;</span><span class="p">,</span> <span class="kc">None</span><span class="p">)</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">add_url_rule</span><span class="p">(</span><span class="n">rule</span><span class="p">,</span> <span class="n">endpoint</span><span class="p">,</span> <span class="n">f</span><span class="p">,</span> <span class="o">**</span><span class="n">options</span><span class="p">)</span>
+            <span class="k">return</span> <span class="n">f</span>
+
+        <span class="k">return</span> <span class="n">decorator</span>
+</code></pre></div>
+
+
+<p>The <code>route</code> decorator is interesting.  If you read Miguel Grinberg&#8217;s 
+<a href="https://blog.miguelgrinberg.com/post/the-ultimate-guide-to-python-decorators-part-i-function-registration">ultimate guide to Python decorator</a>, 
+it is a combination of <em>Function Registration</em> and <em>Decorators with 
+Arguments</em>.  </p>
+<p>The <span class="caps">URL</span> reverse function <code>url_for</code> is defined on Line 226 of helpers.py 
+module. The functions retrieves a <code>url_adapter</code> from request context or 
+app context, and calls <code>build</code> method on <code>url_adapter</code> to return the 
+reversed <span class="caps">URL</span>.  </p>
+<div class="highlight"><pre><span></span><code><span class="n">appctx</span> <span class="o">=</span> <span class="n">_app_ctx_stack</span><span class="o">.</span><span class="n">top</span>
+<span class="n">reqctx</span> <span class="o">=</span> <span class="n">_request_ctx_stack</span><span class="o">.</span><span class="n">top</span>
+
+<span class="k">if</span> <span class="n">reqctx</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
+    <span class="n">url_adapter</span> <span class="o">=</span> <span class="n">reqctx</span><span class="o">.</span><span class="n">url_adapter</span>
+    <span class="o">...</span>
+<span class="k">else</span><span class="p">:</span>
+    <span class="n">url_adapter</span> <span class="o">=</span> <span class="n">appctx</span><span class="o">.</span><span class="n">url_adapter</span>
+<span class="o">...</span>
+<span class="n">rv</span> <span class="o">=</span> <span class="n">url_adapter</span><span class="o">.</span><span class="n">build</span><span class="p">(</span>
+    <span class="n">endpoint</span><span class="p">,</span> <span class="n">values</span><span class="p">,</span> <span class="n">method</span><span class="o">=</span><span class="n">method</span><span class="p">,</span> <span class="n">force_external</span><span class="o">=</span><span class="n">external</span>
+<span class="p">)</span>
+</code></pre></div>
+
+
+<p>When does this <code>url_adapter</code> is initialized? The <code>url_adapter</code> is one of 
+instance variables of <code>RequestContext</code> class defined on Line 290 in ctx.py module. </p>
+<div class="highlight"><pre><span></span><code><span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">app</span><span class="p">,</span> <span class="n">environ</span><span class="p">,</span> <span class="n">request</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">session</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
+    <span class="o">....</span>
+    <span class="bp">self</span><span class="o">.</span><span class="n">url_adapter</span> <span class="o">=</span> <span class="kc">None</span>
+    <span class="k">try</span><span class="p">:</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">url_adapter</span> <span class="o">=</span> <span class="n">app</span><span class="o">.</span><span class="n">create_url_adapter</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">request</span><span class="p">)</span>
+    <span class="o">...</span>
+</code></pre></div>
+
+
+<p>The <code>url_adapter</code> is also one of the instance variables of <code>AppContext</code> class
+defined on Line 216 in ctx.py module. </p>
+<div class="highlight"><pre><span></span><code><span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">app</span><span class="p">):</span>
+    <span class="o">...</span>
+    <span class="bp">self</span><span class="o">.</span><span class="n">url_adapter</span> <span class="o">=</span> <span class="n">app</span><span class="o">.</span><span class="n">create_url_adapter</span><span class="p">(</span><span class="kc">None</span><span class="p">)</span>
+</code></pre></div>
+
+
+<p>The <code>create_url_adapter</code> method of <code>Flask</code> class calls <code>bind_to_environ</code> or
+<code>bind</code> method of <code>Map</code> class to create an instance of <code>MapAdapter</code> class, which 
+is also defined in <code>werkzeug.routing</code> module.</p>
+<p>The actual <span class="caps">URL</span> mapping happens on Line 2447 of app.py module (inside <code>wsgi_app</code> 
+method) in Flask.  It calls <code>full_dispatch_request</code> method of Flask class, which is 
+defined on Line 1938. It then calls <code>dispatch_request</code> method, which is 
+in turn defined on Line 1914. </p>
+<div class="highlight"><pre><span></span><code><span class="k">def</span> <span class="nf">dispatch_request</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;Does the request dispatching.  Matches the URL and returns the</span>
+<span class="sd">    return value of the view or error handler. ...</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="o">...</span>
+    <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">view_functions</span><span class="p">[</span><span class="n">rule</span><span class="o">.</span><span class="n">endpoint</span><span class="p">](</span><span class="o">**</span><span class="n">req</span><span class="o">.</span><span class="n">view_args</span><span class="p">)</span>
+</code></pre></div>
+
+
+<p>The method simply uses the <code>view_functions</code> instance variable (a dictionary) 
+to find the corresponding view function for the <span class="caps">URL</span>.  </p>
+<p>The <span class="caps">URL</span> Routing functions are mainly provided by the Werkzeug package, which is 
+one of the dependent packages of Flask. The Werkzeug documentation has a page 
+specifically for <a href="https://werkzeug.palletsprojects.com/en/1.0.x/routing/"><span class="caps">URL</span> Routing</a>.  </p>
 
       <div class="mt-5 border-top">
         <h3>Related Posts:</h3>

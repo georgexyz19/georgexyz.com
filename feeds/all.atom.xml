@@ -1,35 +1,136 @@
 <?xml version="1.0" encoding="utf-8"?>
-<feed xmlns="http://www.w3.org/2005/Atom"><title>George Zhang</title><link href="https://www.georgexyz.com/" rel="alternate"></link><link href="https://www.georgexyz.com/feeds/all.atom.xml" rel="self"></link><id>https://www.georgexyz.com/</id><updated>2020-11-05T22:38:00-05:00</updated><entry><title>URL Mapping in Flask</title><link href="https://www.georgexyz.com/url-mapping-in-flask.html" rel="alternate"></link><published>2020-11-05T22:38:00-05:00</published><updated>2020-11-05T22:38:00-05:00</updated><author><name>George Zhang</name></author><id>tag:www.georgexyz.com,2020-11-05:/url-mapping-in-flask.html</id><summary type="html">&lt;p&gt;&lt;span class="caps"&gt;URL&lt;/span&gt; Mapping is not a big topic in Flask.  The Flask documentation has a very short 
+<feed xmlns="http://www.w3.org/2005/Atom"><title>George Zhang</title><link href="https://www.georgexyz.com/" rel="alternate"></link><link href="https://www.georgexyz.com/feeds/all.atom.xml" rel="self"></link><id>https://www.georgexyz.com/</id><updated>2020-11-05T22:38:00-05:00</updated><entry><title>URL Mapping in Flask</title><link href="https://www.georgexyz.com/url-mapping-in-flask.html" rel="alternate"></link><published>2020-11-05T22:38:00-05:00</published><updated>2020-11-05T22:38:00-05:00</updated><author><name>George Zhang</name></author><id>tag:www.georgexyz.com,2020-11-05:/url-mapping-in-flask.html</id><summary type="html">&lt;p&gt;&lt;span class="caps"&gt;URL&lt;/span&gt; Mapping (or &lt;span class="caps"&gt;URL&lt;/span&gt; Routing) is not a big topic in Flask.  The Flask documentation has a very short 
 section on &lt;a href="https://flask.palletsprojects.com/en/1.1.x/api/#url-route-registrations"&gt;&lt;span class="caps"&gt;URL&lt;/span&gt; Route Registrations&lt;/a&gt;. 
-Miguel Grinberg&amp;#8217;s &lt;em&gt;Flask Web Development (2nd)&lt;/em&gt; book only …&lt;/p&gt;</summary><content type="html">&lt;p&gt;&lt;span class="caps"&gt;URL&lt;/span&gt; Mapping is not a big topic in Flask.  The Flask documentation has a very short 
+Miguel Grinberg&amp;#8217;s &lt;em&gt;Flask Web Development …&lt;/em&gt;&lt;/p&gt;</summary><content type="html">&lt;p&gt;&lt;span class="caps"&gt;URL&lt;/span&gt; Mapping (or &lt;span class="caps"&gt;URL&lt;/span&gt; Routing) is not a big topic in Flask.  The Flask documentation has a very short 
 section on &lt;a href="https://flask.palletsprojects.com/en/1.1.x/api/#url-route-registrations"&gt;&lt;span class="caps"&gt;URL&lt;/span&gt; Route Registrations&lt;/a&gt;. 
 Miguel Grinberg&amp;#8217;s &lt;em&gt;Flask Web Development (2nd)&lt;/em&gt; book only discusses the topic briefly on pages 8-9 and 36-38. 
-The &lt;code&gt;route&lt;/code&gt; decorator is very straightforward to work with in Flask.  &lt;/p&gt;
-&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;@app.route(&amp;#39;/)
-def index():
-    ....
+The &lt;code&gt;route&lt;/code&gt; decorator is very straightforward to use in Flask.  &lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;&lt;span class="nd"&gt;@app&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;route&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="s1"&gt;&amp;#39;/)&lt;/span&gt;
+&lt;span class="k"&gt;def&lt;/span&gt; &lt;span class="nf"&gt;index&lt;/span&gt;&lt;span class="p"&gt;():&lt;/span&gt;
+    &lt;span class="o"&gt;....&lt;/span&gt;
 
-@app.route(&amp;#39;/user/&amp;lt;name&amp;gt;&amp;#39;)
-def user(name):
-    ....
+&lt;span class="nd"&gt;@app&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;route&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="s1"&gt;&amp;#39;/user/&amp;lt;name&amp;gt;&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
+&lt;span class="k"&gt;def&lt;/span&gt; &lt;span class="nf"&gt;user&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;name&lt;/span&gt;&lt;span class="p"&gt;):&lt;/span&gt;
+    &lt;span class="o"&gt;....&lt;/span&gt;
 &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
 
 
 &lt;p&gt;You can define the route function first and call &lt;code&gt;add_url_rule&lt;/code&gt; method of Flask class to 
 add the url rule.&lt;/p&gt;
-&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;def index():
-    ....
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;&lt;span class="k"&gt;def&lt;/span&gt; &lt;span class="nf"&gt;index&lt;/span&gt;&lt;span class="p"&gt;():&lt;/span&gt;
+    &lt;span class="o"&gt;....&lt;/span&gt;
 
-app.add_url_rule(&amp;#39;/&amp;#39;, &amp;#39;index&amp;#39;, index)
+&lt;span class="n"&gt;app&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;add_url_rule&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="s1"&gt;&amp;#39;/&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="s1"&gt;&amp;#39;index&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;index&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
 &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
 
 
-&lt;p&gt;If the &lt;span class="caps"&gt;URL&lt;/span&gt; mapping is only one directional which maps a &lt;span class="caps"&gt;URL&lt;/span&gt; route to a function, the Python code 
-implementing the function should not be very complicated.  The &lt;span class="caps"&gt;URL&lt;/span&gt; mapping can also do reverse mapping. 
+&lt;p&gt;If the &lt;span class="caps"&gt;URL&lt;/span&gt; mapping is only one directional that maps a &lt;span class="caps"&gt;URL&lt;/span&gt; route to a function, the Python code 
+implementing it should not be very complicated.  The &lt;span class="caps"&gt;URL&lt;/span&gt; mapping can also do reverse mapping. 
 When you have an end point name &lt;code&gt;index&lt;/code&gt;, you can call &lt;code&gt;url_for('index')&lt;/code&gt; to get the &lt;span class="caps"&gt;URL&lt;/span&gt; route &lt;code&gt;/&lt;/code&gt;, or
 call &lt;code&gt;url_for('user', name='john')&lt;/code&gt; to get the route &lt;code&gt;/user/john&lt;/code&gt;. &lt;/p&gt;
-&lt;p&gt;Let&amp;#8217;s take a quick look at the Flask code related to &lt;span class="caps"&gt;URL&lt;/span&gt; Mapping.&lt;/p&gt;
-&lt;p&gt;To be continued &amp;#8230;&amp;#8230;.&lt;/p&gt;</content><category term="posts"></category><category term="flask"></category><category term="python"></category></entry><entry><title>Flask Application Context</title><link href="https://www.georgexyz.com/flask-application-context.html" rel="alternate"></link><published>2020-11-03T15:19:00-05:00</published><updated>2020-11-03T15:19:00-05:00</updated><author><name>George Zhang</name></author><id>tag:www.georgexyz.com,2020-11-03:/flask-application-context.html</id><summary type="html">&lt;p&gt;The &lt;code&gt;push&lt;/code&gt; method of &lt;code&gt;RequestContext&lt;/code&gt; class has those two lines of code (Lines 373 and 374 of 
+&lt;p&gt;Let&amp;#8217;s look at the Flask source code to find out more about &lt;span class="caps"&gt;URL&lt;/span&gt; mapping.  The &lt;code&gt;__init__&lt;/code&gt; method 
+of Flask class defines an instance variable &lt;code&gt;url_map&lt;/code&gt; on Line 582.  &lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;&lt;span class="bp"&gt;self&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;url_map&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="bp"&gt;self&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;url_map_class&lt;/span&gt;&lt;span class="p"&gt;()&lt;/span&gt;
+&lt;span class="bp"&gt;self&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;url_map&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;host_matching&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="n"&gt;host_matching&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;p&gt;The &lt;code&gt;url_map_class&lt;/code&gt; is a class variable defined on Line 366 which is &lt;code&gt;Map&lt;/code&gt; class imported 
+from &lt;code&gt;werkzeug.routing&lt;/code&gt; module. &lt;/p&gt;
+&lt;p&gt;The &lt;code&gt;add_url_rule&lt;/code&gt; method is defined on Line 1177 in app.py module.  The method is quite 
+long, and part of the code is shown below. &lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;&lt;span class="k"&gt;if&lt;/span&gt; &lt;span class="n"&gt;endpoint&lt;/span&gt; &lt;span class="ow"&gt;is&lt;/span&gt; &lt;span class="kc"&gt;None&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt;
+    &lt;span class="n"&gt;endpoint&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="n"&gt;_endpoint_from_view_func&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;view_func&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
+&lt;span class="o"&gt;...&lt;/span&gt;
+&lt;span class="n"&gt;rule&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="bp"&gt;self&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;url_rule_class&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;rule&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;methods&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="n"&gt;methods&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="o"&gt;**&lt;/span&gt;&lt;span class="n"&gt;options&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
+&lt;span class="o"&gt;...&lt;/span&gt;
+&lt;span class="bp"&gt;self&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;url_map&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;add&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;rule&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
+&lt;span class="o"&gt;...&lt;/span&gt;
+
+&lt;span class="k"&gt;if&lt;/span&gt; &lt;span class="n"&gt;view_func&lt;/span&gt; &lt;span class="ow"&gt;is&lt;/span&gt; &lt;span class="ow"&gt;not&lt;/span&gt; &lt;span class="kc"&gt;None&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt;
+    &lt;span class="o"&gt;...&lt;/span&gt;
+    &lt;span class="bp"&gt;self&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;view_functions&lt;/span&gt;&lt;span class="p"&gt;[&lt;/span&gt;&lt;span class="n"&gt;endpoint&lt;/span&gt;&lt;span class="p"&gt;]&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="n"&gt;view_func&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;p&gt;The &lt;code&gt;url_rule_class&lt;/code&gt; is referring to &lt;code&gt;Rule&lt;/code&gt; class imported from &lt;code&gt;werkzeug.routing&lt;/code&gt;.&lt;br&gt;
+The &lt;code&gt;view_functions&lt;/code&gt; is one of the instance variables (dictionary) of Flask class 
+defined on Line 444. &lt;/p&gt;
+&lt;p&gt;The &lt;code&gt;route&lt;/code&gt; decorator is defined on Line 1288.  It calls the &lt;code&gt;add_url_method&lt;/code&gt; method, 
+and the code is shown below. &lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;&lt;span class="k"&gt;def&lt;/span&gt; &lt;span class="nf"&gt;route&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="bp"&gt;self&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;rule&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="o"&gt;**&lt;/span&gt;&lt;span class="n"&gt;options&lt;/span&gt;&lt;span class="p"&gt;):&lt;/span&gt;
+        &lt;span class="k"&gt;def&lt;/span&gt; &lt;span class="nf"&gt;decorator&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;f&lt;/span&gt;&lt;span class="p"&gt;):&lt;/span&gt;
+            &lt;span class="n"&gt;endpoint&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="n"&gt;options&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;pop&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="s2"&gt;&amp;quot;endpoint&amp;quot;&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="kc"&gt;None&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
+            &lt;span class="bp"&gt;self&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;add_url_rule&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;rule&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;endpoint&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;f&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="o"&gt;**&lt;/span&gt;&lt;span class="n"&gt;options&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
+            &lt;span class="k"&gt;return&lt;/span&gt; &lt;span class="n"&gt;f&lt;/span&gt;
+
+        &lt;span class="k"&gt;return&lt;/span&gt; &lt;span class="n"&gt;decorator&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;p&gt;The &lt;code&gt;route&lt;/code&gt; decorator is interesting.  If you read Miguel Grinberg&amp;#8217;s 
+&lt;a href="https://blog.miguelgrinberg.com/post/the-ultimate-guide-to-python-decorators-part-i-function-registration"&gt;ultimate guide to Python decorator&lt;/a&gt;, 
+it is a combination of &lt;em&gt;Function Registration&lt;/em&gt; and &lt;em&gt;Decorators with 
+Arguments&lt;/em&gt;.  &lt;/p&gt;
+&lt;p&gt;The &lt;span class="caps"&gt;URL&lt;/span&gt; reverse function &lt;code&gt;url_for&lt;/code&gt; is defined on Line 226 of helpers.py 
+module. The functions retrieves a &lt;code&gt;url_adapter&lt;/code&gt; from request context or 
+app context, and calls &lt;code&gt;build&lt;/code&gt; method on &lt;code&gt;url_adapter&lt;/code&gt; to return the 
+reversed &lt;span class="caps"&gt;URL&lt;/span&gt;.  &lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;&lt;span class="n"&gt;appctx&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="n"&gt;_app_ctx_stack&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;top&lt;/span&gt;
+&lt;span class="n"&gt;reqctx&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="n"&gt;_request_ctx_stack&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;top&lt;/span&gt;
+
+&lt;span class="k"&gt;if&lt;/span&gt; &lt;span class="n"&gt;reqctx&lt;/span&gt; &lt;span class="ow"&gt;is&lt;/span&gt; &lt;span class="ow"&gt;not&lt;/span&gt; &lt;span class="kc"&gt;None&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt;
+    &lt;span class="n"&gt;url_adapter&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="n"&gt;reqctx&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;url_adapter&lt;/span&gt;
+    &lt;span class="o"&gt;...&lt;/span&gt;
+&lt;span class="k"&gt;else&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt;
+    &lt;span class="n"&gt;url_adapter&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="n"&gt;appctx&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;url_adapter&lt;/span&gt;
+&lt;span class="o"&gt;...&lt;/span&gt;
+&lt;span class="n"&gt;rv&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="n"&gt;url_adapter&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;build&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;
+    &lt;span class="n"&gt;endpoint&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;values&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;method&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="n"&gt;method&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;force_external&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="n"&gt;external&lt;/span&gt;
+&lt;span class="p"&gt;)&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;p&gt;When does this &lt;code&gt;url_adapter&lt;/code&gt; is initialized? The &lt;code&gt;url_adapter&lt;/code&gt; is one of 
+instance variables of &lt;code&gt;RequestContext&lt;/code&gt; class defined on Line 290 in ctx.py module. &lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;&lt;span class="k"&gt;def&lt;/span&gt; &lt;span class="fm"&gt;__init__&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="bp"&gt;self&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;app&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;environ&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;request&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="kc"&gt;None&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;session&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="kc"&gt;None&lt;/span&gt;&lt;span class="p"&gt;):&lt;/span&gt;
+    &lt;span class="o"&gt;....&lt;/span&gt;
+    &lt;span class="bp"&gt;self&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;url_adapter&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="kc"&gt;None&lt;/span&gt;
+    &lt;span class="k"&gt;try&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt;
+        &lt;span class="bp"&gt;self&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;url_adapter&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="n"&gt;app&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;create_url_adapter&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="bp"&gt;self&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;request&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
+    &lt;span class="o"&gt;...&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;p&gt;The &lt;code&gt;url_adapter&lt;/code&gt; is also one of the instance variables of &lt;code&gt;AppContext&lt;/code&gt; class
+defined on Line 216 in ctx.py module. &lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;&lt;span class="k"&gt;def&lt;/span&gt; &lt;span class="fm"&gt;__init__&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="bp"&gt;self&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;app&lt;/span&gt;&lt;span class="p"&gt;):&lt;/span&gt;
+    &lt;span class="o"&gt;...&lt;/span&gt;
+    &lt;span class="bp"&gt;self&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;url_adapter&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="n"&gt;app&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;create_url_adapter&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="kc"&gt;None&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;p&gt;The &lt;code&gt;create_url_adapter&lt;/code&gt; method of &lt;code&gt;Flask&lt;/code&gt; class calls &lt;code&gt;bind_to_environ&lt;/code&gt; or
+&lt;code&gt;bind&lt;/code&gt; method of &lt;code&gt;Map&lt;/code&gt; class to create an instance of &lt;code&gt;MapAdapter&lt;/code&gt; class, which 
+is also defined in &lt;code&gt;werkzeug.routing&lt;/code&gt; module.&lt;/p&gt;
+&lt;p&gt;The actual &lt;span class="caps"&gt;URL&lt;/span&gt; mapping happens on Line 2447 of app.py module (inside &lt;code&gt;wsgi_app&lt;/code&gt; 
+method) in Flask.  It calls &lt;code&gt;full_dispatch_request&lt;/code&gt; method of Flask class, which is 
+defined on Line 1938. It then calls &lt;code&gt;dispatch_request&lt;/code&gt; method, which is 
+in turn defined on Line 1914. &lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;&lt;span class="k"&gt;def&lt;/span&gt; &lt;span class="nf"&gt;dispatch_request&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="bp"&gt;self&lt;/span&gt;&lt;span class="p"&gt;):&lt;/span&gt;
+    &lt;span class="sd"&gt;&amp;quot;&amp;quot;&amp;quot;Does the request dispatching.  Matches the URL and returns the&lt;/span&gt;
+&lt;span class="sd"&gt;    return value of the view or error handler. ...&lt;/span&gt;
+&lt;span class="sd"&gt;    &amp;quot;&amp;quot;&amp;quot;&lt;/span&gt;
+    &lt;span class="o"&gt;...&lt;/span&gt;
+    &lt;span class="k"&gt;return&lt;/span&gt; &lt;span class="bp"&gt;self&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;view_functions&lt;/span&gt;&lt;span class="p"&gt;[&lt;/span&gt;&lt;span class="n"&gt;rule&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;endpoint&lt;/span&gt;&lt;span class="p"&gt;](&lt;/span&gt;&lt;span class="o"&gt;**&lt;/span&gt;&lt;span class="n"&gt;req&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;view_args&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;p&gt;The method simply uses the &lt;code&gt;view_functions&lt;/code&gt; instance variable (a dictionary) 
+to find the corresponding view function for the &lt;span class="caps"&gt;URL&lt;/span&gt;.  &lt;/p&gt;
+&lt;p&gt;The &lt;span class="caps"&gt;URL&lt;/span&gt; Routing functions are mainly provided by the Werkzeug package, which is 
+one of the dependent packages of Flask. The Werkzeug documentation has a page 
+specifically for &lt;a href="https://werkzeug.palletsprojects.com/en/1.0.x/routing/"&gt;&lt;span class="caps"&gt;URL&lt;/span&gt; Routing&lt;/a&gt;.  &lt;/p&gt;</content><category term="posts"></category><category term="flask"></category><category term="python"></category></entry><entry><title>Flask Application Context</title><link href="https://www.georgexyz.com/flask-application-context.html" rel="alternate"></link><published>2020-11-03T15:19:00-05:00</published><updated>2020-11-03T15:19:00-05:00</updated><author><name>George Zhang</name></author><id>tag:www.georgexyz.com,2020-11-03:/flask-application-context.html</id><summary type="html">&lt;p&gt;The &lt;code&gt;push&lt;/code&gt; method of &lt;code&gt;RequestContext&lt;/code&gt; class has those two lines of code (Lines 373 and 374 of 
 ctx.py module in Flask 1.1.2) listed below. It pushes the …&lt;/p&gt;</summary><content type="html">&lt;p&gt;The &lt;code&gt;push&lt;/code&gt; method of &lt;code&gt;RequestContext&lt;/code&gt; class has those two lines of code (Lines 373 and 374 of 
 ctx.py module in Flask 1.1.2) listed below. It pushes the application context 
 variable &lt;code&gt;app_ctx&lt;/code&gt; when a request context is pushed. &lt;/p&gt;
