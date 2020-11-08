@@ -97,10 +97,10 @@ add the url rule.</p>
 
 
 <p>If the <span class="caps">URL</span> mapping is only one directional that maps a <span class="caps">URL</span> route to a function, the Python code 
-implementing it should not be very complicated.  The <span class="caps">URL</span> mapping can also do reverse mapping. 
+implementing it should be simple.  The <span class="caps">URL</span> mapping can also do reverse mapping. 
 When you have an end point name <code>index</code>, you can call <code>url_for('index')</code> to get the <span class="caps">URL</span> route <code>/</code>, or
 call <code>url_for('user', name='john')</code> to get the route <code>/user/john</code>. </p>
-<p>Let&#8217;s look at the Flask source code to find out more about <span class="caps">URL</span> mapping.  The <code>__init__</code> method 
+<p>Let&#8217;s look at the Flask source code to know more about <span class="caps">URL</span> mapping.  The <code>__init__</code> method 
 of Flask class defines an instance variable <code>url_map</code> on Line 582.  </p>
 <div class="highlight"><pre><span></span><code><span class="bp">self</span><span class="o">.</span><span class="n">url_map</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">url_map_class</span><span class="p">()</span>
 <span class="bp">self</span><span class="o">.</span><span class="n">url_map</span><span class="o">.</span><span class="n">host_matching</span> <span class="o">=</span> <span class="n">host_matching</span>
@@ -141,7 +141,7 @@ and the code is shown below. </p>
 
 
 <p>The <code>route</code> decorator is interesting.  If you read Miguel Grinberg&#8217;s 
-<a href="https://blog.miguelgrinberg.com/post/the-ultimate-guide-to-python-decorators-part-i-function-registration">ultimate guide to Python decorator</a>, 
+<a href="https://blog.miguelgrinberg.com/post/the-ultimate-guide-to-python-decorators-part-i-function-registration">ultimate guide to Python decorators</a>, 
 it is a combination of <em>Function Registration</em> and <em>Decorators with 
 Arguments</em>.  </p>
 <p>The <span class="caps">URL</span> reverse function <code>url_for</code> is defined on Line 226 of helpers.py 
@@ -184,7 +184,7 @@ defined on Line 216 in ctx.py module. </p>
 
 <p>The <code>create_url_adapter</code> method of <code>Flask</code> class calls <code>bind_to_environ</code> or
 <code>bind</code> method of <code>Map</code> class to create an instance of <code>MapAdapter</code> class, which 
-is also defined in <code>werkzeug.routing</code> module.</p>
+is also defined in <code>werkzeug</code> <code>routing</code> module.</p>
 <p>The actual <span class="caps">URL</span> mapping happens on Line 2447 of app.py module (inside <code>wsgi_app</code> 
 method) in Flask.  It calls <code>full_dispatch_request</code> method of Flask class, which is 
 defined on Line 1938. It then calls <code>dispatch_request</code> method, which is 

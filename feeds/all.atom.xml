@@ -25,10 +25,10 @@ add the url rule.&lt;/p&gt;
 
 
 &lt;p&gt;If the &lt;span class="caps"&gt;URL&lt;/span&gt; mapping is only one directional that maps a &lt;span class="caps"&gt;URL&lt;/span&gt; route to a function, the Python code 
-implementing it should not be very complicated.  The &lt;span class="caps"&gt;URL&lt;/span&gt; mapping can also do reverse mapping. 
+implementing it should be simple.  The &lt;span class="caps"&gt;URL&lt;/span&gt; mapping can also do reverse mapping. 
 When you have an end point name &lt;code&gt;index&lt;/code&gt;, you can call &lt;code&gt;url_for('index')&lt;/code&gt; to get the &lt;span class="caps"&gt;URL&lt;/span&gt; route &lt;code&gt;/&lt;/code&gt;, or
 call &lt;code&gt;url_for('user', name='john')&lt;/code&gt; to get the route &lt;code&gt;/user/john&lt;/code&gt;. &lt;/p&gt;
-&lt;p&gt;Let&amp;#8217;s look at the Flask source code to find out more about &lt;span class="caps"&gt;URL&lt;/span&gt; mapping.  The &lt;code&gt;__init__&lt;/code&gt; method 
+&lt;p&gt;Let&amp;#8217;s look at the Flask source code to know more about &lt;span class="caps"&gt;URL&lt;/span&gt; mapping.  The &lt;code&gt;__init__&lt;/code&gt; method 
 of Flask class defines an instance variable &lt;code&gt;url_map&lt;/code&gt; on Line 582.  &lt;/p&gt;
 &lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;&lt;span class="bp"&gt;self&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;url_map&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="bp"&gt;self&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;url_map_class&lt;/span&gt;&lt;span class="p"&gt;()&lt;/span&gt;
 &lt;span class="bp"&gt;self&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;url_map&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;host_matching&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="n"&gt;host_matching&lt;/span&gt;
@@ -69,7 +69,7 @@ and the code is shown below. &lt;/p&gt;
 
 
 &lt;p&gt;The &lt;code&gt;route&lt;/code&gt; decorator is interesting.  If you read Miguel Grinberg&amp;#8217;s 
-&lt;a href="https://blog.miguelgrinberg.com/post/the-ultimate-guide-to-python-decorators-part-i-function-registration"&gt;ultimate guide to Python decorator&lt;/a&gt;, 
+&lt;a href="https://blog.miguelgrinberg.com/post/the-ultimate-guide-to-python-decorators-part-i-function-registration"&gt;ultimate guide to Python decorators&lt;/a&gt;, 
 it is a combination of &lt;em&gt;Function Registration&lt;/em&gt; and &lt;em&gt;Decorators with 
 Arguments&lt;/em&gt;.  &lt;/p&gt;
 &lt;p&gt;The &lt;span class="caps"&gt;URL&lt;/span&gt; reverse function &lt;code&gt;url_for&lt;/code&gt; is defined on Line 226 of helpers.py 
@@ -112,7 +112,7 @@ defined on Line 216 in ctx.py module. &lt;/p&gt;
 
 &lt;p&gt;The &lt;code&gt;create_url_adapter&lt;/code&gt; method of &lt;code&gt;Flask&lt;/code&gt; class calls &lt;code&gt;bind_to_environ&lt;/code&gt; or
 &lt;code&gt;bind&lt;/code&gt; method of &lt;code&gt;Map&lt;/code&gt; class to create an instance of &lt;code&gt;MapAdapter&lt;/code&gt; class, which 
-is also defined in &lt;code&gt;werkzeug.routing&lt;/code&gt; module.&lt;/p&gt;
+is also defined in &lt;code&gt;werkzeug&lt;/code&gt; &lt;code&gt;routing&lt;/code&gt; module.&lt;/p&gt;
 &lt;p&gt;The actual &lt;span class="caps"&gt;URL&lt;/span&gt; mapping happens on Line 2447 of app.py module (inside &lt;code&gt;wsgi_app&lt;/code&gt; 
 method) in Flask.  It calls &lt;code&gt;full_dispatch_request&lt;/code&gt; method of Flask class, which is 
 defined on Line 1938. It then calls &lt;code&gt;dispatch_request&lt;/code&gt; method, which is 
