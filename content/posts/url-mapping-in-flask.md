@@ -33,11 +33,11 @@ app.add_url_rule('/', 'index', index)
 ```
 
 If the URL mapping is only one directional that maps a URL route to a function, the Python code 
-implementing it should not be very complicated.  The URL mapping can also do reverse mapping. 
+implementing it should be simple.  The URL mapping can also do reverse mapping. 
 When you have an end point name `index`, you can call `url_for('index')` to get the URL route `/`, or
 call `url_for('user', name='john')` to get the route `/user/john`. 
 
-Let's look at the Flask source code to find out more about URL mapping.  The `__init__` method 
+Let's look at the Flask source code to know more about URL mapping.  The `__init__` method 
 of Flask class defines an instance variable `url_map` on Line 582.  
 
 ```python
@@ -84,7 +84,7 @@ def route(self, rule, **options):
 ```
 
 The `route` decorator is interesting.  If you read Miguel Grinberg's 
-[ultimate guide to Python decorator](https://blog.miguelgrinberg.com/post/the-ultimate-guide-to-python-decorators-part-i-function-registration), 
+[ultimate guide to Python decorators](https://blog.miguelgrinberg.com/post/the-ultimate-guide-to-python-decorators-part-i-function-registration), 
 it is a combination of *Function Registration* and *Decorators with 
 Arguments*.  
 
@@ -131,7 +131,7 @@ def __init__(self, app):
 
 The `create_url_adapter` method of `Flask` class calls `bind_to_environ` or
 `bind` method of `Map` class to create an instance of `MapAdapter` class, which 
-is also defined in `werkzeug.routing` module.
+is also defined in `werkzeug` `routing` module.
 
 The actual URL mapping happens on Line 2447 of app.py module (inside `wsgi_app` 
 method) in Flask.  It calls `full_dispatch_request` method of Flask class, which is 
