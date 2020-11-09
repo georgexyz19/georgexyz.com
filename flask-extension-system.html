@@ -11,7 +11,7 @@
 <link rel="stylesheet" href="https://www.georgexyz.com/theme/css/custom.css">
 <meta name="author" content="George Zhang" />
 <meta name="keywords" content="flask" />
-<meta name="description" content="Flask is a micro web framework, and many functionalities are provided by various extensions. The Flask documentation on extension only has two pages, one on how to use extensions and …" />
+<meta name="description" content="Flask is a micro web framework, and many functionalities are provided by various extensions. The Flask documentation only has two pages on extensions, one is on how to use extensions …" />
     <title>Flask Extension System - George Zhang</title>
   </head>
   <body>
@@ -73,28 +73,27 @@
       </div>
 
       <p>Flask is a micro web framework, and many functionalities are provided by various 
-extensions. The Flask documentation on extension only has two pages, one on 
+extensions. The Flask documentation only has two pages on extensions, one is on 
 <a href="https://flask.palletsprojects.com/en/1.1.x/extensions/#extensions">how to use extensions</a> 
-and the other on 
+and the other is about 
 <a href="https://flask.palletsprojects.com/en/1.1.x/extensiondev/">how to develop new extensions</a>.  </p>
 <h3>Flask-Bootstrap</h3>
 <p>Let&#8217;s look at the source code of some popular extensions in this article.  The 
 first one is Flask-Bootstrap.  When you read Miguel Grinberg&#8217;s <em>Flask Web 
-Development</em> book, you will find that Flask-Bootstrap not only integrates 
-Bootstrap with Flask well, it also integrates with WTForms and provides a 
-<code>quick_form</code> function for form rendering.  You can render a form like 
-this. </p>
+Development</em> book, you will find that Flask-Bootstrap not only helps Flask
+integrating with Bootstrap, it also helps integrating Bootstrap with WTForms 
+and provides a <code>quick_form</code> function.  You can render a form like this. </p>
 <div class="highlight"><pre><span></span><code>{% import &quot;bootstrap/wtf.html&quot; as wtf %}
 {{ wtf.quick_form(form) }}
 </code></pre></div>
 
 
 <p>The drawback of this extension is that it has not been updated for sometime. 
-The Bootstrap 4 has been released for some time, but the extension 
+The Bootstrap 4 has been released a while, but the extension 
 still includes the version 3.  There is a fork Flask-<span class="caps">BS4</span> with Bootstrap 4, 
-but it is not as popular as Flask-Bootstrap yet. </p>
-<p>After you pip install the Flask-Bootstrap in a virtual environment, the 
-files are installed in the directory. </p>
+but it is not as popular as Flask-Bootstrap. </p>
+<p>After you pip install Flask-Bootstrap in a virtual environment, the 
+files are installed in this directory. </p>
 <pre>
 .../venv/lib/python3.8/site-packages/flask_bootstrap
 </pre>
@@ -102,6 +101,7 @@ files are installed in the directory. </p>
 <p>The directory has three Python files <code>__init__.py</code>, <code>forms.py</code>, and 
 <code>nav.py</code>.  It also has two directories <code>static</code> and <code>templates</code>. 
 The directory structure looks like this. </p>
+<div style="margin-left: 20px">
 <pre>
 ├── forms.py
 ├── __init__.py
@@ -129,6 +129,7 @@ The directory structure looks like this. </p>
         ├── utils.html
         └── wtf.html
 </pre>
+</div>
 
 <p>When you use the Flask-Bootstrap in an app, you initialize it with 
 those two lines. </p>
@@ -172,7 +173,7 @@ work. </p>
 
 <p>The interesting part of the <code>init_app</code> method is that it registers itself as 
 a blueprint (sub application) of the app. After you initialize 
-the extension, the app will search template and static file 
+the extension, the app will search template and static files 
 in this extension. </p>
 <h3>Flask-Moment</h3>
 <p>Flask-Moment is introduced in Chapter 3 (pages 38-41) of the 
@@ -205,7 +206,7 @@ which is 198 lines long.  The <code>Moment</code> class code is shown below. </p
 
 
 <p>The <code>context_processor</code> static method returns a dictionary.  The key (<code>moment</code>) is 
-the variable or method used in template, and the value (<code>current_app. extensions[moment]</code> refers to <code>_moment</code>) is the actual Python variable or method. The 
+the variable or method name used in template, and the value (<code>current_app.extensions[moment]</code> refers to <code>_moment</code>) is the actual Python variable or method. The 
 implementation here is a little difficult to understand at a glance.  The <code>_moment</code>
 is actually a class defined in the same file.   </p>
 <div class="highlight"><pre><span></span><code><span class="k">class</span> <span class="nc">_moment</span><span class="p">(</span><span class="nb">object</span><span class="p">):</span>
@@ -257,13 +258,13 @@ html element which has a class attribute <code>flask-moment</code>. </p>
 
 
 <p>The <code>include_moment</code> static method of <code>_moment</code> class includes a <span class="caps">CDN</span> link 
-for the Moment Javascript library and three functions to render html element 
+for the Moment Javascript library and three functions to render html elements 
 with <code>flask-moment</code> class attribute.  </p>
 <p>This <code>include_moment</code> method is quite interesting because the 
 Python file includes Javascript code quoted as a multi-line string.  When Jinja2 
 renders the template file, the string is rendered as Javascript code 
 on the html file.  The html file is then transmitted to the client browser, 
-and finally the browser runs the Javascript code which is originated in a 
+and finally the browser runs the Javascript code originated in a 
 Python file.  </p>
 
 
