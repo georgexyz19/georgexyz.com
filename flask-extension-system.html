@@ -1,0 +1,281 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <link rel="stylesheet" href="/theme/css/bs4min.css">
+    <link rel="shortcut icon" type="image/x-icon" href="/theme/images/favicon.ico" >
+    <link rel="icon" type="image/x-icon" href="/theme/images/favicon.ico" >
+<link rel="stylesheet" href="https://www.georgexyz.com/theme/css/friendly.css">
+<link rel="stylesheet" href="https://www.georgexyz.com/theme/css/custom.css">
+<meta name="author" content="George Zhang" />
+<meta name="keywords" content="flask" />
+<meta name="description" content="Flask is a micro web framework, and many functionalities are provided by various extensions. The Flask documentation on extension only has two pages, one on how to use extensions and …" />
+    <title>Flask Extension System - George Zhang</title>
+  </head>
+  <body>
+    <!-- navbar -->
+    <nav class="navbar navbar-expand-md navbar-light" style="background-color: #e3f2fd;">
+      <div class="container">
+        <a class="navbar-brand" href="/">George Zhang</a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarColor01" aria-controls="navbarColor01" aria-expanded="false" aria-label="Toggle navigation">
+          <span class="navbar-toggler-icon"></span>
+        </button>
+
+        <div class="collapse navbar-collapse" id="navbarColor01">
+          <ul class="navbar-nav mr-auto">
+            <li class="nav-item">
+              <a class="nav-link " 
+                href="/articlelist.html">Articles</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link pr-3 " 
+                href="/tags.html">Tags</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link pr-3 "
+                 href="/pages/inkscape-tutorial.html">Inkscape Tutorial</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link "
+                   href="/pages/projects.html">Projects</a>
+              </li>
+          </ul>
+
+          <ul class="navbar-nav">
+            <li class="nav-item">
+              <a class="nav-link " 
+                 href="/pages/about.html">About</a>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </nav>
+
+   
+
+<div class="container">
+
+  <div class="row">
+    <div class="col-lg-8 mx-auto">
+
+      <h2>Flask Extension System</h2>
+
+      <div class="text-muted mb-2">
+        <span>Posted on </span>
+        <time datetime="2020-11-08 15:48:00-05:00">
+          Sunday, 11/08/2020 15:48
+        </time>
+
+        <span>with tags: </span>
+        <a href="https://www.georgexyz.com/tag/flask.html">flask</a>
+      </div>
+
+      <p>Flask is a micro web framework, and many functionalities are provided by various 
+extensions. The Flask documentation on extension only has two pages, one on 
+<a href="https://flask.palletsprojects.com/en/1.1.x/extensions/#extensions">how to use extensions</a> 
+and the other on 
+<a href="https://flask.palletsprojects.com/en/1.1.x/extensiondev/">how to develop new extensions</a>.  </p>
+<h3>Flask-Bootstrap</h3>
+<p>Let&#8217;s look at the source code of some popular extensions in this article.  The 
+first one is Flask-Bootstrap.  When you read Miguel Grinberg&#8217;s <em>Flask Web 
+Development</em> book, you will find that Flask-Bootstrap not only integrates 
+Bootstrap with Flask well, it also integrates with WTForms and provides a 
+<code>quick_form</code> function for form rendering.  You can render a form like 
+this. </p>
+<div class="highlight"><pre><span></span><code>{% import &quot;bootstrap/wtf.html&quot; as wtf %}
+{{ wtf.quick_form(form) }}
+</code></pre></div>
+
+
+<p>The drawback of this extension is that it has not been updated for sometime. 
+The Bootstrap 4 has been released for some time, but the extension 
+still includes the version 3.  There is a fork Flask-<span class="caps">BS4</span> with Bootstrap 4, 
+but it is not as popular as Flask-Bootstrap yet. </p>
+<p>After you pip install the Flask-Bootstrap in a virtual environment, the 
+files are installed in the directory. </p>
+<pre>
+.../venv/lib/python3.8/site-packages/flask_bootstrap
+</pre>
+
+<p>The directory has three Python files <code>__init__.py</code>, <code>forms.py</code>, and 
+<code>nav.py</code>.  It also has two directories <code>static</code> and <code>templates</code>. 
+The directory structure looks like this. </p>
+<pre>
+├── forms.py
+├── __init__.py
+├── nav.py
+├── static
+│   ├── css
+│   │   ├── bootstrap.css
+│   │   ├── ....
+│   ├── fonts
+│   │   ├── glyphicons-halflings-regular.eot
+│   │   ├── ....
+│   ├── jquery.js
+│   ├── jquery.min.js
+│   ├── jquery.min.map
+│   └── js
+│       ├── bootstrap.js
+│       ├── bootstrap.min.js
+│       └── npm.js
+└── templates
+    └── bootstrap
+        ├── base.html
+        ├── fixes.html
+        ├── google.html
+        ├── pagination.html
+        ├── utils.html
+        └── wtf.html
+</pre>
+
+<p>When you use the Flask-Bootstrap in an app, you initialize it with 
+those two lines. </p>
+<div class="highlight"><pre><span></span><code>from flask_bootstrap import Bootstrap
+....
+bootstrap = Bootstrap(app)
+</code></pre></div>
+
+
+<p>The <code>Bootstrap</code> class is defined on Line 123 (version 3.3.7.1) of 
+<code>__init__.py</code> file. The <code>init_app</code> method does the actual initialization 
+work. </p>
+<div class="highlight"><pre><span></span><code><span class="k">def</span> <span class="nf">init_app</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">app</span><span class="p">):</span>
+    <span class="n">app</span><span class="o">.</span><span class="n">config</span><span class="o">.</span><span class="n">setdefault</span><span class="p">(</span><span class="s1">&#39;BOOTSTRAP_USE_MINIFIED&#39;</span><span class="p">,</span> <span class="kc">True</span><span class="p">)</span>
+    <span class="o">......</span>
+
+    <span class="n">blueprint</span> <span class="o">=</span> <span class="n">Blueprint</span><span class="p">(</span>
+        <span class="s1">&#39;bootstrap&#39;</span><span class="p">,</span>
+        <span class="vm">__name__</span><span class="p">,</span>
+        <span class="n">template_folder</span><span class="o">=</span><span class="s1">&#39;templates&#39;</span><span class="p">,</span>
+        <span class="n">static_folder</span><span class="o">=</span><span class="s1">&#39;static&#39;</span><span class="p">,</span>
+        <span class="n">static_url_path</span><span class="o">=</span><span class="n">app</span><span class="o">.</span><span class="n">static_url_path</span> <span class="o">+</span> <span class="s1">&#39;/bootstrap&#39;</span><span class="p">,</span>
+        <span class="n">subdomain</span><span class="o">=</span><span class="n">app</span><span class="o">.</span><span class="n">config</span><span class="p">[</span><span class="s1">&#39;BOOTSTRAP_LOCAL_SUBDOMAIN&#39;</span><span class="p">])</span>
+
+    <span class="c1"># add the form rendering template filter</span>
+    <span class="n">blueprint</span><span class="o">.</span><span class="n">add_app_template_filter</span><span class="p">(</span><span class="n">render_form</span><span class="p">)</span>
+
+    <span class="n">app</span><span class="o">.</span><span class="n">register_blueprint</span><span class="p">(</span><span class="n">blueprint</span><span class="p">)</span>
+
+    <span class="n">app</span><span class="o">.</span><span class="n">jinja_env</span><span class="o">.</span><span class="n">globals</span><span class="p">[</span><span class="s1">&#39;bootstrap_is_hidden_field&#39;</span><span class="p">]</span> <span class="o">=</span>\
+        <span class="n">is_hidden_field_filter</span>
+    <span class="n">app</span><span class="o">.</span><span class="n">jinja_env</span><span class="o">.</span><span class="n">globals</span><span class="p">[</span><span class="s1">&#39;bootstrap_find_resource&#39;</span><span class="p">]</span> <span class="o">=</span>\
+        <span class="n">bootstrap_find_resource</span>
+    <span class="n">app</span><span class="o">.</span><span class="n">jinja_env</span><span class="o">.</span><span class="n">add_extension</span><span class="p">(</span><span class="s1">&#39;jinja2.ext.do&#39;</span><span class="p">)</span>
+
+    <span class="k">if</span> <span class="ow">not</span> <span class="nb">hasattr</span><span class="p">(</span><span class="n">app</span><span class="p">,</span> <span class="s1">&#39;extensions&#39;</span><span class="p">):</span>
+        <span class="n">app</span><span class="o">.</span><span class="n">extensions</span> <span class="o">=</span> <span class="p">{}</span>
+    <span class="o">......</span>
+</code></pre></div>
+
+
+<p>The interesting part of the <code>init_app</code> method is that it registers itself as 
+a blueprint (sub application) of the app. After you initialize 
+the extension, the app will search template and static file 
+in this extension. </p>
+<h3>Flask-Moment</h3>
+<p>Flask-Moment is introduced in Chapter 3 (pages 38-41) of the 
+<em>Flask Web Development</em> book. 
+The extension is actually created by Miguel Grinberg. The extension 
+makes <a href="https://momentjs.com/">Moment.js Javascript library</a> 
+easy to use in Flask. </p>
+<p>The Flask-Moment is simple, and it only has one file <code>flask_moment.py</code> 
+which is 198 lines long.  The <code>Moment</code> class code is shown below. </p>
+<div class="highlight"><pre><span></span><code><span class="k">class</span> <span class="nc">Moment</span><span class="p">(</span><span class="nb">object</span><span class="p">):</span>
+    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">app</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
+        <span class="k">if</span> <span class="n">app</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">init_app</span><span class="p">(</span><span class="n">app</span><span class="p">)</span>
+
+    <span class="k">def</span> <span class="nf">init_app</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">app</span><span class="p">):</span>
+        <span class="k">if</span> <span class="ow">not</span> <span class="nb">hasattr</span><span class="p">(</span><span class="n">app</span><span class="p">,</span> <span class="s1">&#39;extensions&#39;</span><span class="p">):</span>
+            <span class="n">app</span><span class="o">.</span><span class="n">extensions</span> <span class="o">=</span> <span class="p">{}</span>
+        <span class="n">app</span><span class="o">.</span><span class="n">extensions</span><span class="p">[</span><span class="s1">&#39;moment&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">_moment</span>
+        <span class="n">app</span><span class="o">.</span><span class="n">context_processor</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">context_processor</span><span class="p">)</span>
+
+    <span class="nd">@staticmethod</span>
+    <span class="k">def</span> <span class="nf">context_processor</span><span class="p">():</span>
+        <span class="k">return</span> <span class="p">{</span>
+            <span class="s1">&#39;moment&#39;</span><span class="p">:</span> <span class="n">current_app</span><span class="o">.</span><span class="n">extensions</span><span class="p">[</span><span class="s1">&#39;moment&#39;</span><span class="p">]</span>
+        <span class="p">}</span>
+
+    <span class="k">def</span> <span class="nf">create</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">timestamp</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
+        <span class="k">return</span> <span class="n">current_app</span><span class="o">.</span><span class="n">extensions</span><span class="p">[</span><span class="s1">&#39;moment&#39;</span><span class="p">](</span><span class="n">timestamp</span><span class="p">)</span>
+</code></pre></div>
+
+
+<p>The <code>context_processor</code> static method returns a dictionary.  The key (<code>moment</code>) is 
+the variable or method used in template, and the value (<code>current_app. extensions[moment]</code> refers to <code>_moment</code>) is the actual Python variable or method. The 
+implementation here is a little difficult to understand at a glance.  The <code>_moment</code>
+is actually a class defined in the same file.   </p>
+<div class="highlight"><pre><span></span><code><span class="k">class</span> <span class="nc">_moment</span><span class="p">(</span><span class="nb">object</span><span class="p">):</span>
+    <span class="nd">@staticmethod</span>
+    <span class="k">def</span> <span class="nf">include_moment</span><span class="p">(</span><span class="n">version</span><span class="o">=</span><span class="n">default_moment_version</span><span class="p">,</span> 
+                       <span class="n">local_js</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span>
+                       <span class="n">no_js</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">sri</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
+        <span class="n">js</span> <span class="o">=</span> <span class="s1">&#39;&#39;</span>
+        <span class="o">...</span>
+    <span class="o">......</span>
+
+    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">timestamp</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">local</span><span class="o">=</span><span class="kc">False</span><span class="p">):</span>
+        <span class="k">if</span> <span class="n">timestamp</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
+            <span class="n">timestamp</span> <span class="o">=</span> <span class="n">datetime</span><span class="o">.</span><span class="n">utcnow</span><span class="p">()</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">timestamp</span> <span class="o">=</span> <span class="n">timestamp</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">local</span> <span class="o">=</span> <span class="n">local</span>
+
+    <span class="o">......</span>
+    <span class="k">def</span> <span class="nf">fromNow</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">no_suffix</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span> <span class="n">refresh</span><span class="o">=</span><span class="kc">False</span><span class="p">):</span>
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_render</span><span class="p">(</span><span class="s2">&quot;fromNow&quot;</span><span class="p">,</span> 
+                            <span class="n">no_suffix</span><span class="o">=</span><span class="nb">int</span><span class="p">(</span><span class="n">no_suffix</span><span class="p">),</span>
+                            <span class="n">refresh</span><span class="o">=</span><span class="n">refresh</span><span class="p">)</span>
+    <span class="o">......</span>
+</code></pre></div>
+
+
+<p>Let&#8217;s look at an example in a template file. </p>
+<div class="highlight"><pre><span></span><code>{{ moment(current_time).fromNow(refresh=True) }}
+</code></pre></div>
+
+
+<p>When you have this template variable in your template file, the 
+<code>moment(current_time)</code>  part is actually calling the <code>__init__</code> 
+method of <code>_moment</code> class. The return 
+value is an instance of <code>_moment</code> class.  The <code>fromNow</code> method is called on
+this instance.  It then calls the <code>_render</code> method, which returns a <code>&lt;span&gt;</code>
+html element which has a class attribute <code>flask-moment</code>. </p>
+<div class="highlight"><pre><span></span><code><span class="k">def</span> <span class="nf">_render</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">func</span><span class="p">,</span> <span class="nb">format</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">timestamp2</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> 
+                <span class="n">no_suffix</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span>
+                <span class="n">refresh</span><span class="o">=</span><span class="kc">False</span><span class="p">):</span>
+        <span class="n">t</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_timestamp_as_iso_8601</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">timestamp</span><span class="p">)</span>
+        <span class="o">......</span>
+        <span class="k">return</span> <span class="n">Markup</span><span class="p">((</span>
+            <span class="s1">&#39;&lt;span class=&quot;flask-moment&quot; data-timestamp=&quot;</span><span class="si">{}</span><span class="s1">&quot; &#39;</span> <span class="o">+</span>
+            <span class="s1">&#39;</span><span class="si">{}</span><span class="s1"> data-refresh=&quot;</span><span class="si">{}</span><span class="s1">&quot; &#39;</span> <span class="o">+</span>
+            <span class="s1">&#39;style=&quot;display: none&quot;&gt;</span><span class="si">{}</span><span class="s1">&lt;/span&gt;&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">format</span><span class="p">(</span>
+            <span class="n">t</span><span class="p">,</span> <span class="n">data_values</span><span class="p">,</span> <span class="nb">int</span><span class="p">(</span><span class="n">refresh</span><span class="p">)</span> <span class="o">*</span> <span class="mi">60000</span><span class="p">,</span> <span class="n">t</span><span class="p">))</span>
+</code></pre></div>
+
+
+<p>The <code>include_moment</code> static method of <code>_moment</code> class includes a <span class="caps">CDN</span> link 
+for the Moment Javascript library and three functions to render html element 
+with <code>flask-moment</code> class attribute.  </p>
+<p>This <code>include_moment</code> method is quite interesting because the 
+Python file includes Javascript code quoted as a multi-line string.  When Jinja2 
+renders the template file, the string is rendered as Javascript code 
+on the html file.  The html file is then transmitted to the client browser, 
+and finally the browser runs the Javascript code which is originated in a 
+Python file.  </p>
+
+
+
+    </div>
+  </div>
+
+</div>
+
+   
+    <script src="https://code.jquery.com/jquery-3.4.1.slim.min.js" integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js" integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6" crossorigin="anonymous"></script>
+  </body>
+</html>

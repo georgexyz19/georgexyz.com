@@ -1,5 +1,200 @@
 <?xml version="1.0" encoding="utf-8"?>
-<feed xmlns="http://www.w3.org/2005/Atom"><title>George Zhang</title><link href="https://www.georgexyz.com/" rel="alternate"></link><link href="https://www.georgexyz.com/feeds/all.atom.xml" rel="self"></link><id>https://www.georgexyz.com/</id><updated>2020-11-05T22:38:00-05:00</updated><entry><title>URL Mapping in Flask</title><link href="https://www.georgexyz.com/url-mapping-in-flask.html" rel="alternate"></link><published>2020-11-05T22:38:00-05:00</published><updated>2020-11-05T22:38:00-05:00</updated><author><name>George Zhang</name></author><id>tag:www.georgexyz.com,2020-11-05:/url-mapping-in-flask.html</id><summary type="html">&lt;p&gt;&lt;span class="caps"&gt;URL&lt;/span&gt; Mapping (or &lt;span class="caps"&gt;URL&lt;/span&gt; Routing) is not a big topic in Flask.  The Flask documentation has a very short 
+<feed xmlns="http://www.w3.org/2005/Atom"><title>George Zhang</title><link href="https://www.georgexyz.com/" rel="alternate"></link><link href="https://www.georgexyz.com/feeds/all.atom.xml" rel="self"></link><id>https://www.georgexyz.com/</id><updated>2020-11-08T15:48:00-05:00</updated><entry><title>Flask Extension System</title><link href="https://www.georgexyz.com/flask-extension-system.html" rel="alternate"></link><published>2020-11-08T15:48:00-05:00</published><updated>2020-11-08T15:48:00-05:00</updated><author><name>George Zhang</name></author><id>tag:www.georgexyz.com,2020-11-08:/flask-extension-system.html</id><summary type="html">&lt;p&gt;Flask is a micro web framework, and many functionalities are provided by various 
+extensions. The Flask documentation on extension only has two pages, one on 
+&lt;a href="https://flask.palletsprojects.com/en/1.1.x/extensions/#extensions"&gt;how to use extensions&lt;/a&gt; 
+and …&lt;/p&gt;</summary><content type="html">&lt;p&gt;Flask is a micro web framework, and many functionalities are provided by various 
+extensions. The Flask documentation on extension only has two pages, one on 
+&lt;a href="https://flask.palletsprojects.com/en/1.1.x/extensions/#extensions"&gt;how to use extensions&lt;/a&gt; 
+and the other on 
+&lt;a href="https://flask.palletsprojects.com/en/1.1.x/extensiondev/"&gt;how to develop new extensions&lt;/a&gt;.  &lt;/p&gt;
+&lt;h3&gt;Flask-Bootstrap&lt;/h3&gt;
+&lt;p&gt;Let&amp;#8217;s look at the source code of some popular extensions in this article.  The 
+first one is Flask-Bootstrap.  When you read Miguel Grinberg&amp;#8217;s &lt;em&gt;Flask Web 
+Development&lt;/em&gt; book, you will find that Flask-Bootstrap not only integrates 
+Bootstrap with Flask well, it also integrates with WTForms and provides a 
+&lt;code&gt;quick_form&lt;/code&gt; function for form rendering.  You can render a form like 
+this. &lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;{% import &amp;quot;bootstrap/wtf.html&amp;quot; as wtf %}
+{{ wtf.quick_form(form) }}
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;p&gt;The drawback of this extension is that it has not been updated for sometime. 
+The Bootstrap 4 has been released for some time, but the extension 
+still includes the version 3.  There is a fork Flask-&lt;span class="caps"&gt;BS4&lt;/span&gt; with Bootstrap 4, 
+but it is not as popular as Flask-Bootstrap yet. &lt;/p&gt;
+&lt;p&gt;After you pip install the Flask-Bootstrap in a virtual environment, the 
+files are installed in the directory. &lt;/p&gt;
+&lt;pre&gt;
+.../venv/lib/python3.8/site-packages/flask_bootstrap
+&lt;/pre&gt;
+
+&lt;p&gt;The directory has three Python files &lt;code&gt;__init__.py&lt;/code&gt;, &lt;code&gt;forms.py&lt;/code&gt;, and 
+&lt;code&gt;nav.py&lt;/code&gt;.  It also has two directories &lt;code&gt;static&lt;/code&gt; and &lt;code&gt;templates&lt;/code&gt;. 
+The directory structure looks like this. &lt;/p&gt;
+&lt;pre&gt;
+├── forms.py
+├── __init__.py
+├── nav.py
+├── static
+│   ├── css
+│   │   ├── bootstrap.css
+│   │   ├── ....
+│   ├── fonts
+│   │   ├── glyphicons-halflings-regular.eot
+│   │   ├── ....
+│   ├── jquery.js
+│   ├── jquery.min.js
+│   ├── jquery.min.map
+│   └── js
+│       ├── bootstrap.js
+│       ├── bootstrap.min.js
+│       └── npm.js
+└── templates
+    └── bootstrap
+        ├── base.html
+        ├── fixes.html
+        ├── google.html
+        ├── pagination.html
+        ├── utils.html
+        └── wtf.html
+&lt;/pre&gt;
+
+&lt;p&gt;When you use the Flask-Bootstrap in an app, you initialize it with 
+those two lines. &lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;from flask_bootstrap import Bootstrap
+....
+bootstrap = Bootstrap(app)
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;p&gt;The &lt;code&gt;Bootstrap&lt;/code&gt; class is defined on Line 123 (version 3.3.7.1) of 
+&lt;code&gt;__init__.py&lt;/code&gt; file. The &lt;code&gt;init_app&lt;/code&gt; method does the actual initialization 
+work. &lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;&lt;span class="k"&gt;def&lt;/span&gt; &lt;span class="nf"&gt;init_app&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="bp"&gt;self&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;app&lt;/span&gt;&lt;span class="p"&gt;):&lt;/span&gt;
+    &lt;span class="n"&gt;app&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;config&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;setdefault&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="s1"&gt;&amp;#39;BOOTSTRAP_USE_MINIFIED&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="kc"&gt;True&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
+    &lt;span class="o"&gt;......&lt;/span&gt;
+
+    &lt;span class="n"&gt;blueprint&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="n"&gt;Blueprint&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;
+        &lt;span class="s1"&gt;&amp;#39;bootstrap&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;
+        &lt;span class="vm"&gt;__name__&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;
+        &lt;span class="n"&gt;template_folder&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="s1"&gt;&amp;#39;templates&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;
+        &lt;span class="n"&gt;static_folder&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="s1"&gt;&amp;#39;static&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;
+        &lt;span class="n"&gt;static_url_path&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="n"&gt;app&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;static_url_path&lt;/span&gt; &lt;span class="o"&gt;+&lt;/span&gt; &lt;span class="s1"&gt;&amp;#39;/bootstrap&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;
+        &lt;span class="n"&gt;subdomain&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="n"&gt;app&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;config&lt;/span&gt;&lt;span class="p"&gt;[&lt;/span&gt;&lt;span class="s1"&gt;&amp;#39;BOOTSTRAP_LOCAL_SUBDOMAIN&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;])&lt;/span&gt;
+
+    &lt;span class="c1"&gt;# add the form rendering template filter&lt;/span&gt;
+    &lt;span class="n"&gt;blueprint&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;add_app_template_filter&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;render_form&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
+
+    &lt;span class="n"&gt;app&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;register_blueprint&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;blueprint&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
+
+    &lt;span class="n"&gt;app&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;jinja_env&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;globals&lt;/span&gt;&lt;span class="p"&gt;[&lt;/span&gt;&lt;span class="s1"&gt;&amp;#39;bootstrap_is_hidden_field&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;]&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt;\
+        &lt;span class="n"&gt;is_hidden_field_filter&lt;/span&gt;
+    &lt;span class="n"&gt;app&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;jinja_env&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;globals&lt;/span&gt;&lt;span class="p"&gt;[&lt;/span&gt;&lt;span class="s1"&gt;&amp;#39;bootstrap_find_resource&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;]&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt;\
+        &lt;span class="n"&gt;bootstrap_find_resource&lt;/span&gt;
+    &lt;span class="n"&gt;app&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;jinja_env&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;add_extension&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="s1"&gt;&amp;#39;jinja2.ext.do&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
+
+    &lt;span class="k"&gt;if&lt;/span&gt; &lt;span class="ow"&gt;not&lt;/span&gt; &lt;span class="nb"&gt;hasattr&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;app&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="s1"&gt;&amp;#39;extensions&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;):&lt;/span&gt;
+        &lt;span class="n"&gt;app&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;extensions&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="p"&gt;{}&lt;/span&gt;
+    &lt;span class="o"&gt;......&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;p&gt;The interesting part of the &lt;code&gt;init_app&lt;/code&gt; method is that it registers itself as 
+a blueprint (sub application) of the app. After you initialize 
+the extension, the app will search template and static file 
+in this extension. &lt;/p&gt;
+&lt;h3&gt;Flask-Moment&lt;/h3&gt;
+&lt;p&gt;Flask-Moment is introduced in Chapter 3 (pages 38-41) of the 
+&lt;em&gt;Flask Web Development&lt;/em&gt; book. 
+The extension is actually created by Miguel Grinberg. The extension 
+makes &lt;a href="https://momentjs.com/"&gt;Moment.js Javascript library&lt;/a&gt; 
+easy to use in Flask. &lt;/p&gt;
+&lt;p&gt;The Flask-Moment is simple, and it only has one file &lt;code&gt;flask_moment.py&lt;/code&gt; 
+which is 198 lines long.  The &lt;code&gt;Moment&lt;/code&gt; class code is shown below. &lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;&lt;span class="k"&gt;class&lt;/span&gt; &lt;span class="nc"&gt;Moment&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="nb"&gt;object&lt;/span&gt;&lt;span class="p"&gt;):&lt;/span&gt;
+    &lt;span class="k"&gt;def&lt;/span&gt; &lt;span class="fm"&gt;__init__&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="bp"&gt;self&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;app&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="kc"&gt;None&lt;/span&gt;&lt;span class="p"&gt;):&lt;/span&gt;
+        &lt;span class="k"&gt;if&lt;/span&gt; &lt;span class="n"&gt;app&lt;/span&gt; &lt;span class="ow"&gt;is&lt;/span&gt; &lt;span class="ow"&gt;not&lt;/span&gt; &lt;span class="kc"&gt;None&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt;
+            &lt;span class="bp"&gt;self&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;init_app&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;app&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
+
+    &lt;span class="k"&gt;def&lt;/span&gt; &lt;span class="nf"&gt;init_app&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="bp"&gt;self&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;app&lt;/span&gt;&lt;span class="p"&gt;):&lt;/span&gt;
+        &lt;span class="k"&gt;if&lt;/span&gt; &lt;span class="ow"&gt;not&lt;/span&gt; &lt;span class="nb"&gt;hasattr&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;app&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="s1"&gt;&amp;#39;extensions&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;):&lt;/span&gt;
+            &lt;span class="n"&gt;app&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;extensions&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="p"&gt;{}&lt;/span&gt;
+        &lt;span class="n"&gt;app&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;extensions&lt;/span&gt;&lt;span class="p"&gt;[&lt;/span&gt;&lt;span class="s1"&gt;&amp;#39;moment&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;]&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="n"&gt;_moment&lt;/span&gt;
+        &lt;span class="n"&gt;app&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;context_processor&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="bp"&gt;self&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;context_processor&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
+
+    &lt;span class="nd"&gt;@staticmethod&lt;/span&gt;
+    &lt;span class="k"&gt;def&lt;/span&gt; &lt;span class="nf"&gt;context_processor&lt;/span&gt;&lt;span class="p"&gt;():&lt;/span&gt;
+        &lt;span class="k"&gt;return&lt;/span&gt; &lt;span class="p"&gt;{&lt;/span&gt;
+            &lt;span class="s1"&gt;&amp;#39;moment&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt; &lt;span class="n"&gt;current_app&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;extensions&lt;/span&gt;&lt;span class="p"&gt;[&lt;/span&gt;&lt;span class="s1"&gt;&amp;#39;moment&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;]&lt;/span&gt;
+        &lt;span class="p"&gt;}&lt;/span&gt;
+
+    &lt;span class="k"&gt;def&lt;/span&gt; &lt;span class="nf"&gt;create&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="bp"&gt;self&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;timestamp&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="kc"&gt;None&lt;/span&gt;&lt;span class="p"&gt;):&lt;/span&gt;
+        &lt;span class="k"&gt;return&lt;/span&gt; &lt;span class="n"&gt;current_app&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;extensions&lt;/span&gt;&lt;span class="p"&gt;[&lt;/span&gt;&lt;span class="s1"&gt;&amp;#39;moment&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;](&lt;/span&gt;&lt;span class="n"&gt;timestamp&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;p&gt;The &lt;code&gt;context_processor&lt;/code&gt; static method returns a dictionary.  The key (&lt;code&gt;moment&lt;/code&gt;) is 
+the variable or method used in template, and the value (&lt;code&gt;current_app. extensions[moment]&lt;/code&gt; refers to &lt;code&gt;_moment&lt;/code&gt;) is the actual Python variable or method. The 
+implementation here is a little difficult to understand at a glance.  The &lt;code&gt;_moment&lt;/code&gt;
+is actually a class defined in the same file.   &lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;&lt;span class="k"&gt;class&lt;/span&gt; &lt;span class="nc"&gt;_moment&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="nb"&gt;object&lt;/span&gt;&lt;span class="p"&gt;):&lt;/span&gt;
+    &lt;span class="nd"&gt;@staticmethod&lt;/span&gt;
+    &lt;span class="k"&gt;def&lt;/span&gt; &lt;span class="nf"&gt;include_moment&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;version&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="n"&gt;default_moment_version&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; 
+                       &lt;span class="n"&gt;local_js&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="kc"&gt;None&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;
+                       &lt;span class="n"&gt;no_js&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="kc"&gt;None&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;sri&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="kc"&gt;None&lt;/span&gt;&lt;span class="p"&gt;):&lt;/span&gt;
+        &lt;span class="n"&gt;js&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="s1"&gt;&amp;#39;&amp;#39;&lt;/span&gt;
+        &lt;span class="o"&gt;...&lt;/span&gt;
+    &lt;span class="o"&gt;......&lt;/span&gt;
+
+    &lt;span class="k"&gt;def&lt;/span&gt; &lt;span class="fm"&gt;__init__&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="bp"&gt;self&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;timestamp&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="kc"&gt;None&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;local&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="kc"&gt;False&lt;/span&gt;&lt;span class="p"&gt;):&lt;/span&gt;
+        &lt;span class="k"&gt;if&lt;/span&gt; &lt;span class="n"&gt;timestamp&lt;/span&gt; &lt;span class="ow"&gt;is&lt;/span&gt; &lt;span class="kc"&gt;None&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt;
+            &lt;span class="n"&gt;timestamp&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="n"&gt;datetime&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;utcnow&lt;/span&gt;&lt;span class="p"&gt;()&lt;/span&gt;
+        &lt;span class="bp"&gt;self&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;timestamp&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="n"&gt;timestamp&lt;/span&gt;
+        &lt;span class="bp"&gt;self&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;local&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="n"&gt;local&lt;/span&gt;
+
+    &lt;span class="o"&gt;......&lt;/span&gt;
+    &lt;span class="k"&gt;def&lt;/span&gt; &lt;span class="nf"&gt;fromNow&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="bp"&gt;self&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;no_suffix&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="kc"&gt;False&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;refresh&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="kc"&gt;False&lt;/span&gt;&lt;span class="p"&gt;):&lt;/span&gt;
+        &lt;span class="k"&gt;return&lt;/span&gt; &lt;span class="bp"&gt;self&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;_render&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="s2"&gt;&amp;quot;fromNow&amp;quot;&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; 
+                            &lt;span class="n"&gt;no_suffix&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="nb"&gt;int&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;no_suffix&lt;/span&gt;&lt;span class="p"&gt;),&lt;/span&gt;
+                            &lt;span class="n"&gt;refresh&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="n"&gt;refresh&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
+    &lt;span class="o"&gt;......&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;p&gt;Let&amp;#8217;s look at an example in a template file. &lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;{{ moment(current_time).fromNow(refresh=True) }}
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;p&gt;When you have this template variable in your template file, the 
+&lt;code&gt;moment(current_time)&lt;/code&gt;  part is actually calling the &lt;code&gt;__init__&lt;/code&gt; 
+method of &lt;code&gt;_moment&lt;/code&gt; class. The return 
+value is an instance of &lt;code&gt;_moment&lt;/code&gt; class.  The &lt;code&gt;fromNow&lt;/code&gt; method is called on
+this instance.  It then calls the &lt;code&gt;_render&lt;/code&gt; method, which returns a &lt;code&gt;&amp;lt;span&amp;gt;&lt;/code&gt;
+html element which has a class attribute &lt;code&gt;flask-moment&lt;/code&gt;. &lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;&lt;span class="k"&gt;def&lt;/span&gt; &lt;span class="nf"&gt;_render&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="bp"&gt;self&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;func&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="nb"&gt;format&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="kc"&gt;None&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;timestamp2&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="kc"&gt;None&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; 
+                &lt;span class="n"&gt;no_suffix&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="kc"&gt;None&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;
+                &lt;span class="n"&gt;refresh&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="kc"&gt;False&lt;/span&gt;&lt;span class="p"&gt;):&lt;/span&gt;
+        &lt;span class="n"&gt;t&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="bp"&gt;self&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;_timestamp_as_iso_8601&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="bp"&gt;self&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;timestamp&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
+        &lt;span class="o"&gt;......&lt;/span&gt;
+        &lt;span class="k"&gt;return&lt;/span&gt; &lt;span class="n"&gt;Markup&lt;/span&gt;&lt;span class="p"&gt;((&lt;/span&gt;
+            &lt;span class="s1"&gt;&amp;#39;&amp;lt;span class=&amp;quot;flask-moment&amp;quot; data-timestamp=&amp;quot;&lt;/span&gt;&lt;span class="si"&gt;{}&lt;/span&gt;&lt;span class="s1"&gt;&amp;quot; &amp;#39;&lt;/span&gt; &lt;span class="o"&gt;+&lt;/span&gt;
+            &lt;span class="s1"&gt;&amp;#39;&lt;/span&gt;&lt;span class="si"&gt;{}&lt;/span&gt;&lt;span class="s1"&gt; data-refresh=&amp;quot;&lt;/span&gt;&lt;span class="si"&gt;{}&lt;/span&gt;&lt;span class="s1"&gt;&amp;quot; &amp;#39;&lt;/span&gt; &lt;span class="o"&gt;+&lt;/span&gt;
+            &lt;span class="s1"&gt;&amp;#39;style=&amp;quot;display: none&amp;quot;&amp;gt;&lt;/span&gt;&lt;span class="si"&gt;{}&lt;/span&gt;&lt;span class="s1"&gt;&amp;lt;/span&amp;gt;&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;format&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;
+            &lt;span class="n"&gt;t&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;data_values&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="nb"&gt;int&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;refresh&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt; &lt;span class="o"&gt;*&lt;/span&gt; &lt;span class="mi"&gt;60000&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;t&lt;/span&gt;&lt;span class="p"&gt;))&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;p&gt;The &lt;code&gt;include_moment&lt;/code&gt; static method of &lt;code&gt;_moment&lt;/code&gt; class includes a &lt;span class="caps"&gt;CDN&lt;/span&gt; link 
+for the Moment Javascript library and three functions to render html element 
+with &lt;code&gt;flask-moment&lt;/code&gt; class attribute.  &lt;/p&gt;
+&lt;p&gt;This &lt;code&gt;include_moment&lt;/code&gt; method is quite interesting because the 
+Python file includes Javascript code quoted as a multi-line string.  When Jinja2 
+renders the template file, the string is rendered as Javascript code 
+on the html file.  The html file is then transmitted to the client browser, 
+and finally the browser runs the Javascript code which is originated in a 
+Python file.  &lt;/p&gt;</content><category term="posts"></category><category term="flask"></category></entry><entry><title>URL Mapping in Flask</title><link href="https://www.georgexyz.com/url-mapping-in-flask.html" rel="alternate"></link><published>2020-11-05T22:38:00-05:00</published><updated>2020-11-05T22:38:00-05:00</updated><author><name>George Zhang</name></author><id>tag:www.georgexyz.com,2020-11-05:/url-mapping-in-flask.html</id><summary type="html">&lt;p&gt;&lt;span class="caps"&gt;URL&lt;/span&gt; Mapping (or &lt;span class="caps"&gt;URL&lt;/span&gt; Routing) is not a big topic in Flask.  The Flask documentation has a very short 
 section on &lt;a href="https://flask.palletsprojects.com/en/1.1.x/api/#url-route-registrations"&gt;&lt;span class="caps"&gt;URL&lt;/span&gt; Route Registrations&lt;/a&gt;. 
 Miguel Grinberg&amp;#8217;s &lt;em&gt;Flask Web Development …&lt;/em&gt;&lt;/p&gt;</summary><content type="html">&lt;p&gt;&lt;span class="caps"&gt;URL&lt;/span&gt; Mapping (or &lt;span class="caps"&gt;URL&lt;/span&gt; Routing) is not a big topic in Flask.  The Flask documentation has a very short 
 section on &lt;a href="https://flask.palletsprojects.com/en/1.1.x/api/#url-route-registrations"&gt;&lt;span class="caps"&gt;URL&lt;/span&gt; Route Registrations&lt;/a&gt;. 
