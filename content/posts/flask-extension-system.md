@@ -7,19 +7,18 @@ note: flask extension discussion
 no: 62
 
 Flask is a micro web framework, and many functionalities are provided by various 
-extensions. The Flask documentation on extension only has two pages, one on 
+extensions. The Flask documentation only has two pages on extensions, one is on 
 [how to use extensions](https://flask.palletsprojects.com/en/1.1.x/extensions/#extensions) 
-and the other on 
+and the other is about 
 [how to develop new extensions](https://flask.palletsprojects.com/en/1.1.x/extensiondev/).  
 
 ### Flask-Bootstrap
 
 Let's look at the source code of some popular extensions in this article.  The 
 first one is Flask-Bootstrap.  When you read Miguel Grinberg's *Flask Web 
-Development* book, you will find that Flask-Bootstrap not only integrates 
-Bootstrap with Flask well, it also integrates with WTForms and provides a 
-`quick_form` function for form rendering.  You can render a form like 
-this. 
+Development* book, you will find that Flask-Bootstrap not only helps Flask
+integrating with Bootstrap, it also helps integrating Bootstrap with WTForms 
+and provides a `quick_form` function.  You can render a form like this. 
 
 ```
 {% import "bootstrap/wtf.html" as wtf %}
@@ -27,12 +26,12 @@ this.
 ```
 
 The drawback of this extension is that it has not been updated for sometime. 
-The Bootstrap 4 has been released for some time, but the extension 
+The Bootstrap 4 has been released a while, but the extension 
 still includes the version 3.  There is a fork Flask-BS4 with Bootstrap 4, 
-but it is not as popular as Flask-Bootstrap yet. 
+but it is not as popular as Flask-Bootstrap. 
 
-After you pip install the Flask-Bootstrap in a virtual environment, the 
-files are installed in the directory. 
+After you pip install Flask-Bootstrap in a virtual environment, the 
+files are installed in this directory. 
 
 <pre>
 .../venv/lib/python3.8/site-packages/flask_bootstrap
@@ -42,6 +41,7 @@ The directory has three Python files `__init__.py`, `forms.py`, and
 `nav.py`.  It also has two directories `static` and `templates`. 
 The directory structure looks like this. 
 
+<div style="margin-left: 20px">
 <pre>
 ├── forms.py
 ├── __init__.py
@@ -69,6 +69,7 @@ The directory structure looks like this.
         ├── utils.html
         └── wtf.html
 </pre>
+</div>
 
 When you use the Flask-Bootstrap in an app, you initialize it with 
 those two lines. 
@@ -114,7 +115,7 @@ def init_app(self, app):
 
 The interesting part of the `init_app` method is that it registers itself as 
 a blueprint (sub application) of the app. After you initialize 
-the extension, the app will search template and static file 
+the extension, the app will search template and static files 
 in this extension. 
 
 ### Flask-Moment
@@ -151,7 +152,7 @@ class Moment(object):
 ```
 
 The `context_processor` static method returns a dictionary.  The key (`moment`) is 
-the variable or method used in template, and the value (`current_app. extensions[moment]` refers to `_moment`) is the actual Python variable or method. The 
+the variable or method name used in template, and the value (`current_app.extensions[moment]` refers to `_moment`) is the actual Python variable or method. The 
 implementation here is a little difficult to understand at a glance.  The `_moment`
 is actually a class defined in the same file.   
 
@@ -206,13 +207,13 @@ def _render(self, func, format=None, timestamp2=None,
 ```
 
 The `include_moment` static method of `_moment` class includes a CDN link 
-for the Moment Javascript library and three functions to render html element 
+for the Moment Javascript library and three functions to render html elements 
 with `flask-moment` class attribute.  
 
 This `include_moment` method is quite interesting because the 
 Python file includes Javascript code quoted as a multi-line string.  When Jinja2 
 renders the template file, the string is rendered as Javascript code 
 on the html file.  The html file is then transmitted to the client browser, 
-and finally the browser runs the Javascript code which is originated in a 
+and finally the browser runs the Javascript code originated in a 
 Python file.  
 
