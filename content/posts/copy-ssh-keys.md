@@ -46,3 +46,8 @@ those two github web pages.
 * [Generating a new SSH key and adding it to the ssh-agent](https://docs.github.com/en/github/authenticating-to-github/generating-a-new-ssh-key-and-adding-it-to-the-ssh-agent)
 * [Adding a new SSH key to your Github account](https://docs.github.com/en/github/authenticating-to-github/adding-a-new-ssh-key-to-your-github-account)
 
+Update 3 (11/10/2020): You can run `ssh-agent` automatically when you open bash shell by 
+adding lines of code (on the linked page below) into `.bashrc` file. 
+
+* [Working with SSH key passphrases](https://docs.github.com/en/free-pro-team@latest/github/authenticating-to-github/working-with-ssh-key-passphrases)
+
