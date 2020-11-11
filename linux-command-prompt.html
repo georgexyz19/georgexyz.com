@@ -7,8 +7,8 @@
     <link rel="stylesheet" href="/theme/css/bs4min.css">
     <link rel="shortcut icon" type="image/x-icon" href="/theme/images/favicon.ico" >
     <link rel="icon" type="image/x-icon" href="/theme/images/favicon.ico" >
-<link rel="stylesheet" href="https://www.georgexyz.com/theme/css/friendly.css">
-<link rel="stylesheet" href="https://www.georgexyz.com/theme/css/custom.css">
+<link rel="stylesheet" href="/theme/css/friendly.css">
+<link rel="stylesheet" href="/theme/css/custom.css">
 <meta name="author" content="George Zhang" />
 <meta name="keywords" content="linux,linux mint,bash" />
 <meta name="description" content="William Shotts’ The Linux Command Line is an excellent book. It is written in a tutorial style and very easy to understand. The PDF file of the whole book is …" />
@@ -69,9 +69,9 @@
         </time>
 
         <span>with tags: </span>
-        <a href="https://www.georgexyz.com/tag/linux.html">linux</a>
-/        <a href="https://www.georgexyz.com/tag/linux-mint.html">linux mint</a>
-/        <a href="https://www.georgexyz.com/tag/bash.html">bash</a>
+        <a href="/tag/linux.html">linux</a>
+/        <a href="/tag/linux-mint.html">linux mint</a>
+/        <a href="/tag/bash.html">bash</a>
       </div>
 
       <p>William Shotts&#8217; <em>The Linux Command Line</em> is an excellent book. It is written 
@@ -86,7 +86,6 @@ defined as a long string in Linux Mint (or Ubuntu). See the screenshot below:</p
 ${debian_chroot:+($debian_chroot)}
 \[\033[01;32m\]\u@\h\[\033[00m\]:\[\033[01;34m\]\w\[\033[00m\]\$
 </code></pre></div>
-
 
 <p>It is a little hard to understand the <code>PS1</code> string even after reading the book chapter. 
 A few Google searches find other people are also asking the meaning of the string, 
@@ -115,7 +114,6 @@ and it has already been answered by someone. </p>
 <div class="highlight"><pre><span></span><code>if [ -z &quot;${debian_chroot:-}&quot; ] &amp;&amp; [ -r /etc/debian_chroot ]; then
     debian_chroot=$(cat /etc/debian_chroot)
 </code></pre></div>
-
 
 <p>It means that if the variable <code>$debian_chroot</code> is empty and the file <code>/etc/debian_chroot</code> 
 is readable, the variable is assigned the content of the file.</p>

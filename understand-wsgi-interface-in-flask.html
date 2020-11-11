@@ -7,8 +7,8 @@
     <link rel="stylesheet" href="/theme/css/bs4min.css">
     <link rel="shortcut icon" type="image/x-icon" href="/theme/images/favicon.ico" >
     <link rel="icon" type="image/x-icon" href="/theme/images/favicon.ico" >
-<link rel="stylesheet" href="https://www.georgexyz.com/theme/css/friendly.css">
-<link rel="stylesheet" href="https://www.georgexyz.com/theme/css/custom.css">
+<link rel="stylesheet" href="/theme/css/friendly.css">
+<link rel="stylesheet" href="/theme/css/custom.css">
 <meta name="author" content="George Zhang" />
 <meta name="keywords" content="WSGI,flask" />
 <meta name="description" content="The Flask class is defined in the app.py module. The class has a __call__ method defined on Line 2460 (Flask version 1.1.2). If you have an object …" />
@@ -69,8 +69,8 @@
         </time>
 
         <span>with tags: </span>
-        <a href="https://www.georgexyz.com/tag/wsgi.html">WSGI</a>
-/        <a href="https://www.georgexyz.com/tag/flask.html">flask</a>
+        <a href="/tag/wsgi.html">WSGI</a>
+/        <a href="/tag/flask.html">flask</a>
       </div>
 
       <p>The Flask class is defined in the app.py module.   The class has a <code>__call__</code> method 
@@ -101,13 +101,11 @@ because it just calls a few other methods. </p>
         <span class="n">ctx</span><span class="o">.</span><span class="n">auto_pop</span><span class="p">(</span><span class="n">error</span><span class="p">)</span>
 </code></pre></div>
 
-
 <p>If you ignore the exception handling code for a minute, the code is not too difficult to 
 understand.</p>
 <p>Let&#8217;s look the first line of the method in detail.  </p>
 <div class="highlight"><pre><span></span><code><span class="n">ctx</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">request_context</span><span class="p">(</span><span class="n">environ</span><span class="p">)</span>
 </code></pre></div>
-
 
 <p>The <code>request_context</code> method is defined on Line 2345, and the method is returning a 
 <code>RequestContext</code> object. Notice the first argument to the <code>RequestContext</code> constructor is 
@@ -115,7 +113,6 @@ understand.</p>
 <div class="highlight"><pre><span></span><code><span class="k">def</span> <span class="nf">request_context</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">environ</span><span class="p">):</span>
     <span class="k">return</span> <span class="n">RequestContext</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">environ</span><span class="p">)</span>
 </code></pre></div>
-
 
 <p>The <code>RequestContext</code> class is defined on Line 255 of the ctx.py module.  The first 
 sentence of the class documentation states that &#8220;the request context contains all 
@@ -161,14 +158,13 @@ a global variable defined in global.py module.  </p>
         <span class="bp">self</span><span class="o">.</span><span class="n">match_request</span><span class="p">()</span>
 </code></pre></div>
 
-
 <p>I will stop here for now and look at other code in <code>wsgi_app</code> at a later time.   </p>
 
       <div class="mt-5 border-top">
         <h3>Related Posts:</h3>
         <ul>
-          <li><a href="https://www.georgexyz.com/django-WSGI.html">What is <span class="caps">WSGI</span>?</a></li>
-          <li><a href="https://www.georgexyz.com/flask-application-and-request-contexts.html">Flask Application And Request Contexts</a></li>
+          <li><a href="/django-WSGI.html">What is <span class="caps">WSGI</span>?</a></li>
+          <li><a href="/flask-application-and-request-contexts.html">Flask Application And Request Contexts</a></li>
         </ul>
       </div>
 

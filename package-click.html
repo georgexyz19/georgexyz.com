@@ -7,8 +7,8 @@
     <link rel="stylesheet" href="/theme/css/bs4min.css">
     <link rel="shortcut icon" type="image/x-icon" href="/theme/images/favicon.ico" >
     <link rel="icon" type="image/x-icon" href="/theme/images/favicon.ico" >
-<link rel="stylesheet" href="https://www.georgexyz.com/theme/css/friendly.css">
-<link rel="stylesheet" href="https://www.georgexyz.com/theme/css/custom.css">
+<link rel="stylesheet" href="/theme/css/friendly.css">
+<link rel="stylesheet" href="/theme/css/custom.css">
 <meta name="author" content="George Zhang" />
 <meta name="keywords" content="python,flask" />
 <meta name="description" content="I am reading Miguel Grinberg’s Flask Mega Tutorial and Flask Web Development book and converting OpenSignTool to a flask app. The Click package is one of the tools created …" />
@@ -69,8 +69,8 @@
         </time>
 
         <span>with tags: </span>
-        <a href="https://www.georgexyz.com/tag/python.html">python</a>
-/        <a href="https://www.georgexyz.com/tag/flask.html">flask</a>
+        <a href="/tag/python.html">python</a>
+/        <a href="/tag/flask.html">flask</a>
       </div>
 
       <p>I am reading Miguel Grinberg&#8217;s 
@@ -114,7 +114,6 @@ This is Seb Vetter&#8217;s second article on dbader.org. Both articles are fanta
     <span class="n">cli</span><span class="p">()</span>
 </code></pre></div>
 
-
 <p>This is the help message and command to run the app. </p>
 <div class="highlight"><pre><span></span><code>(dev_cli) george@STK2M3:~/dev_cli$ python signtool_cli.py --help
 Usage: signtool_cli.py [OPTIONS] FILENAME [OUTPUT_FILENAME]
@@ -127,7 +126,6 @@ Options:
 (dev_cli) ... $ python signtool_cli.py --ratio 0.1 R2-1.yaml 
 Write the file to R2-1.svg
 </code></pre></div>
-
 
 <p>I also created a second python file to read all files under a directory and 
 write results to another directory. </p>
@@ -159,7 +157,6 @@ write results to another directory. </p>
     <span class="n">cli</span><span class="p">()</span>
 </code></pre></div>
 
-
 <p>Here is how to call this Click app.</p>
 <div class="highlight"><pre><span></span><code>(dev_cli) george@STK2M3:~/dev_cli$ python signtool_dir.py --help
 Usage: signtool_dir.py [OPTIONS] INPUT_DIR [OUTPUT_DIR]
@@ -178,7 +175,7 @@ Write the file to ./svg/R2-1.svg
       <div class="mt-5 border-top">
         <h3>Related Posts:</h3>
         <ul>
-          <li><a href="https://www.georgexyz.com/python-argparse.html">Python Optparse and Argparse Example</a></li>
+          <li><a href="/python-argparse.html">Python Optparse and Argparse Example</a></li>
         </ul>
       </div>
 

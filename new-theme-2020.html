@@ -7,8 +7,8 @@
     <link rel="stylesheet" href="/theme/css/bs4min.css">
     <link rel="shortcut icon" type="image/x-icon" href="/theme/images/favicon.ico" >
     <link rel="icon" type="image/x-icon" href="/theme/images/favicon.ico" >
-<link rel="stylesheet" href="https://www.georgexyz.com/theme/css/friendly.css">
-<link rel="stylesheet" href="https://www.georgexyz.com/theme/css/custom.css">
+<link rel="stylesheet" href="/theme/css/friendly.css">
+<link rel="stylesheet" href="/theme/css/custom.css">
 <meta name="author" content="George Zhang" />
 <meta name="keywords" content="web development,pelican" />
 <meta name="description" content="This site has been online for more than one year. It is time to revise the pelican theme to present a new look. I spend a few hours revising the …" />
@@ -69,8 +69,8 @@
         </time>
 
         <span>with tags: </span>
-        <a href="https://www.georgexyz.com/tag/web-development.html">web development</a>
-/        <a href="https://www.georgexyz.com/tag/pelican.html">pelican</a>
+        <a href="/tag/web-development.html">web development</a>
+/        <a href="/tag/pelican.html">pelican</a>
       </div>
 
       <p>This site has been online for more than one year.  It is time to revise the pelican 
@@ -88,7 +88,6 @@ $sudo npm install -g minify
 $sass main.scss main.css
 $minify main.css &gt; main.min.css
 </code></pre></div>
-
 
 <p>The main.scss for the new theme has those contents. </p>
 <div class="highlight"><pre><span></span><code>$font-size-base: 1.1rem;
@@ -112,12 +111,10 @@ $print-page-size: letter;
 @import &quot;node_modules/bootstrap/scss/bootstrap&quot;;
 </code></pre></div>
 
-
 <p>The light blue color of the navbar is set in the <code>base.html</code> file, which is copied from
 Bootstrap documentation. </p>
 <div class="highlight"><pre><span></span><code>&lt;nav class=&quot;navbar navbar-expand-md navbar-light&quot; style=&quot;background-color: #e3f2fd;&quot;&gt;
 </code></pre></div>
-
 
 <p>The <code>pelicanconf.py</code> file also has a few changes.  I remove default index.html page and 
 change the previous about page to new homepage.  The Python <code>Typogrify</code> package makes 
@@ -131,7 +128,6 @@ change the previous about page to new homepage.  The Python <code>Typogrify</cod
 <span class="n">ARCHIVES_SAVE_AS</span> <span class="o">=</span> <span class="s1">&#39;articlelist.html&#39;</span>
 <span class="n">TYPOGRIFY</span> <span class="o">=</span> <span class="kc">True</span>
 </code></pre></div>
-
 
 <p>The <code>tasks.py</code> file created by the pelican-quickstart command has a <code>livereload</code> task, which 
 requires installing a Python package with the same name <code>livereload</code>.  The live reload function

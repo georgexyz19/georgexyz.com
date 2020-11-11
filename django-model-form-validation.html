@@ -7,8 +7,8 @@
     <link rel="stylesheet" href="/theme/css/bs4min.css">
     <link rel="shortcut icon" type="image/x-icon" href="/theme/images/favicon.ico" >
     <link rel="icon" type="image/x-icon" href="/theme/images/favicon.ico" >
-<link rel="stylesheet" href="https://www.georgexyz.com/theme/css/friendly.css">
-<link rel="stylesheet" href="https://www.georgexyz.com/theme/css/custom.css">
+<link rel="stylesheet" href="/theme/css/friendly.css">
+<link rel="stylesheet" href="/theme/css/custom.css">
 <meta name="author" content="George Zhang" />
 <meta name="keywords" content="django" />
 <meta name="description" content="Django model and form validation is a somewhat complicated and confusing topic in Django app development. A developer needs to understand several basic concepts such as model, model field, form …" />
@@ -69,7 +69,7 @@
         </time>
 
         <span>with tags: </span>
-        <a href="https://www.georgexyz.com/tag/django.html">django</a>
+        <a href="/tag/django.html">django</a>
       </div>
 
       <p>Django model and form validation is a somewhat complicated and 
@@ -102,7 +102,6 @@ class MyModel(models.Model):
     even_field = models.IntegerField(validators=[validate_even])
 </code></pre></div>
 
-
 <p>The subsection <em>how validators are run</em> on the validator
 page has three links. </p>
 <ul>
@@ -133,7 +132,6 @@ except ValidationError as e:
     # handle the error
 </code></pre></div>
 
-
 <p><a href="https://stackoverflow.com/questions/7366363/adding-custom-django-model-validation">A stack overflow answer</a> 
 shows a typical pattern to conduct custom model validation. The model class overrides the 
 <code>clean()</code> method to provide custom model validation and the <code>save()</code> method 
@@ -149,7 +147,6 @@ to call <code>full_clean</code> method.  The example code is shown below:</p>
         self.full_clean()
         super(BaseModel, self).save(*args, **kwargs)
 </code></pre></div>
-
 
 <p><a href="https://stackoverflow.com/questions/42003866/django-validation-at-model-not-forms-level">Another stack overflow answer</a> 
 shows how to use custom model validation or simply use model field&#8217;s built-in 
@@ -169,7 +166,6 @@ exception when called. </p>
 &gt;&gt;&gt; p2.full_clean()  # raise exception
 </code></pre></div>
 
-
 <p>Checking <code>clean_fields()</code> method source code, it has the following lines. 
 The <code>f.clean(...)</code> method calls validation method on a model field.</p>
 <div class="highlight"><pre><span></span><code>try:
@@ -177,7 +173,6 @@ The <code>f.clean(...)</code> method calls validation method on a model field.</
 except ValidationError as e:
     errors[f.name] = e.error_list
 </code></pre></div>
-
 
 <h3>Form Validation</h3>
 <p>While model validation is a subsection on a Django documentation page, the 
@@ -203,7 +198,6 @@ model shown below:</p>
     recipients = MultiEmailField()
     cc_myself = forms.BooleanField(required=False)
 </code></pre></div>
-
 
 <p>The same page points out that &#8220;there are special considerations when overriding 
 the <code>clean()</code> method of a ModelForm subclass.&#8221;</p>

@@ -7,8 +7,8 @@
     <link rel="stylesheet" href="/theme/css/bs4min.css">
     <link rel="shortcut icon" type="image/x-icon" href="/theme/images/favicon.ico" >
     <link rel="icon" type="image/x-icon" href="/theme/images/favicon.ico" >
-<link rel="stylesheet" href="https://www.georgexyz.com/theme/css/friendly.css">
-<link rel="stylesheet" href="https://www.georgexyz.com/theme/css/custom.css">
+<link rel="stylesheet" href="/theme/css/friendly.css">
+<link rel="stylesheet" href="/theme/css/custom.css">
 <meta name="author" content="George Zhang" />
 <meta name="keywords" content="pelican,python" />
 <meta name="description" content="Pelican cache module (cache.py) is relatively independent of other modules. It uses pickle module to serialize data and logger module to output debug and warning messages. The module defines …" />
@@ -69,8 +69,8 @@
         </time>
 
         <span>with tags: </span>
-        <a href="https://www.georgexyz.com/tag/pelican.html">pelican</a>
-/        <a href="https://www.georgexyz.com/tag/python.html">python</a>
+        <a href="/tag/pelican.html">pelican</a>
+/        <a href="/tag/python.html">python</a>
       </div>
 
       <p>Pelican cache module (<a href="https://github.com/getpelican/pelican/blob/4.2.0/pelican/cache.py">cache.py</a>) 
@@ -87,7 +87,6 @@ if content is None:
     cache_data(path, content)
     save_cache()
 </code></pre></div>
-
 
 <p>The Pelican documentation has a section 
 &#8220;<a href="https://docs.getpelican.com/en/stable/settings.html?highlight=cache#reading-only-modified-content">Reading only modified content</a>&#8221; 
@@ -117,7 +116,6 @@ arguments do not have default values, which make them difficult to use in other
 python projects. These 4 arguments are listed below.  It seems that only <code>cache_path</code> 
 argument is mandatory. </p>
 <!-- use definition list, add css for dl in custom.css -->
-
 <dl>
 <dt>settings</dt>
 <dd>a dict of settings, a few keys <code>CACHE_PATH</code>, <code>GZIP_CACHE</code>, and <code>CHECK_MODIFIED_METHOD</code> are required for the class. </dd>
@@ -144,7 +142,6 @@ arguments of <code>__init__</code> method. </p>
         <span class="p">)</span>
 </code></pre></div>
 
-
 <p>Here is an exmple to test the derived class. </p>
 <div class="highlight"><pre><span></span><code><span class="k">if</span> <span class="vm">__name__</span> <span class="o">==</span> <span class="s1">&#39;__main__&#39;</span><span class="p">:</span>
 
@@ -158,7 +155,6 @@ arguments of <code>__init__</code> method. </p>
         <span class="n">cacher</span><span class="o">.</span><span class="n">save_cache</span><span class="p">()</span>
 </code></pre></div>
 
-
 <p>The Pelican documentation cautions the use of cache module. The <code>cache.py</code> file 
 in Pelican 4.2.0 has not been modified since 2015. It may be useful 
 when a website has thousands of pages.  I personally do not have a use case 
@@ -167,8 +163,8 @@ for the cache module yet. </p>
       <div class="mt-5 border-top">
         <h3>Related Posts:</h3>
         <ul>
-          <li><a href="https://www.georgexyz.com/print-source-code-paper.html">Print Python Source Code on Paper</a></li>
-          <li><a href="https://www.georgexyz.com/pelican-source-code-plugin.html">Pelican Source Code and Plugin</a></li>
+          <li><a href="/print-source-code-paper.html">Print Python Source Code on Paper</a></li>
+          <li><a href="/pelican-source-code-plugin.html">Pelican Source Code and Plugin</a></li>
         </ul>
       </div>
 

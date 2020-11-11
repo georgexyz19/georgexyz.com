@@ -7,8 +7,8 @@
     <link rel="stylesheet" href="/theme/css/bs4min.css">
     <link rel="shortcut icon" type="image/x-icon" href="/theme/images/favicon.ico" >
     <link rel="icon" type="image/x-icon" href="/theme/images/favicon.ico" >
-<link rel="stylesheet" href="https://www.georgexyz.com/theme/css/friendly.css">
-<link rel="stylesheet" href="https://www.georgexyz.com/theme/css/custom.css">
+<link rel="stylesheet" href="/theme/css/friendly.css">
+<link rel="stylesheet" href="/theme/css/custom.css">
 <meta name="author" content="George Zhang" />
 <meta name="keywords" content="python" />
 <meta name="description" content="When I am reading a realpython article Working With JSON Data in Python, I find an interesting python technique that reminds me something else I read before. It is called …" />
@@ -69,26 +69,24 @@
         </time>
 
         <span>with tags: </span>
-        <a href="https://www.georgexyz.com/tag/python.html">python</a>
+        <a href="/tag/python.html">python</a>
       </div>
 
       <p>When I am reading a realpython article 
 <a href="https://realpython.com/python-json/">Working With <span class="caps">JSON</span> Data in Python</a>, I find 
 an interesting python technique that reminds me something else I read before. 
 It is called <em>Counting With Dictionary</em> by Raymond Hettinger in a python talk.
-<a href="https://www.georgexyz.com/python-resources.html">A previous blog post</a> has the links 
+<a href="/python-resources.html">A previous blog post</a> has the links 
 to the video and the note. </p>
 <p>Given a list such as colors below,</p>
 <div class="highlight"><pre><span></span><code><span class="n">colors</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;red&#39;</span><span class="p">,</span> <span class="s1">&#39;green&#39;</span><span class="p">,</span> <span class="s1">&#39;red&#39;</span><span class="p">,</span> <span class="s1">&#39;blue&#39;</span><span class="p">,</span> <span class="s1">&#39;green&#39;</span><span class="p">,</span> <span class="s1">&#39;red&#39;</span><span class="p">]</span>
 </code></pre></div>
-
 
 <p>the python code should generate a dictionary. The keys of the dictionary are 
 values in the list, and the values of the dictionary are the corresponding number of 
 keys in the list.  For the above example, the result dictionary <code>d</code> is </p>
 <div class="highlight"><pre><span></span><code><span class="p">{</span><span class="s1">&#39;red&#39;</span><span class="p">:</span> <span class="mi">3</span><span class="p">,</span> <span class="s1">&#39;green&#39;</span><span class="p">:</span> <span class="mi">2</span><span class="p">,</span> <span class="s1">&#39;blue&#39;</span><span class="p">:</span> <span class="mi">1</span><span class="p">}</span>
 </code></pre></div>
-
 
 <p>There are many ways to write the code.  I will summarize these techniques below. </p>
 <h3>Basic Way to Count</h3>
@@ -101,7 +99,6 @@ first time.  Total line count is 5. </p>
     <span class="n">d</span><span class="p">[</span><span class="n">color</span><span class="p">]</span> <span class="o">+=</span> <span class="mi">1</span>
 </code></pre></div>
 
-
 <h3>Get Method of Dictionary</h3>
 <p>If the color is not in the dictionary, using <code>d[color]</code> to access its value raises
 a KeyValue exception.  The dictionary <code>get</code> method returns the second argument 
@@ -110,7 +107,6 @@ when the first argument is not already in the dictionary.  Line count is 3. </p>
 <span class="k">for</span> <span class="n">color</span> <span class="ow">in</span> <span class="n">colors</span><span class="p">:</span>
     <span class="n">d</span><span class="p">[</span><span class="n">color</span><span class="p">]</span> <span class="o">=</span> <span class="n">d</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="n">color</span><span class="p">,</span> <span class="mi">0</span><span class="p">)</span> <span class="o">+</span> <span class="mi">1</span>
 </code></pre></div>
-
 
 <h3>Use Defaultdict</h3>
 <p>The standard collections package has a defaultdict class. The class sets a default 
@@ -121,7 +117,6 @@ value for a key.  Line count is still 5. </p>
     <span class="n">d</span><span class="p">[</span><span class="n">color</span><span class="p">]</span> <span class="o">+=</span> <span class="mi">1</span>
 <span class="n">d</span> <span class="o">=</span> <span class="nb">dict</span><span class="p">(</span><span class="n">d</span><span class="p">)</span>
 </code></pre></div>
-
 
 <h3>Try and Except to Handle Exception</h3>
 <p>The above three methods are from Raymond Hettinger&#8217;s python talk.  The method below
@@ -135,7 +130,6 @@ but the logic is very clear. </p>
         <span class="n">d</span><span class="p">[</span><span class="n">color</span><span class="p">]</span> <span class="o">=</span> <span class="mi">1</span>
 </code></pre></div>
 
-
 <h3>Setdefault Method of Dictionary</h3>
 <p>This method is between the first two methods.  Line count is also between 5 and 3. 
 This method uses dictionary method <code>setdefault</code>, which is also discussed in 
@@ -145,7 +139,6 @@ Raymond Hettinger&#8217;s python talk.</p>
     <span class="n">d</span><span class="o">.</span><span class="n">setdefault</span><span class="p">(</span><span class="n">color</span><span class="p">,</span> <span class="mi">0</span><span class="p">)</span>
     <span class="n">d</span><span class="p">[</span><span class="n">color</span><span class="p">]</span> <span class="o">+=</span><span class="mi">1</span> 
 </code></pre></div>
-
 
 <p>Python is very flexible to write once you know the basics, and there are always 
 many ways to solve a problem. </p>
@@ -158,7 +151,6 @@ and rapid tallies&#8221;. </p>
 <span class="n">cnt</span> <span class="o">=</span> <span class="n">Counter</span><span class="p">(</span><span class="n">colors</span><span class="p">)</span>
 <span class="n">d</span> <span class="o">=</span> <span class="nb">dict</span><span class="p">(</span><span class="n">cnt</span><span class="p">)</span>
 </code></pre></div>
-
 
 <p>This method is probably the easiest and the line count is only 3. </p>
 

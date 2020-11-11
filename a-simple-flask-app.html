@@ -7,8 +7,8 @@
     <link rel="stylesheet" href="/theme/css/bs4min.css">
     <link rel="shortcut icon" type="image/x-icon" href="/theme/images/favicon.ico" >
     <link rel="icon" type="image/x-icon" href="/theme/images/favicon.ico" >
-<link rel="stylesheet" href="https://www.georgexyz.com/theme/css/friendly.css">
-<link rel="stylesheet" href="https://www.georgexyz.com/theme/css/custom.css">
+<link rel="stylesheet" href="/theme/css/friendly.css">
+<link rel="stylesheet" href="/theme/css/custom.css">
 <meta name="author" content="George Zhang" />
 <meta name="keywords" content="python,flask" />
 <meta name="description" content="I have been studying Flask web framework for some time. Today I decide to write a simple app and deploy it to a Digital Ocean web server under my control …" />
@@ -69,8 +69,8 @@
         </time>
 
         <span>with tags: </span>
-        <a href="https://www.georgexyz.com/tag/python.html">python</a>
-/        <a href="https://www.georgexyz.com/tag/flask.html">flask</a>
+        <a href="/tag/python.html">python</a>
+/        <a href="/tag/flask.html">flask</a>
       </div>
 
       <p>I have been studying Flask web framework for some time.  Today I decide to 
@@ -98,7 +98,6 @@ proxy) http requests to the gunicorn <span class="caps">WSGI</span> server. </p>
     proxy_set_header X-Forwarded-For $proxy_add_x_forwarded_for;
 }
 </code></pre></div>
-
 
 <p>The setting code above is from Miguel Grinberg&#8217;s 
 <a href="https://blog.miguelgrinberg.com/post/the-flask-mega-tutorial-part-xvii-deployment-on-linux">Flask Mega-Tutorial Chapter 17</a>. 
