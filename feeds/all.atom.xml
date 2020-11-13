@@ -446,13 +446,13 @@ Suppose you have a basic Flask app like below (from the book). &lt;/p&gt;
     &lt;span class="k"&gt;return&lt;/span&gt; &lt;span class="s1"&gt;&amp;#39;&amp;lt;h1&amp;gt;Hello World&amp;lt;/h1&amp;gt;&amp;#39;&lt;/span&gt;
 &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
 
-&lt;p&gt;You can use the Python 3 build in venv module to create a virtual environment like below. &lt;/p&gt;
+&lt;p&gt;You can use the Python 3 built-in venv module to create a virtual environment like below. &lt;/p&gt;
 &lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;$ python -m venv ven
 $ source venv/bin/activate
 $ pip install flask
 &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
 
-&lt;p&gt;Here is output of &lt;code&gt;pip freeze&lt;/code&gt; command.  The &lt;code&gt;pip install&lt;/code&gt; command also installs Flask dependencies.  &lt;/p&gt;
+&lt;p&gt;Here is output of &lt;code&gt;pip freeze&lt;/code&gt; command.  The &lt;code&gt;pip install&lt;/code&gt; command installs several Flask dependencies.  &lt;/p&gt;
 &lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;click==7.1.2
 Flask==1.1.2
 itsdangerous==1.1.0
@@ -462,14 +462,14 @@ Werkzeug==1.0.1
 &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
 
 &lt;p&gt;Then you can setup two environment variables and type &lt;code&gt;flask run&lt;/code&gt; to start the app. But what happens 
-when you start the command &lt;code&gt;flask run&lt;/code&gt;?  I am trying to figure out the answer and this article records 
-my efforts. &lt;/p&gt;
+when you start the command &lt;code&gt;flask run&lt;/code&gt;?  I am trying to find out the answer and this article documents 
+the effort. &lt;/p&gt;
 &lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;$ export FLASK_APP=hello.py
 $ export FLASK_ENV=development
 $ flask run
 &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
 
-&lt;p&gt;When you run the command &lt;code&gt;pip install flask&lt;/code&gt;, the pip system installs a &lt;code&gt;flask&lt;/code&gt; python script in the 
+&lt;p&gt;When you run the command &lt;code&gt;pip install flask&lt;/code&gt;, the pip system installs a &lt;code&gt;flask&lt;/code&gt; python script file in the 
 &lt;code&gt;venv/bin/&lt;/code&gt; directory.  You can think of &lt;code&gt;flask&lt;/code&gt; as a command and &lt;code&gt;run&lt;/code&gt; as an argument to the command. 
 The &lt;code&gt;run&lt;/code&gt; part is actually a sub-command.  You can run &lt;code&gt;flask --help&lt;/code&gt; to find out other available 
 sub-commands. &lt;/p&gt;
@@ -485,10 +485,10 @@ if __name__ == &amp;#39;__main__&amp;#39;:
     sys.exit(main())
 &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
 
-&lt;p&gt;Let&amp;#8217;s open the &lt;code&gt;cli.py&lt;/code&gt; file in &lt;code&gt;venv\lib\python3.8\site-packages\flask&lt;/code&gt; directory. Line 965 
-defines the &lt;code&gt;main&lt;/code&gt; function. Here the &lt;code&gt;as_module&lt;/code&gt; argument is &lt;code&gt;False&lt;/code&gt; and the main funtion 
-calls &lt;code&gt;cli.main&lt;/code&gt; method with two arguments args=[&amp;#8216;run&amp;#8217;, ] and prog_name=None. The &lt;code&gt;cli&lt;/code&gt; part 
-of &lt;code&gt;cli.main&lt;/code&gt; method call is an object of FlaskGroup class which is defined on Line 945.  &lt;/p&gt;
+&lt;p&gt;Let&amp;#8217;s open the &lt;code&gt;cli.py&lt;/code&gt; file in &lt;code&gt;venv\lib\python3.8\site-packages\flask&lt;/code&gt; directory.  Line 965 
+defines the &lt;code&gt;main&lt;/code&gt; function. The &lt;code&gt;as_module&lt;/code&gt; argument is &lt;code&gt;False&lt;/code&gt; and the &lt;code&gt;main&lt;/code&gt; function 
+calls &lt;code&gt;cli.main&lt;/code&gt; method with two arguments &lt;code&gt;args=['run', ]&lt;/code&gt; and &lt;code&gt;prog_name=None&lt;/code&gt;. The &lt;code&gt;cli&lt;/code&gt; part 
+of &lt;code&gt;cli.main&lt;/code&gt; method call is an instance of FlaskGroup class defined on Line 945.  &lt;/p&gt;
 &lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;def main(as_module=False):
     # TODO omit sys.argv once ... is fixed
     cli.main(args=sys.argv[1:], 
@@ -519,7 +519,7 @@ The method makes changes to some settings and calls the &lt;code&gt;main&lt;/cod
 
 &lt;p&gt;The &lt;code&gt;FlaskGroup&lt;/code&gt; is derived from &lt;code&gt;AppGroup&lt;/code&gt; class which is defined on Line 431. The &lt;code&gt;AppGroup&lt;/code&gt; 
 in turn is derived from &lt;code&gt;click.Group&lt;/code&gt; class defined in &lt;code&gt;core.py&lt;/code&gt; file in click package. The 
-class derivation tree is shown below.  The &lt;code&gt;main&lt;/code&gt; method in super class mentioned above is 
+class inheritance tree is shown below.  The &lt;code&gt;main&lt;/code&gt; method in super class mentioned above is 
 defined all the way up in &lt;code&gt;click.BaseCommand&lt;/code&gt; class.   &lt;/p&gt;
 &lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;FlaskGroup                      cli.py Line 462
   AppGroup                      cli.py Line 431
@@ -544,7 +544,9 @@ those two methods. &lt;/p&gt;
 The command &lt;code&gt;run&lt;/code&gt; becomes part of flask built in commands loaded by default.&lt;br&gt;
 The code which loads the built in commands is in the &lt;code&gt;FlaskGroup.get_command&lt;/code&gt;.  &lt;/p&gt;
 &lt;p&gt;The &lt;code&gt;run_command&lt;/code&gt; function look like this.  It calls the &lt;code&gt;run_simple&lt;/code&gt; function in 
-werkzeug module and starts the development server. &lt;/p&gt;
+werkzeug module and starts the development server.  The &lt;code&gt;DispatchingApp&lt;/code&gt; class 
+is also interesting, and it loads the app based on the environment variable 
+settings.  I will discuss it in a later article. &lt;/p&gt;
 &lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;&lt;span class="nd"&gt;@click&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;command&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="s2"&gt;&amp;quot;run&amp;quot;&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;short_help&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="s2"&gt;&amp;quot;Run a development server.&amp;quot;&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
 &lt;span class="nd"&gt;@click&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;option&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="s2"&gt;&amp;quot;--host&amp;quot;&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="s2"&gt;&amp;quot;-h&amp;quot;&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;default&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="s2"&gt;&amp;quot;127.0.0.1&amp;quot;&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="o"&gt;...&lt;/span&gt;&lt;span class="s2"&gt;&amp;quot;)&lt;/span&gt;
 &lt;span class="o"&gt;...&lt;/span&gt;
