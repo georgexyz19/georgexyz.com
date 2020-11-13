@@ -79,12 +79,14 @@ variable <code>app_ctx</code> when a request context is pushed. </p>
 app_ctx.push()
 </code></pre></div>
 
+
 <p>The <code>app_context</code> method of <code>Flask</code> class is defined on Line 2324 in app.py file. The method 
 is really simple and the code is shown below. It initializes an <code>AppContext</code> object and returns
 it.  </p>
 <div class="highlight"><pre><span></span><code>def app_context(self):
     return AppContext(self)
 </code></pre></div>
+
 
 <p>The <code>AppContext</code> class is however defined on Line 205 of ctx.py file.  The code in <code>__init__</code> 
 method of <code>AppContext</code> class is shown below. </p>
@@ -100,12 +102,14 @@ method of <code>AppContext</code> class is shown below. </p>
     ......
 </code></pre></div>
 
+
 <p>The <code>AppContext</code> class defines 4 instance variables <code>self.app</code>, <code>self.url_adapter</code>, 
 <code>self.g</code>, and <code>self._refcnt</code>.  The interesting variable is <code>self.g</code>, which is 
 an instance of <code>_AppCtxGlobals</code> class defined on Line 28 of ctx.py file.  Because 
 it is a class object, you can set any attribute on the object like this. </p>
 <div class="highlight"><pre><span></span><code>g.user = User(...)
 </code></pre></div>
+
 
 <p>The <code>push</code> and <code>pop</code> methods of <code>AppContext</code> class is simpler than methods in 
 <code>RequestContext</code> class. It pushes or pops the object on the <code>_app_ctx_stack</code> 

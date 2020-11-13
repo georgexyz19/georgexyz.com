@@ -87,6 +87,7 @@ command like this. </p>
 <div class="highlight"><pre><span></span><code>sudo grub-mkconfig -o grub.cfg 
 </code></pre></div>
 
+
 <p>The <code>grub-mkconfig</code> tool will load setting files in <code>/etc/grub.d/</code> directory and setting 
 file <code>/etc/default/grub</code>.  A user should change those files and run <code>grub-mkconfig</code> to 
 generate the final <code>grub.cfg</code> file. </p>
@@ -106,6 +107,7 @@ total 108
 -rw-r--r--   1 root root   483 Mar 18  2019 README
 </code></pre></div>
 
+
 <p>Reading the <code>/boot/grub/grub.cfg</code> file a little bit, I find the <code>30_os-prober</code> is the configuration
 file to read the Windows. I made a copy the file and named the new copy <code>09_os-prober</code>, then I
 turned the execution bit off for <code>30_os-prober</code>. Note the boot order is based on the first two
@@ -114,6 +116,7 @@ digits of file names in this directory.  The commands are like this, </p>
 sudo chmod -x 30_os-prober
 sudo grub-mkconfig -o /boot/grub/grub.cfg 
 </code></pre></div>
+
 
 <p>Now reboot the computer and the boot screen looks like this, </p>
 <div style="max-width:800px">

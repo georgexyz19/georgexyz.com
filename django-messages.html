@@ -101,6 +101,7 @@ The view adds a success message to the message queue. The next web page
                       <span class="p">{</span><span class="s1">&#39;form&#39;</span><span class="p">:</span> <span class="n">bound_form</span> <span class="p">}</span> <span class="p">)</span>
 </code></pre></div>
 
+
 <p>The code to show the messages is in the base.html file, and all web pages 
 extended from the base.html will show the messages. </p>
 <div class="highlight"><pre><span></span><code><span class="p">&lt;</span><span class="nt">ul</span><span class="p">&gt;</span>
@@ -115,6 +116,7 @@ extended from the base.html will show the messages. </p>
 <span class="p">&lt;/</span><span class="nt">ul</span><span class="p">&gt;</span>
 </code></pre></div>
 
+
 <p>The code above is very similar to the code shown on the Django official 
 documentation page (shown below). </p>
 <div class="highlight"><pre><span></span><code>{% if messages %}
@@ -126,6 +128,7 @@ documentation page (shown below). </p>
 &lt;/ul&gt;
 {% endif %}
 </code></pre></div>
+
 
 <h3>Source Code Files</h3>
 <p>The source code for the messages app is in the django/contrib/messages directory. 
@@ -146,6 +149,7 @@ It consists of 13 python files, and the total line count is 647 in Django 2.2.2.
    <span class="m">54</span> ./storage/fallback.py
   <span class="m">647</span> total
 </code></pre></div>
+
 
 <h3>Messages App <span class="caps">API</span></h3>
 <p>The __init__.py file imports all from api.py and constants.py. The api.py 
@@ -185,6 +189,7 @@ storage.</p>
 <span class="p">}</span>
 </code></pre></div>
 
+
 <p>The middleware.py code is an good example of how to write a middleware for 
 Django. The class derives from MiddlewareMixin and defines two methods 
 <code>process_request</code> and <code>process_response</code>.  The <code>process_request</code> adds 
@@ -221,6 +226,7 @@ are not all stored.</p>
         <span class="k">return</span> <span class="n">response</span>
 </code></pre></div>
 
+
 <p>The context_processor.py defines a function <code>messages</code> which simply returns a 
 dictionary of two context variables.</p>
 <div class="highlight"><pre><span></span><code><span class="c1"># messages/context_processor.py </span>
@@ -239,6 +245,7 @@ dictionary of two context variables.</p>
         <span class="s1">&#39;DEFAULT_MESSAGE_LEVELS&#39;</span><span class="p">:</span> <span class="n">DEFAULT_LEVELS</span><span class="p">,</span>
     <span class="p">}</span>
 </code></pre></div>
+
 
 <p>The <code>views.py</code> defines a SuccessMessageMixin, which adds a success message 
 attribute to class based views. It is probably easier for a programmer 
@@ -264,6 +271,7 @@ the storage defines a <code>default_storage</code> function. </p>
     <span class="k">return</span> <span class="n">import_string</span><span class="p">(</span><span class="n">settings</span><span class="o">.</span><span class="n">MESSAGE_STORAGE</span><span class="p">)(</span><span class="n">request</span><span class="p">)</span>
 </code></pre></div>
 
+
 <p>The grep command results show that <code>MESSAGE_STORAGE</code> is assigned FallBackStorage 
 class which is defined in the fallback.py file. </p>
 <div class="highlight"><pre><span></span><code>george@STK2M3:~/Desktop/django-2.2.2$ grep -nr &#39;MESSAGE_STORAGE&#39; ./
@@ -274,6 +282,7 @@ class which is defined in the fallback.py file. </p>
 ./django/conf/global_settings.py:554:MESSAGE_STORAGE = 
    &#39;django.contrib.messages.storage.fallback.FallbackStorage&#39;
 </code></pre></div>
+
 
 <p>The <code>import_string</code> function is defined in the module_loading.py file, which 
 &#8220;imports a dotted module path and return the attribute/class designated by the 
@@ -326,6 +335,7 @@ stored. Here is the source code. </p>
         <span class="n">messages</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_loaded_messages</span> <span class="o">+</span> <span class="bp">self</span><span class="o">.</span><span class="n">_queued_messages</span>
         <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_store</span><span class="p">(</span><span class="n">messages</span><span class="p">,</span> <span class="n">response</span><span class="p">)</span>
 </code></pre></div>
+
 
 <h3>Cookies and Sessions</h3>
 <p>The discussion of the messages app has already became convoluted, and it will 
@@ -397,6 +407,7 @@ source code of session.py file. </p>
             <span class="k">return</span> <span class="n">json</span><span class="o">.</span><span class="n">loads</span><span class="p">(</span><span class="n">data</span><span class="p">,</span> <span class="bp">cls</span><span class="o">=</span><span class="n">MessageDecoder</span><span class="p">)</span>
         <span class="k">return</span> <span class="n">data</span>
 </code></pre></div>
+
 
 <h3>Conclusion</h3>
 <p>The messages app is easy to use in a Django app, but the implementation of 

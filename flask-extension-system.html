@@ -87,6 +87,7 @@ and provides a <code>quick_form</code> function.  You can render a form like thi
 {{ wtf.quick_form(form) }}
 </code></pre></div>
 
+
 <p>The drawback of this extension is that it has not been updated for sometime. 
 The Bootstrap 4 has been released a while, but the extension 
 still includes the version 3.  There is a fork Flask-<span class="caps">BS4</span> with Bootstrap 4, 
@@ -137,6 +138,7 @@ those two lines. </p>
 bootstrap = Bootstrap(app)
 </code></pre></div>
 
+
 <p>The <code>Bootstrap</code> class is defined on Line 123 (version 3.3.7.1) of 
 <code>__init__.py</code> file. The <code>init_app</code> method does the actual initialization 
 work. </p>
@@ -167,6 +169,7 @@ work. </p>
         <span class="n">app</span><span class="o">.</span><span class="n">extensions</span> <span class="o">=</span> <span class="p">{}</span>
     <span class="o">......</span>
 </code></pre></div>
+
 
 <p>The interesting part of the <code>init_app</code> method is that it registers itself as 
 a blueprint (sub application) of the app. After you initialize 
@@ -201,6 +204,7 @@ which is 198 lines long.  The <code>Moment</code> class code is shown below. </p
         <span class="k">return</span> <span class="n">current_app</span><span class="o">.</span><span class="n">extensions</span><span class="p">[</span><span class="s1">&#39;moment&#39;</span><span class="p">](</span><span class="n">timestamp</span><span class="p">)</span>
 </code></pre></div>
 
+
 <p>The <code>context_processor</code> static method returns a dictionary.  The key (<code>moment</code>) is 
 the variable or method name used in template, and the value (<code>current_app.extensions[moment]</code> refers to <code>_moment</code>) is the actual Python variable or method. The 
 implementation here is a little difficult to understand at a glance.  The <code>_moment</code>
@@ -228,9 +232,11 @@ is actually a class defined in the same file.   </p>
     <span class="o">......</span>
 </code></pre></div>
 
+
 <p>Let&#8217;s look at an example in a template file. </p>
 <div class="highlight"><pre><span></span><code>{{ moment(current_time).fromNow(refresh=True) }}
 </code></pre></div>
+
 
 <p>When you have this template variable in your template file, the 
 <code>moment(current_time)</code>  part is actually calling the <code>__init__</code> 
@@ -249,6 +255,7 @@ html element which has a class attribute <code>flask-moment</code>. </p>
             <span class="s1">&#39;style=&quot;display: none&quot;&gt;</span><span class="si">{}</span><span class="s1">&lt;/span&gt;&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">format</span><span class="p">(</span>
             <span class="n">t</span><span class="p">,</span> <span class="n">data_values</span><span class="p">,</span> <span class="nb">int</span><span class="p">(</span><span class="n">refresh</span><span class="p">)</span> <span class="o">*</span> <span class="mi">60000</span><span class="p">,</span> <span class="n">t</span><span class="p">))</span>
 </code></pre></div>
+
 
 <p>The <code>include_moment</code> static method of <code>_moment</code> class includes a <span class="caps">CDN</span> link 
 for the Moment Javascript library and three functions to render html elements 

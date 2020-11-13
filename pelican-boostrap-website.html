@@ -112,6 +112,7 @@ project to work on. I have not read all pelican source code yet. </p>
 find . -maxdepth 1 -name &#39;*.py&#39; -exec wc -l &#39;{}&#39; +
 </code></pre></div>
 
+
 <h3>Bootstrap 4</h3>
 <p>There is an excellent 
 <a href="https://github.com/getpelican/pelican-themes/tree/master/pelican-bootstrap3"><em>pelican-bootstrap3</em></a> 
@@ -146,6 +147,7 @@ Bootstrap locally.</p>
 <span class="nv">$print-page-size</span><span class="o">:</span> <span class="n">letter</span><span class="p">;</span>
 </code></pre></div>
 
+
 <p>The pelican-theme github repo collects many themes.  However, it seems to me that
 few of them are of professional quality. The possible reason is that most 
 themes are produced by hobbyists during spare time. </p>
@@ -167,12 +169,14 @@ python virtual environment. </p>
 <span class="n">pip</span> <span class="n">install</span> <span class="n">pelican</span> <span class="n">Markdown</span> <span class="n">invoke</span> <span class="n">ghp</span><span class="o">-</span><span class="n">import2</span>
 </code></pre></div>
 
+
 <p>The <code>pelican-quickstart</code> command will create a tasks.py file in the project directory. 
 One nice feature of Invoke is that you can run multiple tasks in one command. The 
 command below cleans the <code>output</code> directory, rebuilds the project, and serves the 
 website at <code>http://localhost:8000</code> address. </p>
 <div class="highlight"><pre><span></span><code>invoke clean build serve
 </code></pre></div>
+
 
 <h3>Website Source Code</h3>
 <p>This website is hosted in Github Pages, which is a free service for static sites. 
@@ -194,6 +198,7 @@ git push origin master # update source code
 ghp-import output -b gh-pages
 git push origin gh-pages
 </code></pre></div>
+
 
 <p><a href="https://gist.github.com/jedmao/5053440">This github page</a> 
 has a nice summary of common github commands. </p>

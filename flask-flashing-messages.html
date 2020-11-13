@@ -1,0 +1,203 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <link rel="stylesheet" href="/theme/css/bs4min.css">
+    <link rel="shortcut icon" type="image/x-icon" href="/theme/images/favicon.ico" >
+    <link rel="icon" type="image/x-icon" href="/theme/images/favicon.ico" >
+<link rel="stylesheet" href="https://www.georgexyz.com/theme/css/friendly.css">
+<link rel="stylesheet" href="https://www.georgexyz.com/theme/css/custom.css">
+<meta name="author" content="George Zhang" />
+<meta name="keywords" content="flask" />
+<meta name="description" content="Flask includes message flashing functionality as a core feature. The Flask documentation has two sentences which summarize the functionality well. The flashing system basically makes it possible to record a …" />
+    <title>Flask Flashing Messages - George Zhang</title>
+  </head>
+  <body>
+    <!-- navbar -->
+    <nav class="navbar navbar-expand-md navbar-light" style="background-color: #e3f2fd;">
+      <div class="container">
+        <a class="navbar-brand" href="/">George Zhang</a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarColor01" aria-controls="navbarColor01" aria-expanded="false" aria-label="Toggle navigation">
+          <span class="navbar-toggler-icon"></span>
+        </button>
+
+        <div class="collapse navbar-collapse" id="navbarColor01">
+          <ul class="navbar-nav mr-auto">
+            <li class="nav-item">
+              <a class="nav-link " 
+                href="/articlelist.html">Articles</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link pr-3 " 
+                href="/tags.html">Tags</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link pr-3 "
+                 href="/pages/inkscape-tutorial.html">Inkscape Tutorial</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link "
+                   href="/pages/projects.html">Projects</a>
+              </li>
+          </ul>
+
+          <ul class="navbar-nav">
+            <li class="nav-item">
+              <a class="nav-link " 
+                 href="/pages/about.html">About</a>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </nav>
+
+   
+
+<div class="container">
+
+  <div class="row">
+    <div class="col-lg-8 mx-auto">
+
+      <h2>Flask Flashing Messages</h2>
+
+      <div class="text-muted mb-2">
+        <span>Posted on </span>
+        <time datetime="2020-11-13 14:21:00-05:00">
+          Friday, 11/13/2020 14:21
+        </time>
+
+        <span>with tags: </span>
+        <a href="https://www.georgexyz.com/tag/flask.html">flask</a>
+      </div>
+
+      <p>Flask includes message flashing functionality as a core feature.  The Flask 
+documentation has two sentences which summarize the functionality well. </p>
+<blockquote>
+<p>The flashing system basically makes it possible to record a message 
+at the end of a request and access it on the next (and only the next) request.
+This is usually combined with a layout template to expose the message.</p>
+</blockquote>
+<p>The <em>Flask Web Development</em> book describes <em>Message Flashing</em> on Pages 53-55. 
+The Flask documentation also has a webpage titled 
+<em><a href="https://flask.palletsprojects.com/en/1.1.x/patterns/flashing/#message-flashing-pattern">Message Flashing</a></em>, 
+which also includes code examples.  </p>
+<p>You can call the <code>flash</code> function in a vew function like this. </p>
+<div class="highlight"><pre><span></span><code><span class="kn">from</span> <span class="nn">flask</span> <span class="kn">import</span> <span class="n">flash</span>
+
+<span class="c1"># inside view function</span>
+<span class="n">flash</span><span class="p">(</span><span class="s1">&#39;Log in successfully&#39;</span><span class="p">)</span>
+</code></pre></div>
+
+
+<p>The base template calls <code>get_flashed_messages</code> function and renders the 
+messages. The code below renders the messages as an un-ordered list. </p>
+<div class="highlight"><pre><span></span><code>{% with messages = get_flashed_messages() %}
+  {% if messages %}
+    &lt;ul class=&quot;flashes&quot;&gt;
+    {% for message in messages %}
+      &lt;li&gt;{{ message }}&lt;/li&gt;
+    {% endfor %}
+    &lt;/ul&gt;
+  {% endif %}
+{% endwith %}
+</code></pre></div>
+
+
+<p>Flashing messages also support categories.  You can pass a second 
+argument category to <code>flash</code> method.  The above example code 
+is modified to be like this. </p>
+<div class="highlight"><pre><span></span><code>flash(&#39;Log in failed&#39;, &#39;error&#39;)
+</code></pre></div>
+
+
+<div class="highlight"><pre><span></span><code>{% with messages = get_flashed_messages(with_categories=True) %}
+  {% if messages %}
+    &lt;ul class=&quot;flashes&quot;&gt;
+    {% for category, message in messages %}
+      &lt;li class=&quot;{{ category }}&quot;&gt;{{ message }}&lt;/li&gt;
+    {% endfor %}
+    &lt;/ul&gt;
+  {% endif %}
+{% endwith %}
+</code></pre></div>
+
+
+<p>The interesting part of the above code is that the function  <code>get_flashed_messages</code> is available to all 
+template html files. How does it happen? Let&#8217;s take a look at 
+Flask source code. </p>
+<p>The <code>flask/__init__.py</code> file has those two lines of code 
+(Lines 36 and 37). </p>
+<div class="highlight"><pre><span></span><code><span class="kn">from</span> <span class="nn">.helpers</span> <span class="kn">import</span> <span class="n">flash</span>
+<span class="kn">from</span> <span class="nn">.helpers</span> <span class="kn">import</span> <span class="n">get_flashed_messages</span>
+</code></pre></div>
+
+
+<p>The actual functions are defined on Lines 399 and 429 of <code>helpers.py</code> file.<br>
+The code of of those two functions are not long.  The <code>message_flashed</code> 
+variable in <code>flash</code> function is a signal, which I will discuss in a 
+future article.  The key <code>_flashes</code> of <code>session</code> dictionary has a value which 
+is a list. The list values are tuples.  Here is an example <code>[('message', 'log in'), ('error', 'log out')]</code>. </p>
+<div class="highlight"><pre><span></span><code><span class="k">def</span> <span class="nf">flash</span><span class="p">(</span><span class="n">message</span><span class="p">,</span> <span class="n">category</span><span class="o">=</span><span class="s2">&quot;message&quot;</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot; ... &quot;&quot;&quot;</span>
+    <span class="n">flashes</span> <span class="o">=</span> <span class="n">session</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">&quot;_flashes&quot;</span><span class="p">,</span> <span class="p">[])</span>
+    <span class="n">flashes</span><span class="o">.</span><span class="n">append</span><span class="p">((</span><span class="n">category</span><span class="p">,</span> <span class="n">message</span><span class="p">))</span>
+    <span class="n">session</span><span class="p">[</span><span class="s2">&quot;_flashes&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="n">flashes</span>
+    <span class="n">message_flashed</span><span class="o">.</span><span class="n">send</span><span class="p">(</span>
+        <span class="n">current_app</span><span class="o">.</span><span class="n">_get_current_object</span><span class="p">(),</span> <span class="n">message</span><span class="o">=</span><span class="n">message</span><span class="p">,</span> 
+        <span class="n">category</span><span class="o">=</span><span class="n">category</span>
+    <span class="p">)</span>
+</code></pre></div>
+
+
+<div class="highlight"><pre><span></span><code><span class="k">def</span> <span class="nf">get_flashed_messages</span><span class="p">(</span><span class="n">with_categories</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span> <span class="n">category_filter</span><span class="o">=</span><span class="p">()):</span>
+    <span class="sd">&quot;&quot;&quot; ....  &quot;&quot;&quot;</span>
+    <span class="n">flashes</span> <span class="o">=</span> <span class="n">_request_ctx_stack</span><span class="o">.</span><span class="n">top</span><span class="o">.</span><span class="n">flashes</span>
+    <span class="k">if</span> <span class="n">flashes</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
+        <span class="n">_request_ctx_stack</span><span class="o">.</span><span class="n">top</span><span class="o">.</span><span class="n">flashes</span> <span class="o">=</span> <span class="n">flashes</span> <span class="o">=</span> <span class="p">(</span>
+            <span class="n">session</span><span class="o">.</span><span class="n">pop</span><span class="p">(</span><span class="s2">&quot;_flashes&quot;</span><span class="p">)</span> <span class="k">if</span> <span class="s2">&quot;_flashes&quot;</span> <span class="ow">in</span> <span class="n">session</span> <span class="k">else</span> <span class="p">[]</span>
+        <span class="p">)</span>
+    <span class="k">if</span> <span class="n">category_filter</span><span class="p">:</span>
+        <span class="n">flashes</span> <span class="o">=</span> <span class="nb">list</span><span class="p">(</span><span class="nb">filter</span><span class="p">(</span><span class="k">lambda</span> <span class="n">f</span><span class="p">:</span> <span class="n">f</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="ow">in</span> <span class="n">category_filter</span><span class="p">,</span> <span class="n">flashes</span><span class="p">))</span>
+    <span class="k">if</span> <span class="ow">not</span> <span class="n">with_categories</span><span class="p">:</span>
+        <span class="k">return</span> <span class="p">[</span><span class="n">x</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span> <span class="k">for</span> <span class="n">x</span> <span class="ow">in</span> <span class="n">flashes</span><span class="p">]</span>
+    <span class="k">return</span> <span class="n">flashes</span>
+</code></pre></div>
+
+
+<p>How does Jinja2 know <code>get_flashed_messages</code> function? The code is in 
+<code>create_jinja_environment</code> method of Flask class (Line 761 of app.py). 
+The function is added to the Jinja2 environment globals along with 
+other functions and variables. </p>
+<div class="highlight"><pre><span></span><code><span class="k">def</span> <span class="nf">create_jinja_environment</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+    <span class="o">......</span>
+    <span class="n">rv</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">jinja_environment</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="o">**</span><span class="n">options</span><span class="p">)</span>
+    <span class="n">rv</span><span class="o">.</span><span class="n">globals</span><span class="o">.</span><span class="n">update</span><span class="p">(</span>
+        <span class="n">url_for</span><span class="o">=</span><span class="n">url_for</span><span class="p">,</span>
+        <span class="n">get_flashed_messages</span><span class="o">=</span><span class="n">get_flashed_messages</span><span class="p">,</span>
+        <span class="n">config</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">config</span><span class="p">,</span>
+        <span class="c1"># request, session and g are normally added with the</span>
+        <span class="c1"># context processor for efficiency reasons but for imported</span>
+        <span class="c1"># templates we also want the proxies in there.</span>
+        <span class="n">request</span><span class="o">=</span><span class="n">request</span><span class="p">,</span>
+        <span class="n">session</span><span class="o">=</span><span class="n">session</span><span class="p">,</span>
+        <span class="n">g</span><span class="o">=</span><span class="n">g</span><span class="p">,</span>
+    <span class="p">)</span>
+    <span class="n">rv</span><span class="o">.</span><span class="n">filters</span><span class="p">[</span><span class="s2">&quot;tojson&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="n">json</span><span class="o">.</span><span class="n">tojson_filter</span>
+    <span class="k">return</span> <span class="n">rv</span>
+</code></pre></div>
+
+
+
+    </div>
+  </div>
+
+</div>
+
+   
+    <script src="https://code.jquery.com/jquery-3.4.1.slim.min.js" integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js" integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6" crossorigin="anonymous"></script>
+  </body>
+</html>

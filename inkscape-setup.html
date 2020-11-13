@@ -89,6 +89,7 @@ a portable version if you do not want to install it. </p>
 <div class="highlight"><pre><span></span><code>C:\Users\Username\Documents\inkscape0.92.4
 </code></pre></div>
 
+
 <h4>Inkscape User Extension Directory</h4>
 <p>In Inkscape, click menu item <code>Edit &gt; Preferences</code> to open preference 
 dialog (Ctrl + Shift + p). Choose <code>System</code> on the left, and the right side 
@@ -96,6 +97,7 @@ shows system paths for variables.  The default value
 for <code>User extensions</code> is,</p>
 <div class="highlight"><pre><span></span><code>C:\Users\Username\AppData\Roaming\inkscape\extensions
 </code></pre></div>
+
 
 <p>Open this location in File Explorer and copy and paste extension files 
 (.py and .inx) into the directory. The extension program will show up 
@@ -115,6 +117,7 @@ on <code>Text and Font</code> dialog in Inkscape. </p>
 &lt;dir&gt;./fonts&lt;/dir&gt;
 &lt;/fontconfig&gt;
 </code></pre></div>
+
 
 <h4>Install Dependencies for Plugin WriteTex</h4>
 <p>WriteTex is a nice Inkscape extension for adding LaTeX equations onto
@@ -140,6 +143,7 @@ a directory. </p>
 <div class="highlight"><pre><span></span><code>C:\Users\Username\Downloads\WriteTex-dep
 </code></pre></div>
 
+
 <p>Two directories containing files <code>xelatex.exe</code> and <code>pdf2svg.exe</code> should be 
 added to the system path. In Windows 10 File Explorer, right click <code>This PC</code> and 
 choose <code>Properties</code>.  Choose <code>Advanced system settings</code> and click <code>Advanced</code>
@@ -149,6 +153,7 @@ Then click <code>Edit</code> and add two directories to the list. </p>
 C:\Users\Username\Downloads\WriteTex-dep\texlive\bin\win32
 </code></pre></div>
 
+
 <p>The purpose of above steps is for WriteTex python extension to find 
 <code>xelatex.exe</code> and <code>pdf2svg.exe</code> programs. </p>
 <h4>How to Enter Equations with Plugin WriteTex</h4>
@@ -157,6 +162,7 @@ Some LaTeX symbols like <code>\dfrac</code> need AmsTeX.  Add the line below to
 <code>Preamble File</code> box and toggle box <code>Trade above as contents</code>. </p>
 <div class="highlight"><pre><span></span><code>\usepackage{amsmath, amsthm, amssymb, amsfonts} 
 </code></pre></div>
+
 
 <div style="max-width:400px">
   <img class="img-fluid" src="/images/writetex-interface.png" alt="WriteTex Interface"> 
@@ -181,6 +187,7 @@ The programs are automatically added to the system path. </p>
 <div class="highlight"><pre><span></span><code>sudo apt-get install texlive
 sudo apt-get install pdf2svg
 </code></pre></div>
+
 
 <p>The texlive installation does not include xelatex.  You change <code>xelatex</code>
 to <code>pdflatex</code> on the WriteTex dialog to make it work. </p>

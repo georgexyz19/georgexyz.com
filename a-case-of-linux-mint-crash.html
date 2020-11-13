@@ -100,6 +100,7 @@ sudo du -h -d 1 / | sort -n
   # this is for 1 level of dir under root /
 </code></pre></div>
 
+
 <p>I found two huge files under /var/log directory.  It turned out that both
 <code>syslog</code> and <code>kern.log</code> files were of <span class="caps">40GB</span>+ sizes. And the disk was full and
 that was the reason I could not login.  </p>
@@ -112,10 +113,12 @@ There was another post for that. </p>
 &gt; /var/log/kern.log
 </code></pre></div>
 
+
 <p>After that the disk showed a free space of <span class="caps">90GB</span>. I also ran the command 
 below to change the reserved disk blocks percent back to 5 percent. </p>
 <div class="highlight"><pre><span></span><code>sudo tune2fs -m5 /dev/sda2
 </code></pre></div>
+
 
 <p>I have a large 30 inch Dell U3011 monitor I bought a few years ago. The desktop 
 connects to the monitor via a displayport cable.  I also connect my laptop to 

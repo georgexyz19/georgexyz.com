@@ -94,9 +94,11 @@ $vim /bin/egrep  # file content is
 exec grep -E &quot;$@&quot;
 </code></pre></div>
 
+
 <p>Here is a very simple grep example:</p>
 <div class="highlight"><pre><span></span><code>$grep &quot;Jane Williams&quot; filename.txt
 </code></pre></div>
+
 
 <p>The grep command has many options. A few common ones are:</p>
 <ul>
@@ -112,6 +114,7 @@ exec grep -E &quot;$@&quot;
 <div class="highlight"><pre><span></span><code>$grep -winr &quot;Jane Williams&quot; ./
 </code></pre></div>
 
+
 <p>Here are a few more options:</p>
 <ul>
 <li>-r : recursive</li>
@@ -121,6 +124,7 @@ exec grep -E &quot;$@&quot;
 <p>You can use pipes to search the results of another command.</p>
 <div class="highlight"><pre><span></span><code>$history | grep &quot;git commit&quot;
 </code></pre></div>
+
 
 <p>The grep <code>-P</code> option interprets the pattern as a Perl-compatible regex. The 
 Python and Perl &#8220;essentially has the same regex syntax&#8221;.  So with the <code>-P</code> 
@@ -135,6 +139,7 @@ in pattern. Here is a list of common regex special characters in Python:</p>
 <li>+ : one or more</li>
 </ul>
 <div style="margin-bottom:.4in;"></div>
+
 <hr>
 
 <p><em>Update on 8/28/2020:</em></p>
@@ -147,6 +152,7 @@ to tally blog posts becomes like this,  </p>
 <div class="highlight"><pre><span></span><code>grep -r &quot;date: 2020\\-&quot; | wc -l
 grep -r &quot;date: 2019\\-&quot; | wc -l
 </code></pre></div>
+
 
 <p>The result is 26 v.s. 26. The 2019 only covers 9 months starting from 4/1 and 2020 covers 8 months 
 so far, so it is close. </p>

@@ -82,11 +82,13 @@ Suppose you have a basic Flask app like below (from the book). </p>
     <span class="k">return</span> <span class="s1">&#39;&lt;h1&gt;Hello World&lt;/h1&gt;&#39;</span>
 </code></pre></div>
 
+
 <p>You can use the Python 3 built-in venv module to create a virtual environment like below. </p>
 <div class="highlight"><pre><span></span><code>$ python -m venv ven
 $ source venv/bin/activate
 $ pip install flask
 </code></pre></div>
+
 
 <p>Here is output of <code>pip freeze</code> command.  The <code>pip install</code> command installs several Flask dependencies.  </p>
 <div class="highlight"><pre><span></span><code>click==7.1.2
@@ -97,6 +99,7 @@ MarkupSafe==1.1.1
 Werkzeug==1.0.1
 </code></pre></div>
 
+
 <p>Then you can setup two environment variables and type <code>flask run</code> to start the app. But what happens 
 when you start the command <code>flask run</code>?  I am trying to find out the answer and this article documents 
 the effort. </p>
@@ -104,6 +107,7 @@ the effort. </p>
 $ export FLASK_ENV=development
 $ flask run
 </code></pre></div>
+
 
 <p>When you run the command <code>pip install flask</code>, the pip system installs a <code>flask</code> python script file in the 
 <code>venv/bin/</code> directory.  You can think of <code>flask</code> as a command and <code>run</code> as an argument to the command. 
@@ -121,6 +125,7 @@ if __name__ == &#39;__main__&#39;:
     sys.exit(main())
 </code></pre></div>
 
+
 <p>Let&#8217;s open the <code>cli.py</code> file in <code>venv\lib\python3.8\site-packages\flask</code> directory.  Line 965 
 defines the <code>main</code> function. The <code>as_module</code> argument is <code>False</code> and the <code>main</code> function 
 calls <code>cli.main</code> method with two arguments <code>args=['run', ]</code> and <code>prog_name=None</code>. The <code>cli</code> part 
@@ -130,6 +135,7 @@ of <code>cli.main</code> method call is an instance of FlaskGroup class defined 
     cli.main(args=sys.argv[1:], 
         prog_name=&quot;python -m flask&quot; if as_module else None)
 </code></pre></div>
+
 
 <p>Here things become complicated and I have not figured everything out.  The FlaskGroup class 
 is defined on Line 462 and it has a main method defined on Line 567 (code shown below). 
@@ -153,6 +159,7 @@ The method makes changes to some settings and calls the <code>main</code> method
     return super(FlaskGroup, self).main(*args, **kwargs)
 </code></pre></div>
 
+
 <p>The <code>FlaskGroup</code> is derived from <code>AppGroup</code> class which is defined on Line 431. The <code>AppGroup</code> 
 in turn is derived from <code>click.Group</code> class defined in <code>core.py</code> file in click package. The 
 class inheritance tree is shown below.  The <code>main</code> method in super class mentioned above is 
@@ -164,6 +171,7 @@ defined all the way up in <code>click.BaseCommand</code> class.   </p>
         click.Command                /core.py Line 832
           click.BaseCommand          /core.py Line 631
 </code></pre></div>
+
 
 <p>Let&#8217;s get back to the <code>flask/cli.py</code> file and take a look at <code>AppGroup</code> class. The 
 <code>AppGroup</code> class overrides two methods (decorators) <code>command</code> and <code>group</code>.  It 
@@ -196,6 +204,7 @@ settings.  I will discuss it in a later article. </p>
     <span class="kn">from</span> <span class="nn">werkzeug.serving</span> <span class="kn">import</span> <span class="n">run_simple</span>
     <span class="n">run_simple</span><span class="p">(</span><span class="n">host</span><span class="p">,</span> <span class="n">port</span><span class="p">,</span> <span class="n">app</span><span class="p">,</span> <span class="o">......</span><span class="p">)</span>
 </code></pre></div>
+
 
 <p>The <code>shell</code> and <code>routes</code> commands are defined on Line 864 and Line 899 of 
 the <code>cli.py</code> file.   </p>

@@ -99,11 +99,13 @@ $ flask db upgrade
 $ flask run
 </code></pre></div>
 
+
 <p>The <code>setup.sh</code> file sets two environment variables. </p>
 <div class="highlight"><pre><span></span><code><span class="nb">export</span> <span class="nv">FLASK_APP</span><span class="o">=</span>flasky.py
 <span class="nb">export</span> <span class="nv">FLASK_DEBUG</span><span class="o">=</span><span class="m">1</span>
 <span class="nb">echo</span> <span class="s2">&quot;setup FLASK_APP and FLASK_DEBUG&quot;</span>
 </code></pre></div>
+
 
 <p>If you run the commands above, the flask app will prompt errors because 
 the configuration for the email smtp server is not complete. It is 
@@ -114,6 +116,7 @@ server. </p>
 <div class="highlight"><pre><span></span><code>$python -m smtpd -n -c DebuggingServer localhost:8025
 </code></pre></div>
 
+
 <p>In the <code>config.py</code> file, add three lines to the DevelopmentConfig section.</p>
 <div class="highlight"><pre><span></span><code>class DevelopmentConfig(Config):
     DEBUG = True
@@ -123,6 +126,7 @@ server. </p>
     MAIL_PORT = int(os.environ.get(&#39;MAIL_PORT&#39;, &#39;8025&#39;))
     MAIL_USE_TLS = False
 </code></pre></div>
+
 
 <p>You also need to initialize database when running the code base after 
 Chapter 9 and Chapter 12. The commands are shown below. </p>

@@ -114,6 +114,7 @@ This is Seb Vetter&#8217;s second article on dbader.org. Both articles are fanta
     <span class="n">cli</span><span class="p">()</span>
 </code></pre></div>
 
+
 <p>This is the help message and command to run the app. </p>
 <div class="highlight"><pre><span></span><code>(dev_cli) george@STK2M3:~/dev_cli$ python signtool_cli.py --help
 Usage: signtool_cli.py [OPTIONS] FILENAME [OUTPUT_FILENAME]
@@ -126,6 +127,7 @@ Options:
 (dev_cli) ... $ python signtool_cli.py --ratio 0.1 R2-1.yaml 
 Write the file to R2-1.svg
 </code></pre></div>
+
 
 <p>I also created a second python file to read all files under a directory and 
 write results to another directory. </p>
@@ -156,6 +158,7 @@ write results to another directory. </p>
 <span class="k">if</span> <span class="vm">__name__</span> <span class="o">==</span> <span class="s1">&#39;__main__&#39;</span><span class="p">:</span>
     <span class="n">cli</span><span class="p">()</span>
 </code></pre></div>
+
 
 <p>Here is how to call this Click app.</p>
 <div class="highlight"><pre><span></span><code>(dev_cli) george@STK2M3:~/dev_cli$ python signtool_dir.py --help
