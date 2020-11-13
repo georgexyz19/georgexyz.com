@@ -18,7 +18,7 @@ def index():
     return '<h1>Hello World</h1>'
 ```
 
-You can use the Python 3 build in venv module to create a virtual environment like below. 
+You can use the Python 3 built-in venv module to create a virtual environment like below. 
 
 ```
 $ python -m venv ven
@@ -26,7 +26,7 @@ $ source venv/bin/activate
 $ pip install flask
 ```
 
-Here is output of `pip freeze` command.  The `pip install` command also installs Flask dependencies.  
+Here is output of `pip freeze` command.  The `pip install` command installs several Flask dependencies.  
 
 ```
 click==7.1.2
@@ -38,8 +38,8 @@ Werkzeug==1.0.1
 ```
 
 Then you can setup two environment variables and type `flask run` to start the app. But what happens 
-when you start the command `flask run`?  I am trying to figure out the answer and this article records 
-my efforts. 
+when you start the command `flask run`?  I am trying to find out the answer and this article documents 
+the effort. 
 
 ```
 $ export FLASK_APP=hello.py
@@ -47,7 +47,7 @@ $ export FLASK_ENV=development
 $ flask run
 ```
 
-When you run the command `pip install flask`, the pip system installs a `flask` python script in the 
+When you run the command `pip install flask`, the pip system installs a `flask` python script file in the 
 `venv/bin/` directory.  You can think of `flask` as a command and `run` as an argument to the command. 
 The `run` part is actually a sub-command.  You can run `flask --help` to find out other available 
 sub-commands. 
@@ -66,10 +66,10 @@ if __name__ == '__main__':
     sys.exit(main())
 ```
 
-Let's open the `cli.py` file in `venv\lib\python3.8\site-packages\flask` directory. Line 965 
-defines the `main` function. Here the `as_module` argument is `False` and the main funtion 
-calls `cli.main` method with two arguments args=['run', ] and prog_name=None. The `cli` part 
-of `cli.main` method call is an object of FlaskGroup class which is defined on Line 945.  
+Let's open the `cli.py` file in `venv\lib\python3.8\site-packages\flask` directory.  Line 965 
+defines the `main` function. The `as_module` argument is `False` and the `main` function 
+calls `cli.main` method with two arguments `args=['run', ]` and `prog_name=None`. The `cli` part 
+of `cli.main` method call is an instance of FlaskGroup class defined on Line 945.  
 
 ```
 def main(as_module=False):
@@ -104,7 +104,7 @@ def main(self, *args, **kwargs):
 
 The `FlaskGroup` is derived from `AppGroup` class which is defined on Line 431. The `AppGroup` 
 in turn is derived from `click.Group` class defined in `core.py` file in click package. The 
-class derivation tree is shown below.  The `main` method in super class mentioned above is 
+class inheritance tree is shown below.  The `main` method in super class mentioned above is 
 defined all the way up in `click.BaseCommand` class.   
 
 ```
@@ -134,7 +134,9 @@ The command `run` becomes part of flask built in commands loaded by default.
 The code which loads the built in commands is in the `FlaskGroup.get_command`.  
 
 The `run_command` function look like this.  It calls the `run_simple` function in 
-werkzeug module and starts the development server. 
+werkzeug module and starts the development server.  The `DispatchingApp` class 
+is also interesting, and it loads the app based on the environment variable 
+settings.  I will discuss it in a later article. 
 
 ```python
 @click.command("run", short_help="Run a development server.")
