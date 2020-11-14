@@ -18,7 +18,7 @@ The Flask documentation also has a webpage titled
 *[Message Flashing](https://flask.palletsprojects.com/en/1.1.x/patterns/flashing/#message-flashing-pattern)*, 
 which also includes code examples.  
 
-You can call the `flash` function in a vew function like this. 
+You can call function `flash` in a view function like this. 
 
 ```python
 from flask import flash
