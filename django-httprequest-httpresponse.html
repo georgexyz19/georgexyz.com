@@ -85,7 +85,6 @@ the code is not as straightforward to understand as function-based view. </p>
     <span class="k">return</span> <span class="n">HttpResponse</span><span class="p">(</span><span class="n">template</span><span class="o">.</span><span class="n">render</span><span class="p">(</span><span class="n">context</span><span class="p">,</span> <span class="n">request</span><span class="p">))</span>
 </code></pre></div>
 
-
 <p>The request object passed to the view function is a WSGIRequest object, and 
 WSGIRequest is a subclass of HttpRequest.  When web browser sends an http/https
 request to the web server, Django web framework receives the infomation in 
@@ -109,7 +108,6 @@ code directly. Here is a list of files in the http directory.</p>
  1896 total
 </code></pre></div>
 
-
 <p>How do I find this information? The grep command below shows that HttpRequest 
 only appears a few places in Django source code. The wsgi.py file defines the 
 WSGIRequst class as a subclass of HttpRequest. </p>
@@ -124,7 +122,6 @@ WSGIRequst class as a subclass of HttpRequest. </p>
 ......
 </code></pre></div>
 
-
 <p>We can then try to find where the WSGIRequest object is defined and passed along 
 to other functions as an argument. </p>
 <div class="highlight"><pre><span></span><code>george@STK2M3:~/Desktop/django-2.2.2/django$ grep -rn &quot;WSGIRequest&quot; ./core
@@ -134,14 +131,12 @@ to other functions as an argument. </p>
 ...
 </code></pre></div>
 
-
 <p>In the file wsgi.py line 131, it assigns WSGIRequest class to <code>request_class</code>. 
 Let&#8217;s try to find where <code>request_class</code> is instantiated. </p>
 <div class="highlight"><pre><span></span><code>george@STK2M3:~/Desktop/django-2.2.2/django$ grep -rn &quot;request_class&quot; ./core
 ./core/handlers/wsgi.py:131:    request_class = WSGIRequest
 ./core/handlers/wsgi.py:140:        request = self.request_class(environ)
 </code></pre></div>
-
 
 <p>Grep command can also see the lines before and after the target line.  The command 
 below shows the context code. </p>
@@ -164,7 +159,6 @@ below shows the context code. </p>
 ./core/handlers/wsgi.py-144-
 ./core/handlers/wsgi.py-145-        status = &#39;%d %s&#39; % (response.status_code, response.reason_phrase)
 </code></pre></div>
-
 
 <p>The wsgi.py line 141 <code>response = self.get_response(request)</code> is where 
 the request is passed to the view function. It is also where the response created 
@@ -197,7 +191,6 @@ view function below displays the contents. </p>
     <span class="nb">print</span><span class="p">(</span><span class="nb">type</span><span class="p">(</span><span class="n">request</span><span class="p">))</span>  <span class="c1"># for debug only</span>
     <span class="k">return</span> <span class="n">HttpResponse</span><span class="p">(</span><span class="n">txt</span><span class="p">)</span>
 </code></pre></div>
-
 
 <p>Here is the partial output from the <code>display_meta</code> function:</p>
 <div class="highlight"><pre><span></span><code>......

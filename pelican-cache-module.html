@@ -88,7 +88,6 @@ if content is None:
     save_cache()
 </code></pre></div>
 
-
 <p>The Pelican documentation has a section 
 &#8220;<a href="https://docs.getpelican.com/en/stable/settings.html?highlight=cache#reading-only-modified-content">Reading only modified content</a>&#8221; 
 on how to use caching. You should at least set those two setting values to <code>True</code> to 
@@ -117,7 +116,6 @@ arguments do not have default values, which make them difficult to use in other
 python projects. These 4 arguments are listed below.  It seems that only <code>cache_path</code> 
 argument is mandatory. </p>
 <!-- use definition list, add css for dl in custom.css -->
-
 <dl>
 <dt>settings</dt>
 <dd>a dict of settings, a few keys <code>CACHE_PATH</code>, <code>GZIP_CACHE</code>, and <code>CHECK_MODIFIED_METHOD</code> are required for the class. </dd>
@@ -144,7 +142,6 @@ arguments of <code>__init__</code> method. </p>
         <span class="p">)</span>
 </code></pre></div>
 
-
 <p>Here is an exmple to test the derived class. </p>
 <div class="highlight"><pre><span></span><code><span class="k">if</span> <span class="vm">__name__</span> <span class="o">==</span> <span class="s1">&#39;__main__&#39;</span><span class="p">:</span>
 
@@ -157,7 +154,6 @@ arguments of <code>__init__</code> method. </p>
         <span class="n">cacher</span><span class="o">.</span><span class="n">cache_data</span><span class="p">(</span><span class="s1">&#39;./pelican_help.txt&#39;</span><span class="p">,</span> <span class="n">content</span><span class="p">)</span>
         <span class="n">cacher</span><span class="o">.</span><span class="n">save_cache</span><span class="p">()</span>
 </code></pre></div>
-
 
 <p>The Pelican documentation cautions the use of cache module. The <code>cache.py</code> file 
 in Pelican 4.2.0 has not been modified since 2015. It may be useful 

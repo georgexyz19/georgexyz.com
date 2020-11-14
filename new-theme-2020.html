@@ -89,7 +89,6 @@ $sass main.scss main.css
 $minify main.css &gt; main.min.css
 </code></pre></div>
 
-
 <p>The main.scss for the new theme has those contents. </p>
 <div class="highlight"><pre><span></span><code>$font-size-base: 1.1rem;
 $h5-font-size: $font-size-base * 1.0;
@@ -112,12 +111,10 @@ $print-page-size: letter;
 @import &quot;node_modules/bootstrap/scss/bootstrap&quot;;
 </code></pre></div>
 
-
 <p>The light blue color of the navbar is set in the <code>base.html</code> file, which is copied from
 Bootstrap documentation. </p>
 <div class="highlight"><pre><span></span><code>&lt;nav class=&quot;navbar navbar-expand-md navbar-light&quot; style=&quot;background-color: #e3f2fd;&quot;&gt;
 </code></pre></div>
-
 
 <p>The <code>pelicanconf.py</code> file also has a few changes.  I remove default index.html page and 
 change the previous about page to new homepage.  The Python <code>Typogrify</code> package makes 
@@ -131,7 +128,6 @@ change the previous about page to new homepage.  The Python <code>Typogrify</cod
 <span class="n">ARCHIVES_SAVE_AS</span> <span class="o">=</span> <span class="s1">&#39;articlelist.html&#39;</span>
 <span class="n">TYPOGRIFY</span> <span class="o">=</span> <span class="kc">True</span>
 </code></pre></div>
-
 
 <p>The <code>tasks.py</code> file created by the pelican-quickstart command has a <code>livereload</code> task, which 
 requires installing a Python package with the same name <code>livereload</code>.  The live reload function

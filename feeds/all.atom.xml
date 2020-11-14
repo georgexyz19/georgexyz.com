@@ -13,13 +13,12 @@ This is usually combined with a layout template to expose the message.&lt;/p&gt;
 The Flask documentation also has a webpage titled 
 &lt;em&gt;&lt;a href="https://flask.palletsprojects.com/en/1.1.x/patterns/flashing/#message-flashing-pattern"&gt;Message Flashing&lt;/a&gt;&lt;/em&gt;, 
 which also includes code examples.  &lt;/p&gt;
-&lt;p&gt;You can call the &lt;code&gt;flash&lt;/code&gt; function in a vew function like this. &lt;/p&gt;
+&lt;p&gt;You can call function &lt;code&gt;flash&lt;/code&gt; in a view function like this. &lt;/p&gt;
 &lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;&lt;span class="kn"&gt;from&lt;/span&gt; &lt;span class="nn"&gt;flask&lt;/span&gt; &lt;span class="kn"&gt;import&lt;/span&gt; &lt;span class="n"&gt;flash&lt;/span&gt;
 
 &lt;span class="c1"&gt;# inside view function&lt;/span&gt;
 &lt;span class="n"&gt;flash&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="s1"&gt;&amp;#39;Log in successfully&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
 &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
-
 
 &lt;p&gt;The base template calls &lt;code&gt;get_flashed_messages&lt;/code&gt; function and renders the 
 messages. The code below renders the messages as an un-ordered list. &lt;/p&gt;
@@ -34,13 +33,11 @@ messages. The code below renders the messages as an un-ordered list. &lt;/p&gt;
 {% endwith %}
 &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
 
-
 &lt;p&gt;Flashing messages also support categories.  You can pass a second 
 argument category to &lt;code&gt;flash&lt;/code&gt; method.  The above example code 
 is modified to be like this. &lt;/p&gt;
 &lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;flash(&amp;#39;Log in failed&amp;#39;, &amp;#39;error&amp;#39;)
 &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
-
 
 &lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;{% with messages = get_flashed_messages(with_categories=True) %}
   {% if messages %}
@@ -53,7 +50,6 @@ is modified to be like this. &lt;/p&gt;
 {% endwith %}
 &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
 
-
 &lt;p&gt;The interesting part of the above code is that the function  &lt;code&gt;get_flashed_messages&lt;/code&gt; is available to all 
 template html files. How does it happen? Let&amp;#8217;s take a look at 
 Flask source code. &lt;/p&gt;
@@ -62,7 +58,6 @@ Flask source code. &lt;/p&gt;
 &lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;&lt;span class="kn"&gt;from&lt;/span&gt; &lt;span class="nn"&gt;.helpers&lt;/span&gt; &lt;span class="kn"&gt;import&lt;/span&gt; &lt;span class="n"&gt;flash&lt;/span&gt;
 &lt;span class="kn"&gt;from&lt;/span&gt; &lt;span class="nn"&gt;.helpers&lt;/span&gt; &lt;span class="kn"&gt;import&lt;/span&gt; &lt;span class="n"&gt;get_flashed_messages&lt;/span&gt;
 &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
-
 
 &lt;p&gt;The actual functions are defined on Lines 399 and 429 of &lt;code&gt;helpers.py&lt;/code&gt; file.&lt;br&gt;
 The code of of those two functions are not long.  The &lt;code&gt;message_flashed&lt;/code&gt; 
@@ -80,7 +75,6 @@ is a list. The list values are tuples.  Here is an example &lt;code&gt;[('messag
     &lt;span class="p"&gt;)&lt;/span&gt;
 &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
 
-
 &lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;&lt;span class="k"&gt;def&lt;/span&gt; &lt;span class="nf"&gt;get_flashed_messages&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;with_categories&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="kc"&gt;False&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;category_filter&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="p"&gt;()):&lt;/span&gt;
     &lt;span class="sd"&gt;&amp;quot;&amp;quot;&amp;quot; ....  &amp;quot;&amp;quot;&amp;quot;&lt;/span&gt;
     &lt;span class="n"&gt;flashes&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="n"&gt;_request_ctx_stack&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;top&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;flashes&lt;/span&gt;
@@ -94,7 +88,6 @@ is a list. The list values are tuples.  Here is an example &lt;code&gt;[('messag
         &lt;span class="k"&gt;return&lt;/span&gt; &lt;span class="p"&gt;[&lt;/span&gt;&lt;span class="n"&gt;x&lt;/span&gt;&lt;span class="p"&gt;[&lt;/span&gt;&lt;span class="mi"&gt;1&lt;/span&gt;&lt;span class="p"&gt;]&lt;/span&gt; &lt;span class="k"&gt;for&lt;/span&gt; &lt;span class="n"&gt;x&lt;/span&gt; &lt;span class="ow"&gt;in&lt;/span&gt; &lt;span class="n"&gt;flashes&lt;/span&gt;&lt;span class="p"&gt;]&lt;/span&gt;
     &lt;span class="k"&gt;return&lt;/span&gt; &lt;span class="n"&gt;flashes&lt;/span&gt;
 &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
-
 
 &lt;p&gt;How does Jinja2 know &lt;code&gt;get_flashed_messages&lt;/code&gt; function? The code is in 
 &lt;code&gt;create_jinja_environment&lt;/code&gt; method of Flask class (Line 761 of app.py). 
@@ -132,7 +125,6 @@ and provides a &lt;code&gt;quick_form&lt;/code&gt; function.  You can render a f
 &lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;{% import &amp;quot;bootstrap/wtf.html&amp;quot; as wtf %}
 {{ wtf.quick_form(form) }}
 &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
-
 
 &lt;p&gt;The drawback of this extension is that it has not been updated for sometime. 
 The Bootstrap 4 has been released a while, but the extension 
@@ -184,7 +176,6 @@ those two lines. &lt;/p&gt;
 bootstrap = Bootstrap(app)
 &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
 
-
 &lt;p&gt;The &lt;code&gt;Bootstrap&lt;/code&gt; class is defined on Line 123 (version 3.3.7.1) of 
 &lt;code&gt;__init__.py&lt;/code&gt; file. The &lt;code&gt;init_app&lt;/code&gt; method does the actual initialization 
 work. &lt;/p&gt;
@@ -215,7 +206,6 @@ work. &lt;/p&gt;
         &lt;span class="n"&gt;app&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;extensions&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="p"&gt;{}&lt;/span&gt;
     &lt;span class="o"&gt;......&lt;/span&gt;
 &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
-
 
 &lt;p&gt;The interesting part of the &lt;code&gt;init_app&lt;/code&gt; method is that it registers itself as 
 a blueprint (sub application) of the app. After you initialize 
@@ -250,7 +240,6 @@ which is 198 lines long.  The &lt;code&gt;Moment&lt;/code&gt; class code is show
         &lt;span class="k"&gt;return&lt;/span&gt; &lt;span class="n"&gt;current_app&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;extensions&lt;/span&gt;&lt;span class="p"&gt;[&lt;/span&gt;&lt;span class="s1"&gt;&amp;#39;moment&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;](&lt;/span&gt;&lt;span class="n"&gt;timestamp&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
 &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
 
-
 &lt;p&gt;The &lt;code&gt;context_processor&lt;/code&gt; static method returns a dictionary.  The key (&lt;code&gt;moment&lt;/code&gt;) is 
 the variable or method name used in template, and the value (&lt;code&gt;current_app.extensions[moment]&lt;/code&gt; refers to &lt;code&gt;_moment&lt;/code&gt;) is the actual Python variable or method. The 
 implementation here is a little difficult to understand at a glance.  The &lt;code&gt;_moment&lt;/code&gt;
@@ -278,11 +267,9 @@ is actually a class defined in the same file.   &lt;/p&gt;
     &lt;span class="o"&gt;......&lt;/span&gt;
 &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
 
-
 &lt;p&gt;Let&amp;#8217;s look at an example in a template file. &lt;/p&gt;
 &lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;{{ moment(current_time).fromNow(refresh=True) }}
 &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
-
 
 &lt;p&gt;When you have this template variable in your template file, the 
 &lt;code&gt;moment(current_time)&lt;/code&gt;  part is actually calling the &lt;code&gt;__init__&lt;/code&gt; 
@@ -301,7 +288,6 @@ html element which has a class attribute &lt;code&gt;flask-moment&lt;/code&gt;. 
             &lt;span class="s1"&gt;&amp;#39;style=&amp;quot;display: none&amp;quot;&amp;gt;&lt;/span&gt;&lt;span class="si"&gt;{}&lt;/span&gt;&lt;span class="s1"&gt;&amp;lt;/span&amp;gt;&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;format&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;
             &lt;span class="n"&gt;t&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;data_values&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="nb"&gt;int&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;refresh&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt; &lt;span class="o"&gt;*&lt;/span&gt; &lt;span class="mi"&gt;60000&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;t&lt;/span&gt;&lt;span class="p"&gt;))&lt;/span&gt;
 &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
-
 
 &lt;p&gt;The &lt;code&gt;include_moment&lt;/code&gt; static method of &lt;code&gt;_moment&lt;/code&gt; class includes a &lt;span class="caps"&gt;CDN&lt;/span&gt; link 
 for the Moment Javascript library and three functions to render html elements 
@@ -326,7 +312,6 @@ The &lt;code&gt;route&lt;/code&gt; decorator is very straightforward to use in F
     &lt;span class="o"&gt;....&lt;/span&gt;
 &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
 
-
 &lt;p&gt;You can define the route function first and call &lt;code&gt;add_url_rule&lt;/code&gt; method of Flask class to 
 add the url rule.&lt;/p&gt;
 &lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;&lt;span class="k"&gt;def&lt;/span&gt; &lt;span class="nf"&gt;index&lt;/span&gt;&lt;span class="p"&gt;():&lt;/span&gt;
@@ -334,7 +319,6 @@ add the url rule.&lt;/p&gt;
 
 &lt;span class="n"&gt;app&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;add_url_rule&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="s1"&gt;&amp;#39;/&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="s1"&gt;&amp;#39;index&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;index&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
 &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
-
 
 &lt;p&gt;If the &lt;span class="caps"&gt;URL&lt;/span&gt; mapping is only one directional that maps a &lt;span class="caps"&gt;URL&lt;/span&gt; route to a function, the Python code 
 implementing it should be simple.  The &lt;span class="caps"&gt;URL&lt;/span&gt; mapping can also do reverse mapping. 
@@ -345,7 +329,6 @@ of Flask class defines an instance variable &lt;code&gt;url_map&lt;/code&gt; on 
 &lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;&lt;span class="bp"&gt;self&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;url_map&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="bp"&gt;self&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;url_map_class&lt;/span&gt;&lt;span class="p"&gt;()&lt;/span&gt;
 &lt;span class="bp"&gt;self&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;url_map&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;host_matching&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="n"&gt;host_matching&lt;/span&gt;
 &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
-
 
 &lt;p&gt;The &lt;code&gt;url_map_class&lt;/code&gt; is a class variable defined on Line 366 which is &lt;code&gt;Map&lt;/code&gt; class imported 
 from &lt;code&gt;werkzeug.routing&lt;/code&gt; module. &lt;/p&gt;
@@ -364,7 +347,6 @@ long, and part of the code is shown below. &lt;/p&gt;
     &lt;span class="bp"&gt;self&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;view_functions&lt;/span&gt;&lt;span class="p"&gt;[&lt;/span&gt;&lt;span class="n"&gt;endpoint&lt;/span&gt;&lt;span class="p"&gt;]&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="n"&gt;view_func&lt;/span&gt;
 &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
 
-
 &lt;p&gt;The &lt;code&gt;url_rule_class&lt;/code&gt; is referring to &lt;code&gt;Rule&lt;/code&gt; class imported from &lt;code&gt;werkzeug.routing&lt;/code&gt;.&lt;br&gt;
 The &lt;code&gt;view_functions&lt;/code&gt; is one of the instance variables (dictionary) of Flask class 
 defined on Line 444. &lt;/p&gt;
@@ -378,7 +360,6 @@ and the code is shown below. &lt;/p&gt;
 
         &lt;span class="k"&gt;return&lt;/span&gt; &lt;span class="n"&gt;decorator&lt;/span&gt;
 &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
-
 
 &lt;p&gt;The &lt;code&gt;route&lt;/code&gt; decorator is interesting.  If you read Miguel Grinberg&amp;#8217;s 
 &lt;a href="https://blog.miguelgrinberg.com/post/the-ultimate-guide-to-python-decorators-part-i-function-registration"&gt;ultimate guide to Python decorators&lt;/a&gt;, 
@@ -402,7 +383,6 @@ reversed &lt;span class="caps"&gt;URL&lt;/span&gt;.  &lt;/p&gt;
 &lt;span class="p"&gt;)&lt;/span&gt;
 &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
 
-
 &lt;p&gt;When does this &lt;code&gt;url_adapter&lt;/code&gt; is initialized? The &lt;code&gt;url_adapter&lt;/code&gt; is one of 
 instance variables of &lt;code&gt;RequestContext&lt;/code&gt; class defined on Line 290 in ctx.py module. &lt;/p&gt;
 &lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;&lt;span class="k"&gt;def&lt;/span&gt; &lt;span class="fm"&gt;__init__&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="bp"&gt;self&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;app&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;environ&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;request&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="kc"&gt;None&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;session&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="kc"&gt;None&lt;/span&gt;&lt;span class="p"&gt;):&lt;/span&gt;
@@ -413,14 +393,12 @@ instance variables of &lt;code&gt;RequestContext&lt;/code&gt; class defined on L
     &lt;span class="o"&gt;...&lt;/span&gt;
 &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
 
-
 &lt;p&gt;The &lt;code&gt;url_adapter&lt;/code&gt; is also one of the instance variables of &lt;code&gt;AppContext&lt;/code&gt; class
 defined on Line 216 in ctx.py module. &lt;/p&gt;
 &lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;&lt;span class="k"&gt;def&lt;/span&gt; &lt;span class="fm"&gt;__init__&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="bp"&gt;self&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;app&lt;/span&gt;&lt;span class="p"&gt;):&lt;/span&gt;
     &lt;span class="o"&gt;...&lt;/span&gt;
     &lt;span class="bp"&gt;self&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;url_adapter&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="n"&gt;app&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;create_url_adapter&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="kc"&gt;None&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
 &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
-
 
 &lt;p&gt;The &lt;code&gt;create_url_adapter&lt;/code&gt; method of &lt;code&gt;Flask&lt;/code&gt; class calls &lt;code&gt;bind_to_environ&lt;/code&gt; or
 &lt;code&gt;bind&lt;/code&gt; method of &lt;code&gt;Map&lt;/code&gt; class to create an instance of &lt;code&gt;MapAdapter&lt;/code&gt; class, which 
@@ -437,7 +415,6 @@ in turn defined on Line 1914. &lt;/p&gt;
     &lt;span class="k"&gt;return&lt;/span&gt; &lt;span class="bp"&gt;self&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;view_functions&lt;/span&gt;&lt;span class="p"&gt;[&lt;/span&gt;&lt;span class="n"&gt;rule&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;endpoint&lt;/span&gt;&lt;span class="p"&gt;](&lt;/span&gt;&lt;span class="o"&gt;**&lt;/span&gt;&lt;span class="n"&gt;req&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;view_args&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
 &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
 
-
 &lt;p&gt;The method simply uses the &lt;code&gt;view_functions&lt;/code&gt; instance variable (a dictionary) 
 to find the corresponding view function for the &lt;span class="caps"&gt;URL&lt;/span&gt;.  &lt;/p&gt;
 &lt;p&gt;The &lt;span class="caps"&gt;URL&lt;/span&gt; Routing functions are mainly provided by the Werkzeug package, which is 
@@ -450,14 +427,12 @@ variable &lt;code&gt;app_ctx&lt;/code&gt; when a request context is pushed. &lt;
 app_ctx.push()
 &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
 
-
 &lt;p&gt;The &lt;code&gt;app_context&lt;/code&gt; method of &lt;code&gt;Flask&lt;/code&gt; class is defined on Line 2324 in app.py file. The method 
 is really simple and the code is shown below. It initializes an &lt;code&gt;AppContext&lt;/code&gt; object and returns
 it.  &lt;/p&gt;
 &lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;def app_context(self):
     return AppContext(self)
 &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
-
 
 &lt;p&gt;The &lt;code&gt;AppContext&lt;/code&gt; class is however defined on Line 205 of ctx.py file.  The code in &lt;code&gt;__init__&lt;/code&gt; 
 method of &lt;code&gt;AppContext&lt;/code&gt; class is shown below. &lt;/p&gt;
@@ -473,14 +448,12 @@ method of &lt;code&gt;AppContext&lt;/code&gt; class is shown below. &lt;/p&gt;
     ......
 &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
 
-
 &lt;p&gt;The &lt;code&gt;AppContext&lt;/code&gt; class defines 4 instance variables &lt;code&gt;self.app&lt;/code&gt;, &lt;code&gt;self.url_adapter&lt;/code&gt;, 
 &lt;code&gt;self.g&lt;/code&gt;, and &lt;code&gt;self._refcnt&lt;/code&gt;.  The interesting variable is &lt;code&gt;self.g&lt;/code&gt;, which is 
 an instance of &lt;code&gt;_AppCtxGlobals&lt;/code&gt; class defined on Line 28 of ctx.py file.  Because 
 it is a class object, you can set any attribute on the object like this. &lt;/p&gt;
 &lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;g.user = User(...)
 &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
-
 
 &lt;p&gt;The &lt;code&gt;push&lt;/code&gt; and &lt;code&gt;pop&lt;/code&gt; methods of &lt;code&gt;AppContext&lt;/code&gt; class is simpler than methods in 
 &lt;code&gt;RequestContext&lt;/code&gt; class. It pushes or pops the object on the &lt;code&gt;_app_ctx_stack&lt;/code&gt; 
@@ -514,13 +487,11 @@ because it just calls a few other methods. &lt;/p&gt;
         &lt;span class="n"&gt;ctx&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;auto_pop&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;error&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
 &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
 
-
 &lt;p&gt;If you ignore the exception handling code for a minute, the code is not too difficult to 
 understand.&lt;/p&gt;
 &lt;p&gt;Let&amp;#8217;s look the first line of the method in detail.  &lt;/p&gt;
 &lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;&lt;span class="n"&gt;ctx&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="bp"&gt;self&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;request_context&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;environ&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
 &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
-
 
 &lt;p&gt;The &lt;code&gt;request_context&lt;/code&gt; method is defined on Line 2345, and the method is returning a 
 &lt;code&gt;RequestContext&lt;/code&gt; object. Notice the first argument to the &lt;code&gt;RequestContext&lt;/code&gt; constructor is 
@@ -528,7 +499,6 @@ understand.&lt;/p&gt;
 &lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;&lt;span class="k"&gt;def&lt;/span&gt; &lt;span class="nf"&gt;request_context&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="bp"&gt;self&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;environ&lt;/span&gt;&lt;span class="p"&gt;):&lt;/span&gt;
     &lt;span class="k"&gt;return&lt;/span&gt; &lt;span class="n"&gt;RequestContext&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="bp"&gt;self&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;environ&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
 &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
-
 
 &lt;p&gt;The &lt;code&gt;RequestContext&lt;/code&gt; class is defined on Line 255 of the ctx.py module.  The first 
 sentence of the class documentation states that &amp;#8220;the request context contains all 
@@ -574,7 +544,6 @@ a global variable defined in global.py module.  &lt;/p&gt;
         &lt;span class="bp"&gt;self&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;match_request&lt;/span&gt;&lt;span class="p"&gt;()&lt;/span&gt;
 &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
 
-
 &lt;p&gt;I will stop here for now and look at other code in &lt;code&gt;wsgi_app&lt;/code&gt; at a later time.   &lt;/p&gt;</content><category term="posts"></category><category term="WSGI"></category><category term="flask"></category></entry><entry><title>What Is Behind Flask Run Command</title><link href="https://www.georgexyz.com/what-is-behind-flask-run.html" rel="alternate"></link><published>2020-10-29T22:06:00-04:00</published><updated>2020-10-29T22:06:00-04:00</updated><author><name>George Zhang</name></author><id>tag:www.georgexyz.com,2020-10-29:/what-is-behind-flask-run.html</id><summary type="html">&lt;p&gt;Chapter 2  of Miguel Grinberg&amp;#8217;s &lt;em&gt;Flask Web Development&lt;/em&gt; describes how to run a basic Flask app. 
 Suppose you have a basic Flask app like below (from the book). &lt;/p&gt;
 &lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;&lt;span class="kn"&gt;from …&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;</summary><content type="html">&lt;p&gt;Chapter 2  of Miguel Grinberg&amp;#8217;s &lt;em&gt;Flask Web Development&lt;/em&gt; describes how to run a basic Flask app. 
@@ -587,13 +556,11 @@ Suppose you have a basic Flask app like below (from the book). &lt;/p&gt;
     &lt;span class="k"&gt;return&lt;/span&gt; &lt;span class="s1"&gt;&amp;#39;&amp;lt;h1&amp;gt;Hello World&amp;lt;/h1&amp;gt;&amp;#39;&lt;/span&gt;
 &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
 
-
 &lt;p&gt;You can use the Python 3 built-in venv module to create a virtual environment like below. &lt;/p&gt;
 &lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;$ python -m venv ven
 $ source venv/bin/activate
 $ pip install flask
 &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
-
 
 &lt;p&gt;Here is output of &lt;code&gt;pip freeze&lt;/code&gt; command.  The &lt;code&gt;pip install&lt;/code&gt; command installs several Flask dependencies.  &lt;/p&gt;
 &lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;click==7.1.2
@@ -604,7 +571,6 @@ MarkupSafe==1.1.1
 Werkzeug==1.0.1
 &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
 
-
 &lt;p&gt;Then you can setup two environment variables and type &lt;code&gt;flask run&lt;/code&gt; to start the app. But what happens 
 when you start the command &lt;code&gt;flask run&lt;/code&gt;?  I am trying to find out the answer and this article documents 
 the effort. &lt;/p&gt;
@@ -612,7 +578,6 @@ the effort. &lt;/p&gt;
 $ export FLASK_ENV=development
 $ flask run
 &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
-
 
 &lt;p&gt;When you run the command &lt;code&gt;pip install flask&lt;/code&gt;, the pip system installs a &lt;code&gt;flask&lt;/code&gt; python script file in the 
 &lt;code&gt;venv/bin/&lt;/code&gt; directory.  You can think of &lt;code&gt;flask&lt;/code&gt; as a command and &lt;code&gt;run&lt;/code&gt; as an argument to the command. 
@@ -630,7 +595,6 @@ if __name__ == &amp;#39;__main__&amp;#39;:
     sys.exit(main())
 &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
 
-
 &lt;p&gt;Let&amp;#8217;s open the &lt;code&gt;cli.py&lt;/code&gt; file in &lt;code&gt;venv\lib\python3.8\site-packages\flask&lt;/code&gt; directory.  Line 965 
 defines the &lt;code&gt;main&lt;/code&gt; function. The &lt;code&gt;as_module&lt;/code&gt; argument is &lt;code&gt;False&lt;/code&gt; and the &lt;code&gt;main&lt;/code&gt; function 
 calls &lt;code&gt;cli.main&lt;/code&gt; method with two arguments &lt;code&gt;args=['run', ]&lt;/code&gt; and &lt;code&gt;prog_name=None&lt;/code&gt;. The &lt;code&gt;cli&lt;/code&gt; part 
@@ -640,7 +604,6 @@ of &lt;code&gt;cli.main&lt;/code&gt; method call is an instance of FlaskGroup cl
     cli.main(args=sys.argv[1:], 
         prog_name=&amp;quot;python -m flask&amp;quot; if as_module else None)
 &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
-
 
 &lt;p&gt;Here things become complicated and I have not figured everything out.  The FlaskGroup class 
 is defined on Line 462 and it has a main method defined on Line 567 (code shown below). 
@@ -664,7 +627,6 @@ The method makes changes to some settings and calls the &lt;code&gt;main&lt;/cod
     return super(FlaskGroup, self).main(*args, **kwargs)
 &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
 
-
 &lt;p&gt;The &lt;code&gt;FlaskGroup&lt;/code&gt; is derived from &lt;code&gt;AppGroup&lt;/code&gt; class which is defined on Line 431. The &lt;code&gt;AppGroup&lt;/code&gt; 
 in turn is derived from &lt;code&gt;click.Group&lt;/code&gt; class defined in &lt;code&gt;core.py&lt;/code&gt; file in click package. The 
 class inheritance tree is shown below.  The &lt;code&gt;main&lt;/code&gt; method in super class mentioned above is 
@@ -676,7 +638,6 @@ defined all the way up in &lt;code&gt;click.BaseCommand&lt;/code&gt; class.   &l
         click.Command                /core.py Line 832
           click.BaseCommand          /core.py Line 631
 &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
-
 
 &lt;p&gt;Let&amp;#8217;s get back to the &lt;code&gt;flask/cli.py&lt;/code&gt; file and take a look at &lt;code&gt;AppGroup&lt;/code&gt; class. The 
 &lt;code&gt;AppGroup&lt;/code&gt; class overrides two methods (decorators) &lt;code&gt;command&lt;/code&gt; and &lt;code&gt;group&lt;/code&gt;.  It 
@@ -709,7 +670,6 @@ settings.  I will discuss it in a later article. &lt;/p&gt;
     &lt;span class="kn"&gt;from&lt;/span&gt; &lt;span class="nn"&gt;werkzeug.serving&lt;/span&gt; &lt;span class="kn"&gt;import&lt;/span&gt; &lt;span class="n"&gt;run_simple&lt;/span&gt;
     &lt;span class="n"&gt;run_simple&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;host&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;port&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;app&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="o"&gt;......&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
 &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
-
 
 &lt;p&gt;The &lt;code&gt;shell&lt;/code&gt; and &lt;code&gt;routes&lt;/code&gt; commands are defined on Line 864 and Line 899 of 
 the &lt;code&gt;cli.py&lt;/code&gt; file.   &lt;/p&gt;
@@ -870,7 +830,6 @@ sudo du -h -d 1 / | sort -n
   # this is for 1 level of dir under root /
 &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
 
-
 &lt;p&gt;I found two huge files under /var/log directory.  It turned out that both
 &lt;code&gt;syslog&lt;/code&gt; and &lt;code&gt;kern.log&lt;/code&gt; files were of &lt;span class="caps"&gt;40GB&lt;/span&gt;+ sizes. And the disk was full and
 that was the reason I could not login.  &lt;/p&gt;
@@ -883,12 +842,10 @@ There was another post for that. &lt;/p&gt;
 &amp;gt; /var/log/kern.log
 &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
 
-
 &lt;p&gt;After that the disk showed a free space of &lt;span class="caps"&gt;90GB&lt;/span&gt;. I also ran the command 
 below to change the reserved disk blocks percent back to 5 percent. &lt;/p&gt;
 &lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;sudo tune2fs -m5 /dev/sda2
 &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
-
 
 &lt;p&gt;I have a large 30 inch Dell U3011 monitor I bought a few years ago. The desktop 
 connects to the monitor via a displayport cable.  I also connect my laptop to 
@@ -914,10 +871,10 @@ myself and I will keep updating this post. &lt;/p&gt;
 &lt;li&gt;Press &lt;code&gt;Shift&lt;/code&gt; key and click refresh (reload) button,&lt;/li&gt;
 &lt;li&gt;Shortcut is &lt;code&gt;Ctrl + Shift + r&lt;/code&gt;.&lt;/li&gt;
 &lt;/ol&gt;
-&lt;p&gt;The fresh button is the third one on the image shown below: 
+&lt;p&gt;The fresh button is the third one on the image shown below: &lt;/p&gt;
 &lt;div style="max-width:800px"&gt;
   &lt;img class="img-fluid pb-3" src="/images/refresh-button.png" alt="ff refresh button"&gt;
-&lt;/div&gt;&lt;/p&gt;</content><category term="posts"></category><category term="web development"></category></entry><entry><title>Change Boot Order with GRUB 2</title><link href="https://www.georgexyz.com/change-boot-order-with-grub-2.html" rel="alternate"></link><published>2020-08-28T03:17:00-04:00</published><updated>2020-08-28T03:17:00-04:00</updated><author><name>George Zhang</name></author><id>tag:www.georgexyz.com,2020-08-28:/change-boot-order-with-grub-2.html</id><summary type="html">&lt;p&gt;My laptop has both Windows 10 and Linux Mint installed. Sometimes I want the laptop booting into 
+&lt;/div&gt;</content><category term="posts"></category><category term="web development"></category></entry><entry><title>Change Boot Order with GRUB 2</title><link href="https://www.georgexyz.com/change-boot-order-with-grub-2.html" rel="alternate"></link><published>2020-08-28T03:17:00-04:00</published><updated>2020-08-28T03:17:00-04:00</updated><author><name>George Zhang</name></author><id>tag:www.georgexyz.com,2020-08-28:/change-boot-order-with-grub-2.html</id><summary type="html">&lt;p&gt;My laptop has both Windows 10 and Linux Mint installed. Sometimes I want the laptop booting into 
 Windows by default. After a little online research, I find that I need …&lt;/p&gt;</summary><content type="html">&lt;p&gt;My laptop has both Windows 10 and Linux Mint installed. Sometimes I want the laptop booting into 
 Windows by default. After a little online research, I find that I need to change the settings of 
 boot loader software &lt;span class="caps"&gt;GRUB&lt;/span&gt; 2. &lt;/p&gt;
@@ -931,7 +888,6 @@ However you should not modify this file directly. Instead, the file is generated
 command like this. &lt;/p&gt;
 &lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;sudo grub-mkconfig -o grub.cfg 
 &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
-
 
 &lt;p&gt;The &lt;code&gt;grub-mkconfig&lt;/code&gt; tool will load setting files in &lt;code&gt;/etc/grub.d/&lt;/code&gt; directory and setting 
 file &lt;code&gt;/etc/default/grub&lt;/code&gt;.  A user should change those files and run &lt;code&gt;grub-mkconfig&lt;/code&gt; to 
@@ -952,7 +908,6 @@ total 108
 -rw-r--r--   1 root root   483 Mar 18  2019 README
 &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
 
-
 &lt;p&gt;Reading the &lt;code&gt;/boot/grub/grub.cfg&lt;/code&gt; file a little bit, I find the &lt;code&gt;30_os-prober&lt;/code&gt; is the configuration
 file to read the Windows. I made a copy the file and named the new copy &lt;code&gt;09_os-prober&lt;/code&gt;, then I
 turned the execution bit off for &lt;code&gt;30_os-prober&lt;/code&gt;. Note the boot order is based on the first two
@@ -961,7 +916,6 @@ digits of file names in this directory.  The commands are like this, &lt;/p&gt;
 sudo chmod -x 30_os-prober
 sudo grub-mkconfig -o /boot/grub/grub.cfg 
 &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
-
 
 &lt;p&gt;Now reboot the computer and the boot screen looks like this, &lt;/p&gt;
 &lt;div style="max-width:800px"&gt;
@@ -991,7 +945,6 @@ some test code. &lt;/p&gt;
 &lt;span class="ne"&gt;RuntimeError&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt; &lt;span class="n"&gt;dictionary&lt;/span&gt; &lt;span class="n"&gt;changed&lt;/span&gt; &lt;span class="n"&gt;size&lt;/span&gt; &lt;span class="n"&gt;during&lt;/span&gt; &lt;span class="n"&gt;iteration&lt;/span&gt;
 &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
 
-
 &lt;p&gt;Sometimes &amp;#8220;mutate while looping&amp;#8221; is necessary and it can make code simpler. Here is 
 an example (modified) from 
 &lt;a href="https://automatetheboringstuff.com/2e/chapter6/"&gt;Chapter 6&lt;/a&gt; 
@@ -1003,7 +956,6 @@ of Al Sweigart&amp;#8217;s &lt;em&gt;Automate The Boring Stuff With Python&lt;/e
         &lt;span class="n"&gt;word&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="n"&gt;word&lt;/span&gt;&lt;span class="p"&gt;[&lt;/span&gt;&lt;span class="mi"&gt;1&lt;/span&gt;&lt;span class="p"&gt;:]&lt;/span&gt;
     &lt;span class="k"&gt;return&lt;/span&gt; &lt;span class="n"&gt;prefixnonletters&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;word&lt;/span&gt;
 &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
-
 
 &lt;p&gt;This function separates a word (e.g., &amp;#8216;123word&amp;#8217;) into two parts: the prefix non-letter 
 part (&amp;#8216;123&amp;#8217;) and following letter part (&amp;#8216;word&amp;#8217;). The code loops over the input word and mutates it 
@@ -1145,7 +1097,6 @@ the command line. &lt;/p&gt;
 pygmentize -L style
 &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
 
-
 &lt;p&gt;The first command creates a &lt;span class="caps"&gt;CSS&lt;/span&gt; file &lt;code&gt;styles.css&lt;/code&gt; with &lt;code&gt;default&lt;/code&gt; style.  The 
 &lt;code&gt;-f html&lt;/code&gt; option specifies the formatter and &lt;code&gt;-a .codehilite&lt;/code&gt; option specifies 
 a class in the &lt;code&gt;styles.css&lt;/code&gt; file. The second command lists all the styles 
@@ -1161,7 +1112,6 @@ command line. &lt;/p&gt;
 &lt;span class="o"&gt;...&lt;/span&gt;
 &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
 
-
 &lt;p&gt;The Pelican default configuration dictionary has a key &lt;code&gt;MARKDOWN&lt;/code&gt;, and the 
 corresponding value is shown below. &lt;/p&gt;
 &lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;&lt;span class="s1"&gt;&amp;#39;MARKDOWN&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt; &lt;span class="p"&gt;{&lt;/span&gt;&lt;span class="s1"&gt;&amp;#39;extension_configs&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt; 
@@ -1170,7 +1120,6 @@ corresponding value is shown below. &lt;/p&gt;
      &lt;span class="s1"&gt;&amp;#39;markdown.extensions.extra&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt; &lt;span class="p"&gt;{},&lt;/span&gt;
      &lt;span class="s1"&gt;&amp;#39;markdown.extensions.meta&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt; &lt;span class="p"&gt;{}},&lt;/span&gt;
 &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
-
 
 &lt;p&gt;It specifies a default &lt;span class="caps"&gt;CSS&lt;/span&gt; class value &lt;code&gt;highlight&lt;/code&gt;. The Python &lt;code&gt;Markdown&lt;/code&gt; 
 package transforms code block in a markdown file to html segment like below. 
@@ -1189,7 +1138,6 @@ calls &lt;code&gt;highlight&lt;/code&gt; function in the &lt;code&gt;Pygments&lt
   &lt;span class="p"&gt;&amp;lt;/&lt;/span&gt;&lt;span class="nt"&gt;pre&lt;/span&gt;&lt;span class="p"&gt;&amp;gt;&lt;/span&gt;
 &lt;span class="p"&gt;&amp;lt;/&lt;/span&gt;&lt;span class="nt"&gt;div&lt;/span&gt;&lt;span class="p"&gt;&amp;gt;&lt;/span&gt;
 &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
-
 
 &lt;p&gt;The html template should link to the &lt;code&gt;styles.css&lt;/code&gt; file discussed earlier in 
 the article, so the generated html code section has the specified &lt;span class="caps"&gt;CSS&lt;/span&gt; styles. 
@@ -1218,7 +1166,6 @@ pelican==4.2.0
   - unidecode [required: Any, installed: 1.1.1]
 ...
 &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
-
 
 &lt;p&gt;This page has five code sections, and you can see code highlighting 
 effects in the middle three sections. &lt;/p&gt;</content><category term="posts"></category><category term="pelican"></category></entry><entry><title>Fujitsu Scanner Fi-7160 Software</title><link href="https://www.georgexyz.com/scanner-fi-7160.html" rel="alternate"></link><published>2020-05-14T12:46:00-04:00</published><updated>2020-05-14T12:46:00-04:00</updated><author><name>George Zhang</name></author><id>tag:www.georgexyz.com,2020-05-14:/scanner-fi-7160.html</id><summary type="html">&lt;p&gt;A few years ago I purchased a Fujitsu fi-7160 document scanner for home use. Occasionally I 
@@ -1322,7 +1269,6 @@ if content is None:
     save_cache()
 &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
 
-
 &lt;p&gt;The Pelican documentation has a section 
 &amp;#8220;&lt;a href="https://docs.getpelican.com/en/stable/settings.html?highlight=cache#reading-only-modified-content"&gt;Reading only modified content&lt;/a&gt;&amp;#8221; 
 on how to use caching. You should at least set those two setting values to &lt;code&gt;True&lt;/code&gt; to 
@@ -1351,7 +1297,6 @@ arguments do not have default values, which make them difficult to use in other
 python projects. These 4 arguments are listed below.  It seems that only &lt;code&gt;cache_path&lt;/code&gt; 
 argument is mandatory. &lt;/p&gt;
 &lt;!-- use definition list, add css for dl in custom.css --&gt;
-
 &lt;dl&gt;
 &lt;dt&gt;settings&lt;/dt&gt;
 &lt;dd&gt;a dict of settings, a few keys &lt;code&gt;CACHE_PATH&lt;/code&gt;, &lt;code&gt;GZIP_CACHE&lt;/code&gt;, and &lt;code&gt;CHECK_MODIFIED_METHOD&lt;/code&gt; are required for the class. &lt;/dd&gt;
@@ -1378,7 +1323,6 @@ arguments of &lt;code&gt;__init__&lt;/code&gt; method. &lt;/p&gt;
         &lt;span class="p"&gt;)&lt;/span&gt;
 &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
 
-
 &lt;p&gt;Here is an exmple to test the derived class. &lt;/p&gt;
 &lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;&lt;span class="k"&gt;if&lt;/span&gt; &lt;span class="vm"&gt;__name__&lt;/span&gt; &lt;span class="o"&gt;==&lt;/span&gt; &lt;span class="s1"&gt;&amp;#39;__main__&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt;
 
@@ -1391,7 +1335,6 @@ arguments of &lt;code&gt;__init__&lt;/code&gt; method. &lt;/p&gt;
         &lt;span class="n"&gt;cacher&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;cache_data&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="s1"&gt;&amp;#39;./pelican_help.txt&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;content&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
         &lt;span class="n"&gt;cacher&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;save_cache&lt;/span&gt;&lt;span class="p"&gt;()&lt;/span&gt;
 &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
-
 
 &lt;p&gt;The Pelican documentation cautions the use of cache module. The &lt;code&gt;cache.py&lt;/code&gt; file 
 in Pelican 4.2.0 has not been modified since 2015. It may be useful 
@@ -1409,7 +1352,6 @@ if setting[&amp;#39;TYPOGRIFY&amp;#39;]:
     metadata[&amp;#39;title&amp;#39;] = typogrify(metadata[&amp;#39;title&amp;#39;])
     metadata[&amp;#39;summary&amp;#39;] = typogrify(metadata[&amp;#39;summary&amp;#39;]) 
 &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
-
 
 &lt;p&gt;The &lt;code&gt;typogrify&lt;/code&gt; function calls other 5 filters in the package: &lt;code&gt;amp&lt;/code&gt;, &lt;code&gt;smartypants&lt;/code&gt;, &lt;code&gt;caps&lt;/code&gt;, 
 &lt;code&gt;initial_quotes&lt;/code&gt;, and &lt;code&gt;widont&lt;/code&gt;. 
@@ -1551,7 +1493,6 @@ Please answer the following questions so this script can generate the post.
         -new-pelican-post]create-new-pelican-post
 &amp;gt; What will be the date/time of the post? [2020-05-02 15:47] 
 &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
-
 
 &lt;p&gt;The &lt;code&gt;newpost.py&lt;/code&gt; program calls Pelican itself to read all existing posts and 
 presents the tags on a list.  Before using the program, I usually open the 
@@ -1957,7 +1898,6 @@ $sass main.scss main.css
 $minify main.css &amp;gt; main.min.css
 &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
 
-
 &lt;p&gt;The main.scss for the new theme has those contents. &lt;/p&gt;
 &lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;$font-size-base: 1.1rem;
 $h5-font-size: $font-size-base * 1.0;
@@ -1980,12 +1920,10 @@ $print-page-size: letter;
 @import &amp;quot;node_modules/bootstrap/scss/bootstrap&amp;quot;;
 &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
 
-
 &lt;p&gt;The light blue color of the navbar is set in the &lt;code&gt;base.html&lt;/code&gt; file, which is copied from
 Bootstrap documentation. &lt;/p&gt;
 &lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;&amp;lt;nav class=&amp;quot;navbar navbar-expand-md navbar-light&amp;quot; style=&amp;quot;background-color: #e3f2fd;&amp;quot;&amp;gt;
 &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
-
 
 &lt;p&gt;The &lt;code&gt;pelicanconf.py&lt;/code&gt; file also has a few changes.  I remove default index.html page and 
 change the previous about page to new homepage.  The Python &lt;code&gt;Typogrify&lt;/code&gt; package makes 
@@ -1999,7 +1937,6 @@ change the previous about page to new homepage.  The Python &lt;code&gt;Typogrif
 &lt;span class="n"&gt;ARCHIVES_SAVE_AS&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="s1"&gt;&amp;#39;articlelist.html&amp;#39;&lt;/span&gt;
 &lt;span class="n"&gt;TYPOGRIFY&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="kc"&gt;True&lt;/span&gt;
 &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
-
 
 &lt;p&gt;The &lt;code&gt;tasks.py&lt;/code&gt; file created by the pelican-quickstart command has a &lt;code&gt;livereload&lt;/code&gt; task, which 
 requires installing a Python package with the same name &lt;code&gt;livereload&lt;/code&gt;.  The live reload function
@@ -2044,7 +1981,6 @@ to generate feeds for all blog posts. &lt;/p&gt;
 FEED_ALL_ATOM = &amp;#39;feeds/all.atom.xml&amp;#39;
 &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
 
-
 &lt;p&gt;You can subscribe to the &lt;span class="caps"&gt;ATOM&lt;/span&gt; feed of this website thru this link 
 &lt;a href="https://www.georgexyz.com/feeds/all.atom.xml"&gt;https://www.georgexyz.com/feeds/all.atom.xml&lt;/a&gt;.&lt;/p&gt;</content><category term="posts"></category><category term="web development"></category></entry><entry><title>Python Dictionary Methods</title><link href="https://www.georgexyz.com/dict-methods.html" rel="alternate"></link><published>2020-04-06T09:40:00-04:00</published><updated>2020-04-06T09:40:00-04:00</updated><author><name>George Zhang</name></author><id>tag:www.georgexyz.com,2020-04-06:/dict-methods.html</id><summary type="html">&lt;p&gt;Some Python code I read yesterday uses dictionary methods &lt;code&gt;copy&lt;/code&gt; and &lt;code&gt;update&lt;/code&gt;. 
 This prompted me to test those two methods and check all other python dictionary methods. &lt;/p&gt;
@@ -2069,7 +2005,6 @@ This prompted me to test those two methods and check all other python dictionary
 &lt;span class="p"&gt;{&lt;/span&gt;&lt;span class="s1"&gt;&amp;#39;a&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt; &lt;span class="mi"&gt;4&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="s1"&gt;&amp;#39;b&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt; &lt;span class="mi"&gt;2&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="s1"&gt;&amp;#39;c&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt; &lt;span class="mi"&gt;3&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="s1"&gt;&amp;#39;e&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt; &lt;span class="mi"&gt;5&lt;/span&gt;&lt;span class="p"&gt;}&lt;/span&gt;
 &lt;span class="o"&gt;&amp;gt;&amp;gt;&amp;gt;&lt;/span&gt; 
 &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
-
 
 &lt;p&gt;Python official documentation lists dictionary methods on the 
 &lt;a href="https://docs.python.org/3/library/stdtypes.html"&gt;Built-in Types&lt;/a&gt; 
@@ -2188,13 +2123,11 @@ $ flask db upgrade
 $ flask run
 &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
 
-
 &lt;p&gt;The &lt;code&gt;setup.sh&lt;/code&gt; file sets two environment variables. &lt;/p&gt;
 &lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;&lt;span class="nb"&gt;export&lt;/span&gt; &lt;span class="nv"&gt;FLASK_APP&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;flasky.py
 &lt;span class="nb"&gt;export&lt;/span&gt; &lt;span class="nv"&gt;FLASK_DEBUG&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="m"&gt;1&lt;/span&gt;
 &lt;span class="nb"&gt;echo&lt;/span&gt; &lt;span class="s2"&gt;&amp;quot;setup FLASK_APP and FLASK_DEBUG&amp;quot;&lt;/span&gt;
 &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
-
 
 &lt;p&gt;If you run the commands above, the flask app will prompt errors because 
 the configuration for the email smtp server is not complete. It is 
@@ -2205,7 +2138,6 @@ server. &lt;/p&gt;
 &lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;$python -m smtpd -n -c DebuggingServer localhost:8025
 &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
 
-
 &lt;p&gt;In the &lt;code&gt;config.py&lt;/code&gt; file, add three lines to the DevelopmentConfig section.&lt;/p&gt;
 &lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;class DevelopmentConfig(Config):
     DEBUG = True
@@ -2215,7 +2147,6 @@ server. &lt;/p&gt;
     MAIL_PORT = int(os.environ.get(&amp;#39;MAIL_PORT&amp;#39;, &amp;#39;8025&amp;#39;))
     MAIL_USE_TLS = False
 &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
-
 
 &lt;p&gt;You also need to initialize database when running the code base after 
 Chapter 9 and Chapter 12. The commands are shown below. &lt;/p&gt;
@@ -2233,13 +2164,11 @@ Ubuntu repo is 1.32.&lt;/p&gt;
 &lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;$sudo apt-get install geany
 &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
 
-
 &lt;p&gt;The commands below install the latest version 1.35.&lt;/p&gt;
 &lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;$sudo add-apt-repository ppa:geany-dev/ppa
 $sudo apt-get update
 $sudo apt-get install geany
 &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
-
 
 &lt;p&gt;Those two commands install some plugins for Geany. The addions is 
 a must-have for a function I will discuss later in the post. &lt;/p&gt;
@@ -2247,7 +2176,6 @@ a must-have for a function I will discuss later in the post. &lt;/p&gt;
 $sudo apt-get install geany-plugin-addons
 $sudo apt-get install geany-plugin-spellcheck
 &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
-
 
 &lt;p&gt;Here are my preferred settings for Geany after the installation. This is under 
 menu item &lt;code&gt;Edit → Preferences&lt;/code&gt;. &lt;/p&gt;
@@ -2292,7 +2220,6 @@ proxy) http requests to the gunicorn &lt;span class="caps"&gt;WSGI&lt;/span&gt; 
 }
 &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
 
-
 &lt;p&gt;The setting code above is from Miguel Grinberg&amp;#8217;s 
 &lt;a href="https://blog.miguelgrinberg.com/post/the-flask-mega-tutorial-part-xvii-deployment-on-linux"&gt;Flask Mega-Tutorial Chapter 17&lt;/a&gt;. 
 I followed step-by-step guides in this Chapter to set up tools on the server. 
@@ -2316,13 +2243,11 @@ to the video and the note. &lt;/p&gt;
 &lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;&lt;span class="n"&gt;colors&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="p"&gt;[&lt;/span&gt;&lt;span class="s1"&gt;&amp;#39;red&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="s1"&gt;&amp;#39;green&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="s1"&gt;&amp;#39;red&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="s1"&gt;&amp;#39;blue&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="s1"&gt;&amp;#39;green&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="s1"&gt;&amp;#39;red&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;]&lt;/span&gt;
 &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
 
-
 &lt;p&gt;the python code should generate a dictionary. The keys of the dictionary are 
 values in the list, and the values of the dictionary are the corresponding number of 
 keys in the list.  For the above example, the result dictionary &lt;code&gt;d&lt;/code&gt; is &lt;/p&gt;
 &lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;&lt;span class="p"&gt;{&lt;/span&gt;&lt;span class="s1"&gt;&amp;#39;red&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt; &lt;span class="mi"&gt;3&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="s1"&gt;&amp;#39;green&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt; &lt;span class="mi"&gt;2&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="s1"&gt;&amp;#39;blue&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt; &lt;span class="mi"&gt;1&lt;/span&gt;&lt;span class="p"&gt;}&lt;/span&gt;
 &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
-
 
 &lt;p&gt;There are many ways to write the code.  I will summarize these techniques below. &lt;/p&gt;
 &lt;h3&gt;Basic Way to Count&lt;/h3&gt;
@@ -2335,7 +2260,6 @@ first time.  Total line count is 5. &lt;/p&gt;
     &lt;span class="n"&gt;d&lt;/span&gt;&lt;span class="p"&gt;[&lt;/span&gt;&lt;span class="n"&gt;color&lt;/span&gt;&lt;span class="p"&gt;]&lt;/span&gt; &lt;span class="o"&gt;+=&lt;/span&gt; &lt;span class="mi"&gt;1&lt;/span&gt;
 &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
 
-
 &lt;h3&gt;Get Method of Dictionary&lt;/h3&gt;
 &lt;p&gt;If the color is not in the dictionary, using &lt;code&gt;d[color]&lt;/code&gt; to access its value raises
 a KeyValue exception.  The dictionary &lt;code&gt;get&lt;/code&gt; method returns the second argument 
@@ -2344,7 +2268,6 @@ when the first argument is not already in the dictionary.  Line count is 3. &lt;
 &lt;span class="k"&gt;for&lt;/span&gt; &lt;span class="n"&gt;color&lt;/span&gt; &lt;span class="ow"&gt;in&lt;/span&gt; &lt;span class="n"&gt;colors&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt;
     &lt;span class="n"&gt;d&lt;/span&gt;&lt;span class="p"&gt;[&lt;/span&gt;&lt;span class="n"&gt;color&lt;/span&gt;&lt;span class="p"&gt;]&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="n"&gt;d&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;get&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;color&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="mi"&gt;0&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt; &lt;span class="o"&gt;+&lt;/span&gt; &lt;span class="mi"&gt;1&lt;/span&gt;
 &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
-
 
 &lt;h3&gt;Use Defaultdict&lt;/h3&gt;
 &lt;p&gt;The standard collections package has a defaultdict class. The class sets a default 
@@ -2355,7 +2278,6 @@ value for a key.  Line count is still 5. &lt;/p&gt;
     &lt;span class="n"&gt;d&lt;/span&gt;&lt;span class="p"&gt;[&lt;/span&gt;&lt;span class="n"&gt;color&lt;/span&gt;&lt;span class="p"&gt;]&lt;/span&gt; &lt;span class="o"&gt;+=&lt;/span&gt; &lt;span class="mi"&gt;1&lt;/span&gt;
 &lt;span class="n"&gt;d&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="nb"&gt;dict&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;d&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
 &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
-
 
 &lt;h3&gt;Try and Except to Handle Exception&lt;/h3&gt;
 &lt;p&gt;The above three methods are from Raymond Hettinger&amp;#8217;s python talk.  The method below
@@ -2369,7 +2291,6 @@ but the logic is very clear. &lt;/p&gt;
         &lt;span class="n"&gt;d&lt;/span&gt;&lt;span class="p"&gt;[&lt;/span&gt;&lt;span class="n"&gt;color&lt;/span&gt;&lt;span class="p"&gt;]&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="mi"&gt;1&lt;/span&gt;
 &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
 
-
 &lt;h3&gt;Setdefault Method of Dictionary&lt;/h3&gt;
 &lt;p&gt;This method is between the first two methods.  Line count is also between 5 and 3. 
 This method uses dictionary method &lt;code&gt;setdefault&lt;/code&gt;, which is also discussed in 
@@ -2379,7 +2300,6 @@ Raymond Hettinger&amp;#8217;s python talk.&lt;/p&gt;
     &lt;span class="n"&gt;d&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;setdefault&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;color&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="mi"&gt;0&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
     &lt;span class="n"&gt;d&lt;/span&gt;&lt;span class="p"&gt;[&lt;/span&gt;&lt;span class="n"&gt;color&lt;/span&gt;&lt;span class="p"&gt;]&lt;/span&gt; &lt;span class="o"&gt;+=&lt;/span&gt;&lt;span class="mi"&gt;1&lt;/span&gt; 
 &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
-
 
 &lt;p&gt;Python is very flexible to write once you know the basics, and there are always 
 many ways to solve a problem. &lt;/p&gt;
@@ -2392,7 +2312,6 @@ and rapid tallies&amp;#8221;. &lt;/p&gt;
 &lt;span class="n"&gt;cnt&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="n"&gt;Counter&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;colors&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
 &lt;span class="n"&gt;d&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="nb"&gt;dict&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;cnt&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
 &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
-
 
 &lt;p&gt;This method is probably the easiest and the line count is only 3. &lt;/p&gt;</content><category term="posts"></category><category term="python"></category></entry><entry><title>Click Python Package</title><link href="https://www.georgexyz.com/package-click.html" rel="alternate"></link><published>2020-02-18T14:39:00-05:00</published><updated>2020-02-18T14:39:00-05:00</updated><author><name>George Zhang</name></author><id>tag:www.georgexyz.com,2020-02-18:/package-click.html</id><summary type="html">&lt;p&gt;I am reading Miguel Grinberg&amp;#8217;s 
 &lt;a href="https://blog.miguelgrinberg.com/post/the-flask-mega-tutorial-part-i-hello-world"&gt;Flask Mega Tutorial&lt;/a&gt; 
@@ -2439,7 +2358,6 @@ This is Seb Vetter&amp;#8217;s second article on dbader.org. Both articles are f
     &lt;span class="n"&gt;cli&lt;/span&gt;&lt;span class="p"&gt;()&lt;/span&gt;
 &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
 
-
 &lt;p&gt;This is the help message and command to run the app. &lt;/p&gt;
 &lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;(dev_cli) george@STK2M3:~/dev_cli$ python signtool_cli.py --help
 Usage: signtool_cli.py [OPTIONS] FILENAME [OUTPUT_FILENAME]
@@ -2452,7 +2370,6 @@ Options:
 (dev_cli) ... $ python signtool_cli.py --ratio 0.1 R2-1.yaml 
 Write the file to R2-1.svg
 &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
-
 
 &lt;p&gt;I also created a second python file to read all files under a directory and 
 write results to another directory. &lt;/p&gt;
@@ -2483,7 +2400,6 @@ write results to another directory. &lt;/p&gt;
 &lt;span class="k"&gt;if&lt;/span&gt; &lt;span class="vm"&gt;__name__&lt;/span&gt; &lt;span class="o"&gt;==&lt;/span&gt; &lt;span class="s1"&gt;&amp;#39;__main__&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt;
     &lt;span class="n"&gt;cli&lt;/span&gt;&lt;span class="p"&gt;()&lt;/span&gt;
 &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
-
 
 &lt;p&gt;Here is how to call this Click app.&lt;/p&gt;
 &lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;(dev_cli) george@STK2M3:~/dev_cli$ python signtool_dir.py --help
@@ -2526,7 +2442,6 @@ pretty straightforward. This is the command I used to convert all python
 files in the current directory. &lt;/p&gt;
 &lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;$2to3 -o ../dev_py3 -W -n ./
 &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
-
 
 &lt;p&gt;The option &lt;code&gt;-o&lt;/code&gt; is to specify the output directory, &lt;code&gt;-W&lt;/code&gt; is for 
 writing files even not changed, and &lt;code&gt;-n&lt;/code&gt; means that backups are not 
@@ -2960,7 +2875,6 @@ with Linux command line tool wget.  The command is shown below:&lt;/p&gt;
 &lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;wget -m -p -E -k www.excample.com
 &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
 
-
 &lt;ul&gt;
 &lt;li&gt;-m : &amp;#8212;mirror recursion and time stamping&lt;/li&gt;
 &lt;li&gt;-p : all images&lt;/li&gt;
@@ -3047,13 +2961,11 @@ which also serves as doctest. &lt;/p&gt;
     &lt;span class="k"&gt;return&lt;/span&gt; &lt;span class="n"&gt;total&lt;/span&gt;
 &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
 
-
 &lt;p&gt;Run the python file with the following command in bash. Note the &lt;code&gt;-m&lt;/code&gt; option 
 loads doctest module. The &lt;code&gt;-v&lt;/code&gt; option represents verbose. Without the &lt;code&gt;-v&lt;/code&gt; 
 option, the command outputs nothing.&lt;/p&gt;
 &lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;python -m doctest -v nested_sum.py 
 &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
-
 
 &lt;p&gt;Here are the doctest results:&lt;/p&gt;
 &lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;Trying:
@@ -3086,7 +2998,6 @@ ${debian_chroot:+($debian_chroot)}
 \[\033[01;32m\]\u@\h\[\033[00m\]:\[\033[01;34m\]\w\[\033[00m\]\$
 &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
 
-
 &lt;p&gt;It is a little hard to understand the &lt;code&gt;PS1&lt;/code&gt; string even after reading the book chapter. 
 A few Google searches find other people are also asking the meaning of the string, 
 and it has already been answered by someone. &lt;/p&gt;
@@ -3114,7 +3025,6 @@ and it has already been answered by someone. &lt;/p&gt;
 &lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;if [ -z &amp;quot;${debian_chroot:-}&amp;quot; ] &amp;amp;&amp;amp; [ -r /etc/debian_chroot ]; then
     debian_chroot=$(cat /etc/debian_chroot)
 &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
-
 
 &lt;p&gt;It means that if the variable &lt;code&gt;$debian_chroot&lt;/code&gt; is empty and the file &lt;code&gt;/etc/debian_chroot&lt;/code&gt; 
 is readable, the variable is assigned the content of the file.&lt;/p&gt;
@@ -3157,11 +3067,9 @@ pipenv run ghp-import output -b gh-pages
 git push origin gh-pages
 &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
 
-
 &lt;p&gt;The website is updated with the bash command:&lt;/p&gt;
 &lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;source commit_change.sh &amp;quot;git commit message&amp;quot;
 &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
-
 
 &lt;p&gt;Here are some common pipenv commands:&lt;/p&gt;
 &lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;$pip install pipenv      # global install
@@ -3186,7 +3094,6 @@ $pipenv check
 $pipenv graph     # show dependency
 $pipenv install --ignore-pipfile
 &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
-
 
 &lt;p&gt;When I am reading Miguel Grinberg&amp;#8217;s Flask Mega Tutorial Chapter 15 
 &lt;a href="https://blog.miguelgrinberg.com/post/the-flask-mega-tutorial-part-xv-a-better-application-structure"&gt;A Better Application Structure&lt;/a&gt;. 
@@ -3228,7 +3135,6 @@ class MyModel(models.Model):
     even_field = models.IntegerField(validators=[validate_even])
 &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
 
-
 &lt;p&gt;The subsection &lt;em&gt;how validators are run&lt;/em&gt; on the validator
 page has three links. &lt;/p&gt;
 &lt;ul&gt;
@@ -3259,7 +3165,6 @@ except ValidationError as e:
     # handle the error
 &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
 
-
 &lt;p&gt;&lt;a href="https://stackoverflow.com/questions/7366363/adding-custom-django-model-validation"&gt;A stack overflow answer&lt;/a&gt; 
 shows a typical pattern to conduct custom model validation. The model class overrides the 
 &lt;code&gt;clean()&lt;/code&gt; method to provide custom model validation and the &lt;code&gt;save()&lt;/code&gt; method 
@@ -3275,7 +3180,6 @@ to call &lt;code&gt;full_clean&lt;/code&gt; method.  The example code is shown b
         self.full_clean()
         super(BaseModel, self).save(*args, **kwargs)
 &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
-
 
 &lt;p&gt;&lt;a href="https://stackoverflow.com/questions/42003866/django-validation-at-model-not-forms-level"&gt;Another stack overflow answer&lt;/a&gt; 
 shows how to use custom model validation or simply use model field&amp;#8217;s built-in 
@@ -3295,7 +3199,6 @@ exception when called. &lt;/p&gt;
 &amp;gt;&amp;gt;&amp;gt; p2.full_clean()  # raise exception
 &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
 
-
 &lt;p&gt;Checking &lt;code&gt;clean_fields()&lt;/code&gt; method source code, it has the following lines. 
 The &lt;code&gt;f.clean(...)&lt;/code&gt; method calls validation method on a model field.&lt;/p&gt;
 &lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;try:
@@ -3303,7 +3206,6 @@ The &lt;code&gt;f.clean(...)&lt;/code&gt; method calls validation method on a mo
 except ValidationError as e:
     errors[f.name] = e.error_list
 &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
-
 
 &lt;h3&gt;Form Validation&lt;/h3&gt;
 &lt;p&gt;While model validation is a subsection on a Django documentation page, the 
@@ -3329,7 +3231,6 @@ model shown below:&lt;/p&gt;
     recipients = MultiEmailField()
     cc_myself = forms.BooleanField(required=False)
 &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
-
 
 &lt;p&gt;The same page points out that &amp;#8220;there are special considerations when overriding 
 the &lt;code&gt;clean()&lt;/code&gt; method of a ModelForm subclass.&amp;#8221;&lt;/p&gt;
@@ -3370,11 +3271,9 @@ $vim /bin/egrep  # file content is
 exec grep -E &amp;quot;$@&amp;quot;
 &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
 
-
 &lt;p&gt;Here is a very simple grep example:&lt;/p&gt;
 &lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;$grep &amp;quot;Jane Williams&amp;quot; filename.txt
 &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
-
 
 &lt;p&gt;The grep command has many options. A few common ones are:&lt;/p&gt;
 &lt;ul&gt;
@@ -3390,7 +3289,6 @@ exec grep -E &amp;quot;$@&amp;quot;
 &lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;$grep -winr &amp;quot;Jane Williams&amp;quot; ./
 &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
 
-
 &lt;p&gt;Here are a few more options:&lt;/p&gt;
 &lt;ul&gt;
 &lt;li&gt;-r : recursive&lt;/li&gt;
@@ -3400,7 +3298,6 @@ exec grep -E &amp;quot;$@&amp;quot;
 &lt;p&gt;You can use pipes to search the results of another command.&lt;/p&gt;
 &lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;$history | grep &amp;quot;git commit&amp;quot;
 &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
-
 
 &lt;p&gt;The grep &lt;code&gt;-P&lt;/code&gt; option interprets the pattern as a Perl-compatible regex. The 
 Python and Perl &amp;#8220;essentially has the same regex syntax&amp;#8221;.  So with the &lt;code&gt;-P&lt;/code&gt; 
@@ -3415,7 +3312,6 @@ in pattern. Here is a list of common regex special characters in Python:&lt;/p&g
 &lt;li&gt;+ : one or more&lt;/li&gt;
 &lt;/ul&gt;
 &lt;div style="margin-bottom:.4in;"&gt;&lt;/div&gt;
-
 &lt;hr&gt;
 
 &lt;p&gt;&lt;em&gt;Update on 8/28/2020:&lt;/em&gt;&lt;/p&gt;
@@ -3428,7 +3324,6 @@ to tally blog posts becomes like this,  &lt;/p&gt;
 &lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;grep -r &amp;quot;date: 2020\\-&amp;quot; | wc -l
 grep -r &amp;quot;date: 2019\\-&amp;quot; | wc -l
 &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
-
 
 &lt;p&gt;The result is 26 v.s. 26. The 2019 only covers 9 months starting from 4/1 and 2020 covers 8 months 
 so far, so it is close. &lt;/p&gt;</content><category term="posts"></category><category term="linux"></category><category term="software utility"></category></entry><entry><title>Django Pagination</title><link href="https://www.georgexyz.com/django-pagination.html" rel="alternate"></link><published>2019-07-17T10:05:00-04:00</published><updated>2020-04-30T12:58:00-04:00</updated><author><name>George Zhang</name></author><id>tag:www.georgexyz.com,2019-07-17:/django-pagination.html</id><summary type="html">&lt;p&gt;Merriam-Webster dictionary defines pagination as &amp;#8220;the action of paging&amp;#8221;. In web 
@@ -3472,7 +3367,6 @@ it takes is to add one line of code to use Django paginator.&lt;/p&gt;
 &lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;&lt;span class="n"&gt;paginate_by&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="mi"&gt;10&lt;/span&gt;
 &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
 
-
 &lt;p&gt;The template will be rendered with a context object with those contents:&lt;/p&gt;
 &lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;context = {
             &amp;#39;paginator&amp;#39;: paginator,
@@ -3481,7 +3375,6 @@ it takes is to add one line of code to use Django paginator.&lt;/p&gt;
             &amp;#39;object_list&amp;#39;: queryset
         }
 &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
-
 
 &lt;p&gt;The context object is defined in the &lt;code&gt;get_context_data&lt;/code&gt; method of MultipleObjectMixin. The 
 &lt;code&gt;queryset&lt;/code&gt; value of &lt;code&gt;context&lt;/code&gt; dictionary is returned by &lt;code&gt;paginate_queryset&lt;/code&gt; method, and it is 
@@ -3517,7 +3410,6 @@ The view adds a success message to the message queue. The next web page
                       &lt;span class="p"&gt;{&lt;/span&gt;&lt;span class="s1"&gt;&amp;#39;form&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt; &lt;span class="n"&gt;bound_form&lt;/span&gt; &lt;span class="p"&gt;}&lt;/span&gt; &lt;span class="p"&gt;)&lt;/span&gt;
 &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
 
-
 &lt;p&gt;The code to show the messages is in the base.html file, and all web pages 
 extended from the base.html will show the messages. &lt;/p&gt;
 &lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;&lt;span class="p"&gt;&amp;lt;&lt;/span&gt;&lt;span class="nt"&gt;ul&lt;/span&gt;&lt;span class="p"&gt;&amp;gt;&lt;/span&gt;
@@ -3532,7 +3424,6 @@ extended from the base.html will show the messages. &lt;/p&gt;
 &lt;span class="p"&gt;&amp;lt;/&lt;/span&gt;&lt;span class="nt"&gt;ul&lt;/span&gt;&lt;span class="p"&gt;&amp;gt;&lt;/span&gt;
 &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
 
-
 &lt;p&gt;The code above is very similar to the code shown on the Django official 
 documentation page (shown below). &lt;/p&gt;
 &lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;{% if messages %}
@@ -3544,7 +3435,6 @@ documentation page (shown below). &lt;/p&gt;
 &amp;lt;/ul&amp;gt;
 {% endif %}
 &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
-
 
 &lt;h3&gt;Source Code Files&lt;/h3&gt;
 &lt;p&gt;The source code for the messages app is in the django/contrib/messages directory. 
@@ -3565,7 +3455,6 @@ It consists of 13 python files, and the total line count is 647 in Django 2.2.2.
    &lt;span class="m"&gt;54&lt;/span&gt; ./storage/fallback.py
   &lt;span class="m"&gt;647&lt;/span&gt; total
 &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
-
 
 &lt;h3&gt;Messages App &lt;span class="caps"&gt;API&lt;/span&gt;&lt;/h3&gt;
 &lt;p&gt;The __init__.py file imports all from api.py and constants.py. The api.py 
@@ -3605,7 +3494,6 @@ storage.&lt;/p&gt;
 &lt;span class="p"&gt;}&lt;/span&gt;
 &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
 
-
 &lt;p&gt;The middleware.py code is an good example of how to write a middleware for 
 Django. The class derives from MiddlewareMixin and defines two methods 
 &lt;code&gt;process_request&lt;/code&gt; and &lt;code&gt;process_response&lt;/code&gt;.  The &lt;code&gt;process_request&lt;/code&gt; adds 
@@ -3642,7 +3530,6 @@ are not all stored.&lt;/p&gt;
         &lt;span class="k"&gt;return&lt;/span&gt; &lt;span class="n"&gt;response&lt;/span&gt;
 &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
 
-
 &lt;p&gt;The context_processor.py defines a function &lt;code&gt;messages&lt;/code&gt; which simply returns a 
 dictionary of two context variables.&lt;/p&gt;
 &lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;&lt;span class="c1"&gt;# messages/context_processor.py &lt;/span&gt;
@@ -3661,7 +3548,6 @@ dictionary of two context variables.&lt;/p&gt;
         &lt;span class="s1"&gt;&amp;#39;DEFAULT_MESSAGE_LEVELS&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt; &lt;span class="n"&gt;DEFAULT_LEVELS&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;
     &lt;span class="p"&gt;}&lt;/span&gt;
 &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
-
 
 &lt;p&gt;The &lt;code&gt;views.py&lt;/code&gt; defines a SuccessMessageMixin, which adds a success message 
 attribute to class based views. It is probably easier for a programmer 
@@ -3687,7 +3573,6 @@ the storage defines a &lt;code&gt;default_storage&lt;/code&gt; function. &lt;/p&
     &lt;span class="k"&gt;return&lt;/span&gt; &lt;span class="n"&gt;import_string&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;settings&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;MESSAGE_STORAGE&lt;/span&gt;&lt;span class="p"&gt;)(&lt;/span&gt;&lt;span class="n"&gt;request&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
 &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
 
-
 &lt;p&gt;The grep command results show that &lt;code&gt;MESSAGE_STORAGE&lt;/code&gt; is assigned FallBackStorage 
 class which is defined in the fallback.py file. &lt;/p&gt;
 &lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;george@STK2M3:~/Desktop/django-2.2.2$ grep -nr &amp;#39;MESSAGE_STORAGE&amp;#39; ./
@@ -3698,7 +3583,6 @@ class which is defined in the fallback.py file. &lt;/p&gt;
 ./django/conf/global_settings.py:554:MESSAGE_STORAGE = 
    &amp;#39;django.contrib.messages.storage.fallback.FallbackStorage&amp;#39;
 &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
-
 
 &lt;p&gt;The &lt;code&gt;import_string&lt;/code&gt; function is defined in the module_loading.py file, which 
 &amp;#8220;imports a dotted module path and return the attribute/class designated by the 
@@ -3751,7 +3635,6 @@ stored. Here is the source code. &lt;/p&gt;
         &lt;span class="n"&gt;messages&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="bp"&gt;self&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;_loaded_messages&lt;/span&gt; &lt;span class="o"&gt;+&lt;/span&gt; &lt;span class="bp"&gt;self&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;_queued_messages&lt;/span&gt;
         &lt;span class="k"&gt;return&lt;/span&gt; &lt;span class="bp"&gt;self&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;_store&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;messages&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;response&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
 &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
-
 
 &lt;h3&gt;Cookies and Sessions&lt;/h3&gt;
 &lt;p&gt;The discussion of the messages app has already became convoluted, and it will 
@@ -3824,7 +3707,6 @@ source code of session.py file. &lt;/p&gt;
         &lt;span class="k"&gt;return&lt;/span&gt; &lt;span class="n"&gt;data&lt;/span&gt;
 &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
 
-
 &lt;h3&gt;Conclusion&lt;/h3&gt;
 &lt;p&gt;The messages app is easy to use in a Django app, but the implementation of 
 the app is not simple.  Reading the source code helps us understand how the 
@@ -3842,7 +3724,6 @@ the code is not as straightforward to understand as function-based view. &lt;/p&
     &lt;span class="n"&gt;context&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="p"&gt;{&lt;/span&gt; &lt;span class="s1"&gt;&amp;#39;latest&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt; &lt;span class="n"&gt;latest&lt;/span&gt; &lt;span class="p"&gt;}&lt;/span&gt;
     &lt;span class="k"&gt;return&lt;/span&gt; &lt;span class="n"&gt;HttpResponse&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;template&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;render&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;context&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;request&lt;/span&gt;&lt;span class="p"&gt;))&lt;/span&gt;
 &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
-
 
 &lt;p&gt;The request object passed to the view function is a WSGIRequest object, and 
 WSGIRequest is a subclass of HttpRequest.  When web browser sends an http/https
@@ -3867,7 +3748,6 @@ code directly. Here is a list of files in the http directory.&lt;/p&gt;
  1896 total
 &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
 
-
 &lt;p&gt;How do I find this information? The grep command below shows that HttpRequest 
 only appears a few places in Django source code. The wsgi.py file defines the 
 WSGIRequst class as a subclass of HttpRequest. &lt;/p&gt;
@@ -3882,7 +3762,6 @@ WSGIRequst class as a subclass of HttpRequest. &lt;/p&gt;
 ......
 &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
 
-
 &lt;p&gt;We can then try to find where the WSGIRequest object is defined and passed along 
 to other functions as an argument. &lt;/p&gt;
 &lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;george@STK2M3:~/Desktop/django-2.2.2/django$ grep -rn &amp;quot;WSGIRequest&amp;quot; ./core
@@ -3892,14 +3771,12 @@ to other functions as an argument. &lt;/p&gt;
 ...
 &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
 
-
 &lt;p&gt;In the file wsgi.py line 131, it assigns WSGIRequest class to &lt;code&gt;request_class&lt;/code&gt;. 
 Let&amp;#8217;s try to find where &lt;code&gt;request_class&lt;/code&gt; is instantiated. &lt;/p&gt;
 &lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;george@STK2M3:~/Desktop/django-2.2.2/django$ grep -rn &amp;quot;request_class&amp;quot; ./core
 ./core/handlers/wsgi.py:131:    request_class = WSGIRequest
 ./core/handlers/wsgi.py:140:        request = self.request_class(environ)
 &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
-
 
 &lt;p&gt;Grep command can also see the lines before and after the target line.  The command 
 below shows the context code. &lt;/p&gt;
@@ -3922,7 +3799,6 @@ below shows the context code. &lt;/p&gt;
 ./core/handlers/wsgi.py-144-
 ./core/handlers/wsgi.py-145-        status = &amp;#39;%d %s&amp;#39; % (response.status_code, response.reason_phrase)
 &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
-
 
 &lt;p&gt;The wsgi.py line 141 &lt;code&gt;response = self.get_response(request)&lt;/code&gt; is where 
 the request is passed to the view function. It is also where the response created 
@@ -3955,7 +3831,6 @@ view function below displays the contents. &lt;/p&gt;
     &lt;span class="nb"&gt;print&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="nb"&gt;type&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;request&lt;/span&gt;&lt;span class="p"&gt;))&lt;/span&gt;  &lt;span class="c1"&gt;# for debug only&lt;/span&gt;
     &lt;span class="k"&gt;return&lt;/span&gt; &lt;span class="n"&gt;HttpResponse&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;txt&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
 &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
-
 
 &lt;p&gt;Here is the partial output from the &lt;code&gt;display_meta&lt;/code&gt; function:&lt;/p&gt;
 &lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;......
@@ -4006,7 +3881,6 @@ tag, and filter. Here are some examples:&lt;/p&gt;
 {{ tag.name }}
 &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
 
-
 &lt;p&gt;&lt;strong&gt;tag&lt;/strong&gt;&lt;/p&gt;
 &lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;{% expression %}
 {% for startup in tag.startup_set.all %}
@@ -4022,13 +3896,11 @@ tag, and filter. Here are some examples:&lt;/p&gt;
 {% if not tag.startup_set all and not tag.blog_posts.all %}
 &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
 
-
 &lt;p&gt;&lt;strong&gt;filter&lt;/strong&gt;&lt;/p&gt;
 &lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;{{ startup_date|date:&amp;quot;F jS, Y&amp;quot; }}  ▶ July 2nd, 2019
 {{ startup.website|urlize }}
 {{ startup.description|linebreaks }}
 &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
-
 
 &lt;p&gt;&lt;em&gt;other filters&lt;/em&gt;:  title, pluralize, truncatewords:20, default:&amp;#8221;base.html&amp;#8221;&lt;/p&gt;
 &lt;h3&gt;How to Load Templates&lt;/h3&gt;
@@ -4047,7 +3919,6 @@ Django official tutorial. &lt;/p&gt;
     &lt;span class="k"&gt;return&lt;/span&gt; &lt;span class="n"&gt;HttpResponse&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;template&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;render&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;context&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;request&lt;/span&gt;&lt;span class="p"&gt;))&lt;/span&gt;
 &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
 
-
 &lt;h4&gt;Method 2&lt;/h4&gt;
 &lt;p&gt;The more common code is to use the &lt;code&gt;render&lt;/code&gt; function defined in django.shortcuts 
 module in views.  &lt;/p&gt;
@@ -4055,7 +3926,6 @@ module in views.  &lt;/p&gt;
 &lt;span class="o"&gt;...&lt;/span&gt;
 &lt;span class="k"&gt;return&lt;/span&gt; &lt;span class="n"&gt;render&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;request&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="s1"&gt;&amp;#39;template_name.html&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="p"&gt;{&lt;/span&gt;&lt;span class="s1"&gt;&amp;#39;tag&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt; &lt;span class="n"&gt;tag&lt;/span&gt;&lt;span class="p"&gt;})&lt;/span&gt;
 &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
-
 
 &lt;p&gt;The &lt;code&gt;render&lt;/code&gt; function itself (Django2.2.2 source code) is very simple and short. 
 It calls &lt;code&gt;render_to_string&lt;/code&gt; function in django.template.loader module, which in 
@@ -4084,7 +3954,6 @@ turn calls &lt;code&gt;get_template&lt;/code&gt; or &lt;code&gt;select_template&
     &lt;span class="k"&gt;return&lt;/span&gt; &lt;span class="n"&gt;template&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;render&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;context&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;request&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
 &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
 
-
 &lt;h4&gt;Method 3&lt;/h4&gt;
 &lt;p&gt;The django.template module has two classes Template and Context. Those 
 are template system&amp;#8217;s lower level APIs. Here is an example:&lt;/p&gt;
@@ -4094,7 +3963,6 @@ context = Context({&amp;#39;name&amp;#39;: &amp;#39;Andrew&amp;#39;})
 template.render(context)
 #  result is &amp;#39;Hi, my name is Andrew.&amp;#39;
 &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
-
 
 &lt;h3&gt;Template System Source Code&lt;/h3&gt;
 &lt;p&gt;The source code for Django template system is in django/template directory, and 
@@ -4149,7 +4017,6 @@ very easy for users to install Wine 4. Here is the single command to install: &l
 &lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;$sudo apt install --install-recommends wine-installer
 &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
 
-
 &lt;p&gt;I find two issues when setting up Linux Mint. The first one is that when I run 
 &lt;code&gt;sudo apt upgrade&lt;/code&gt; command after installation, the system reports an error like this:&lt;/p&gt;
 &lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;Fetched 902 kB in 3s (247 kB/s)
@@ -4159,7 +4026,6 @@ dpkg: dependency problems prevent processing triggers for gconf2:
   Package dbus-x11 is not configured yet
 &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
 
-
 &lt;p&gt;A Google search finds 
 &lt;a href="https://forums.linuxmint.com/viewtopic.php?t=276119"&gt;a solution&lt;/a&gt; 
 posted on Linxu Mint forum.  Running 
@@ -4167,7 +4033,6 @@ two commands below solves the issue. &lt;/p&gt;
 &lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;$sudo dpkg --configure -a
 $sudo apt-get install -f
 &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
-
 
 &lt;p&gt;The man pages of dpkg and apt-get have the following paragraphs about those two 
 commands:&lt;/p&gt;
@@ -4201,7 +4066,6 @@ apt-get
     Use of this option together with -m may produce an error in some
     situations. Configuration Item: APT::Get::Fix-Broken.
 &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
-
 
 &lt;p&gt;The other issue I encountered is that the system does not respond 
 to logitech wireless mouse and keyboard after going into suspend (sleep). &lt;/p&gt;
@@ -4241,14 +4105,12 @@ george@STK2M3:~$ sudo vim /etc/udev/rules.d/10-wakeup.rules
 [sudo] password for george: 
 &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
 
-
 &lt;p&gt;Add the contents below to the 10-wakeup.rules file.  The idVendor and idProduct 
 values are from the &lt;code&gt;lsusb&lt;/code&gt; command, and the path &lt;code&gt;/sys/bus/...&lt;/code&gt; is from the first 
 grep command.&lt;/p&gt;
 &lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;ACTION==&amp;quot;add&amp;quot;, SUBSYSTEM==&amp;quot;usb&amp;quot;, ATTRS{idVendor}==&amp;quot;046d&amp;quot;, ATTRS{idProduct}==&amp;quot;c52b&amp;quot; 
 RUN+=&amp;quot;/bin/sh -c &amp;#39;echo enabled &amp;gt; /sys/bus/usb/devices/1-3/power/wakeup&amp;#39;&amp;quot;
 &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
-
 
 &lt;p&gt;After the above steps, the logitech mouse and keyboard wake up the Linxu Mint just fine. 
 I never got the sleep/wakeup function working properly in Xubuntu system. So, this is 
@@ -4361,20 +4223,17 @@ become an instance variable&amp;#8221;? The Django source code and line number r
 &lt;span class="n"&gt;bn&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="n"&gt;b&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;name&lt;/span&gt;
 &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
 
-
 &lt;p&gt;The two lines of code below are from base.py ModelBase class (L138-139), which is
 a metaclass for Model.&lt;/p&gt;
 &lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;&lt;span class="k"&gt;for&lt;/span&gt; &lt;span class="n"&gt;obj_name&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;obj&lt;/span&gt; &lt;span class="ow"&gt;in&lt;/span&gt; &lt;span class="n"&gt;attrs&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;items&lt;/span&gt;&lt;span class="p"&gt;():&lt;/span&gt;
     &lt;span class="n"&gt;new_class&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;add_to_class&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;obj_name&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;obj&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
 &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
 
-
 &lt;p&gt;The attrs is the fourth argument to the &lt;code&gt;__new__&lt;/code&gt; method in metaclass ModelBase. 
 The obj_name refers to &amp;#8216;name&amp;#8217; and obj refers to &lt;code&gt;models.CharField(max_length=255)&lt;/code&gt; 
 where name is a field in Book model class. &lt;/p&gt;
 &lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;&lt;span class="k"&gt;def&lt;/span&gt; &lt;span class="fm"&gt;__new__&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="bp"&gt;cls&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;name&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;bases&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;attrs&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="o"&gt;**&lt;/span&gt;&lt;span class="n"&gt;kwargs&lt;/span&gt;&lt;span class="p"&gt;):&lt;/span&gt;
 &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
-
 
 &lt;p&gt;The &lt;code&gt;add_to_class&lt;/code&gt; method is defined on L301.  The method checks if the 
 value being added has &lt;code&gt;contribute_to_class&lt;/code&gt; method, and if it does it will call 
@@ -4387,7 +4246,6 @@ as class attribute.  The &lt;code&gt;getattr&lt;/code&gt; and &lt;code&gt;setatt
     &lt;span class="k"&gt;else&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt;
         &lt;span class="nb"&gt;setattr&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="bp"&gt;cls&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;name&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;value&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;  &lt;span class="c1"&gt;# call this if Book has a field price = 50&lt;/span&gt;
 &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
-
 
 &lt;p&gt;The &lt;code&gt;contribute_to_class&lt;/code&gt; method is defined in &lt;code&gt;db/models/fields/__init__.py&lt;/code&gt; L727. 
 It is a method in Field class. 
@@ -4422,7 +4280,6 @@ function returns None.  The comments indicate that this line is intended for the
         &lt;span class="nb"&gt;setattr&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="bp"&gt;cls&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="s1"&gt;&amp;#39;get_&lt;/span&gt;&lt;span class="si"&gt;%s&lt;/span&gt;&lt;span class="s1"&gt;_display&amp;#39;&lt;/span&gt; &lt;span class="o"&gt;%&lt;/span&gt; &lt;span class="bp"&gt;self&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;name&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;
                 &lt;span class="n"&gt;partialmethod&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="bp"&gt;cls&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;_get_FIELD_display&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;field&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="bp"&gt;self&lt;/span&gt;&lt;span class="p"&gt;))&lt;/span&gt;
 &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
-
 
 &lt;p&gt;The &lt;code&gt;DeferredAttribute&lt;/code&gt; descriptor class is defined in db.models.query_utils.py 
 file L116.  The code for the class is not long, and they are shown below. 
@@ -4469,7 +4326,6 @@ between &lt;code&gt;__dict__&lt;/code&gt; attribute and &lt;code&gt;getattr&lt;/
         &lt;span class="k"&gt;return&lt;/span&gt; &lt;span class="kc"&gt;None&lt;/span&gt;
 &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
 
-
 &lt;p&gt;The &lt;code&gt;DeferredAttribute&lt;/code&gt; class does not define a &lt;code&gt;__set__&lt;/code&gt; method as descriptors 
 in other articles.  In such a case, the &lt;code&gt;b.name&lt;/code&gt; in a statement &lt;code&gt;b.name = 'Python Tricks&lt;/code&gt; 
 refers to instance attribute, which overrides the &lt;code&gt;Book.name&lt;/code&gt; class level attribute. 
@@ -4505,7 +4361,6 @@ Install gunicorn in the virtual environment and run the server with commands sho
 $ gunicorn -w 4 get_started:hello_world
 &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
 
-
 &lt;h3&gt;References&lt;/h3&gt;
 &lt;p&gt;&lt;a href="https://www.python.org/dev/peps/pep-3333/"&gt;&lt;span class="caps"&gt;PEP&lt;/span&gt; 3333 - Python Web Server Gateway Interface v1.0.1&lt;/a&gt; 
 on Python.org. &lt;/p&gt;
@@ -4539,7 +4394,6 @@ generates similar model diagrams. &lt;/p&gt;
 &lt;span class="p"&gt;}&lt;/span&gt;
 &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
 
-
 &lt;p&gt;The extension command depends on the graphviz package and pydot/pyparsing modules.  Install those 
 dependencies in Ubuntu 18.04 and run the &lt;code&gt;python manage.py ...&lt;/code&gt; command to generate diagram.&lt;/p&gt;
 &lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;$sudo apt-get install graphviz
@@ -4547,7 +4401,6 @@ dependencies in Ubuntu 18.04 and run the &lt;code&gt;python manage.py ...&lt;/co
 
 (env)$python manage.py graph_models blog organizer --pydot -o models.png
 &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
-
 
 &lt;p&gt;Here is the result &lt;span class="caps"&gt;PNG&lt;/span&gt; file. &lt;/p&gt;
 &lt;div style="max-width:800px"&gt;
@@ -4593,7 +4446,6 @@ project to work on. I have not read all pelican source code yet. &lt;/p&gt;
 find . -maxdepth 1 -name &amp;#39;*.py&amp;#39; -exec wc -l &amp;#39;{}&amp;#39; +
 &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
 
-
 &lt;h3&gt;Bootstrap 4&lt;/h3&gt;
 &lt;p&gt;There is an excellent 
 &lt;a href="https://github.com/getpelican/pelican-themes/tree/master/pelican-bootstrap3"&gt;&lt;em&gt;pelican-bootstrap3&lt;/em&gt;&lt;/a&gt; 
@@ -4628,7 +4480,6 @@ Bootstrap locally.&lt;/p&gt;
 &lt;span class="nv"&gt;$print-page-size&lt;/span&gt;&lt;span class="o"&gt;:&lt;/span&gt; &lt;span class="n"&gt;letter&lt;/span&gt;&lt;span class="p"&gt;;&lt;/span&gt;
 &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
 
-
 &lt;p&gt;The pelican-theme github repo collects many themes.  However, it seems to me that
 few of them are of professional quality. The possible reason is that most 
 themes are produced by hobbyists during spare time. &lt;/p&gt;
@@ -4650,14 +4501,12 @@ python virtual environment. &lt;/p&gt;
 &lt;span class="n"&gt;pip&lt;/span&gt; &lt;span class="n"&gt;install&lt;/span&gt; &lt;span class="n"&gt;pelican&lt;/span&gt; &lt;span class="n"&gt;Markdown&lt;/span&gt; &lt;span class="n"&gt;invoke&lt;/span&gt; &lt;span class="n"&gt;ghp&lt;/span&gt;&lt;span class="o"&gt;-&lt;/span&gt;&lt;span class="n"&gt;import2&lt;/span&gt;
 &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
 
-
 &lt;p&gt;The &lt;code&gt;pelican-quickstart&lt;/code&gt; command will create a tasks.py file in the project directory. 
 One nice feature of Invoke is that you can run multiple tasks in one command. The 
 command below cleans the &lt;code&gt;output&lt;/code&gt; directory, rebuilds the project, and serves the 
 website at &lt;code&gt;http://localhost:8000&lt;/code&gt; address. &lt;/p&gt;
 &lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;invoke clean build serve
 &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
-
 
 &lt;h3&gt;Website Source Code&lt;/h3&gt;
 &lt;p&gt;This website is hosted in Github Pages, which is a free service for static sites. 
@@ -4679,7 +4528,6 @@ git push origin master # update source code
 ghp-import output -b gh-pages
 git push origin gh-pages
 &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
-
 
 &lt;p&gt;&lt;a href="https://gist.github.com/jedmao/5053440"&gt;This github page&lt;/a&gt; 
 has a nice summary of common github commands. &lt;/p&gt;
@@ -4746,7 +4594,6 @@ in year 2025.&lt;/p&gt;
 
 &lt;span class="nt"&gt;&amp;lt;/inkscape-extension&amp;gt;&lt;/span&gt;
 &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
-
 
 &lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;&lt;span class="ch"&gt;#! /usr/bin/python&lt;/span&gt;
 &lt;span class="c1"&gt;# -*- coding: utf-8 -*-&lt;/span&gt;
@@ -5063,13 +4910,11 @@ libbz2-dev libreadline-dev libsqlite3-dev wget curl llvm libncurses5-dev \
 libncursesw5-dev xz-utils tk-dev libffi-dev liblzma-dev python-openssl 
 &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
 
-
 &lt;p&gt;I usually change the global python to a more recent version with &lt;code&gt;pyenv global&lt;/code&gt; 
 command and simply use &lt;code&gt;venv&lt;/code&gt; to manage virtual environment. &lt;/p&gt;
 &lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;pyenv global 3.7.3
 python -m venv ~/.venv/pelican
 &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
-
 
 &lt;p&gt;Here are a list of some other common commands.&lt;/p&gt;
 &lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;pyenv install --list |grep &amp;quot; 3\.[78]&amp;quot;
@@ -5082,7 +4927,6 @@ pyenv local 3.7.7
 cat ~/.pyenv/version
 pyenv virtualenv ...
 &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
-
 
 &lt;p&gt;&lt;strong&gt;Update on 10/1/2020&lt;/strong&gt; Pyenv needs an update if you do not use it to 
 install new Python versions for some time. Otherwise the new Python 
@@ -5110,7 +4954,6 @@ a portable version if you do not want to install it. &lt;/p&gt;
 &lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;C:\Users\Username\Documents\inkscape0.92.4
 &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
 
-
 &lt;h4&gt;Inkscape User Extension Directory&lt;/h4&gt;
 &lt;p&gt;In Inkscape, click menu item &lt;code&gt;Edit &amp;gt; Preferences&lt;/code&gt; to open preference 
 dialog (Ctrl + Shift + p). Choose &lt;code&gt;System&lt;/code&gt; on the left, and the right side 
@@ -5118,7 +4961,6 @@ shows system paths for variables.  The default value
 for &lt;code&gt;User extensions&lt;/code&gt; is,&lt;/p&gt;
 &lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;C:\Users\Username\AppData\Roaming\inkscape\extensions
 &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
-
 
 &lt;p&gt;Open this location in File Explorer and copy and paste extension files 
 (.py and .inx) into the directory. The extension program will show up 
@@ -5138,7 +4980,6 @@ on &lt;code&gt;Text and Font&lt;/code&gt; dialog in Inkscape. &lt;/p&gt;
 &amp;lt;dir&amp;gt;./fonts&amp;lt;/dir&amp;gt;
 &amp;lt;/fontconfig&amp;gt;
 &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
-
 
 &lt;h4&gt;Install Dependencies for Plugin WriteTex&lt;/h4&gt;
 &lt;p&gt;WriteTex is a nice Inkscape extension for adding LaTeX equations onto
@@ -5164,7 +5005,6 @@ a directory. &lt;/p&gt;
 &lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;C:\Users\Username\Downloads\WriteTex-dep
 &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
 
-
 &lt;p&gt;Two directories containing files &lt;code&gt;xelatex.exe&lt;/code&gt; and &lt;code&gt;pdf2svg.exe&lt;/code&gt; should be 
 added to the system path. In Windows 10 File Explorer, right click &lt;code&gt;This PC&lt;/code&gt; and 
 choose &lt;code&gt;Properties&lt;/code&gt;.  Choose &lt;code&gt;Advanced system settings&lt;/code&gt; and click &lt;code&gt;Advanced&lt;/code&gt;
@@ -5174,7 +5014,6 @@ Then click &lt;code&gt;Edit&lt;/code&gt; and add two directories to the list. &l
 C:\Users\Username\Downloads\WriteTex-dep\texlive\bin\win32
 &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
 
-
 &lt;p&gt;The purpose of above steps is for WriteTex python extension to find 
 &lt;code&gt;xelatex.exe&lt;/code&gt; and &lt;code&gt;pdf2svg.exe&lt;/code&gt; programs. &lt;/p&gt;
 &lt;h4&gt;How to Enter Equations with Plugin WriteTex&lt;/h4&gt;
@@ -5183,7 +5022,6 @@ Some LaTeX symbols like &lt;code&gt;\dfrac&lt;/code&gt; need AmsTeX.  Add the li
 &lt;code&gt;Preamble File&lt;/code&gt; box and toggle box &lt;code&gt;Trade above as contents&lt;/code&gt;. &lt;/p&gt;
 &lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;\usepackage{amsmath, amsthm, amssymb, amsfonts} 
 &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
-
 
 &lt;div style="max-width:400px"&gt;
   &lt;img class="img-fluid" src="/images/writetex-interface.png" alt="WriteTex Interface"&gt; 
@@ -5208,7 +5046,6 @@ The programs are automatically added to the system path. &lt;/p&gt;
 &lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;sudo apt-get install texlive
 sudo apt-get install pdf2svg
 &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
-
 
 &lt;p&gt;The texlive installation does not include xelatex.  You change &lt;code&gt;xelatex&lt;/code&gt;
 to &lt;code&gt;pdflatex&lt;/code&gt; on the WriteTex dialog to make it work. &lt;/p&gt;
@@ -5287,7 +5124,6 @@ with a severity level of warning and above. &lt;/p&gt;
 &lt;span class="n"&gt;logging&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;debug&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="s1"&gt;&amp;#39;This is a debug message&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
 &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
 
-
 &lt;p&gt;Logging module defines many classes.  Commonly used classes are Logger,
 LogRecord, Handler, and Formatter.  Logger class is not instantiated directly. 
 The first time call to module level function  &lt;code&gt;logging.getLogger(name)&lt;/code&gt; returns
@@ -5301,7 +5137,6 @@ Logger object. A typical example looks like this, &lt;/p&gt;
 &lt;span class="n"&gt;logger&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;addHandler&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;f_handler&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
 &lt;span class="n"&gt;logger&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;error&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="s1"&gt;&amp;#39;This is an error&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
 &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
-
 
 &lt;p&gt;If you need a more versatile logging system, you create a config file or a 
 dictionary and then load it using &lt;code&gt;fileConfig&lt;/code&gt; or &lt;code&gt;dictConfig&lt;/code&gt; methods. &lt;/p&gt;
@@ -5413,7 +5248,6 @@ useful information from emails. The code structure looks like this. &lt;/p&gt;
             &lt;span class="n"&gt;f&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;close&lt;/span&gt;&lt;span class="p"&gt;()&lt;/span&gt;            
 &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
 
-
 &lt;p&gt;I find a major flaw in this approach a few days later.  The Google archive 
 system has a limit on the number of time a user is allowed to export emails to .mbox files. Once 
 the daily limit (3 times on my account) is reached, it does not allow a user to export 
@@ -5491,7 +5325,6 @@ the pyautogui module can be used for this task.  Here is the code to save emails
 &lt;span class="nb"&gt;print&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="s1"&gt;&amp;#39; &amp;gt;&amp;gt;&amp;gt; Done &amp;lt;&amp;lt;&amp;lt; &amp;#39;&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
 &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
 
-
 &lt;p&gt;The program is able to save 1500 emails in about four hours.  Depending on the network speed, the
 sleep seconds between tasks can be adjusted. Sometime the program may abort for 
 some reason.  Change the variables &lt;code&gt;TOTALEMAILS&lt;/code&gt; and &lt;code&gt;START&lt;/code&gt; at the beginning of the program
@@ -5558,7 +5391,6 @@ You can execute similar commands shown below and compare the results. &lt;/p&gt;
     &lt;span class="n"&gt;main&lt;/span&gt;&lt;span class="p"&gt;()&lt;/span&gt;
 &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
 
-
 &lt;p&gt;Here are the bash commands to test code. &lt;/p&gt;
 &lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;python argparse_example.py -h
 python argparse_example.py 
@@ -5566,7 +5398,6 @@ python argparse_example.py myfile.html
 python argparse_example.py -x -c mystyle.css myfile.html
 python argparse_example.py --xhtml --cssfile=mystyle.css myfile.html
 &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
-
 
 &lt;p&gt;The argparse module contains many other options.  Here is a link to 
 &lt;a href="https://docs.python.org/3/howto/argparse.html"&gt;Python argparse Offical Doc&lt;/a&gt;.&lt;/p&gt;</content><category term="posts"></category><category term="python"></category></entry><entry><title>Vim Tips</title><link href="https://www.georgexyz.com/vim-tips.html" rel="alternate"></link><published>2019-04-01T12:45:00-04:00</published><updated>2020-08-09T17:37:00-04:00</updated><author><name>George Zhang</name></author><id>tag:www.georgexyz.com,2019-04-01:/vim-tips.html</id><summary type="html">&lt;p&gt;Ubuntu 18.04 comes with a stripped down version of Vim. If you want to use Vim for 
@@ -5597,7 +5428,6 @@ Compilation: gcc -c -I. -Iproto -DHAVE_CONFIG_H   -Wdate-time  -g -O2
 -fdebug-prefix-map=/build/vim-NQEcoP/vim-8.0.1453=. -fstack-...
 &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
 
-
 &lt;p&gt;If you type command &lt;code&gt;vim&lt;/code&gt; in bash, it will tell you that &amp;#8220;command vim not found&amp;#8221;. 
 Those three commands remove the existing vim-tiny and install the full version with &lt;span class="caps"&gt;GUI&lt;/span&gt;
 vim-gtk3 in Ubuntu 18.04 or Xubuntu. &lt;/p&gt;
@@ -5605,7 +5435,6 @@ vim-gtk3 in Ubuntu 18.04 or Xubuntu. &lt;/p&gt;
 sudo apt-get update
 sudo apt-get install vim-gtk3
 &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
-
 
 &lt;p&gt;You can then check the vim version by command &lt;code&gt;vim --version&lt;/code&gt;. &lt;/p&gt;
 &lt;h3&gt;Basic Vim Settings&lt;/h3&gt;
@@ -5644,7 +5473,6 @@ inoremap &amp;lt;silent&amp;gt; &amp;lt;C-S&amp;gt; &amp;lt;C-O&amp;gt;:update&a
 nnoremap &amp;lt;silent&amp;gt; &amp;lt;C-l&amp;gt; :&amp;lt;C-u&amp;gt;nohlsearch&amp;lt;CR&amp;gt;&amp;lt;C-l&amp;gt;
 &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
 
-
 &lt;h3&gt;Vim Tips&lt;/h3&gt;
 &lt;h4&gt;Startup&lt;/h4&gt;
 &lt;p&gt;Vim loads &lt;code&gt;~/.vimrc&lt;/code&gt; by default, and you can change the behavior by using &lt;code&gt;-u&lt;/code&gt; option on 
@@ -5652,7 +5480,6 @@ command line.&lt;/p&gt;
 &lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;$vim -u ~/.simple.vimrc filename
 $vim -u NONE  # do not load any config file
 &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
-
 
 &lt;h4&gt;Set Initial Console Window Size&lt;/h4&gt;
 &lt;p&gt;On Linux terminal, you can use &lt;code&gt;set lines=50 columns=100&lt;/code&gt; to set initial console size. 
@@ -5665,7 +5492,6 @@ if exists(&amp;quot;+columns&amp;quot;)
 endif
 &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
 
-
 &lt;p&gt;&lt;em&gt;Source: &lt;a href="https://vim.fandom.com/wiki/Maximize_or_set_initial_window_size"&gt;an article&lt;/a&gt; on fandom.com.&lt;/em&gt;&lt;/p&gt;
 &lt;h4&gt;Fuzzy Find&lt;/h4&gt;
 &lt;p&gt;The following two settings help the &lt;code&gt;:find&lt;/code&gt; command to do file fuzzy finding. &lt;/p&gt;
@@ -5673,7 +5499,6 @@ endif
 set wildmenu
 :find *cache # Press Tab key to find file name with cache
 &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
-
 
 &lt;p&gt;&lt;em&gt;Source: &lt;a href="https://youtu.be/XA2WjJbmmoM"&gt;a video talk&lt;/a&gt; on youtube.&lt;/em&gt;&lt;/p&gt;
 &lt;h4&gt;Auto Complete&lt;/h4&gt;
@@ -5703,7 +5528,6 @@ commands. &lt;/p&gt;
 &lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;:echo @%
 :!ls %:p  # will show absolute path of file
 &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
-
 
 &lt;h4&gt;Navigation&lt;/h4&gt;
 &lt;p&gt;Keys &lt;code&gt;h j k l&lt;/code&gt; are the basic navigation commands in normal mode. Commands &lt;code&gt;w b e&lt;/code&gt; 
@@ -5747,12 +5571,10 @@ vnoremap &amp;lt;silent&amp;gt; &amp;lt;C-S&amp;gt; :&amp;lt;C-C&amp;gt;:update&
 inoremap &amp;lt;silent&amp;gt; &amp;lt;C-S&amp;gt; &amp;lt;C-O&amp;gt;:update&amp;lt;CR&amp;gt;
 &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
 
-
 &lt;p&gt;This shortcut also needs a setting in &lt;code&gt;.bashrc&lt;/code&gt; file to work. &lt;/p&gt;
 &lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;stty -ixon  # stop tele-typewriter, 
             # -ixon enable xon/xoff flow control -i
 &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
-
 
 &lt;p&gt;By default command &lt;code&gt;^s&lt;/code&gt; freezes vim in Ubuntu Linux, and &lt;code&gt;^q&lt;/code&gt; un-freeze it. 
 This &lt;a href=""&gt;stackoverflow Q&amp;amp;A&lt;/a&gt; 
@@ -5866,7 +5688,6 @@ au VimLeave * silent! !xmodmap -e &amp;#39;clear Lock&amp;#39;
     -e &amp;#39;keycode 0x42 = Caps_Lock&amp;#39;
 &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
 
-
 &lt;p&gt;I am used to press &lt;code&gt;Esc&lt;/code&gt; key to enter normal mode, and I find the 
 Caps Lock key is not as straightforward as the Escape key.&lt;/p&gt;
 &lt;p&gt;&lt;em&gt;Source: &lt;a href="https://stackoverflow.com/questions/2176532/how-to-map-caps-lock-key-in-vim"&gt;an stackoverflow Q&amp;amp;A&lt;/a&gt;&lt;/em&gt;&lt;/p&gt;
@@ -5899,7 +5720,6 @@ export PATH=&amp;quot;/home/george/.pyenv/bin:$PATH&amp;quot;
 eval &amp;quot;$(pyenv init -)&amp;quot;
 eval &amp;quot;$(pyenv virtualenv-init -)&amp;quot;
 &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
-
 
 &lt;p&gt;&lt;em&gt;Source: Practical Vim Second Edition by Drew Neil Page 63, Tip 30&lt;/em&gt;&lt;/p&gt;
 &lt;h4&gt;Links and References&lt;/h4&gt;

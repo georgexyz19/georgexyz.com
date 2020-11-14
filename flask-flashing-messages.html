@@ -83,13 +83,12 @@ This is usually combined with a layout template to expose the message.</p>
 The Flask documentation also has a webpage titled 
 <em><a href="https://flask.palletsprojects.com/en/1.1.x/patterns/flashing/#message-flashing-pattern">Message Flashing</a></em>, 
 which also includes code examples.  </p>
-<p>You can call the <code>flash</code> function in a vew function like this. </p>
+<p>You can call function <code>flash</code> in a view function like this. </p>
 <div class="highlight"><pre><span></span><code><span class="kn">from</span> <span class="nn">flask</span> <span class="kn">import</span> <span class="n">flash</span>
 
 <span class="c1"># inside view function</span>
 <span class="n">flash</span><span class="p">(</span><span class="s1">&#39;Log in successfully&#39;</span><span class="p">)</span>
 </code></pre></div>
-
 
 <p>The base template calls <code>get_flashed_messages</code> function and renders the 
 messages. The code below renders the messages as an un-ordered list. </p>
@@ -104,13 +103,11 @@ messages. The code below renders the messages as an un-ordered list. </p>
 {% endwith %}
 </code></pre></div>
 
-
 <p>Flashing messages also support categories.  You can pass a second 
 argument category to <code>flash</code> method.  The above example code 
 is modified to be like this. </p>
 <div class="highlight"><pre><span></span><code>flash(&#39;Log in failed&#39;, &#39;error&#39;)
 </code></pre></div>
-
 
 <div class="highlight"><pre><span></span><code>{% with messages = get_flashed_messages(with_categories=True) %}
   {% if messages %}
@@ -123,7 +120,6 @@ is modified to be like this. </p>
 {% endwith %}
 </code></pre></div>
 
-
 <p>The interesting part of the above code is that the function  <code>get_flashed_messages</code> is available to all 
 template html files. How does it happen? Let&#8217;s take a look at 
 Flask source code. </p>
@@ -132,7 +128,6 @@ Flask source code. </p>
 <div class="highlight"><pre><span></span><code><span class="kn">from</span> <span class="nn">.helpers</span> <span class="kn">import</span> <span class="n">flash</span>
 <span class="kn">from</span> <span class="nn">.helpers</span> <span class="kn">import</span> <span class="n">get_flashed_messages</span>
 </code></pre></div>
-
 
 <p>The actual functions are defined on Lines 399 and 429 of <code>helpers.py</code> file.<br>
 The code of of those two functions are not long.  The <code>message_flashed</code> 
@@ -150,7 +145,6 @@ is a list. The list values are tuples.  Here is an example <code>[('message', 'l
     <span class="p">)</span>
 </code></pre></div>
 
-
 <div class="highlight"><pre><span></span><code><span class="k">def</span> <span class="nf">get_flashed_messages</span><span class="p">(</span><span class="n">with_categories</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span> <span class="n">category_filter</span><span class="o">=</span><span class="p">()):</span>
     <span class="sd">&quot;&quot;&quot; ....  &quot;&quot;&quot;</span>
     <span class="n">flashes</span> <span class="o">=</span> <span class="n">_request_ctx_stack</span><span class="o">.</span><span class="n">top</span><span class="o">.</span><span class="n">flashes</span>
@@ -164,7 +158,6 @@ is a list. The list values are tuples.  Here is an example <code>[('message', 'l
         <span class="k">return</span> <span class="p">[</span><span class="n">x</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span> <span class="k">for</span> <span class="n">x</span> <span class="ow">in</span> <span class="n">flashes</span><span class="p">]</span>
     <span class="k">return</span> <span class="n">flashes</span>
 </code></pre></div>
-
 
 <p>How does Jinja2 know <code>get_flashed_messages</code> function? The code is in 
 <code>create_jinja_environment</code> method of Flask class (Line 761 of app.py). 

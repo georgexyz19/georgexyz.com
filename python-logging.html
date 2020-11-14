@@ -86,7 +86,6 @@ with a severity level of warning and above. </p>
 <span class="n">logging</span><span class="o">.</span><span class="n">debug</span><span class="p">(</span><span class="s1">&#39;This is a debug message&#39;</span><span class="p">)</span>
 </code></pre></div>
 
-
 <p>Logging module defines many classes.  Commonly used classes are Logger,
 LogRecord, Handler, and Formatter.  Logger class is not instantiated directly. 
 The first time call to module level function  <code>logging.getLogger(name)</code> returns
@@ -100,7 +99,6 @@ Logger object. A typical example looks like this, </p>
 <span class="n">logger</span><span class="o">.</span><span class="n">addHandler</span><span class="p">(</span><span class="n">f_handler</span><span class="p">)</span>
 <span class="n">logger</span><span class="o">.</span><span class="n">error</span><span class="p">(</span><span class="s1">&#39;This is an error&#39;</span><span class="p">)</span>
 </code></pre></div>
-
 
 <p>If you need a more versatile logging system, you create a config file or a 
 dictionary and then load it using <code>fileConfig</code> or <code>dictConfig</code> methods. </p>

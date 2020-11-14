@@ -99,7 +99,6 @@ Compilation: gcc -c -I. -Iproto -DHAVE_CONFIG_H   -Wdate-time  -g -O2
 -fdebug-prefix-map=/build/vim-NQEcoP/vim-8.0.1453=. -fstack-...
 </code></pre></div>
 
-
 <p>If you type command <code>vim</code> in bash, it will tell you that &#8220;command vim not found&#8221;. 
 Those three commands remove the existing vim-tiny and install the full version with <span class="caps">GUI</span>
 vim-gtk3 in Ubuntu 18.04 or Xubuntu. </p>
@@ -107,7 +106,6 @@ vim-gtk3 in Ubuntu 18.04 or Xubuntu. </p>
 sudo apt-get update
 sudo apt-get install vim-gtk3
 </code></pre></div>
-
 
 <p>You can then check the vim version by command <code>vim --version</code>. </p>
 <h3>Basic Vim Settings</h3>
@@ -146,7 +144,6 @@ inoremap &lt;silent&gt; &lt;C-S&gt; &lt;C-O&gt;:update&lt;CR&gt;
 nnoremap &lt;silent&gt; &lt;C-l&gt; :&lt;C-u&gt;nohlsearch&lt;CR&gt;&lt;C-l&gt;
 </code></pre></div>
 
-
 <h3>Vim Tips</h3>
 <h4>Startup</h4>
 <p>Vim loads <code>~/.vimrc</code> by default, and you can change the behavior by using <code>-u</code> option on 
@@ -154,7 +151,6 @@ command line.</p>
 <div class="highlight"><pre><span></span><code>$vim -u ~/.simple.vimrc filename
 $vim -u NONE  # do not load any config file
 </code></pre></div>
-
 
 <h4>Set Initial Console Window Size</h4>
 <p>On Linux terminal, you can use <code>set lines=50 columns=100</code> to set initial console size. 
@@ -167,7 +163,6 @@ if exists(&quot;+columns&quot;)
 endif
 </code></pre></div>
 
-
 <p><em>Source: <a href="https://vim.fandom.com/wiki/Maximize_or_set_initial_window_size">an article</a> on fandom.com.</em></p>
 <h4>Fuzzy Find</h4>
 <p>The following two settings help the <code>:find</code> command to do file fuzzy finding. </p>
@@ -175,7 +170,6 @@ endif
 set wildmenu
 :find *cache # Press Tab key to find file name with cache
 </code></pre></div>
-
 
 <p><em>Source: <a href="https://youtu.be/XA2WjJbmmoM">a video talk</a> on youtube.</em></p>
 <h4>Auto Complete</h4>
@@ -205,7 +199,6 @@ commands. </p>
 <div class="highlight"><pre><span></span><code>:echo @%
 :!ls %:p  # will show absolute path of file
 </code></pre></div>
-
 
 <h4>Navigation</h4>
 <p>Keys <code>h j k l</code> are the basic navigation commands in normal mode. Commands <code>w b e</code> 
@@ -249,12 +242,10 @@ vnoremap &lt;silent&gt; &lt;C-S&gt; :&lt;C-C&gt;:update&lt;CR&gt;
 inoremap &lt;silent&gt; &lt;C-S&gt; &lt;C-O&gt;:update&lt;CR&gt;
 </code></pre></div>
 
-
 <p>This shortcut also needs a setting in <code>.bashrc</code> file to work. </p>
 <div class="highlight"><pre><span></span><code>stty -ixon  # stop tele-typewriter, 
             # -ixon enable xon/xoff flow control -i
 </code></pre></div>
-
 
 <p>By default command <code>^s</code> freezes vim in Ubuntu Linux, and <code>^q</code> un-freeze it. 
 This <a href="">stackoverflow Q&amp;A</a> 
@@ -368,7 +359,6 @@ au VimLeave * silent! !xmodmap -e &#39;clear Lock&#39;
     -e &#39;keycode 0x42 = Caps_Lock&#39;
 </code></pre></div>
 
-
 <p>I am used to press <code>Esc</code> key to enter normal mode, and I find the 
 Caps Lock key is not as straightforward as the Escape key.</p>
 <p><em>Source: <a href="https://stackoverflow.com/questions/2176532/how-to-map-caps-lock-key-in-vim">an stackoverflow Q&amp;A</a></em></p>
@@ -401,7 +391,6 @@ export PATH=&quot;/home/george/.pyenv/bin:$PATH&quot;
 eval &quot;$(pyenv init -)&quot;
 eval &quot;$(pyenv virtualenv-init -)&quot;
 </code></pre></div>
-
 
 <p><em>Source: Practical Vim Second Edition by Drew Neil Page 63, Tip 30</em></p>
 <h4>Links and References</h4>

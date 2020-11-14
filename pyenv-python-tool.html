@@ -88,13 +88,11 @@ libbz2-dev libreadline-dev libsqlite3-dev wget curl llvm libncurses5-dev \
 libncursesw5-dev xz-utils tk-dev libffi-dev liblzma-dev python-openssl 
 </code></pre></div>
 
-
 <p>I usually change the global python to a more recent version with <code>pyenv global</code> 
 command and simply use <code>venv</code> to manage virtual environment. </p>
 <div class="highlight"><pre><span></span><code>pyenv global 3.7.3
 python -m venv ~/.venv/pelican
 </code></pre></div>
-
 
 <p>Here are a list of some other common commands.</p>
 <div class="highlight"><pre><span></span><code>pyenv install --list |grep &quot; 3\.[78]&quot;
@@ -107,7 +105,6 @@ pyenv local 3.7.7
 cat ~/.pyenv/version
 pyenv virtualenv ...
 </code></pre></div>
-
 
 <p><strong>Update on 10/1/2020</strong> Pyenv needs an update if you do not use it to 
 install new Python versions for some time. Otherwise the new Python 

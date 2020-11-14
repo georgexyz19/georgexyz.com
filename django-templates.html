@@ -94,7 +94,6 @@ tag, and filter. Here are some examples:</p>
 {{ tag.name }}
 </code></pre></div>
 
-
 <p><strong>tag</strong></p>
 <div class="highlight"><pre><span></span><code>{% expression %}
 {% for startup in tag.startup_set.all %}
@@ -110,13 +109,11 @@ tag, and filter. Here are some examples:</p>
 {% if not tag.startup_set all and not tag.blog_posts.all %}
 </code></pre></div>
 
-
 <p><strong>filter</strong></p>
 <div class="highlight"><pre><span></span><code>{{ startup_date|date:&quot;F jS, Y&quot; }}  ▶ July 2nd, 2019
 {{ startup.website|urlize }}
 {{ startup.description|linebreaks }}
 </code></pre></div>
-
 
 <p><em>other filters</em>:  title, pluralize, truncatewords:20, default:&#8221;base.html&#8221;</p>
 <h3>How to Load Templates</h3>
@@ -135,7 +132,6 @@ Django official tutorial. </p>
     <span class="k">return</span> <span class="n">HttpResponse</span><span class="p">(</span><span class="n">template</span><span class="o">.</span><span class="n">render</span><span class="p">(</span><span class="n">context</span><span class="p">,</span> <span class="n">request</span><span class="p">))</span>
 </code></pre></div>
 
-
 <h4>Method 2</h4>
 <p>The more common code is to use the <code>render</code> function defined in django.shortcuts 
 module in views.  </p>
@@ -143,7 +139,6 @@ module in views.  </p>
 <span class="o">...</span>
 <span class="k">return</span> <span class="n">render</span><span class="p">(</span><span class="n">request</span><span class="p">,</span> <span class="s1">&#39;template_name.html&#39;</span><span class="p">,</span> <span class="p">{</span><span class="s1">&#39;tag&#39;</span><span class="p">:</span> <span class="n">tag</span><span class="p">})</span>
 </code></pre></div>
-
 
 <p>The <code>render</code> function itself (Django2.2.2 source code) is very simple and short. 
 It calls <code>render_to_string</code> function in django.template.loader module, which in 
@@ -172,7 +167,6 @@ turn calls <code>get_template</code> or <code>select_template</code> depending o
     <span class="k">return</span> <span class="n">template</span><span class="o">.</span><span class="n">render</span><span class="p">(</span><span class="n">context</span><span class="p">,</span> <span class="n">request</span><span class="p">)</span>
 </code></pre></div>
 
-
 <h4>Method 3</h4>
 <p>The django.template module has two classes Template and Context. Those 
 are template system&#8217;s lower level APIs. Here is an example:</p>
@@ -182,7 +176,6 @@ context = Context({&#39;name&#39;: &#39;Andrew&#39;})
 template.render(context)
 #  result is &#39;Hi, my name is Andrew.&#39;
 </code></pre></div>
-
 
 <h3>Template System Source Code</h3>
 <p>The source code for Django template system is in django/template directory, and 

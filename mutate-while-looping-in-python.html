@@ -96,7 +96,6 @@ some test code. </p>
 <span class="ne">RuntimeError</span><span class="p">:</span> <span class="n">dictionary</span> <span class="n">changed</span> <span class="n">size</span> <span class="n">during</span> <span class="n">iteration</span>
 </code></pre></div>
 
-
 <p>Sometimes &#8220;mutate while looping&#8221; is necessary and it can make code simpler. Here is 
 an example (modified) from 
 <a href="https://automatetheboringstuff.com/2e/chapter6/">Chapter 6</a> 
@@ -108,7 +107,6 @@ of Al Sweigart&#8217;s <em>Automate The Boring Stuff With Python</em> book.</p>
         <span class="n">word</span> <span class="o">=</span> <span class="n">word</span><span class="p">[</span><span class="mi">1</span><span class="p">:]</span>
     <span class="k">return</span> <span class="n">prefixnonletters</span><span class="p">,</span> <span class="n">word</span>
 </code></pre></div>
-
 
 <p>This function separates a word (e.g., &#8216;123word&#8217;) into two parts: the prefix non-letter 
 part (&#8216;123&#8217;) and following letter part (&#8216;word&#8217;). The code loops over the input word and mutates it 

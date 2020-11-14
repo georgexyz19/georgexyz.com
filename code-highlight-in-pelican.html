@@ -92,7 +92,6 @@ the command line. </p>
 pygmentize -L style
 </code></pre></div>
 
-
 <p>The first command creates a <span class="caps">CSS</span> file <code>styles.css</code> with <code>default</code> style.  The 
 <code>-f html</code> option specifies the formatter and <code>-a .codehilite</code> option specifies 
 a class in the <code>styles.css</code> file. The second command lists all the styles 
@@ -108,7 +107,6 @@ command line. </p>
 <span class="o">...</span>
 </code></pre></div>
 
-
 <p>The Pelican default configuration dictionary has a key <code>MARKDOWN</code>, and the 
 corresponding value is shown below. </p>
 <div class="highlight"><pre><span></span><code><span class="s1">&#39;MARKDOWN&#39;</span><span class="p">:</span> <span class="p">{</span><span class="s1">&#39;extension_configs&#39;</span><span class="p">:</span> 
@@ -117,7 +115,6 @@ corresponding value is shown below. </p>
      <span class="s1">&#39;markdown.extensions.extra&#39;</span><span class="p">:</span> <span class="p">{},</span>
      <span class="s1">&#39;markdown.extensions.meta&#39;</span><span class="p">:</span> <span class="p">{}},</span>
 </code></pre></div>
-
 
 <p>It specifies a default <span class="caps">CSS</span> class value <code>highlight</code>. The Python <code>Markdown</code> 
 package transforms code block in a markdown file to html segment like below. 
@@ -136,7 +133,6 @@ calls <code>highlight</code> function in the <code>Pygments</code> package. </p>
   <span class="p">&lt;/</span><span class="nt">pre</span><span class="p">&gt;</span>
 <span class="p">&lt;/</span><span class="nt">div</span><span class="p">&gt;</span>
 </code></pre></div>
-
 
 <p>The html template should link to the <code>styles.css</code> file discussed earlier in 
 the article, so the generated html code section has the specified <span class="caps">CSS</span> styles. 
@@ -165,7 +161,6 @@ pelican==4.2.0
   - unidecode [required: Any, installed: 1.1.1]
 ...
 </code></pre></div>
-
 
 <p>This page has five code sections, and you can see code highlighting 
 effects in the middle three sections. </p>

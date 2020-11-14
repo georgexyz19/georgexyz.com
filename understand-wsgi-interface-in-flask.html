@@ -101,13 +101,11 @@ because it just calls a few other methods. </p>
         <span class="n">ctx</span><span class="o">.</span><span class="n">auto_pop</span><span class="p">(</span><span class="n">error</span><span class="p">)</span>
 </code></pre></div>
 
-
 <p>If you ignore the exception handling code for a minute, the code is not too difficult to 
 understand.</p>
 <p>Let&#8217;s look the first line of the method in detail.  </p>
 <div class="highlight"><pre><span></span><code><span class="n">ctx</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">request_context</span><span class="p">(</span><span class="n">environ</span><span class="p">)</span>
 </code></pre></div>
-
 
 <p>The <code>request_context</code> method is defined on Line 2345, and the method is returning a 
 <code>RequestContext</code> object. Notice the first argument to the <code>RequestContext</code> constructor is 
@@ -115,7 +113,6 @@ understand.</p>
 <div class="highlight"><pre><span></span><code><span class="k">def</span> <span class="nf">request_context</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">environ</span><span class="p">):</span>
     <span class="k">return</span> <span class="n">RequestContext</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">environ</span><span class="p">)</span>
 </code></pre></div>
-
 
 <p>The <code>RequestContext</code> class is defined on Line 255 of the ctx.py module.  The first 
 sentence of the class documentation states that &#8220;the request context contains all 
@@ -160,7 +157,6 @@ a global variable defined in global.py module.  </p>
     <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">url_adapter</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">match_request</span><span class="p">()</span>
 </code></pre></div>
-
 
 <p>I will stop here for now and look at other code in <code>wsgi_app</code> at a later time.   </p>
 

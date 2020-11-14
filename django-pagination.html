@@ -110,7 +110,6 @@ it takes is to add one line of code to use Django paginator.</p>
 <div class="highlight"><pre><span></span><code><span class="n">paginate_by</span> <span class="o">=</span> <span class="mi">10</span>
 </code></pre></div>
 
-
 <p>The template will be rendered with a context object with those contents:</p>
 <div class="highlight"><pre><span></span><code>context = {
             &#39;paginator&#39;: paginator,
@@ -119,7 +118,6 @@ it takes is to add one line of code to use Django paginator.</p>
             &#39;object_list&#39;: queryset
         }
 </code></pre></div>
-
 
 <p>The context object is defined in the <code>get_context_data</code> method of MultipleObjectMixin. The 
 <code>queryset</code> value of <code>context</code> dictionary is returned by <code>paginate_queryset</code> method, and it is 
