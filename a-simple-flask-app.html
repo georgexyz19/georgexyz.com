@@ -88,7 +88,7 @@ I followed <a href="https://medium.com/@jgefroh/a-guide-to-using-nginx-for-stati
 to setup the nginx server and letsencrypt certification. At the time I set up 
 the server, I did not really understand what I was doing.  A few weeks ago I found 
 <a href="http://www.patricksoftwareblog.com/how-to-configure-nginx-for-a-flask-web-application/">this nginx setting article</a> 
-which details niginx settings very well. I added a location block to pass along (so called reverse 
+which details nginx settings very well. I added a location block to pass along (so called reverse 
 proxy) http requests to the gunicorn <span class="caps">WSGI</span> server. </p>
 <div class="highlight"><pre><span></span><code>location /convert {
     proxy_pass http://localhost:8001;

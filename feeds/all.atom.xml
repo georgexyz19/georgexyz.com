@@ -1,5 +1,38 @@
 <?xml version="1.0" encoding="utf-8"?>
-<feed xmlns="http://www.w3.org/2005/Atom"><title>George Zhang</title><link href="https://www.georgexyz.com/" rel="alternate"></link><link href="https://www.georgexyz.com/feeds/all.atom.xml" rel="self"></link><id>https://www.georgexyz.com/</id><updated>2020-11-13T14:21:00-05:00</updated><entry><title>Flask Flashing Messages</title><link href="https://www.georgexyz.com/flask-flashing-messages.html" rel="alternate"></link><published>2020-11-13T14:21:00-05:00</published><updated>2020-11-13T14:21:00-05:00</updated><author><name>George Zhang</name></author><id>tag:www.georgexyz.com,2020-11-13:/flask-flashing-messages.html</id><summary type="html">&lt;p&gt;Flask includes message flashing functionality as a core feature.  The Flask 
+<feed xmlns="http://www.w3.org/2005/Atom"><title>George Zhang</title><link href="https://www.georgexyz.com/" rel="alternate"></link><link href="https://www.georgexyz.com/feeds/all.atom.xml" rel="self"></link><id>https://www.georgexyz.com/</id><updated>2020-11-24T23:25:00-05:00</updated><entry><title>Timer App</title><link href="https://www.georgexyz.com/timer-app.html" rel="alternate"></link><published>2020-11-24T23:25:00-05:00</published><updated>2020-11-24T23:25:00-05:00</updated><author><name>George Zhang</name></author><id>tag:www.georgexyz.com,2020-11-24:/timer-app.html</id><summary type="html">&lt;p&gt;Sometimes I like to time myself to finish a work task in a certain amount of 
+time like 15 minutes. Usually I can concentrate on the task more when I …&lt;/p&gt;</summary><content type="html">&lt;p&gt;Sometimes I like to time myself to finish a work task in a certain amount of 
+time like 15 minutes. Usually I can concentrate on the task more when I work 
+under a timer. &lt;/p&gt;
+&lt;p&gt;I try to find a simple timer.  This post records the timers I checked out. &lt;/p&gt;
+&lt;p&gt;The first thing I tried is a kitchen timer.  I ordered a popular one on 
+Amazon and it was delivered the next day.  It works well and it is simple 
+to use, but it has a major flaw.  The beep noise level is way too high. 
+Obviously the timer is designed for a noisy kitchen environment. &lt;/p&gt;
+&lt;div style="max-width: 800px"&gt;
+  &lt;img class="img-fluid pb-3" src="/images/kitchen-timer.jpg" alt="kitchen timer"&gt; 
+&lt;/div&gt;
+
+&lt;p&gt;Then I thought I should find a timer app written in Python, and I can 
+modify it to suite my needs.  This 
+&lt;a href="https://github.com/topics/countdown-timer?l=python"&gt;github page&lt;/a&gt; 
+lists 14 countdown timers. I tried a few of them and nothing worked 
+well. The app is either too ugly or it needs additional dependencies. 
+Many people agree that Python is not a best choice for &lt;span class="caps"&gt;GUI&lt;/span&gt; design. &lt;/p&gt;
+&lt;p&gt;So I went back to Google and searched &amp;#8220;Online Timer&amp;#8221;.  It turns out 
+Google itself has a basic timer function.  It is good but it does 
+not have a beep reminder at the end.  The website timeanddate.com 
+has a very nice timer which is the one I am using now.&lt;/p&gt;
+&lt;div style="max-width: 800px"&gt;
+  &lt;img class="img-fluid pb-3" src="/images/google-timer.png" alt="google timer"&gt; 
+&lt;/div&gt;
+
+&lt;div style="max-width: 800px"&gt;
+  &lt;img class="img-fluid pb-3" src="/images/timeanddate-timer.png" alt="timeanddate timer"&gt; 
+&lt;/div&gt;
+
+&lt;p&gt;Those two online times are probably written in javascript.  It also 
+shows why javascript becomes so popular nowadays.  The app is very easy to 
+use and no installation is required.  &lt;/p&gt;</content><category term="posts"></category><category term="software utility"></category></entry><entry><title>Flask Flashing Messages</title><link href="https://www.georgexyz.com/flask-flashing-messages.html" rel="alternate"></link><published>2020-11-13T14:21:00-05:00</published><updated>2020-11-13T14:21:00-05:00</updated><author><name>George Zhang</name></author><id>tag:www.georgexyz.com,2020-11-13:/flask-flashing-messages.html</id><summary type="html">&lt;p&gt;Flask includes message flashing functionality as a core feature.  The Flask 
 documentation has two sentences which summarize the functionality well. &lt;/p&gt;
 &lt;blockquote&gt;
 &lt;p&gt;The flashing system basically makes it possible to record a …&lt;/p&gt;&lt;/blockquote&gt;</summary><content type="html">&lt;p&gt;Flask includes message flashing functionality as a core feature.  The Flask 
@@ -2209,7 +2242,7 @@ I followed &lt;a href="https://medium.com/@jgefroh/a-guide-to-using-nginx-for-st
 to setup the nginx server and letsencrypt certification. At the time I set up 
 the server, I did not really understand what I was doing.  A few weeks ago I found 
 &lt;a href="http://www.patricksoftwareblog.com/how-to-configure-nginx-for-a-flask-web-application/"&gt;this nginx setting article&lt;/a&gt; 
-which details niginx settings very well. I added a location block to pass along (so called reverse 
+which details nginx settings very well. I added a location block to pass along (so called reverse 
 proxy) http requests to the gunicorn &lt;span class="caps"&gt;WSGI&lt;/span&gt; server. &lt;/p&gt;
 &lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;location /convert {
     proxy_pass http://localhost:8001;
@@ -2872,7 +2905,7 @@ advanced topics in &lt;span class="caps"&gt;CSS&lt;/span&gt;.&lt;/p&gt;
 &lt;p&gt;I searched and found an online article Q/A post 
 “&lt;a href="https://superuser.com/questions/14403/how-can-i-download-an-entire-website"&gt;How can I download an entire website&lt;/a&gt;”. The post has an answer which shows how to download a website to local hard drive
 with Linux command line tool wget.  The command is shown below:&lt;/p&gt;
-&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;wget -m -p -E -k www.excample.com
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;wget -m -p -E -k www.example.com
 &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
 
 &lt;ul&gt;
@@ -5064,7 +5097,7 @@ fine. The lesson learned was that when an &lt;span class="caps"&gt;SVG&lt;/span&
 the file as pdf.  The Inkscape simply pops up a dialog saying &amp;#8220;internal 
 error&amp;#8221; and exits.  I copy the file to a Linux Mint computer and I can 
 save the file as pdf, but the generated pdf file does not have the background image. 
-It turns out that I used the clip (menu Object &amp;gt; Clip &amp;gt; Set) funciton to 
+It turns out that I used the clip (menu Object &amp;gt; Clip &amp;gt; Set) function to 
 crop out the image. Once I remove the clip, the file saves to pdf fine. &lt;/p&gt;
 &lt;p&gt;The lesson is that it is better to use &lt;span class="caps"&gt;GIMP&lt;/span&gt; or other application to 
 crop out background image.  The clip function in Inkscape is not so reliable. &lt;/p&gt;</content><category term="posts"></category><category term="inkscape"></category><category term="ubuntu"></category></entry><entry><title>Highway Geometric Design - Horizontal and Vertical Alignment Equations</title><link href="https://www.georgexyz.com/geometric-design-equations.html" rel="alternate"></link><published>2019-04-07T14:49:00-04:00</published><updated>2019-04-07T14:49:00-04:00</updated><author><name>George Zhang</name></author><id>tag:www.georgexyz.com,2019-04-07:/geometric-design-equations.html</id><summary type="html">&lt;p&gt;Horizontal and vertical curves are important concepts in a highway design class. 
