@@ -29,9 +29,12 @@ well. The app is either too ugly or it needs additional dependencies.
 Many people agree that Python is not a best choice for GUI design. 
 
 So I went back to Google and searched "Online Timer".  It turns out 
-Google itself has a basic timer function.  It is good but it does 
+Google itself has 
+[a basic timer](https://www.google.com/search?q=online+timer) 
+function.  It is good but it does 
 not have a beep reminder at the end.  The website timeanddate.com 
-has a very nice timer which is the one I am using now.
+has a [very nice timer](https://www.timeanddate.com/timer/) 
+which is the one I am using now.
 
 <div style="max-width: 800px">
   <img class="img-fluid pb-3" src="/images/google-timer.png" alt="google timer"> 
