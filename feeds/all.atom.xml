@@ -19,9 +19,12 @@ lists 14 countdown timers. I tried a few of them and nothing worked
 well. The app is either too ugly or it needs additional dependencies. 
 Many people agree that Python is not a best choice for &lt;span class="caps"&gt;GUI&lt;/span&gt; design. &lt;/p&gt;
 &lt;p&gt;So I went back to Google and searched &amp;#8220;Online Timer&amp;#8221;.  It turns out 
-Google itself has a basic timer function.  It is good but it does 
+Google itself has 
+&lt;a href="https://www.google.com/search?q=online+timer"&gt;a basic timer&lt;/a&gt; 
+function.  It is good but it does 
 not have a beep reminder at the end.  The website timeanddate.com 
-has a very nice timer which is the one I am using now.&lt;/p&gt;
+has a &lt;a href="https://www.timeanddate.com/timer/"&gt;very nice timer&lt;/a&gt; 
+which is the one I am using now.&lt;/p&gt;
 &lt;div style="max-width: 800px"&gt;
   &lt;img class="img-fluid pb-3" src="/images/google-timer.png" alt="google timer"&gt; 
 &lt;/div&gt;
