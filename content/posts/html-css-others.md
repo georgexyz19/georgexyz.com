@@ -27,7 +27,7 @@ I searched and found an online article Q/A post
 with Linux command line tool wget.  The command is shown below:
 
 ```
-wget -m -p -E -k www.excample.com
+wget -m -p -E -k www.example.com
 ```
 
 * -m : --mirror recursion and time stamping

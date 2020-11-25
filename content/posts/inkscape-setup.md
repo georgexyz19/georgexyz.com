@@ -171,7 +171,7 @@ I am working on a drawing in Inkscape (Windows) today and I cannot save
 the file as pdf.  The Inkscape simply pops up a dialog saying "internal 
 error" and exits.  I copy the file to a Linux Mint computer and I can 
 save the file as pdf, but the generated pdf file does not have the background image. 
-It turns out that I used the clip (menu Object > Clip > Set) funciton to 
+It turns out that I used the clip (menu Object > Clip > Set) function to 
 crop out the image. Once I remove the clip, the file saves to pdf fine. 
 
 The lesson is that it is better to use GIMP or other application to 

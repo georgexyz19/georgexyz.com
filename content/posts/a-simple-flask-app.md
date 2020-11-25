@@ -24,7 +24,7 @@ I followed [this medium article](https://medium.com/@jgefroh/a-guide-to-using-ng
 to setup the nginx server and letsencrypt certification. At the time I set up 
 the server, I did not really understand what I was doing.  A few weeks ago I found 
 [this nginx setting article](http://www.patricksoftwareblog.com/how-to-configure-nginx-for-a-flask-web-application/) 
-which details niginx settings very well. I added a location block to pass along (so called reverse 
+which details nginx settings very well. I added a location block to pass along (so called reverse 
 proxy) http requests to the gunicorn WSGI server. 
 
 ```
