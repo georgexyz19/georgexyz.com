@@ -6,33 +6,33 @@ tags: software utility
 note: research timer and timer app
 no: 64
 
-Sometimes I like to time myself to finish a work task in a certain amount of 
-time like 15 minutes. Usually I can concentrate on the task more when I work 
-under a timer. 
+Sometimes I like to time myself to finish a task in a certain amount of 
+time like 15 minutes. I can concentrate on the task more when I work 
+under a short duration timer. 
 
-I try to find a simple timer.  This post records the timers I checked out. 
+I try to find a simple timer.  This post records the process. 
 
-The first thing I tried is a kitchen timer.  I ordered a popular one on 
-Amazon and it was delivered the next day.  It works well and it is simple 
-to use, but it has a major flaw.  The beep noise level is way too high. 
-Obviously the timer is designed for a noisy kitchen environment. 
+The first thing I try is a kitchen timer.  I order a popular one on 
+Amazon and it is delivered the next day.  It works well, but it has a 
+major flaw.  The beeping noise level is way too high. 
+The timer is designed for a noisy kitchen environment. 
 
 <div style="max-width: 800px">
   <img class="img-fluid pb-3" src="/images/kitchen-timer.jpg" alt="kitchen timer"> 
 </div>
 
-Then I thought I should find a timer app written in Python, and I can 
-modify it to suite my needs.  This 
+I try to find a timer app written in Python, and I can 
+modify it to suite my own needs.  This 
 [github page](https://github.com/topics/countdown-timer?l=python) 
-lists 14 countdown timers. I tried a few of them and nothing worked 
+lists 14 countdown timers. I test a few of them and none works  
 well. The app is either too ugly or it needs additional dependencies. 
-Many people agree that Python is not a best choice for GUI design. 
+Python is not a good choice for GUI apps. 
 
-So I went back to Google and searched "Online Timer".  It turns out 
+So I go back to Google and search "Online Timer".  It turns out that 
 Google itself has 
 [a basic timer](https://www.google.com/search?q=online+timer) 
 function.  It is good but it does 
-not have a beep reminder at the end.  The website timeanddate.com 
+not have a beeping reminder at the end.  The website timeanddate.com 
 has a [very nice timer](https://www.timeanddate.com/timer/) 
 which is the one I am using now.
 
@@ -45,7 +45,7 @@ which is the one I am using now.
 </div>
 
 
-Those two online times are probably written in javascript.  It also 
+Those two online timers are probably written in javascript.  This 
 shows why javascript becomes so popular nowadays.  The app is very easy to 
 use and no installation is required.  
 
