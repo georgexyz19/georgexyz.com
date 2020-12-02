@@ -21,7 +21,7 @@ def index():
 You can use the Python 3 built-in venv module to create a virtual environment like below. 
 
 ```
-$ python -m venv ven
+$ python -m venv venv
 $ source venv/bin/activate
 $ pip install flask
 ```
@@ -69,7 +69,7 @@ if __name__ == '__main__':
 Let's open the `cli.py` file in `venv\lib\python3.8\site-packages\flask` directory.  Line 965 
 defines the `main` function. The `as_module` argument is `False` and the `main` function 
 calls `cli.main` method with two arguments `args=['run', ]` and `prog_name=None`. The `cli` part 
-of `cli.main` method call is an instance of FlaskGroup class defined on Line 945.  
+of `cli.main` is an instance of FlaskGroup class defined on Line 945.  
 
 ```
 def main(as_module=False):
@@ -103,7 +103,7 @@ def main(self, *args, **kwargs):
 ```
 
 The `FlaskGroup` is derived from `AppGroup` class which is defined on Line 431. The `AppGroup` 
-in turn is derived from `click.Group` class defined in `core.py` file in click package. The 
+in turn is derived from `click.Group` class defined in `core.py` file in click package. The complete
 class inheritance tree is shown below.  The `main` method in super class mentioned above is 
 defined all the way up in `click.BaseCommand` class.   
 
@@ -130,7 +130,7 @@ has a section *Custom Multi Commands* and the example in this section also overr
 those two methods. 
 
 The actual `run` command is defined on Line 828 and the function is `run_command`. 
-The command `run` becomes part of flask built in commands loaded by default.  
+The command `run` becomes part of flask built in commands loaded by default. 
 The code which loads the built in commands is in the `FlaskGroup.get_command`.  
 
 The `run_command` function look like this.  It calls the `run_simple` function in 
