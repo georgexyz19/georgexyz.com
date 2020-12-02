@@ -83,7 +83,7 @@ Suppose you have a basic Flask app like below (from the book). </p>
 </code></pre></div>
 
 <p>You can use the Python 3 built-in venv module to create a virtual environment like below. </p>
-<div class="highlight"><pre><span></span><code>$ python -m venv ven
+<div class="highlight"><pre><span></span><code>$ python -m venv venv
 $ source venv/bin/activate
 $ pip install flask
 </code></pre></div>
@@ -124,7 +124,7 @@ if __name__ == &#39;__main__&#39;:
 <p>Let&#8217;s open the <code>cli.py</code> file in <code>venv\lib\python3.8\site-packages\flask</code> directory.  Line 965 
 defines the <code>main</code> function. The <code>as_module</code> argument is <code>False</code> and the <code>main</code> function 
 calls <code>cli.main</code> method with two arguments <code>args=['run', ]</code> and <code>prog_name=None</code>. The <code>cli</code> part 
-of <code>cli.main</code> method call is an instance of FlaskGroup class defined on Line 945.  </p>
+of <code>cli.main</code> is an instance of FlaskGroup class defined on Line 945.  </p>
 <div class="highlight"><pre><span></span><code>def main(as_module=False):
     # TODO omit sys.argv once ... is fixed
     cli.main(args=sys.argv[1:], 
@@ -154,7 +154,7 @@ The method makes changes to some settings and calls the <code>main</code> method
 </code></pre></div>
 
 <p>The <code>FlaskGroup</code> is derived from <code>AppGroup</code> class which is defined on Line 431. The <code>AppGroup</code> 
-in turn is derived from <code>click.Group</code> class defined in <code>core.py</code> file in click package. The 
+in turn is derived from <code>click.Group</code> class defined in <code>core.py</code> file in click package. The complete
 class inheritance tree is shown below.  The <code>main</code> method in super class mentioned above is 
 defined all the way up in <code>click.BaseCommand</code> class.   </p>
 <div class="highlight"><pre><span></span><code>FlaskGroup                      cli.py Line 462
@@ -177,7 +177,7 @@ to the <code>main</code> method. The
 has a section <em>Custom Multi Commands</em> and the example in this section also overrides
 those two methods. </p>
 <p>The actual <code>run</code> command is defined on Line 828 and the function is <code>run_command</code>. 
-The command <code>run</code> becomes part of flask built in commands loaded by default.<br>
+The command <code>run</code> becomes part of flask built in commands loaded by default. 
 The code which loads the built in commands is in the <code>FlaskGroup.get_command</code>.  </p>
 <p>The <code>run_command</code> function look like this.  It calls the <code>run_simple</code> function in 
 werkzeug module and starts the development server.  The <code>DispatchingApp</code> class 

@@ -594,7 +594,7 @@ Suppose you have a basic Flask app like below (from the book). &lt;/p&gt;
 &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
 
 &lt;p&gt;You can use the Python 3 built-in venv module to create a virtual environment like below. &lt;/p&gt;
-&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;$ python -m venv ven
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;$ python -m venv venv
 $ source venv/bin/activate
 $ pip install flask
 &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
@@ -635,7 +635,7 @@ if __name__ == &amp;#39;__main__&amp;#39;:
 &lt;p&gt;Let&amp;#8217;s open the &lt;code&gt;cli.py&lt;/code&gt; file in &lt;code&gt;venv\lib\python3.8\site-packages\flask&lt;/code&gt; directory.  Line 965 
 defines the &lt;code&gt;main&lt;/code&gt; function. The &lt;code&gt;as_module&lt;/code&gt; argument is &lt;code&gt;False&lt;/code&gt; and the &lt;code&gt;main&lt;/code&gt; function 
 calls &lt;code&gt;cli.main&lt;/code&gt; method with two arguments &lt;code&gt;args=['run', ]&lt;/code&gt; and &lt;code&gt;prog_name=None&lt;/code&gt;. The &lt;code&gt;cli&lt;/code&gt; part 
-of &lt;code&gt;cli.main&lt;/code&gt; method call is an instance of FlaskGroup class defined on Line 945.  &lt;/p&gt;
+of &lt;code&gt;cli.main&lt;/code&gt; is an instance of FlaskGroup class defined on Line 945.  &lt;/p&gt;
 &lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;def main(as_module=False):
     # TODO omit sys.argv once ... is fixed
     cli.main(args=sys.argv[1:], 
@@ -665,7 +665,7 @@ The method makes changes to some settings and calls the &lt;code&gt;main&lt;/cod
 &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
 
 &lt;p&gt;The &lt;code&gt;FlaskGroup&lt;/code&gt; is derived from &lt;code&gt;AppGroup&lt;/code&gt; class which is defined on Line 431. The &lt;code&gt;AppGroup&lt;/code&gt; 
-in turn is derived from &lt;code&gt;click.Group&lt;/code&gt; class defined in &lt;code&gt;core.py&lt;/code&gt; file in click package. The 
+in turn is derived from &lt;code&gt;click.Group&lt;/code&gt; class defined in &lt;code&gt;core.py&lt;/code&gt; file in click package. The complete
 class inheritance tree is shown below.  The &lt;code&gt;main&lt;/code&gt; method in super class mentioned above is 
 defined all the way up in &lt;code&gt;click.BaseCommand&lt;/code&gt; class.   &lt;/p&gt;
 &lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;FlaskGroup                      cli.py Line 462
@@ -688,7 +688,7 @@ to the &lt;code&gt;main&lt;/code&gt; method. The
 has a section &lt;em&gt;Custom Multi Commands&lt;/em&gt; and the example in this section also overrides
 those two methods. &lt;/p&gt;
 &lt;p&gt;The actual &lt;code&gt;run&lt;/code&gt; command is defined on Line 828 and the function is &lt;code&gt;run_command&lt;/code&gt;. 
-The command &lt;code&gt;run&lt;/code&gt; becomes part of flask built in commands loaded by default.&lt;br&gt;
+The command &lt;code&gt;run&lt;/code&gt; becomes part of flask built in commands loaded by default. 
 The code which loads the built in commands is in the &lt;code&gt;FlaskGroup.get_command&lt;/code&gt;.  &lt;/p&gt;
 &lt;p&gt;The &lt;code&gt;run_command&lt;/code&gt; function look like this.  It calls the &lt;code&gt;run_simple&lt;/code&gt; function in 
 werkzeug module and starts the development server.  The &lt;code&gt;DispatchingApp&lt;/code&gt; class 
