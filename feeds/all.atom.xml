@@ -1,5 +1,62 @@
 <?xml version="1.0" encoding="utf-8"?>
-<feed xmlns="http://www.w3.org/2005/Atom"><title>George Zhang</title><link href="https://www.georgexyz.com/" rel="alternate"></link><link href="https://www.georgexyz.com/feeds/all.atom.xml" rel="self"></link><id>https://www.georgexyz.com/</id><updated>2020-11-24T23:25:00-05:00</updated><entry><title>Timer App</title><link href="https://www.georgexyz.com/timer-app.html" rel="alternate"></link><published>2020-11-24T23:25:00-05:00</published><updated>2020-11-24T23:25:00-05:00</updated><author><name>George Zhang</name></author><id>tag:www.georgexyz.com,2020-11-24:/timer-app.html</id><summary type="html">&lt;p&gt;Sometimes I like to time myself to finish a task in a certain amount of 
+<feed xmlns="http://www.w3.org/2005/Atom"><title>George Zhang</title><link href="https://www.georgexyz.com/" rel="alternate"></link><link href="https://www.georgexyz.com/feeds/all.atom.xml" rel="self"></link><id>https://www.georgexyz.com/</id><updated>2020-12-31T13:49:00-05:00</updated><entry><title>A Javascript Timer App</title><link href="https://www.georgexyz.com/js-timer-app.html" rel="alternate"></link><published>2020-12-31T13:49:00-05:00</published><updated>2020-12-31T13:49:00-05:00</updated><author><name>George Zhang</name></author><id>tag:www.georgexyz.com,2020-12-31:/js-timer-app.html</id><summary type="html">&lt;p&gt;I am reading the &lt;em&gt;Eloquent Javascript&lt;/em&gt; book and 
+&lt;a href="javascript.info"&gt;javascript.info&lt;/a&gt; website for the past few weeks. 
+My goal is to write a javascript timer app for myself. 
+On this last …&lt;/p&gt;</summary><content type="html">&lt;p&gt;I am reading the &lt;em&gt;Eloquent Javascript&lt;/em&gt; book and 
+&lt;a href="javascript.info"&gt;javascript.info&lt;/a&gt; website for the past few weeks. 
+My goal is to write a javascript timer app for myself. 
+On this last day of 2020, I want to write something down as a start 
+point.  &lt;/p&gt;
+&lt;div class="p-3 mb-4" style="border: 3px solid #666;"&gt;
+
+    &lt;h1 class="display-1 mt-0" id="display"&gt;15:00&lt;/h1&gt;
+
+    &lt;div&gt;
+        &lt;button type="button" class="btn btn-outline-primary" id="id15"&gt;15 min&lt;/button&gt;
+        &lt;button type="button" class="btn btn-outline-primary" id="id10"&gt;10 min&lt;/button&gt;
+        &lt;button type="button" class="btn btn-outline-primary" id="id25"&gt;25 min&lt;/button&gt;
+        &lt;button type="button" class="btn btn-outline-primary" id="id5"&gt;5 min&lt;/button&gt;
+    &lt;/div&gt;
+
+    &lt;div class="mt-3"&gt;
+        &lt;button type="button" class="btn btn-primary" id="start"&gt;Start&lt;/button&gt;
+        &lt;button type="button" class="btn btn-primary" id="reset"&gt;Reset&lt;/button&gt;
+    &lt;/div&gt;
+
+&lt;/div&gt;
+
+&lt;p&gt;The app does not work yet.  I will add js code to it. &lt;/p&gt;
+&lt;script type="text/javascript"&gt;
+
+    id15.addEventListener("click", () =&gt; {
+        display.innerHTML = "15:00"
+    });
+
+    id10.addEventListener("click", () =&gt; {
+        display.innerHTML = "10:00"
+    });
+
+    id25.addEventListener("click", () =&gt; {
+        display.innerHTML = "25:00"
+    });
+
+    id5.addEventListener("click", () =&gt; {
+        display.innerHTML = "5:00"
+    });
+
+    reset.addEventListener("click", () =&gt; {
+        display.innerHTML = "00:00"
+    });
+
+    // let time = 100
+    // start.addEventListener("click", () =&gt; {
+    //     let timerId = setInterval(() =&gt; {
+    //         // decrease the display by 1 second
+    //         display.innerHTML = String(time--);
+    //     }, 1000);
+    // });
+
+&lt;/script&gt;</content><category term="posts"></category><category term="javascript"></category></entry><entry><title>Timer App</title><link href="https://www.georgexyz.com/timer-app.html" rel="alternate"></link><published>2020-11-24T23:25:00-05:00</published><updated>2020-11-24T23:25:00-05:00</updated><author><name>George Zhang</name></author><id>tag:www.georgexyz.com,2020-11-24:/timer-app.html</id><summary type="html">&lt;p&gt;Sometimes I like to time myself to finish a task in a certain amount of 
 time like 15 minutes. I can concentrate on the task more when I work 
 under …&lt;/p&gt;</summary><content type="html">&lt;p&gt;Sometimes I like to time myself to finish a task in a certain amount of 
 time like 15 minutes. I can concentrate on the task more when I work 
