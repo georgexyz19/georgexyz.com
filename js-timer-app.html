@@ -95,36 +95,90 @@ point.  </p>
 
 </div>
 
-<p>The app does not work yet.  I will add js code to it. </p>
+<p>The app is not finished yet.  I will add js code to it. </p>
 <script type="text/javascript">
 
+    let strTime = display.innerHTML;
+    let time = strToSec(strTime);
+
+    function resetTime(t) {
+        time = t;
+        display.innerHTML = secToStr(t); 
+    }
+
     id15.addEventListener("click", () => {
-        display.innerHTML = "15:00"
+        resetTime(900);
     });
 
     id10.addEventListener("click", () => {
-        display.innerHTML = "10:00"
+        resetTime(600);
     });
 
     id25.addEventListener("click", () => {
-        display.innerHTML = "25:00"
+        resetTime(25 * 60);
     });
 
     id5.addEventListener("click", () => {
-        display.innerHTML = "5:00"
+        resetTime(5 * 60);
     });
 
-    reset.addEventListener("click", () => {
-        display.innerHTML = "00:00"
-    });
 
-    // let time = 100
-    // start.addEventListener("click", () => {
-    //     let timerId = setInterval(() => {
-    //         // decrease the display by 1 second
-    //         display.innerHTML = String(time--);
-    //     }, 1000);
-    // });
+    reset.addEventListener("click", () => {resetTime(0)} );
+
+    function strToSec(strT) {
+        // 15:00 str to 15 * 60 + 0 sec
+        let strA = strT.split(":");
+        let strMin = strA[0];
+        let strSec = strA[1]; 
+        let sec = Number(strMin) * 60 + Number(strSec);
+        return sec
+    }
+
+    function secToStr(sec) {
+        // 900 sec to 15:00
+        // sec / 60
+        let quotient = Math.floor(sec/60);
+        let remainder = sec % 60;
+
+        let remainderStr = remainder.toString(); 
+
+        if (remainder < 10 )
+        {
+            remainderStr = '0' + remainder.toString(); 
+        }
+        let strT = quotient.toString() + ':' + remainderStr;
+        return strT
+    }
+
+
+    let running = false;
+    let timerId = 0;
+    let buttons = document.querySelectorAll('button');
+
+    start.addEventListener("click", () => {
+        if (running) {
+            if (timerId) {
+                clearInterval(timerId);
+            }
+            start.innerHTML = "Start";
+            running = false;
+
+            buttons.forEach( (elem, index, array) => {elem.disabled = false;} ); 
+
+        }
+        else {
+            timerId = setInterval(() => {
+                // decrease the display by 1 second
+                time = time -1
+                display.innerHTML = secToStr(time);
+            }, 1000);
+
+            start.innerHTML = "Stop"
+            running = true;
+            buttons.forEach( (elem, index, array) => {elem.disabled = true;} ); 
+            start.disabled = false; 
+        }
+    });
 
 </script>
 

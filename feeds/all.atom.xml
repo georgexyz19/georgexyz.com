@@ -25,36 +25,90 @@ point.  &lt;/p&gt;
 
 &lt;/div&gt;
 
-&lt;p&gt;The app does not work yet.  I will add js code to it. &lt;/p&gt;
+&lt;p&gt;The app is not finished yet.  I will add js code to it. &lt;/p&gt;
 &lt;script type="text/javascript"&gt;
 
+    let strTime = display.innerHTML;
+    let time = strToSec(strTime);
+
+    function resetTime(t) {
+        time = t;
+        display.innerHTML = secToStr(t); 
+    }
+
     id15.addEventListener("click", () =&gt; {
-        display.innerHTML = "15:00"
+        resetTime(900);
     });
 
     id10.addEventListener("click", () =&gt; {
-        display.innerHTML = "10:00"
+        resetTime(600);
     });
 
     id25.addEventListener("click", () =&gt; {
-        display.innerHTML = "25:00"
+        resetTime(25 * 60);
     });
 
     id5.addEventListener("click", () =&gt; {
-        display.innerHTML = "5:00"
+        resetTime(5 * 60);
     });
 
-    reset.addEventListener("click", () =&gt; {
-        display.innerHTML = "00:00"
-    });
 
-    // let time = 100
-    // start.addEventListener("click", () =&gt; {
-    //     let timerId = setInterval(() =&gt; {
-    //         // decrease the display by 1 second
-    //         display.innerHTML = String(time--);
-    //     }, 1000);
-    // });
+    reset.addEventListener("click", () =&gt; {resetTime(0)} );
+
+    function strToSec(strT) {
+        // 15:00 str to 15 * 60 + 0 sec
+        let strA = strT.split(":");
+        let strMin = strA[0];
+        let strSec = strA[1]; 
+        let sec = Number(strMin) * 60 + Number(strSec);
+        return sec
+    }
+
+    function secToStr(sec) {
+        // 900 sec to 15:00
+        // sec / 60
+        let quotient = Math.floor(sec/60);
+        let remainder = sec % 60;
+
+        let remainderStr = remainder.toString(); 
+
+        if (remainder &lt; 10 )
+        {
+            remainderStr = '0' + remainder.toString(); 
+        }
+        let strT = quotient.toString() + ':' + remainderStr;
+        return strT
+    }
+
+
+    let running = false;
+    let timerId = 0;
+    let buttons = document.querySelectorAll('button');
+
+    start.addEventListener("click", () =&gt; {
+        if (running) {
+            if (timerId) {
+                clearInterval(timerId);
+            }
+            start.innerHTML = "Start";
+            running = false;
+
+            buttons.forEach( (elem, index, array) =&gt; {elem.disabled = false;} ); 
+
+        }
+        else {
+            timerId = setInterval(() =&gt; {
+                // decrease the display by 1 second
+                time = time -1
+                display.innerHTML = secToStr(time);
+            }, 1000);
+
+            start.innerHTML = "Stop"
+            running = true;
+            buttons.forEach( (elem, index, array) =&gt; {elem.disabled = true;} ); 
+            start.disabled = false; 
+        }
+    });
 
 &lt;/script&gt;</content><category term="posts"></category><category term="javascript"></category></entry><entry><title>Timer App</title><link href="https://www.georgexyz.com/timer-app.html" rel="alternate"></link><published>2020-11-24T23:25:00-05:00</published><updated>2020-11-24T23:25:00-05:00</updated><author><name>George Zhang</name></author><id>tag:www.georgexyz.com,2020-11-24:/timer-app.html</id><summary type="html">&lt;p&gt;Sometimes I like to time myself to finish a task in a certain amount of 
 time like 15 minutes. I can concentrate on the task more when I work 
