@@ -1,13 +1,13 @@
 #!/bin/bash
 
-# commit_change.sh : commit git changes for georgexyz.com 11/10/2020
+# commit_change_venv.sh : commit git changes for georgexyz.com 11/10/2020
 # This is venv version of the script
 # How to execute the script:
 # $source venv/bin/activate
 # $source commit_change_venv.sh "git commit message"
 # I will start to use venv on new computers with this script
 
-PROGNAME="$(basename "$0")" # or = "${0##*/}"
+PROGNAME="${0##*/}"
 
 usage () {
   cat << EOF
