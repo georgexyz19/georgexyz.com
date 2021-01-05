@@ -19,3 +19,15 @@ invoke livereload  # preview website in a browser
 source commit_change.sh "msg" # publish
 ```
 
+If you do not want to use `pipenv`, you can use the `venv` to manage virtual 
+environment. 
+
+```
+python -m venv venv
+source venv/bin/activate
+python -m pip install -r requirements.txt
+
+# write or edit articles
+invoke livereload  # preview website in a browser
+source commit_change_venv.sh "msg" # to publish
+```
