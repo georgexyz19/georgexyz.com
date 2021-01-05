@@ -70,7 +70,7 @@ to red when it reaches zero. So far I am happy with the app.
     });
 
     id5.addEventListener("click", () => {
-        resetTime( 5 * 60 );
+        resetTime( 5 * 60);
     });
 
     function strToSec(strT) {
@@ -90,13 +90,11 @@ to red when it reaches zero. So far I am happy with the app.
         // 900 sec to 15:00
         // sec / 60
 
+        display.style.color = '';
+
         if(sec < 0)
         {
             sec = -sec;
-        }
-
-        if(sec == 0)
-        {
             colorRed(display); //display is id
         }
 
