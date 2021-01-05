@@ -6,7 +6,7 @@
 # $source venv/bin/activate
 # $source commit_change_venv.sh "git commit message"
 # I will start to use venv on new computers with this script
-
+# basename prompts an error, change it back to ${...}
 PROGNAME="${0##*/}"
 
 usage () {
