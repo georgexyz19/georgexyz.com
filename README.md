@@ -32,3 +32,4 @@ invoke livereload  # preview website in a browser
 source commit_change_venv.sh "msg" # to publish
 ```
 
+*Last update:* 1/5/2021
