@@ -1,0 +1,195 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <link rel="stylesheet" href="/theme/css/bs4min.css">
+    <link rel="shortcut icon" type="image/x-icon" href="/theme/images/favicon.ico" >
+    <link rel="icon" type="image/x-icon" href="/theme/images/favicon.ico" >
+<link rel="stylesheet" href="https://www.georgexyz.com/theme/css/friendly.css">
+<link rel="stylesheet" href="https://www.georgexyz.com/theme/css/custom.css">
+<meta name="author" content="George Zhang" />
+<meta name="keywords" content="traffic engineering" />
+<meta name="description" content="I am reading Part Two, Chapter 4.3 of javascript.info tutorial. It has an exercise to write a js deposit calculator. I often use a spreadsheet file to calculate …" />
+    <title>Road Segment Crash Rate Calculator - George Zhang</title>
+  </head>
+  <body>
+    <!-- navbar -->
+    <nav class="navbar navbar-expand-md navbar-light" style="background-color: #e3f2fd;">
+      <div class="container">
+        <a class="navbar-brand" href="/">George Zhang</a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarColor01" aria-controls="navbarColor01" aria-expanded="false" aria-label="Toggle navigation">
+          <span class="navbar-toggler-icon"></span>
+        </button>
+
+        <div class="collapse navbar-collapse" id="navbarColor01">
+          <ul class="navbar-nav mr-auto">
+            <li class="nav-item">
+              <a class="nav-link " 
+                href="/articlelist.html">Articles</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link pr-3 " 
+                href="/tags.html">Tags</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link pr-3 "
+                 href="/pages/inkscape-tutorial.html">Inkscape Tutorial</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link "
+                   href="/pages/projects.html">Projects</a>
+              </li>
+          </ul>
+
+          <ul class="navbar-nav">
+            <li class="nav-item">
+              <a class="nav-link " 
+                 href="/pages/about.html">About</a>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </nav>
+
+   
+
+<div class="container">
+
+  <div class="row">
+    <div class="col-lg-8 mx-auto">
+
+      <h2>Road Segment Crash Rate Calculator</h2>
+
+      <div class="text-muted mb-2">
+        <span>Posted on </span>
+        <time datetime="2021-01-11 10:30:00-05:00">
+          Monday, 01/11/2021 10:30
+        </time>
+
+        <span>with tags: </span>
+        <a href="https://www.georgexyz.com/tag/traffic-engineering.html">traffic engineering</a>
+      </div>
+
+      <p>I am reading Part Two, Chapter 4.3 of 
+<a href="javascript.info">javascript.info</a> tutorial.  It has an exercise to write a js deposit calculator. 
+I often use <a href="/files/CrashRateCal.xlsx">a spreadsheet file</a> to calculate road segment crash rate.
+The equations are not difficult, but it is easy to make mistakes.  </p>
+<p>The equation below is from <a href="https://safety.fhwa.dot.gov/local_rural/training/fhwasa1210/s3.cfm">this <span class="caps">FHWA</span> link</a>. </p>
+<div style="max-width:800px; border-top:1px solid #000; border-bottom:1px solid #000;">
+  <img class="img-fluid pb-3" src="/images/crash-rate/eq.png" alt="mvm"> 
+</div>
+
+<p class="mt-4">Here is a js version I wrote.  The code is similar to the deposit calculator. </p>
+
+<p><strong>Road Segment Crash Rate Calculator</strong></p>
+<form name="calculator">
+<table>
+    <tr>
+    <td><span class="caps">AADT</span> (Annual Average Daily Traffic) </td>
+    <td>
+        <input name="aadt" type="number" value="10000" required>
+    </td>
+    </tr>
+
+    <tr>
+    <td>Segment Length (miles)</td>
+    <td>
+        <input name="length" type="number" step="0.01" value="1.51" required>
+    </td>
+    </tr>
+
+    <tr>
+    <td>Crash Number In 3 Years</td>
+    <td>
+        <input name="crashes" type="number" step="0.1" value="17" required>
+    </td>
+    </tr>
+
+    <tr>
+    <td>Results:</td>
+    </tr>
+
+    <tr>
+    <td>Crash Number in 1 Year</td>
+    <td>
+        <input name="crashpery" type="text" readonly>
+    </td>
+    </tr>
+
+    <tr>
+    <td><span class="caps">VMT</span> (Vehicle Miles Traveled)</td>
+    <td>
+        <input name="vmt" type="text" readonly>
+    </td>
+    </tr>
+
+    <tr>
+    <td>Segment Crash Rate</td>
+    <td>
+        <input name="rate" type="text" readonly>
+    </td>
+    </tr>
+</table>
+</form>
+
+<script>
+
+    let form = document.forms.calculator;
+
+    form.aadt.oninput = calculate;
+    form.length.oninput = calculate;
+    form.crashes.oninput = calculate;
+    let days = 365; 
+
+    function numberWithCommas(x) {
+        return x.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");
+    }
+
+    function calculate() { 
+        let aadt = +form.aadt.value;
+        let length = +form.length.value;
+        let crashes = +form.crashes.value; 
+
+        let crashpery = (crashes / 3).toFixed(2);
+
+        form.crashpery.value = crashpery; 
+
+        let vmt = aadt * length * days; 
+        vmt = Math.round(vmt); 
+        form.vmt.value = numberWithCommas(vmt); 
+
+        let rate = crashpery * 100000000 / vmt ;
+        form.rate.value = rate.toFixed(1);
+
+
+    //   if (!interest) return;
+
+    //   let years = form.months.value / 12;
+    //   if (!years) return;
+
+    //   let result = Math.round(initial * (1 + interest * years));
+
+    //   let height = result / form.money.value * 100 + 'px';
+    //   document.getElementById('height-after').style.height = height;
+    //   document.getElementById('money-before').innerHTML = form.money.value;
+    //   document.getElementById('money-after').innerHTML = result;
+    }
+
+    calculate();
+  </script>
+
+
+
+    </div>
+  </div>
+
+</div>
+
+   
+    <script src="https://code.jquery.com/jquery-3.4.1.slim.min.js" integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js" integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6" crossorigin="anonymous"></script>
+  </body>
+</html>
