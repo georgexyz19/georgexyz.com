@@ -2,7 +2,7 @@
 <feed xmlns="http://www.w3.org/2005/Atom"><title>George Zhang</title><link href="https://www.georgexyz.com/" rel="alternate"></link><link href="https://www.georgexyz.com/feeds/all.atom.xml" rel="self"></link><id>https://www.georgexyz.com/</id><updated>2021-01-15T11:03:00-05:00</updated><entry><title>New Linux Mint Install and Setup</title><link href="https://www.georgexyz.com/new-linux-mint-install-and-setup.html" rel="alternate"></link><published>2021-01-15T11:03:00-05:00</published><updated>2021-01-15T11:03:00-05:00</updated><author><name>George Zhang</name></author><id>tag:www.georgexyz.com,2021-01-15:/new-linux-mint-install-and-setup.html</id><summary type="html">&lt;p&gt;I have been using Linux Mint since June 2019. Most times I am happy with it. 
 It seems that version 19.x is more stable than 20.x at this …&lt;/p&gt;</summary><content type="html">&lt;p&gt;I have been using Linux Mint since June 2019. Most times I am happy with it. 
 It seems that version 19.x is more stable than 20.x at this time. My computer 
-still has 19.3 installed, and eventually I will upgrade to 20.x or a newer version.&lt;br&gt;
+still has 19.3 installed, and eventually I will upgrade to 20.x or a newer version. 
 Here is a short note to setup linux mint on a new computer. &lt;/p&gt;
 &lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;Linux Mint 19.3
 
