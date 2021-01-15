@@ -9,7 +9,7 @@ no: 67
 
 I have been using Linux Mint since June 2019. Most times I am happy with it. 
 It seems that version 19.x is more stable than 20.x at this time. My computer 
-still has 19.3 installed, and eventually I will upgrade to 20.x or a newer version.  
+still has 19.3 installed, and eventually I will upgrade to 20.x or a newer version. 
 Here is a short note to setup linux mint on a new computer. 
 
 
