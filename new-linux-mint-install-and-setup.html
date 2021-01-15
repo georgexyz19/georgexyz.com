@@ -7,7 +7,12 @@
     <link rel="stylesheet" href="/theme/css/bs4min.css">
     <link rel="shortcut icon" type="image/x-icon" href="/theme/images/favicon.ico" >
     <link rel="icon" type="image/x-icon" href="/theme/images/favicon.ico" >
-<meta name="author" content="George Zhang" />    <title>George Zhang - linux mint tag</title>
+<link rel="stylesheet" href="https://www.georgexyz.com/theme/css/friendly.css">
+<link rel="stylesheet" href="https://www.georgexyz.com/theme/css/custom.css">
+<meta name="author" content="George Zhang" />
+<meta name="keywords" content="linux,linux mint" />
+<meta name="description" content="I have been using Linux Mint since June 2019. Most times I am happy with it. It seems that version 19.x is more stable than 20.x at this …" />
+    <title>New Linux Mint Install and Setup - George Zhang</title>
   </head>
   <body>
     <!-- navbar -->
@@ -52,28 +57,63 @@
 
 <div class="container">
 
-  <h2 class="mt-5 mb-4">Articles Tagged with &#8220;linux mint&#8221;</h2>
+  <div class="row">
+    <div class="col-lg-8 mx-auto">
 
-    <p class="pl-4">
-          <span class="pr-3 d-none d-md-inline">01/15/2021</span>
-        <a href="https://www.georgexyz.com/new-linux-mint-install-and-setup.html">New Linux Mint Install and Setup</a>
-    </p>
+      <h2>New Linux Mint Install and Setup</h2>
 
-    <p class="pl-4">
-          <span class="pr-3 d-none d-md-inline">09/21/2020</span>
-        <a href="https://www.georgexyz.com/a-case-of-linux-mint-crash.html">A Case of Linux Mint Crash</a>
-    </p>
+      <div class="text-muted mb-2">
+        <span>Posted on </span>
+        <time datetime="2021-01-15 11:03:00-05:00">
+          Friday, 01/15/2021 11:03
+        </time>
 
-    <p class="pl-4">
-          <span class="pr-3 d-none d-md-inline">09/07/2019</span>
-        <a href="https://www.georgexyz.com/linux-command-prompt.html">Linux Mint Default Command Prompt String</a>
-    </p>
+        <span>with tags: </span>
+        <a href="https://www.georgexyz.com/tag/linux.html">linux</a>
+/        <a href="https://www.georgexyz.com/tag/linux-mint.html">linux mint</a>
+      </div>
 
-    <p class="pl-4">
-          <span class="pr-3 d-none d-md-inline">06/26/2019</span>
-        <a href="https://www.georgexyz.com/linux-mint.html">Setup Linux Mint on a New Computer</a>
-    </p>
+      <p>I have been using Linux Mint since June 2019. Most times I am happy with it. 
+It seems that version 19.x is more stable than 20.x at this time. My computer 
+still has 19.3 installed, and eventually I will upgrade to 20.x or a newer version.<br>
+Here is a short note to setup linux mint on a new computer. </p>
+<div class="highlight"><pre><span></span><code>Linux Mint 19.3
 
+sudo apt-get update
+sudo apt-get upgrade
+// this step takes some time
+
+1. Remove vim-tiny and install vim-gtk3
+   Add a ~/.vimrc, copy code from previous blog post
+
+2. Map the Synology Network Drive
+
+3. Install git, this step is need for pyenv install
+
+4. Install pyenv and latest python 3.9.1
+
+5. Setup SSH keys and upload to github
+
+6. Download github repos with &#39;git clone&#39;
+
+7. Chrome, VS Code (download deb packages)
+
+8. Install other apps like Node, Inkscape, GIMP
+</code></pre></div>
+
+      <div class="mt-5 border-top">
+        <h3>Related Posts:</h3>
+        <ul>
+          <li><a href="https://www.georgexyz.com/home-file-sharing.html">Home File Sharing</a></li>
+          <li><a href="https://www.georgexyz.com/a-case-of-linux-mint-crash.html">A Case of Linux Mint Crash</a></li>
+          <li><a href="https://www.georgexyz.com/linux-mint.html">Setup Linux Mint on a New Computer</a></li>
+          <li><a href="https://www.georgexyz.com/vim-tips.html">Vim Tips</a></li>
+        </ul>
+      </div>
+
+
+    </div>
+  </div>
 
 </div>
 
