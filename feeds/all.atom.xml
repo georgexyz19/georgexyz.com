@@ -16,6 +16,7 @@ sudo apt-get upgrade
 2. Map the Synology Network Drive
 
 3. Install git, this step is need for pyenv install
+   Do not forget to set user email and user name. 
 
 4. Install pyenv and latest python 3.9.1
 
@@ -24,8 +25,12 @@ sudo apt-get upgrade
 6. Download github repos with &amp;#39;git clone&amp;#39;
 
 7. Chrome, VS Code (download deb packages)
+   Chrome will ask for a keyring password, leave it blank.
 
 8. Install other apps like Node, Inkscape, GIMP
+
+9. Copy Roboto font and Fira Code font. Font Selection 
+   tool to set default font (Ubuntu). 
 &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;</content><category term="posts"></category><category term="linux"></category><category term="linux mint"></category></entry><entry><title>Road Segment Crash Rate Calculator</title><link href="https://www.georgexyz.com/road-segment-crash-rate-calculator.html" rel="alternate"></link><published>2021-01-11T10:30:00-05:00</published><updated>2021-01-11T10:30:00-05:00</updated><author><name>George Zhang</name></author><id>tag:www.georgexyz.com,2021-01-11:/road-segment-crash-rate-calculator.html</id><summary type="html">&lt;p&gt;I am reading Part Two, Chapter 4.3 of 
 &lt;a href="javascript.info"&gt;javascript.info&lt;/a&gt; tutorial.  It has an exercise to write a js deposit calculator. 
 I often use &lt;a href="/files/CrashRateCal.xlsx"&gt;a spreadsheet file&lt;/a&gt; to calculate …&lt;/p&gt;</summary><content type="html">&lt;p&gt;I am reading Part Two, Chapter 4.3 of 
@@ -6061,6 +6066,13 @@ eval &amp;quot;$(pyenv virtualenv-init -)&amp;quot;
 &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
 
 &lt;p&gt;&lt;em&gt;Source: Practical Vim Second Edition by Drew Neil Page 63, Tip 30&lt;/em&gt;&lt;/p&gt;
+&lt;h4&gt;Sudo Save&lt;/h4&gt;
+&lt;p&gt;Here is an online post about 
+&lt;a href="https://catonmat.net/sudo-vim"&gt;how to save read only files in vim&lt;/a&gt;.  &lt;/p&gt;
+&lt;p&gt;The easy way is to add a new line to &lt;code&gt;~/.vimrc&lt;/code&gt; file and use &lt;code&gt;sudow&lt;/code&gt; command.&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;cnoremap sudow w !sudo tee % &amp;gt;/dev/null
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+
 &lt;h4&gt;Links and References&lt;/h4&gt;
 &lt;p&gt;&lt;a href="https://vim.rtorr.com/"&gt;Vim Cheat Sheet&lt;/a&gt; 
 is a nice single web page which includes command vim commands.&lt;/p&gt;</content><category term="posts"></category><category term="vim"></category><category term="tip"></category><category term="linux"></category></entry></feed>
