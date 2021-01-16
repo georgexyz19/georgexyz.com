@@ -26,6 +26,7 @@ sudo apt-get upgrade
 2. Map the Synology Network Drive
 
 3. Install git, this step is need for pyenv install
+   Do not forget to set user email and user name. 
 
 4. Install pyenv and latest python 3.9.1
 
@@ -34,8 +35,13 @@ sudo apt-get upgrade
 6. Download github repos with 'git clone'
 
 7. Chrome, VS Code (download deb packages)
+   Chrome will ask for a keyring password, leave it blank.
 
 8. Install other apps like Node, Inkscape, GIMP
+
+9. Copy Roboto font and Fira Code font. Font Selection 
+   tool to set default font (Ubuntu). 
+   
 ```
 
 

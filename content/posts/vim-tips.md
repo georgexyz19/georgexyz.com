@@ -418,8 +418,20 @@ eval "$(pyenv virtualenv-init -)"
 
 *Source: Practical Vim Second Edition by Drew Neil Page 63, Tip 30*
 
+#### Sudo Save
+
+Here is an online post about 
+[how to save read only files in vim](https://catonmat.net/sudo-vim).  
+
+The easy way is to add a new line to `~/.vimrc` file and use `sudow` command.
+
+```
+cnoremap sudow w !sudo tee % >/dev/null
+```
+
 #### Links and References
 
 [Vim Cheat Sheet](https://vim.rtorr.com/) 
 is a nice single web page which includes command vim commands.
+
 
