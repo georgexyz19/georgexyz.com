@@ -4,34 +4,68 @@ It seems that version 19.x is more stable than 20.x at this …&lt;/p&gt;</summa
 It seems that version 19.x is more stable than 20.x at this time. My computer 
 still has 19.3 installed, and eventually I will upgrade to 20.x or a newer version. 
 Here is a short note to setup linux mint on a new computer. &lt;/p&gt;
-&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;Linux Mint 19.3
+&lt;h3&gt;Steps&lt;/h3&gt;
+&lt;p&gt;Here is a list of things to do:&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;
+&lt;p&gt;Remove vim-tiny and install vim-gtk3.
+   Add a ~/.vimrc, copy code from previous blog post.&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;Map the Synology Network Drive.&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;Install git, this step is need for pyenv install. 
+   Do not forget to set user email and user name. &lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;Install pyenv and latest python 3.9.1.&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;Setup &lt;span class="caps"&gt;SSH&lt;/span&gt; keys and upload to github.&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;Download github repos with &lt;code&gt;git clone&lt;/code&gt;.&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;Chrome, &lt;span class="caps"&gt;VS&lt;/span&gt; Code (download deb packages). 
+   Chrome will ask for a keyring password, leave it blank.&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;Install other apps like Node, Inkscape, &lt;span class="caps"&gt;GIMP&lt;/span&gt;, etc.&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;Copy Roboto font and Fira Code font. Font Selection 
+   tool to set default font (Ubuntu). &lt;/p&gt;
+&lt;/li&gt;
+&lt;/ol&gt;
+&lt;h3&gt;Add New Fonts&lt;/h3&gt;
+&lt;p&gt;&lt;a href="https://community.linuxmint.com/tutorial/view/29"&gt;This tutorial&lt;/a&gt; 
+has information on how to add new fonts to Linux Mint. &lt;/p&gt;
+&lt;p&gt;The easy way is to copy file truetype font files to this directory. &lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;/usr/share/fonts/truetype/
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
 
-sudo apt-get update
-sudo apt-get upgrade
-// this step takes some time
+&lt;h3&gt;&lt;span class="caps"&gt;VS&lt;/span&gt; Code&lt;/h3&gt;
+&lt;p&gt;The &lt;span class="caps"&gt;VS&lt;/span&gt; code settings file is in this directory:&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;~/.config/Code/User/settings.json
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
 
-1. Remove vim-tiny and install vim-gtk3
-   Add a ~/.vimrc, copy code from previous blog post
+&lt;p&gt;The file has these lines:&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;&lt;span class="p"&gt;{&lt;/span&gt;
+    &lt;span class="nt"&gt;&amp;quot;editor.fontFamily&amp;quot;&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt; &lt;span class="s2"&gt;&amp;quot;&amp;#39;Fira Code&amp;#39;, &amp;#39;monospace&amp;#39;, monospace, &lt;/span&gt;
+&lt;span class="s2"&gt;      &amp;#39;Droid Sans Fallback&amp;#39;&amp;quot;&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;
+    &lt;span class="nt"&gt;&amp;quot;editor.fontSize&amp;quot;&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt; &lt;span class="mi"&gt;16&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;
+    &lt;span class="nt"&gt;&amp;quot;liveServer.settings.AdvanceCustomBrowserCmdLine&amp;quot;&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt; &lt;span class="s2"&gt;&amp;quot;google-chrome&amp;quot;&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;
+    &lt;span class="nt"&gt;&amp;quot;printcode.browserPath&amp;quot;&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt; &lt;span class="s2"&gt;&amp;quot;/usr/bin/google-chrome&amp;quot;&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;
+&lt;span class="p"&gt;}&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
 
-2. Map the Synology Network Drive
-
-3. Install git, this step is need for pyenv install
-   Do not forget to set user email and user name. 
-
-4. Install pyenv and latest python 3.9.1
-
-5. Setup SSH keys and upload to github
-
-6. Download github repos with &amp;#39;git clone&amp;#39;
-
-7. Chrome, VS Code (download deb packages)
-   Chrome will ask for a keyring password, leave it blank.
-
-8. Install other apps like Node, Inkscape, GIMP
-
-9. Copy Roboto font and Fira Code font. Font Selection 
-   tool to set default font (Ubuntu). 
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;</content><category term="posts"></category><category term="linux"></category><category term="linux mint"></category></entry><entry><title>Road Segment Crash Rate Calculator</title><link href="https://www.georgexyz.com/road-segment-crash-rate-calculator.html" rel="alternate"></link><published>2021-01-11T10:30:00-05:00</published><updated>2021-01-11T10:30:00-05:00</updated><author><name>George Zhang</name></author><id>tag:www.georgexyz.com,2021-01-11:/road-segment-crash-rate-calculator.html</id><summary type="html">&lt;p&gt;I am reading Part Two, Chapter 4.3 of 
+&lt;h3&gt;Printer Driver&lt;/h3&gt;
+&lt;p&gt;&lt;a href="https://www.usa.canon.com/internet/portal/us/home/support/details/printers/color-laser/canon-color-imageclass-mf642cdw"&gt;Canon website&lt;/a&gt; 
+provides printer drivers for Debian Linux.  You can use the 
+deb package. After you download the driver file, upzip it, and run 
+&lt;code&gt;sudo ./install.sh&lt;/code&gt; to install it.  &lt;/p&gt;</content><category term="posts"></category><category term="linux"></category><category term="linux mint"></category></entry><entry><title>Road Segment Crash Rate Calculator</title><link href="https://www.georgexyz.com/road-segment-crash-rate-calculator.html" rel="alternate"></link><published>2021-01-11T10:30:00-05:00</published><updated>2021-01-11T10:30:00-05:00</updated><author><name>George Zhang</name></author><id>tag:www.georgexyz.com,2021-01-11:/road-segment-crash-rate-calculator.html</id><summary type="html">&lt;p&gt;I am reading Part Two, Chapter 4.3 of 
 &lt;a href="javascript.info"&gt;javascript.info&lt;/a&gt; tutorial.  It has an exercise to write a js deposit calculator. 
 I often use &lt;a href="/files/CrashRateCal.xlsx"&gt;a spreadsheet file&lt;/a&gt; to calculate …&lt;/p&gt;</summary><content type="html">&lt;p&gt;I am reading Part Two, Chapter 4.3 of 
 &lt;a href="javascript.info"&gt;javascript.info&lt;/a&gt; tutorial.  It has an exercise to write a js deposit calculator. 

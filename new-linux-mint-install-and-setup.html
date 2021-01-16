@@ -77,34 +77,68 @@
 It seems that version 19.x is more stable than 20.x at this time. My computer 
 still has 19.3 installed, and eventually I will upgrade to 20.x or a newer version. 
 Here is a short note to setup linux mint on a new computer. </p>
-<div class="highlight"><pre><span></span><code>Linux Mint 19.3
-
-sudo apt-get update
-sudo apt-get upgrade
-// this step takes some time
-
-1. Remove vim-tiny and install vim-gtk3
-   Add a ~/.vimrc, copy code from previous blog post
-
-2. Map the Synology Network Drive
-
-3. Install git, this step is need for pyenv install
-   Do not forget to set user email and user name. 
-
-4. Install pyenv and latest python 3.9.1
-
-5. Setup SSH keys and upload to github
-
-6. Download github repos with &#39;git clone&#39;
-
-7. Chrome, VS Code (download deb packages)
-   Chrome will ask for a keyring password, leave it blank.
-
-8. Install other apps like Node, Inkscape, GIMP
-
-9. Copy Roboto font and Fira Code font. Font Selection 
-   tool to set default font (Ubuntu). 
+<h3>Steps</h3>
+<p>Here is a list of things to do:</p>
+<ol>
+<li>
+<p>Remove vim-tiny and install vim-gtk3.
+   Add a ~/.vimrc, copy code from previous blog post.</p>
+</li>
+<li>
+<p>Map the Synology Network Drive.</p>
+</li>
+<li>
+<p>Install git, this step is need for pyenv install. 
+   Do not forget to set user email and user name. </p>
+</li>
+<li>
+<p>Install pyenv and latest python 3.9.1.</p>
+</li>
+<li>
+<p>Setup <span class="caps">SSH</span> keys and upload to github.</p>
+</li>
+<li>
+<p>Download github repos with <code>git clone</code>.</p>
+</li>
+<li>
+<p>Chrome, <span class="caps">VS</span> Code (download deb packages). 
+   Chrome will ask for a keyring password, leave it blank.</p>
+</li>
+<li>
+<p>Install other apps like Node, Inkscape, <span class="caps">GIMP</span>, etc.</p>
+</li>
+<li>
+<p>Copy Roboto font and Fira Code font. Font Selection 
+   tool to set default font (Ubuntu). </p>
+</li>
+</ol>
+<h3>Add New Fonts</h3>
+<p><a href="https://community.linuxmint.com/tutorial/view/29">This tutorial</a> 
+has information on how to add new fonts to Linux Mint. </p>
+<p>The easy way is to copy file truetype font files to this directory. </p>
+<div class="highlight"><pre><span></span><code>/usr/share/fonts/truetype/
 </code></pre></div>
+
+<h3><span class="caps">VS</span> Code</h3>
+<p>The <span class="caps">VS</span> code settings file is in this directory:</p>
+<div class="highlight"><pre><span></span><code>~/.config/Code/User/settings.json
+</code></pre></div>
+
+<p>The file has these lines:</p>
+<div class="highlight"><pre><span></span><code><span class="p">{</span>
+    <span class="nt">&quot;editor.fontFamily&quot;</span><span class="p">:</span> <span class="s2">&quot;&#39;Fira Code&#39;, &#39;monospace&#39;, monospace, </span>
+<span class="s2">      &#39;Droid Sans Fallback&#39;&quot;</span><span class="p">,</span>
+    <span class="nt">&quot;editor.fontSize&quot;</span><span class="p">:</span> <span class="mi">16</span><span class="p">,</span>
+    <span class="nt">&quot;liveServer.settings.AdvanceCustomBrowserCmdLine&quot;</span><span class="p">:</span> <span class="s2">&quot;google-chrome&quot;</span><span class="p">,</span>
+    <span class="nt">&quot;printcode.browserPath&quot;</span><span class="p">:</span> <span class="s2">&quot;/usr/bin/google-chrome&quot;</span><span class="p">,</span>
+<span class="p">}</span>
+</code></pre></div>
+
+<h3>Printer Driver</h3>
+<p><a href="https://www.usa.canon.com/internet/portal/us/home/support/details/printers/color-laser/canon-color-imageclass-mf642cdw">Canon website</a> 
+provides printer drivers for Debian Linux.  You can use the 
+deb package. After you download the driver file, upzip it, and run 
+<code>sudo ./install.sh</code> to install it.  </p>
 
       <div class="mt-5 border-top">
         <h3>Related Posts:</h3>
