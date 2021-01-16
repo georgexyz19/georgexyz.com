@@ -12,36 +12,67 @@ It seems that version 19.x is more stable than 20.x at this time. My computer
 still has 19.3 installed, and eventually I will upgrade to 20.x or a newer version. 
 Here is a short note to setup linux mint on a new computer. 
 
+### Steps
 
-```
-Linux Mint 19.3
+Here is a list of things to do:
 
-sudo apt-get update
-sudo apt-get upgrade
-// this step takes some time
+1. Remove vim-tiny and install vim-gtk3.
+   Add a ~/.vimrc, copy code from previous blog post.
 
-1. Remove vim-tiny and install vim-gtk3
-   Add a ~/.vimrc, copy code from previous blog post
+2. Map the Synology Network Drive.
 
-2. Map the Synology Network Drive
-
-3. Install git, this step is need for pyenv install
+3. Install git, this step is need for pyenv install. 
    Do not forget to set user email and user name. 
 
-4. Install pyenv and latest python 3.9.1
+4. Install pyenv and latest python 3.9.1.
 
-5. Setup SSH keys and upload to github
+5. Setup SSH keys and upload to github.
 
-6. Download github repos with 'git clone'
+6. Download github repos with `git clone`.
 
-7. Chrome, VS Code (download deb packages)
+7. Chrome, VS Code (download deb packages). 
    Chrome will ask for a keyring password, leave it blank.
 
-8. Install other apps like Node, Inkscape, GIMP
+8. Install other apps like Node, Inkscape, GIMP, etc.
 
 9. Copy Roboto font and Fira Code font. Font Selection 
    tool to set default font (Ubuntu). 
-   
+
+### Add New Fonts
+
+[This tutorial](https://community.linuxmint.com/tutorial/view/29) 
+has information on how to add new fonts to Linux Mint. 
+
+The easy way is to copy file truetype font files to this directory. 
+
+```
+/usr/share/fonts/truetype/
 ```
 
+### VS Code
+
+The VS code settings file is in this directory:
+
+```
+~/.config/Code/User/settings.json
+```
+
+The file has these lines:
+
+```json
+{
+    "editor.fontFamily": "'Fira Code', 'monospace', monospace, 
+      'Droid Sans Fallback'",
+    "editor.fontSize": 16,
+    "liveServer.settings.AdvanceCustomBrowserCmdLine": "google-chrome",
+    "printcode.browserPath": "/usr/bin/google-chrome",
+}
+```
+
+### Printer Driver
+
+[Canon website](https://www.usa.canon.com/internet/portal/us/home/support/details/printers/color-laser/canon-color-imageclass-mf642cdw) 
+provides printer drivers for Debian Linux.  You can use the 
+deb package. After you download the driver file, upzip it, and run 
+`sudo ./install.sh` to install it.  
 
