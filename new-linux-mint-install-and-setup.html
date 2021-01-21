@@ -139,6 +139,64 @@ has information on how to add new fonts to Linux Mint. </p>
 provides printer drivers for Debian Linux.  You can use the 
 deb package. After you download the driver file, upzip it, and run 
 <code>sudo ./install.sh</code> to install it.  </p>
+<h3>Script</h3>
+<p>Here are the output of <code>history</code> bash command (after edit). </p>
+<div class="highlight"><pre><span></span><code><span class="c1"># update the system</span>
+sudo apt-get update
+sudo apt-get upgrade
+
+<span class="c1"># update vim</span>
+sudo apt-get remove vim-tiny
+sudo apt-get update
+sudo apt-get install vim-gtk3
+vim ~/.vimrc
+
+<span class="c1"># mount synology network drive</span>
+sudo vim /etc/fastab
+sudo vim /etc/fstab 
+sudo vim /etc/samba/credentials
+sudo mkdir /media/synology
+sudo mount -a
+
+<span class="c1"># git install and config</span>
+sudo apt install git
+git --version
+git config --global user.email <span class="s2">&quot;&lt;email address&gt;&quot;</span>
+git config --global user.name <span class="s2">&quot;&lt;name&gt;&quot;</span>
+
+
+<span class="c1"># Install pyenv</span>
+sudo apt-get install -y make build-essential libssl-dev zlib1g-dev 
+ libbz2-dev libreadline-dev libsqlite3-dev wget curl llvm libncurses5-dev
+ libncursesw5-dev xz-utils tk-dev libffi-dev liblzma-dev python-openssl 
+curl https://pyenv.run <span class="p">|</span> bash
+vim .bashrc 
+<span class="nb">exec</span> <span class="s2">&quot;</span><span class="nv">$SHELL</span><span class="s2">&quot;</span>
+pyenv install --list <span class="p">|</span> grep <span class="s2">&quot; 3\.[6789]&quot;</span>
+
+<span class="c1"># install python under pyenv</span>
+pyenv install --help
+pyenv install <span class="m">3</span>.9.1
+pyenv global <span class="m">3</span>.9.1
+
+<span class="c1"># ssh key generation</span>
+ssh-keygen -t rsa -b <span class="m">4096</span> -C <span class="s2">&quot;&lt;email address&gt;&quot;</span>
+<span class="nb">eval</span> <span class="s2">&quot;</span><span class="k">$(</span>ssh-agent -s<span class="k">)</span><span class="s2">&quot;</span>
+ssh-add ~/.ssh/id_rsa
+
+cat ~/.ssh/id_rsa.pub 
+<span class="nb">cd</span> Desktop/
+mkdir git-repo
+<span class="nb">cd</span> git-repo/
+git clone git@github.com:&lt;repo address&gt;
+
+<span class="nb">cd</span> georgexyz.com/
+python -V
+python -m venv venv
+<span class="nb">source</span> venv/bin/activate
+pip install -r requirements.txt 
+invoke livereload
+</code></pre></div>
 
       <div class="mt-5 border-top">
         <h3>Related Posts:</h3>

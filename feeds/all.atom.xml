@@ -65,7 +65,65 @@ has information on how to add new fonts to Linux Mint. &lt;/p&gt;
 &lt;p&gt;&lt;a href="https://www.usa.canon.com/internet/portal/us/home/support/details/printers/color-laser/canon-color-imageclass-mf642cdw"&gt;Canon website&lt;/a&gt; 
 provides printer drivers for Debian Linux.  You can use the 
 deb package. After you download the driver file, upzip it, and run 
-&lt;code&gt;sudo ./install.sh&lt;/code&gt; to install it.  &lt;/p&gt;</content><category term="posts"></category><category term="linux"></category><category term="linux mint"></category></entry><entry><title>Road Segment Crash Rate Calculator</title><link href="https://www.georgexyz.com/road-segment-crash-rate-calculator.html" rel="alternate"></link><published>2021-01-11T10:30:00-05:00</published><updated>2021-01-11T10:30:00-05:00</updated><author><name>George Zhang</name></author><id>tag:www.georgexyz.com,2021-01-11:/road-segment-crash-rate-calculator.html</id><summary type="html">&lt;p&gt;I am reading Part Two, Chapter 4.3 of 
+&lt;code&gt;sudo ./install.sh&lt;/code&gt; to install it.  &lt;/p&gt;
+&lt;h3&gt;Script&lt;/h3&gt;
+&lt;p&gt;Here are the output of &lt;code&gt;history&lt;/code&gt; bash command (after edit). &lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;&lt;span class="c1"&gt;# update the system&lt;/span&gt;
+sudo apt-get update
+sudo apt-get upgrade
+
+&lt;span class="c1"&gt;# update vim&lt;/span&gt;
+sudo apt-get remove vim-tiny
+sudo apt-get update
+sudo apt-get install vim-gtk3
+vim ~/.vimrc
+
+&lt;span class="c1"&gt;# mount synology network drive&lt;/span&gt;
+sudo vim /etc/fastab
+sudo vim /etc/fstab 
+sudo vim /etc/samba/credentials
+sudo mkdir /media/synology
+sudo mount -a
+
+&lt;span class="c1"&gt;# git install and config&lt;/span&gt;
+sudo apt install git
+git --version
+git config --global user.email &lt;span class="s2"&gt;&amp;quot;&amp;lt;email address&amp;gt;&amp;quot;&lt;/span&gt;
+git config --global user.name &lt;span class="s2"&gt;&amp;quot;&amp;lt;name&amp;gt;&amp;quot;&lt;/span&gt;
+
+
+&lt;span class="c1"&gt;# Install pyenv&lt;/span&gt;
+sudo apt-get install -y make build-essential libssl-dev zlib1g-dev 
+ libbz2-dev libreadline-dev libsqlite3-dev wget curl llvm libncurses5-dev
+ libncursesw5-dev xz-utils tk-dev libffi-dev liblzma-dev python-openssl 
+curl https://pyenv.run &lt;span class="p"&gt;|&lt;/span&gt; bash
+vim .bashrc 
+&lt;span class="nb"&gt;exec&lt;/span&gt; &lt;span class="s2"&gt;&amp;quot;&lt;/span&gt;&lt;span class="nv"&gt;$SHELL&lt;/span&gt;&lt;span class="s2"&gt;&amp;quot;&lt;/span&gt;
+pyenv install --list &lt;span class="p"&gt;|&lt;/span&gt; grep &lt;span class="s2"&gt;&amp;quot; 3\.[6789]&amp;quot;&lt;/span&gt;
+
+&lt;span class="c1"&gt;# install python under pyenv&lt;/span&gt;
+pyenv install --help
+pyenv install &lt;span class="m"&gt;3&lt;/span&gt;.9.1
+pyenv global &lt;span class="m"&gt;3&lt;/span&gt;.9.1
+
+&lt;span class="c1"&gt;# ssh key generation&lt;/span&gt;
+ssh-keygen -t rsa -b &lt;span class="m"&gt;4096&lt;/span&gt; -C &lt;span class="s2"&gt;&amp;quot;&amp;lt;email address&amp;gt;&amp;quot;&lt;/span&gt;
+&lt;span class="nb"&gt;eval&lt;/span&gt; &lt;span class="s2"&gt;&amp;quot;&lt;/span&gt;&lt;span class="k"&gt;$(&lt;/span&gt;ssh-agent -s&lt;span class="k"&gt;)&lt;/span&gt;&lt;span class="s2"&gt;&amp;quot;&lt;/span&gt;
+ssh-add ~/.ssh/id_rsa
+
+cat ~/.ssh/id_rsa.pub 
+&lt;span class="nb"&gt;cd&lt;/span&gt; Desktop/
+mkdir git-repo
+&lt;span class="nb"&gt;cd&lt;/span&gt; git-repo/
+git clone git@github.com:&amp;lt;repo address&amp;gt;
+
+&lt;span class="nb"&gt;cd&lt;/span&gt; georgexyz.com/
+python -V
+python -m venv venv
+&lt;span class="nb"&gt;source&lt;/span&gt; venv/bin/activate
+pip install -r requirements.txt 
+invoke livereload
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;</content><category term="posts"></category><category term="linux"></category><category term="linux mint"></category></entry><entry><title>Road Segment Crash Rate Calculator</title><link href="https://www.georgexyz.com/road-segment-crash-rate-calculator.html" rel="alternate"></link><published>2021-01-11T10:30:00-05:00</published><updated>2021-01-11T10:30:00-05:00</updated><author><name>George Zhang</name></author><id>tag:www.georgexyz.com,2021-01-11:/road-segment-crash-rate-calculator.html</id><summary type="html">&lt;p&gt;I am reading Part Two, Chapter 4.3 of 
 &lt;a href="javascript.info"&gt;javascript.info&lt;/a&gt; tutorial.  It has an exercise to write a js deposit calculator. 
 I often use &lt;a href="/files/CrashRateCal.xlsx"&gt;a spreadsheet file&lt;/a&gt; to calculate …&lt;/p&gt;</summary><content type="html">&lt;p&gt;I am reading Part Two, Chapter 4.3 of 
 &lt;a href="javascript.info"&gt;javascript.info&lt;/a&gt; tutorial.  It has an exercise to write a js deposit calculator. 
