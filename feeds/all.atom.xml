@@ -29,7 +29,10 @@ Here is a short note to setup linux mint on a new computer. &lt;/p&gt;
 &lt;/li&gt;
 &lt;li&gt;
 &lt;p&gt;Chrome, &lt;span class="caps"&gt;VS&lt;/span&gt; Code (download deb packages). 
-   Chrome will ask for a keyring password, leave it blank.&lt;/p&gt;
+   Chrome will ask for a keyring password, leave it blank.
+   Check out 
+   &lt;a href="https://askubuntu.com/questions/867/how-can-i-stop-being-prompted-to-unlock-the-default-keyring-on-boot"&gt;this post&lt;/a&gt; 
+   for more info.  &lt;/p&gt;
 &lt;/li&gt;
 &lt;li&gt;
 &lt;p&gt;Install other apps like Node, Inkscape, &lt;span class="caps"&gt;GIMP&lt;/span&gt;, etc.&lt;/p&gt;
