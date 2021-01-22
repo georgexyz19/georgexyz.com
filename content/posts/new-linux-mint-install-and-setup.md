@@ -32,6 +32,9 @@ Here is a list of things to do:
 
 7. Chrome, VS Code (download deb packages). 
    Chrome will ask for a keyring password, leave it blank.
+   Check out 
+   [this post](https://askubuntu.com/questions/867/how-can-i-stop-being-prompted-to-unlock-the-default-keyring-on-boot) 
+   for more info.  
 
 8. Install other apps like Node, Inkscape, GIMP, etc.
 
