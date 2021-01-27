@@ -123,7 +123,7 @@ Some LaTeX symbols like `\dfrac` need AmsTeX.  Add the line below to
 </div>
 
 The third tab `View Original TeX` on the dialog enables you to view texts 
-of equations.  Choose an equation in Inskscape and click `Apply` button.
+of equations.  Choose an equation in Inkscape and click `Apply` button.
 A dialog will pop up showing equation input. 
 
 ### Ubuntu Setup
@@ -176,4 +176,20 @@ crop out the image. Once I remove the clip, the file saves to pdf fine.
 
 The lesson is that it is better to use GIMP or other application to 
 crop out background image.  The clip function in Inkscape is not so reliable. 
+
+**Update on 1/27/2021**
+
+The Linux Mint software repo has Inkscape version 0.92.3.  Some Inkscape 
+shortcuts are intercepted by Linux Mint.  For example, the shortcuts 
+`Alt + Right Arrow` or `Alt + Left Arrow` do not work.  In Inkscape, 
+they are shortcuts for moving object by 1 pixel (or 2 pixels).  
+
+You need to turn off those shortcuts in Linux Mint system.  On the 
+startup menu, type `Keyboard` and change the `Super + Left` to something 
+else.  The `Super` here obviously means `Alt` key. 
+
+<div style="max-width:600px">
+  <img class="img-fluid" src="/images/lm-shortcut.png" alt="lm shortcut"> 
+</div>
+
 
