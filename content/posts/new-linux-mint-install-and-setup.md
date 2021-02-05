@@ -71,6 +71,8 @@ The file has these lines:
     "printcode.browserPath": "/usr/bin/google-chrome",
 }
 ```
+The print function of Chrome is much better than Mozilla Firefox 
+that comes with Linux Mint installation.  
 
 ### Printer Driver
 
