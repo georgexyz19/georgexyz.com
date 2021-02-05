@@ -64,6 +64,8 @@ has information on how to add new fonts to Linux Mint. &lt;/p&gt;
 &lt;span class="p"&gt;}&lt;/span&gt;
 &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
 
+&lt;p&gt;The print function of Chrome is much better than Mozilla Firefox 
+that comes with Linux Mint installation.  &lt;/p&gt;
 &lt;h3&gt;Printer Driver&lt;/h3&gt;
 &lt;p&gt;&lt;a href="https://www.usa.canon.com/internet/portal/us/home/support/details/printers/color-laser/canon-color-imageclass-mf642cdw"&gt;Canon website&lt;/a&gt; 
 provides printer drivers for Debian Linux.  You can use the 
@@ -1293,7 +1295,7 @@ plug it to the laptop. &lt;/p&gt;
 &lt;p&gt;Last night, I did not turn off the desktop when unplugging the monitor cable.
 Linux Mint 20 system started outputting the same error messages again and
 again.  It eventually filled up the disk. That was the reason I could not log
-into the system. Thought it was painful, I did learn something from this 
+into the system. Though it was painful, I did learn something from this 
 crash experience.&lt;/p&gt;
 &lt;p&gt;Update (9/24/2020): The computer crashed again today and the reason I wrote above 
 was not correct. I added a &lt;code&gt;maxsize 10M&lt;/code&gt; setting to the configuration file following 
