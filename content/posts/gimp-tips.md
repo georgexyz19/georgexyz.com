@@ -52,4 +52,16 @@ x 24"), you can follow those steps (revised on 10/30/2020).
    `Layer Fill Type` value `White`. Put this new layer below the existing
    layer and merge the existing layer down. 
 
-<p class="text-muted">This article will be continuously updated (last update: 10/30/2020). <p>
+
+### Reduce File Size
+
+When you have a grayscale image saved in RGB (color) mode, the file size would be 
+higher than in Grayscale mode.  The size of exported PNG file is reduced to 4.02 mb from 
+9.49 mb when the mode is changed from RGB to Grayscale. You can reduce the file 
+size further by saving it in Indexed mode with 16 or 64 index values. You can change 
+the mode via menu item `Image` > `mode`. 
+
+
+<p class="text-muted">This article will be continuously updated (last update: 2/10/2021). <p>
+
+
