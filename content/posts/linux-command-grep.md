@@ -97,4 +97,7 @@ grep -r "date: 2019\\-" | wc -l
 The result is 26 v.s. 26. The 2019 only covers 9 months starting from 4/1 and 2020 covers 8 months 
 so far, so it is close. 
 
+Note I do not have to include `-` character in the search pattern.  It is just something 
+good to know.  
+
 
