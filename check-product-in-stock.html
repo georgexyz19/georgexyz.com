@@ -1,0 +1,127 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <link rel="stylesheet" href="/theme/css/bs4min.css">
+    <link rel="shortcut icon" type="image/x-icon" href="/theme/images/favicon.ico" >
+    <link rel="icon" type="image/x-icon" href="/theme/images/favicon.ico" >
+<link rel="stylesheet" href="https://www.georgexyz.com/theme/css/friendly.css">
+<link rel="stylesheet" href="https://www.georgexyz.com/theme/css/custom.css">
+<meta name="author" content="George Zhang" />
+<meta name="keywords" content="python" />
+<meta name="description" content="I am reading Chapter 13 of Al Sweigart’s Automate The Boring Stuff With Python 2nd ed book for some spreadsheet work. The Chapter 12 Web Scraping is also very …" />
+    <title>Python Code To Check If A Product Is In Stock - George Zhang</title>
+  </head>
+  <body>
+    <!-- navbar -->
+    <nav class="navbar navbar-expand-md navbar-light" style="background-color: #e3f2fd;">
+      <div class="container">
+        <a class="navbar-brand" href="/">George Zhang</a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarColor01" aria-controls="navbarColor01" aria-expanded="false" aria-label="Toggle navigation">
+          <span class="navbar-toggler-icon"></span>
+        </button>
+
+        <div class="collapse navbar-collapse" id="navbarColor01">
+          <ul class="navbar-nav mr-auto">
+            <li class="nav-item">
+              <a class="nav-link " 
+                href="/articlelist.html">Articles</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link pr-3 " 
+                href="/tags.html">Tags</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link pr-3 "
+                 href="/pages/inkscape-tutorial.html">Inkscape Tutorial</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link "
+                   href="/pages/projects.html">Projects</a>
+              </li>
+          </ul>
+
+          <ul class="navbar-nav">
+            <li class="nav-item">
+              <a class="nav-link " 
+                 href="/pages/about.html">About</a>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </nav>
+
+   
+
+<div class="container">
+
+  <div class="row">
+    <div class="col-lg-8 mx-auto">
+
+      <h2>Python Code To Check If A Product Is In Stock</h2>
+
+      <div class="text-muted mb-2">
+        <span>Posted on </span>
+        <time datetime="2021-02-26 10:35:00-05:00">
+          Friday, 02/26/2021 10:35
+        </time>
+
+        <span>with tags: </span>
+        <a href="https://www.georgexyz.com/tag/python.html">python</a>
+      </div>
+
+      <p>I am reading 
+<a href="https://automatetheboringstuff.com/2e/chapter13/">Chapter 13</a> of Al Sweigart&#8217;s 
+<em>Automate The Boring Stuff With Python 2nd ed</em> book for some spreadsheet work. 
+The <a href="https://automatetheboringstuff.com/2e/chapter12/">Chapter 12</a> <em>Web Scraping</em> 
+is also very interesting. </p>
+<p>The first example in <em>Web Scraping</em> Chapter is to search Pypi website for 
+python packages and open the search results on new browser tabs.  It is 
+easy to revise the program a little to check if a product is <em>in stock</em> or 
+<em>out of stock</em>.  </p>
+<p>Here is a python script modified from the example.  The script will check 
+if a Ryobi Sander is in stock on <em>direct tools outlet</em> website. </p>
+<div class="highlight"><pre><span></span><code><span class="c1">#ryobiSander.py - Opens ryobi sander page on directtoolsoutlet page</span>
+
+<span class="kn">import</span> <span class="nn">requests</span><span class="o">,</span> <span class="nn">webbrowser</span><span class="o">,</span> <span class="nn">bs4</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="s1">&#39;Searching...&#39;</span><span class="p">)</span>
+<span class="n">url</span> <span class="o">=</span> <span class="s1">&#39;https://www.directtoolsoutlet.com/Products/&#39;</span> <span class="o">+</span> 
+      <span class="s1">&#39;Power-Tools/Finishing-Tools/Sanders/&#39;</span> <span class="o">+</span> 
+      <span class="s1">&#39;RYOBI-ONE%2B-18-Volt-5-In-Random-Orbit-Sander/p/P411&#39;</span>
+<span class="n">res</span> <span class="o">=</span> <span class="n">requests</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="n">url</span><span class="p">)</span>
+<span class="n">res</span><span class="o">.</span><span class="n">raise_for_status</span><span class="p">()</span>
+
+<span class="n">soup</span> <span class="o">=</span> <span class="n">bs4</span><span class="o">.</span><span class="n">BeautifulSoup</span><span class="p">(</span><span class="n">res</span><span class="o">.</span><span class="n">text</span><span class="p">,</span> <span class="s1">&#39;html.parser&#39;</span><span class="p">)</span>
+<span class="n">buttonElem</span> <span class="o">=</span> <span class="n">soup</span><span class="o">.</span><span class="n">select</span><span class="p">(</span><span class="s1">&#39;.js-add-to-cart&#39;</span><span class="p">)</span>
+<span class="k">if</span> <span class="n">buttonElem</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s1">&#39;disabled&#39;</span><span class="p">)</span> <span class="o">==</span> <span class="s1">&#39;disabled&#39;</span><span class="p">:</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;The button is disabled&#39;</span><span class="p">)</span>
+<span class="k">else</span><span class="p">:</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;Opening &#39;</span><span class="p">,</span> <span class="n">url</span><span class="p">)</span>
+    <span class="n">webbrowser</span><span class="o">.</span><span class="n">open</span><span class="p">(</span><span class="n">url</span><span class="p">)</span>
+</code></pre></div>
+
+<p>I have some other ideas to add to this program:</p>
+<ul>
+<li>Add code to run the check every 1 hour or other time interval. </li>
+<li>Find a way to click the <em>Add To Cart</em> button if it is enabled</li>
+<li>Send an email or text message to remind that it is in stock</li>
+</ul>
+<p>The code does not look complicated.  The program shapes up to 
+be a ticket scalping tool, and I stop the post right here. </p>
+
+
+
+    </div>
+  </div>
+
+</div>
+
+   
+    <script src="https://code.jquery.com/jquery-3.4.1.slim.min.js" integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js" integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6" crossorigin="anonymous"></script>
+  </body>
+</html>
