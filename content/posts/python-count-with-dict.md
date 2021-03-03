@@ -55,8 +55,8 @@ The standard collections package has a defaultdict class. The class sets a defau
 value for a key.  Line count is still 5. 
 
 ```python
-import collections
-d = collections.defaultdict(int)
+from collections import defaultdict
+d = defaultdict(int)
 for color in colors:
     d[color] += 1
 d = dict(d)
