@@ -111,8 +111,8 @@ when the first argument is not already in the dictionary.  Line count is 3. </p>
 <h3>Use Defaultdict</h3>
 <p>The standard collections package has a defaultdict class. The class sets a default 
 value for a key.  Line count is still 5. </p>
-<div class="highlight"><pre><span></span><code><span class="kn">import</span> <span class="nn">collections</span>
-<span class="n">d</span> <span class="o">=</span> <span class="n">collections</span><span class="o">.</span><span class="n">defaultdict</span><span class="p">(</span><span class="nb">int</span><span class="p">)</span>
+<div class="highlight"><pre><span></span><code><span class="kn">from</span> <span class="nn">collections</span> <span class="kn">import</span> <span class="n">defaultdict</span>
+<span class="n">d</span> <span class="o">=</span> <span class="n">defaultdict</span><span class="p">(</span><span class="nb">int</span><span class="p">)</span>
 <span class="k">for</span> <span class="n">color</span> <span class="ow">in</span> <span class="n">colors</span><span class="p">:</span>
     <span class="n">d</span><span class="p">[</span><span class="n">color</span><span class="p">]</span> <span class="o">+=</span> <span class="mi">1</span>
 <span class="n">d</span> <span class="o">=</span> <span class="nb">dict</span><span class="p">(</span><span class="n">d</span><span class="p">)</span>
