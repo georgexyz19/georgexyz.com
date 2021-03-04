@@ -62,6 +62,12 @@ This page has a collection of web links that I visit often.
 
 [The Python Tutorial on python.org](https://docs.python.org/3/tutorial/index.html)
 
+### Python Basics Reference 
+
+[List Methods](https://docs.python.org/3/tutorial/datastructures.html) in Section 5.1
+
+[Dict Methods](https://docs.python.org/3/library/stdtypes.html#typesmapping) Section Mapping Types - dict
+
 
 ### Javascript Language
 
