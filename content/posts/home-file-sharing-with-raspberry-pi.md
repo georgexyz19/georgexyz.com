@@ -97,3 +97,20 @@ password=<pwd>
 * Type command `sudo mkdir /media/synology` to create the mounting directory. 
 * Run command `sudo mount -a` to activate the new line in `/etc/fstab`.  
 
+### Ultimate File Sharing
+
+**Update on 3/5/2021**
+
+The Synology network drive works well when all computers connect to the same 
+router. My work laptop is on a VPN and it does not have access to the Synology 
+network drive.  
+
+An easy way to share files between the work computer (on VPN) 
+and other computers is to use a digital ocean Ubuntu server, and use 
+FileZilla ftp software to upload and download files or folders thru SFTP 
+protocol.  I am not sure if this is a correct way to do things but it 
+works well for me now.  
+
+<div style="max-width:600px">
+  <img class="img-fluid pb-3" src="/images/filezilla_setting.png" alt="FileZilla Setting">
+</div>
