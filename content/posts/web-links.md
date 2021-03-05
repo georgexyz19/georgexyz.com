@@ -66,15 +66,17 @@ This page has a collection of web links that I visit often.
 
 Here are some links on Python basics.  
 
-[List Methods](https://docs.python.org/3/tutorial/datastructures.html) in Section 5.1
+[List Methods](https://docs.python.org/3/tutorial/datastructures.html) - in Section 5.1
 
-[Dict Methods](https://docs.python.org/3/library/stdtypes.html#typesmapping) Section Mapping Types - dict
+[Dict Methods](https://docs.python.org/3/library/stdtypes.html#typesmapping) - Section Mapping Types - dict
 
-[File IO](https://dbader.org/blog/python-file-io) Tutorial on dbader.org
+[File IO](https://dbader.org/blog/python-file-io) - Tutorial on dbader.org
 
-[Files Chapter](https://greenteapress.com/thinkpython2/html/thinkpython2015.html) Think Python Book Chapter 14 
+[Files Chapter](https://greenteapress.com/thinkpython2/html/thinkpython2015.html) - Think Python Book Chapter 14 
 
-[RE Module](https://developers.google.com/edu/python/regular-expressions) Regular Expression Basics 
+[ReEx Module](https://developers.google.com/edu/python/regular-expressions) - Regular Expression Basics
+
+[Class Property](https://www.machinelearningplus.com/python/python-property/) - Nice property explanation
 
 
 ### Javascript Language
