@@ -9,39 +9,6 @@ no: 34
 
 This page has a collection of web links that I visit often.
 
-### Flask Web Framework
-
-[Official Flask Tutorial](https://flask.palletsprojects.com/en/1.1.x/tutorial/)
-
-[Official Flask Tutorial Source Code on Github](https://github.com/pallets/flask/tree/master/examples/tutorial)
-
-[The Flask Mega-Tutorial by Miguel Grinberg](https://blog.miguelgrinberg.com/post/the-flask-mega-tutorial-part-i-hello-world)
-
-[Flask Web Framework Book Source Code on Github](https://github.com/miguelgrinberg/flasky)
-
-[Flask Extension Flask-Bootstrap Source Code](https://github.com/mbr/flask-bootstrap)
-
-<p class="pl-3">Flask-Bootstrap still bundles with Bootstrap 3.X.  Use Flask-BS4 instead. (4/4/2020)</p>
-
-[Flask Extension Flask-BS4 Source Code](https://github.com/hfilimonescu/flask-bs4)
-
-[Flask Extension Flask-Moment Source Code](https://github.com/miguelgrinberg/Flask-Moment)
-
-[Flask Extension Flask-SQLAlchemy Documentaion](https://flask-sqlalchemy.palletsprojects.com/en/2.x/)
-
-[Flask Extension Flask-Migrate Documentation](https://flask-migrate.readthedocs.io/en/latest/)
-
-[Flask Extension Flask-Mail Documentation](https://pythonhosted.org/Flask-Mail/)
-
-[Flask Extension Flask-Login Documentation](https://flask-login.readthedocs.io/en/latest/)
-
-<hr>
-
-[Flask Tutorial by Corey Schafer on Youtube ](https://www.youtube.com/playlist?list=PL-osiE80TeTs4UjLw5MM6OjgkjFeUxCYH)
-
-[Flask Tutorial by Corey Schafer Source Code](https://github.com/CoreyMSchafer/code_snippets/tree/master/Python/Flask_Blog)
-
-
 ### Python Language
 
 [Automate The Boring Stuff with Python](https://automatetheboringstuff.com/)
@@ -77,6 +44,47 @@ Here are some links on Python basics.
 [ReEx Module](https://developers.google.com/edu/python/regular-expressions) - Regular Expression Basics
 
 [Class Property](https://www.machinelearningplus.com/python/python-property/) - Nice property explanation
+
+[Class Into](https://python.swaroopch.com/oop.html) - Chapter from *A Byte Of Python* book
+
+### Python Intermediate
+
+Those links are for people who already know the Python basics.
+
+[Python Logging Howto](https://docs.python.org/3/howto/logging.html) - Official doc tutorials
+
+
+### Flask Web Framework
+
+[Official Flask Tutorial](https://flask.palletsprojects.com/en/1.1.x/tutorial/)
+
+[Official Flask Tutorial Source Code on Github](https://github.com/pallets/flask/tree/master/examples/tutorial)
+
+[The Flask Mega-Tutorial by Miguel Grinberg](https://blog.miguelgrinberg.com/post/the-flask-mega-tutorial-part-i-hello-world)
+
+[Flask Web Framework Book Source Code on Github](https://github.com/miguelgrinberg/flasky)
+
+[Flask Extension Flask-Bootstrap Source Code](https://github.com/mbr/flask-bootstrap)
+
+<p class="pl-3">Flask-Bootstrap still bundles with Bootstrap 3.X.  Use Flask-BS4 instead. (4/4/2020)</p>
+
+[Flask Extension Flask-BS4 Source Code](https://github.com/hfilimonescu/flask-bs4)
+
+[Flask Extension Flask-Moment Source Code](https://github.com/miguelgrinberg/Flask-Moment)
+
+[Flask Extension Flask-SQLAlchemy Documentaion](https://flask-sqlalchemy.palletsprojects.com/en/2.x/)
+
+[Flask Extension Flask-Migrate Documentation](https://flask-migrate.readthedocs.io/en/latest/)
+
+[Flask Extension Flask-Mail Documentation](https://pythonhosted.org/Flask-Mail/)
+
+[Flask Extension Flask-Login Documentation](https://flask-login.readthedocs.io/en/latest/)
+
+<hr>
+
+[Flask Tutorial by Corey Schafer on Youtube ](https://www.youtube.com/playlist?list=PL-osiE80TeTs4UjLw5MM6OjgkjFeUxCYH)
+
+[Flask Tutorial by Corey Schafer Source Code](https://github.com/CoreyMSchafer/code_snippets/tree/master/Python/Flask_Blog)
 
 
 ### Javascript Language

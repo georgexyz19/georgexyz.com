@@ -1,15 +1,13 @@
 #!/bin/bash
 
-# commit_change.sh : commit git changes for georgexyz.com
+# commit_change.sh : commit git changes for georgexyz.com 11/10/2020
+# This is venv version of the script.  It is the main version now.
 # How to execute the script:
-# $pipenv shell
-# $source commit_change.sh "git commit message"
-
-# need pipenv installed
-# $pip install pipenv
-# pipenv install pelican Markdown invoke ghp-import2
-
-PROGNAME="$(basename "$0")" # or = "${0##*/}"
+# $source venv/bin/activate
+# $source commit_change_venv.sh "git commit message"
+# I will start to use venv on new computers with this script
+# basename prompts an error, change it back to ${...}
+PROGNAME="${0##*/}"
 
 usage () {
   cat << EOF
@@ -28,11 +26,11 @@ git pull
 
 # pipenv shell # does not work
 # publish is clean and build with publishconf.py
-pipenv run invoke publish # see stack overflow 48056606
+invoke publish 
 git status
 git add -A
 git commit -m "$1"
 git push origin master # update source code
 
-pipenv run ghp-import output -b gh-pages
+ghp-import output -b gh-pages
 git push origin gh-pages
