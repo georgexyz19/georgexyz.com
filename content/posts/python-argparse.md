@@ -74,4 +74,24 @@ python argparse_example.py -x -c mystyle.css myfile.html
 python argparse_example.py --xhtml --cssfile=mystyle.css myfile.html
 ```
 The argparse module contains many other options.  Here is a link to 
-[Python argparse Offical Doc](https://docs.python.org/3/howto/argparse.html).
+[Python argparse Official Doc](https://docs.python.org/3/howto/argparse.html).
+
+### Argparse v.s. Optparse
+
+The two modules have some obvious differences. Run the commands below to 
+start the scripts. The options or arguments start after `optparse_ex.py` 
+and `argparse_ex.py`.  
+
+```
+$python2 optparse_ex.py ...
+$python argparse_ex.py ...
+```
+
+The optparse module separates command line arguments into *options* and *args* 
+two groups.  It calls `parser.add_option` methods to add options, and it does 
+not need to add *args* to the parser beforehand. The argparse module has 
+*positional arguments* and *optional arguments*.  It calls `parse.add_argument` 
+method to add arguments. 
+
+Argparse module seems to widely used in many open source project, but newer 
+third party module (e.g. Click) is also available. 
