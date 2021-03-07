@@ -5928,7 +5928,22 @@ python argparse_example.py --xhtml --cssfile=mystyle.css myfile.html
 &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
 
 &lt;p&gt;The argparse module contains many other options.  Here is a link to 
-&lt;a href="https://docs.python.org/3/howto/argparse.html"&gt;Python argparse Offical Doc&lt;/a&gt;.&lt;/p&gt;</content><category term="posts"></category><category term="python"></category></entry><entry><title>Vim Tips</title><link href="https://www.georgexyz.com/vim-tips.html" rel="alternate"></link><published>2019-04-01T12:45:00-04:00</published><updated>2020-08-09T17:37:00-04:00</updated><author><name>George Zhang</name></author><id>tag:www.georgexyz.com,2019-04-01:/vim-tips.html</id><summary type="html">&lt;p&gt;Ubuntu 18.04 comes with a stripped down version of Vim. If you want to use Vim for 
+&lt;a href="https://docs.python.org/3/howto/argparse.html"&gt;Python argparse Official Doc&lt;/a&gt;.&lt;/p&gt;
+&lt;h3&gt;Argparse v.s. Optparse&lt;/h3&gt;
+&lt;p&gt;The two modules have some obvious differences. Run the commands below to 
+start the scripts. The options or arguments start after &lt;code&gt;optparse_ex.py&lt;/code&gt; 
+and &lt;code&gt;argparse_ex.py&lt;/code&gt;.  &lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;$python2 optparse_ex.py ...
+$python argparse_ex.py ...
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+
+&lt;p&gt;The optparse module separates command line arguments into &lt;em&gt;options&lt;/em&gt; and &lt;em&gt;args&lt;/em&gt; 
+two groups.  It calls &lt;code&gt;parser.add_option&lt;/code&gt; methods to add options, and it does 
+not need to add &lt;em&gt;args&lt;/em&gt; to the parser beforehand. The argparse module has 
+&lt;em&gt;positional arguments&lt;/em&gt; and &lt;em&gt;optional arguments&lt;/em&gt;.  It calls &lt;code&gt;parse.add_argument&lt;/code&gt; 
+method to add arguments. &lt;/p&gt;
+&lt;p&gt;Argparse module seems to widely used in many open source project, but newer 
+third party module (e.g. Click) is also available. &lt;/p&gt;</content><category term="posts"></category><category term="python"></category></entry><entry><title>Vim Tips</title><link href="https://www.georgexyz.com/vim-tips.html" rel="alternate"></link><published>2019-04-01T12:45:00-04:00</published><updated>2020-08-09T17:37:00-04:00</updated><author><name>George Zhang</name></author><id>tag:www.georgexyz.com,2019-04-01:/vim-tips.html</id><summary type="html">&lt;p&gt;Ubuntu 18.04 comes with a stripped down version of Vim. If you want to use Vim for 
 serious work, you want the full version. &lt;/p&gt;
 &lt;h3&gt;Vim Installation&lt;/h3&gt;
 &lt;p&gt;The default version …&lt;/p&gt;</summary><content type="html">&lt;p&gt;Ubuntu 18.04 comes with a stripped down version of Vim. If you want to use Vim for 
