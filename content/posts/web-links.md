@@ -13,11 +13,11 @@ This page has a collection of web links that I visit often.
 
 [Transforming Code into Beautiful, Idiomatic Python Code](https://github.com/JeffPaine/beautiful_idiomatic_python) - Github Link
 
-[Transforming Code into Beautiful, Idiomatic Python Youtube Video](https://youtu.be/OSGv2VnC0go)
+<span class="pl-4"></span>[Transforming Code into Beautiful, Idiomatic Python](https://youtu.be/OSGv2VnC0go) - Youtube Video Link
 
 [Python Quick Reference by Data School](https://nbviewer.jupyter.org/github/justmarkham/python-reference/blob/master/reference.ipynb) - Excellent Summary
 
-[Python built-ins worth learning](https://treyhunner.com/2019/05/python-builtins-worth-learning/) - Wonderful Resource
+[Python Built-ins Worth Learning](https://treyhunner.com/2019/05/python-builtins-worth-learning/) - Wonderful Resource
 
 
 ### Python Books I Love

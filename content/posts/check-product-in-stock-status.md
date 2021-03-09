@@ -23,20 +23,41 @@ if a Ryobi Sander is in stock on *direct tools outlet* website.
 ```
 #!python3
 
+#!python3
+
 #ryobiSander.py - Opens ryobi sander page on directtoolsoutlet page
 
 import requests, webbrowser, bs4
 
 print('Searching...')
-url = 'https://www.directtoolsoutlet.com/Products/' + 
-      'Power-Tools/Finishing-Tools/Sanders/' + 
-      'RYOBI-ONE%2B-18-Volt-5-In-Random-Orbit-Sander/p/P411'
+
+url = 'https://www.directtoolsoutlet.com/Products/Power-Tools/' + 
+      'Finishing-Tools/Sanders/RYOBI-ONE%2B-18-Volt-5-In-Random-Orbit-Sander/p/P411'
+
+# url = 'https://www.directtoolsoutlet.com/' +
+#        'Products/Power-Tools/RIDGID-13-In-Thickness-Planer/p/R4331' # test
+
 res = requests.get(url)
+
 res.raise_for_status()
 
+
 soup = bs4.BeautifulSoup(res.text, 'html.parser')
+
 buttonElem = soup.select('.js-add-to-cart')
-if buttonElem[0].get('disabled') == 'disabled':
+
+# test code
+#print(len(buttonElem))
+#
+#for b in buttonElem:
+#    print(b)
+#
+#print(buttonElem[0].get('disabled') )  # disable is not a good indicator
+#print(buttonElem[0].get('enabled') )
+#
+#print(buttonElem[0].attrs['class'])
+
+if 'js-enable-btn' not in  buttonElem[0].attrs['class']:
     print('The button is disabled')
 else:
     print('Opening ', url)
