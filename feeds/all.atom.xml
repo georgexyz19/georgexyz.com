@@ -41,7 +41,7 @@ if a Ryobi Sander is in stock on &lt;em&gt;direct tools outlet&lt;/em&gt; websit
 &lt;li&gt;Send an email or text message to remind that it is in stock&lt;/li&gt;
 &lt;/ul&gt;
 &lt;p&gt;The code does not look complicated.  The program shapes up to 
-be a ticket scalping tool, and I stop the post right here. &lt;/p&gt;</content><category term="posts"></category><category term="python"></category></entry><entry><title>New Linux Mint Install and Setup</title><link href="https://www.georgexyz.com/new-linux-mint-install-and-setup.html" rel="alternate"></link><published>2021-01-15T11:03:00-05:00</published><updated>2021-01-15T11:03:00-05:00</updated><author><name>George Zhang</name></author><id>tag:www.georgexyz.com,2021-01-15:/new-linux-mint-install-and-setup.html</id><summary type="html">&lt;p&gt;I have been using Linux Mint since June 2019. Most times I am happy with it. 
+be a ticket scalping tool, and I am stopping the post right here. &lt;/p&gt;</content><category term="posts"></category><category term="python"></category></entry><entry><title>New Linux Mint Install and Setup</title><link href="https://www.georgexyz.com/new-linux-mint-install-and-setup.html" rel="alternate"></link><published>2021-01-15T11:03:00-05:00</published><updated>2021-01-15T11:03:00-05:00</updated><author><name>George Zhang</name></author><id>tag:www.georgexyz.com,2021-01-15:/new-linux-mint-install-and-setup.html</id><summary type="html">&lt;p&gt;I have been using Linux Mint since June 2019. Most times I am happy with it. 
 It seems that version 19.x is more stable than 20.x at this …&lt;/p&gt;</summary><content type="html">&lt;p&gt;I have been using Linux Mint since June 2019. Most times I am happy with it. 
 It seems that version 19.x is more stable than 20.x at this time. My computer 
 still has 19.3 installed, and eventually I will upgrade to 20.x or a newer version. 
@@ -2529,33 +2529,36 @@ on W3schools.com has a list of python dictionary methods. &lt;/li&gt;
 which discusses the dictionary with more details. &lt;/li&gt;
 &lt;/ul&gt;
 &lt;p&gt;The dictionary is so fundamental in Python and programmers should become familar with those methods. &lt;/p&gt;</content><category term="posts"></category><category term="python"></category></entry><entry><title>A Collection of Web Links</title><link href="https://www.georgexyz.com/web-links.html" rel="alternate"></link><published>2020-04-01T23:30:00-04:00</published><updated>2020-04-09T08:54:00-04:00</updated><author><name>George Zhang</name></author><id>tag:www.georgexyz.com,2020-04-01:/web-links.html</id><summary type="html">&lt;p&gt;This page has a collection of web links that I visit often.&lt;/p&gt;
-&lt;h3&gt;Python Language&lt;/h3&gt;
-&lt;p&gt;&lt;a href="https://automatetheboringstuff.com/"&gt;Automate The Boring Stuff with Python&lt;/a&gt;&lt;/p&gt;
-&lt;p&gt;&lt;a href="http://greenteapress.com/thinkpython2/html/index.html"&gt;Think Python&lt;/a&gt;&lt;/p&gt;
-&lt;p&gt;&lt;a href="https://nbviewer.jupyter.org/github/justmarkham/python-reference/blob/master/reference.ipynb"&gt;Python Quick Reference by Data School&lt;/a&gt;&lt;/p&gt;
-&lt;p&gt;&lt;a href="https://treyhunner.com/2019/05/python-builtins-worth-learning/"&gt;Python built-ins …&lt;/a&gt;&lt;/p&gt;</summary><content type="html">&lt;p&gt;This page has a collection of web links that I visit often.&lt;/p&gt;
-&lt;h3&gt;Python Language&lt;/h3&gt;
-&lt;p&gt;&lt;a href="https://automatetheboringstuff.com/"&gt;Automate The Boring Stuff with Python&lt;/a&gt;&lt;/p&gt;
-&lt;p&gt;&lt;a href="http://greenteapress.com/thinkpython2/html/index.html"&gt;Think Python&lt;/a&gt;&lt;/p&gt;
-&lt;p&gt;&lt;a href="https://nbviewer.jupyter.org/github/justmarkham/python-reference/blob/master/reference.ipynb"&gt;Python Quick Reference by Data School&lt;/a&gt;&lt;/p&gt;
-&lt;p&gt;&lt;a href="https://treyhunner.com/2019/05/python-builtins-worth-learning/"&gt;Python built-ins worth learning&lt;/a&gt;&lt;/p&gt;
+&lt;h3&gt;Python Quick Reference&lt;/h3&gt;
+&lt;p&gt;&lt;a href="https://github.com/JeffPaine/beautiful_idiomatic_python"&gt;Transforming Code into Beautiful, Idiomatic Python Code&lt;/a&gt; - Github Link&lt;/p&gt;
+&lt;p&gt;&lt;a href="https://youtu.be/OSGv2VnC0go"&gt;Transforming Code into Beautiful, Idiomatic Python …&lt;/a&gt;&lt;/p&gt;</summary><content type="html">&lt;p&gt;This page has a collection of web links that I visit often.&lt;/p&gt;
+&lt;h3&gt;Python Quick Reference&lt;/h3&gt;
+&lt;p&gt;&lt;a href="https://github.com/JeffPaine/beautiful_idiomatic_python"&gt;Transforming Code into Beautiful, Idiomatic Python Code&lt;/a&gt; - Github Link&lt;/p&gt;
 &lt;p&gt;&lt;a href="https://youtu.be/OSGv2VnC0go"&gt;Transforming Code into Beautiful, Idiomatic Python Youtube Video&lt;/a&gt;&lt;/p&gt;
-&lt;p&gt;&lt;a href="https://github.com/JeffPaine/beautiful_idiomatic_python"&gt;Transforming Code into Beautiful, Idiomatic Python Code&lt;/a&gt;&lt;/p&gt;
-&lt;p&gt;&lt;a href="https://developers.google.com/edu/python/"&gt;Google&amp;#8217;s Python Class&lt;/a&gt;&lt;/p&gt;
-&lt;p&gt;&lt;a href="https://pymotw.com/3/"&gt;Python 3 Module of the Week PyMOTW-3&lt;/a&gt;&lt;/p&gt;
-&lt;p&gt;&lt;a href="https://docs.python.org/3/tutorial/index.html"&gt;The Python Tutorial on python.org&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;&lt;a href="https://nbviewer.jupyter.org/github/justmarkham/python-reference/blob/master/reference.ipynb"&gt;Python Quick Reference by Data School&lt;/a&gt; - Excellent Summary&lt;/p&gt;
+&lt;p&gt;&lt;a href="https://treyhunner.com/2019/05/python-builtins-worth-learning/"&gt;Python built-ins worth learning&lt;/a&gt; - Wonderful Resource&lt;/p&gt;
+&lt;h3&gt;Python Books I Love&lt;/h3&gt;
+&lt;p&gt;&lt;a href="https://automatetheboringstuff.com/"&gt;Automate The Boring Stuff with Python&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;&lt;a href="http://greenteapress.com/thinkpython2/html/index.html"&gt;Think Python&lt;/a&gt;&lt;/p&gt;
 &lt;h3&gt;Python Basics Reference&lt;/h3&gt;
 &lt;p&gt;Here are some links on Python basics.  &lt;/p&gt;
 &lt;p&gt;&lt;a href="https://docs.python.org/3/tutorial/datastructures.html"&gt;List Methods&lt;/a&gt; - in Section 5.1&lt;/p&gt;
 &lt;p&gt;&lt;a href="https://docs.python.org/3/library/stdtypes.html#typesmapping"&gt;Dict Methods&lt;/a&gt; - Section Mapping Types - dict&lt;/p&gt;
 &lt;p&gt;&lt;a href="https://dbader.org/blog/python-file-io"&gt;File &lt;span class="caps"&gt;IO&lt;/span&gt;&lt;/a&gt; - Tutorial on dbader.org&lt;/p&gt;
-&lt;p&gt;&lt;a href="https://greenteapress.com/thinkpython2/html/thinkpython2015.html"&gt;Files Chapter&lt;/a&gt; - Think Python Book Chapter 14 &lt;/p&gt;
+&lt;p&gt;&lt;a href="https://greenteapress.com/thinkpython2/html/thinkpython2015.html"&gt;Files Chapter&lt;/a&gt; - &lt;em&gt;Think Python&lt;/em&gt; Book Chapter 14 &lt;/p&gt;
 &lt;p&gt;&lt;a href="https://developers.google.com/edu/python/regular-expressions"&gt;ReEx Module&lt;/a&gt; - Regular Expression Basics&lt;/p&gt;
 &lt;p&gt;&lt;a href="https://www.machinelearningplus.com/python/python-property/"&gt;Class Property&lt;/a&gt; - Nice property explanation&lt;/p&gt;
 &lt;p&gt;&lt;a href="https://python.swaroopch.com/oop.html"&gt;Class Into&lt;/a&gt; - Chapter from &lt;em&gt;A Byte Of Python&lt;/em&gt; book&lt;/p&gt;
+&lt;p&gt;&lt;a href="https://docs.python.org/3/library/stdtypes.html#string-methods"&gt;String Methods&lt;/a&gt; - List of String Methods on Python.org&lt;/p&gt;
 &lt;h3&gt;Python Intermediate&lt;/h3&gt;
 &lt;p&gt;Those links are for people who already know the Python basics.&lt;/p&gt;
 &lt;p&gt;&lt;a href="https://docs.python.org/3/howto/logging.html"&gt;Python Logging Howto&lt;/a&gt; - Official doc tutorials&lt;/p&gt;
+&lt;h3&gt;Other Python Resources&lt;/h3&gt;
+&lt;p&gt;&lt;a href="https://developers.google.com/edu/python/"&gt;Google&amp;#8217;s Python Class&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;&lt;a href="https://pymotw.com/3/"&gt;Python 3 Module of the Week PyMOTW-3&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;&lt;a href="https://docs.python.org/3/tutorial/index.html"&gt;The Python Tutorial on python.org&lt;/a&gt;&lt;/p&gt;
+&lt;hr class="my-4"/&gt;
+
 &lt;h3&gt;Flask Web Framework&lt;/h3&gt;
 &lt;p&gt;&lt;a href="https://flask.palletsprojects.com/en/1.1.x/tutorial/"&gt;Official Flask Tutorial&lt;/a&gt;&lt;/p&gt;
 &lt;p&gt;&lt;a href="https://github.com/pallets/flask/tree/master/examples/tutorial"&gt;Official Flask Tutorial Source Code on Github&lt;/a&gt;&lt;/p&gt;
@@ -5940,9 +5943,9 @@ $python argparse_ex.py ...
 &lt;p&gt;The optparse module separates command line arguments into &lt;em&gt;options&lt;/em&gt; and &lt;em&gt;args&lt;/em&gt; 
 two groups.  It calls &lt;code&gt;parser.add_option&lt;/code&gt; methods to add options, and it does 
 not need to add &lt;em&gt;args&lt;/em&gt; to the parser beforehand. The argparse module has 
-&lt;em&gt;positional arguments&lt;/em&gt; and &lt;em&gt;optional arguments&lt;/em&gt;.  It calls &lt;code&gt;parse.add_argument&lt;/code&gt; 
+&lt;em&gt;positional arguments&lt;/em&gt; and &lt;em&gt;optional arguments&lt;/em&gt;.  It calls &lt;code&gt;parser.add_argument&lt;/code&gt; 
 method to add arguments. &lt;/p&gt;
-&lt;p&gt;Argparse module seems to widely used in many open source project, but newer 
+&lt;p&gt;Argparse module seems to widely used in many open source projects, but newer 
 third party module (e.g. Click) is also available. &lt;/p&gt;</content><category term="posts"></category><category term="python"></category></entry><entry><title>Vim Tips</title><link href="https://www.georgexyz.com/vim-tips.html" rel="alternate"></link><published>2019-04-01T12:45:00-04:00</published><updated>2020-08-09T17:37:00-04:00</updated><author><name>George Zhang</name></author><id>tag:www.georgexyz.com,2019-04-01:/vim-tips.html</id><summary type="html">&lt;p&gt;Ubuntu 18.04 comes with a stripped down version of Vim. If you want to use Vim for 
 serious work, you want the full version. &lt;/p&gt;
 &lt;h3&gt;Vim Installation&lt;/h3&gt;
