@@ -14,20 +14,41 @@ easy to revise the program a little to check if a product is &lt;em&gt;in stock&
 &lt;em&gt;out of stock&lt;/em&gt;.  &lt;/p&gt;
 &lt;p&gt;Here is a python script modified from the example.  The script will check 
 if a Ryobi Sander is in stock on &lt;em&gt;direct tools outlet&lt;/em&gt; website. &lt;/p&gt;
-&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;&lt;span class="c1"&gt;#ryobiSander.py - Opens ryobi sander page on directtoolsoutlet page&lt;/span&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;&lt;span class="ch"&gt;#!python3&lt;/span&gt;
+
+&lt;span class="c1"&gt;#ryobiSander.py - Opens ryobi sander page on directtoolsoutlet page&lt;/span&gt;
 
 &lt;span class="kn"&gt;import&lt;/span&gt; &lt;span class="nn"&gt;requests&lt;/span&gt;&lt;span class="o"&gt;,&lt;/span&gt; &lt;span class="nn"&gt;webbrowser&lt;/span&gt;&lt;span class="o"&gt;,&lt;/span&gt; &lt;span class="nn"&gt;bs4&lt;/span&gt;
 
 &lt;span class="nb"&gt;print&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="s1"&gt;&amp;#39;Searching...&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
-&lt;span class="n"&gt;url&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="s1"&gt;&amp;#39;https://www.directtoolsoutlet.com/Products/&amp;#39;&lt;/span&gt; &lt;span class="o"&gt;+&lt;/span&gt; 
-      &lt;span class="s1"&gt;&amp;#39;Power-Tools/Finishing-Tools/Sanders/&amp;#39;&lt;/span&gt; &lt;span class="o"&gt;+&lt;/span&gt; 
-      &lt;span class="s1"&gt;&amp;#39;RYOBI-ONE%2B-18-Volt-5-In-Random-Orbit-Sander/p/P411&amp;#39;&lt;/span&gt;
+
+&lt;span class="n"&gt;url&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="s1"&gt;&amp;#39;https://www.directtoolsoutlet.com/Products/Power-Tools/&amp;#39;&lt;/span&gt; &lt;span class="o"&gt;+&lt;/span&gt; 
+      &lt;span class="s1"&gt;&amp;#39;Finishing-Tools/Sanders/RYOBI-ONE%2B-18-Volt-5-In-Random-Orbit-Sander/p/P411&amp;#39;&lt;/span&gt;
+
+&lt;span class="c1"&gt;# url = &amp;#39;https://www.directtoolsoutlet.com/&amp;#39; +&lt;/span&gt;
+&lt;span class="c1"&gt;#        &amp;#39;Products/Power-Tools/RIDGID-13-In-Thickness-Planer/p/R4331&amp;#39; # test&lt;/span&gt;
+
 &lt;span class="n"&gt;res&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="n"&gt;requests&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;get&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;url&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
+
 &lt;span class="n"&gt;res&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;raise_for_status&lt;/span&gt;&lt;span class="p"&gt;()&lt;/span&gt;
 
+
 &lt;span class="n"&gt;soup&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="n"&gt;bs4&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;BeautifulSoup&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;res&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;text&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="s1"&gt;&amp;#39;html.parser&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
+
 &lt;span class="n"&gt;buttonElem&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="n"&gt;soup&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;select&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="s1"&gt;&amp;#39;.js-add-to-cart&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
-&lt;span class="k"&gt;if&lt;/span&gt; &lt;span class="n"&gt;buttonElem&lt;/span&gt;&lt;span class="p"&gt;[&lt;/span&gt;&lt;span class="mi"&gt;0&lt;/span&gt;&lt;span class="p"&gt;]&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;get&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="s1"&gt;&amp;#39;disabled&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt; &lt;span class="o"&gt;==&lt;/span&gt; &lt;span class="s1"&gt;&amp;#39;disabled&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt;
+
+&lt;span class="c1"&gt;# test code&lt;/span&gt;
+&lt;span class="c1"&gt;#print(len(buttonElem))&lt;/span&gt;
+&lt;span class="c1"&gt;#&lt;/span&gt;
+&lt;span class="c1"&gt;#for b in buttonElem:&lt;/span&gt;
+&lt;span class="c1"&gt;#    print(b)&lt;/span&gt;
+&lt;span class="c1"&gt;#&lt;/span&gt;
+&lt;span class="c1"&gt;#print(buttonElem[0].get(&amp;#39;disabled&amp;#39;) )  # disable is not a good indicator&lt;/span&gt;
+&lt;span class="c1"&gt;#print(buttonElem[0].get(&amp;#39;enabled&amp;#39;) )&lt;/span&gt;
+&lt;span class="c1"&gt;#&lt;/span&gt;
+&lt;span class="c1"&gt;#print(buttonElem[0].attrs[&amp;#39;class&amp;#39;])&lt;/span&gt;
+
+&lt;span class="k"&gt;if&lt;/span&gt; &lt;span class="s1"&gt;&amp;#39;js-enable-btn&amp;#39;&lt;/span&gt; &lt;span class="ow"&gt;not&lt;/span&gt; &lt;span class="ow"&gt;in&lt;/span&gt;  &lt;span class="n"&gt;buttonElem&lt;/span&gt;&lt;span class="p"&gt;[&lt;/span&gt;&lt;span class="mi"&gt;0&lt;/span&gt;&lt;span class="p"&gt;]&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;attrs&lt;/span&gt;&lt;span class="p"&gt;[&lt;/span&gt;&lt;span class="s1"&gt;&amp;#39;class&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;]:&lt;/span&gt;
     &lt;span class="nb"&gt;print&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="s1"&gt;&amp;#39;The button is disabled&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
 &lt;span class="k"&gt;else&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt;
     &lt;span class="nb"&gt;print&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="s1"&gt;&amp;#39;Opening &amp;#39;&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;url&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
@@ -2531,12 +2552,12 @@ which discusses the dictionary with more details. &lt;/li&gt;
 &lt;p&gt;The dictionary is so fundamental in Python and programmers should become familar with those methods. &lt;/p&gt;</content><category term="posts"></category><category term="python"></category></entry><entry><title>A Collection of Web Links</title><link href="https://www.georgexyz.com/web-links.html" rel="alternate"></link><published>2020-04-01T23:30:00-04:00</published><updated>2020-04-09T08:54:00-04:00</updated><author><name>George Zhang</name></author><id>tag:www.georgexyz.com,2020-04-01:/web-links.html</id><summary type="html">&lt;p&gt;This page has a collection of web links that I visit often.&lt;/p&gt;
 &lt;h3&gt;Python Quick Reference&lt;/h3&gt;
 &lt;p&gt;&lt;a href="https://github.com/JeffPaine/beautiful_idiomatic_python"&gt;Transforming Code into Beautiful, Idiomatic Python Code&lt;/a&gt; - Github Link&lt;/p&gt;
-&lt;p&gt;&lt;a href="https://youtu.be/OSGv2VnC0go"&gt;Transforming Code into Beautiful, Idiomatic Python …&lt;/a&gt;&lt;/p&gt;</summary><content type="html">&lt;p&gt;This page has a collection of web links that I visit often.&lt;/p&gt;
+&lt;p&gt;&lt;span class="pl-4"&gt;&lt;/span&gt;&lt;a href="https://youtu.be/OSGv2VnC0go"&gt;Transforming Code into Beautiful, Idiomatic Python …&lt;/a&gt;&lt;/p&gt;</summary><content type="html">&lt;p&gt;This page has a collection of web links that I visit often.&lt;/p&gt;
 &lt;h3&gt;Python Quick Reference&lt;/h3&gt;
 &lt;p&gt;&lt;a href="https://github.com/JeffPaine/beautiful_idiomatic_python"&gt;Transforming Code into Beautiful, Idiomatic Python Code&lt;/a&gt; - Github Link&lt;/p&gt;
-&lt;p&gt;&lt;a href="https://youtu.be/OSGv2VnC0go"&gt;Transforming Code into Beautiful, Idiomatic Python Youtube Video&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;&lt;span class="pl-4"&gt;&lt;/span&gt;&lt;a href="https://youtu.be/OSGv2VnC0go"&gt;Transforming Code into Beautiful, Idiomatic Python&lt;/a&gt; - Youtube Video Link&lt;/p&gt;
 &lt;p&gt;&lt;a href="https://nbviewer.jupyter.org/github/justmarkham/python-reference/blob/master/reference.ipynb"&gt;Python Quick Reference by Data School&lt;/a&gt; - Excellent Summary&lt;/p&gt;
-&lt;p&gt;&lt;a href="https://treyhunner.com/2019/05/python-builtins-worth-learning/"&gt;Python built-ins worth learning&lt;/a&gt; - Wonderful Resource&lt;/p&gt;
+&lt;p&gt;&lt;a href="https://treyhunner.com/2019/05/python-builtins-worth-learning/"&gt;Python Built-ins Worth Learning&lt;/a&gt; - Wonderful Resource&lt;/p&gt;
 &lt;h3&gt;Python Books I Love&lt;/h3&gt;
 &lt;p&gt;&lt;a href="https://automatetheboringstuff.com/"&gt;Automate The Boring Stuff with Python&lt;/a&gt;&lt;/p&gt;
 &lt;p&gt;&lt;a href="http://greenteapress.com/thinkpython2/html/index.html"&gt;Think Python&lt;/a&gt;&lt;/p&gt;
