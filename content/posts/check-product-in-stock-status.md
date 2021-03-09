@@ -51,4 +51,4 @@ I have some other ideas to add to this program:
 - Send an email or text message to remind that it is in stock
 
 The code does not look complicated.  The program shapes up to 
-be a ticket scalping tool, and I stop the post right here. 
+be a ticket scalping tool, and I am stopping the post right here. 

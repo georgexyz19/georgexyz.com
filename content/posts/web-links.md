@@ -9,25 +9,23 @@ no: 34
 
 This page has a collection of web links that I visit often.
 
-### Python Language
+### Python Quick Reference
+
+[Transforming Code into Beautiful, Idiomatic Python Code](https://github.com/JeffPaine/beautiful_idiomatic_python) - Github Link
+
+[Transforming Code into Beautiful, Idiomatic Python Youtube Video](https://youtu.be/OSGv2VnC0go)
+
+[Python Quick Reference by Data School](https://nbviewer.jupyter.org/github/justmarkham/python-reference/blob/master/reference.ipynb) - Excellent Summary
+
+[Python built-ins worth learning](https://treyhunner.com/2019/05/python-builtins-worth-learning/) - Wonderful Resource
+
+
+### Python Books I Love
 
 [Automate The Boring Stuff with Python](https://automatetheboringstuff.com/)
 
 [Think Python](http://greenteapress.com/thinkpython2/html/index.html)
 
-[Python Quick Reference by Data School](https://nbviewer.jupyter.org/github/justmarkham/python-reference/blob/master/reference.ipynb)
-
-[Python built-ins worth learning](https://treyhunner.com/2019/05/python-builtins-worth-learning/)
-
-[Transforming Code into Beautiful, Idiomatic Python Youtube Video](https://youtu.be/OSGv2VnC0go)
-
-[Transforming Code into Beautiful, Idiomatic Python Code](https://github.com/JeffPaine/beautiful_idiomatic_python)
-
-[Google's Python Class](https://developers.google.com/edu/python/)
-
-[Python 3 Module of the Week PyMOTW-3](https://pymotw.com/3/)
-
-[The Python Tutorial on python.org](https://docs.python.org/3/tutorial/index.html)
 
 ### Python Basics Reference
 
@@ -39,7 +37,7 @@ Here are some links on Python basics.
 
 [File IO](https://dbader.org/blog/python-file-io) - Tutorial on dbader.org
 
-[Files Chapter](https://greenteapress.com/thinkpython2/html/thinkpython2015.html) - Think Python Book Chapter 14 
+[Files Chapter](https://greenteapress.com/thinkpython2/html/thinkpython2015.html) - *Think Python* Book Chapter 14 
 
 [ReEx Module](https://developers.google.com/edu/python/regular-expressions) - Regular Expression Basics
 
@@ -47,11 +45,25 @@ Here are some links on Python basics.
 
 [Class Into](https://python.swaroopch.com/oop.html) - Chapter from *A Byte Of Python* book
 
+[String Methods](https://docs.python.org/3/library/stdtypes.html#string-methods) - List of String Methods on Python.org
+
+
 ### Python Intermediate
 
 Those links are for people who already know the Python basics.
 
 [Python Logging Howto](https://docs.python.org/3/howto/logging.html) - Official doc tutorials
+
+
+### Other Python Resources
+
+[Google's Python Class](https://developers.google.com/edu/python/)
+
+[Python 3 Module of the Week PyMOTW-3](https://pymotw.com/3/)
+
+[The Python Tutorial on python.org](https://docs.python.org/3/tutorial/index.html)
+
+<hr class="my-4"/>
 
 
 ### Flask Web Framework
