@@ -204,7 +204,7 @@ which is 198 lines long.  The <code>Moment</code> class code is shown below. </p
 <p>The <code>context_processor</code> static method returns a dictionary.  The key (<code>moment</code>) is 
 the variable or method name used in template, and the value (<code>current_app.extensions[moment]</code> refers to <code>_moment</code>) is the actual Python variable or method. The 
 implementation here is a little difficult to understand at a glance.  The <code>_moment</code>
-is actually a class defined in the same file.   </p>
+is actually a class.   </p>
 <div class="highlight"><pre><span></span><code><span class="k">class</span> <span class="nc">_moment</span><span class="p">(</span><span class="nb">object</span><span class="p">):</span>
     <span class="nd">@staticmethod</span>
     <span class="k">def</span> <span class="nf">include_moment</span><span class="p">(</span><span class="n">version</span><span class="o">=</span><span class="n">default_moment_version</span><span class="p">,</span> 

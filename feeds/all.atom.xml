@@ -78,7 +78,7 @@ Here is a short note to setup linux mint on a new computer. &lt;/p&gt;
 &lt;p&gt;Map the Synology Network Drive.&lt;/p&gt;
 &lt;/li&gt;
 &lt;li&gt;
-&lt;p&gt;Install git, this step is need for pyenv install. 
+&lt;p&gt;Install git, this step is needed for pyenv install. 
    Do not forget to set user email and user name. &lt;/p&gt;
 &lt;/li&gt;
 &lt;li&gt;
@@ -91,7 +91,7 @@ Here is a short note to setup linux mint on a new computer. &lt;/p&gt;
 &lt;p&gt;Download github repos with &lt;code&gt;git clone&lt;/code&gt;.&lt;/p&gt;
 &lt;/li&gt;
 &lt;li&gt;
-&lt;p&gt;Chrome, &lt;span class="caps"&gt;VS&lt;/span&gt; Code (download deb packages). 
+&lt;p&gt;Install Chrome, &lt;span class="caps"&gt;VS&lt;/span&gt; Code (download deb packages). 
    Chrome will ask for a keyring password, leave it blank.
    Check out 
    &lt;a href="https://askubuntu.com/questions/867/how-can-i-stop-being-prompted-to-unlock-the-default-keyring-on-boot"&gt;this post&lt;/a&gt; 
@@ -108,7 +108,7 @@ Here is a short note to setup linux mint on a new computer. &lt;/p&gt;
 &lt;h3&gt;Add New Fonts&lt;/h3&gt;
 &lt;p&gt;&lt;a href="https://community.linuxmint.com/tutorial/view/29"&gt;This tutorial&lt;/a&gt; 
 has information on how to add new fonts to Linux Mint. &lt;/p&gt;
-&lt;p&gt;The easy way is to copy file truetype font files to this directory. &lt;/p&gt;
+&lt;p&gt;The easy way is to copy truetype font files into this directory. &lt;/p&gt;
 &lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;/usr/share/fonts/truetype/
 &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
 
@@ -127,15 +127,13 @@ has information on how to add new fonts to Linux Mint. &lt;/p&gt;
 &lt;span class="p"&gt;}&lt;/span&gt;
 &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
 
-&lt;p&gt;The print function of Chrome is much better than Mozilla Firefox 
+&lt;p&gt;The print functionality of Chrome is much better than Mozilla Firefox 
 that comes with Linux Mint installation.  &lt;/p&gt;
 &lt;h3&gt;Printer Driver&lt;/h3&gt;
 &lt;p&gt;&lt;a href="https://www.usa.canon.com/internet/portal/us/home/support/details/printers/color-laser/canon-color-imageclass-mf642cdw"&gt;Canon website&lt;/a&gt; 
-provides printer drivers for Debian Linux.  You can use the 
-deb package. After you download the driver file, upzip it, and run 
-&lt;code&gt;sudo ./install.sh&lt;/code&gt; to install it.  &lt;/p&gt;
+provides printer drivers for Debian Linux.  Download the driver file, upzip it, and run &lt;code&gt;sudo ./install.sh&lt;/code&gt; command to install it.  &lt;/p&gt;
 &lt;h3&gt;Script&lt;/h3&gt;
-&lt;p&gt;Here are the output of &lt;code&gt;history&lt;/code&gt; bash command (after edit). &lt;/p&gt;
+&lt;p&gt;Here are the output of &lt;code&gt;history&lt;/code&gt; bash command (with edit). &lt;/p&gt;
 &lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;&lt;span class="c1"&gt;# update the system&lt;/span&gt;
 sudo apt-get update
 sudo apt-get upgrade
@@ -747,7 +745,7 @@ which is 198 lines long.  The &lt;code&gt;Moment&lt;/code&gt; class code is show
 &lt;p&gt;The &lt;code&gt;context_processor&lt;/code&gt; static method returns a dictionary.  The key (&lt;code&gt;moment&lt;/code&gt;) is 
 the variable or method name used in template, and the value (&lt;code&gt;current_app.extensions[moment]&lt;/code&gt; refers to &lt;code&gt;_moment&lt;/code&gt;) is the actual Python variable or method. The 
 implementation here is a little difficult to understand at a glance.  The &lt;code&gt;_moment&lt;/code&gt;
-is actually a class defined in the same file.   &lt;/p&gt;
+is actually a class.   &lt;/p&gt;
 &lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;&lt;span class="k"&gt;class&lt;/span&gt; &lt;span class="nc"&gt;_moment&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="nb"&gt;object&lt;/span&gt;&lt;span class="p"&gt;):&lt;/span&gt;
     &lt;span class="nd"&gt;@staticmethod&lt;/span&gt;
     &lt;span class="k"&gt;def&lt;/span&gt; &lt;span class="nf"&gt;include_moment&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;version&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="n"&gt;default_moment_version&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; 
@@ -2565,15 +2563,18 @@ which discusses the dictionary with more details. &lt;/li&gt;
 &lt;p&gt;Here are some links on Python basics.  &lt;/p&gt;
 &lt;p&gt;&lt;a href="https://docs.python.org/3/tutorial/datastructures.html"&gt;List Methods&lt;/a&gt; - in Section 5.1&lt;/p&gt;
 &lt;p&gt;&lt;a href="https://docs.python.org/3/library/stdtypes.html#typesmapping"&gt;Dict Methods&lt;/a&gt; - Section Mapping Types - dict&lt;/p&gt;
+&lt;p&gt;&lt;a href="https://docs.python.org/3/library/stdtypes.html#string-methods"&gt;String Methods&lt;/a&gt; - List of String Methods on Python.org&lt;/p&gt;
 &lt;p&gt;&lt;a href="https://dbader.org/blog/python-file-io"&gt;File &lt;span class="caps"&gt;IO&lt;/span&gt;&lt;/a&gt; - Tutorial on dbader.org&lt;/p&gt;
 &lt;p&gt;&lt;a href="https://greenteapress.com/thinkpython2/html/thinkpython2015.html"&gt;Files Chapter&lt;/a&gt; - &lt;em&gt;Think Python&lt;/em&gt; Book Chapter 14 &lt;/p&gt;
 &lt;p&gt;&lt;a href="https://developers.google.com/edu/python/regular-expressions"&gt;ReEx Module&lt;/a&gt; - Regular Expression Basics&lt;/p&gt;
 &lt;p&gt;&lt;a href="https://www.machinelearningplus.com/python/python-property/"&gt;Class Property&lt;/a&gt; - Nice property explanation&lt;/p&gt;
 &lt;p&gt;&lt;a href="https://python.swaroopch.com/oop.html"&gt;Class Into&lt;/a&gt; - Chapter from &lt;em&gt;A Byte Of Python&lt;/em&gt; book&lt;/p&gt;
-&lt;p&gt;&lt;a href="https://docs.python.org/3/library/stdtypes.html#string-methods"&gt;String Methods&lt;/a&gt; - List of String Methods on Python.org&lt;/p&gt;
 &lt;h3&gt;Python Intermediate&lt;/h3&gt;
 &lt;p&gt;Those links are for people who already know the Python basics.&lt;/p&gt;
 &lt;p&gt;&lt;a href="https://docs.python.org/3/howto/logging.html"&gt;Python Logging Howto&lt;/a&gt; - Official doc tutorials&lt;/p&gt;
+&lt;p&gt;&lt;a href="https://realpython.com/python-metaclasses/"&gt;Python Metaclasses&lt;/a&gt; - Meta class intro (realpython.com)&lt;/p&gt;
+&lt;p&gt;&lt;a href="https://www.blog.pythonlibrary.org/2016/06/10/python-201-what-are-descriptors/"&gt;What are Descriptors&lt;/a&gt; - Python 201 blog post&lt;/p&gt;
+&lt;p&gt;&lt;a href="https://nbviewer.jupyter.org/urls/gist.github.com/ChrisBeaumont/5758381/raw/descriptor_writeup.ipynb"&gt;Python Descriptors Demystified&lt;/a&gt; - Excellent doc&lt;/p&gt;
 &lt;h3&gt;Other Python Resources&lt;/h3&gt;
 &lt;p&gt;&lt;a href="https://developers.google.com/edu/python/"&gt;Google&amp;#8217;s Python Class&lt;/a&gt;&lt;/p&gt;
 &lt;p&gt;&lt;a href="https://pymotw.com/3/"&gt;Python 3 Module of the Week PyMOTW-3&lt;/a&gt;&lt;/p&gt;

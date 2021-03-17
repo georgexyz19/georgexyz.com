@@ -88,7 +88,7 @@ Here is a short note to setup linux mint on a new computer. </p>
 <p>Map the Synology Network Drive.</p>
 </li>
 <li>
-<p>Install git, this step is need for pyenv install. 
+<p>Install git, this step is needed for pyenv install. 
    Do not forget to set user email and user name. </p>
 </li>
 <li>
@@ -101,7 +101,7 @@ Here is a short note to setup linux mint on a new computer. </p>
 <p>Download github repos with <code>git clone</code>.</p>
 </li>
 <li>
-<p>Chrome, <span class="caps">VS</span> Code (download deb packages). 
+<p>Install Chrome, <span class="caps">VS</span> Code (download deb packages). 
    Chrome will ask for a keyring password, leave it blank.
    Check out 
    <a href="https://askubuntu.com/questions/867/how-can-i-stop-being-prompted-to-unlock-the-default-keyring-on-boot">this post</a> 
@@ -118,7 +118,7 @@ Here is a short note to setup linux mint on a new computer. </p>
 <h3>Add New Fonts</h3>
 <p><a href="https://community.linuxmint.com/tutorial/view/29">This tutorial</a> 
 has information on how to add new fonts to Linux Mint. </p>
-<p>The easy way is to copy file truetype font files to this directory. </p>
+<p>The easy way is to copy truetype font files into this directory. </p>
 <div class="highlight"><pre><span></span><code>/usr/share/fonts/truetype/
 </code></pre></div>
 
@@ -137,15 +137,13 @@ has information on how to add new fonts to Linux Mint. </p>
 <span class="p">}</span>
 </code></pre></div>
 
-<p>The print function of Chrome is much better than Mozilla Firefox 
+<p>The print functionality of Chrome is much better than Mozilla Firefox 
 that comes with Linux Mint installation.  </p>
 <h3>Printer Driver</h3>
 <p><a href="https://www.usa.canon.com/internet/portal/us/home/support/details/printers/color-laser/canon-color-imageclass-mf642cdw">Canon website</a> 
-provides printer drivers for Debian Linux.  You can use the 
-deb package. After you download the driver file, upzip it, and run 
-<code>sudo ./install.sh</code> to install it.  </p>
+provides printer drivers for Debian Linux.  Download the driver file, upzip it, and run <code>sudo ./install.sh</code> command to install it.  </p>
 <h3>Script</h3>
-<p>Here are the output of <code>history</code> bash command (after edit). </p>
+<p>Here are the output of <code>history</code> bash command (with edit). </p>
 <div class="highlight"><pre><span></span><code><span class="c1"># update the system</span>
 sudo apt-get update
 sudo apt-get upgrade
