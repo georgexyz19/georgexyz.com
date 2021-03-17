@@ -21,7 +21,7 @@ Here is a list of things to do:
 
 2. Map the Synology Network Drive.
 
-3. Install git, this step is need for pyenv install. 
+3. Install git, this step is needed for pyenv install. 
    Do not forget to set user email and user name. 
 
 4. Install pyenv and latest python 3.9.1.
@@ -30,7 +30,7 @@ Here is a list of things to do:
 
 6. Download github repos with `git clone`.
 
-7. Chrome, VS Code (download deb packages). 
+7. Install Chrome, VS Code (download deb packages). 
    Chrome will ask for a keyring password, leave it blank.
    Check out 
    [this post](https://askubuntu.com/questions/867/how-can-i-stop-being-prompted-to-unlock-the-default-keyring-on-boot) 
@@ -46,7 +46,7 @@ Here is a list of things to do:
 [This tutorial](https://community.linuxmint.com/tutorial/view/29) 
 has information on how to add new fonts to Linux Mint. 
 
-The easy way is to copy file truetype font files to this directory. 
+The easy way is to copy truetype font files into this directory. 
 
 ```
 /usr/share/fonts/truetype/
@@ -71,19 +71,17 @@ The file has these lines:
     "printcode.browserPath": "/usr/bin/google-chrome",
 }
 ```
-The print function of Chrome is much better than Mozilla Firefox 
+The print functionality of Chrome is much better than Mozilla Firefox 
 that comes with Linux Mint installation.  
 
 ### Printer Driver
 
 [Canon website](https://www.usa.canon.com/internet/portal/us/home/support/details/printers/color-laser/canon-color-imageclass-mf642cdw) 
-provides printer drivers for Debian Linux.  You can use the 
-deb package. After you download the driver file, upzip it, and run 
-`sudo ./install.sh` to install it.  
+provides printer drivers for Debian Linux.  Download the driver file, upzip it, and run `sudo ./install.sh` command to install it.  
 
 ### Script
 
-Here are the output of `history` bash command (after edit). 
+Here are the output of `history` bash command (with edit). 
 
 ```bash
 # update the system

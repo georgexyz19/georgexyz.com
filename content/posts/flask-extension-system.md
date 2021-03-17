@@ -154,7 +154,7 @@ class Moment(object):
 The `context_processor` static method returns a dictionary.  The key (`moment`) is 
 the variable or method name used in template, and the value (`current_app.extensions[moment]` refers to `_moment`) is the actual Python variable or method. The 
 implementation here is a little difficult to understand at a glance.  The `_moment`
-is actually a class defined in the same file.   
+is actually a class.   
 
 ```python
 class _moment(object):

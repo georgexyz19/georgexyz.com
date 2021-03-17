@@ -35,6 +35,8 @@ Here are some links on Python basics.
 
 [Dict Methods](https://docs.python.org/3/library/stdtypes.html#typesmapping) - Section Mapping Types - dict
 
+[String Methods](https://docs.python.org/3/library/stdtypes.html#string-methods) - List of String Methods on Python.org
+
 [File IO](https://dbader.org/blog/python-file-io) - Tutorial on dbader.org
 
 [Files Chapter](https://greenteapress.com/thinkpython2/html/thinkpython2015.html) - *Think Python* Book Chapter 14 
@@ -45,14 +47,18 @@ Here are some links on Python basics.
 
 [Class Into](https://python.swaroopch.com/oop.html) - Chapter from *A Byte Of Python* book
 
-[String Methods](https://docs.python.org/3/library/stdtypes.html#string-methods) - List of String Methods on Python.org
-
 
 ### Python Intermediate
 
 Those links are for people who already know the Python basics.
 
 [Python Logging Howto](https://docs.python.org/3/howto/logging.html) - Official doc tutorials
+
+[Python Metaclasses](https://realpython.com/python-metaclasses/) - Meta class intro (realpython.com)
+
+[What are Descriptors](https://www.blog.pythonlibrary.org/2016/06/10/python-201-what-are-descriptors/) - Python 201 blog post
+
+[Python Descriptors Demystified](https://nbviewer.jupyter.org/urls/gist.github.com/ChrisBeaumont/5758381/raw/descriptor_writeup.ipynb) - Excellent doc
 
 
 ### Other Python Resources
