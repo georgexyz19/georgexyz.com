@@ -185,7 +185,7 @@ class DeferredAttribute:
 ```
 
 The `DeferredAttribute` class does not define a `__set__` method as descriptors 
-in other articles.  In such a case, the `b.name` in a statement `b.name = 'Python Tricks` 
+in other articles.  In such a case, the `b.name` in a statement `b.name = 'Python Tricks'` 
 refers to instance attribute, which overrides the `Book.name` class level attribute. 
 The second answer in 
 [this stack overflow post](https://stackoverflow.com/questions/48537906/how-do-keyword-arguments-interact-with-model-django?rq=1) 
