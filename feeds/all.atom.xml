@@ -4869,7 +4869,7 @@ between &lt;code&gt;__dict__&lt;/code&gt; attribute and &lt;code&gt;getattr&lt;/
 &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
 
 &lt;p&gt;The &lt;code&gt;DeferredAttribute&lt;/code&gt; class does not define a &lt;code&gt;__set__&lt;/code&gt; method as descriptors 
-in other articles.  In such a case, the &lt;code&gt;b.name&lt;/code&gt; in a statement &lt;code&gt;b.name = 'Python Tricks&lt;/code&gt; 
+in other articles.  In such a case, the &lt;code&gt;b.name&lt;/code&gt; in a statement &lt;code&gt;b.name = 'Python Tricks'&lt;/code&gt; 
 refers to instance attribute, which overrides the &lt;code&gt;Book.name&lt;/code&gt; class level attribute. 
 The second answer in 
 &lt;a href="https://stackoverflow.com/questions/48537906/how-do-keyword-arguments-interact-with-model-django?rq=1"&gt;this stack overflow post&lt;/a&gt; 
