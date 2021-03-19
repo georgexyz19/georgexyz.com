@@ -108,6 +108,10 @@ Those links are for people who already know the Python basics.
 
 [Flask Tutorial by Corey Schafer Source Code](https://github.com/CoreyMSchafer/code_snippets/tree/master/Python/Flask_Blog)
 
+### Flask Intermediate
+
+[Getting Started with WSGI](https://lucumr.pocoo.org/2007/5/21/getting-started-with-wsgi/) - Best WSGI writing by Armin Ronacher
+
 
 ### Javascript Language
 
