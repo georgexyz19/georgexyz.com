@@ -41,7 +41,9 @@ Here are some links on Python basics.
 
 [Files Chapter](https://greenteapress.com/thinkpython2/html/thinkpython2015.html) - *Think Python* Book Chapter 14 
 
-[ReEx Module](https://developers.google.com/edu/python/regular-expressions) - Regular Expression Basics
+[Regex Module](https://developers.google.com/edu/python/regular-expressions) - Regular Expression Basics
+
+[Regex Module on Python.org](https://docs.python.org/3/library/re.html) - Official doc
 
 [Class Property](https://www.machinelearningplus.com/python/python-property/) - Nice property explanation
 
