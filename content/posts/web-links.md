@@ -109,9 +109,9 @@ Those links are for people who already know the Python basics.
 
 ### Javascript Language
 
-[Eloquent Javascript](https://eloquentjavascript.net/)
+[The Modern Javascript Tutorial Javascript.info](https://javascript.info/) - Best js tutorial
 
-[The Modern Javascript Tutorial Javascript.info](https://javascript.info/)
+[Eloquent Javascript](https://eloquentjavascript.net/)
 
 [Javascript Moment (Momentjs) Date and Time Display Library](https://momentjs.com/)
 
