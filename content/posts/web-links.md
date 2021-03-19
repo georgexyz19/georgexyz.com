@@ -60,6 +60,8 @@ Those links are for people who already know the Python basics.
 
 [Python Descriptors Demystified](https://nbviewer.jupyter.org/urls/gist.github.com/ChrisBeaumont/5758381/raw/descriptor_writeup.ipynb) - Excellent doc
 
+[Python Decorators](https://blog.miguelgrinberg.com/post/the-ultimate-guide-to-python-decorators-part-i-function-registration) - Guides by Miguel Grinberg 
+
 
 ### Other Python Resources
 
