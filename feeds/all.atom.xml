@@ -1152,6 +1152,14 @@ to the &lt;code&gt;main&lt;/code&gt; method. The
 &lt;a href="https://click.palletsprojects.com/en/7.x/commands/"&gt;click documentation&lt;/a&gt; 
 has a section &lt;em&gt;Custom Multi Commands&lt;/em&gt; and the example in this section also overrides
 those two methods. &lt;/p&gt;
+&lt;p&gt;The &lt;code&gt;__init__&lt;/code&gt; method of &lt;code&gt;FlaskGroup&lt;/code&gt; class adds three default commands to click. 
+The &lt;code&gt;add_command&lt;/code&gt; method is defined on L1343 Group class of click/core.py file. &lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;&lt;span class="k"&gt;if&lt;/span&gt; &lt;span class="n"&gt;add_default_commands&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt;
+    &lt;span class="bp"&gt;self&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;add_command&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;run_command&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
+    &lt;span class="bp"&gt;self&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;add_command&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;shell_command&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
+    &lt;span class="bp"&gt;self&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;add_command&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;routes_command&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+
 &lt;p&gt;The actual &lt;code&gt;run&lt;/code&gt; command is defined on Line 828 and the function is &lt;code&gt;run_command&lt;/code&gt;. 
 The command &lt;code&gt;run&lt;/code&gt; becomes part of flask built in commands loaded by default. 
 The code which loads the built in commands is in the &lt;code&gt;FlaskGroup.get_command&lt;/code&gt;.  &lt;/p&gt;
