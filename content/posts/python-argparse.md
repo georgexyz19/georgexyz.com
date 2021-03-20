@@ -96,3 +96,43 @@ method to add arguments.
 
 Argparse module seems to widely used in many open source projects, but newer 
 third party module (e.g. Click) is also available. 
+
+### Click Package
+
+If you write the example as a click app, the code looks like this. The `click` 
+package uses python decorators.  The code logic seems to be a little 
+clearer. 
+
+```python
+import click
+
+@click.command()
+@click.option('--xhtml', 
+              '-x', 
+              default=False, 
+              help='create a XHTML template instead of HTML')
+@click.option('--cssfile', 
+              '-c', 
+              default='style.css',
+              help="CSS file to link")
+@click.argument('file')
+def main(xhtml, cssfile, file):
+    print("xhtml option is: \n    ", xhtml)
+    print("cssfile option is : \n    ", cssfile)
+    print("file is : \n    ", file)
+
+if __name__ == '__main__':
+    main()
+```
+
+The bash commands to test code will be a little different than above.
+
+```
+python click_example.py -h
+python click_example.py
+python click_example.py myfile.html
+python click_example.py -x -c mystyle.css myfile.html # error
+python click_example.py -x True -c mystyle.css myfile.html
+python click_example.py --xhtml True -c mystyle.css myfile.html
+python click_example.py --xhtml True --cssfile mystyle.css myfile.html
+```
