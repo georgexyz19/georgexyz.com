@@ -20,6 +20,7 @@ how optparse module works behind scene.
 
 Following code is a rewrite of the example with argparse. 
 You can execute similar commands shown below and compare the results. 
+Here is the link to the code in github: [github repo](https://github.com/georgexyz19/argparse_examples).  
 
 ```python
 #!/usr/bin/env python3
