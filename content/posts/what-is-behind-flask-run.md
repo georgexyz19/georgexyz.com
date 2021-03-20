@@ -129,6 +129,16 @@ to the `main` method. The
 has a section *Custom Multi Commands* and the example in this section also overrides
 those two methods. 
 
+The `__init__` method of `FlaskGroup` class adds three default commands to click. 
+The `add_command` method is defined on L1343 Group class of click/core.py file. 
+
+```python
+if add_default_commands:
+    self.add_command(run_command)
+    self.add_command(shell_command)
+    self.add_command(routes_command)
+```
+
 The actual `run` command is defined on Line 828 and the function is `run_command`. 
 The command `run` becomes part of flask built in commands loaded by default. 
 The code which loads the built in commands is in the `FlaskGroup.get_command`.  
