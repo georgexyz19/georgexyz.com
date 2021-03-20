@@ -5981,7 +5981,41 @@ not need to add &lt;em&gt;args&lt;/em&gt; to the parser beforehand. The argparse
 &lt;em&gt;positional arguments&lt;/em&gt; and &lt;em&gt;optional arguments&lt;/em&gt;.  It calls &lt;code&gt;parser.add_argument&lt;/code&gt; 
 method to add arguments. &lt;/p&gt;
 &lt;p&gt;Argparse module seems to widely used in many open source projects, but newer 
-third party module (e.g. Click) is also available. &lt;/p&gt;</content><category term="posts"></category><category term="python"></category></entry><entry><title>Vim Tips</title><link href="https://www.georgexyz.com/vim-tips.html" rel="alternate"></link><published>2019-04-01T12:45:00-04:00</published><updated>2020-08-09T17:37:00-04:00</updated><author><name>George Zhang</name></author><id>tag:www.georgexyz.com,2019-04-01:/vim-tips.html</id><summary type="html">&lt;p&gt;Ubuntu 18.04 comes with a stripped down version of Vim. If you want to use Vim for 
+third party module (e.g. Click) is also available. &lt;/p&gt;
+&lt;h3&gt;Click Package&lt;/h3&gt;
+&lt;p&gt;If you write the example as a click app, the code looks like this. The &lt;code&gt;click&lt;/code&gt; 
+package uses python decorators.  The code logic seems to be a little 
+clearer. &lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;&lt;span class="kn"&gt;import&lt;/span&gt; &lt;span class="nn"&gt;click&lt;/span&gt;
+
+&lt;span class="nd"&gt;@click&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;command&lt;/span&gt;&lt;span class="p"&gt;()&lt;/span&gt;
+&lt;span class="nd"&gt;@click&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;option&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="s1"&gt;&amp;#39;--xhtml&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; 
+              &lt;span class="s1"&gt;&amp;#39;-x&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; 
+              &lt;span class="n"&gt;default&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="kc"&gt;False&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; 
+              &lt;span class="n"&gt;help&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="s1"&gt;&amp;#39;create a XHTML template instead of HTML&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
+&lt;span class="nd"&gt;@click&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;option&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="s1"&gt;&amp;#39;--cssfile&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; 
+              &lt;span class="s1"&gt;&amp;#39;-c&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; 
+              &lt;span class="n"&gt;default&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="s1"&gt;&amp;#39;style.css&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;
+              &lt;span class="n"&gt;help&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="s2"&gt;&amp;quot;CSS file to link&amp;quot;&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
+&lt;span class="nd"&gt;@click&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;argument&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="s1"&gt;&amp;#39;file&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
+&lt;span class="k"&gt;def&lt;/span&gt; &lt;span class="nf"&gt;main&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;xhtml&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;cssfile&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;file&lt;/span&gt;&lt;span class="p"&gt;):&lt;/span&gt;
+    &lt;span class="nb"&gt;print&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="s2"&gt;&amp;quot;xhtml option is: &lt;/span&gt;&lt;span class="se"&gt;\n&lt;/span&gt;&lt;span class="s2"&gt;    &amp;quot;&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;xhtml&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
+    &lt;span class="nb"&gt;print&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="s2"&gt;&amp;quot;cssfile option is : &lt;/span&gt;&lt;span class="se"&gt;\n&lt;/span&gt;&lt;span class="s2"&gt;    &amp;quot;&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;cssfile&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
+    &lt;span class="nb"&gt;print&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="s2"&gt;&amp;quot;file is : &lt;/span&gt;&lt;span class="se"&gt;\n&lt;/span&gt;&lt;span class="s2"&gt;    &amp;quot;&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;file&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
+
+&lt;span class="k"&gt;if&lt;/span&gt; &lt;span class="vm"&gt;__name__&lt;/span&gt; &lt;span class="o"&gt;==&lt;/span&gt; &lt;span class="s1"&gt;&amp;#39;__main__&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt;
+    &lt;span class="n"&gt;main&lt;/span&gt;&lt;span class="p"&gt;()&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+
+&lt;p&gt;The bash commands to test code will be a little different than above.&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;python click_example.py -h
+python click_example.py
+python click_example.py myfile.html
+python click_example.py -x -c mystyle.css myfile.html # error
+python click_example.py -x True -c mystyle.css myfile.html
+python click_example.py --xhtml True -c mystyle.css myfile.html
+python click_example.py --xhtml True --cssfile mystyle.css myfile.html
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;</content><category term="posts"></category><category term="python"></category></entry><entry><title>Vim Tips</title><link href="https://www.georgexyz.com/vim-tips.html" rel="alternate"></link><published>2019-04-01T12:45:00-04:00</published><updated>2020-08-09T17:37:00-04:00</updated><author><name>George Zhang</name></author><id>tag:www.georgexyz.com,2019-04-01:/vim-tips.html</id><summary type="html">&lt;p&gt;Ubuntu 18.04 comes with a stripped down version of Vim. If you want to use Vim for 
 serious work, you want the full version. &lt;/p&gt;
 &lt;h3&gt;Vim Installation&lt;/h3&gt;
 &lt;p&gt;The default version …&lt;/p&gt;</summary><content type="html">&lt;p&gt;Ubuntu 18.04 comes with a stripped down version of Vim. If you want to use Vim for 

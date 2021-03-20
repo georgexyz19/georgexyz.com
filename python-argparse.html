@@ -152,6 +152,40 @@ not need to add <em>args</em> to the parser beforehand. The argparse module has
 method to add arguments. </p>
 <p>Argparse module seems to widely used in many open source projects, but newer 
 third party module (e.g. Click) is also available. </p>
+<h3>Click Package</h3>
+<p>If you write the example as a click app, the code looks like this. The <code>click</code> 
+package uses python decorators.  The code logic seems to be a little 
+clearer. </p>
+<div class="highlight"><pre><span></span><code><span class="kn">import</span> <span class="nn">click</span>
+
+<span class="nd">@click</span><span class="o">.</span><span class="n">command</span><span class="p">()</span>
+<span class="nd">@click</span><span class="o">.</span><span class="n">option</span><span class="p">(</span><span class="s1">&#39;--xhtml&#39;</span><span class="p">,</span> 
+              <span class="s1">&#39;-x&#39;</span><span class="p">,</span> 
+              <span class="n">default</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span> 
+              <span class="n">help</span><span class="o">=</span><span class="s1">&#39;create a XHTML template instead of HTML&#39;</span><span class="p">)</span>
+<span class="nd">@click</span><span class="o">.</span><span class="n">option</span><span class="p">(</span><span class="s1">&#39;--cssfile&#39;</span><span class="p">,</span> 
+              <span class="s1">&#39;-c&#39;</span><span class="p">,</span> 
+              <span class="n">default</span><span class="o">=</span><span class="s1">&#39;style.css&#39;</span><span class="p">,</span>
+              <span class="n">help</span><span class="o">=</span><span class="s2">&quot;CSS file to link&quot;</span><span class="p">)</span>
+<span class="nd">@click</span><span class="o">.</span><span class="n">argument</span><span class="p">(</span><span class="s1">&#39;file&#39;</span><span class="p">)</span>
+<span class="k">def</span> <span class="nf">main</span><span class="p">(</span><span class="n">xhtml</span><span class="p">,</span> <span class="n">cssfile</span><span class="p">,</span> <span class="n">file</span><span class="p">):</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;xhtml option is: </span><span class="se">\n</span><span class="s2">    &quot;</span><span class="p">,</span> <span class="n">xhtml</span><span class="p">)</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;cssfile option is : </span><span class="se">\n</span><span class="s2">    &quot;</span><span class="p">,</span> <span class="n">cssfile</span><span class="p">)</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;file is : </span><span class="se">\n</span><span class="s2">    &quot;</span><span class="p">,</span> <span class="n">file</span><span class="p">)</span>
+
+<span class="k">if</span> <span class="vm">__name__</span> <span class="o">==</span> <span class="s1">&#39;__main__&#39;</span><span class="p">:</span>
+    <span class="n">main</span><span class="p">()</span>
+</code></pre></div>
+
+<p>The bash commands to test code will be a little different than above.</p>
+<div class="highlight"><pre><span></span><code>python click_example.py -h
+python click_example.py
+python click_example.py myfile.html
+python click_example.py -x -c mystyle.css myfile.html # error
+python click_example.py -x True -c mystyle.css myfile.html
+python click_example.py --xhtml True -c mystyle.css myfile.html
+python click_example.py --xhtml True --cssfile mystyle.css myfile.html
+</code></pre></div>
 
 
 
