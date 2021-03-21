@@ -49,8 +49,8 @@ $ flask run
 
 When you run the command `pip install flask`, the pip system installs a `flask` python script file in the 
 `venv/bin/` directory.  You can think of `flask` as a command and `run` as an argument to the command. 
-The `run` part is actually a sub-command.  You can run `flask --help` to find out other available 
-sub-commands. 
+The `run` part is actually a sub-command in `click`.  You can run `flask --help` to 
+find out other available sub-commands. 
 
 The `flask` script file in `venv/bin/` directory only has a few lines as shown below. The script is 
 calling the `main()` function in the flask.cli module. 
@@ -78,7 +78,19 @@ def main(as_module=False):
         prog_name="python -m flask" if as_module else None)
 ```
 
-Here things become complicated and I have not figured everything out.  The FlaskGroup class 
+Here things become complicated and I have not figured everything out.  
+
+The `__init__` method of `FlaskGroup` class (L487) adds three sub-commands to click. 
+The `add_command` method is defined on L1343 Group class of click/core.py file. 
+
+```python
+if add_default_commands:
+    self.add_command(run_command)
+    self.add_command(shell_command)
+    self.add_command(routes_command)
+```
+
+The FlaskGroup class 
 is defined on Line 462 and it has a main method defined on Line 567 (code shown below). 
 The method makes changes to some settings and calls the `main` method in super class.   
 
@@ -128,16 +140,6 @@ to the `main` method. The
 [click documentation](https://click.palletsprojects.com/en/7.x/commands/) 
 has a section *Custom Multi Commands* and the example in this section also overrides
 those two methods. 
-
-The `__init__` method of `FlaskGroup` class adds three default commands to click. 
-The `add_command` method is defined on L1343 Group class of click/core.py file. 
-
-```python
-if add_default_commands:
-    self.add_command(run_command)
-    self.add_command(shell_command)
-    self.add_command(routes_command)
-```
 
 The actual `run` command is defined on Line 828 and the function is `run_command`. 
 The command `run` becomes part of flask built in commands loaded by default. 
