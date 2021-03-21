@@ -1186,9 +1186,9 @@ settings.  I will discuss it in a later article. &lt;/p&gt;
 the &lt;code&gt;cli.py&lt;/code&gt; file.   &lt;/p&gt;
 &lt;p&gt;The Flask documentation has a page 
 &lt;a href="https://flask.palletsprojects.com/en/1.1.x/cli/"&gt;Command Line Interface&lt;/a&gt; 
-which has very good info on Flask &lt;span class="caps"&gt;CLI&lt;/span&gt;. &lt;/p&gt;</content><category term="posts"></category><category term="flask"></category></entry><entry><title>Flask Application And Request Contexts</title><link href="https://www.georgexyz.com/flask-application-and-request-contexts.html" rel="alternate"></link><published>2020-10-29T09:13:00-04:00</published><updated>2020-10-29T09:13:00-04:00</updated><author><name>George Zhang</name></author><id>tag:www.georgexyz.com,2020-10-29:/flask-application-and-request-contexts.html</id><summary type="html">&lt;p&gt;Application and request contexts are one of the hard to understand concepts in Flask. 
+which has very good info on Flask &lt;span class="caps"&gt;CLI&lt;/span&gt;. &lt;/p&gt;</content><category term="posts"></category><category term="flask"></category></entry><entry><title>Flask Application And Request Contexts</title><link href="https://www.georgexyz.com/flask-application-and-request-contexts.html" rel="alternate"></link><published>2020-10-29T09:13:00-04:00</published><updated>2020-10-29T09:13:00-04:00</updated><author><name>George Zhang</name></author><id>tag:www.georgexyz.com,2020-10-29:/flask-application-and-request-contexts.html</id><summary type="html">&lt;p&gt;Application and request contexts are difficult concepts in Flask. 
 They are easy for programmers to use, but they are not easy to understand. The 
-implementation …&lt;/p&gt;</summary><content type="html">&lt;p&gt;Application and request contexts are one of the hard to understand concepts in Flask. 
+implementation of those concepts is complicated …&lt;/p&gt;</summary><content type="html">&lt;p&gt;Application and request contexts are difficult concepts in Flask. 
 They are easy for programmers to use, but they are not easy to understand. The 
 implementation of those concepts is complicated. &lt;/p&gt;
 &lt;p&gt;Patrick Kennedy wrote a long article on testdriven.io website regarding this topic. He 
@@ -1198,11 +1198,12 @@ in more details than other articles. &lt;/p&gt;
 &lt;p&gt;Article - &lt;a href="https://testdriven.io/blog/flask-contexts-advanced/"&gt;Deep Dive into Flask&amp;#8217;s Application and Request Contexts&lt;/a&gt;&lt;/p&gt;
 &lt;p&gt;Presentation on Youtube - &lt;a href="https://www.youtube.com/watch?v=fq8y-9UHjyk&amp;amp;ab_channel=FlaskCon2020"&gt;Demystifying Flask&amp;#8217;s Application and Request Contexts with pytest&lt;/a&gt;&lt;/p&gt;
 &lt;p&gt;The article above needs some background knowledge on Python threading.  The realpython 
-website has an excellent article on threading by Jim Anderson. The article covers most threading topics in the official Python threading documentation. &lt;/p&gt;
+website has an excellent article on threading by Jim Anderson. The article 
+covers most threading topics in the official Python threading documentation. &lt;/p&gt;
 &lt;p&gt;Realpython.com - &lt;a href="https://realpython.com/intro-to-python-threading/"&gt;An Intro to Threading in Python&lt;/a&gt;&lt;/p&gt;
 &lt;p&gt;Python.org - &lt;a href="https://docs.python.org/3/library/threading.html#thread-local-data"&gt;Threading - Thread-based Parallelism&lt;/a&gt;&lt;/p&gt;
 &lt;p&gt;The Flask documentation has one page for application context and another page for request context. 
-The documentation pages are not written in a tutorial style and not easy to understand if you do not 
+The documentation pages are not written in a tutorial style and are difficult understand if you do not 
 read the code, but they are good and accurate.&lt;/p&gt;
 &lt;p&gt;Flask documentation page - &lt;a href="https://flask.palletsprojects.com/en/1.1.x/appcontext/"&gt;The Application Context&lt;/a&gt;&lt;/p&gt;
 &lt;p&gt;Flask documentation page - &lt;a href="https://flask.palletsprojects.com/en/1.1.x/reqcontext/"&gt;The Request Context&lt;/a&gt; &lt;/p&gt;</content><category term="posts"></category><category term="flask"></category><category term="python"></category></entry><entry><title>Two Git Books</title><link href="https://www.georgexyz.com/two-git-books.html" rel="alternate"></link><published>2020-09-30T10:23:00-04:00</published><updated>2020-09-30T10:23:00-04:00</updated><author><name>George Zhang</name></author><id>tag:www.georgexyz.com,2020-09-30:/two-git-books.html</id><summary type="html">&lt;p&gt;This post is about two Git books I recently read.  Git is a complicated tool 
@@ -2586,6 +2587,7 @@ which discusses the dictionary with more details. &lt;/li&gt;
 &lt;p&gt;&lt;a href="https://www.blog.pythonlibrary.org/2016/06/10/python-201-what-are-descriptors/"&gt;What are Descriptors&lt;/a&gt; - Python 201 blog post&lt;/p&gt;
 &lt;p&gt;&lt;a href="https://nbviewer.jupyter.org/urls/gist.github.com/ChrisBeaumont/5758381/raw/descriptor_writeup.ipynb"&gt;Python Descriptors Demystified&lt;/a&gt; - Excellent doc&lt;/p&gt;
 &lt;p&gt;&lt;a href="https://blog.miguelgrinberg.com/post/the-ultimate-guide-to-python-decorators-part-i-function-registration"&gt;Python Decorators&lt;/a&gt; - Guides by Miguel Grinberg &lt;/p&gt;
+&lt;p&gt;&lt;a href="https://realpython.com/intro-to-python-threading/"&gt;Python Threading Into&lt;/a&gt; - Excellent realpython.com article&lt;/p&gt;
 &lt;h3&gt;Other Python Resources&lt;/h3&gt;
 &lt;p&gt;&lt;a href="https://developers.google.com/edu/python/"&gt;Google&amp;#8217;s Python Class&lt;/a&gt;&lt;/p&gt;
 &lt;p&gt;&lt;a href="https://pymotw.com/3/"&gt;Python 3 Module of the Week PyMOTW-3&lt;/a&gt;&lt;/p&gt;
