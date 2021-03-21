@@ -6,7 +6,7 @@ tags: flask, python
 note: A short post about Flask application and request contexts
 no: 57
 
-Application and request contexts are one of the hard to understand concepts in Flask. 
+Application and request contexts are difficult concepts in Flask. 
 They are easy for programmers to use, but they are not easy to understand. The 
 implementation of those concepts is complicated. 
 
@@ -20,14 +20,15 @@ Article - [Deep Dive into Flask's Application and Request Contexts](https://test
 Presentation on Youtube - [Demystifying Flask's Application and Request Contexts with pytest](https://www.youtube.com/watch?v=fq8y-9UHjyk&ab_channel=FlaskCon2020)
 
 The article above needs some background knowledge on Python threading.  The realpython 
-website has an excellent article on threading by Jim Anderson. The article covers most threading topics in the official Python threading documentation. 
+website has an excellent article on threading by Jim Anderson. The article 
+covers most threading topics in the official Python threading documentation. 
 
 Realpython.com - [An Intro to Threading in Python](https://realpython.com/intro-to-python-threading/)
 
 Python.org - [Threading - Thread-based Parallelism](https://docs.python.org/3/library/threading.html#thread-local-data)
 
 The Flask documentation has one page for application context and another page for request context. 
-The documentation pages are not written in a tutorial style and not easy to understand if you do not 
+The documentation pages are not written in a tutorial style and are difficult understand if you do not 
 read the code, but they are good and accurate.
 
 Flask documentation page - [The Application Context](https://flask.palletsprojects.com/en/1.1.x/appcontext/)

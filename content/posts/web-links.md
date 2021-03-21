@@ -64,6 +64,8 @@ Those links are for people who already know the Python basics.
 
 [Python Decorators](https://blog.miguelgrinberg.com/post/the-ultimate-guide-to-python-decorators-part-i-function-registration) - Guides by Miguel Grinberg 
 
+[Python Threading Into](https://realpython.com/intro-to-python-threading/) - Excellent realpython.com article
+
 
 ### Other Python Resources
 
