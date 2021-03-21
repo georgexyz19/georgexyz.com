@@ -1083,8 +1083,8 @@ $ flask run
 
 &lt;p&gt;When you run the command &lt;code&gt;pip install flask&lt;/code&gt;, the pip system installs a &lt;code&gt;flask&lt;/code&gt; python script file in the 
 &lt;code&gt;venv/bin/&lt;/code&gt; directory.  You can think of &lt;code&gt;flask&lt;/code&gt; as a command and &lt;code&gt;run&lt;/code&gt; as an argument to the command. 
-The &lt;code&gt;run&lt;/code&gt; part is actually a sub-command.  You can run &lt;code&gt;flask --help&lt;/code&gt; to find out other available 
-sub-commands. &lt;/p&gt;
+The &lt;code&gt;run&lt;/code&gt; part is actually a sub-command in &lt;code&gt;click&lt;/code&gt;.  You can run &lt;code&gt;flask --help&lt;/code&gt; to 
+find out other available sub-commands. &lt;/p&gt;
 &lt;p&gt;The &lt;code&gt;flask&lt;/code&gt; script file in &lt;code&gt;venv/bin/&lt;/code&gt; directory only has a few lines as shown below. The script is 
 calling the &lt;code&gt;main()&lt;/code&gt; function in the flask.cli module. &lt;/p&gt;
 &lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;import re
@@ -1107,7 +1107,16 @@ of &lt;code&gt;cli.main&lt;/code&gt; is an instance of FlaskGroup class defined 
         prog_name=&amp;quot;python -m flask&amp;quot; if as_module else None)
 &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
 
-&lt;p&gt;Here things become complicated and I have not figured everything out.  The FlaskGroup class 
+&lt;p&gt;Here things become complicated and I have not figured everything out.  &lt;/p&gt;
+&lt;p&gt;The &lt;code&gt;__init__&lt;/code&gt; method of &lt;code&gt;FlaskGroup&lt;/code&gt; class (L487) adds three sub-commands to click. 
+The &lt;code&gt;add_command&lt;/code&gt; method is defined on L1343 Group class of click/core.py file. &lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;&lt;span class="k"&gt;if&lt;/span&gt; &lt;span class="n"&gt;add_default_commands&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt;
+    &lt;span class="bp"&gt;self&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;add_command&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;run_command&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
+    &lt;span class="bp"&gt;self&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;add_command&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;shell_command&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
+    &lt;span class="bp"&gt;self&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;add_command&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;routes_command&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+
+&lt;p&gt;The FlaskGroup class 
 is defined on Line 462 and it has a main method defined on Line 567 (code shown below). 
 The method makes changes to some settings and calls the &lt;code&gt;main&lt;/code&gt; method in super class.   &lt;/p&gt;
 &lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;def main(self, *args, **kwargs):
@@ -1152,14 +1161,6 @@ to the &lt;code&gt;main&lt;/code&gt; method. The
 &lt;a href="https://click.palletsprojects.com/en/7.x/commands/"&gt;click documentation&lt;/a&gt; 
 has a section &lt;em&gt;Custom Multi Commands&lt;/em&gt; and the example in this section also overrides
 those two methods. &lt;/p&gt;
-&lt;p&gt;The &lt;code&gt;__init__&lt;/code&gt; method of &lt;code&gt;FlaskGroup&lt;/code&gt; class adds three default commands to click. 
-The &lt;code&gt;add_command&lt;/code&gt; method is defined on L1343 Group class of click/core.py file. &lt;/p&gt;
-&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;&lt;span class="k"&gt;if&lt;/span&gt; &lt;span class="n"&gt;add_default_commands&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt;
-    &lt;span class="bp"&gt;self&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;add_command&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;run_command&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
-    &lt;span class="bp"&gt;self&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;add_command&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;shell_command&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
-    &lt;span class="bp"&gt;self&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;add_command&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;routes_command&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
-
 &lt;p&gt;The actual &lt;code&gt;run&lt;/code&gt; command is defined on Line 828 and the function is &lt;code&gt;run_command&lt;/code&gt;. 
 The command &lt;code&gt;run&lt;/code&gt; becomes part of flask built in commands loaded by default. 
 The code which loads the built in commands is in the &lt;code&gt;FlaskGroup.get_command&lt;/code&gt;.  &lt;/p&gt;

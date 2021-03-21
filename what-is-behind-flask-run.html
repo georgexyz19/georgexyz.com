@@ -107,8 +107,8 @@ $ flask run
 
 <p>When you run the command <code>pip install flask</code>, the pip system installs a <code>flask</code> python script file in the 
 <code>venv/bin/</code> directory.  You can think of <code>flask</code> as a command and <code>run</code> as an argument to the command. 
-The <code>run</code> part is actually a sub-command.  You can run <code>flask --help</code> to find out other available 
-sub-commands. </p>
+The <code>run</code> part is actually a sub-command in <code>click</code>.  You can run <code>flask --help</code> to 
+find out other available sub-commands. </p>
 <p>The <code>flask</code> script file in <code>venv/bin/</code> directory only has a few lines as shown below. The script is 
 calling the <code>main()</code> function in the flask.cli module. </p>
 <div class="highlight"><pre><span></span><code>import re
@@ -131,7 +131,16 @@ of <code>cli.main</code> is an instance of FlaskGroup class defined on Line 945.
         prog_name=&quot;python -m flask&quot; if as_module else None)
 </code></pre></div>
 
-<p>Here things become complicated and I have not figured everything out.  The FlaskGroup class 
+<p>Here things become complicated and I have not figured everything out.  </p>
+<p>The <code>__init__</code> method of <code>FlaskGroup</code> class (L487) adds three sub-commands to click. 
+The <code>add_command</code> method is defined on L1343 Group class of click/core.py file. </p>
+<div class="highlight"><pre><span></span><code><span class="k">if</span> <span class="n">add_default_commands</span><span class="p">:</span>
+    <span class="bp">self</span><span class="o">.</span><span class="n">add_command</span><span class="p">(</span><span class="n">run_command</span><span class="p">)</span>
+    <span class="bp">self</span><span class="o">.</span><span class="n">add_command</span><span class="p">(</span><span class="n">shell_command</span><span class="p">)</span>
+    <span class="bp">self</span><span class="o">.</span><span class="n">add_command</span><span class="p">(</span><span class="n">routes_command</span><span class="p">)</span>
+</code></pre></div>
+
+<p>The FlaskGroup class 
 is defined on Line 462 and it has a main method defined on Line 567 (code shown below). 
 The method makes changes to some settings and calls the <code>main</code> method in super class.   </p>
 <div class="highlight"><pre><span></span><code>def main(self, *args, **kwargs):
@@ -176,14 +185,6 @@ to the <code>main</code> method. The
 <a href="https://click.palletsprojects.com/en/7.x/commands/">click documentation</a> 
 has a section <em>Custom Multi Commands</em> and the example in this section also overrides
 those two methods. </p>
-<p>The <code>__init__</code> method of <code>FlaskGroup</code> class adds three default commands to click. 
-The <code>add_command</code> method is defined on L1343 Group class of click/core.py file. </p>
-<div class="highlight"><pre><span></span><code><span class="k">if</span> <span class="n">add_default_commands</span><span class="p">:</span>
-    <span class="bp">self</span><span class="o">.</span><span class="n">add_command</span><span class="p">(</span><span class="n">run_command</span><span class="p">)</span>
-    <span class="bp">self</span><span class="o">.</span><span class="n">add_command</span><span class="p">(</span><span class="n">shell_command</span><span class="p">)</span>
-    <span class="bp">self</span><span class="o">.</span><span class="n">add_command</span><span class="p">(</span><span class="n">routes_command</span><span class="p">)</span>
-</code></pre></div>
-
 <p>The actual <code>run</code> command is defined on Line 828 and the function is <code>run_command</code>. 
 The command <code>run</code> becomes part of flask built in commands loaded by default. 
 The code which loads the built in commands is in the <code>FlaskGroup.get_command</code>.  </p>
