@@ -2583,6 +2583,7 @@ which discusses the dictionary with more details. &lt;/li&gt;
 &lt;h3&gt;Python Intermediate&lt;/h3&gt;
 &lt;p&gt;Those links are for people who already know the Python basics.&lt;/p&gt;
 &lt;p&gt;&lt;a href="https://docs.python.org/3/howto/logging.html"&gt;Python Logging Howto&lt;/a&gt; - Official doc tutorials&lt;/p&gt;
+&lt;p&gt;&lt;a href="https://dbader.org/blog/python-context-managers-and-with-statement"&gt;Python Context Manager&lt;/a&gt; - Tutorial on dbader.org &lt;/p&gt;
 &lt;p&gt;&lt;a href="https://realpython.com/python-metaclasses/"&gt;Python Metaclasses&lt;/a&gt; - Meta class intro (realpython.com)&lt;/p&gt;
 &lt;p&gt;&lt;a href="https://www.blog.pythonlibrary.org/2016/06/10/python-201-what-are-descriptors/"&gt;What are Descriptors&lt;/a&gt; - Python 201 blog post&lt;/p&gt;
 &lt;p&gt;&lt;a href="https://nbviewer.jupyter.org/urls/gist.github.com/ChrisBeaumont/5758381/raw/descriptor_writeup.ipynb"&gt;Python Descriptors Demystified&lt;/a&gt; - Excellent doc&lt;/p&gt;
