@@ -56,6 +56,8 @@ Those links are for people who already know the Python basics.
 
 [Python Logging Howto](https://docs.python.org/3/howto/logging.html) - Official doc tutorials
 
+[Python Context Manager](https://dbader.org/blog/python-context-managers-and-with-statement) - Tutorial on dbader.org 
+
 [Python Metaclasses](https://realpython.com/python-metaclasses/) - Meta class intro (realpython.com)
 
 [What are Descriptors](https://www.blog.pythonlibrary.org/2016/06/10/python-201-what-are-descriptors/) - Python 201 blog post
