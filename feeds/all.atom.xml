@@ -6029,22 +6029,15 @@ serious work, you want the full version. &lt;/p&gt;
 the version information. Note the Line 5 below shows &amp;#8220;Small version without &lt;span class="caps"&gt;GUI&lt;/span&gt;&amp;#8221;. 
 The output also contains the list of setting files Vim will load during startup. &lt;/p&gt;
 &lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;VIM - Vi IMproved 8.0 (2016 Sep 12, compiled Apr 10 2018 21:31:58)
-Included patches: 1-1453
-Modified by pkg-vim-maintainers@lists.alioth.debian.org
-Compiled by pkg-vim-maintainers@lists.alioth.debian.org
+......
 Small version without GUI.  Features included (+) or not (-):
-+acl               -extra_search      -mouse_netterm     -tag_old_static
--arabic            -farsi             -mouse_sgr         -tag_any_white
-...
-+ex_extra          -mouse_jsbterm     +tag_binary 
+......
    system vimrc file: &amp;quot;$VIM/vimrc&amp;quot;
      user vimrc file: &amp;quot;$HOME/.vimrc&amp;quot;
  2nd user vimrc file: &amp;quot;~/.vim/vimrc&amp;quot;
       user exrc file: &amp;quot;$HOME/.exrc&amp;quot;
        defaults file: &amp;quot;$VIMRUNTIME/defaults.vim&amp;quot;
   fall-back for $VIM: &amp;quot;/usr/share/vim&amp;quot;
-Compilation: gcc -c -I. -Iproto -DHAVE_CONFIG_H   -Wdate-time  -g -O2 
--fdebug-prefix-map=/build/vim-NQEcoP/vim-8.0.1453=. -fstack-...
 &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
 
 &lt;p&gt;If you type command &lt;code&gt;vim&lt;/code&gt; in bash, it will tell you that &amp;#8220;command vim not found&amp;#8221;. 
@@ -6090,6 +6083,10 @@ inoremap &amp;lt;silent&amp;gt; &amp;lt;C-S&amp;gt; &amp;lt;C-O&amp;gt;:update&a
 
 &amp;quot;shortcut ^l to mute highlighting
 nnoremap &amp;lt;silent&amp;gt; &amp;lt;C-l&amp;gt; :&amp;lt;C-u&amp;gt;nohlsearch&amp;lt;CR&amp;gt;&amp;lt;C-l&amp;gt;
+
+&amp;quot; set the title of Gnome-termial to file path and name
+autocmd BufEnter * let &amp;amp;titlestring = &amp;#39; &amp;#39; . expand(&amp;quot;%:p&amp;quot;)             
+set title
 &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
 
 &lt;h3&gt;Vim Tips&lt;/h3&gt;
@@ -6101,7 +6098,7 @@ $vim -u NONE  # do not load any config file
 &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
 
 &lt;h4&gt;Set Initial Console Window Size&lt;/h4&gt;
-&lt;p&gt;On Linux terminal, you can use &lt;code&gt;set lines=50 columns=100&lt;/code&gt; to set initial console size. 
+&lt;p&gt;On Linux Mint terminal, you can use &lt;code&gt;set lines=50 columns=100&lt;/code&gt; to set initial console size. 
 I have those lines in my &lt;code&gt;~/.vimrc&lt;/code&gt; file. &lt;/p&gt;
 &lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;if exists(&amp;quot;+lines&amp;quot;)
   set lines=32
@@ -6148,6 +6145,13 @@ commands. &lt;/p&gt;
 :!ls %:p  # will show absolute path of file
 &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
 
+&lt;p&gt;The two lines of code below show the file path and name as the title of Gnome 
+Terminal window (under Linux Mint).  Source is this online 
+&lt;a href="https://askubuntu.com/questions/438401/how-to-display-the-name-of-file-which-i-am-currently-editing-with-vim-on-termina"&gt;Q&amp;amp;A post&lt;/a&gt;. &lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;autocmd BufEnter * let &amp;amp;titlestring = &amp;#39; &amp;#39; . expand(&amp;quot;%:p&amp;quot;)             
+set title
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+
 &lt;h4&gt;Navigation&lt;/h4&gt;
 &lt;p&gt;Keys &lt;code&gt;h j k l&lt;/code&gt; are the basic navigation commands in normal mode. Commands &lt;code&gt;w b e&lt;/code&gt; 
 jump cursor to next word, begin of word, or end of word. Other common navigation 
@@ -6168,7 +6172,7 @@ commands are listed below. &lt;/p&gt;
 &lt;dt&gt;^u&lt;/dt&gt;
 &lt;dd&gt;move up half screen&lt;/dd&gt;
 &lt;dt&gt;%&lt;/dt&gt;
-&lt;dd&gt;matching ( { or [&lt;/dd&gt;
+&lt;dd&gt;matching &lt;code&gt;( { or [&lt;/code&gt;&lt;/dd&gt;
 &lt;dt&gt;H, M, L&lt;/dt&gt;
 &lt;dd&gt;move cursor to top, middle, and lower corner&lt;/dd&gt;
 &lt;dt&gt;^o&lt;/dt&gt;
@@ -6204,6 +6208,7 @@ the output so you could read it on terminals that did not have a scrollback
 buffer. &lt;code&gt;Ctrl + q&lt;/code&gt; command gets terminal going again. Put this line in .bashrc to 
 disable flow control for terminal entirely.&lt;/p&gt;
 &lt;/blockquote&gt;
+&lt;p&gt;This is one of those things that turn people off, especially new Vim users. &lt;/p&gt;
 &lt;h4&gt;Spell Check&lt;/h4&gt;
 &lt;p&gt;Vim has a built in spell checker. You use &lt;code&gt;set spell&lt;/code&gt; to turn it on 
 and &lt;code&gt;set nospell&lt;/code&gt; to turn it off.  Here are some other commands on how to 
@@ -6213,7 +6218,7 @@ use it.&lt;/p&gt;
 &lt;dd&gt;for current buffer only&lt;/dd&gt;
 &lt;dt&gt;]s&lt;/dt&gt;
 &lt;dd&gt;move to next misspelled word&lt;/dd&gt;
-&lt;dt&gt;[s&lt;/dt&gt;
+&lt;dt&gt;&lt;code&gt;[s&lt;/code&gt;&lt;/dt&gt;
 &lt;dd&gt;previous misspelled word&lt;/dd&gt;
 &lt;dt&gt;z=&lt;/dt&gt;
 &lt;dd&gt;cursor on the word, list of suggested words&lt;/dd&gt;
@@ -6226,7 +6231,8 @@ You can set it to &lt;code&gt;en_us&lt;/code&gt; to specify American English. Yo
 &lt;p&gt;&lt;em&gt;Source: &lt;a href="https://www.linux.com/training-tutorials/using-spell-checking-vim/"&gt;an article&lt;/a&gt; on linux.com &lt;span class="amp"&gt;&amp;amp;&lt;/span&gt; 
 &lt;a href="http://thejakeharding.com/tutorial/2012/06/13/using-spell-check-in-vim.html"&gt;a blog post&lt;/a&gt; by Jake Harding.&lt;/em&gt;&lt;/p&gt;
 &lt;h4&gt;&lt;span class="caps"&gt;GNOME&lt;/span&gt; Terminal Shortcuts&lt;/h4&gt;
-&lt;p&gt;The Linux Mint comes with Gnome terminal. You can open additional tabs by pressing
+&lt;p&gt;The Linux Mint comes with Gnome Terminal (&lt;code&gt;Ctrl + Alt + t&lt;/code&gt; to launch). You can open additional 
+tabs by pressing
 shortcut &lt;code&gt;Ctrl + Shift + t&lt;/code&gt;, and move to next tab by pressing &lt;code&gt;Ctrl + PageDown&lt;/code&gt;. 
 This does not necessarily relate to Vim, but I often use them so they are listed here. &lt;/p&gt;
 &lt;p&gt;Another useful terminal shortcut is &lt;code&gt;Ctrl + z&lt;/code&gt; which puts current application Vim 

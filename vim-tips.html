@@ -81,22 +81,15 @@ serious work, you want the full version. </p>
 the version information. Note the Line 5 below shows &#8220;Small version without <span class="caps">GUI</span>&#8221;. 
 The output also contains the list of setting files Vim will load during startup. </p>
 <div class="highlight"><pre><span></span><code>VIM - Vi IMproved 8.0 (2016 Sep 12, compiled Apr 10 2018 21:31:58)
-Included patches: 1-1453
-Modified by pkg-vim-maintainers@lists.alioth.debian.org
-Compiled by pkg-vim-maintainers@lists.alioth.debian.org
+......
 Small version without GUI.  Features included (+) or not (-):
-+acl               -extra_search      -mouse_netterm     -tag_old_static
--arabic            -farsi             -mouse_sgr         -tag_any_white
-...
-+ex_extra          -mouse_jsbterm     +tag_binary 
+......
    system vimrc file: &quot;$VIM/vimrc&quot;
      user vimrc file: &quot;$HOME/.vimrc&quot;
  2nd user vimrc file: &quot;~/.vim/vimrc&quot;
       user exrc file: &quot;$HOME/.exrc&quot;
        defaults file: &quot;$VIMRUNTIME/defaults.vim&quot;
   fall-back for $VIM: &quot;/usr/share/vim&quot;
-Compilation: gcc -c -I. -Iproto -DHAVE_CONFIG_H   -Wdate-time  -g -O2 
--fdebug-prefix-map=/build/vim-NQEcoP/vim-8.0.1453=. -fstack-...
 </code></pre></div>
 
 <p>If you type command <code>vim</code> in bash, it will tell you that &#8220;command vim not found&#8221;. 
@@ -142,6 +135,10 @@ inoremap &lt;silent&gt; &lt;C-S&gt; &lt;C-O&gt;:update&lt;CR&gt;
 
 &quot;shortcut ^l to mute highlighting
 nnoremap &lt;silent&gt; &lt;C-l&gt; :&lt;C-u&gt;nohlsearch&lt;CR&gt;&lt;C-l&gt;
+
+&quot; set the title of Gnome-termial to file path and name
+autocmd BufEnter * let &amp;titlestring = &#39; &#39; . expand(&quot;%:p&quot;)             
+set title
 </code></pre></div>
 
 <h3>Vim Tips</h3>
@@ -153,7 +150,7 @@ $vim -u NONE  # do not load any config file
 </code></pre></div>
 
 <h4>Set Initial Console Window Size</h4>
-<p>On Linux terminal, you can use <code>set lines=50 columns=100</code> to set initial console size. 
+<p>On Linux Mint terminal, you can use <code>set lines=50 columns=100</code> to set initial console size. 
 I have those lines in my <code>~/.vimrc</code> file. </p>
 <div class="highlight"><pre><span></span><code>if exists(&quot;+lines&quot;)
   set lines=32
@@ -200,6 +197,13 @@ commands. </p>
 :!ls %:p  # will show absolute path of file
 </code></pre></div>
 
+<p>The two lines of code below show the file path and name as the title of Gnome 
+Terminal window (under Linux Mint).  Source is this online 
+<a href="https://askubuntu.com/questions/438401/how-to-display-the-name-of-file-which-i-am-currently-editing-with-vim-on-termina">Q&amp;A post</a>. </p>
+<div class="highlight"><pre><span></span><code>autocmd BufEnter * let &amp;titlestring = &#39; &#39; . expand(&quot;%:p&quot;)             
+set title
+</code></pre></div>
+
 <h4>Navigation</h4>
 <p>Keys <code>h j k l</code> are the basic navigation commands in normal mode. Commands <code>w b e</code> 
 jump cursor to next word, begin of word, or end of word. Other common navigation 
@@ -220,7 +224,7 @@ commands are listed below. </p>
 <dt>^u</dt>
 <dd>move up half screen</dd>
 <dt>%</dt>
-<dd>matching ( { or [</dd>
+<dd>matching <code>( { or [</code></dd>
 <dt>H, M, L</dt>
 <dd>move cursor to top, middle, and lower corner</dd>
 <dt>^o</dt>
@@ -256,6 +260,7 @@ the output so you could read it on terminals that did not have a scrollback
 buffer. <code>Ctrl + q</code> command gets terminal going again. Put this line in .bashrc to 
 disable flow control for terminal entirely.</p>
 </blockquote>
+<p>This is one of those things that turn people off, especially new Vim users. </p>
 <h4>Spell Check</h4>
 <p>Vim has a built in spell checker. You use <code>set spell</code> to turn it on 
 and <code>set nospell</code> to turn it off.  Here are some other commands on how to 
@@ -265,7 +270,7 @@ use it.</p>
 <dd>for current buffer only</dd>
 <dt>]s</dt>
 <dd>move to next misspelled word</dd>
-<dt>[s</dt>
+<dt><code>[s</code></dt>
 <dd>previous misspelled word</dd>
 <dt>z=</dt>
 <dd>cursor on the word, list of suggested words</dd>
@@ -278,7 +283,8 @@ You can set it to <code>en_us</code> to specify American English. You can also u
 <p><em>Source: <a href="https://www.linux.com/training-tutorials/using-spell-checking-vim/">an article</a> on linux.com <span class="amp">&amp;</span> 
 <a href="http://thejakeharding.com/tutorial/2012/06/13/using-spell-check-in-vim.html">a blog post</a> by Jake Harding.</em></p>
 <h4><span class="caps">GNOME</span> Terminal Shortcuts</h4>
-<p>The Linux Mint comes with Gnome terminal. You can open additional tabs by pressing
+<p>The Linux Mint comes with Gnome Terminal (<code>Ctrl + Alt + t</code> to launch). You can open additional 
+tabs by pressing
 shortcut <code>Ctrl + Shift + t</code>, and move to next tab by pressing <code>Ctrl + PageDown</code>. 
 This does not necessarily relate to Vim, but I often use them so they are listed here. </p>
 <p>Another useful terminal shortcut is <code>Ctrl + z</code> which puts current application Vim 
