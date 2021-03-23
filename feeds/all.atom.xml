@@ -6347,13 +6347,15 @@ eval &amp;quot;$(pyenv virtualenv-init -)&amp;quot;
 &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
 
 &lt;p&gt;&lt;em&gt;Source: Practical Vim Second Edition by Drew Neil Page 63, Tip 30&lt;/em&gt;&lt;/p&gt;
-&lt;h4&gt;Sudo Save&lt;/h4&gt;
+&lt;h4&gt;Save Readonly File&lt;/h4&gt;
 &lt;p&gt;Here is an online post about 
 &lt;a href="https://catonmat.net/sudo-vim"&gt;how to save read only files in vim&lt;/a&gt;.  &lt;/p&gt;
-&lt;p&gt;The easy way is to add a new line to &lt;code&gt;~/.vimrc&lt;/code&gt; file and use &lt;code&gt;sudow&lt;/code&gt; command.&lt;/p&gt;
-&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;cnoremap sudow w !sudo tee % &amp;gt;/dev/null
+&lt;p&gt;This is the command to save a readonly file in Vim. &lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;w !sudo tee % &amp;gt;/dev/null
 &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
 
+&lt;p&gt;The bash command &lt;code&gt;tee&lt;/code&gt; is itself somewhat magical, and I do not fully understand how
+the above command works.  &lt;/p&gt;
 &lt;h4&gt;Links and References&lt;/h4&gt;
 &lt;p&gt;&lt;a href="https://vim.rtorr.com/"&gt;Vim Cheat Sheet&lt;/a&gt; 
 is a nice single web page which includes command vim commands.&lt;/p&gt;</content><category term="posts"></category><category term="vim"></category><category term="tip"></category><category term="linux"></category></entry></feed>

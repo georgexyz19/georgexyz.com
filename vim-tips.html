@@ -399,13 +399,15 @@ eval &quot;$(pyenv virtualenv-init -)&quot;
 </code></pre></div>
 
 <p><em>Source: Practical Vim Second Edition by Drew Neil Page 63, Tip 30</em></p>
-<h4>Sudo Save</h4>
+<h4>Save Readonly File</h4>
 <p>Here is an online post about 
 <a href="https://catonmat.net/sudo-vim">how to save read only files in vim</a>.  </p>
-<p>The easy way is to add a new line to <code>~/.vimrc</code> file and use <code>sudow</code> command.</p>
-<div class="highlight"><pre><span></span><code>cnoremap sudow w !sudo tee % &gt;/dev/null
+<p>This is the command to save a readonly file in Vim. </p>
+<div class="highlight"><pre><span></span><code>w !sudo tee % &gt;/dev/null
 </code></pre></div>
 
+<p>The bash command <code>tee</code> is itself somewhat magical, and I do not fully understand how
+the above command works.  </p>
 <h4>Links and References</h4>
 <p><a href="https://vim.rtorr.com/">Vim Cheat Sheet</a> 
 is a nice single web page which includes command vim commands.</p>
