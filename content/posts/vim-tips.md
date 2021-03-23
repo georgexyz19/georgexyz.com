@@ -17,22 +17,15 @@ The output also contains the list of setting files Vim will load during startup.
 
 ```
 VIM - Vi IMproved 8.0 (2016 Sep 12, compiled Apr 10 2018 21:31:58)
-Included patches: 1-1453
-Modified by pkg-vim-maintainers@lists.alioth.debian.org
-Compiled by pkg-vim-maintainers@lists.alioth.debian.org
+......
 Small version without GUI.  Features included (+) or not (-):
-+acl               -extra_search      -mouse_netterm     -tag_old_static
--arabic            -farsi             -mouse_sgr         -tag_any_white
-...
-+ex_extra          -mouse_jsbterm     +tag_binary 
+......
    system vimrc file: "$VIM/vimrc"
      user vimrc file: "$HOME/.vimrc"
  2nd user vimrc file: "~/.vim/vimrc"
       user exrc file: "$HOME/.exrc"
        defaults file: "$VIMRUNTIME/defaults.vim"
   fall-back for $VIM: "/usr/share/vim"
-Compilation: gcc -c -I. -Iproto -DHAVE_CONFIG_H   -Wdate-time  -g -O2 
--fdebug-prefix-map=/build/vim-NQEcoP/vim-8.0.1453=. -fstack-...
 ```
 
 If you type command `vim` in bash, it will tell you that "command vim not found". 
@@ -85,6 +78,10 @@ inoremap <silent> <C-S> <C-O>:update<CR>
 "shortcut ^l to mute highlighting
 nnoremap <silent> <C-l> :<C-u>nohlsearch<CR><C-l>
 
+" set the title of Gnome-termial to file path and name
+autocmd BufEnter * let &titlestring = ' ' . expand("%:p")             
+set title
+
 ```
 
 ### Vim Tips
@@ -101,7 +98,7 @@ $vim -u NONE  # do not load any config file
 
 #### Set Initial Console Window Size
 
-On Linux terminal, you can use `set lines=50 columns=100` to set initial console size. 
+On Linux Mint terminal, you can use `set lines=50 columns=100` to set initial console size. 
 I have those lines in my `~/.vimrc` file. 
 
 ```
@@ -166,6 +163,15 @@ commands.
 :!ls %:p  # will show absolute path of file
 ```
 
+The two lines of code below show the file path and name as the title of Gnome 
+Terminal window (under Linux Mint).  Source is this online 
+[Q&A post](https://askubuntu.com/questions/438401/how-to-display-the-name-of-file-which-i-am-currently-editing-with-vim-on-termina). 
+
+```
+autocmd BufEnter * let &titlestring = ' ' . expand("%:p")             
+set title
+```
+
 #### Navigation
 
 Keys `h j k l` are the basic navigation commands in normal mode. Commands `w b e` 
@@ -194,7 +200,7 @@ G
 : move up half screen
 
 %
-: matching ( { or [
+: matching `( { or [`
 
 H, M, L
 : move cursor to top, middle, and lower corner
@@ -240,6 +246,7 @@ explains it very well.
 > buffer. `Ctrl + q` command gets terminal going again. Put this line in .bashrc to 
 > disable flow control for terminal entirely.
 
+This is one of those things that turn people off, especially new Vim users. 
 
 #### Spell Check
 
@@ -253,7 +260,7 @@ setlocal spell
 ]s
 : move to next misspelled word
 
-[s
+`[s`
 : previous misspelled word
 
 z=
@@ -271,7 +278,8 @@ You can set it to `en_us` to specify American English. You can also use
 
 #### GNOME Terminal Shortcuts
 
-The Linux Mint comes with Gnome terminal. You can open additional tabs by pressing
+The Linux Mint comes with Gnome Terminal (`Ctrl + Alt + t` to launch). You can open additional 
+tabs by pressing
 shortcut `Ctrl + Shift + t`, and move to next tab by pressing `Ctrl + PageDown`. 
 This does not necessarily relate to Vim, but I often use them so they are listed here. 
 
