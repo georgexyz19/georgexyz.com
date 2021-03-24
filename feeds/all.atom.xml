@@ -6368,9 +6368,11 @@ to use those two commands. &lt;/p&gt;
 :retab
 &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
 
-&lt;p&gt;The option &lt;code&gt;tabstop&lt;/code&gt; controls the number of spaces that will be 
-inserted when the tab key is pressed (:set tabstop=4). The &lt;code&gt;shiftwidth&lt;/code&gt; 
-option is for indent command &lt;code&gt;&amp;gt;&amp;gt;&lt;/code&gt;. &lt;/p&gt;
+&lt;p&gt;If the &lt;code&gt;expandtab&lt;/code&gt; option is set, vim will insert space when the tab 
+key is pressed (:set expandtab). The option &lt;code&gt;tabstop&lt;/code&gt; controls the 
+number of spaces that will be inserted when the tab key is pressed 
+(:set tabstop=4). The &lt;code&gt;shiftwidth&lt;/code&gt; option is for indent command &lt;code&gt;&amp;gt;&amp;gt;&lt;/code&gt;. 
+Yes, those option names are confusing.   &lt;/p&gt;
 &lt;p&gt;Source: &lt;a href="https://vim.fandom.com/wiki/Converting_tabs_to_spaces"&gt;link&lt;/a&gt;&lt;/p&gt;
 &lt;h4&gt;Bash Tree Command&lt;/h4&gt;
 &lt;p&gt;I often use &lt;code&gt;tree&lt;/code&gt; command to list files in a directory (need apt install in Linux Mint). 
