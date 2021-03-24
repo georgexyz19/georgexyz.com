@@ -440,6 +440,28 @@ w !sudo tee % >/dev/null
 The bash command `tee` is itself somewhat magical, and I do not fully understand how
 the above command works.  
 
+#### Auto Indent
+
+The `>>` command is to indent a line in normal mode.  The operator `>` is for an 
+object or visual selection.  When indenting or un-indenting, lines are shifted 
+one `shiftwidth` to the right or left (e.g., :set shiftwidth=4).
+
+The `==` command is auto indent, and `4==` command will auto indent 4 lines. 
+
+#### Bash Tree Command
+
+I often use `tree` command to list files in a directory (need apt install in Linux Mint).  
+If you want to exclude a sub directory such as `venv`, the command looks like this. 
+
+```
+$tree -I venv
+$tree -I 'venv|__pycache__'   # note the quote(') around two sub dirs
+$tree -L 2        # -L is for levels down
+```
+
+This is not necessary a Vim tip, but I have not found a good place to put it.  
+
+Source: [link](https://zaiste.net/posts/tree-ignore-directories-patterns/)
 
 #### Links and References
 
