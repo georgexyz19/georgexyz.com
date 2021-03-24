@@ -6356,6 +6356,21 @@ eval &amp;quot;$(pyenv virtualenv-init -)&amp;quot;
 
 &lt;p&gt;The bash command &lt;code&gt;tee&lt;/code&gt; is itself somewhat magical, and I do not fully understand how
 the above command works.  &lt;/p&gt;
+&lt;h4&gt;Auto Indent&lt;/h4&gt;
+&lt;p&gt;The &lt;code&gt;&amp;gt;&amp;gt;&lt;/code&gt; command is to indent a line in normal mode.  The operator &lt;code&gt;&amp;gt;&lt;/code&gt; is for an 
+object or visual selection.  When indenting or un-indenting, lines are shifted 
+one &lt;code&gt;shiftwidth&lt;/code&gt; to the right or left (e.g., :set shiftwidth=4).&lt;/p&gt;
+&lt;p&gt;The &lt;code&gt;==&lt;/code&gt; command is auto indent, and &lt;code&gt;4==&lt;/code&gt; command will auto indent 4 lines. &lt;/p&gt;
+&lt;h4&gt;Bash Tree Command&lt;/h4&gt;
+&lt;p&gt;I often use &lt;code&gt;tree&lt;/code&gt; command to list files in a directory (need apt install in Linux Mint).&lt;br&gt;
+If you want to exclude a sub directory such as &lt;code&gt;venv&lt;/code&gt;, the command looks like this. &lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;$tree -I venv
+$tree -I &amp;#39;venv|__pycache__&amp;#39;   # note the quote(&amp;#39;) around two sub dirs
+$tree -L 2        # -L is for levels down
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+
+&lt;p&gt;This is not necessary a Vim tip, but I have not found a good place to put it.  &lt;/p&gt;
+&lt;p&gt;Source: &lt;a href="https://zaiste.net/posts/tree-ignore-directories-patterns/"&gt;link&lt;/a&gt;&lt;/p&gt;
 &lt;h4&gt;Links and References&lt;/h4&gt;
 &lt;p&gt;&lt;a href="https://vim.rtorr.com/"&gt;Vim Cheat Sheet&lt;/a&gt; 
 is a nice single web page which includes command vim commands.&lt;/p&gt;</content><category term="posts"></category><category term="vim"></category><category term="tip"></category><category term="linux"></category></entry></feed>

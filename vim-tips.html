@@ -408,6 +408,21 @@ eval &quot;$(pyenv virtualenv-init -)&quot;
 
 <p>The bash command <code>tee</code> is itself somewhat magical, and I do not fully understand how
 the above command works.  </p>
+<h4>Auto Indent</h4>
+<p>The <code>&gt;&gt;</code> command is to indent a line in normal mode.  The operator <code>&gt;</code> is for an 
+object or visual selection.  When indenting or un-indenting, lines are shifted 
+one <code>shiftwidth</code> to the right or left (e.g., :set shiftwidth=4).</p>
+<p>The <code>==</code> command is auto indent, and <code>4==</code> command will auto indent 4 lines. </p>
+<h4>Bash Tree Command</h4>
+<p>I often use <code>tree</code> command to list files in a directory (need apt install in Linux Mint).<br>
+If you want to exclude a sub directory such as <code>venv</code>, the command looks like this. </p>
+<div class="highlight"><pre><span></span><code>$tree -I venv
+$tree -I &#39;venv|__pycache__&#39;   # note the quote(&#39;) around two sub dirs
+$tree -L 2        # -L is for levels down
+</code></pre></div>
+
+<p>This is not necessary a Vim tip, but I have not found a good place to put it.  </p>
+<p>Source: <a href="https://zaiste.net/posts/tree-ignore-directories-patterns/">link</a></p>
 <h4>Links and References</h4>
 <p><a href="https://vim.rtorr.com/">Vim Cheat Sheet</a> 
 is a nice single web page which includes command vim commands.</p>
