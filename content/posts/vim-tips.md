@@ -448,9 +448,26 @@ one `shiftwidth` to the right or left (e.g., :set shiftwidth=4).
 
 The `==` command is auto indent, and `4==` command will auto indent 4 lines. 
 
+#### Convert Tabs to Spaces
+
+If you want to convert tabs to spaces for copied text, the simple answer is 
+to use those two commands. 
+
+```
+:set tabstop=4
+:retab
+```
+
+The option `tabstop` controls the number of spaces that will be 
+inserted when the tab key is pressed (:set tabstop=4). The `shiftwidth` 
+option is for indent command `>>`. 
+
+Source: [link](https://vim.fandom.com/wiki/Converting_tabs_to_spaces)
+
+
 #### Bash Tree Command
 
-I often use `tree` command to list files in a directory (need apt install in Linux Mint).  
+I often use `tree` command to list files in a directory (need apt install in Linux Mint). 
 If you want to exclude a sub directory such as `venv`, the command looks like this. 
 
 ```
