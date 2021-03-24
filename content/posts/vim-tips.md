@@ -457,10 +457,11 @@ to use those two commands.
 :set tabstop=4
 :retab
 ```
-
-The option `tabstop` controls the number of spaces that will be 
-inserted when the tab key is pressed (:set tabstop=4). The `shiftwidth` 
-option is for indent command `>>`. 
+If the `expandtab` option is set, vim will insert space when the tab 
+key is pressed (:set expandtab). The option `tabstop` controls the 
+number of spaces that will be inserted when the tab key is pressed 
+(:set tabstop=4). The `shiftwidth` option is for indent command `>>`. 
+Yes, those option names are confusing.   
 
 Source: [link](https://vim.fandom.com/wiki/Converting_tabs_to_spaces)
 
