@@ -413,8 +413,19 @@ the above command works.  </p>
 object or visual selection.  When indenting or un-indenting, lines are shifted 
 one <code>shiftwidth</code> to the right or left (e.g., :set shiftwidth=4).</p>
 <p>The <code>==</code> command is auto indent, and <code>4==</code> command will auto indent 4 lines. </p>
+<h4>Convert Tabs to Spaces</h4>
+<p>If you want to convert tabs to spaces for copied text, the simple answer is 
+to use those two commands. </p>
+<div class="highlight"><pre><span></span><code>:set tabstop=4
+:retab
+</code></pre></div>
+
+<p>The option <code>tabstop</code> controls the number of spaces that will be 
+inserted when the tab key is pressed (:set tabstop=4). The <code>shiftwidth</code> 
+option is for indent command <code>&gt;&gt;</code>. </p>
+<p>Source: <a href="https://vim.fandom.com/wiki/Converting_tabs_to_spaces">link</a></p>
 <h4>Bash Tree Command</h4>
-<p>I often use <code>tree</code> command to list files in a directory (need apt install in Linux Mint).<br>
+<p>I often use <code>tree</code> command to list files in a directory (need apt install in Linux Mint). 
 If you want to exclude a sub directory such as <code>venv</code>, the command looks like this. </p>
 <div class="highlight"><pre><span></span><code>$tree -I venv
 $tree -I &#39;venv|__pycache__&#39;   # note the quote(&#39;) around two sub dirs

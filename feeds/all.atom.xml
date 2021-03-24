@@ -6361,8 +6361,19 @@ the above command works.  &lt;/p&gt;
 object or visual selection.  When indenting or un-indenting, lines are shifted 
 one &lt;code&gt;shiftwidth&lt;/code&gt; to the right or left (e.g., :set shiftwidth=4).&lt;/p&gt;
 &lt;p&gt;The &lt;code&gt;==&lt;/code&gt; command is auto indent, and &lt;code&gt;4==&lt;/code&gt; command will auto indent 4 lines. &lt;/p&gt;
+&lt;h4&gt;Convert Tabs to Spaces&lt;/h4&gt;
+&lt;p&gt;If you want to convert tabs to spaces for copied text, the simple answer is 
+to use those two commands. &lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;:set tabstop=4
+:retab
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+
+&lt;p&gt;The option &lt;code&gt;tabstop&lt;/code&gt; controls the number of spaces that will be 
+inserted when the tab key is pressed (:set tabstop=4). The &lt;code&gt;shiftwidth&lt;/code&gt; 
+option is for indent command &lt;code&gt;&amp;gt;&amp;gt;&lt;/code&gt;. &lt;/p&gt;
+&lt;p&gt;Source: &lt;a href="https://vim.fandom.com/wiki/Converting_tabs_to_spaces"&gt;link&lt;/a&gt;&lt;/p&gt;
 &lt;h4&gt;Bash Tree Command&lt;/h4&gt;
-&lt;p&gt;I often use &lt;code&gt;tree&lt;/code&gt; command to list files in a directory (need apt install in Linux Mint).&lt;br&gt;
+&lt;p&gt;I often use &lt;code&gt;tree&lt;/code&gt; command to list files in a directory (need apt install in Linux Mint). 
 If you want to exclude a sub directory such as &lt;code&gt;venv&lt;/code&gt;, the command looks like this. &lt;/p&gt;
 &lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;$tree -I venv
 $tree -I &amp;#39;venv|__pycache__&amp;#39;   # note the quote(&amp;#39;) around two sub dirs
