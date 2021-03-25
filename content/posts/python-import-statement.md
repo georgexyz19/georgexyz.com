@@ -31,8 +31,8 @@ flasky
 │       ├── base.html
 │       ├── index.html
 │       ├── mail
-│       │   ├── new\_user.html
-│       │   └── new\_user.txt
+│       │   ├── new_user.html
+│       │   └── new_user.txt
 │       └── user.html
 ├── config.py
 ├── data.sqlite
@@ -40,8 +40,8 @@ flasky
 ├── migrations
 ├── README.md
 ├── requirements.txt
-├── set\_env.sh
-├── set\_mail.sh
+├── set_env.sh
+├── set_mail.sh
 └── tests
     ├── __init__.py
     └── test_basics.py
