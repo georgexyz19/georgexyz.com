@@ -6,7 +6,7 @@ tags: flask
 note: trace source code for Flask Run command
 no: 58
 
-Chapter 2  of Miguel Grinberg's *Flask Web Development* describes how to run a basic Flask app. 
+Chapter 2 of Miguel Grinberg's *Flask Web Development* describes how to run a basic Flask app. 
 Suppose you have a basic Flask app like below (from the book). 
 
 ```python
@@ -173,4 +173,14 @@ The Flask documentation has a page
 which has very good info on Flask CLI. 
 
 
+The nice thing about Flask cli module is that it is easy to add cli commands. 
+Here is an example from Chapter 7 of Miguel Grinberg's book. You can run the 
+code with `flask run` cli command. 
 
+```python
+@app.cli.command()
+def test():
+    import unittest
+    tests = unittest.TestLoader().discover('tests')
+    unittest.TextTestRunner(verbosity=2).run(tests)
+```
