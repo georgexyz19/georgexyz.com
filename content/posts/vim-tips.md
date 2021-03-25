@@ -22,10 +22,7 @@ Small version without GUI.  Features included (+) or not (-):
 ......
    system vimrc file: "$VIM/vimrc"
      user vimrc file: "$HOME/.vimrc"
- 2nd user vimrc file: "~/.vim/vimrc"
-      user exrc file: "$HOME/.exrc"
-       defaults file: "$VIMRUNTIME/defaults.vim"
-  fall-back for $VIM: "/usr/share/vim"
+   ......
 ```
 
 If you type command `vim` in bash, it will tell you that "command vim not found". 
@@ -123,7 +120,15 @@ set wildmenu
 :find *cache # Press Tab key to find file name with cache
 ```
 
-*Source: [a video talk](https://youtu.be/XA2WjJbmmoM) on youtube.*
+To exclude a directory from the search, use this setting. 
+
+```
+set wildignore+=**/node_modules/**
+set wildignore+=**/venv/**
+```
+
+Source: [a video talk](https://youtu.be/XA2WjJbmmoM) on youtube; 
+*Exclude directory Source*: [stackexchange link](https://vi.stackexchange.com/questions/11644/ignore-folders-when-performing-find-command). 
 
 #### Auto Complete
 
@@ -465,6 +470,16 @@ Yes, those option names are confusing.
 
 Source: [link](https://vim.fandom.com/wiki/Converting_tabs_to_spaces)
 
+#### Change Letter Case
+
+The command `U` is to change visually selected text to uppercase, and `u` to lowercase. 
+Tilde `~` command is to swap cases in a visual selection. 
+
+Without using a visual selection, `gU` is the command to make characters uppercase, and 
+`gu` for lowercase. 
+
+Source: [link](https://stackoverflow.com/questions/2946051/changing-case-in-vim)
+
 
 #### Bash Tree Command
 
@@ -475,6 +490,7 @@ If you want to exclude a sub directory such as `venv`, the command looks like th
 $tree -I venv
 $tree -I 'venv|__pycache__'   # note the quote(') around two sub dirs
 $tree -L 2        # -L is for levels down
+$tree -I venv -v  # sort by name, or --sort=name
 ```
 
 This is not necessary a Vim tip, but I have not found a good place to put it.  
