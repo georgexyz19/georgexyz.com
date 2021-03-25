@@ -6034,10 +6034,7 @@ Small version without GUI.  Features included (+) or not (-):
 ......
    system vimrc file: &amp;quot;$VIM/vimrc&amp;quot;
      user vimrc file: &amp;quot;$HOME/.vimrc&amp;quot;
- 2nd user vimrc file: &amp;quot;~/.vim/vimrc&amp;quot;
-      user exrc file: &amp;quot;$HOME/.exrc&amp;quot;
-       defaults file: &amp;quot;$VIMRUNTIME/defaults.vim&amp;quot;
-  fall-back for $VIM: &amp;quot;/usr/share/vim&amp;quot;
+   ......
 &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
 
 &lt;p&gt;If you type command &lt;code&gt;vim&lt;/code&gt; in bash, it will tell you that &amp;#8220;command vim not found&amp;#8221;. 
@@ -6116,7 +6113,13 @@ set wildmenu
 :find *cache # Press Tab key to find file name with cache
 &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
 
-&lt;p&gt;&lt;em&gt;Source: &lt;a href="https://youtu.be/XA2WjJbmmoM"&gt;a video talk&lt;/a&gt; on youtube.&lt;/em&gt;&lt;/p&gt;
+&lt;p&gt;To exclude a directory from the search, use this setting. &lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;set wildignore+=**/node_modules/**
+set wildignore+=**/venv/**
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+
+&lt;p&gt;Source: &lt;a href="https://youtu.be/XA2WjJbmmoM"&gt;a video talk&lt;/a&gt; on youtube; 
+&lt;em&gt;Exclude directory Source&lt;/em&gt;: &lt;a href="https://vi.stackexchange.com/questions/11644/ignore-folders-when-performing-find-command"&gt;stackexchange link&lt;/a&gt;. &lt;/p&gt;
 &lt;h4&gt;Auto Complete&lt;/h4&gt;
 &lt;p&gt;Vim itself has auto complete function built in. In the insert mode, you can type a 
 few letters such as &amp;#8216;Com&amp;#8217;, and then press &lt;code&gt;^n&lt;/code&gt; to bring up auto complete menu. It 
@@ -6374,12 +6377,19 @@ number of spaces that will be inserted when the tab key is pressed
 (:set tabstop=4). The &lt;code&gt;shiftwidth&lt;/code&gt; option is for indent command &lt;code&gt;&amp;gt;&amp;gt;&lt;/code&gt;. 
 Yes, those option names are confusing.   &lt;/p&gt;
 &lt;p&gt;Source: &lt;a href="https://vim.fandom.com/wiki/Converting_tabs_to_spaces"&gt;link&lt;/a&gt;&lt;/p&gt;
+&lt;h4&gt;Change Letter Case&lt;/h4&gt;
+&lt;p&gt;The command &lt;code&gt;U&lt;/code&gt; is to change visually selected text to uppercase, and &lt;code&gt;u&lt;/code&gt; to lowercase. 
+Tilde &lt;code&gt;~&lt;/code&gt; command is to swap cases in a visual selection. &lt;/p&gt;
+&lt;p&gt;Without using a visual selection, &lt;code&gt;gU&lt;/code&gt; is the command to make characters uppercase, and 
+&lt;code&gt;gu&lt;/code&gt; for lowercase. &lt;/p&gt;
+&lt;p&gt;Source: &lt;a href="https://stackoverflow.com/questions/2946051/changing-case-in-vim"&gt;link&lt;/a&gt;&lt;/p&gt;
 &lt;h4&gt;Bash Tree Command&lt;/h4&gt;
 &lt;p&gt;I often use &lt;code&gt;tree&lt;/code&gt; command to list files in a directory (need apt install in Linux Mint). 
 If you want to exclude a sub directory such as &lt;code&gt;venv&lt;/code&gt;, the command looks like this. &lt;/p&gt;
 &lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;$tree -I venv
 $tree -I &amp;#39;venv|__pycache__&amp;#39;   # note the quote(&amp;#39;) around two sub dirs
 $tree -L 2        # -L is for levels down
+$tree -I venv -v  # sort by name, or --sort=name
 &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
 
 &lt;p&gt;This is not necessary a Vim tip, but I have not found a good place to put it.  &lt;/p&gt;

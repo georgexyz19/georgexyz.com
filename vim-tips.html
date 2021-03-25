@@ -86,10 +86,7 @@ Small version without GUI.  Features included (+) or not (-):
 ......
    system vimrc file: &quot;$VIM/vimrc&quot;
      user vimrc file: &quot;$HOME/.vimrc&quot;
- 2nd user vimrc file: &quot;~/.vim/vimrc&quot;
-      user exrc file: &quot;$HOME/.exrc&quot;
-       defaults file: &quot;$VIMRUNTIME/defaults.vim&quot;
-  fall-back for $VIM: &quot;/usr/share/vim&quot;
+   ......
 </code></pre></div>
 
 <p>If you type command <code>vim</code> in bash, it will tell you that &#8220;command vim not found&#8221;. 
@@ -168,7 +165,13 @@ set wildmenu
 :find *cache # Press Tab key to find file name with cache
 </code></pre></div>
 
-<p><em>Source: <a href="https://youtu.be/XA2WjJbmmoM">a video talk</a> on youtube.</em></p>
+<p>To exclude a directory from the search, use this setting. </p>
+<div class="highlight"><pre><span></span><code>set wildignore+=**/node_modules/**
+set wildignore+=**/venv/**
+</code></pre></div>
+
+<p>Source: <a href="https://youtu.be/XA2WjJbmmoM">a video talk</a> on youtube; 
+<em>Exclude directory Source</em>: <a href="https://vi.stackexchange.com/questions/11644/ignore-folders-when-performing-find-command">stackexchange link</a>. </p>
 <h4>Auto Complete</h4>
 <p>Vim itself has auto complete function built in. In the insert mode, you can type a 
 few letters such as &#8216;Com&#8217;, and then press <code>^n</code> to bring up auto complete menu. It 
@@ -426,12 +429,19 @@ number of spaces that will be inserted when the tab key is pressed
 (:set tabstop=4). The <code>shiftwidth</code> option is for indent command <code>&gt;&gt;</code>. 
 Yes, those option names are confusing.   </p>
 <p>Source: <a href="https://vim.fandom.com/wiki/Converting_tabs_to_spaces">link</a></p>
+<h4>Change Letter Case</h4>
+<p>The command <code>U</code> is to change visually selected text to uppercase, and <code>u</code> to lowercase. 
+Tilde <code>~</code> command is to swap cases in a visual selection. </p>
+<p>Without using a visual selection, <code>gU</code> is the command to make characters uppercase, and 
+<code>gu</code> for lowercase. </p>
+<p>Source: <a href="https://stackoverflow.com/questions/2946051/changing-case-in-vim">link</a></p>
 <h4>Bash Tree Command</h4>
 <p>I often use <code>tree</code> command to list files in a directory (need apt install in Linux Mint). 
 If you want to exclude a sub directory such as <code>venv</code>, the command looks like this. </p>
 <div class="highlight"><pre><span></span><code>$tree -I venv
 $tree -I &#39;venv|__pycache__&#39;   # note the quote(&#39;) around two sub dirs
 $tree -L 2        # -L is for levels down
+$tree -I venv -v  # sort by name, or --sort=name
 </code></pre></div>
 
 <p>This is not necessary a Vim tip, but I have not found a good place to put it.  </p>
