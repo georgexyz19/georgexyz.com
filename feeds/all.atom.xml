@@ -6145,11 +6145,11 @@ set ignorecase
 set hlsearch
 set incsearch
 
-if exists(&amp;quot;+lines&amp;quot;)
-  set lines=32
+if exists(&amp;quot;+lines&amp;quot;) &amp;quot; numbers are for programming
+  set lines=38
 endif
 if exists(&amp;quot;+columns&amp;quot;)
-  set columns=108
+  set columns=120
 endif
 
 &amp;quot; Ctrl + s to save file
@@ -6177,10 +6177,10 @@ $vim -u NONE  # do not load any config file
 &lt;p&gt;On Linux Mint terminal, you can use &lt;code&gt;set lines=50 columns=100&lt;/code&gt; to set initial console size. 
 I have those lines in my &lt;code&gt;~/.vimrc&lt;/code&gt; file. &lt;/p&gt;
 &lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;if exists(&amp;quot;+lines&amp;quot;)
-  set lines=32
+  set lines=38
 endif
 if exists(&amp;quot;+columns&amp;quot;)
-  set columns=108
+  set columns=120
 endif
 &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
 
