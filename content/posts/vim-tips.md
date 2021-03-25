@@ -60,11 +60,11 @@ set ignorecase
 set hlsearch
 set incsearch
 
-if exists("+lines")
-  set lines=32
+if exists("+lines") " numbers are for programming
+  set lines=38
 endif
 if exists("+columns")
-  set columns=108
+  set columns=120
 endif
 
 " Ctrl + s to save file
@@ -100,10 +100,10 @@ I have those lines in my `~/.vimrc` file.
 
 ```
 if exists("+lines")
-  set lines=32
+  set lines=38
 endif
 if exists("+columns")
-  set columns=108
+  set columns=120
 endif
 ```
 
