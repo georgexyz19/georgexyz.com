@@ -1,5 +1,84 @@
 <?xml version="1.0" encoding="utf-8"?>
-<feed xmlns="http://www.w3.org/2005/Atom"><title>George Zhang</title><link href="https://www.georgexyz.com/" rel="alternate"></link><link href="https://www.georgexyz.com/feeds/all.atom.xml" rel="self"></link><id>https://www.georgexyz.com/</id><updated>2021-02-26T10:35:00-05:00</updated><entry><title>Python Code To Check If A Product Is In Stock</title><link href="https://www.georgexyz.com/check-product-in-stock.html" rel="alternate"></link><published>2021-02-26T10:35:00-05:00</published><updated>2021-02-26T10:35:00-05:00</updated><author><name>George Zhang</name></author><id>tag:www.georgexyz.com,2021-02-26:/check-product-in-stock.html</id><summary type="html">&lt;p&gt;I am reading 
+<feed xmlns="http://www.w3.org/2005/Atom"><title>George Zhang</title><link href="https://www.georgexyz.com/" rel="alternate"></link><link href="https://www.georgexyz.com/feeds/all.atom.xml" rel="self"></link><id>https://www.georgexyz.com/</id><updated>2021-03-25T09:40:00-04:00</updated><entry><title>Python Import Statement</title><link href="https://www.georgexyz.com/python-import-statement.html" rel="alternate"></link><published>2021-03-25T09:40:00-04:00</published><updated>2021-03-25T09:40:00-04:00</updated><author><name>George Zhang</name></author><id>tag:www.georgexyz.com,2021-03-25:/python-import-statement.html</id><summary type="html">&lt;p&gt;Python import statement seems very easy to use, but it can get complicated once the project 
+scale becomes larger. It is one of those things that is easy to learn …&lt;/p&gt;</summary><content type="html">&lt;p&gt;Python import statement seems very easy to use, but it can get complicated once the project 
+scale becomes larger. It is one of those things that is easy to learn by looking at an example. 
+Miguel Grinberg&amp;#8217;s book &lt;em&gt;Flask Web Development&lt;/em&gt; Chapter 7 has such an example. The flask apps 
+project structure looks like this.  &lt;/p&gt;
+&lt;div style="margin-left: 20px"&gt;
+&lt;pre&gt;
+flasky
+├── app
+│   ├── email.py
+│   ├── __init__.py
+│   ├── main
+│   │   ├── errors.py
+│   │   ├── forms.py
+│   │   ├── __init__.py
+│   │   └── views.py
+│   ├── models.py
+│   ├── static
+│   │   └── favicon.ico
+│   └── templates
+│       ├── 404.html
+│       ├── 500.html
+│       ├── base.html
+│       ├── index.html
+│       ├── mail
+│       │   ├── new\_user.html
+│       │   └── new\_user.txt
+│       └── user.html
+├── config.py
+├── data.sqlite
+├── hello.py
+├── migrations
+├── README.md
+├── requirements.txt
+├── set\_env.sh
+├── set\_mail.sh
+└── tests
+    ├── __init__.py
+    └── test_basics.py
+7 directories, 24 files
+&lt;/pre&gt;
+&lt;/div&gt;
+
+&lt;p&gt;When you are running the app (command &lt;code&gt;flask run&lt;/code&gt;), you are in the &lt;code&gt;/flasky&lt;/code&gt; directory. 
+The &lt;code&gt;app/__init__.py&lt;/code&gt; file defines a &lt;code&gt;create_app&lt;/code&gt; function which is the app factory. It 
+imports &lt;code&gt;config&lt;/code&gt; dict from &lt;code&gt;config.py&lt;/code&gt; file like this. &lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;from config import config
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+
+&lt;p&gt;The &lt;code&gt;flasky.py&lt;/code&gt; file imports the &lt;code&gt;create_app&lt;/code&gt; from &lt;code&gt;app/__init__.py&lt;/code&gt;. Here you can 
+think of &lt;code&gt;app/__init__.py&lt;/code&gt; as an &lt;code&gt;app.py&lt;/code&gt; file. The &lt;code&gt;flasky.py&lt;/code&gt; also imports db models 
+from &lt;code&gt;app/models.py&lt;/code&gt;.&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;from app import create_app
+from app.model import User
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+
+&lt;p&gt;The &lt;code&gt;test_basics.py&lt;/code&gt; file also imports &lt;code&gt;create_app&lt;/code&gt;. It uses the same import statement 
+shown above. You can look at &lt;code&gt;app&lt;/code&gt; here similar to an absolution path. &lt;/p&gt;
+&lt;p&gt;Relative path is a little more difficult. The &lt;code&gt;app/main/views.py&lt;/code&gt; file imports &lt;code&gt;User&lt;/code&gt; 
+model from &lt;code&gt;app/models.py&lt;/code&gt; file. The statement looks like this. The first dot(.) goes 
+into &lt;code&gt;app/main&lt;/code&gt; directiory, and the second dot goest into &lt;code&gt;app&lt;/code&gt; directory. &lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;from ..models import User
+# from app.models import User  # could be
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+
+&lt;p&gt;The interesting import statement is a circular one.  The &lt;code&gt;app/main/__init__.py&lt;/code&gt; file 
+imports views and errors modules at the end of the file. This import statement causes
+the code in &lt;code&gt;views.py&lt;/code&gt; and &lt;code&gt;errors.py&lt;/code&gt; to run.  The purpose is to register view functions 
+and error handler functions (via decorators). &lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;# app/main/__init__.py
+from flask import Blueprint
+main = Blueprint(&amp;#39;main&amp;#39;, __name__)
+from . import views, errors  # MUST be at the end of the file
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+
+&lt;p&gt;The &lt;code&gt;app/main/view.py&lt;/code&gt; file also imports &lt;code&gt;main&lt;/code&gt; from &lt;code&gt;app/main/__init__.py&lt;/code&gt; 
+like this. &lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;from . import main
+@main.route(...)
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;</content><category term="posts"></category><category term="flask"></category><category term="python"></category></entry><entry><title>Python Code To Check If A Product Is In Stock</title><link href="https://www.georgexyz.com/check-product-in-stock.html" rel="alternate"></link><published>2021-02-26T10:35:00-05:00</published><updated>2021-02-26T10:35:00-05:00</updated><author><name>George Zhang</name></author><id>tag:www.georgexyz.com,2021-02-26:/check-product-in-stock.html</id><summary type="html">&lt;p&gt;I am reading 
 &lt;a href="https://automatetheboringstuff.com/2e/chapter13/"&gt;Chapter 13&lt;/a&gt; of Al Sweigart&amp;#8217;s 
 &lt;em&gt;Automate The Boring Stuff With Python 2nd ed&lt;/em&gt; book for some spreadsheet work. 
 The &lt;a href="https://automatetheboringstuff.com/2e/chapter12/"&gt;Chapter 12&lt;/a&gt; &lt;em&gt;Web Scraping&lt;/em&gt; 
