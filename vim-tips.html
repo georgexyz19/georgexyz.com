@@ -446,6 +446,66 @@ $tree -I venv -v  # sort by name, or --sort=name
 
 <p>This is not necessary a Vim tip, but I have not found a good place to put it.  </p>
 <p>Source: <a href="https://zaiste.net/posts/tree-ignore-directories-patterns/">link</a></p>
+<h4>Nerdtree Plugin</h4>
+<p>Vim has its own file/directory management tools, but it is not very good.  Nerdtree is 
+nice when you are working on a large project with lots of files. Here are the steps on 
+how to use Vundle to manage plugins. </p>
+<ul>
+<li>Use git to download Vundle. </li>
+</ul>
+<div class="ml-5">
+
+<div class="highlight"><pre><span></span><code>$ git clone https://github.com/gmarik/Vundle.vim.git \ 
+            ~/.vim/bundle/Vundle.vim
+</code></pre></div>
+
+
+</div>
+<ul>
+<li>Setup a new .plugin.vimrc file and add those statements. </li>
+</ul>
+<div class="ml-5">
+
+<div class="highlight"><pre><span></span><code>set nocompatible              &quot; required
+filetype off
+
+set rtp+=~/.vim/bundle/Vundle.vim
+call vundle#begin()
+
+Plugin &#39;gmarik/Vundle.vim&#39;
+
+&quot; add all your plugins here
+
+Plugin &#39;scrooloose/nerdtree&#39;
+Plugin &#39;jistr/vim-nerdtree-tabs&#39;
+
+&quot; plugin add ends here
+
+call vundle#end()            &quot; required
+filetype plugin indent on    &quot; required
+
+let NERDTreeIgnore=[&#39;\.pyc$&#39;, &#39;\~$&#39;] &quot;ignore files in NERDTree
+......
+</code></pre></div>
+
+
+</div>
+
+<ul>
+<li>Inside Vim, run command <code>:PluginInstall</code>.  Vundle will download and setup the 
+plugins listed in .plugin.vimrc file. </li>
+<li>Setup a bash alias for <code>vimplugin</code> in <code>.bashrc</code> file.</li>
+</ul>
+<div class="ml-5">
+
+<div class="highlight"><pre><span></span><code>alias pytree=&quot;tree -I &#39;venv|__pycache__&#39; --sort=name &quot;  # for tree
+alias vimplugin=&quot;vim -u ~/.plugin.vimrc &quot;
+</code></pre></div>
+
+
+</div>
+
+<p>Source: <a href="https://realpython.com/vim-and-python-a-match-made-in-heaven/">realpython.com article</a></p>
 <h4>Links and References</h4>
 <p><a href="https://vim.rtorr.com/">Vim Cheat Sheet</a> 
 is a nice single web page which includes command vim commands.</p>

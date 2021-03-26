@@ -6482,6 +6482,66 @@ $tree -I venv -v  # sort by name, or --sort=name
 
 &lt;p&gt;This is not necessary a Vim tip, but I have not found a good place to put it.  &lt;/p&gt;
 &lt;p&gt;Source: &lt;a href="https://zaiste.net/posts/tree-ignore-directories-patterns/"&gt;link&lt;/a&gt;&lt;/p&gt;
+&lt;h4&gt;Nerdtree Plugin&lt;/h4&gt;
+&lt;p&gt;Vim has its own file/directory management tools, but it is not very good.  Nerdtree is 
+nice when you are working on a large project with lots of files. Here are the steps on 
+how to use Vundle to manage plugins. &lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;Use git to download Vundle. &lt;/li&gt;
+&lt;/ul&gt;
+&lt;div class="ml-5"&gt;
+
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;$ git clone https://github.com/gmarik/Vundle.vim.git \ 
+            ~/.vim/bundle/Vundle.vim
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;/div&gt;
+&lt;ul&gt;
+&lt;li&gt;Setup a new .plugin.vimrc file and add those statements. &lt;/li&gt;
+&lt;/ul&gt;
+&lt;div class="ml-5"&gt;
+
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;set nocompatible              &amp;quot; required
+filetype off
+
+set rtp+=~/.vim/bundle/Vundle.vim
+call vundle#begin()
+
+Plugin &amp;#39;gmarik/Vundle.vim&amp;#39;
+
+&amp;quot; add all your plugins here
+
+Plugin &amp;#39;scrooloose/nerdtree&amp;#39;
+Plugin &amp;#39;jistr/vim-nerdtree-tabs&amp;#39;
+
+&amp;quot; plugin add ends here
+
+call vundle#end()            &amp;quot; required
+filetype plugin indent on    &amp;quot; required
+
+let NERDTreeIgnore=[&amp;#39;\.pyc$&amp;#39;, &amp;#39;\~$&amp;#39;] &amp;quot;ignore files in NERDTree
+......
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;/div&gt;
+
+&lt;ul&gt;
+&lt;li&gt;Inside Vim, run command &lt;code&gt;:PluginInstall&lt;/code&gt;.  Vundle will download and setup the 
+plugins listed in .plugin.vimrc file. &lt;/li&gt;
+&lt;li&gt;Setup a bash alias for &lt;code&gt;vimplugin&lt;/code&gt; in &lt;code&gt;.bashrc&lt;/code&gt; file.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;div class="ml-5"&gt;
+
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;alias pytree=&amp;quot;tree -I &amp;#39;venv|__pycache__&amp;#39; --sort=name &amp;quot;  # for tree
+alias vimplugin=&amp;quot;vim -u ~/.plugin.vimrc &amp;quot;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;/div&gt;
+
+&lt;p&gt;Source: &lt;a href="https://realpython.com/vim-and-python-a-match-made-in-heaven/"&gt;realpython.com article&lt;/a&gt;&lt;/p&gt;
 &lt;h4&gt;Links and References&lt;/h4&gt;
 &lt;p&gt;&lt;a href="https://vim.rtorr.com/"&gt;Vim Cheat Sheet&lt;/a&gt; 
 is a nice single web page which includes command vim commands.&lt;/p&gt;</content><category term="posts"></category><category term="vim"></category><category term="tip"></category><category term="linux"></category></entry></feed>
