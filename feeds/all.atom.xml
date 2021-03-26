@@ -1289,7 +1289,7 @@ in more details than other articles. &lt;/p&gt;
 website has an excellent article on threading by Jim Anderson. The article 
 covers most threading topics in the official Python threading documentation. &lt;/p&gt;
 &lt;p&gt;Realpython.com - &lt;a href="https://realpython.com/intro-to-python-threading/"&gt;An Intro to Threading in Python&lt;/a&gt;&lt;/p&gt;
-&lt;p&gt;Python.org - &lt;a href="https://docs.python.org/3/library/threading.html#thread-local-data"&gt;Threading - Thread-based Parallelism&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;Python.org - &lt;a href="https://docs.python.org/3/library/threading.html"&gt;Threading - Thread-based Parallelism&lt;/a&gt;&lt;/p&gt;
 &lt;p&gt;The Flask documentation has one page for application context and another page for request context. 
 The documentation pages are not written in a tutorial style and are difficult understand if you do not 
 read the code, but they are good and accurate.&lt;/p&gt;
