@@ -497,6 +497,59 @@ This is not necessary a Vim tip, but I have not found a good place to put it.
 
 Source: [link](https://zaiste.net/posts/tree-ignore-directories-patterns/)
 
+
+#### Nerdtree Plugin
+
+Vim has its own file/directory management tools, but it is not very good.  Nerdtree is 
+nice when you are working on a large project with lots of files. Here are the steps on 
+how to use Vundle to manage plugins. 
+
+- Use git to download Vundle. 
+<div class="ml-5">
+```
+$ git clone https://github.com/gmarik/Vundle.vim.git \ 
+            ~/.vim/bundle/Vundle.vim
+```
+</div>
+- Setup a new .plugin.vimrc file and add those statements. 
+
+<div class="ml-5">
+```
+set nocompatible              " required
+filetype off
+
+set rtp+=~/.vim/bundle/Vundle.vim
+call vundle#begin()
+
+Plugin 'gmarik/Vundle.vim'
+
+" add all your plugins here
+
+Plugin 'scrooloose/nerdtree'
+Plugin 'jistr/vim-nerdtree-tabs'
+
+" plugin add ends here
+
+call vundle#end()            " required
+filetype plugin indent on    " required
+
+let NERDTreeIgnore=['\.pyc$', '\~$'] "ignore files in NERDTree
+......
+```
+</div>
+
+-  Inside Vim, run command `:PluginInstall`.  Vundle will download and setup the 
+plugins listed in .plugin.vimrc file. 
+-  Setup a bash alias for `vimplugin` in `.bashrc` file.
+<div class="ml-5">
+```
+alias pytree="tree -I 'venv|__pycache__' --sort=name "  # for tree
+alias vimplugin="vim -u ~/.plugin.vimrc "
+```
+</div>
+
+Source: [realpython.com article](https://realpython.com/vim-and-python-a-match-made-in-heaven/)
+
 #### Links and References
 
 [Vim Cheat Sheet](https://vim.rtorr.com/) 
