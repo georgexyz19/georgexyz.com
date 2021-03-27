@@ -1,7 +1,7 @@
 title: Vim Tips
 slug: vim-tips
 meta: Vim Installation And Vim Tips
-tags: vim, tip, linux
+tags: vim, linux
 date: 2019-04-01 12:45
 modified: 2020-08-09 17:37
 
@@ -539,7 +539,8 @@ let NERDTreeIgnore=['\.pyc$', '\~$'] "ignore files in NERDTree
 </div>
 
 -  Inside Vim, run command `:PluginInstall`.  Vundle will download and setup the 
-plugins listed in .plugin.vimrc file. 
+plugins listed in .plugin.vimrc file. Run command `:NERDTree` to bring up 
+Nerdtree window on the left. 
 -  Setup a bash alias for `vimplugin` in `.bashrc` file.
 <div class="ml-5">
 ```
