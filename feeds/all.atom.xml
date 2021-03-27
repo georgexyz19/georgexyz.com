@@ -6529,7 +6529,8 @@ let NERDTreeIgnore=[&amp;#39;\.pyc$&amp;#39;, &amp;#39;\~$&amp;#39;] &amp;quot;i
 
 &lt;ul&gt;
 &lt;li&gt;Inside Vim, run command &lt;code&gt;:PluginInstall&lt;/code&gt;.  Vundle will download and setup the 
-plugins listed in .plugin.vimrc file. &lt;/li&gt;
+plugins listed in .plugin.vimrc file. Run command &lt;code&gt;:NERDTree&lt;/code&gt; to bring up 
+Nerdtree window on the left. &lt;/li&gt;
 &lt;li&gt;Setup a bash alias for &lt;code&gt;vimplugin&lt;/code&gt; in &lt;code&gt;.bashrc&lt;/code&gt; file.&lt;/li&gt;
 &lt;/ul&gt;
 &lt;div class="ml-5"&gt;
@@ -6544,4 +6545,4 @@ alias vimplugin=&amp;quot;vim -u ~/.plugin.vimrc &amp;quot;
 &lt;p&gt;Source: &lt;a href="https://realpython.com/vim-and-python-a-match-made-in-heaven/"&gt;realpython.com article&lt;/a&gt;&lt;/p&gt;
 &lt;h4&gt;Links and References&lt;/h4&gt;
 &lt;p&gt;&lt;a href="https://vim.rtorr.com/"&gt;Vim Cheat Sheet&lt;/a&gt; 
-is a nice single web page which includes command vim commands.&lt;/p&gt;</content><category term="posts"></category><category term="vim"></category><category term="tip"></category><category term="linux"></category></entry></feed>
+is a nice single web page which includes command vim commands.&lt;/p&gt;</content><category term="posts"></category><category term="vim"></category><category term="linux"></category></entry></feed>
