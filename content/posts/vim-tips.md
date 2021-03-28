@@ -27,7 +27,7 @@ Small version without GUI.  Features included (+) or not (-):
 
 If you type command `vim` in bash, it will tell you that "command vim not found". 
 Those three commands remove the existing vim-tiny and install the full version with GUI
-vim-gtk3 in Ubuntu 18.04 or Xubuntu. 
+vim-gtk3 in Ubuntu/Linux Mint. 
 
 ```
 sudo apt-get remove vim-tiny
@@ -40,7 +40,8 @@ You can then check the vim version by command `vim --version`.
 ### Basic Vim Settings
 
 Vim automatically loads `~/.vimrc` file during startup. Some default settings of vim 
-do not make sense. Below are some most basic vim settings. 
+do not make sense. Below are some basic vim settings. I am using those settings under
+Linux Mint.  Other OS settings may differ slightly.  
 
 ```
 " ~/.vimrc file
@@ -375,7 +376,7 @@ to run the current file.
 
 Some people recommend to map CapsLock key to Esc key when using Vim.
 Stackoverflow has a Q&A on how to do it. The following two lines of code in
-.vimrc file will do the trick. When leaving Vim, it will remap the key back to
+.vimrc file do the trick. When leaving Vim, it will remap the key back to
 Caps Lock. The xmodmap software is already installed in Linux Mint, so no
 installation is needed. 
 
@@ -511,7 +512,8 @@ $ git clone https://github.com/gmarik/Vundle.vim.git \
             ~/.vim/bundle/Vundle.vim
 ```
 </div>
-- Setup a new .plugin.vimrc file and add those statements. 
+- Setup a new .plugin.vimrc file and add those statements. Note at the end of this file 
+it loads `.vimrc` file, so you do not need to keep two copies of `.vimrc`. 
 
 <div class="ml-5">
 ```
