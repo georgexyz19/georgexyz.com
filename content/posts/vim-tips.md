@@ -468,7 +468,7 @@ number of spaces that will be inserted when the tab key is pressed
 (:set tabstop=4). The `shiftwidth` option is for indent command `>>`. 
 Yes, those option names are confusing.   
 
-Source: [link](https://vim.fandom.com/wiki/Converting_tabs_to_spaces)
+Source: [fandom.com article](https://vim.fandom.com/wiki/Converting_tabs_to_spaces)
 
 #### Change Letter Case
 
@@ -478,7 +478,7 @@ Tilde `~` command is to swap cases in a visual selection.
 Without using a visual selection, `gU` is the command to make characters uppercase, and 
 `gu` for lowercase. 
 
-Source: [link](https://stackoverflow.com/questions/2946051/changing-case-in-vim)
+Source: [Stackoverflow Q&A](https://stackoverflow.com/questions/2946051/changing-case-in-vim)
 
 
 #### Bash Tree Command
@@ -495,14 +495,14 @@ $tree -I venv -v  # sort by name, or --sort=name
 
 This is not necessary a Vim tip, but I have not found a good place to put it.  
 
-Source: [link](https://zaiste.net/posts/tree-ignore-directories-patterns/)
+Source: [zaiste.net blog post](https://zaiste.net/posts/tree-ignore-directories-patterns/)
 
 
 #### Nerdtree Plugin
 
-Vim has its own file/directory management tools, but it is not very good.  Nerdtree is 
-nice when you are working on a large project with lots of files. Here are the steps on 
-how to use Vundle to manage plugins. 
+Vim has a built in file/directory management tool, but it is not very good.  Nerdtree plugin 
+is nice when you are working on a large project. Here are the steps for managing plugins 
+with Vundle.
 
 - Use git to download Vundle. 
 <div class="ml-5">
@@ -534,6 +534,10 @@ call vundle#end()            " required
 filetype plugin indent on    " required
 
 let NERDTreeIgnore=['\.pyc$', '\~$'] "ignore files in NERDTree
+nnoremap <C-N> :NERDTree<CR>
+autocmd VimEnter * NERDTree
+
+source ~/.vimrc
 ......
 ```
 </div>
@@ -549,7 +553,18 @@ alias vimplugin="vim -u ~/.plugin.vimrc "
 ```
 </div>
 
-Source: [realpython.com article](https://realpython.com/vim-and-python-a-match-made-in-heaven/)
+Source: [realpython.com article](https://realpython.com/vim-and-python-a-match-made-in-heaven/),
+<span class="ml-2"></span>[Nerdtree github repo](https://github.com/preservim/nerdtree)
+
+#### Nerdtree Shortcuts
+
+Here are some shortcuts in Nerdtree. Once you become familiar with them, it is 
+faster to navigate than a GUI file browser. 
+
+- Press `m` to modify dir, `a` to add dir or file 
+- `o` to open, `O` recursively open
+- `x` to close open dir, `X` recursively close
+- `C-W` + `h j k l` to move between windows
 
 #### Links and References
 
