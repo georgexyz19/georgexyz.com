@@ -90,7 +90,7 @@ Small version without GUI.  Features included (+) or not (-):
 
 <p>If you type command <code>vim</code> in bash, it will tell you that &#8220;command vim not found&#8221;. 
 Those three commands remove the existing vim-tiny and install the full version with <span class="caps">GUI</span>
-vim-gtk3 in Ubuntu 18.04 or Xubuntu. </p>
+vim-gtk3 in Ubuntu/Linux Mint. </p>
 <div class="highlight"><pre><span></span><code>sudo apt-get remove vim-tiny
 sudo apt-get update
 sudo apt-get install vim-gtk3
@@ -99,7 +99,8 @@ sudo apt-get install vim-gtk3
 <p>You can then check the vim version by command <code>vim --version</code>. </p>
 <h3>Basic Vim Settings</h3>
 <p>Vim automatically loads <code>~/.vimrc</code> file during startup. Some default settings of vim 
-do not make sense. Below are some most basic vim settings. </p>
+do not make sense. Below are some basic vim settings. I am using those settings under
+Linux Mint.  Other <span class="caps">OS</span> settings may differ slightly.  </p>
 <div class="highlight"><pre><span></span><code>&quot; ~/.vimrc file
 
 set nocompatible              &quot; required
@@ -358,7 +359,7 @@ to run the current file. </p>
 <h4>Map Caps Lock Key</h4>
 <p>Some people recommend to map CapsLock key to Esc key when using Vim.
 Stackoverflow has a Q&amp;A on how to do it. The following two lines of code in
-.vimrc file will do the trick. When leaving Vim, it will remap the key back to
+.vimrc file do the trick. When leaving Vim, it will remap the key back to
 Caps Lock. The xmodmap software is already installed in Linux Mint, so no
 installation is needed. </p>
 <div class="highlight"><pre><span></span><code>au VimEnter * silent! !xmodmap -e &#39;clear Lock&#39; 
@@ -461,7 +462,8 @@ with Vundle.</p>
 
 </div>
 <ul>
-<li>Setup a new .plugin.vimrc file and add those statements. </li>
+<li>Setup a new .plugin.vimrc file and add those statements. Note at the end of this file 
+it loads <code>.vimrc</code> file, so you do not need to keep two copies of <code>.vimrc</code>. </li>
 </ul>
 <div class="ml-5">
 

@@ -6127,7 +6127,7 @@ Small version without GUI.  Features included (+) or not (-):
 
 &lt;p&gt;If you type command &lt;code&gt;vim&lt;/code&gt; in bash, it will tell you that &amp;#8220;command vim not found&amp;#8221;. 
 Those three commands remove the existing vim-tiny and install the full version with &lt;span class="caps"&gt;GUI&lt;/span&gt;
-vim-gtk3 in Ubuntu 18.04 or Xubuntu. &lt;/p&gt;
+vim-gtk3 in Ubuntu/Linux Mint. &lt;/p&gt;
 &lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;sudo apt-get remove vim-tiny
 sudo apt-get update
 sudo apt-get install vim-gtk3
@@ -6136,7 +6136,8 @@ sudo apt-get install vim-gtk3
 &lt;p&gt;You can then check the vim version by command &lt;code&gt;vim --version&lt;/code&gt;. &lt;/p&gt;
 &lt;h3&gt;Basic Vim Settings&lt;/h3&gt;
 &lt;p&gt;Vim automatically loads &lt;code&gt;~/.vimrc&lt;/code&gt; file during startup. Some default settings of vim 
-do not make sense. Below are some most basic vim settings. &lt;/p&gt;
+do not make sense. Below are some basic vim settings. I am using those settings under
+Linux Mint.  Other &lt;span class="caps"&gt;OS&lt;/span&gt; settings may differ slightly.  &lt;/p&gt;
 &lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;&amp;quot; ~/.vimrc file
 
 set nocompatible              &amp;quot; required
@@ -6395,7 +6396,7 @@ to run the current file. &lt;/p&gt;
 &lt;h4&gt;Map Caps Lock Key&lt;/h4&gt;
 &lt;p&gt;Some people recommend to map CapsLock key to Esc key when using Vim.
 Stackoverflow has a Q&amp;amp;A on how to do it. The following two lines of code in
-.vimrc file will do the trick. When leaving Vim, it will remap the key back to
+.vimrc file do the trick. When leaving Vim, it will remap the key back to
 Caps Lock. The xmodmap software is already installed in Linux Mint, so no
 installation is needed. &lt;/p&gt;
 &lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;au VimEnter * silent! !xmodmap -e &amp;#39;clear Lock&amp;#39; 
@@ -6498,7 +6499,8 @@ with Vundle.&lt;/p&gt;
 
 &lt;/div&gt;
 &lt;ul&gt;
-&lt;li&gt;Setup a new .plugin.vimrc file and add those statements. &lt;/li&gt;
+&lt;li&gt;Setup a new .plugin.vimrc file and add those statements. Note at the end of this file 
+it loads &lt;code&gt;.vimrc&lt;/code&gt; file, so you do not need to keep two copies of &lt;code&gt;.vimrc&lt;/code&gt;. &lt;/li&gt;
 &lt;/ul&gt;
 &lt;div class="ml-5"&gt;
 
