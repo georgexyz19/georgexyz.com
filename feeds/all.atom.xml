@@ -6464,13 +6464,13 @@ key is pressed (:set expandtab). The option &lt;code&gt;tabstop&lt;/code&gt; con
 number of spaces that will be inserted when the tab key is pressed 
 (:set tabstop=4). The &lt;code&gt;shiftwidth&lt;/code&gt; option is for indent command &lt;code&gt;&amp;gt;&amp;gt;&lt;/code&gt;. 
 Yes, those option names are confusing.   &lt;/p&gt;
-&lt;p&gt;Source: &lt;a href="https://vim.fandom.com/wiki/Converting_tabs_to_spaces"&gt;link&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;Source: &lt;a href="https://vim.fandom.com/wiki/Converting_tabs_to_spaces"&gt;fandom.com article&lt;/a&gt;&lt;/p&gt;
 &lt;h4&gt;Change Letter Case&lt;/h4&gt;
 &lt;p&gt;The command &lt;code&gt;U&lt;/code&gt; is to change visually selected text to uppercase, and &lt;code&gt;u&lt;/code&gt; to lowercase. 
 Tilde &lt;code&gt;~&lt;/code&gt; command is to swap cases in a visual selection. &lt;/p&gt;
 &lt;p&gt;Without using a visual selection, &lt;code&gt;gU&lt;/code&gt; is the command to make characters uppercase, and 
 &lt;code&gt;gu&lt;/code&gt; for lowercase. &lt;/p&gt;
-&lt;p&gt;Source: &lt;a href="https://stackoverflow.com/questions/2946051/changing-case-in-vim"&gt;link&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;Source: &lt;a href="https://stackoverflow.com/questions/2946051/changing-case-in-vim"&gt;Stackoverflow Q&amp;amp;A&lt;/a&gt;&lt;/p&gt;
 &lt;h4&gt;Bash Tree Command&lt;/h4&gt;
 &lt;p&gt;I often use &lt;code&gt;tree&lt;/code&gt; command to list files in a directory (need apt install in Linux Mint). 
 If you want to exclude a sub directory such as &lt;code&gt;venv&lt;/code&gt;, the command looks like this. &lt;/p&gt;
@@ -6481,11 +6481,11 @@ $tree -I venv -v  # sort by name, or --sort=name
 &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
 
 &lt;p&gt;This is not necessary a Vim tip, but I have not found a good place to put it.  &lt;/p&gt;
-&lt;p&gt;Source: &lt;a href="https://zaiste.net/posts/tree-ignore-directories-patterns/"&gt;link&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;Source: &lt;a href="https://zaiste.net/posts/tree-ignore-directories-patterns/"&gt;zaiste.net blog post&lt;/a&gt;&lt;/p&gt;
 &lt;h4&gt;Nerdtree Plugin&lt;/h4&gt;
-&lt;p&gt;Vim has its own file/directory management tools, but it is not very good.  Nerdtree is 
-nice when you are working on a large project with lots of files. Here are the steps on 
-how to use Vundle to manage plugins. &lt;/p&gt;
+&lt;p&gt;Vim has a built in file/directory management tool, but it is not very good.  Nerdtree plugin 
+is nice when you are working on a large project. Here are the steps for managing plugins 
+with Vundle.&lt;/p&gt;
 &lt;ul&gt;
 &lt;li&gt;Use git to download Vundle. &lt;/li&gt;
 &lt;/ul&gt;
@@ -6521,6 +6521,10 @@ call vundle#end()            &amp;quot; required
 filetype plugin indent on    &amp;quot; required
 
 let NERDTreeIgnore=[&amp;#39;\.pyc$&amp;#39;, &amp;#39;\~$&amp;#39;] &amp;quot;ignore files in NERDTree
+nnoremap &amp;lt;C-N&amp;gt; :NERDTree&amp;lt;CR&amp;gt;
+autocmd VimEnter * NERDTree
+
+source ~/.vimrc
 ......
 &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
 
@@ -6542,7 +6546,17 @@ alias vimplugin=&amp;quot;vim -u ~/.plugin.vimrc &amp;quot;
 
 &lt;/div&gt;
 
-&lt;p&gt;Source: &lt;a href="https://realpython.com/vim-and-python-a-match-made-in-heaven/"&gt;realpython.com article&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;Source: &lt;a href="https://realpython.com/vim-and-python-a-match-made-in-heaven/"&gt;realpython.com article&lt;/a&gt;,
+&lt;span class="ml-2"&gt;&lt;/span&gt;&lt;a href="https://github.com/preservim/nerdtree"&gt;Nerdtree github repo&lt;/a&gt;&lt;/p&gt;
+&lt;h4&gt;Nerdtree Shortcuts&lt;/h4&gt;
+&lt;p&gt;Here are some shortcuts in Nerdtree. Once you become familiar with them, it is 
+faster to navigate than a &lt;span class="caps"&gt;GUI&lt;/span&gt; file browser. &lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;Press &lt;code&gt;m&lt;/code&gt; to modify dir, &lt;code&gt;a&lt;/code&gt; to add dir or file &lt;/li&gt;
+&lt;li&gt;&lt;code&gt;o&lt;/code&gt; to open, &lt;code&gt;O&lt;/code&gt; recursively open&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;x&lt;/code&gt; to close open dir, &lt;code&gt;X&lt;/code&gt; recursively close&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;C-W&lt;/code&gt; + &lt;code&gt;h j k l&lt;/code&gt; to move between windows&lt;/li&gt;
+&lt;/ul&gt;
 &lt;h4&gt;Links and References&lt;/h4&gt;
 &lt;p&gt;&lt;a href="https://vim.rtorr.com/"&gt;Vim Cheat Sheet&lt;/a&gt; 
 is a nice single web page which includes command vim commands.&lt;/p&gt;</content><category term="posts"></category><category term="vim"></category><category term="linux"></category></entry></feed>

@@ -427,13 +427,13 @@ key is pressed (:set expandtab). The option <code>tabstop</code> controls the
 number of spaces that will be inserted when the tab key is pressed 
 (:set tabstop=4). The <code>shiftwidth</code> option is for indent command <code>&gt;&gt;</code>. 
 Yes, those option names are confusing.   </p>
-<p>Source: <a href="https://vim.fandom.com/wiki/Converting_tabs_to_spaces">link</a></p>
+<p>Source: <a href="https://vim.fandom.com/wiki/Converting_tabs_to_spaces">fandom.com article</a></p>
 <h4>Change Letter Case</h4>
 <p>The command <code>U</code> is to change visually selected text to uppercase, and <code>u</code> to lowercase. 
 Tilde <code>~</code> command is to swap cases in a visual selection. </p>
 <p>Without using a visual selection, <code>gU</code> is the command to make characters uppercase, and 
 <code>gu</code> for lowercase. </p>
-<p>Source: <a href="https://stackoverflow.com/questions/2946051/changing-case-in-vim">link</a></p>
+<p>Source: <a href="https://stackoverflow.com/questions/2946051/changing-case-in-vim">Stackoverflow Q&amp;A</a></p>
 <h4>Bash Tree Command</h4>
 <p>I often use <code>tree</code> command to list files in a directory (need apt install in Linux Mint). 
 If you want to exclude a sub directory such as <code>venv</code>, the command looks like this. </p>
@@ -444,11 +444,11 @@ $tree -I venv -v  # sort by name, or --sort=name
 </code></pre></div>
 
 <p>This is not necessary a Vim tip, but I have not found a good place to put it.  </p>
-<p>Source: <a href="https://zaiste.net/posts/tree-ignore-directories-patterns/">link</a></p>
+<p>Source: <a href="https://zaiste.net/posts/tree-ignore-directories-patterns/">zaiste.net blog post</a></p>
 <h4>Nerdtree Plugin</h4>
-<p>Vim has its own file/directory management tools, but it is not very good.  Nerdtree is 
-nice when you are working on a large project with lots of files. Here are the steps on 
-how to use Vundle to manage plugins. </p>
+<p>Vim has a built in file/directory management tool, but it is not very good.  Nerdtree plugin 
+is nice when you are working on a large project. Here are the steps for managing plugins 
+with Vundle.</p>
 <ul>
 <li>Use git to download Vundle. </li>
 </ul>
@@ -484,6 +484,10 @@ call vundle#end()            &quot; required
 filetype plugin indent on    &quot; required
 
 let NERDTreeIgnore=[&#39;\.pyc$&#39;, &#39;\~$&#39;] &quot;ignore files in NERDTree
+nnoremap &lt;C-N&gt; :NERDTree&lt;CR&gt;
+autocmd VimEnter * NERDTree
+
+source ~/.vimrc
 ......
 </code></pre></div>
 
@@ -505,7 +509,17 @@ alias vimplugin=&quot;vim -u ~/.plugin.vimrc &quot;
 
 </div>
 
-<p>Source: <a href="https://realpython.com/vim-and-python-a-match-made-in-heaven/">realpython.com article</a></p>
+<p>Source: <a href="https://realpython.com/vim-and-python-a-match-made-in-heaven/">realpython.com article</a>,
+<span class="ml-2"></span><a href="https://github.com/preservim/nerdtree">Nerdtree github repo</a></p>
+<h4>Nerdtree Shortcuts</h4>
+<p>Here are some shortcuts in Nerdtree. Once you become familiar with them, it is 
+faster to navigate than a <span class="caps">GUI</span> file browser. </p>
+<ul>
+<li>Press <code>m</code> to modify dir, <code>a</code> to add dir or file </li>
+<li><code>o</code> to open, <code>O</code> recursively open</li>
+<li><code>x</code> to close open dir, <code>X</code> recursively close</li>
+<li><code>C-W</code> + <code>h j k l</code> to move between windows</li>
+</ul>
 <h4>Links and References</h4>
 <p><a href="https://vim.rtorr.com/">Vim Cheat Sheet</a> 
 is a nice single web page which includes command vim commands.</p>
