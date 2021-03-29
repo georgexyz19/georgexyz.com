@@ -101,8 +101,17 @@ because it just calls a few other methods. </p>
         <span class="n">ctx</span><span class="o">.</span><span class="n">auto_pop</span><span class="p">(</span><span class="n">error</span><span class="p">)</span>
 </code></pre></div>
 
-<p>If you ignore the exception handling code for a minute, the code is not too difficult to 
-understand.</p>
+<p>If you ignore the exception handling code for a minute, the code is not too long. It is 
+something like this. </p>
+<div class="highlight"><pre><span></span><code>def wsgi_app(self, environ, start_response):
+    ctx = self.request_context(environ)
+    ctx.push()
+    response = self.full_dispatch_request()
+    rv = response(environ, start_response)
+    ctx.auto_pop(error)  //show concept only
+    return rv
+</code></pre></div>
+
 <p>Let&#8217;s look the first line of the method in detail.  </p>
 <div class="highlight"><pre><span></span><code><span class="n">ctx</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">request_context</span><span class="p">(</span><span class="n">environ</span><span class="p">)</span>
 </code></pre></div>
@@ -116,8 +125,8 @@ understand.</p>
 
 <p>The <code>RequestContext</code> class is defined on Line 255 of the ctx.py module.  The first 
 sentence of the class documentation states that &#8220;the request context contains all 
-request relevant information&#8221;. Let&#8217;s look at the instance variables defined in <code>__init__</code> 
-method. </p>
+request relevant information&#8221;. Let&#8217;s look at the instance variables initialized 
+in <code>__init__</code> method. </p>
 <ul>
 <li>self.app</li>
 <li>self.request</li>
@@ -134,6 +143,10 @@ The interesting part of <code>push</code> method is that session is part of the 
 context object and is initialized here.  The <code>_request_ctx_stack</code> object is 
 a global variable defined in global.py module.  </p>
 <div class="highlight"><pre><span></span><code><span class="k">def</span> <span class="nf">push</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+    <span class="n">top</span> <span class="o">=</span> <span class="n">_request_ctx_stack</span><span class="o">.</span><span class="n">top</span>
+    <span class="k">if</span> <span class="n">top</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span> <span class="ow">and</span> <span class="n">top</span><span class="o">.</span><span class="n">preserved</span><span class="p">:</span>
+        <span class="n">top</span><span class="o">.</span><span class="n">pop</span><span class="p">(</span><span class="n">top</span><span class="o">.</span><span class="n">_preserved_exc</span><span class="p">)</span>
+
     <span class="n">app_ctx</span> <span class="o">=</span> <span class="n">_app_ctx_stack</span><span class="o">.</span><span class="n">top</span>
     <span class="k">if</span> <span class="n">app_ctx</span> <span class="ow">is</span> <span class="kc">None</span> <span class="ow">or</span> <span class="n">app_ctx</span><span class="o">.</span><span class="n">app</span> <span class="o">!=</span> <span class="bp">self</span><span class="o">.</span><span class="n">app</span><span class="p">:</span>
         <span class="n">app_ctx</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">app</span><span class="o">.</span><span class="n">app_context</span><span class="p">()</span>
@@ -159,6 +172,32 @@ a global variable defined in global.py module.  </p>
 </code></pre></div>
 
 <p>I will stop here for now and look at other code in <code>wsgi_app</code> at a later time.   </p>
+<hr>
+
+<p><em>added on 3/28/2021</em></p>
+<p>Those three concepts are confusing if you do not read the source code. </p>
+<p>1.&amp;nbsp<em>Request Context</em></p>
+<p>The request context refers to the instance of <code>RequestContext</code> class.  It contains 
+all request relevant information.  </p>
+<p>2.&nbsp;<em>Request Stack</em></p>
+<p>The request stack is an <code>LocalStack</code> <em>context local</em> object. It is defined in <code>globals.py</code> 
+file L57. The <code>RequestContext</code> object has a <code>push</code> method and it can push itself onto
+the stack.  </p>
+<p>3.&nbsp;<em>Request</em></p>
+<p>The flask <code>request</code> object is a LocalProxy to the <code>request</code> instance variable of 
+<code>RequestContext</code> class. It is defined on L60 of <code>globals.py</code> file. </p>
+<div class="highlight"><pre><span></span><code># globals.py
+_request_ctx_stack = LocalStack()
+request = LocalProxy(partial(_lookup_req_object, &quot;request&quot;))
+
+# L35 of globals.py
+def _lookup_req_object(name):
+    top = _request_ctx_stack.top
+    if top is None:
+        raise RuntimeError(_request_ctx_err_msg)
+    ## this is to get request instance variable from RequestContext
+    return getattr(top, name)  
+</code></pre></div>
 
       <div class="mt-5 border-top">
         <h3>Related Posts:</h3>
