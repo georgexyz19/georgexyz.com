@@ -121,11 +121,12 @@ I will stop here for now and look at other code in `wsgi_app` at a later time.
 
 <hr>
 
-*added on 3/28/2021*
+*updated on 3/28/2021*
 
-Those three concepts are confusing if you do not read the source code. 
+Those three concepts are confusing if you do not read the source code. Kennedy's article 
+helps to make them clear.  
 
-1.&nbsp*Request Context*
+1.&nbsp;*Request Context*
 
 The request context refers to the instance of `RequestContext` class.  It contains 
 all request relevant information.  
@@ -155,3 +156,43 @@ def _lookup_req_object(name):
     return getattr(top, name)  
 ```
 
+Miguel Grinberg's *Flask Web Development* Book Chapter 2 Page 18 has an example to show
+how the application context works. 
+
+```
+(venv) george@X220:~/Code/flask-hello$ python
+Python 3.9.2 (default, Mar 19 2021, 09:17:52) 
+[GCC 9.3.0] on linux
+Type "help", "copyright", "credits" or "license" for more information.
+>>> from hello import app
+>>> from flask import current_app
+>>> current_app.name
+Traceback (most recent call last):
+  File "<stdin>", line 1, in <module>
+  ...
+RuntimeError: Working outside of application context.
+
+This typically means that you attempted to use functionality that needed
+to interface with the current application object in some way. To solve
+this, set up an application context with app.app_context().  See the
+documentation for more information.
+>>> app_ctx = app.app_context()
+>>> app_ctx.push()
+>>> current_app.name
+'hello'
+>>> app_ctx.pop()
+```
+
+The reason of the runtime exception is that the `app` is not invoked by the 
+WSGI server. If the `app` is called by the server, the `wsgi_app` method 
+will automatically create the application context and push it on to the stack. 
+But it will be difficult to show the process in a python session. 
+
+The code in ctx.py file shows that `app` and `g` are instance variables 
+of `AppContext`, `request` and `session` are instance variables of `RequestContext` 
+class. Miguel Grinberg's book refers those variables as "flask context globals" 
+on Table 2-1 (Page 2-1).  Those are probably should be called "context locals" as 
+in Kennedy's article. 
+
+The paragraphs of this article could be better organized, and I will revise the 
+article again later.  This probably is the most important topic in Flask. 
