@@ -6186,7 +6186,13 @@ python click_example.py -x -c mystyle.css myfile.html # error
 python click_example.py -x True -c mystyle.css myfile.html
 python click_example.py --xhtml True -c mystyle.css myfile.html
 python click_example.py --xhtml True --cssfile mystyle.css myfile.html
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;</content><category term="posts"></category><category term="python"></category></entry><entry><title>Vim Tips</title><link href="https://www.georgexyz.com/vim-tips.html" rel="alternate"></link><published>2019-04-01T12:45:00-04:00</published><updated>2020-08-09T17:37:00-04:00</updated><author><name>George Zhang</name></author><id>tag:www.georgexyz.com,2019-04-01:/vim-tips.html</id><summary type="html">&lt;p&gt;Ubuntu 18.04 comes with a stripped down version of Vim. If you want to use Vim for 
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+
+&lt;p&gt;The weird part of the click example code is that the defined &lt;code&gt;main&lt;/code&gt; function has 
+three positional arguments. The decorator changes the function definition to be 
+without arguments. When you call the &lt;code&gt;main&lt;/code&gt; fuction, it is simply &lt;code&gt;main()&lt;/code&gt; without 
+any arguments.  Normally that is not a good decorator practice, but this is 
+an exception and it works well.  &lt;/p&gt;</content><category term="posts"></category><category term="python"></category></entry><entry><title>Vim Tips</title><link href="https://www.georgexyz.com/vim-tips.html" rel="alternate"></link><published>2019-04-01T12:45:00-04:00</published><updated>2020-08-09T17:37:00-04:00</updated><author><name>George Zhang</name></author><id>tag:www.georgexyz.com,2019-04-01:/vim-tips.html</id><summary type="html">&lt;p&gt;Ubuntu 18.04 comes with a stripped down version of Vim. If you want to use Vim for 
 serious work, you want the full version. &lt;/p&gt;
 &lt;h3&gt;Vim Installation&lt;/h3&gt;
 &lt;p&gt;The default version …&lt;/p&gt;</summary><content type="html">&lt;p&gt;Ubuntu 18.04 comes with a stripped down version of Vim. If you want to use Vim for 
