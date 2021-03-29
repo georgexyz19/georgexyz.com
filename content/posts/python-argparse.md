@@ -136,3 +136,10 @@ python click_example.py -x True -c mystyle.css myfile.html
 python click_example.py --xhtml True -c mystyle.css myfile.html
 python click_example.py --xhtml True --cssfile mystyle.css myfile.html
 ```
+
+The weird part of the click example code is that the defined `main` function has 
+three positional arguments. The decorator changes the function definition to be 
+without arguments. When you call the `main` fuction, it is simply `main()` without 
+any arguments.  Normally that is not a good decorator practice, but this is 
+an exception and it works well.  
+
