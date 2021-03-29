@@ -6605,7 +6605,7 @@ Plugin &amp;#39;jistr/vim-nerdtree-tabs&amp;#39;
 &amp;quot; plugin add ends here
 
 call vundle#end()            &amp;quot; required
-filetype plugin indent on    &amp;quot; required
+filetype plugin on    &amp;quot;delete indent before on
 
 let NERDTreeIgnore=[&amp;#39;\.pyc$&amp;#39;, &amp;#39;\~$&amp;#39;] &amp;quot;ignore files in NERDTree
 nnoremap &amp;lt;C-N&amp;gt; :NERDTree&amp;lt;CR&amp;gt;
