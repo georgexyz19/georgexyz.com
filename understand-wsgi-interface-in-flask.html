@@ -174,9 +174,10 @@ a global variable defined in global.py module.  </p>
 <p>I will stop here for now and look at other code in <code>wsgi_app</code> at a later time.   </p>
 <hr>
 
-<p><em>added on 3/28/2021</em></p>
-<p>Those three concepts are confusing if you do not read the source code. </p>
-<p>1.&amp;nbsp<em>Request Context</em></p>
+<p><em>updated on 3/28/2021</em></p>
+<p>Those three concepts are confusing if you do not read the source code. Kennedy&#8217;s article 
+helps to make them clear.  </p>
+<p>1.&nbsp;<em>Request Context</em></p>
 <p>The request context refers to the instance of <code>RequestContext</code> class.  It contains 
 all request relevant information.  </p>
 <p>2.&nbsp;<em>Request Stack</em></p>
@@ -198,6 +199,43 @@ def _lookup_req_object(name):
     ## this is to get request instance variable from RequestContext
     return getattr(top, name)  
 </code></pre></div>
+
+<p>Miguel Grinberg&#8217;s <em>Flask Web Development</em> Book Chapter 2 Page 18 has an example to show
+how the application context works. </p>
+<div class="highlight"><pre><span></span><code>(venv) george@X220:~/Code/flask-hello$ python
+Python 3.9.2 (default, Mar 19 2021, 09:17:52) 
+[GCC 9.3.0] on linux
+Type &quot;help&quot;, &quot;copyright&quot;, &quot;credits&quot; or &quot;license&quot; for more information.
+&gt;&gt;&gt; from hello import app
+&gt;&gt;&gt; from flask import current_app
+&gt;&gt;&gt; current_app.name
+Traceback (most recent call last):
+  File &quot;&lt;stdin&gt;&quot;, line 1, in &lt;module&gt;
+  ...
+RuntimeError: Working outside of application context.
+
+This typically means that you attempted to use functionality that needed
+to interface with the current application object in some way. To solve
+this, set up an application context with app.app_context().  See the
+documentation for more information.
+&gt;&gt;&gt; app_ctx = app.app_context()
+&gt;&gt;&gt; app_ctx.push()
+&gt;&gt;&gt; current_app.name
+&#39;hello&#39;
+&gt;&gt;&gt; app_ctx.pop()
+</code></pre></div>
+
+<p>The reason of the runtime exception is that the <code>app</code> is not invoked by the 
+<span class="caps">WSGI</span> server. If the <code>app</code> is called by the server, the <code>wsgi_app</code> method 
+will automatically create the application context and push it on to the stack. 
+But it will be difficult to show the process in a python session. </p>
+<p>The code in ctx.py file shows that <code>app</code> and <code>g</code> are instance variables 
+of <code>AppContext</code>, <code>request</code> and <code>session</code> are instance variables of <code>RequestContext</code> 
+class. Miguel Grinberg&#8217;s book refers those variables as &#8220;flask context globals&#8221; 
+on Table 2-1 (Page 2-1).  Those are probably should be called &#8220;context locals&#8221; as 
+in Kennedy&#8217;s article. </p>
+<p>The paragraphs of this article could be better organized, and I will revise the 
+article again later.  This probably is the most important topic in Flask. </p>
 
       <div class="mt-5 border-top">
         <h3>Related Posts:</h3>
