@@ -38,8 +38,18 @@ def wsgi_app(self, environ, start_response):
         ctx.auto_pop(error)
 ```
 
-If you ignore the exception handling code for a minute, the code is not too difficult to 
-understand.
+If you ignore the exception handling code for a minute, the code is not too long. It is 
+something like this. 
+
+```
+def wsgi_app(self, environ, start_response):
+    ctx = self.request_context(environ)
+    ctx.push()
+    response = self.full_dispatch_request()
+    rv = response(environ, start_response)
+    ctx.auto_pop(error)  //show concept only
+    return rv
+```
 
 Let's look the first line of the method in detail.  
 
@@ -58,8 +68,8 @@ def request_context(self, environ):
 
 The `RequestContext` class is defined on Line 255 of the ctx.py module.  The first 
 sentence of the class documentation states that "the request context contains all 
-request relevant information". Let's look at the instance variables defined in `__init__` 
-method. 
+request relevant information". Let's look at the instance variables initialized 
+in `__init__` method. 
 
 - self.app
 - self.request
@@ -77,7 +87,12 @@ context object and is initialized here.  The `_request_ctx_stack` object is
 a global variable defined in global.py module.  
 
 ```python
+
 def push(self):
+    top = _request_ctx_stack.top
+    if top is not None and top.preserved:
+        top.pop(top._preserved_exc)
+
     app_ctx = _app_ctx_stack.top
     if app_ctx is None or app_ctx.app != self.app:
         app_ctx = self.app.app_context()
@@ -103,3 +118,40 @@ def push(self):
 ```
 
 I will stop here for now and look at other code in `wsgi_app` at a later time.   
+
+<hr>
+
+*added on 3/28/2021*
+
+Those three concepts are confusing if you do not read the source code. 
+
+1.&nbsp*Request Context*
+
+The request context refers to the instance of `RequestContext` class.  It contains 
+all request relevant information.  
+
+2.&nbsp;*Request Stack*
+
+The request stack is an `LocalStack` *context local* object. It is defined in `globals.py` 
+file L57. The `RequestContext` object has a `push` method and it can push itself onto
+the stack.  
+
+3.&nbsp;*Request*
+
+The flask `request` object is a LocalProxy to the `request` instance variable of 
+`RequestContext` class. It is defined on L60 of `globals.py` file. 
+
+```
+# globals.py
+_request_ctx_stack = LocalStack()
+request = LocalProxy(partial(_lookup_req_object, "request"))
+
+# L35 of globals.py
+def _lookup_req_object(name):
+    top = _request_ctx_stack.top
+    if top is None:
+        raise RuntimeError(_request_ctx_err_msg)
+    ## this is to get request instance variable from RequestContext
+    return getattr(top, name)  
+```
+
