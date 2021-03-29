@@ -116,6 +116,10 @@ Those links are for people who already know the Python basics.
 
 [Getting Started with WSGI](https://lucumr.pocoo.org/2007/5/21/getting-started-with-wsgi/) - Best WSGI writing by Armin Ronacher
 
+[App and Request Contexts Basics](https://testdriven.io/blog/flask-contexts/) - Patrick Kennedy's excellent article 
+
+[Flask Contexts Advanced](https://testdriven.io/blog/flask-contexts-advanced/) - Detailed and advanced article
+
 
 ### Javascript Language
 
