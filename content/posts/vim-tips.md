@@ -471,6 +471,22 @@ Yes, those option names are confusing.
 
 Source: [fandom.com article](https://vim.fandom.com/wiki/Converting_tabs_to_spaces)
 
+#### Find and Search
+
+The command to scan line for a character is `f{char}`, and `F{char}` reverse the order 
+and scan backward. Press `;` for repeat and `,` for reverse.  The command `t{char}` stops
+the cursor before the character. Command `f` is for find and `t` is for til. 
+
+The command `/pattern<CR>` is to search a word pattern. Press `n` for next and `N` for 
+reverse search. Command `*` is to search the word that is under the cursor. 
+
+Substitution command is `:s/target/replacement`. Press `&` for repeat. Command `:%s/...`
+is to search all lines. Add an option `/g` to the end `:s/tar/rep/g` to replace multiple 
+matches on a line. 
+
+Source: Page 9 of Drew Neil's *Practical Vim* Book
+
+
 #### Change Letter Case
 
 The command `U` is to change visually selected text to uppercase, and `u` to lowercase. 

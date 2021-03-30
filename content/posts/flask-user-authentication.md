@@ -25,8 +25,8 @@ to create a basic login and logout system.
 
 Page 113 of the book has an excellent description on how flask-login works. 
 
-The login for user registration is simpler. This is a typical form which is collecting 
-some data from a user and saving the data in a db. The steps is simple. 
+The user registration process is simpler. It is a typical form collecting 
+data from a user and saving the data in a database. Here are the steps. 
 
 1. Add a link on the `login` template page for user registration.
 2. Create a `register` view function.
