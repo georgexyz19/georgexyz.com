@@ -20,8 +20,8 @@ to create a basic login and logout system. &lt;/p&gt;
    template is need. &lt;/li&gt;
 &lt;/ol&gt;
 &lt;p&gt;Page 113 of the book has an excellent description on how flask-login works. &lt;/p&gt;
-&lt;p&gt;The login for user registration is simpler. This is a typical form which is collecting 
-some data from a user and saving the data in a db. The steps is simple. &lt;/p&gt;
+&lt;p&gt;The user registration process is simpler. It is a typical form collecting 
+data from a user and saving the data in a database. Here are the steps. &lt;/p&gt;
 &lt;ol&gt;
 &lt;li&gt;Add a link on the &lt;code&gt;login&lt;/code&gt; template page for user registration.&lt;/li&gt;
 &lt;li&gt;Create a &lt;code&gt;register&lt;/code&gt; view function.&lt;ul&gt;
@@ -6584,6 +6584,16 @@ number of spaces that will be inserted when the tab key is pressed
 (:set tabstop=4). The &lt;code&gt;shiftwidth&lt;/code&gt; option is for indent command &lt;code&gt;&amp;gt;&amp;gt;&lt;/code&gt;. 
 Yes, those option names are confusing.   &lt;/p&gt;
 &lt;p&gt;Source: &lt;a href="https://vim.fandom.com/wiki/Converting_tabs_to_spaces"&gt;fandom.com article&lt;/a&gt;&lt;/p&gt;
+&lt;h4&gt;Find and Search&lt;/h4&gt;
+&lt;p&gt;The command to scan line for a character is &lt;code&gt;f{char}&lt;/code&gt;, and &lt;code&gt;F{char}&lt;/code&gt; reverse the order 
+and scan backward. Press &lt;code&gt;;&lt;/code&gt; for repeat and &lt;code&gt;,&lt;/code&gt; for reverse.  The command &lt;code&gt;t{char}&lt;/code&gt; stops
+the cursor before the character. Command &lt;code&gt;f&lt;/code&gt; is for find and &lt;code&gt;t&lt;/code&gt; is for til. &lt;/p&gt;
+&lt;p&gt;The command &lt;code&gt;/pattern&amp;lt;CR&amp;gt;&lt;/code&gt; is to search a word pattern. Press &lt;code&gt;n&lt;/code&gt; for next and &lt;code&gt;N&lt;/code&gt; for 
+reverse search. Command &lt;code&gt;*&lt;/code&gt; is to search the word that is under the cursor. &lt;/p&gt;
+&lt;p&gt;Substitution command is &lt;code&gt;:s/target/replacement&lt;/code&gt;. Press &lt;code&gt;&amp;amp;&lt;/code&gt; for repeat. Command &lt;code&gt;:%s/...&lt;/code&gt;
+is to search all lines. Add an option &lt;code&gt;/g&lt;/code&gt; to the end &lt;code&gt;:s/tar/rep/g&lt;/code&gt; to replace multiple 
+matches on a line. &lt;/p&gt;
+&lt;p&gt;Source: Page 9 of Drew Neil&amp;#8217;s &lt;em&gt;Practical Vim&lt;/em&gt; Book&lt;/p&gt;
 &lt;h4&gt;Change Letter Case&lt;/h4&gt;
 &lt;p&gt;The command &lt;code&gt;U&lt;/code&gt; is to change visually selected text to uppercase, and &lt;code&gt;u&lt;/code&gt; to lowercase. 
 Tilde &lt;code&gt;~&lt;/code&gt; command is to swap cases in a visual selection. &lt;/p&gt;

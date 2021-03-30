@@ -429,6 +429,16 @@ number of spaces that will be inserted when the tab key is pressed
 (:set tabstop=4). The <code>shiftwidth</code> option is for indent command <code>&gt;&gt;</code>. 
 Yes, those option names are confusing.   </p>
 <p>Source: <a href="https://vim.fandom.com/wiki/Converting_tabs_to_spaces">fandom.com article</a></p>
+<h4>Find and Search</h4>
+<p>The command to scan line for a character is <code>f{char}</code>, and <code>F{char}</code> reverse the order 
+and scan backward. Press <code>;</code> for repeat and <code>,</code> for reverse.  The command <code>t{char}</code> stops
+the cursor before the character. Command <code>f</code> is for find and <code>t</code> is for til. </p>
+<p>The command <code>/pattern&lt;CR&gt;</code> is to search a word pattern. Press <code>n</code> for next and <code>N</code> for 
+reverse search. Command <code>*</code> is to search the word that is under the cursor. </p>
+<p>Substitution command is <code>:s/target/replacement</code>. Press <code>&amp;</code> for repeat. Command <code>:%s/...</code>
+is to search all lines. Add an option <code>/g</code> to the end <code>:s/tar/rep/g</code> to replace multiple 
+matches on a line. </p>
+<p>Source: Page 9 of Drew Neil&#8217;s <em>Practical Vim</em> Book</p>
 <h4>Change Letter Case</h4>
 <p>The command <code>U</code> is to change visually selected text to uppercase, and <code>u</code> to lowercase. 
 Tilde <code>~</code> command is to swap cases in a visual selection. </p>
