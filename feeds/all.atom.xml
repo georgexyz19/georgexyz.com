@@ -1,5 +1,38 @@
 <?xml version="1.0" encoding="utf-8"?>
-<feed xmlns="http://www.w3.org/2005/Atom"><title>George Zhang</title><link href="https://www.georgexyz.com/" rel="alternate"></link><link href="https://www.georgexyz.com/feeds/all.atom.xml" rel="self"></link><id>https://www.georgexyz.com/</id><updated>2021-03-25T09:40:00-04:00</updated><entry><title>Python Import Statement</title><link href="https://www.georgexyz.com/python-import-statement.html" rel="alternate"></link><published>2021-03-25T09:40:00-04:00</published><updated>2021-03-25T09:40:00-04:00</updated><author><name>George Zhang</name></author><id>tag:www.georgexyz.com,2021-03-25:/python-import-statement.html</id><summary type="html">&lt;p&gt;Python import statement seems very easy to use, but it can get complicated once the project 
+<feed xmlns="http://www.w3.org/2005/Atom"><title>George Zhang</title><link href="https://www.georgexyz.com/" rel="alternate"></link><link href="https://www.georgexyz.com/feeds/all.atom.xml" rel="self"></link><id>https://www.georgexyz.com/</id><updated>2021-03-30T09:37:00-04:00</updated><entry><title>Flask User Authentication Steps</title><link href="https://www.georgexyz.com/flask-user-authentication.html" rel="alternate"></link><published>2021-03-30T09:37:00-04:00</published><updated>2021-03-30T09:37:00-04:00</updated><author><name>George Zhang</name></author><id>tag:www.georgexyz.com,2021-03-30:/flask-user-authentication.html</id><summary type="html">&lt;p&gt;The user authentication process described in Chapter 8 of Miguel Grinberg&amp;#8217;s book is quite 
+complicated. The flask-login plugin makes it a little simpler. Here are the steps it takes …&lt;/p&gt;</summary><content type="html">&lt;p&gt;The user authentication process described in Chapter 8 of Miguel Grinberg&amp;#8217;s book is quite 
+complicated. The flask-login plugin makes it a little simpler. Here are the steps it takes 
+to create a basic login and logout system. &lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;Add &lt;code&gt;password_hash&lt;/code&gt; field to &lt;code&gt;User&lt;/code&gt; model, and add a &lt;code&gt;@password.setter&lt;/code&gt; property and 
+   a &lt;code&gt;verify_password&lt;/code&gt; method to the &lt;code&gt;User&lt;/code&gt; model. &lt;/li&gt;
+&lt;li&gt;Add &lt;code&gt;UserMixin&lt;/code&gt; to &lt;code&gt;User&lt;/code&gt; model. The &lt;code&gt;UserMixin&lt;/code&gt; is defined in flask-login plugin. &lt;/li&gt;
+&lt;li&gt;Initialize &lt;code&gt;login_manager&lt;/code&gt; in &lt;code&gt;app/__init__.py&lt;/code&gt; like any other flask plugin.&lt;/li&gt;
+&lt;li&gt;In &lt;code&gt;base.html&lt;/code&gt; template file, add links for login and logout. The links will show up 
+   for all pages of the site. &lt;/li&gt;
+&lt;li&gt;Add &lt;code&gt;login&lt;/code&gt; view function. &lt;ul&gt;
+&lt;li&gt;It needs a LoginForm form class.&lt;/li&gt;
+&lt;li&gt;And it needs a &lt;code&gt;auth/login.html&lt;/code&gt; template file. &lt;/li&gt;
+&lt;li&gt;It calls &lt;code&gt;login_user&lt;/code&gt; of flask-login to do the actual log in work. &lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;The &lt;code&gt;logout&lt;/code&gt; view function is simpler.  It calls &lt;code&gt;logout_user&lt;/code&gt; to do the work and no 
+   template is need. &lt;/li&gt;
+&lt;/ol&gt;
+&lt;p&gt;Page 113 of the book has an excellent description on how flask-login works. &lt;/p&gt;
+&lt;p&gt;The login for user registration is simpler. This is a typical form which is collecting 
+some data from a user and saving the data in a db. The steps is simple. &lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;Add a link on the &lt;code&gt;login&lt;/code&gt; template page for user registration.&lt;/li&gt;
+&lt;li&gt;Create a &lt;code&gt;register&lt;/code&gt; view function.&lt;ul&gt;
+&lt;li&gt;The function needs a RegistrationForm class.&lt;/li&gt;
+&lt;li&gt;It needs a template to show the form.&lt;/li&gt;
+&lt;li&gt;It will initialize a &lt;code&gt;user&lt;/code&gt; instance and commit it to the db.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;/ol&gt;
+&lt;p&gt;There is also a &lt;a href="https://flask-user.readthedocs.io/en/latest/"&gt;flask-user&lt;/a&gt; 
+plugin that is widely used.&lt;/p&gt;</content><category term="posts"></category><category term="flask"></category></entry><entry><title>Python Import Statement</title><link href="https://www.georgexyz.com/python-import-statement.html" rel="alternate"></link><published>2021-03-25T09:40:00-04:00</published><updated>2021-03-25T09:40:00-04:00</updated><author><name>George Zhang</name></author><id>tag:www.georgexyz.com,2021-03-25:/python-import-statement.html</id><summary type="html">&lt;p&gt;Python import statement seems very easy to use, but it can get complicated once the project 
 scale becomes larger. It is one of those things that is easy to learn …&lt;/p&gt;</summary><content type="html">&lt;p&gt;Python import statement seems very easy to use, but it can get complicated once the project 
 scale becomes larger. It is one of those things that is easy to learn by looking at an example. 
 Miguel Grinberg&amp;#8217;s book &lt;em&gt;Flask Web Development&lt;/em&gt; Chapter 7 has such an example. The flask apps 

@@ -1,0 +1,121 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <link rel="stylesheet" href="/theme/css/bs4min.css">
+    <link rel="shortcut icon" type="image/x-icon" href="/theme/images/favicon.ico" >
+    <link rel="icon" type="image/x-icon" href="/theme/images/favicon.ico" >
+<link rel="stylesheet" href="https://www.georgexyz.com/theme/css/friendly.css">
+<link rel="stylesheet" href="https://www.georgexyz.com/theme/css/custom.css">
+<meta name="author" content="George Zhang" />
+<meta name="keywords" content="flask" />
+<meta name="description" content="The user authentication process described in Chapter 8 of Miguel Grinberg’s book is quite complicated. The flask-login plugin makes it a little simpler. Here are the steps it takes …" />
+    <title>Flask User Authentication Steps - George Zhang</title>
+  </head>
+  <body>
+    <!-- navbar -->
+    <nav class="navbar navbar-expand-md navbar-light" style="background-color: #e3f2fd;">
+      <div class="container">
+        <a class="navbar-brand" href="/">George Zhang</a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarColor01" aria-controls="navbarColor01" aria-expanded="false" aria-label="Toggle navigation">
+          <span class="navbar-toggler-icon"></span>
+        </button>
+
+        <div class="collapse navbar-collapse" id="navbarColor01">
+          <ul class="navbar-nav mr-auto">
+            <li class="nav-item">
+              <a class="nav-link " 
+                href="/articlelist.html">Articles</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link pr-3 " 
+                href="/tags.html">Tags</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link pr-3 "
+                 href="/pages/inkscape-tutorial.html">Inkscape Tutorial</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link "
+                   href="/pages/projects.html">Projects</a>
+              </li>
+          </ul>
+
+          <ul class="navbar-nav">
+            <li class="nav-item">
+              <a class="nav-link " 
+                 href="/pages/about.html">About</a>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </nav>
+
+   
+
+<div class="container">
+
+  <div class="row">
+    <div class="col-lg-8 mx-auto">
+
+      <h2>Flask User Authentication Steps</h2>
+
+      <div class="text-muted mb-2">
+        <span>Posted on </span>
+        <time datetime="2021-03-30 09:37:00-04:00">
+          Tuesday, 03/30/2021 09:37
+        </time>
+
+        <span>with tags: </span>
+        <a href="https://www.georgexyz.com/tag/flask.html">flask</a>
+      </div>
+
+      <p>The user authentication process described in Chapter 8 of Miguel Grinberg&#8217;s book is quite 
+complicated. The flask-login plugin makes it a little simpler. Here are the steps it takes 
+to create a basic login and logout system. </p>
+<ol>
+<li>Add <code>password_hash</code> field to <code>User</code> model, and add a <code>@password.setter</code> property and 
+   a <code>verify_password</code> method to the <code>User</code> model. </li>
+<li>Add <code>UserMixin</code> to <code>User</code> model. The <code>UserMixin</code> is defined in flask-login plugin. </li>
+<li>Initialize <code>login_manager</code> in <code>app/__init__.py</code> like any other flask plugin.</li>
+<li>In <code>base.html</code> template file, add links for login and logout. The links will show up 
+   for all pages of the site. </li>
+<li>Add <code>login</code> view function. <ul>
+<li>It needs a LoginForm form class.</li>
+<li>And it needs a <code>auth/login.html</code> template file. </li>
+<li>It calls <code>login_user</code> of flask-login to do the actual log in work. </li>
+</ul>
+</li>
+<li>The <code>logout</code> view function is simpler.  It calls <code>logout_user</code> to do the work and no 
+   template is need. </li>
+</ol>
+<p>Page 113 of the book has an excellent description on how flask-login works. </p>
+<p>The login for user registration is simpler. This is a typical form which is collecting 
+some data from a user and saving the data in a db. The steps is simple. </p>
+<ol>
+<li>Add a link on the <code>login</code> template page for user registration.</li>
+<li>Create a <code>register</code> view function.<ul>
+<li>The function needs a RegistrationForm class.</li>
+<li>It needs a template to show the form.</li>
+<li>It will initialize a <code>user</code> instance and commit it to the db.</li>
+</ul>
+</li>
+</ol>
+<p>There is also a <a href="https://flask-user.readthedocs.io/en/latest/">flask-user</a> 
+plugin that is widely used.</p>
+
+
+
+    </div>
+  </div>
+
+</div>
+
+   
+    <script src="https://code.jquery.com/jquery-3.4.1.slim.min.js" integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js" integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6" crossorigin="anonymous"></script>
+  </body>
+</html>
