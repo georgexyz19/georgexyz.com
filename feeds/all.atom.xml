@@ -31,6 +31,30 @@ data from a user and saving the data in a database. Here are the steps. &lt;/p&g
 &lt;/ul&gt;
 &lt;/li&gt;
 &lt;/ol&gt;
+&lt;p&gt;User email confirmation logic is not very difficult. The system sends an email to a user 
+during registration.  The email contains a link to a view function that changes a field of 
+&lt;code&gt;User&lt;/code&gt; model in the database. The interesting part is that user id is not passed around in 
+text, instead it is encoded into tokens. Below are the steps. &lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;Modify the &lt;code&gt;User&lt;/code&gt; model. &lt;ul&gt;
+&lt;li&gt;Add a &lt;code&gt;confirm&lt;/code&gt; boolean field.&lt;/li&gt;
+&lt;li&gt;Add two methods &lt;code&gt;generate_confirmation_token&lt;/code&gt; and &lt;code&gt;confirm&lt;/code&gt; &lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;Send an email in &lt;code&gt;register&lt;/code&gt; view function. &lt;ul&gt;
+&lt;li&gt;The email does not need forms, but it needs templates. &lt;/li&gt;
+&lt;li&gt;Email has link to a &lt;code&gt;confirm&lt;/code&gt; view function and contains token&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;Add a &lt;code&gt;confirm&lt;/code&gt; view function&lt;ul&gt;
+&lt;li&gt;The function has a &lt;code&gt;&amp;lt;token&amp;gt;&lt;/code&gt; as a variable. &lt;/li&gt;
+&lt;li&gt;It calls &lt;code&gt;current_user.confirm&lt;/code&gt; method to change db field. &lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;/ol&gt;
+&lt;p&gt;If the user confirms, everything is good. But the system needs to consider what happens 
+when a user does not confirm. The idea is to check every reqeust, and to show an 
+&lt;code&gt;unconfirmed&lt;/code&gt; page when necessary.  The pages has a link to resend the confirmation email. &lt;/p&gt;
 &lt;p&gt;There is also a &lt;a href="https://flask-user.readthedocs.io/en/latest/"&gt;flask-user&lt;/a&gt; 
 plugin that is widely used.&lt;/p&gt;</content><category term="posts"></category><category term="flask"></category></entry><entry><title>Python Import Statement</title><link href="https://www.georgexyz.com/python-import-statement.html" rel="alternate"></link><published>2021-03-25T09:40:00-04:00</published><updated>2021-03-25T09:40:00-04:00</updated><author><name>George Zhang</name></author><id>tag:www.georgexyz.com,2021-03-25:/python-import-statement.html</id><summary type="html">&lt;p&gt;Python import statement seems very easy to use, but it can get complicated once the project 
 scale becomes larger. It is one of those things that is easy to learn …&lt;/p&gt;</summary><content type="html">&lt;p&gt;Python import statement seems very easy to use, but it can get complicated once the project 

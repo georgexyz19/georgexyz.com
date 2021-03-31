@@ -103,6 +103,30 @@ data from a user and saving the data in a database. Here are the steps. </p>
 </ul>
 </li>
 </ol>
+<p>User email confirmation logic is not very difficult. The system sends an email to a user 
+during registration.  The email contains a link to a view function that changes a field of 
+<code>User</code> model in the database. The interesting part is that user id is not passed around in 
+text, instead it is encoded into tokens. Below are the steps. </p>
+<ol>
+<li>Modify the <code>User</code> model. <ul>
+<li>Add a <code>confirm</code> boolean field.</li>
+<li>Add two methods <code>generate_confirmation_token</code> and <code>confirm</code> </li>
+</ul>
+</li>
+<li>Send an email in <code>register</code> view function. <ul>
+<li>The email does not need forms, but it needs templates. </li>
+<li>Email has link to a <code>confirm</code> view function and contains token</li>
+</ul>
+</li>
+<li>Add a <code>confirm</code> view function<ul>
+<li>The function has a <code>&lt;token&gt;</code> as a variable. </li>
+<li>It calls <code>current_user.confirm</code> method to change db field. </li>
+</ul>
+</li>
+</ol>
+<p>If the user confirms, everything is good. But the system needs to consider what happens 
+when a user does not confirm. The idea is to check every reqeust, and to show an 
+<code>unconfirmed</code> page when necessary.  The pages has a link to resend the confirmation email. </p>
 <p>There is also a <a href="https://flask-user.readthedocs.io/en/latest/">flask-user</a> 
 plugin that is widely used.</p>
 
