@@ -34,5 +34,25 @@ data from a user and saving the data in a database. Here are the steps.
     - It needs a template to show the form.
     - It will initialize a `user` instance and commit it to the db.
 
+User email confirmation logic is not very difficult. The system sends an email to a user 
+during registration.  The email contains a link to a view function that changes a field of 
+`User` model in the database. The interesting part is that user id is not passed around in 
+text, instead it is encoded into tokens. Below are the steps. 
+
+1. Modify the `User` model. 
+    - Add a `confirm` boolean field.
+    - Add two methods `generate_confirmation_token` and `confirm` 
+2. Send an email in `register` view function. 
+    - The email does not need forms, but it needs templates. 
+    - Email has link to a `confirm` view function and contains token
+3. Add a `confirm` view function
+    - The function has a `<token>` as a variable. 
+    - It calls `current_user.confirm` method to change db field. 
+
+If the user confirms, everything is good. But the system needs to consider what happens 
+when a user does not confirm. The idea is to check every reqeust, and to show an 
+`unconfirmed` page when necessary.  The pages has a link to resend the confirmation email. 
+
+
 There is also a [flask-user](https://flask-user.readthedocs.io/en/latest/) 
 plugin that is widely used.
