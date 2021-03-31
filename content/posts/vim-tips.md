@@ -533,6 +533,8 @@ it loads `.vimrc` file, so you do not need to keep two copies of `.vimrc`.
 
 <div class="ml-5">
 ```
+" ~/.plugin.vimrc file
+
 set nocompatible              " required
 filetype off
 
@@ -549,14 +551,17 @@ Plugin 'jistr/vim-nerdtree-tabs'
 " plugin add ends here
 
 call vundle#end()            " required
-filetype plugin on    "delete indent before on
+filetype plugin on    " required
 
+" for Nerdtree
 let NERDTreeIgnore=['\.pyc$', '\~$'] "ignore files in NERDTree
 nnoremap <C-N> :NERDTree<CR>
 autocmd VimEnter * NERDTree
 
+noremap <C-H> <C-W><C-H>
+noremap <C-L><C-L> <C-W><C-L>
+
 source ~/.vimrc
-......
 ```
 </div>
 
@@ -583,6 +588,13 @@ faster to navigate than a GUI file browser.
 - `o` to open, `O` recursively open
 - `x` to close open dir, `X` recursively close
 - `C-W` + `h j k l` to move between windows
+- Map `C-H` to move cursor to left side and `C-L C-L` to right side
+<div class="ml-5">
+```
+noremap <C-H> <C-W><C-H>
+noremap <C-L><C-L> <C-W><C-L>
+```
+</div>
 
 #### Links and References
 
