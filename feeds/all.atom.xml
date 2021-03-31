@@ -6656,7 +6656,9 @@ it loads &lt;code&gt;.vimrc&lt;/code&gt; file, so you do not need to keep two co
 &lt;/ul&gt;
 &lt;div class="ml-5"&gt;
 
-&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;set nocompatible              &amp;quot; required
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;&amp;quot; ~/.plugin.vimrc file
+
+set nocompatible              &amp;quot; required
 filetype off
 
 set rtp+=~/.vim/bundle/Vundle.vim
@@ -6672,14 +6674,17 @@ Plugin &amp;#39;jistr/vim-nerdtree-tabs&amp;#39;
 &amp;quot; plugin add ends here
 
 call vundle#end()            &amp;quot; required
-filetype plugin on    &amp;quot;delete indent before on
+filetype plugin on    &amp;quot; required
 
+&amp;quot; for Nerdtree
 let NERDTreeIgnore=[&amp;#39;\.pyc$&amp;#39;, &amp;#39;\~$&amp;#39;] &amp;quot;ignore files in NERDTree
 nnoremap &amp;lt;C-N&amp;gt; :NERDTree&amp;lt;CR&amp;gt;
 autocmd VimEnter * NERDTree
 
+noremap &amp;lt;C-H&amp;gt; &amp;lt;C-W&amp;gt;&amp;lt;C-H&amp;gt;
+noremap &amp;lt;C-L&amp;gt;&amp;lt;C-L&amp;gt; &amp;lt;C-W&amp;gt;&amp;lt;C-L&amp;gt;
+
 source ~/.vimrc
-......
 &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
 
 
@@ -6710,7 +6715,17 @@ faster to navigate than a &lt;span class="caps"&gt;GUI&lt;/span&gt; file browser
 &lt;li&gt;&lt;code&gt;o&lt;/code&gt; to open, &lt;code&gt;O&lt;/code&gt; recursively open&lt;/li&gt;
 &lt;li&gt;&lt;code&gt;x&lt;/code&gt; to close open dir, &lt;code&gt;X&lt;/code&gt; recursively close&lt;/li&gt;
 &lt;li&gt;&lt;code&gt;C-W&lt;/code&gt; + &lt;code&gt;h j k l&lt;/code&gt; to move between windows&lt;/li&gt;
+&lt;li&gt;Map &lt;code&gt;C-H&lt;/code&gt; to move cursor to left side and &lt;code&gt;C-L C-L&lt;/code&gt; to right side&lt;/li&gt;
 &lt;/ul&gt;
+&lt;div class="ml-5"&gt;
+
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;noremap &amp;lt;C-H&amp;gt; &amp;lt;C-W&amp;gt;&amp;lt;C-H&amp;gt;
+noremap &amp;lt;C-L&amp;gt;&amp;lt;C-L&amp;gt; &amp;lt;C-W&amp;gt;&amp;lt;C-L&amp;gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;/div&gt;
+
 &lt;h4&gt;Links and References&lt;/h4&gt;
 &lt;p&gt;&lt;a href="https://vim.rtorr.com/"&gt;Vim Cheat Sheet&lt;/a&gt; 
 is a nice single web page which includes command vim commands.&lt;/p&gt;</content><category term="posts"></category><category term="vim"></category><category term="linux"></category></entry></feed>

@@ -477,7 +477,9 @@ it loads <code>.vimrc</code> file, so you do not need to keep two copies of <cod
 </ul>
 <div class="ml-5">
 
-<div class="highlight"><pre><span></span><code>set nocompatible              &quot; required
+<div class="highlight"><pre><span></span><code>&quot; ~/.plugin.vimrc file
+
+set nocompatible              &quot; required
 filetype off
 
 set rtp+=~/.vim/bundle/Vundle.vim
@@ -493,14 +495,17 @@ Plugin &#39;jistr/vim-nerdtree-tabs&#39;
 &quot; plugin add ends here
 
 call vundle#end()            &quot; required
-filetype plugin on    &quot;delete indent before on
+filetype plugin on    &quot; required
 
+&quot; for Nerdtree
 let NERDTreeIgnore=[&#39;\.pyc$&#39;, &#39;\~$&#39;] &quot;ignore files in NERDTree
 nnoremap &lt;C-N&gt; :NERDTree&lt;CR&gt;
 autocmd VimEnter * NERDTree
 
+noremap &lt;C-H&gt; &lt;C-W&gt;&lt;C-H&gt;
+noremap &lt;C-L&gt;&lt;C-L&gt; &lt;C-W&gt;&lt;C-L&gt;
+
 source ~/.vimrc
-......
 </code></pre></div>
 
 
@@ -531,7 +536,17 @@ faster to navigate than a <span class="caps">GUI</span> file browser. </p>
 <li><code>o</code> to open, <code>O</code> recursively open</li>
 <li><code>x</code> to close open dir, <code>X</code> recursively close</li>
 <li><code>C-W</code> + <code>h j k l</code> to move between windows</li>
+<li>Map <code>C-H</code> to move cursor to left side and <code>C-L C-L</code> to right side</li>
 </ul>
+<div class="ml-5">
+
+<div class="highlight"><pre><span></span><code>noremap &lt;C-H&gt; &lt;C-W&gt;&lt;C-H&gt;
+noremap &lt;C-L&gt;&lt;C-L&gt; &lt;C-W&gt;&lt;C-L&gt;
+</code></pre></div>
+
+
+</div>
+
 <h4>Links and References</h4>
 <p><a href="https://vim.rtorr.com/">Vim Cheat Sheet</a> 
 is a nice single web page which includes command vim commands.</p>
