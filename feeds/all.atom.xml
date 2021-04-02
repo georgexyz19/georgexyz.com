@@ -2004,7 +2004,14 @@ higher than in Grayscale mode.  The size of exported &lt;span class="caps"&gt;PN
 9.49 mb when the mode is changed from &lt;span class="caps"&gt;RGB&lt;/span&gt; to Grayscale. You can reduce the file 
 size further by saving it in Indexed mode with 16 or 64 index values. You can change 
 the mode via menu item &lt;code&gt;Image&lt;/code&gt; &amp;gt; &lt;code&gt;mode&lt;/code&gt;. &lt;/p&gt;
-&lt;p class="text-muted"&gt;This article will be continuously updated (last update: 2/10/2021). &lt;p&gt;</content><category term="posts"></category><category term="software utility"></category></entry><entry><title>Pelican Cache Module</title><link href="https://www.georgexyz.com/pelican-cache-module.html" rel="alternate"></link><published>2020-05-08T09:49:00-04:00</published><updated>2020-05-08T09:49:00-04:00</updated><author><name>George Zhang</name></author><id>tag:www.georgexyz.com,2020-05-08:/pelican-cache-module.html</id><summary type="html">&lt;p&gt;Pelican cache module (&lt;a href="https://github.com/getpelican/pelican/blob/4.2.0/pelican/cache.py"&gt;cache.py&lt;/a&gt;) 
+&lt;h3&gt;&lt;span class="caps"&gt;JPG&lt;/span&gt; File Size&lt;/h3&gt;
+&lt;p&gt;I often need to mark up a photo/picture &lt;span class="caps"&gt;JPG&lt;/span&gt; file in Inkscape such as adding texts 
+and drawing lines. Inkscape can&amp;#8217;t export a &lt;span class="caps"&gt;JPG&lt;/span&gt; file directly. Sometime the exported 
+&lt;span class="caps"&gt;PNG&lt;/span&gt; file from Inkscape has a much larger file size (4mb to 20mb). &lt;/p&gt;
+&lt;p&gt;&lt;span class="caps"&gt;GIMP&lt;/span&gt; can open the &lt;span class="caps"&gt;SVG&lt;/span&gt; file directly, and export to a &lt;span class="caps"&gt;JPG&lt;/span&gt; file. The &lt;span class="caps"&gt;JGP&lt;/span&gt; from &lt;span class="caps"&gt;GIMP&lt;/span&gt; 
+could have a much smaller size.  The file I am working on reduced from about 
+4mb to 2mb.&lt;/p&gt;
+&lt;p class="text-muted"&gt;This article will be continuously updated (last update: 4/2/2021). &lt;p&gt;</content><category term="posts"></category><category term="software utility"></category></entry><entry><title>Pelican Cache Module</title><link href="https://www.georgexyz.com/pelican-cache-module.html" rel="alternate"></link><published>2020-05-08T09:49:00-04:00</published><updated>2020-05-08T09:49:00-04:00</updated><author><name>George Zhang</name></author><id>tag:www.georgexyz.com,2020-05-08:/pelican-cache-module.html</id><summary type="html">&lt;p&gt;Pelican cache module (&lt;a href="https://github.com/getpelican/pelican/blob/4.2.0/pelican/cache.py"&gt;cache.py&lt;/a&gt;) 
 is relatively independent of other modules. It uses pickle module 
 to serialize data and logger module to output debug and warning messages. The module 
 defines …&lt;/p&gt;</summary><content type="html">&lt;p&gt;Pelican cache module (&lt;a href="https://github.com/getpelican/pelican/blob/4.2.0/pelican/cache.py"&gt;cache.py&lt;/a&gt;) 
