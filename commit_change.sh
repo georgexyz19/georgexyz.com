@@ -7,6 +7,9 @@
 # $source commit_change_venv.sh "git commit message"
 # I will start to use venv on new computers with this script
 # basename prompts an error, change it back to ${...}
+#
+# Add code to test virtual env see SO post# 15454174
+
 PROGNAME="${0##*/}"
 
 usage () {
@@ -19,6 +22,11 @@ EOF
 
 if [ -z "$1" ]; then 
     usage
+    exit 1
+fi
+
+if [[ "VIRTUAL_ENV" == "" ]]; then
+    echo "Activate virtual env first, then run command"
     exit 1
 fi
 
