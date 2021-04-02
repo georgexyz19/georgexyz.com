@@ -62,6 +62,17 @@ size further by saving it in Indexed mode with 16 or 64 index values. You can ch
 the mode via menu item `Image` > `mode`. 
 
 
-<p class="text-muted">This article will be continuously updated (last update: 2/10/2021). <p>
+### JPG File Size
+
+I often need to mark up a photo/picture JPG file in Inkscape such as adding texts 
+and drawing lines. Inkscape can't export a JPG file directly. Sometime the exported 
+PNG file from Inkscape has a much larger file size (4mb to 20mb). 
+
+GIMP can open the SVG file directly, and export to a JPG file. The JGP from GIMP 
+could have a much smaller size.  The file I am working on reduced from about 
+4mb to 2mb.
+
+
+<p class="text-muted">This article will be continuously updated (last update: 4/2/2021). <p>
 
 
