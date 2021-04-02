@@ -69,8 +69,7 @@ and drawing lines. Inkscape can't export a JPG file directly. Sometime the expor
 PNG file from Inkscape has a much larger file size (4mb to 20mb). 
 
 GIMP can open the SVG file directly, and export to a JPG file. The JGP from GIMP 
-could have a much smaller size.  The file I am working on reduced from about 
-4mb to 2mb.
+could have a smaller size.  The file size reduced from about 4mb to 2mb.
 
 
 <p class="text-muted">This article will be continuously updated (last update: 4/2/2021). <p>
