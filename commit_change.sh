@@ -9,6 +9,7 @@
 # basename prompts an error, change it back to ${...}
 #
 # Add code to test virtual env see SO post# 15454174
+# lastest change on 4/2/2021
 
 PROGNAME="${0##*/}"
 
