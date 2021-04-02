@@ -2009,8 +2009,7 @@ the mode via menu item &lt;code&gt;Image&lt;/code&gt; &amp;gt; &lt;code&gt;mode&
 and drawing lines. Inkscape can&amp;#8217;t export a &lt;span class="caps"&gt;JPG&lt;/span&gt; file directly. Sometime the exported 
 &lt;span class="caps"&gt;PNG&lt;/span&gt; file from Inkscape has a much larger file size (4mb to 20mb). &lt;/p&gt;
 &lt;p&gt;&lt;span class="caps"&gt;GIMP&lt;/span&gt; can open the &lt;span class="caps"&gt;SVG&lt;/span&gt; file directly, and export to a &lt;span class="caps"&gt;JPG&lt;/span&gt; file. The &lt;span class="caps"&gt;JGP&lt;/span&gt; from &lt;span class="caps"&gt;GIMP&lt;/span&gt; 
-could have a much smaller size.  The file I am working on reduced from about 
-4mb to 2mb.&lt;/p&gt;
+could have a smaller size.  The file size reduced from about 4mb to 2mb.&lt;/p&gt;
 &lt;p class="text-muted"&gt;This article will be continuously updated (last update: 4/2/2021). &lt;p&gt;</content><category term="posts"></category><category term="software utility"></category></entry><entry><title>Pelican Cache Module</title><link href="https://www.georgexyz.com/pelican-cache-module.html" rel="alternate"></link><published>2020-05-08T09:49:00-04:00</published><updated>2020-05-08T09:49:00-04:00</updated><author><name>George Zhang</name></author><id>tag:www.georgexyz.com,2020-05-08:/pelican-cache-module.html</id><summary type="html">&lt;p&gt;Pelican cache module (&lt;a href="https://github.com/getpelican/pelican/blob/4.2.0/pelican/cache.py"&gt;cache.py&lt;/a&gt;) 
 is relatively independent of other modules. It uses pickle module 
 to serialize data and logger module to output debug and warning messages. The module 
