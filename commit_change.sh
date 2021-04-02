@@ -25,20 +25,20 @@ if [ -z "$1" ]; then
     exit 1
 fi
 
-if [[ "VIRTUAL_ENV" == "" ]]; then
+if [[ "$VIRTUAL_ENV" != "" ]] 
+then
+  git pull
+  
+  # pipenv shell # does not work
+  # publish is clean and build with publishconf.py
+  invoke publish 
+  git status
+  git add -A
+  git commit -m "$1"
+  git push origin master # update source code
+  
+  ghp-import output -b gh-pages
+  git push origin gh-pages
+else 
     echo "Activate virtual env first, then run command"
-    exit 1
 fi
-
-git pull
-
-# pipenv shell # does not work
-# publish is clean and build with publishconf.py
-invoke publish 
-git status
-git add -A
-git commit -m "$1"
-git push origin master # update source code
-
-ghp-import output -b gh-pages
-git push origin gh-pages
