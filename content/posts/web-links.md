@@ -49,6 +49,10 @@ Here are some links on Python basics.
 
 [Class Into](https://python.swaroopch.com/oop.html) - Chapter from *A Byte Of Python* book
 
+[Python Glossary](https://docs.python.org/3/glossary.html#term-descriptor) - On Python.com
+
+[Python Built-in Functions](https://docs.python.org/3/library/functions.html) - On Python.com
+
 
 ### Python Intermediate
 
