@@ -6450,6 +6450,8 @@ use it.&lt;/p&gt;
 &lt;dl&gt;
 &lt;dt&gt;setlocal spell&lt;/dt&gt;
 &lt;dd&gt;for current buffer only&lt;/dd&gt;
+&lt;dt&gt;setlocal spell spelllang=en_us&lt;/dt&gt;
+&lt;dd&gt;check current buffer for &lt;span class="caps"&gt;US&lt;/span&gt; english&lt;/dd&gt;
 &lt;dt&gt;]s&lt;/dt&gt;
 &lt;dd&gt;move to next misspelled word&lt;/dd&gt;
 &lt;dt&gt;&lt;code&gt;[s&lt;/code&gt;&lt;/dt&gt;
