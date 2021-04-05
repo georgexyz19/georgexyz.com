@@ -255,6 +255,9 @@ use it.
 setlocal spell
 : for current buffer only
 
+setlocal spell spelllang=en_us
+: check current buffer for US english
+
 ]s
 : move to next misspelled word
 
