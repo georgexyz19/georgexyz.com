@@ -61,12 +61,8 @@ set ignorecase
 set hlsearch
 set incsearch
 
-if exists("+lines") " numbers are for programming
-  set lines=38
-endif
-if exists("+columns")
-  set columns=120
-endif
+set lines=38 " after try and error found those numbers
+set columns=120
 
 " Ctrl + s to save file
 noremap <silent> <C-S>  :update<CR>
@@ -97,15 +93,11 @@ $vim -u NONE  # do not load any config file
 #### Set Initial Console Window Size
 
 On Linux Mint terminal, you can use `set lines=50 columns=100` to set initial console size. 
-I have those lines in my `~/.vimrc` file. 
+I have those lines in my `~/.vimrc` file. Those work well in Ubuntu or Linux Mint.
 
 ```
-if exists("+lines")
-  set lines=38
-endif
-if exists("+columns")
-  set columns=120
-endif
+set lines=38
+set columns=120
 ```
 
 *Source: [an article](https://vim.fandom.com/wiki/Maximize_or_set_initial_window_size) on fandom.com.*
