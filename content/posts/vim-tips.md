@@ -105,12 +105,10 @@ $vim -u NONE  # do not load any config file
 #### Set Initial Console Window Size
 
 On Linux Mint terminal, you can use `set lines=50 columns=100` to set initial console size. 
-I have those lines in my `~/.vimrc` file. 
+I have those lines in my `~/.vimrc` file. Those work well in Ubuntu or Linux Mint.
 
-```
 set lines=38
 set columns=140
-```
 
 *Source: [an article](https://vim.fandom.com/wiki/Maximize_or_set_initial_window_size) on fandom.com.*
 
@@ -266,6 +264,9 @@ use it.
 
 setlocal spell
 : for current buffer only
+
+setlocal spell spelllang=en_us
+: check current buffer for US english
 
 ]s
 : move to next misspelled word
