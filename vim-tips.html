@@ -100,8 +100,8 @@ sudo apt-get install vim-gtk3
 <h3>Basic Vim Settings</h3>
 <p>Vim automatically loads <code>~/.vimrc</code> file during startup. Some default settings of vim 
 do not make sense. Below are some basic vim settings. I am using those settings under
-Linux Mint.  Other <span class="caps">OS</span> settings may differ slightly.  </p>
-<div class="highlight"><pre><span></span><code>&quot; ~/.vimrc file
+Linux Mint.  Other <span class="caps">OS</span> settings may differ slightly. </p>
+<div class="highlight"><pre><span></span><code>&quot; ~/.vimrc file, keep it short and neat
 
 set nocompatible              &quot; required
 filetype plugin on
@@ -110,6 +110,8 @@ syntax enable
 &quot;path and find, fuzzy file finder
 set path+=**  &quot; search subdir recursively, find ...
 set wildmenu
+set wildignore+=**/node_modules/**
+set wildignore+=**/venv/**
 
 set number
 
@@ -118,8 +120,8 @@ set ignorecase
 set hlsearch
 set incsearch
 
-set lines=38 &quot; after try and error found those numbers
-set columns=120
+set lines=38
+set columns=140
 
 &quot; Ctrl + s to save file
 noremap &lt;silent&gt; &lt;C-S&gt;  :update&lt;CR&gt;
@@ -129,11 +131,21 @@ inoremap &lt;silent&gt; &lt;C-S&gt; &lt;C-O&gt;:update&lt;CR&gt;
 &quot;shortcut ^l to mute highlighting
 nnoremap &lt;silent&gt; &lt;C-l&gt; :&lt;C-u&gt;nohlsearch&lt;CR&gt;&lt;C-l&gt;
 
-&quot; set the title of Gnome-termial to file path and name
-autocmd BufEnter * let &amp;titlestring = &#39; &#39; . expand(&quot;%:p&quot;)             
+autocmd BufEnter * let &amp;titlestring = &#39; &#39; . expand(&quot;%:p&quot;)
 set title
+
+&quot;show tab char as &gt;---
+set list
+set listchars=tab:&gt;-
+
+&quot;create command :Showspace for double spaces before line end
+command Showspace highlight ExtraWhitespace ctermbg=red guibg=red | 
+                  \ match ExtraWhitespace /\s\s$/
+command Shownospace match none 
 </code></pre></div>
 
+<p>I try to keep the <code>.vimrc</code> file simple so people can easily understand the script and 
+modify it. </p>
 <h3>Vim Tips</h3>
 <h4>Startup</h4>
 <p>Vim loads <code>~/.vimrc</code> by default, and you can change the behavior by using <code>-u</code> option on 
@@ -144,9 +156,9 @@ $vim -u NONE  # do not load any config file
 
 <h4>Set Initial Console Window Size</h4>
 <p>On Linux Mint terminal, you can use <code>set lines=50 columns=100</code> to set initial console size. 
-I have those lines in my <code>~/.vimrc</code> file. Those work well in Ubuntu or Linux Mint.</p>
+I have those lines in my <code>~/.vimrc</code> file. </p>
 <div class="highlight"><pre><span></span><code>set lines=38
-set columns=120
+set columns=140
 </code></pre></div>
 
 <p><em>Source: <a href="https://vim.fandom.com/wiki/Maximize_or_set_initial_window_size">an article</a> on fandom.com.</em></p>
@@ -195,7 +207,7 @@ commands. </p>
 <p>The two lines of code below show the file path and name as the title of Gnome 
 Terminal window (under Linux Mint).  Source is this online 
 <a href="https://askubuntu.com/questions/438401/how-to-display-the-name-of-file-which-i-am-currently-editing-with-vim-on-termina">Q&amp;A post</a>. </p>
-<div class="highlight"><pre><span></span><code>autocmd BufEnter * let &amp;titlestring = &#39; &#39; . expand(&quot;%:p&quot;)             
+<div class="highlight"><pre><span></span><code>autocmd BufEnter * let &amp;titlestring = &#39; &#39; . expand(&quot;%:p&quot;)
 set title
 </code></pre></div>
 
@@ -263,8 +275,6 @@ use it.</p>
 <dl>
 <dt>setlocal spell</dt>
 <dd>for current buffer only</dd>
-<dt>setlocal spell spelllang=en_us</dt>
-<dd>check current buffer for <span class="caps">US</span> english</dd>
 <dt>]s</dt>
 <dd>move to next misspelled word</dd>
 <dt><code>[s</code></dt>
@@ -350,21 +360,6 @@ to run the current file. </p>
 <dt>:b# or ^6</dt>
 <dd>switch between current buffer and alternate buffer</dd>
 </dl>
-<h4>Map Caps Lock Key</h4>
-<p>Some people recommend to map CapsLock key to Esc key when using Vim.
-Stackoverflow has a Q&amp;A on how to do it. The following two lines of code in
-.vimrc file do the trick. When leaving Vim, it will remap the key back to
-Caps Lock. The xmodmap software is already installed in Linux Mint, so no
-installation is needed. </p>
-<div class="highlight"><pre><span></span><code>au VimEnter * silent! !xmodmap -e &#39;clear Lock&#39; 
-    -e &#39;keycode 0x42 = Escape&#39;
-au VimLeave * silent! !xmodmap -e &#39;clear Lock&#39; 
-    -e &#39;keycode 0x42 = Caps_Lock&#39;
-</code></pre></div>
-
-<p>I am used to press <code>Esc</code> key to enter normal mode, and I find the 
-Caps Lock key is not as straightforward as the Escape key.</p>
-<p><em>Source: <a href="https://stackoverflow.com/questions/2176532/how-to-map-caps-lock-key-in-vim">an stackoverflow Q&amp;A</a></em></p>
 <h4>Vim Command to Reflow Texts to 80 Columns.</h4>
 <p>When writting articles in Vim, I often need to reflow texts after some editing. To
 reflow texts, the first step is to set the <code>textwidth</code> and the second step is
@@ -386,7 +381,7 @@ gq but puts the cursor back at the same position in the text. </p>
 <p>If you want to run a normal mode command on a range of lines, you can use the
 <code>normal</code> command.  For example if you want to comment out line 4 to 6 of
 .bashrc file, you can use <code>V</code> to select those lines and apply command
-<code>:'&lt;,'&gt;normal i#</code> to insert a character (#) in font of each line.  </p>
+<code>:'&lt;,'&gt;normal i#</code> to insert a character (#) in font of each line. </p>
 <div class="highlight"><pre><span></span><code># Load pyenv automatically by adding
 # the following to ~/.bashrc:
 
@@ -398,13 +393,13 @@ eval &quot;$(pyenv virtualenv-init -)&quot;
 <p><em>Source: Practical Vim Second Edition by Drew Neil Page 63, Tip 30</em></p>
 <h4>Save Readonly File</h4>
 <p>Here is an online post about 
-<a href="https://catonmat.net/sudo-vim">how to save read only files in vim</a>.  </p>
+<a href="https://catonmat.net/sudo-vim">how to save read only files in vim</a>. </p>
 <p>This is the command to save a readonly file in Vim. </p>
 <div class="highlight"><pre><span></span><code>w !sudo tee % &gt;/dev/null
 </code></pre></div>
 
 <p>The bash command <code>tee</code> is itself somewhat magical, and I do not fully understand how
-the above command works.  </p>
+the above command works. </p>
 <h4>Auto Indent</h4>
 <p>The <code>&gt;&gt;</code> command is to indent a line in normal mode.  The operator <code>&gt;</code> is for an 
 object or visual selection.  When indenting or un-indenting, lines are shifted 
@@ -421,8 +416,29 @@ to use those two commands. </p>
 key is pressed (:set expandtab). The option <code>tabstop</code> controls the 
 number of spaces that will be inserted when the tab key is pressed 
 (:set tabstop=4). The <code>shiftwidth</code> option is for indent command <code>&gt;&gt;</code>. 
-Yes, those option names are confusing.   </p>
+Yes, those option names are confusing. </p>
 <p>Source: <a href="https://vim.fandom.com/wiki/Converting_tabs_to_spaces">fandom.com article</a></p>
+<h4>Show Tabs As Visible Characters</h4>
+<p>To show tabs as visible characters in Vim, use those two settings. </p>
+<div class="highlight"><pre><span></span><code>set list
+set listchars=tab:&gt;-
+</code></pre></div>
+
+<p>The second line will set tabs as something like this <code>&gt;---</code>. </p>
+<p>To highlight two trailing spaces before the line end, use those two commands. </p>
+<div class="highlight"><pre><span></span><code>:highlight ExtraWhitespace ctermbg=red guibg=red
+:match ExtraWhitespace /\s\s$/
+</code></pre></div>
+
+<p>Or add this line to the <code>.vimrc</code> file. This is mainly for markdown (<code>.md</code>) files. 
+Enter command <code>:Showspace</code> to display double spaces before line end, and <code>:Shownospace</code> 
+to clear the highlight. </p>
+<div class="highlight"><pre><span></span><code>command Showspace highlight ExtraWhitespace ctermbg=red guibg=red | 
+             \ match ExtraWhitespace /\s\s$/
+command Shownospace match none 
+</code></pre></div>
+
+<p>Source: <a href="https://vi.stackexchange.com/questions/422/displaying-tabs-as-characters">Stackexchange.com Q&amp;A</a>, <a href="https://stackoverflow.com/questions/4617059/showing-trailing-spaces-in-vim"><span class="caps">SO</span> Q&amp;A for Trailing Space</a></p>
 <h4>Find and Search</h4>
 <p>The command to scan line for a character is <code>f{char}</code>, and <code>F{char}</code> reverse the order 
 and scan backward. Press <code>;</code> for repeat and <code>,</code> for reverse.  The command <code>t{char}</code> stops
@@ -448,7 +464,7 @@ $tree -L 2        # -L is for levels down
 $tree -I venv -v  # sort by name, or --sort=name
 </code></pre></div>
 
-<p>This is not necessary a Vim tip, but I have not found a good place to put it.  </p>
+<p>This is not necessary a Vim tip, but I have not found a good place to put it. </p>
 <p>Source: <a href="https://zaiste.net/posts/tree-ignore-directories-patterns/">zaiste.net blog post</a></p>
 <h4>Nerdtree Plugin</h4>
 <p>Vim has a built in file/directory management tool, but it is not very good.  Nerdtree plugin 
