@@ -41,10 +41,10 @@ You can then check the vim version by command `vim --version`.
 
 Vim automatically loads `~/.vimrc` file during startup. Some default settings of vim 
 do not make sense. Below are some basic vim settings. I am using those settings under
-Linux Mint.  Other OS settings may differ slightly.  
+Linux Mint.  Other OS settings may differ slightly. 
 
 ```
-" ~/.vimrc file
+" ~/.vimrc file, keep it short and neat
 
 set nocompatible              " required
 filetype plugin on
@@ -53,6 +53,8 @@ syntax enable
 "path and find, fuzzy file finder
 set path+=**  " search subdir recursively, find ...
 set wildmenu
+set wildignore+=**/node_modules/**
+set wildignore+=**/venv/**
 
 set number
 
@@ -61,12 +63,8 @@ set ignorecase
 set hlsearch
 set incsearch
 
-if exists("+lines") " numbers are for programming
-  set lines=38
-endif
-if exists("+columns")
-  set columns=120
-endif
+set lines=38
+set columns=140
 
 " Ctrl + s to save file
 noremap <silent> <C-S>  :update<CR>
@@ -76,11 +74,21 @@ inoremap <silent> <C-S> <C-O>:update<CR>
 "shortcut ^l to mute highlighting
 nnoremap <silent> <C-l> :<C-u>nohlsearch<CR><C-l>
 
-" set the title of Gnome-termial to file path and name
-autocmd BufEnter * let &titlestring = ' ' . expand("%:p")             
+autocmd BufEnter * let &titlestring = ' ' . expand("%:p")
 set title
 
+"show tab char as >---
+set list
+set listchars=tab:>-
+
+"create command :Showspace for double spaces before line end
+command Showspace highlight ExtraWhitespace ctermbg=red guibg=red | 
+                  \ match ExtraWhitespace /\s\s$/
+command Shownospace match none 
 ```
+
+I try to keep the `.vimrc` file simple so people can easily understand the script and 
+modify it. 
 
 ### Vim Tips
 
@@ -100,12 +108,8 @@ On Linux Mint terminal, you can use `set lines=50 columns=100` to set initial co
 I have those lines in my `~/.vimrc` file. 
 
 ```
-if exists("+lines")
-  set lines=38
-endif
-if exists("+columns")
-  set columns=120
-endif
+set lines=38
+set columns=140
 ```
 
 *Source: [an article](https://vim.fandom.com/wiki/Maximize_or_set_initial_window_size) on fandom.com.*
@@ -174,7 +178,7 @@ Terminal window (under Linux Mint).  Source is this online
 [Q&A post](https://askubuntu.com/questions/438401/how-to-display-the-name-of-file-which-i-am-currently-editing-with-vim-on-termina). 
 
 ```
-autocmd BufEnter * let &titlestring = ' ' . expand("%:p")             
+autocmd BufEnter * let &titlestring = ' ' . expand("%:p")
 set title
 ```
 
@@ -372,26 +376,6 @@ to run the current file.
 :b# or ^6
 : switch between current buffer and alternate buffer
 
-#### Map Caps Lock Key
-
-Some people recommend to map CapsLock key to Esc key when using Vim.
-Stackoverflow has a Q&A on how to do it. The following two lines of code in
-.vimrc file do the trick. When leaving Vim, it will remap the key back to
-Caps Lock. The xmodmap software is already installed in Linux Mint, so no
-installation is needed. 
-
-```
-au VimEnter * silent! !xmodmap -e 'clear Lock' 
-    -e 'keycode 0x42 = Escape'
-au VimLeave * silent! !xmodmap -e 'clear Lock' 
-    -e 'keycode 0x42 = Caps_Lock'
-```
-
-I am used to press `Esc` key to enter normal mode, and I find the 
-Caps Lock key is not as straightforward as the Escape key.
-
-*Source: [an stackoverflow Q&A](https://stackoverflow.com/questions/2176532/how-to-map-caps-lock-key-in-vim)*
-
 #### Vim Command to Reflow Texts to 80 Columns. 
 
 When writting articles in Vim, I often need to reflow texts after some editing. To
@@ -418,7 +402,7 @@ Command `gw` is similar to `gq`.  Here is the quote from help page.
 If you want to run a normal mode command on a range of lines, you can use the
 `normal` command.  For example if you want to comment out line 4 to 6 of
 .bashrc file, you can use `V` to select those lines and apply command
-`:'<,'>normal i# ` to insert a character (#) in font of each line.  
+`:'<,'>normal i# ` to insert a character (#) in font of each line. 
 
 ```
 # Load pyenv automatically by adding
@@ -435,7 +419,7 @@ eval "$(pyenv virtualenv-init -)"
 #### Save Readonly File
 
 Here is an online post about 
-[how to save read only files in vim](https://catonmat.net/sudo-vim).  
+[how to save read only files in vim](https://catonmat.net/sudo-vim). 
 
 This is the command to save a readonly file in Vim. 
 
@@ -444,7 +428,7 @@ w !sudo tee % >/dev/null
 ```
 
 The bash command `tee` is itself somewhat magical, and I do not fully understand how
-the above command works.  
+the above command works. 
 
 #### Auto Indent
 
@@ -467,9 +451,38 @@ If the `expandtab` option is set, vim will insert space when the tab
 key is pressed (:set expandtab). The option `tabstop` controls the 
 number of spaces that will be inserted when the tab key is pressed 
 (:set tabstop=4). The `shiftwidth` option is for indent command `>>`. 
-Yes, those option names are confusing.   
+Yes, those option names are confusing. 
 
 Source: [fandom.com article](https://vim.fandom.com/wiki/Converting_tabs_to_spaces)
+
+#### Show Tabs As Visible Characters
+
+To show tabs as visible characters in Vim, use those two settings. 
+
+```
+set list
+set listchars=tab:>-
+```
+The second line will set tabs as something like this `>---`. 
+
+To highlight two trailing spaces before the line end, use those two commands. 
+
+```
+:highlight ExtraWhitespace ctermbg=red guibg=red
+:match ExtraWhitespace /\s\s$/
+```
+Or add this line to the `.vimrc` file. This is mainly for markdown (`.md`) files. 
+Enter command `:Showspace` to display double spaces before line end, and `:Shownospace` 
+to clear the highlight. 
+
+```
+command Showspace highlight ExtraWhitespace ctermbg=red guibg=red | 
+             \ match ExtraWhitespace /\s\s$/
+command Shownospace match none 
+```
+
+
+Source: [Stackexchange.com Q&A](https://vi.stackexchange.com/questions/422/displaying-tabs-as-characters), [SO Q&A for Trailing Space](https://stackoverflow.com/questions/4617059/showing-trailing-spaces-in-vim)
 
 #### Find and Search
 
@@ -510,7 +523,7 @@ $tree -L 2        # -L is for levels down
 $tree -I venv -v  # sort by name, or --sort=name
 ```
 
-This is not necessary a Vim tip, but I have not found a good place to put it.  
+This is not necessary a Vim tip, but I have not found a good place to put it. 
 
 Source: [zaiste.net blog post](https://zaiste.net/posts/tree-ignore-directories-patterns/)
 
