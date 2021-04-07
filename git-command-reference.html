@@ -1,0 +1,190 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <link rel="stylesheet" href="/theme/css/bs4min.css">
+    <link rel="shortcut icon" type="image/x-icon" href="/theme/images/favicon.ico" >
+    <link rel="icon" type="image/x-icon" href="/theme/images/favicon.ico" >
+<link rel="stylesheet" href="https://www.georgexyz.com/theme/css/friendly.css">
+<link rel="stylesheet" href="https://www.georgexyz.com/theme/css/custom.css">
+<meta name="author" content="George Zhang" />
+<meta name="keywords" content="software utility" />
+<meta name="description" content="This note is from Corey Schafer’s Youtube Git Tutorial. A viewer posted the note under the video and I copied it as a starting point for this post. I …" />
+    <title>Git Command Reference - George Zhang</title>
+  </head>
+  <body>
+    <!-- navbar -->
+    <nav class="navbar navbar-expand-md navbar-light" style="background-color: #e3f2fd;">
+      <div class="container">
+        <a class="navbar-brand" href="/">George Zhang</a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarColor01" aria-controls="navbarColor01" aria-expanded="false" aria-label="Toggle navigation">
+          <span class="navbar-toggler-icon"></span>
+        </button>
+
+        <div class="collapse navbar-collapse" id="navbarColor01">
+          <ul class="navbar-nav mr-auto">
+            <li class="nav-item">
+              <a class="nav-link " 
+                href="/articlelist.html">Articles</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link pr-3 " 
+                href="/tags.html">Tags</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link pr-3 "
+                 href="/pages/inkscape-tutorial.html">Inkscape Tutorial</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link "
+                   href="/pages/projects.html">Projects</a>
+              </li>
+          </ul>
+
+          <ul class="navbar-nav">
+            <li class="nav-item">
+              <a class="nav-link " 
+                 href="/pages/about.html">About</a>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </nav>
+
+   
+
+<div class="container">
+
+  <div class="row">
+    <div class="col-lg-8 mx-auto">
+
+      <h2>Git Command Reference</h2>
+
+      <div class="text-muted mb-2">
+        <span>Posted on </span>
+        <time datetime="2021-04-07 09:48:00-04:00">
+          Wednesday, 04/07/2021 09:48
+        </time>
+
+        <span>with tags: </span>
+        <a href="https://www.georgexyz.com/tag/software-utility.html">software utility</a>
+      </div>
+
+      <p>This note is from <a href="https://youtu.be/HVsySz-h9r4">Corey Schafer&#8217;s Youtube Git Tutorial</a>. 
+A viewer posted the note under the video and I copied it as a starting point for this post. 
+I will add more contents to this post over time. </p>
+<p>On initial install:</p>
+<dl>
+<dt>git --version</dt>
+<dd>checks the version of the installed locally git</dd>
+<dt>git config --global user.name &#8220;Your Name&#8221;</dt>
+<dd>sets up the name of the user </dd>
+<dt>git config --global user.email &#8220;user@email.com&#8221;</dt>
+<dd>sets email</dd>
+<dt>git config --list</dt>
+<dd>lists configurations</dd>
+</dl>
+<p>For help on commands:</p>
+<dl>
+<dt>git <code>&lt;verb&gt;</code> --help</dt>
+<dd>help info</dd>
+<dt>git help <code>&lt;verb&gt;</code> (e.g. git help config)</dt>
+<dd>alternative help command</dd>
+</dl>
+<p>For initializing the project:</p>
+<dl>
+<dt>git init</dt>
+<dd>initializes the git repo in the current folder</dd>
+<dt>touch .gitignore</dt>
+<dd>creates a git ignore file</dd>
+<dt>git status</dt>
+<dd>check working tree - both on the git and on local </dd>
+</dl>
+<p>Add and remove from staging area:</p>
+<dl>
+<dt>git add -A</dt>
+<dd>adds all files to staging area</dd>
+<dt>git reset <code>&lt;file&gt;</code></dt>
+<dd>removes file in staging area</dd>
+</dl>
+<p>Make a commit:</p>
+<dl>
+<dt>git commit -m &#8220;commit message&#8221;</dt>
+<dd>-m is for message</dd>
+</dl>
+<p>Check log:</p>
+<dl>
+<dt>git log</dt>
+<dd>renders commit ids, authors, dates</dd>
+</dl>
+<p>Clone a remote repo:</p>
+<dl>
+<dt>git clone <code>&lt;url&gt;</code> <code>&lt;dir&gt;</code></dt>
+<dd>clone a repo from url to dir </dd>
+</dl>
+<p>View info about the repo:</p>
+<dl>
+<dt>git remote -v</dt>
+<dd>lists info about the repo</dd>
+<dt>git branch -a</dt>
+<dd>lists all branches</dd>
+</dl>
+<p>View changes:</p>
+<dl>
+<dt>git diff</dt>
+<dd>shows the difference </dd>
+</dl>
+<p>Pull and push:</p>
+<dl>
+<dt>git pull origin master</dt>
+<dd>pull before push</dd>
+<dt>git push origin master</dt>
+<dd>origin is remote repo, master is the branch</dd>
+</dl>
+<p>First time to push a branch:</p>
+<dl>
+<dt>git push -u origin <code>&lt;branch name&gt;</code></dt>
+<dd><code>-u</code> has special meaning</dd>
+<dt>git branch <code>&lt;branch name&gt;</code></dt>
+<dd>create a branch:</dd>
+<dt>git checkout <code>&lt;branch name&gt;</code></dt>
+<dd>checkout a branch</dd>
+<dt>git checkout master</dt>
+<dd>switch to master</dd>
+</dl>
+<p>Merge a branch:</p>
+<dl>
+<dt>git pull origin master</dt>
+<dd>pull from origin</dd>
+<dt>git branch --merged</dt>
+<dd>see which branches are merged </dd>
+<dt>git merge <code>&lt;name of the branch to merge&gt;</code></dt>
+<dd>merge onto a branch</dd>
+<dt>git push origin master</dt>
+<dd>push to upstream</dd>
+</dl>
+<p>Delete a branch:</p>
+<dl>
+<dt>git branch -d <code>&lt;name of the branch&gt;</code></dt>
+<dd>this deletes it locally</dd>
+<dt>git branch -a</dt>
+<dd>check the repo branches </dd>
+<dt>git push origin --delete <code>&lt;name of the branch&gt;</code></dt>
+<dd>this deletes it from the repo</dd>
+</dl>
+
+
+
+    </div>
+  </div>
+
+</div>
+
+   
+    <script src="https://code.jquery.com/jquery-3.4.1.slim.min.js" integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js" integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6" crossorigin="anonymous"></script>
+  </body>
+</html>

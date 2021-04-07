@@ -1,5 +1,177 @@
 <?xml version="1.0" encoding="utf-8"?>
-<feed xmlns="http://www.w3.org/2005/Atom"><title>George Zhang</title><link href="https://www.georgexyz.com/" rel="alternate"></link><link href="https://www.georgexyz.com/feeds/all.atom.xml" rel="self"></link><id>https://www.georgexyz.com/</id><updated>2021-03-30T09:37:00-04:00</updated><entry><title>Flask User Authentication Steps</title><link href="https://www.georgexyz.com/flask-user-authentication.html" rel="alternate"></link><published>2021-03-30T09:37:00-04:00</published><updated>2021-03-30T09:37:00-04:00</updated><author><name>George Zhang</name></author><id>tag:www.georgexyz.com,2021-03-30:/flask-user-authentication.html</id><summary type="html">&lt;p&gt;The user authentication process described in Chapter 8 of Miguel Grinberg&amp;#8217;s book is quite 
+<feed xmlns="http://www.w3.org/2005/Atom"><title>George Zhang</title><link href="https://www.georgexyz.com/" rel="alternate"></link><link href="https://www.georgexyz.com/feeds/all.atom.xml" rel="self"></link><id>https://www.georgexyz.com/</id><updated>2021-04-07T13:31:00-04:00</updated><entry><title>Remove Dash Conversion Of Smartypants Python Package</title><link href="https://www.georgexyz.com/remove-dash-conversion.html" rel="alternate"></link><published>2021-04-07T13:31:00-04:00</published><updated>2021-04-07T13:31:00-04:00</updated><author><name>George Zhang</name></author><id>tag:www.georgexyz.com,2021-04-07:/remove-dash-conversion.html</id><summary type="html">&lt;p&gt;When I am working on the last post 
+&lt;a href="https://www.georgexyz.com/git-command-reference.html"&gt;Git Command Reference&lt;/a&gt;, 
+git commands often 
+include an option such as &lt;code&gt;git config --help&lt;/code&gt;. Bash commands often have two dashes
+&lt;code&gt;--&lt;/code&gt; before options …&lt;/p&gt;</summary><content type="html">&lt;p&gt;When I am working on the last post 
+&lt;a href="https://www.georgexyz.com/git-command-reference.html"&gt;Git Command Reference&lt;/a&gt;, 
+git commands often 
+include an option such as &lt;code&gt;git config --help&lt;/code&gt;. Bash commands often have two dashes
+&lt;code&gt;--&lt;/code&gt; before options. The python &lt;code&gt;typogrify&lt;/code&gt; package (used in pelican) invokes &lt;code&gt;smartypants&lt;/code&gt; package 
+to convert &lt;code&gt;--&lt;/code&gt; into html en-dash &lt;code&gt;&amp;amp;#8212;&lt;/code&gt;, and &lt;code&gt;---&lt;/code&gt; into em-dash &lt;code&gt;&amp;amp;#8211;&lt;/code&gt;. 
+However after checking the &lt;code&gt;smartypants&lt;/code&gt; source code, I found that by default 
+it actually only convert en-dash, not em-dash. &lt;/p&gt;
+&lt;p&gt;This is a case of code becoming too smart. I do not want two dashes &lt;code&gt;--&lt;/code&gt; to show up 
+as en-dash.  How to turn this feature off? Reading my previous post 
+&lt;a href="https://www.georgexyz.com/typogrify-python-package.html"&gt;Typogrify Python Package&lt;/a&gt;, it is easy to 
+create a new pelican plugin to remove this conversion. &lt;/p&gt;
+&lt;p&gt;Here are the code in &lt;code&gt;mod_typogrify.py&lt;/code&gt;. &lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;from pelican import logger
+from pelican import signals
+
+from typogrify import filters
+
+def init_mod_typogrify(sender):
+    logger.debug(&amp;#39;Init mod_typogrify Plugin&amp;#39;)
+
+def register():
+    signals.initialized.connect(init_mod_typogrify)
+
+    def smartypants(text):
+        &amp;quot;&amp;quot;&amp;quot;Applies smarty pants to curl quotes.
+
+        &amp;gt;&amp;gt;&amp;gt; smartypants(&amp;#39;The &amp;quot;Green&amp;quot; man&amp;#39;)
+        &amp;#39;The &amp;amp;#8220;Green&amp;amp;#8221; man&amp;#39;
+        &amp;quot;&amp;quot;&amp;quot;
+        try:
+            import smartypants
+        except ImportError:
+            raise TypogrifyError(&amp;quot;Error in {% smartypants %} filter: &amp;quot;)
+        else:
+            from smartypants import Attr        #----- NEW
+            attr = Attr.set1 &amp;amp; (~(Attr.mask_d)) #----- NEW
+            output = smartypants.smartypants(text, attr) #--- add attr
+            return output
+
+    filters.smartypants = smartypants
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+
+&lt;p&gt;I only added two lines and modified a line of &lt;code&gt;smartypants&lt;/code&gt; function in &lt;code&gt;typogrify&lt;/code&gt; 
+to make it work. But figuring out 
+how to create the correct &lt;code&gt;attr&lt;/code&gt; took some time. Here is the bash session 
+history when I am doing the experiment. &lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;(venv) george@X220:~/Code/georgexyz.com$ python
+Python 3.9.2 (default, Mar 19 2021, 09:17:52) 
+[GCC 9.3.0] on linux
+Type &amp;quot;help&amp;quot;, &amp;quot;copyright&amp;quot;, &amp;quot;credits&amp;quot; or &amp;quot;license&amp;quot; for more information.
+&amp;gt;&amp;gt;&amp;gt; from smartypants import Attr
+&amp;gt;&amp;gt;&amp;gt; Attr.mask_d
+56
+&amp;gt;&amp;gt;&amp;gt; bin(Attr.mask_d)
+&amp;#39;0b111000&amp;#39;
+&amp;gt;&amp;gt;&amp;gt; bin(Attr.set1)  #---- default setting
+&amp;#39;0b1001011&amp;#39;
+&amp;gt;&amp;gt;&amp;gt; bin(Attr.set1 &amp;amp; (~(Attr.mask_d)))
+&amp;#39;0b1000011&amp;#39;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+
+&lt;p&gt;Here is a test of -- and ---. They should show up as two dashes and three dashes 
+instead of en-dash and em-dash. &lt;/p&gt;
+&lt;p&gt;This code change involves Python bitwise operators.  Here is a link to 
+&lt;a href="https://wiki.python.org/moin/BitwiseOperators"&gt;Bitwise Operator on Python.org&lt;/a&gt;. &lt;/p&gt;</content><category term="posts"></category><category term="web development"></category><category term="python"></category><category term="pelican"></category></entry><entry><title>Git Command Reference</title><link href="https://www.georgexyz.com/git-command-reference.html" rel="alternate"></link><published>2021-04-07T09:48:00-04:00</published><updated>2021-04-07T09:48:00-04:00</updated><author><name>George Zhang</name></author><id>tag:www.georgexyz.com,2021-04-07:/git-command-reference.html</id><summary type="html">&lt;p&gt;This note is from &lt;a href="https://youtu.be/HVsySz-h9r4"&gt;Corey Schafer&amp;#8217;s Youtube Git Tutorial&lt;/a&gt;. 
+A viewer posted the note under the video and I copied it as a starting point for this post. 
+I …&lt;/p&gt;</summary><content type="html">&lt;p&gt;This note is from &lt;a href="https://youtu.be/HVsySz-h9r4"&gt;Corey Schafer&amp;#8217;s Youtube Git Tutorial&lt;/a&gt;. 
+A viewer posted the note under the video and I copied it as a starting point for this post. 
+I will add more contents to this post over time. &lt;/p&gt;
+&lt;p&gt;On initial install:&lt;/p&gt;
+&lt;dl&gt;
+&lt;dt&gt;git --version&lt;/dt&gt;
+&lt;dd&gt;checks the version of the installed locally git&lt;/dd&gt;
+&lt;dt&gt;git config --global user.name &amp;#8220;Your Name&amp;#8221;&lt;/dt&gt;
+&lt;dd&gt;sets up the name of the user &lt;/dd&gt;
+&lt;dt&gt;git config --global user.email &amp;#8220;user@email.com&amp;#8221;&lt;/dt&gt;
+&lt;dd&gt;sets email&lt;/dd&gt;
+&lt;dt&gt;git config --list&lt;/dt&gt;
+&lt;dd&gt;lists configurations&lt;/dd&gt;
+&lt;/dl&gt;
+&lt;p&gt;For help on commands:&lt;/p&gt;
+&lt;dl&gt;
+&lt;dt&gt;git &lt;code&gt;&amp;lt;verb&amp;gt;&lt;/code&gt; --help&lt;/dt&gt;
+&lt;dd&gt;help info&lt;/dd&gt;
+&lt;dt&gt;git help &lt;code&gt;&amp;lt;verb&amp;gt;&lt;/code&gt; (e.g. git help config)&lt;/dt&gt;
+&lt;dd&gt;alternative help command&lt;/dd&gt;
+&lt;/dl&gt;
+&lt;p&gt;For initializing the project:&lt;/p&gt;
+&lt;dl&gt;
+&lt;dt&gt;git init&lt;/dt&gt;
+&lt;dd&gt;initializes the git repo in the current folder&lt;/dd&gt;
+&lt;dt&gt;touch .gitignore&lt;/dt&gt;
+&lt;dd&gt;creates a git ignore file&lt;/dd&gt;
+&lt;dt&gt;git status&lt;/dt&gt;
+&lt;dd&gt;check working tree - both on the git and on local &lt;/dd&gt;
+&lt;/dl&gt;
+&lt;p&gt;Add and remove from staging area:&lt;/p&gt;
+&lt;dl&gt;
+&lt;dt&gt;git add -A&lt;/dt&gt;
+&lt;dd&gt;adds all files to staging area&lt;/dd&gt;
+&lt;dt&gt;git reset &lt;code&gt;&amp;lt;file&amp;gt;&lt;/code&gt;&lt;/dt&gt;
+&lt;dd&gt;removes file in staging area&lt;/dd&gt;
+&lt;/dl&gt;
+&lt;p&gt;Make a commit:&lt;/p&gt;
+&lt;dl&gt;
+&lt;dt&gt;git commit -m &amp;#8220;commit message&amp;#8221;&lt;/dt&gt;
+&lt;dd&gt;-m is for message&lt;/dd&gt;
+&lt;/dl&gt;
+&lt;p&gt;Check log:&lt;/p&gt;
+&lt;dl&gt;
+&lt;dt&gt;git log&lt;/dt&gt;
+&lt;dd&gt;renders commit ids, authors, dates&lt;/dd&gt;
+&lt;/dl&gt;
+&lt;p&gt;Clone a remote repo:&lt;/p&gt;
+&lt;dl&gt;
+&lt;dt&gt;git clone &lt;code&gt;&amp;lt;url&amp;gt;&lt;/code&gt; &lt;code&gt;&amp;lt;dir&amp;gt;&lt;/code&gt;&lt;/dt&gt;
+&lt;dd&gt;clone a repo from url to dir &lt;/dd&gt;
+&lt;/dl&gt;
+&lt;p&gt;View info about the repo:&lt;/p&gt;
+&lt;dl&gt;
+&lt;dt&gt;git remote -v&lt;/dt&gt;
+&lt;dd&gt;lists info about the repo&lt;/dd&gt;
+&lt;dt&gt;git branch -a&lt;/dt&gt;
+&lt;dd&gt;lists all branches&lt;/dd&gt;
+&lt;/dl&gt;
+&lt;p&gt;View changes:&lt;/p&gt;
+&lt;dl&gt;
+&lt;dt&gt;git diff&lt;/dt&gt;
+&lt;dd&gt;shows the difference &lt;/dd&gt;
+&lt;/dl&gt;
+&lt;p&gt;Pull and push:&lt;/p&gt;
+&lt;dl&gt;
+&lt;dt&gt;git pull origin master&lt;/dt&gt;
+&lt;dd&gt;pull before push&lt;/dd&gt;
+&lt;dt&gt;git push origin master&lt;/dt&gt;
+&lt;dd&gt;origin is remote repo, master is the branch&lt;/dd&gt;
+&lt;/dl&gt;
+&lt;p&gt;First time to push a branch:&lt;/p&gt;
+&lt;dl&gt;
+&lt;dt&gt;git push -u origin &lt;code&gt;&amp;lt;branch name&amp;gt;&lt;/code&gt;&lt;/dt&gt;
+&lt;dd&gt;&lt;code&gt;-u&lt;/code&gt; has special meaning&lt;/dd&gt;
+&lt;dt&gt;git branch &lt;code&gt;&amp;lt;branch name&amp;gt;&lt;/code&gt;&lt;/dt&gt;
+&lt;dd&gt;create a branch:&lt;/dd&gt;
+&lt;dt&gt;git checkout &lt;code&gt;&amp;lt;branch name&amp;gt;&lt;/code&gt;&lt;/dt&gt;
+&lt;dd&gt;checkout a branch&lt;/dd&gt;
+&lt;dt&gt;git checkout master&lt;/dt&gt;
+&lt;dd&gt;switch to master&lt;/dd&gt;
+&lt;/dl&gt;
+&lt;p&gt;Merge a branch:&lt;/p&gt;
+&lt;dl&gt;
+&lt;dt&gt;git pull origin master&lt;/dt&gt;
+&lt;dd&gt;pull from origin&lt;/dd&gt;
+&lt;dt&gt;git branch --merged&lt;/dt&gt;
+&lt;dd&gt;see which branches are merged &lt;/dd&gt;
+&lt;dt&gt;git merge &lt;code&gt;&amp;lt;name of the branch to merge&amp;gt;&lt;/code&gt;&lt;/dt&gt;
+&lt;dd&gt;merge onto a branch&lt;/dd&gt;
+&lt;dt&gt;git push origin master&lt;/dt&gt;
+&lt;dd&gt;push to upstream&lt;/dd&gt;
+&lt;/dl&gt;
+&lt;p&gt;Delete a branch:&lt;/p&gt;
+&lt;dl&gt;
+&lt;dt&gt;git branch -d &lt;code&gt;&amp;lt;name of the branch&amp;gt;&lt;/code&gt;&lt;/dt&gt;
+&lt;dd&gt;this deletes it locally&lt;/dd&gt;
+&lt;dt&gt;git branch -a&lt;/dt&gt;
+&lt;dd&gt;check the repo branches &lt;/dd&gt;
+&lt;dt&gt;git push origin --delete &lt;code&gt;&amp;lt;name of the branch&amp;gt;&lt;/code&gt;&lt;/dt&gt;
+&lt;dd&gt;this deletes it from the repo&lt;/dd&gt;
+&lt;/dl&gt;</content><category term="posts"></category><category term="software utility"></category></entry><entry><title>Flask User Authentication Steps</title><link href="https://www.georgexyz.com/flask-user-authentication.html" rel="alternate"></link><published>2021-03-30T09:37:00-04:00</published><updated>2021-03-30T09:37:00-04:00</updated><author><name>George Zhang</name></author><id>tag:www.georgexyz.com,2021-03-30:/flask-user-authentication.html</id><summary type="html">&lt;p&gt;The user authentication process described in Chapter 8 of Miguel Grinberg&amp;#8217;s book is quite 
 complicated. The flask-login plugin makes it a little simpler. Here are the steps it takes …&lt;/p&gt;</summary><content type="html">&lt;p&gt;The user authentication process described in Chapter 8 of Miguel Grinberg&amp;#8217;s book is quite 
 complicated. The flask-login plugin makes it a little simpler. Here are the steps it takes 
 to create a basic login and logout system. &lt;/p&gt;
@@ -2413,8 +2585,8 @@ text code to postscript file. A typical command looks like this,&lt;/p&gt;
 detailed infomation regarding the software options and configuration files.&lt;/p&gt;
 &lt;p&gt;The default fancy header configuration file &lt;code&gt;enscript.hdr&lt;/code&gt; is stored in the directory
 &lt;code&gt;/usr/share/enscript/&lt;/code&gt;. I want to change the date and time on the left corner to
-current date/time. Also I want to change the page number on the right corner to &amp;#8220;number
-of pages processed so far&amp;#8221; rather than the default &amp;#8220;current page numbers&amp;#8221;. An easy way
+current date/time. Also I want to change the page number on the right corner to &amp;quot;number
+of pages processed so far&amp;quot; rather than the default &amp;quot;current page numbers&amp;quot;. An easy way
 is to copy the &lt;code&gt;enscript.hdr&lt;/code&gt; to a new &lt;code&gt;enscript_mod.hdr&lt;/code&gt; file and copy back
 the modified file to the directory. I only change three lines of code in
 &lt;code&gt;enscript_mod.hdr&lt;/code&gt; file.&lt;/p&gt;
@@ -2498,8 +2670,8 @@ write some articles in reStructuredText (rst) format but the default &lt;code&gt
 that comes …&lt;/p&gt;</summary><content type="html">&lt;p&gt;Articles on this website before this one are all written in markdown format. I want to
 write some articles in reStructuredText (rst) format but the default &lt;code&gt;docutils&lt;/code&gt; tool
 that comes with Pelican has a flaw causing me to stay away from the rst format.&lt;/p&gt;
-&lt;p&gt;The problem is that the top title of an aritle (e.g. &amp;#8220;Pelican Source Code and Plugin&amp;#8221;
-on this page) is rendered as &lt;code&gt;h2&lt;/code&gt; html tag, and section title (e.g. &amp;#8220;Pelican Plugin&amp;#8221;
+&lt;p&gt;The problem is that the top title of an aritle (e.g. &amp;quot;Pelican Source Code and Plugin&amp;quot;
+on this page) is rendered as &lt;code&gt;h2&lt;/code&gt; html tag, and section title (e.g. &amp;quot;Pelican Plugin&amp;quot;
 section below) starts with &lt;code&gt;h3&lt;/code&gt; tag. It is designed this way since the start of the website.
 In a markdown file, I can add two &lt;code&gt;#&lt;/code&gt; to specify a title as &lt;code&gt;h2&lt;/code&gt;.  There is
 no easy way to specify the heading levels in rst files.&lt;/p&gt;
@@ -2638,7 +2810,7 @@ shown in the previous section.&lt;/p&gt;
 &lt;div class="section" id="rst-file-of-this-article"&gt;
 &lt;h3&gt;Rst File of This Article&lt;/h3&gt;
 &lt;p&gt;The rst file of this article is available on github. &lt;a class="reference external" href="https://github.com/georgexyz19/georgexyz.com/blob/master/content/posts/pelican-source-code-plugin.rst"&gt;Click here&lt;/a&gt; to read the source file and click
-&amp;#8220;Raw&amp;#8221; button to see the text file.&lt;/p&gt;
+&amp;quot;Raw&amp;quot; button to see the text file.&lt;/p&gt;
 &lt;/div&gt;
 </content><category term="posts"></category><category term="python"></category><category term="pelican"></category></entry><entry><title>New Pelican Theme</title><link href="https://www.georgexyz.com/new-theme-2020.html" rel="alternate"></link><published>2020-04-11T22:31:00-04:00</published><updated>2020-04-11T22:31:00-04:00</updated><author><name>George Zhang</name></author><id>tag:www.georgexyz.com,2020-04-11:/new-theme-2020.html</id><summary type="html">&lt;p&gt;This site has been online for more than one year.  It is time to revise the pelican 
 theme to present a new look.  I spend a few hours revising the …&lt;/p&gt;</summary><content type="html">&lt;p&gt;This site has been online for more than one year.  It is time to revise the pelican 
@@ -3664,7 +3836,7 @@ with Linux command line tool wget.  The command is shown below:&lt;/p&gt;
 &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
 
 &lt;ul&gt;
-&lt;li&gt;-m : &amp;#8212;mirror recursion and time stamping&lt;/li&gt;
+&lt;li&gt;-m : --mirror recursion and time stamping&lt;/li&gt;
 &lt;li&gt;-p : all images&lt;/li&gt;
 &lt;li&gt;-E : adjust extension&lt;/li&gt;
 &lt;li&gt;-k : convert links for local file&lt;/li&gt;
@@ -6755,4 +6927,4 @@ noremap &amp;lt;C-L&amp;gt;&amp;lt;C-L&amp;gt; &amp;lt;C-W&amp;gt;&amp;lt;C-L&am
 
 &lt;h4&gt;Links and References&lt;/h4&gt;
 &lt;p&gt;&lt;a href="https://vim.rtorr.com/"&gt;Vim Cheat Sheet&lt;/a&gt; 
-is a nice single web page which includes command vim commands.&lt;/p&gt;</content><category term="posts"></category><category term="vim"></category><category term="linux"></category></entry></feed>
+is a nice single web page which includes common vim commands.&lt;/p&gt;</content><category term="posts"></category><category term="vim"></category><category term="linux"></category></entry></feed>

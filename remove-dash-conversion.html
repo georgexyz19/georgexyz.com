@@ -1,0 +1,162 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <link rel="stylesheet" href="/theme/css/bs4min.css">
+    <link rel="shortcut icon" type="image/x-icon" href="/theme/images/favicon.ico" >
+    <link rel="icon" type="image/x-icon" href="/theme/images/favicon.ico" >
+<link rel="stylesheet" href="https://www.georgexyz.com/theme/css/friendly.css">
+<link rel="stylesheet" href="https://www.georgexyz.com/theme/css/custom.css">
+<meta name="author" content="George Zhang" />
+<meta name="keywords" content="web development,python,pelican" />
+<meta name="description" content="When I am working on the last post Git Command Reference, git commands often include an option such as git config --help. Bash commands often have two dashes -- before options …" />
+    <title>Remove Dash Conversion Of Smartypants Python Package - George Zhang</title>
+  </head>
+  <body>
+    <!-- navbar -->
+    <nav class="navbar navbar-expand-md navbar-light" style="background-color: #e3f2fd;">
+      <div class="container">
+        <a class="navbar-brand" href="/">George Zhang</a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarColor01" aria-controls="navbarColor01" aria-expanded="false" aria-label="Toggle navigation">
+          <span class="navbar-toggler-icon"></span>
+        </button>
+
+        <div class="collapse navbar-collapse" id="navbarColor01">
+          <ul class="navbar-nav mr-auto">
+            <li class="nav-item">
+              <a class="nav-link " 
+                href="/articlelist.html">Articles</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link pr-3 " 
+                href="/tags.html">Tags</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link pr-3 "
+                 href="/pages/inkscape-tutorial.html">Inkscape Tutorial</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link "
+                   href="/pages/projects.html">Projects</a>
+              </li>
+          </ul>
+
+          <ul class="navbar-nav">
+            <li class="nav-item">
+              <a class="nav-link " 
+                 href="/pages/about.html">About</a>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </nav>
+
+   
+
+<div class="container">
+
+  <div class="row">
+    <div class="col-lg-8 mx-auto">
+
+      <h2>Remove Dash Conversion Of Smartypants Python Package</h2>
+
+      <div class="text-muted mb-2">
+        <span>Posted on </span>
+        <time datetime="2021-04-07 13:31:00-04:00">
+          Wednesday, 04/07/2021 13:31
+        </time>
+
+        <span>with tags: </span>
+        <a href="https://www.georgexyz.com/tag/web-development.html">web development</a>
+/        <a href="https://www.georgexyz.com/tag/python.html">python</a>
+/        <a href="https://www.georgexyz.com/tag/pelican.html">pelican</a>
+      </div>
+
+      <p>When I am working on the last post 
+<a href="https://www.georgexyz.com/git-command-reference.html">Git Command Reference</a>, 
+git commands often 
+include an option such as <code>git config --help</code>. Bash commands often have two dashes
+<code>--</code> before options. The python <code>typogrify</code> package (used in pelican) invokes <code>smartypants</code> package 
+to convert <code>--</code> into html en-dash <code>&amp;#8212;</code>, and <code>---</code> into em-dash <code>&amp;#8211;</code>. 
+However after checking the <code>smartypants</code> source code, I found that by default 
+it actually only convert en-dash, not em-dash. </p>
+<p>This is a case of code becoming too smart. I do not want two dashes <code>--</code> to show up 
+as en-dash.  How to turn this feature off? Reading my previous post 
+<a href="https://www.georgexyz.com/typogrify-python-package.html">Typogrify Python Package</a>, it is easy to 
+create a new pelican plugin to remove this conversion. </p>
+<p>Here are the code in <code>mod_typogrify.py</code>. </p>
+<div class="highlight"><pre><span></span><code>from pelican import logger
+from pelican import signals
+
+from typogrify import filters
+
+def init_mod_typogrify(sender):
+    logger.debug(&#39;Init mod_typogrify Plugin&#39;)
+
+def register():
+    signals.initialized.connect(init_mod_typogrify)
+
+    def smartypants(text):
+        &quot;&quot;&quot;Applies smarty pants to curl quotes.
+
+        &gt;&gt;&gt; smartypants(&#39;The &quot;Green&quot; man&#39;)
+        &#39;The &amp;#8220;Green&amp;#8221; man&#39;
+        &quot;&quot;&quot;
+        try:
+            import smartypants
+        except ImportError:
+            raise TypogrifyError(&quot;Error in {% smartypants %} filter: &quot;)
+        else:
+            from smartypants import Attr        #----- NEW
+            attr = Attr.set1 &amp; (~(Attr.mask_d)) #----- NEW
+            output = smartypants.smartypants(text, attr) #--- add attr
+            return output
+
+    filters.smartypants = smartypants
+</code></pre></div>
+
+<p>I only added two lines and modified a line of <code>smartypants</code> function in <code>typogrify</code> 
+to make it work. But figuring out 
+how to create the correct <code>attr</code> took some time. Here is the bash session 
+history when I am doing the experiment. </p>
+<div class="highlight"><pre><span></span><code>(venv) george@X220:~/Code/georgexyz.com$ python
+Python 3.9.2 (default, Mar 19 2021, 09:17:52) 
+[GCC 9.3.0] on linux
+Type &quot;help&quot;, &quot;copyright&quot;, &quot;credits&quot; or &quot;license&quot; for more information.
+&gt;&gt;&gt; from smartypants import Attr
+&gt;&gt;&gt; Attr.mask_d
+56
+&gt;&gt;&gt; bin(Attr.mask_d)
+&#39;0b111000&#39;
+&gt;&gt;&gt; bin(Attr.set1)  #---- default setting
+&#39;0b1001011&#39;
+&gt;&gt;&gt; bin(Attr.set1 &amp; (~(Attr.mask_d)))
+&#39;0b1000011&#39;
+</code></pre></div>
+
+<p>Here is a test of -- and ---. They should show up as two dashes and three dashes 
+instead of en-dash and em-dash. </p>
+<p>This code change involves Python bitwise operators.  Here is a link to 
+<a href="https://wiki.python.org/moin/BitwiseOperators">Bitwise Operator on Python.org</a>. </p>
+
+      <div class="mt-5 border-top">
+        <h3>Related Posts:</h3>
+        <ul>
+          <li><a href="https://www.georgexyz.com/typogrify-python-package.html">Typogrify Python Package</a></li>
+        </ul>
+      </div>
+
+
+    </div>
+  </div>
+
+</div>
+
+   
+    <script src="https://code.jquery.com/jquery-3.4.1.slim.min.js" integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js" integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6" crossorigin="anonymous"></script>
+  </body>
+</html>
