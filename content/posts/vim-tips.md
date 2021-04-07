@@ -623,6 +623,6 @@ noremap <C-L><C-L> <C-W><C-L>
 #### Links and References
 
 [Vim Cheat Sheet](https://vim.rtorr.com/) 
-is a nice single web page which includes command vim commands.
+is a nice single web page which includes common vim commands.
 
 
