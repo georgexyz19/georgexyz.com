@@ -77,18 +77,22 @@ nnoremap <silent> <C-l> :<C-u>nohlsearch<CR><C-l>
 autocmd BufEnter * let &titlestring = ' ' . expand("%:p")
 set title
 
-"show tab char as >---
+" show tab char as >---
 set list
 set listchars=tab:>-
 
-"create command :Showspace for double spaces before line end
+" create command :Showspace for double spaces before line end
 command Showspace highlight ExtraWhitespace ctermbg=red guibg=red | 
-                  \ match ExtraWhitespace /\s\s$/
+        \ match ExtraWhitespace /\s\s$/
 command Shownospace match none 
+
+" spell check command type :Spellcheck to turn on, :set nospell to turn off
+command Spellcheck setlocal spell spelllang=en_us 
 ```
 
 I try to keep the `.vimrc` file simple so people can easily understand the script and 
-modify it. 
+modify it. Some contents are removed (such as mapping `Esc` key to `CapsLock`) if they 
+are not used in an extended period of time. 
 
 ### Vim Tips
 
@@ -105,10 +109,12 @@ $vim -u NONE  # do not load any config file
 #### Set Initial Console Window Size
 
 On Linux Mint terminal, you can use `set lines=50 columns=100` to set initial console size. 
-I have those lines in my `~/.vimrc` file. Those work well in Ubuntu or Linux Mint.
+I have those lines in my `~/.vimrc` file. Those numbers seem to work well in Linux Mint.
 
+```
 set lines=38
 set columns=140
+```
 
 *Source: [an article](https://vim.fandom.com/wiki/Maximize_or_set_initial_window_size) on fandom.com.*
 
@@ -130,8 +136,8 @@ set wildignore+=**/node_modules/**
 set wildignore+=**/venv/**
 ```
 
-Source: [a video talk](https://youtu.be/XA2WjJbmmoM) on youtube; 
-*Exclude directory Source*: [stackexchange link](https://vi.stackexchange.com/questions/11644/ignore-folders-when-performing-find-command). 
+Source: [a video talk](https://youtu.be/XA2WjJbmmoM) on youtube, 
+Source #2: [Stackexchange Q&A](https://vi.stackexchange.com/questions/11644/ignore-folders-when-performing-find-command). 
 
 #### Auto Complete
 
@@ -266,7 +272,7 @@ setlocal spell
 : for current buffer only
 
 setlocal spell spelllang=en_us
-: check current buffer for US english
+: check current buffer for US English
 
 ]s
 : move to next misspelled word
@@ -283,6 +289,10 @@ zg
 The `spelllang` settings is to specify the language, and the default is `en`. 
 You can set it to `en_us` to specify American English. You can also use 
 `spellfile` setting to specify a personal dictionary file for `zg` command. 
+
+English is my second language, and I often rely on the spell checker. It is 
+one of those Vim features that some people do not need but other people use it 
+all the time.
 
 *Source: [an article](https://www.linux.com/training-tutorials/using-spell-checking-vim/) on linux.com & 
 [a blog post](http://thejakeharding.com/tutorial/2012/06/13/using-spell-check-in-vim.html) by Jake Harding.*
@@ -353,7 +363,7 @@ represents alternate buffer. You can switch between the current buffer and
 alternate buffer. The `+` symbol on the list represents the file has been 
 modified but not saved.  The commands listed below are for navigating between buffers.
 
-When writting Python programs in Vim, you can run the command `:!python3 %` 
+When writing Python programs in Vim, you can run the command `:!python3 %` 
 to run the current file. 
 
 :bnext, bprevious, bfirst, blast
