@@ -6321,18 +6321,22 @@ nnoremap &amp;lt;silent&amp;gt; &amp;lt;C-l&amp;gt; :&amp;lt;C-u&amp;gt;nohlsear
 autocmd BufEnter * let &amp;amp;titlestring = &amp;#39; &amp;#39; . expand(&amp;quot;%:p&amp;quot;)
 set title
 
-&amp;quot;show tab char as &amp;gt;---
+&amp;quot; show tab char as &amp;gt;---
 set list
 set listchars=tab:&amp;gt;-
 
-&amp;quot;create command :Showspace for double spaces before line end
+&amp;quot; create command :Showspace for double spaces before line end
 command Showspace highlight ExtraWhitespace ctermbg=red guibg=red | 
-                  \ match ExtraWhitespace /\s\s$/
+        \ match ExtraWhitespace /\s\s$/
 command Shownospace match none 
+
+&amp;quot; spell check command type :Spellcheck to turn on, :set nospell to turn off
+command Spellcheck setlocal spell spelllang=en_us 
 &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
 
 &lt;p&gt;I try to keep the &lt;code&gt;.vimrc&lt;/code&gt; file simple so people can easily understand the script and 
-modify it. &lt;/p&gt;
+modify it. Some contents are removed (such as mapping &lt;code&gt;Esc&lt;/code&gt; key to &lt;code&gt;CapsLock&lt;/code&gt;) if they 
+are not used in an extended period of time. &lt;/p&gt;
 &lt;h3&gt;Vim Tips&lt;/h3&gt;
 &lt;h4&gt;Startup&lt;/h4&gt;
 &lt;p&gt;Vim loads &lt;code&gt;~/.vimrc&lt;/code&gt; by default, and you can change the behavior by using &lt;code&gt;-u&lt;/code&gt; option on 
@@ -6343,7 +6347,7 @@ $vim -u NONE  # do not load any config file
 
 &lt;h4&gt;Set Initial Console Window Size&lt;/h4&gt;
 &lt;p&gt;On Linux Mint terminal, you can use &lt;code&gt;set lines=50 columns=100&lt;/code&gt; to set initial console size. 
-I have those lines in my &lt;code&gt;~/.vimrc&lt;/code&gt; file. &lt;/p&gt;
+I have those lines in my &lt;code&gt;~/.vimrc&lt;/code&gt; file. Those numbers seem to work well in Linux Mint.&lt;/p&gt;
 &lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;set lines=38
 set columns=140
 &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
@@ -6361,8 +6365,8 @@ set wildmenu
 set wildignore+=**/venv/**
 &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
 
-&lt;p&gt;Source: &lt;a href="https://youtu.be/XA2WjJbmmoM"&gt;a video talk&lt;/a&gt; on youtube; 
-&lt;em&gt;Exclude directory Source&lt;/em&gt;: &lt;a href="https://vi.stackexchange.com/questions/11644/ignore-folders-when-performing-find-command"&gt;stackexchange link&lt;/a&gt;. &lt;/p&gt;
+&lt;p&gt;Source: &lt;a href="https://youtu.be/XA2WjJbmmoM"&gt;a video talk&lt;/a&gt; on youtube, 
+Source #2: &lt;a href="https://vi.stackexchange.com/questions/11644/ignore-folders-when-performing-find-command"&gt;Stackexchange Q&amp;amp;A&lt;/a&gt;. &lt;/p&gt;
 &lt;h4&gt;Auto Complete&lt;/h4&gt;
 &lt;p&gt;Vim itself has auto complete function built in. In the insert mode, you can type a 
 few letters such as &amp;#8216;Com&amp;#8217;, and then press &lt;code&gt;^n&lt;/code&gt; to bring up auto complete menu. It 
@@ -6462,6 +6466,8 @@ use it.&lt;/p&gt;
 &lt;dl&gt;
 &lt;dt&gt;setlocal spell&lt;/dt&gt;
 &lt;dd&gt;for current buffer only&lt;/dd&gt;
+&lt;dt&gt;setlocal spell spelllang=en_us&lt;/dt&gt;
+&lt;dd&gt;check current buffer for &lt;span class="caps"&gt;US&lt;/span&gt; English&lt;/dd&gt;
 &lt;dt&gt;]s&lt;/dt&gt;
 &lt;dd&gt;move to next misspelled word&lt;/dd&gt;
 &lt;dt&gt;&lt;code&gt;[s&lt;/code&gt;&lt;/dt&gt;
@@ -6474,6 +6480,9 @@ use it.&lt;/p&gt;
 &lt;p&gt;The &lt;code&gt;spelllang&lt;/code&gt; settings is to specify the language, and the default is &lt;code&gt;en&lt;/code&gt;. 
 You can set it to &lt;code&gt;en_us&lt;/code&gt; to specify American English. You can also use 
 &lt;code&gt;spellfile&lt;/code&gt; setting to specify a personal dictionary file for &lt;code&gt;zg&lt;/code&gt; command. &lt;/p&gt;
+&lt;p&gt;English is my second language, and I often rely on the spell checker. It is 
+one of those Vim features that some people do not need but other people use it 
+all the time.&lt;/p&gt;
 &lt;p&gt;&lt;em&gt;Source: &lt;a href="https://www.linux.com/training-tutorials/using-spell-checking-vim/"&gt;an article&lt;/a&gt; on linux.com &lt;span class="amp"&gt;&amp;amp;&lt;/span&gt; 
 &lt;a href="http://thejakeharding.com/tutorial/2012/06/13/using-spell-check-in-vim.html"&gt;a blog post&lt;/a&gt; by Jake Harding.&lt;/em&gt;&lt;/p&gt;
 &lt;h4&gt;&lt;span class="caps"&gt;GNOME&lt;/span&gt; Terminal Shortcuts&lt;/h4&gt;
@@ -6529,7 +6538,7 @@ that command &lt;code&gt;:!ls&lt;/code&gt; will execute a single bash command &l
 represents alternate buffer. You can switch between the current buffer and 
 alternate buffer. The &lt;code&gt;+&lt;/code&gt; symbol on the list represents the file has been 
 modified but not saved.  The commands listed below are for navigating between buffers.&lt;/p&gt;
-&lt;p&gt;When writting Python programs in Vim, you can run the command &lt;code&gt;:!python3 %&lt;/code&gt; 
+&lt;p&gt;When writing Python programs in Vim, you can run the command &lt;code&gt;:!python3 %&lt;/code&gt; 
 to run the current file. &lt;/p&gt;
 &lt;dl&gt;
 &lt;dt&gt;:bnext, bprevious, bfirst, blast&lt;/dt&gt;

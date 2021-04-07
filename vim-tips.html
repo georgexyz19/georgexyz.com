@@ -134,18 +134,22 @@ nnoremap &lt;silent&gt; &lt;C-l&gt; :&lt;C-u&gt;nohlsearch&lt;CR&gt;&lt;C-l&gt;
 autocmd BufEnter * let &amp;titlestring = &#39; &#39; . expand(&quot;%:p&quot;)
 set title
 
-&quot;show tab char as &gt;---
+&quot; show tab char as &gt;---
 set list
 set listchars=tab:&gt;-
 
-&quot;create command :Showspace for double spaces before line end
+&quot; create command :Showspace for double spaces before line end
 command Showspace highlight ExtraWhitespace ctermbg=red guibg=red | 
-                  \ match ExtraWhitespace /\s\s$/
+        \ match ExtraWhitespace /\s\s$/
 command Shownospace match none 
+
+&quot; spell check command type :Spellcheck to turn on, :set nospell to turn off
+command Spellcheck setlocal spell spelllang=en_us 
 </code></pre></div>
 
 <p>I try to keep the <code>.vimrc</code> file simple so people can easily understand the script and 
-modify it. </p>
+modify it. Some contents are removed (such as mapping <code>Esc</code> key to <code>CapsLock</code>) if they 
+are not used in an extended period of time. </p>
 <h3>Vim Tips</h3>
 <h4>Startup</h4>
 <p>Vim loads <code>~/.vimrc</code> by default, and you can change the behavior by using <code>-u</code> option on 
@@ -156,7 +160,7 @@ $vim -u NONE  # do not load any config file
 
 <h4>Set Initial Console Window Size</h4>
 <p>On Linux Mint terminal, you can use <code>set lines=50 columns=100</code> to set initial console size. 
-I have those lines in my <code>~/.vimrc</code> file. </p>
+I have those lines in my <code>~/.vimrc</code> file. Those numbers seem to work well in Linux Mint.</p>
 <div class="highlight"><pre><span></span><code>set lines=38
 set columns=140
 </code></pre></div>
@@ -174,8 +178,8 @@ set wildmenu
 set wildignore+=**/venv/**
 </code></pre></div>
 
-<p>Source: <a href="https://youtu.be/XA2WjJbmmoM">a video talk</a> on youtube; 
-<em>Exclude directory Source</em>: <a href="https://vi.stackexchange.com/questions/11644/ignore-folders-when-performing-find-command">stackexchange link</a>. </p>
+<p>Source: <a href="https://youtu.be/XA2WjJbmmoM">a video talk</a> on youtube, 
+Source #2: <a href="https://vi.stackexchange.com/questions/11644/ignore-folders-when-performing-find-command">Stackexchange Q&amp;A</a>. </p>
 <h4>Auto Complete</h4>
 <p>Vim itself has auto complete function built in. In the insert mode, you can type a 
 few letters such as &#8216;Com&#8217;, and then press <code>^n</code> to bring up auto complete menu. It 
@@ -275,6 +279,8 @@ use it.</p>
 <dl>
 <dt>setlocal spell</dt>
 <dd>for current buffer only</dd>
+<dt>setlocal spell spelllang=en_us</dt>
+<dd>check current buffer for <span class="caps">US</span> English</dd>
 <dt>]s</dt>
 <dd>move to next misspelled word</dd>
 <dt><code>[s</code></dt>
@@ -287,6 +293,9 @@ use it.</p>
 <p>The <code>spelllang</code> settings is to specify the language, and the default is <code>en</code>. 
 You can set it to <code>en_us</code> to specify American English. You can also use 
 <code>spellfile</code> setting to specify a personal dictionary file for <code>zg</code> command. </p>
+<p>English is my second language, and I often rely on the spell checker. It is 
+one of those Vim features that some people do not need but other people use it 
+all the time.</p>
 <p><em>Source: <a href="https://www.linux.com/training-tutorials/using-spell-checking-vim/">an article</a> on linux.com <span class="amp">&amp;</span> 
 <a href="http://thejakeharding.com/tutorial/2012/06/13/using-spell-check-in-vim.html">a blog post</a> by Jake Harding.</em></p>
 <h4><span class="caps">GNOME</span> Terminal Shortcuts</h4>
@@ -342,7 +351,7 @@ that command <code>:!ls</code> will execute a single bash command <code>ls</code
 represents alternate buffer. You can switch between the current buffer and 
 alternate buffer. The <code>+</code> symbol on the list represents the file has been 
 modified but not saved.  The commands listed below are for navigating between buffers.</p>
-<p>When writting Python programs in Vim, you can run the command <code>:!python3 %</code> 
+<p>When writing Python programs in Vim, you can run the command <code>:!python3 %</code> 
 to run the current file. </p>
 <dl>
 <dt>:bnext, bprevious, bfirst, blast</dt>
