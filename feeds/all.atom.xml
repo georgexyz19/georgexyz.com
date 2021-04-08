@@ -159,18 +159,18 @@ I will add more contents to this post over time. &lt;/p&gt;
 &lt;dt&gt;git branch --merged&lt;/dt&gt;
 &lt;dd&gt;see which branches are merged &lt;/dd&gt;
 &lt;dt&gt;git merge &lt;code&gt;&amp;lt;name of the branch to merge&amp;gt;&lt;/code&gt;&lt;/dt&gt;
-&lt;dd&gt;merge onto a branch&lt;/dd&gt;
+&lt;dd&gt;merge a branch onto current one&lt;/dd&gt;
 &lt;dt&gt;git push origin master&lt;/dt&gt;
 &lt;dd&gt;push to upstream&lt;/dd&gt;
 &lt;/dl&gt;
 &lt;p&gt;Delete a branch:&lt;/p&gt;
 &lt;dl&gt;
 &lt;dt&gt;git branch -d &lt;code&gt;&amp;lt;name of the branch&amp;gt;&lt;/code&gt;&lt;/dt&gt;
-&lt;dd&gt;this deletes it locally&lt;/dd&gt;
+&lt;dd&gt;this deletes branch locally&lt;/dd&gt;
 &lt;dt&gt;git branch -a&lt;/dt&gt;
-&lt;dd&gt;check the repo branches &lt;/dd&gt;
+&lt;dd&gt;check repo branches &lt;/dd&gt;
 &lt;dt&gt;git push origin --delete &lt;code&gt;&amp;lt;name of the branch&amp;gt;&lt;/code&gt;&lt;/dt&gt;
-&lt;dd&gt;this deletes it from the repo&lt;/dd&gt;
+&lt;dd&gt;this deletes branch from remote repo&lt;/dd&gt;
 &lt;/dl&gt;</content><category term="posts"></category><category term="software utility"></category></entry><entry><title>Flask User Authentication Steps</title><link href="https://www.georgexyz.com/flask-user-authentication.html" rel="alternate"></link><published>2021-03-30T09:37:00-04:00</published><updated>2021-03-30T09:37:00-04:00</updated><author><name>George Zhang</name></author><id>tag:www.georgexyz.com,2021-03-30:/flask-user-authentication.html</id><summary type="html">&lt;p&gt;The user authentication process described in Chapter 8 of Miguel Grinberg&amp;#8217;s book is quite 
 complicated. The flask-login plugin makes it a little simpler. Here are the steps it takes …&lt;/p&gt;</summary><content type="html">&lt;p&gt;The user authentication process described in Chapter 8 of Miguel Grinberg&amp;#8217;s book is quite 
 complicated. The flask-login plugin makes it a little simpler. Here are the steps it takes 
