@@ -116,7 +116,7 @@ git branch --merged
 : see which branches are merged 
 
 git merge `<name of the branch to merge>`
-: merge onto a branch
+: merge a branch onto current one
 
 git push origin master 
 : push to upstream
@@ -125,11 +125,11 @@ git push origin master
 Delete a branch:
 
 git branch -d `<name of the branch>`
-: this deletes it locally
+: this deletes branch locally
 
 git branch -a 
-: check the repo branches 
+: check repo branches 
 
 git push origin --delete `<name of the branch>`
-: this deletes it from the repo
+: this deletes branch from remote repo
 
