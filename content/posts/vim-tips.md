@@ -620,6 +620,31 @@ noremap <C-L><C-L> <C-W><C-L>
 ```
 </div>
 
+
+#### Emmet Vim Plugin
+
+The other Vim plugin I use is the [emmet-vim](https://github.com/mattn/emmet-vim). 
+It is tedious to type html tags like `<div></div>` when coding web pages.
+
+If you follow above steps and install Vundle to manage plugins, you can add this line to 
+the `.plugin.vimrc` file. 
+
+```
+Plugin 'mattn/emmet-vim'
+```
+
+I also added those two settings in the same file as suggested in a youtube tutorial video.
+
+```
+let g:user_emmet_mode='n'    "only enable normal mode functions.
+let g:user_emmet_leader_key=',' "activate two commas  
+```
+
+Here is the link to [the youtube tutorial](https://youtu.be/ha7oyvhgP04).
+
+Link to the Github [emmet-vim source code repo](https://github.com/mattn/emmet-vim). 
+
+
 #### Links and References
 
 [Vim Cheat Sheet](https://vim.rtorr.com/) 
