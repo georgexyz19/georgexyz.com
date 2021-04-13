@@ -61,9 +61,6 @@ flash('Log in failed', 'error')
 {% endwith %}
 ```
 
-The purpose of putting `flashes` on the top of `_request_ctx_stack.top` is that,
-> further calls in the same request to the function will return the same messages.
-
 The interesting part of the above code is that the function  `get_flashed_messages` is available to all 
 template html files. How does it happen? Let's take a look at 
 Flask source code. 
@@ -108,6 +105,9 @@ def get_flashed_messages(with_categories=False, category_filter=()):
         return [x[1] for x in flashes]
     return flashes
 ```
+
+The purpose of putting `flashes` on the top of `_request_ctx_stack.top` is that,
+> further calls in the same request to the function will return the same messages.
 
 How does Jinja2 know `get_flashed_messages` function? The code is in 
 `create_jinja_environment` method of Flask class (Line 761 of app.py). 
