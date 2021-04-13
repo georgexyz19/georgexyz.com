@@ -142,6 +142,8 @@ Those links are for people who already know the Python basics.
 
 [HTML & CSS Is Hard - Web Book](https://www.internetingishard.com/html-and-css/)
 
+[Mozilla Web Forms Page](https://developer.mozilla.org/en-US/docs/Learn/Forms)
+
 
 ### Pelican Static Site Generator
 
