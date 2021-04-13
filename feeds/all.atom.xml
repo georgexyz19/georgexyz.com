@@ -860,6 +860,10 @@ is modified to be like this. &lt;/p&gt;
 {% endwith %}
 &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
 
+&lt;p&gt;The purpose of putting &lt;code&gt;flashes&lt;/code&gt; on the top of &lt;code&gt;_request_ctx_stack.top&lt;/code&gt; is that,&lt;/p&gt;
+&lt;blockquote&gt;
+&lt;p&gt;further calls in the same request to the function will return the same messages.&lt;/p&gt;
+&lt;/blockquote&gt;
 &lt;p&gt;The interesting part of the above code is that the function  &lt;code&gt;get_flashed_messages&lt;/code&gt; is available to all 
 template html files. How does it happen? Let&amp;#8217;s take a look at 
 Flask source code. &lt;/p&gt;

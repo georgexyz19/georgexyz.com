@@ -120,6 +120,10 @@ is modified to be like this. </p>
 {% endwith %}
 </code></pre></div>
 
+<p>The purpose of putting <code>flashes</code> on the top of <code>_request_ctx_stack.top</code> is that,</p>
+<blockquote>
+<p>further calls in the same request to the function will return the same messages.</p>
+</blockquote>
 <p>The interesting part of the above code is that the function  <code>get_flashed_messages</code> is available to all 
 template html files. How does it happen? Let&#8217;s take a look at 
 Flask source code. </p>
