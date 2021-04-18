@@ -174,6 +174,22 @@ I will add more contents to this post over time. </p>
 <dt>git push origin --delete <code>&lt;name of the branch&gt;</code></dt>
 <dd>this deletes branch from remote repo</dd>
 </dl>
+<p>Have a local branch, push to github:</p>
+<div class="ml-4">
+Create a github repo without readme.md, .gitignore, and license files.
+<div class="mt-3"></div>
+
+<div class="highlight"><pre><span></span><code>git init
+git add -A
+git status
+git commit -m &quot;first commit&quot;
+git remote add origin &lt;repo addr&gt;
+git remote -v
+git push origin master
+</code></pre></div>
+
+
+</div>
 
 
 

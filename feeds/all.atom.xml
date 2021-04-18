@@ -171,7 +171,23 @@ I will add more contents to this post over time. &lt;/p&gt;
 &lt;dd&gt;check repo branches &lt;/dd&gt;
 &lt;dt&gt;git push origin --delete &lt;code&gt;&amp;lt;name of the branch&amp;gt;&lt;/code&gt;&lt;/dt&gt;
 &lt;dd&gt;this deletes branch from remote repo&lt;/dd&gt;
-&lt;/dl&gt;</content><category term="posts"></category><category term="software utility"></category></entry><entry><title>Flask User Authentication Steps</title><link href="https://www.georgexyz.com/flask-user-authentication.html" rel="alternate"></link><published>2021-03-30T09:37:00-04:00</published><updated>2021-03-30T09:37:00-04:00</updated><author><name>George Zhang</name></author><id>tag:www.georgexyz.com,2021-03-30:/flask-user-authentication.html</id><summary type="html">&lt;p&gt;The user authentication process described in Chapter 8 of Miguel Grinberg&amp;#8217;s book is quite 
+&lt;/dl&gt;
+&lt;p&gt;Have a local branch, push to github:&lt;/p&gt;
+&lt;div class="ml-4"&gt;
+Create a github repo without readme.md, .gitignore, and license files.
+&lt;div class="mt-3"&gt;&lt;/div&gt;
+
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;git init
+git add -A
+git status
+git commit -m &amp;quot;first commit&amp;quot;
+git remote add origin &amp;lt;repo addr&amp;gt;
+git remote -v
+git push origin master
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;/div&gt;</content><category term="posts"></category><category term="software utility"></category></entry><entry><title>Flask User Authentication Steps</title><link href="https://www.georgexyz.com/flask-user-authentication.html" rel="alternate"></link><published>2021-03-30T09:37:00-04:00</published><updated>2021-03-30T09:37:00-04:00</updated><author><name>George Zhang</name></author><id>tag:www.georgexyz.com,2021-03-30:/flask-user-authentication.html</id><summary type="html">&lt;p&gt;The user authentication process described in Chapter 8 of Miguel Grinberg&amp;#8217;s book is quite 
 complicated. The flask-login plugin makes it a little simpler. Here are the steps it takes …&lt;/p&gt;</summary><content type="html">&lt;p&gt;The user authentication process described in Chapter 8 of Miguel Grinberg&amp;#8217;s book is quite 
 complicated. The flask-login plugin makes it a little simpler. Here are the steps it takes 
 to create a basic login and logout system. &lt;/p&gt;
