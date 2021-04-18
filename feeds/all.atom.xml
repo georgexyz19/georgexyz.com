@@ -172,9 +172,10 @@ I will add more contents to this post over time. &lt;/p&gt;
 &lt;dt&gt;git push origin --delete &lt;code&gt;&amp;lt;name of the branch&amp;gt;&lt;/code&gt;&lt;/dt&gt;
 &lt;dd&gt;this deletes branch from remote repo&lt;/dd&gt;
 &lt;/dl&gt;
-&lt;p&gt;Have a local branch, push to github:&lt;/p&gt;
+&lt;p&gt;Have a local project, push it to github:&lt;/p&gt;
 &lt;div class="ml-4"&gt;
-Create a github repo without readme.md, .gitignore, and license files.
+Create a github repo without readme.md, .gitignore, and license files. Then run 
+below commands. 
 &lt;div class="mt-3"&gt;&lt;/div&gt;
 
 &lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;git init
