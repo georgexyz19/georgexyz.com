@@ -133,3 +133,18 @@ git branch -a
 git push origin --delete `<name of the branch>`
 : this deletes branch from remote repo
 
+Have a local branch, push to github:
+
+<div class="ml-4">
+Create a github repo without readme.md, .gitignore, and license files.
+<div class="mt-3"></div>
+```
+git init
+git add -A
+git status
+git commit -m "first commit"
+git remote add origin <repo addr>
+git remote -v
+git push origin master
+```
+</div>
