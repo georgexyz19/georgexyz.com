@@ -27,6 +27,8 @@ Realpython.com - [An Intro to Threading in Python](https://realpython.com/intro-
 
 Python.org - [Threading - Thread-based Parallelism](https://docs.python.org/3/library/threading.html)
 
+Realpython.com - [Speed Up Your Python Program With Concurrency](https://realpython.com/python-concurrency)
+
 The Flask documentation has one page for application context and another page for request context. 
 The documentation pages are not written in a tutorial style and are difficult understand if you do not 
 read the code, but they are good and accurate.
