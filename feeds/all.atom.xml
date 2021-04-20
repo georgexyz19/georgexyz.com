@@ -470,7 +470,6 @@ sudo apt-get install vim-gtk3
 vim ~/.vimrc
 
 &lt;span class="c1"&gt;# mount synology network drive&lt;/span&gt;
-sudo vim /etc/fastab
 sudo vim /etc/fstab 
 sudo vim /etc/samba/credentials
 sudo mkdir /media/synology
