@@ -109,3 +109,14 @@ dt {
 dt:after {
     content: ':';
 }
+
+.cmd {
+  margin-left: 1.5rem;
+  margin-bottom: 0.25rem;
+  font-family: SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace;
+  font-size: 1em;
+  font-size: 88%;
+  color: #15228a;
+  word-wrap: break-word;
+  font-weight: normal;
+}

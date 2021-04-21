@@ -133,19 +133,27 @@ git branch -a
 git push origin --delete `<name of the branch>`
 : this deletes branch from remote repo
 
-Have a local project, push it to github:
+<hr>
 
-<div class="ml-4">
+####Have a local project, push it to github
+
 Create a github repo without readme.md, .gitignore, and license files. Then run 
 below commands. 
-<div class="mt-3"></div>
-```
-git init
-git add -A
-git status
-git commit -m "first commit"
-git remote add origin <repo addr>
-git remote -v
-git push origin master
-```
-</div>
+
+<div class="cmd">git init</div>
+<div class="cmd">git add -A</div>
+<div class="cmd">git status</div>
+<div class="cmd">git commit -m "first commit"</div>
+<div class="cmd">git remote add origin &lt;repo addr&gt;</div>
+<div class="cmd">git remote -v</div>
+<div class="cmd">git push origin master</div>
+<div class="mb-3"></div>
+
+####Push your repo to a central server in a bare repo
+
+This [blog post](https://www.jeffgeerling.com/blogs/jeff-geerling/push-your-git-repositories) 
+has detailed steps. The important step is to run this command after you create the central repo.
+
+git --bare init
+: run this command for the central repo before pushing
+
