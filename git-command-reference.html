@@ -174,23 +174,27 @@ I will add more contents to this post over time. </p>
 <dt>git push origin --delete <code>&lt;name of the branch&gt;</code></dt>
 <dd>this deletes branch from remote repo</dd>
 </dl>
-<p>Have a local project, push it to github:</p>
-<div class="ml-4">
-Create a github repo without readme.md, .gitignore, and license files. Then run 
-below commands. 
-<div class="mt-3"></div>
+<hr>
 
-<div class="highlight"><pre><span></span><code>git init
-git add -A
-git status
-git commit -m &quot;first commit&quot;
-git remote add origin &lt;repo addr&gt;
-git remote -v
-git push origin master
-</code></pre></div>
+<h4>Have a local project, push it to github</h4>
+<p>Create a github repo without readme.md, .gitignore, and license files. Then run 
+below commands. </p>
+<div class="cmd">git init</div>
+<div class="cmd">git add -A</div>
+<div class="cmd">git status</div>
+<div class="cmd">git commit -m &#8220;first commit&#8221;</div>
+<div class="cmd">git remote add origin &lt;repo addr&gt;</div>
+<div class="cmd">git remote -v</div>
+<div class="cmd">git push origin master</div>
+<div class="mb-3"></div>
 
-
-</div>
+<h4>Push your repo to a central server in a bare repo</h4>
+<p>This <a href="https://www.jeffgeerling.com/blogs/jeff-geerling/push-your-git-repositories">blog post</a> 
+has detailed steps. The important step is to run this command after you create the central repo.</p>
+<dl>
+<dt>git --bare init</dt>
+<dd>run this command for the central repo before pushing</dd>
+</dl>
 
 
 

@@ -172,23 +172,27 @@ I will add more contents to this post over time. &lt;/p&gt;
 &lt;dt&gt;git push origin --delete &lt;code&gt;&amp;lt;name of the branch&amp;gt;&lt;/code&gt;&lt;/dt&gt;
 &lt;dd&gt;this deletes branch from remote repo&lt;/dd&gt;
 &lt;/dl&gt;
-&lt;p&gt;Have a local project, push it to github:&lt;/p&gt;
-&lt;div class="ml-4"&gt;
-Create a github repo without readme.md, .gitignore, and license files. Then run 
-below commands. 
-&lt;div class="mt-3"&gt;&lt;/div&gt;
+&lt;hr&gt;
 
-&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;git init
-git add -A
-git status
-git commit -m &amp;quot;first commit&amp;quot;
-git remote add origin &amp;lt;repo addr&amp;gt;
-git remote -v
-git push origin master
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+&lt;h4&gt;Have a local project, push it to github&lt;/h4&gt;
+&lt;p&gt;Create a github repo without readme.md, .gitignore, and license files. Then run 
+below commands. &lt;/p&gt;
+&lt;div class="cmd"&gt;git init&lt;/div&gt;
+&lt;div class="cmd"&gt;git add -A&lt;/div&gt;
+&lt;div class="cmd"&gt;git status&lt;/div&gt;
+&lt;div class="cmd"&gt;git commit -m &amp;#8220;first commit&amp;#8221;&lt;/div&gt;
+&lt;div class="cmd"&gt;git remote add origin &amp;lt;repo addr&amp;gt;&lt;/div&gt;
+&lt;div class="cmd"&gt;git remote -v&lt;/div&gt;
+&lt;div class="cmd"&gt;git push origin master&lt;/div&gt;
+&lt;div class="mb-3"&gt;&lt;/div&gt;
 
-
-&lt;/div&gt;</content><category term="posts"></category><category term="software utility"></category></entry><entry><title>Flask User Authentication Steps</title><link href="https://www.georgexyz.com/flask-user-authentication.html" rel="alternate"></link><published>2021-03-30T09:37:00-04:00</published><updated>2021-03-30T09:37:00-04:00</updated><author><name>George Zhang</name></author><id>tag:www.georgexyz.com,2021-03-30:/flask-user-authentication.html</id><summary type="html">&lt;p&gt;The user authentication process described in Chapter 8 of Miguel Grinberg&amp;#8217;s book is quite 
+&lt;h4&gt;Push your repo to a central server in a bare repo&lt;/h4&gt;
+&lt;p&gt;This &lt;a href="https://www.jeffgeerling.com/blogs/jeff-geerling/push-your-git-repositories"&gt;blog post&lt;/a&gt; 
+has detailed steps. The important step is to run this command after you create the central repo.&lt;/p&gt;
+&lt;dl&gt;
+&lt;dt&gt;git --bare init&lt;/dt&gt;
+&lt;dd&gt;run this command for the central repo before pushing&lt;/dd&gt;
+&lt;/dl&gt;</content><category term="posts"></category><category term="software utility"></category></entry><entry><title>Flask User Authentication Steps</title><link href="https://www.georgexyz.com/flask-user-authentication.html" rel="alternate"></link><published>2021-03-30T09:37:00-04:00</published><updated>2021-03-30T09:37:00-04:00</updated><author><name>George Zhang</name></author><id>tag:www.georgexyz.com,2021-03-30:/flask-user-authentication.html</id><summary type="html">&lt;p&gt;The user authentication process described in Chapter 8 of Miguel Grinberg&amp;#8217;s book is quite 
 complicated. The flask-login plugin makes it a little simpler. Here are the steps it takes …&lt;/p&gt;</summary><content type="html">&lt;p&gt;The user authentication process described in Chapter 8 of Miguel Grinberg&amp;#8217;s book is quite 
 complicated. The flask-login plugin makes it a little simpler. Here are the steps it takes 
 to create a basic login and logout system. &lt;/p&gt;
