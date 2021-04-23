@@ -1,5 +1,23 @@
 <?xml version="1.0" encoding="utf-8"?>
-<feed xmlns="http://www.w3.org/2005/Atom"><title>George Zhang</title><link href="https://www.georgexyz.com/" rel="alternate"></link><link href="https://www.georgexyz.com/feeds/all.atom.xml" rel="self"></link><id>https://www.georgexyz.com/</id><updated>2021-04-22T08:47:00-04:00</updated><entry><title>Reading List</title><link href="https://www.georgexyz.com/reading-list.html" rel="alternate"></link><published>2021-04-22T08:47:00-04:00</published><updated>2021-04-22T08:47:00-04:00</updated><author><name>George Zhang</name></author><id>tag:www.georgexyz.com,2021-04-22:/reading-list.html</id><summary type="html">&lt;p&gt;This post records a list of books I read. I am trying to find time to 
+<feed xmlns="http://www.w3.org/2005/Atom"><title>George Zhang</title><link href="https://www.georgexyz.com/" rel="alternate"></link><link href="https://www.georgexyz.com/feeds/all.atom.xml" rel="self"></link><id>https://www.georgexyz.com/</id><updated>2021-04-23T11:15:00-04:00</updated><entry><title>Good Design And Bad Design</title><link href="https://www.georgexyz.com/good-design-and-bad-design.html" rel="alternate"></link><published>2021-04-23T11:15:00-04:00</published><updated>2021-04-23T11:15:00-04:00</updated><author><name>George Zhang</name></author><id>tag:www.georgexyz.com,2021-04-23:/good-design-and-bad-design.html</id><summary type="html">&lt;p&gt;Apple had &lt;a href="https://www.macrumors.com/2021/04/20/apple-april-event-recap/"&gt;an event&lt;/a&gt; 
+three days ago announcing several new products. One announcement catches my attention. 
+They are replacing old style Apple &lt;span class="caps"&gt;TV&lt;/span&gt; remote. It gets my attention because I …&lt;/p&gt;</summary><content type="html">&lt;p&gt;Apple had &lt;a href="https://www.macrumors.com/2021/04/20/apple-april-event-recap/"&gt;an event&lt;/a&gt; 
+three days ago announcing several new products. One announcement catches my attention. 
+They are replacing old style Apple &lt;span class="caps"&gt;TV&lt;/span&gt; remote. It gets my attention because I bought an Apple &lt;span class="caps"&gt;TV&lt;/span&gt; 
+a few years ago and it came with the remote. The remote is just a bad design. It looks fancy 
+but it lacks accuracy for controlling anything on &lt;span class="caps"&gt;TV&lt;/span&gt;. &lt;/p&gt;
+&lt;p&gt;This makes me think I should write something down regarding good and bad designs. 
+It is just my personal opinion and the post records some of my thoughts as time goes by. &lt;/p&gt;
+&lt;h2&gt;Good Design&lt;/h2&gt;
+&lt;h3&gt;Screen Capture Menu in Android &lt;span class="caps"&gt;OS&lt;/span&gt; 9&lt;/h3&gt;
+&lt;p&gt;In Android &lt;span class="caps"&gt;OS&lt;/span&gt; 9, you press and hold the power button to bring up a menu. It has three options, and 
+one of them is Screenshot.&lt;/p&gt;
+&lt;div style="max-width: 400px"&gt;
+  &lt;img class="img-fluid pb-3" src="/images/design/android-cap1.JPG" alt="Andriod capture"&gt; 
+&lt;/div&gt;
+
+&lt;p&gt;However, it changed in later Android versions. You need to press two keys together to capture a screen 
+in some version. It is not difficult, but the design is not as good as this one. &lt;/p&gt;</content><category term="posts"></category><category term="design"></category></entry><entry><title>Reading List</title><link href="https://www.georgexyz.com/reading-list.html" rel="alternate"></link><published>2021-04-22T08:47:00-04:00</published><updated>2021-04-22T08:47:00-04:00</updated><author><name>George Zhang</name></author><id>tag:www.georgexyz.com,2021-04-22:/reading-list.html</id><summary type="html">&lt;p&gt;This post records a list of books I read. I am trying to find time to 
 read one book a month so I will read 12 books in a year …&lt;/p&gt;</summary><content type="html">&lt;p&gt;This post records a list of books I read. I am trying to find time to 
 read one book a month so I will read 12 books in a year. &lt;/p&gt;
 &lt;table class="table table-striped"&gt;
