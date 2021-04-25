@@ -195,6 +195,11 @@ Those links are for people who already know the Python basics.
 [Pro Git Book on git-scm.com](https://git-scm.com/book/en/v2)
 
 
+### Docker
+
+[Docker Curriculum](https://docker-curriculum.com/) - Very nice Docker tutorial.
+
+
 ### Date and Time
 
 [For a Good Strftime](https://www.foragoodstrftime.com/)
@@ -204,11 +209,6 @@ Those links are for people who already know the Python basics.
 ### Others
 
 [Google Input Tools](https://www.google.com/inputtools/try/)
-
-
-
-
-
 
 
 
