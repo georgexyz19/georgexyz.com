@@ -10,7 +10,7 @@ from pelican.settings import DEFAULT_CONFIG, read_settings
 from pelican import __version__
 
 from pelican import Pelican
-from jinja2 import Environment, FileSystemLoader, BaseLoader
+from jinja2 import Environment, BaseLoader
 
 markdown_temp = '''title: {{ title }}
 slug: {{ slug }}
@@ -61,8 +61,6 @@ Please answer the following questions so this script can generate the post.
                        answer=str,
                        default=default_slug)
 
-    
-    
     extension = '.md'
     dest_file = os.path.join(CONF['basedir'], CONF['slug'] + extension)
 
@@ -138,7 +136,6 @@ Please answer the following questions so this script can generate the post.
 
     CONF['tags'] = tags_str
 
-
     CONF['hasrp'] = ask('Do you want to add related posts?',
                         answer=bool,
                         default=False)
@@ -177,7 +174,7 @@ Please answer the following questions so this script can generate the post.
         try:
             if int(art.no) > top_no:
                 top_no = int(art.no)
-        except AttributeError as e:
+        except AttributeError:
             # print('Warning: {0}'.format(e))
             pass
     top_no = top_no + 1
