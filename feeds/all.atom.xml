@@ -6953,8 +6953,10 @@ let NERDTreeIgnore=[&amp;#39;\.pyc$&amp;#39;, &amp;#39;\~$&amp;#39;] &amp;quot;i
 nnoremap &amp;lt;C-N&amp;gt; :NERDTree&amp;lt;CR&amp;gt;
 autocmd VimEnter * NERDTree
 
-noremap &amp;lt;C-H&amp;gt; &amp;lt;C-W&amp;gt;&amp;lt;C-H&amp;gt;
+noremap &amp;lt;C-H&amp;gt;&amp;lt;C-H&amp;gt; &amp;lt;C-W&amp;gt;&amp;lt;C-H&amp;gt;
 noremap &amp;lt;C-L&amp;gt;&amp;lt;C-L&amp;gt; &amp;lt;C-W&amp;gt;&amp;lt;C-L&amp;gt;
+noremap &amp;lt;C-J&amp;gt;&amp;lt;C-J&amp;gt; &amp;lt;C-W&amp;gt;&amp;lt;C-J&amp;gt;
+noremap &amp;lt;C-K&amp;gt;&amp;lt;C-K&amp;gt; &amp;lt;C-W&amp;gt;&amp;lt;C-K&amp;gt;
 
 let g:user_emmet_mode=&amp;#39;n&amp;#39;    &amp;quot;only enable normal mode functions.
 let g:user_emmet_leader_key=&amp;#39;,&amp;#39; &amp;quot;activate two ,
@@ -7035,6 +7037,18 @@ let g:user_emmet_leader_key=&amp;#39;,&amp;#39; &amp;quot;activate two commas
 &lt;div class="ml-5"&gt;
 
 &lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;pip install flake8
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;/div&gt;
+
+&lt;ul&gt;
+&lt;li&gt;Config flake8 to change max line lengths, add those two lines to &lt;code&gt;~/.config/flake8&lt;/code&gt; file.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;div class="ml-5"&gt;
+
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;[flake8]
+max-line-length = 120
 &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
 
 

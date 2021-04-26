@@ -524,8 +524,10 @@ let NERDTreeIgnore=[&#39;\.pyc$&#39;, &#39;\~$&#39;] &quot;ignore files in NERDT
 nnoremap &lt;C-N&gt; :NERDTree&lt;CR&gt;
 autocmd VimEnter * NERDTree
 
-noremap &lt;C-H&gt; &lt;C-W&gt;&lt;C-H&gt;
+noremap &lt;C-H&gt;&lt;C-H&gt; &lt;C-W&gt;&lt;C-H&gt;
 noremap &lt;C-L&gt;&lt;C-L&gt; &lt;C-W&gt;&lt;C-L&gt;
+noremap &lt;C-J&gt;&lt;C-J&gt; &lt;C-W&gt;&lt;C-J&gt;
+noremap &lt;C-K&gt;&lt;C-K&gt; &lt;C-W&gt;&lt;C-K&gt;
 
 let g:user_emmet_mode=&#39;n&#39;    &quot;only enable normal mode functions.
 let g:user_emmet_leader_key=&#39;,&#39; &quot;activate two ,
@@ -606,6 +608,18 @@ let g:user_emmet_leader_key=&#39;,&#39; &quot;activate two commas
 <div class="ml-5">
 
 <div class="highlight"><pre><span></span><code>pip install flake8
+</code></pre></div>
+
+
+</div>
+
+<ul>
+<li>Config flake8 to change max line lengths, add those two lines to <code>~/.config/flake8</code> file.</li>
+</ul>
+<div class="ml-5">
+
+<div class="highlight"><pre><span></span><code>[flake8]
+max-line-length = 120
 </code></pre></div>
 
 
