@@ -557,7 +557,7 @@ it loads `.vimrc` file, so you do not need to keep two copies of `.vimrc`.
 
 <div class="ml-5">
 ```
-" ~/.plugin.vimrc file
+" ~/.vimrc file
 
 set nocompatible              " required
 filetype off
@@ -572,6 +572,9 @@ Plugin 'gmarik/Vundle.vim'
 Plugin 'scrooloose/nerdtree'
 Plugin 'jistr/vim-nerdtree-tabs'
 
+Plugin 'mattn/emmet-vim'
+Plugin 'nvie/vim-flake8'
+
 " plugin add ends here
 
 call vundle#end()            " required
@@ -584,6 +587,9 @@ autocmd VimEnter * NERDTree
 
 noremap <C-H> <C-W><C-H>
 noremap <C-L><C-L> <C-W><C-L>
+
+let g:user_emmet_mode='n'    "only enable normal mode functions.
+let g:user_emmet_leader_key=',' "activate two ,
 
 source ~/.vimrc
 ```
@@ -643,6 +649,31 @@ let g:user_emmet_leader_key=',' "activate two commas
 Here is the link to [the youtube tutorial](https://youtu.be/ha7oyvhgP04).
 
 Link to the Github [emmet-vim source code repo](https://github.com/mattn/emmet-vim). 
+
+
+#### Vim-Flake8 Plugin
+
+I am adding a Python linter to my Vim setup. Below are the steps to set it up. 
+
+* Add this line to `.plugin.vimrc` file.
+<div class="ml-5">
+```
+Plugin 'nvie/vim-flake8'
+```
+</div>
+
+* Install `flake8` to global Python interpreter.
+<div class="ml-5">
+```
+pip install flake8
+```
+</div>
+
+* Run `:PluginInstall` vim command to install `vim-flake8`.
+
+* When a Python file is open, press `<F7>` to run the linter.
+
+References: [vim-flake8 repo](https://github.com/nvie/vim-flake8)
 
 
 #### Links and References

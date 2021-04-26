@@ -23,7 +23,7 @@ related_posts: {{ related_posts }}
 {% endif -%}
 no: {{ no }}
 
-{{ first_sentence }} 
+{{ first_sentence }}
 '''
 
 
