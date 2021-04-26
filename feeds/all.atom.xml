@@ -6925,7 +6925,7 @@ it loads &lt;code&gt;.vimrc&lt;/code&gt; file, so you do not need to keep two co
 &lt;/ul&gt;
 &lt;div class="ml-5"&gt;
 
-&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;&amp;quot; ~/.plugin.vimrc file
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;&amp;quot; ~/.vimrc file
 
 set nocompatible              &amp;quot; required
 filetype off
@@ -6940,6 +6940,9 @@ Plugin &amp;#39;gmarik/Vundle.vim&amp;#39;
 Plugin &amp;#39;scrooloose/nerdtree&amp;#39;
 Plugin &amp;#39;jistr/vim-nerdtree-tabs&amp;#39;
 
+Plugin &amp;#39;mattn/emmet-vim&amp;#39;
+Plugin &amp;#39;nvie/vim-flake8&amp;#39;
+
 &amp;quot; plugin add ends here
 
 call vundle#end()            &amp;quot; required
@@ -6952,6 +6955,9 @@ autocmd VimEnter * NERDTree
 
 noremap &amp;lt;C-H&amp;gt; &amp;lt;C-W&amp;gt;&amp;lt;C-H&amp;gt;
 noremap &amp;lt;C-L&amp;gt;&amp;lt;C-L&amp;gt; &amp;lt;C-W&amp;gt;&amp;lt;C-L&amp;gt;
+
+let g:user_emmet_mode=&amp;#39;n&amp;#39;    &amp;quot;only enable normal mode functions.
+let g:user_emmet_leader_key=&amp;#39;,&amp;#39; &amp;quot;activate two ,
 
 source ~/.vimrc
 &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
@@ -7010,6 +7016,39 @@ let g:user_emmet_leader_key=&amp;#39;,&amp;#39; &amp;quot;activate two commas
 
 &lt;p&gt;Here is the link to &lt;a href="https://youtu.be/ha7oyvhgP04"&gt;the youtube tutorial&lt;/a&gt;.&lt;/p&gt;
 &lt;p&gt;Link to the Github &lt;a href="https://github.com/mattn/emmet-vim"&gt;emmet-vim source code repo&lt;/a&gt;. &lt;/p&gt;
+&lt;h4&gt;Vim-Flake8 Plugin&lt;/h4&gt;
+&lt;p&gt;I am adding a Python linter to my Vim setup. Below are the steps to set it up. &lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;Add this line to &lt;code&gt;.plugin.vimrc&lt;/code&gt; file.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;div class="ml-5"&gt;
+
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;Plugin &amp;#39;nvie/vim-flake8&amp;#39;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;/div&gt;
+
+&lt;ul&gt;
+&lt;li&gt;Install &lt;code&gt;flake8&lt;/code&gt; to global Python interpreter.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;div class="ml-5"&gt;
+
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;pip install flake8
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;/div&gt;
+
+&lt;ul&gt;
+&lt;li&gt;
+&lt;p&gt;Run &lt;code&gt;:PluginInstall&lt;/code&gt; vim command to install &lt;code&gt;vim-flake8&lt;/code&gt;.&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;When a Python file is open, press &lt;code&gt;&amp;lt;F7&amp;gt;&lt;/code&gt; to run the linter.&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;References: &lt;a href="https://github.com/nvie/vim-flake8"&gt;vim-flake8 repo&lt;/a&gt;&lt;/p&gt;
 &lt;h4&gt;Links and References&lt;/h4&gt;
 &lt;p&gt;&lt;a href="https://vim.rtorr.com/"&gt;Vim Cheat Sheet&lt;/a&gt; 
 is a nice single web page which includes common vim commands.&lt;/p&gt;</content><category term="posts"></category><category term="vim"></category><category term="linux"></category></entry></feed>

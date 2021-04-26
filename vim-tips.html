@@ -496,7 +496,7 @@ it loads <code>.vimrc</code> file, so you do not need to keep two copies of <cod
 </ul>
 <div class="ml-5">
 
-<div class="highlight"><pre><span></span><code>&quot; ~/.plugin.vimrc file
+<div class="highlight"><pre><span></span><code>&quot; ~/.vimrc file
 
 set nocompatible              &quot; required
 filetype off
@@ -511,6 +511,9 @@ Plugin &#39;gmarik/Vundle.vim&#39;
 Plugin &#39;scrooloose/nerdtree&#39;
 Plugin &#39;jistr/vim-nerdtree-tabs&#39;
 
+Plugin &#39;mattn/emmet-vim&#39;
+Plugin &#39;nvie/vim-flake8&#39;
+
 &quot; plugin add ends here
 
 call vundle#end()            &quot; required
@@ -523,6 +526,9 @@ autocmd VimEnter * NERDTree
 
 noremap &lt;C-H&gt; &lt;C-W&gt;&lt;C-H&gt;
 noremap &lt;C-L&gt;&lt;C-L&gt; &lt;C-W&gt;&lt;C-L&gt;
+
+let g:user_emmet_mode=&#39;n&#39;    &quot;only enable normal mode functions.
+let g:user_emmet_leader_key=&#39;,&#39; &quot;activate two ,
 
 source ~/.vimrc
 </code></pre></div>
@@ -581,6 +587,39 @@ let g:user_emmet_leader_key=&#39;,&#39; &quot;activate two commas
 
 <p>Here is the link to <a href="https://youtu.be/ha7oyvhgP04">the youtube tutorial</a>.</p>
 <p>Link to the Github <a href="https://github.com/mattn/emmet-vim">emmet-vim source code repo</a>. </p>
+<h4>Vim-Flake8 Plugin</h4>
+<p>I am adding a Python linter to my Vim setup. Below are the steps to set it up. </p>
+<ul>
+<li>Add this line to <code>.plugin.vimrc</code> file.</li>
+</ul>
+<div class="ml-5">
+
+<div class="highlight"><pre><span></span><code>Plugin &#39;nvie/vim-flake8&#39;
+</code></pre></div>
+
+
+</div>
+
+<ul>
+<li>Install <code>flake8</code> to global Python interpreter.</li>
+</ul>
+<div class="ml-5">
+
+<div class="highlight"><pre><span></span><code>pip install flake8
+</code></pre></div>
+
+
+</div>
+
+<ul>
+<li>
+<p>Run <code>:PluginInstall</code> vim command to install <code>vim-flake8</code>.</p>
+</li>
+<li>
+<p>When a Python file is open, press <code>&lt;F7&gt;</code> to run the linter.</p>
+</li>
+</ul>
+<p>References: <a href="https://github.com/nvie/vim-flake8">vim-flake8 repo</a></p>
 <h4>Links and References</h4>
 <p><a href="https://vim.rtorr.com/">Vim Cheat Sheet</a> 
 is a nice single web page which includes common vim commands.</p>
