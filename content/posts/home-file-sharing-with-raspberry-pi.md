@@ -99,8 +99,6 @@ password=<pwd>
 
 ### Ultimate File Sharing
 
-**Update on 3/5/2021**
-
 The Synology network drive works well when all computers connect to the same 
 router. My work laptop is on a VPN and it does not have access to the Synology 
 network drive.  
@@ -114,3 +112,14 @@ works well for me now.
 <div style="max-width:600px">
   <img class="img-fluid pb-3" src="/images/filezilla_setting.png" alt="FileZilla Setting">
 </div>
+
+Those three commands install FileZilla on Linux Mint.
+
+```
+apt-cache show filezilla # show package info
+sudo apt update
+sudo apt install filezilla -y
+```
+
+Reference: [Q&A on superuser.com](https://superuser.com/questions/1411228/install-filezilla-under-linux-mint)
+
