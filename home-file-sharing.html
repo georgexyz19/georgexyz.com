@@ -160,7 +160,6 @@ password=&lt;pwd&gt;
 <li>Run command <code>sudo mount -a</code> to activate the new line in <code>/etc/fstab</code>.  </li>
 </ul>
 <h3>Ultimate File Sharing</h3>
-<p><strong>Update on 3/5/2021</strong></p>
 <p>The Synology network drive works well when all computers connect to the same 
 router. My work laptop is on a <span class="caps">VPN</span> and it does not have access to the Synology 
 network drive.  </p>
@@ -172,6 +171,14 @@ works well for me now.  </p>
 <div style="max-width:600px">
   <img class="img-fluid pb-3" src="/images/filezilla_setting.png" alt="FileZilla Setting">
 </div>
+
+<p>Those three commands install FileZilla on Linux Mint.</p>
+<div class="highlight"><pre><span></span><code>apt-cache show filezilla # show package info
+sudo apt update
+sudo apt install filezilla -y
+</code></pre></div>
+
+<p>Reference: <a href="https://superuser.com/questions/1411228/install-filezilla-under-linux-mint">Q&amp;A on superuser.com</a></p>
 
 
 
