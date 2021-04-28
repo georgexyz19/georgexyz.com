@@ -7028,22 +7028,28 @@ let g:user_emmet_leader_key=&amp;#39;,&amp;#39; &amp;quot;activate two commas
 &lt;h4&gt;Vim-Flake8 Plugin&lt;/h4&gt;
 &lt;p&gt;I am adding a Python linter to my Vim setup. Below are the steps to set it up. &lt;/p&gt;
 &lt;ul&gt;
-&lt;li&gt;Add this line to &lt;code&gt;.plugin.vimrc&lt;/code&gt; file.&lt;/li&gt;
+&lt;li&gt;Install &lt;code&gt;flake8&lt;/code&gt; to a virtual environment&lt;/li&gt;
 &lt;/ul&gt;
 &lt;div class="ml-5"&gt;
 
-&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;Plugin &amp;#39;nvie/vim-flake8&amp;#39;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;$python -m venv .flake8.venv
+$source .flake8.venv/bin/activate
+$pip install flake8
+$which flake8
+  /home/george/.flake8.venv/bin/flake8
 &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
 
 
 &lt;/div&gt;
 
 &lt;ul&gt;
-&lt;li&gt;Install &lt;code&gt;flake8&lt;/code&gt; to global Python interpreter.&lt;/li&gt;
+&lt;li&gt;Add two lines to &lt;code&gt;.plugin.vimrc&lt;/code&gt; file.&lt;/li&gt;
 &lt;/ul&gt;
 &lt;div class="ml-5"&gt;
 
-&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;pip install flake8
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;Plugin &amp;#39;nvie/vim-flake8&amp;#39;
+...
+let g:flake8_cmd=&amp;quot;/home/george/.flake8.venv/bin/flake8&amp;quot;
 &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
 
 

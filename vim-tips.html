@@ -592,22 +592,28 @@ let g:user_emmet_leader_key=&#39;,&#39; &quot;activate two commas
 <h4>Vim-Flake8 Plugin</h4>
 <p>I am adding a Python linter to my Vim setup. Below are the steps to set it up. </p>
 <ul>
-<li>Add this line to <code>.plugin.vimrc</code> file.</li>
+<li>Install <code>flake8</code> to a virtual environment</li>
 </ul>
 <div class="ml-5">
 
-<div class="highlight"><pre><span></span><code>Plugin &#39;nvie/vim-flake8&#39;
+<div class="highlight"><pre><span></span><code>$python -m venv .flake8.venv
+$source .flake8.venv/bin/activate
+$pip install flake8
+$which flake8
+  /home/george/.flake8.venv/bin/flake8
 </code></pre></div>
 
 
 </div>
 
 <ul>
-<li>Install <code>flake8</code> to global Python interpreter.</li>
+<li>Add two lines to <code>.plugin.vimrc</code> file.</li>
 </ul>
 <div class="ml-5">
 
-<div class="highlight"><pre><span></span><code>pip install flake8
+<div class="highlight"><pre><span></span><code>Plugin &#39;nvie/vim-flake8&#39;
+...
+let g:flake8_cmd=&quot;/home/george/.flake8.venv/bin/flake8&quot;
 </code></pre></div>
 
 
