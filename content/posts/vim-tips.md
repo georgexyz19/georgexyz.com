@@ -657,17 +657,23 @@ Link to the Github [emmet-vim source code repo](https://github.com/mattn/emmet-v
 
 I am adding a Python linter to my Vim setup. Below are the steps to set it up. 
 
-* Add this line to `.plugin.vimrc` file.
+* Install `flake8` to a virtual environment
 <div class="ml-5">
 ```
-Plugin 'nvie/vim-flake8'
+$python -m venv .flake8.venv
+$source .flake8.venv/bin/activate
+$pip install flake8
+$which flake8
+  /home/george/.flake8.venv/bin/flake8
 ```
 </div>
 
-* Install `flake8` to global Python interpreter.
+* Add two lines to `.plugin.vimrc` file.
 <div class="ml-5">
 ```
-pip install flake8
+Plugin 'nvie/vim-flake8'
+...
+let g:flake8_cmd="/home/george/.flake8.venv/bin/flake8"
 ```
 </div>
 
