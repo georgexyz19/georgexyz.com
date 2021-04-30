@@ -312,6 +312,15 @@ has detailed steps. The important step is to run this command after you create t
 &lt;dl&gt;
 &lt;dt&gt;git --bare init&lt;/dt&gt;
 &lt;dd&gt;run this command for the central repo before pushing&lt;/dd&gt;
+&lt;/dl&gt;
+&lt;h4&gt;Remove files from staging area&lt;/h4&gt;
+&lt;p&gt;This is the command to unstage all files from staging area according to this 
+&lt;a href="https://stackoverflow.com/questions/19730565/how-to-remove-files-from-git-staging-area"&gt;stackoverflow answer&lt;/a&gt;. &lt;/p&gt;
+&lt;dl&gt;
+&lt;dt&gt;git reset &lt;span class="caps"&gt;HEAD&lt;/span&gt; -- .&lt;/dt&gt;
+&lt;dd&gt;unstage all files&lt;/dd&gt;
+&lt;dt&gt;git reset &lt;span class="caps"&gt;HEAD&lt;/span&gt; -- path/to/file&lt;/dt&gt;
+&lt;dd&gt;unstage one file&lt;/dd&gt;
 &lt;/dl&gt;</content><category term="posts"></category><category term="software utility"></category></entry><entry><title>Flask User Authentication Steps</title><link href="https://www.georgexyz.com/flask-user-authentication.html" rel="alternate"></link><published>2021-03-30T09:37:00-04:00</published><updated>2021-03-30T09:37:00-04:00</updated><author><name>George Zhang</name></author><id>tag:www.georgexyz.com,2021-03-30:/flask-user-authentication.html</id><summary type="html">&lt;p&gt;The user authentication process described in Chapter 8 of Miguel Grinberg&amp;#8217;s book is quite 
 complicated. The flask-login plugin makes it a little simpler. Here are the steps it takes …&lt;/p&gt;</summary><content type="html">&lt;p&gt;The user authentication process described in Chapter 8 of Miguel Grinberg&amp;#8217;s book is quite 
 complicated. The flask-login plugin makes it a little simpler. Here are the steps it takes 
