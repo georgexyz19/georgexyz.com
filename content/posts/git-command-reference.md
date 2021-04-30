@@ -157,3 +157,15 @@ has detailed steps. The important step is to run this command after you create t
 git --bare init
 : run this command for the central repo before pushing
 
+
+####Remove files from staging area
+
+This is the command to unstage all files from staging area according to this 
+[stackoverflow answer](https://stackoverflow.com/questions/19730565/how-to-remove-files-from-git-staging-area). 
+
+git reset HEAD -- .
+: unstage all files
+
+
+git reset HEAD -- path/to/file
+: unstage one file
