@@ -50,7 +50,7 @@ text, instead it is encoded into tokens. Below are the steps.
     - It calls `current_user.confirm` method to change db field. 
 
 If the user confirms, everything is good. But the system needs to consider what happens 
-when a user does not confirm. The idea is to check every reqeust, and to show an 
+when a user does not confirm. The idea is to check every request, and to show an 
 `unconfirmed` page when necessary.  The pages has a link to resend the confirmation email. 
 
 
