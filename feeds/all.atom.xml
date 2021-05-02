@@ -375,7 +375,7 @@ text, instead it is encoded into tokens. Below are the steps. &lt;/p&gt;
 &lt;/li&gt;
 &lt;/ol&gt;
 &lt;p&gt;If the user confirms, everything is good. But the system needs to consider what happens 
-when a user does not confirm. The idea is to check every reqeust, and to show an 
+when a user does not confirm. The idea is to check every request, and to show an 
 &lt;code&gt;unconfirmed&lt;/code&gt; page when necessary.  The pages has a link to resend the confirmation email. &lt;/p&gt;
 &lt;p&gt;There is also a &lt;a href="https://flask-user.readthedocs.io/en/latest/"&gt;flask-user&lt;/a&gt; 
 plugin that is widely used.&lt;/p&gt;</content><category term="posts"></category><category term="flask"></category></entry><entry><title>Python Import Statement</title><link href="https://www.georgexyz.com/python-import-statement.html" rel="alternate"></link><published>2021-03-25T09:40:00-04:00</published><updated>2021-03-25T09:40:00-04:00</updated><author><name>George Zhang</name></author><id>tag:www.georgexyz.com,2021-03-25:/python-import-statement.html</id><summary type="html">&lt;p&gt;Python import statement seems very easy to use, but it can get complicated once the project 
