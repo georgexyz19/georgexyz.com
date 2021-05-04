@@ -158,7 +158,8 @@ settings.  I will discuss it in a later article.
 def run_command(info, host, port, ...):
     """Run a local development server."""
     ......
-    show_server_banner(get_env(), debug, info.app_import_path, eager_loading)
+    show_server_banner(get_env(), debug, info.app_import_path, 
+                       eager_loading)
     app = DispatchingApp(info.load_app, use_eager_loading=eager_loading)
 
     from werkzeug.serving import run_simple
@@ -183,4 +184,13 @@ def test():
     import unittest
     tests = unittest.TestLoader().discover('tests')
     unittest.TextTestRunner(verbosity=2).run(tests)
+```
+
+The `app.cli` is defined in `_PackageBoundObject` class of `helpers.py` module (L962). 
+The `Flask` class is a subclass of `_PackageBoundObject`. 
+
+```
+# code in __init__ method of _PackageBoundObject class
+from .cli import AppGroup
+self.cli = AppGroup()
 ```
