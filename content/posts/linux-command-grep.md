@@ -77,6 +77,13 @@ in pattern. Here is a list of common regex special characters in Python:
 * \* : zero or more
 * \+ : one or more
 
+Here is an example of using the `-P` option. This is to search number of 
+methods in `Flask` class. 
+
+```
+$grep -P -n "def\w+\(self" .../app.py | wc -l
+```
+
 <div style="margin-bottom:.4in;"></div>
 <hr>
 
@@ -100,4 +107,14 @@ so far, so it is close.
 Note I do not have to include `-` character in the search pattern.  It is just something 
 good to know.  
 
+*Added on 5/4/2021*
+
+If you want to restrict the search to a certain file, you can use the `--include` option. For example, 
+the command below restricts the search to `cli.py` file.  You can also use `\*.h` to restrict search 
+to `.h` files. This is also from a 
+[stackoverflow Q&A](https://stackoverflow.com/questions/12516937/how-can-i-grep-recursively-but-only-in-files-with-certain-extensions). 
+
+```
+$grep -winr --include cli.py "load_dotenv" ./
+```
 
