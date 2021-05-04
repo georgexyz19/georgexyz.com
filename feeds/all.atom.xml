@@ -1727,7 +1727,7 @@ the &lt;code&gt;cli.py&lt;/code&gt; file.   &lt;/p&gt;
 which has very good info on Flask &lt;span class="caps"&gt;CLI&lt;/span&gt;. &lt;/p&gt;
 &lt;p&gt;The nice thing about Flask cli module is that it is easy to add cli commands. 
 Here is an example from Chapter 7 of Miguel Grinberg&amp;#8217;s book. You can run the 
-code with &lt;code&gt;flask run&lt;/code&gt; cli command. &lt;/p&gt;
+code with &lt;code&gt;flask test&lt;/code&gt; cli command. &lt;/p&gt;
 &lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;&lt;span class="nd"&gt;@app&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;cli&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;command&lt;/span&gt;&lt;span class="p"&gt;()&lt;/span&gt;
 &lt;span class="k"&gt;def&lt;/span&gt; &lt;span class="nf"&gt;test&lt;/span&gt;&lt;span class="p"&gt;():&lt;/span&gt;
     &lt;span class="kn"&gt;import&lt;/span&gt; &lt;span class="nn"&gt;unittest&lt;/span&gt;
