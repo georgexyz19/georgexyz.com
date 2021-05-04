@@ -175,7 +175,7 @@ which has very good info on Flask CLI.
 
 The nice thing about Flask cli module is that it is easy to add cli commands. 
 Here is an example from Chapter 7 of Miguel Grinberg's book. You can run the 
-code with `flask run` cli command. 
+code with `flask test` cli command. 
 
 ```python
 @app.cli.command()
