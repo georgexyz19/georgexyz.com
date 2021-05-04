@@ -4443,6 +4443,11 @@ in pattern. Here is a list of common regex special characters in Python:&lt;/p&g
 &lt;li&gt;* : zero or more&lt;/li&gt;
 &lt;li&gt;+ : one or more&lt;/li&gt;
 &lt;/ul&gt;
+&lt;p&gt;Here is an example of using the &lt;code&gt;-P&lt;/code&gt; option. This is to search number of 
+methods in &lt;code&gt;Flask&lt;/code&gt; class. &lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;$grep -P -n &amp;quot;def\w+\(self&amp;quot; .../app.py | wc -l
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+
 &lt;div style="margin-bottom:.4in;"&gt;&lt;/div&gt;
 &lt;hr&gt;
 
@@ -4460,7 +4465,14 @@ grep -r &amp;quot;date: 2019\\-&amp;quot; | wc -l
 &lt;p&gt;The result is 26 v.s. 26. The 2019 only covers 9 months starting from 4/1 and 2020 covers 8 months 
 so far, so it is close. &lt;/p&gt;
 &lt;p&gt;Note I do not have to include &lt;code&gt;-&lt;/code&gt; character in the search pattern.  It is just something 
-good to know.  &lt;/p&gt;</content><category term="posts"></category><category term="linux"></category><category term="software utility"></category></entry><entry><title>Django Pagination</title><link href="https://www.georgexyz.com/django-pagination.html" rel="alternate"></link><published>2019-07-17T10:05:00-04:00</published><updated>2020-04-30T12:58:00-04:00</updated><author><name>George Zhang</name></author><id>tag:www.georgexyz.com,2019-07-17:/django-pagination.html</id><summary type="html">&lt;p&gt;Merriam-Webster dictionary defines pagination as &amp;#8220;the action of paging&amp;#8221;. In web 
+good to know.  &lt;/p&gt;
+&lt;p&gt;&lt;em&gt;Added on 5/4/2021&lt;/em&gt;&lt;/p&gt;
+&lt;p&gt;If you want to restrict the search to a certain file, you can use the &lt;code&gt;--include&lt;/code&gt; option. For example, 
+the command below restricts the search to &lt;code&gt;cli.py&lt;/code&gt; file.  You can also use &lt;code&gt;\*.h&lt;/code&gt; to restrict search 
+to &lt;code&gt;.h&lt;/code&gt; files. This is also from a 
+&lt;a href="https://stackoverflow.com/questions/12516937/how-can-i-grep-recursively-but-only-in-files-with-certain-extensions"&gt;stackoverflow Q&amp;amp;A&lt;/a&gt;. &lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;$grep -winr --include cli.py &amp;quot;load_dotenv&amp;quot; ./
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;</content><category term="posts"></category><category term="linux"></category><category term="software utility"></category></entry><entry><title>Django Pagination</title><link href="https://www.georgexyz.com/django-pagination.html" rel="alternate"></link><published>2019-07-17T10:05:00-04:00</published><updated>2020-04-30T12:58:00-04:00</updated><author><name>George Zhang</name></author><id>tag:www.georgexyz.com,2019-07-17:/django-pagination.html</id><summary type="html">&lt;p&gt;Merriam-Webster dictionary defines pagination as &amp;#8220;the action of paging&amp;#8221;. In web 
 design world, pagination means separating a large list of contents onto 
 different pages for easy web navigation.   &lt;/p&gt;
 &lt;p&gt;Django provides …&lt;/p&gt;</summary><content type="html">&lt;p&gt;Merriam-Webster dictionary defines pagination as &amp;#8220;the action of paging&amp;#8221;. In web 

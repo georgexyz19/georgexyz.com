@@ -134,6 +134,11 @@ in pattern. Here is a list of common regex special characters in Python:</p>
 <li>* : zero or more</li>
 <li>+ : one or more</li>
 </ul>
+<p>Here is an example of using the <code>-P</code> option. This is to search number of 
+methods in <code>Flask</code> class. </p>
+<div class="highlight"><pre><span></span><code>$grep -P -n &quot;def\w+\(self&quot; .../app.py | wc -l
+</code></pre></div>
+
 <div style="margin-bottom:.4in;"></div>
 <hr>
 
@@ -152,6 +157,13 @@ grep -r &quot;date: 2019\\-&quot; | wc -l
 so far, so it is close. </p>
 <p>Note I do not have to include <code>-</code> character in the search pattern.  It is just something 
 good to know.  </p>
+<p><em>Added on 5/4/2021</em></p>
+<p>If you want to restrict the search to a certain file, you can use the <code>--include</code> option. For example, 
+the command below restricts the search to <code>cli.py</code> file.  You can also use <code>\*.h</code> to restrict search 
+to <code>.h</code> files. This is also from a 
+<a href="https://stackoverflow.com/questions/12516937/how-can-i-grep-recursively-but-only-in-files-with-certain-extensions">stackoverflow Q&amp;A</a>. </p>
+<div class="highlight"><pre><span></span><code>$grep -winr --include cli.py &quot;load_dotenv&quot; ./
+</code></pre></div>
 
 
 
