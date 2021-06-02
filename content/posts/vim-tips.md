@@ -556,7 +556,7 @@ it loads `.vimrc` file, so you do not need to keep two copies of `.vimrc`.
 
 <div class="ml-5">
 ```
-" ~/.vimrc file
+" ~/.plugin.vimrc file
 
 set nocompatible              " required
 filetype off
