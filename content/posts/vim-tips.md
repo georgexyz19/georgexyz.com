@@ -533,7 +533,7 @@ $tree -L 2        # -L is for levels down
 $tree -I venv -v  # sort by name, or --sort=name
 ```
 
-This is not necessary a Vim tip, but I have not found a good place to put it. 
+This is not necessary a Vim tip, but I can't find a good place to put it. 
 
 Source: [zaiste.net blog post](https://zaiste.net/posts/tree-ignore-directories-patterns/)
 
