@@ -7105,12 +7105,13 @@ faster to navigate than a &lt;span class="caps"&gt;GUI&lt;/span&gt; file browser
 &lt;li&gt;&lt;code&gt;o&lt;/code&gt; to open, &lt;code&gt;O&lt;/code&gt; recursively open&lt;/li&gt;
 &lt;li&gt;&lt;code&gt;x&lt;/code&gt; to close open dir, &lt;code&gt;X&lt;/code&gt; recursively close&lt;/li&gt;
 &lt;li&gt;&lt;code&gt;C-W&lt;/code&gt; + &lt;code&gt;h j k l&lt;/code&gt; to move between windows&lt;/li&gt;
-&lt;li&gt;Map &lt;code&gt;C-H&lt;/code&gt; to move cursor to left side and &lt;code&gt;C-L C-L&lt;/code&gt; to right side&lt;/li&gt;
+&lt;li&gt;Map &lt;code&gt;C-H C-H&lt;/code&gt; to move cursor to left side and &lt;code&gt;C-L C-L&lt;/code&gt; to right side&lt;/li&gt;
 &lt;/ul&gt;
 &lt;div class="ml-5"&gt;
 
-&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;noremap &amp;lt;C-H&amp;gt; &amp;lt;C-W&amp;gt;&amp;lt;C-H&amp;gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;noremap &amp;lt;C-H&amp;gt;&amp;lt;C-H&amp;gt; &amp;lt;C-W&amp;gt;&amp;lt;C-H&amp;gt;
 noremap &amp;lt;C-L&amp;gt;&amp;lt;C-L&amp;gt; &amp;lt;C-W&amp;gt;&amp;lt;C-L&amp;gt;
+...
 &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
 
 
