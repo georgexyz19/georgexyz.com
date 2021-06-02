@@ -7038,7 +7038,7 @@ it loads &lt;code&gt;.vimrc&lt;/code&gt; file, so you do not need to keep two co
 &lt;/ul&gt;
 &lt;div class="ml-5"&gt;
 
-&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;&amp;quot; ~/.vimrc file
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;&amp;quot; ~/.plugin.vimrc file
 
 set nocompatible              &amp;quot; required
 filetype off
