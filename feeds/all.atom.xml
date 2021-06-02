@@ -7015,7 +7015,7 @@ $tree -L 2        # -L is for levels down
 $tree -I venv -v  # sort by name, or --sort=name
 &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
 
-&lt;p&gt;This is not necessary a Vim tip, but I have not found a good place to put it. &lt;/p&gt;
+&lt;p&gt;This is not necessary a Vim tip, but I can&amp;#8217;t find a good place to put it. &lt;/p&gt;
 &lt;p&gt;Source: &lt;a href="https://zaiste.net/posts/tree-ignore-directories-patterns/"&gt;zaiste.net blog post&lt;/a&gt;&lt;/p&gt;
 &lt;h4&gt;Nerdtree Plugin&lt;/h4&gt;
 &lt;p&gt;Vim has a built in file/directory management tool, but it is not very good.  Nerdtree plugin 
