@@ -6791,8 +6791,7 @@ commands are listed below. &lt;/p&gt;
 &lt;h4&gt;Common Shortcuts&lt;/h4&gt;
 &lt;p&gt;Vim is in a different league comparing to other text editors. It does not have 
 some common shortcuts other editors have. But some of those shortcuts are so 
-common, it is better to customize vim to support them. For example, the 
-command &lt;code&gt;:saveas&lt;/code&gt; is sometimes very convenient. &lt;/p&gt;
+common, it is better to customize vim to support them. &lt;/p&gt;
 &lt;p&gt;The settings below add &lt;code&gt;Ctrl+s&lt;/code&gt; shortcut for saving file.  Command &lt;code&gt;:update&lt;/code&gt; is 
 like &lt;code&gt;:write&lt;/code&gt;, but only write when buffer has been modified.&lt;/p&gt;
 &lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;noremap &amp;lt;silent&amp;gt; &amp;lt;C-S&amp;gt;  :update&amp;lt;CR&amp;gt;
