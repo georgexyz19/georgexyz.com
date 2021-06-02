@@ -232,8 +232,7 @@ gj
 
 Vim is in a different league comparing to other text editors. It does not have 
 some common shortcuts other editors have. But some of those shortcuts are so 
-common, it is better to customize vim to support them. For example, the 
-command `:saveas` is sometimes very convenient. 
+common, it is better to customize vim to support them. 
 
 The settings below add `Ctrl+s` shortcut for saving file.  Command `:update` is 
 like `:write`, but only write when buffer has been modified.
