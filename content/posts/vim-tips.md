@@ -619,11 +619,12 @@ faster to navigate than a GUI file browser.
 - `o` to open, `O` recursively open
 - `x` to close open dir, `X` recursively close
 - `C-W` + `h j k l` to move between windows
-- Map `C-H` to move cursor to left side and `C-L C-L` to right side
+- Map `C-H C-H` to move cursor to left side and `C-L C-L` to right side
 <div class="ml-5">
 ```
-noremap <C-H> <C-W><C-H>
+noremap <C-H><C-H> <C-W><C-H>
 noremap <C-L><C-L> <C-W><C-L>
+...
 ```
 </div>
 
