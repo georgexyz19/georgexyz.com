@@ -116,7 +116,15 @@ read one book a month so I will read 12 books in a year. &lt;/p&gt;
       &lt;td&gt;Miguel Grinberg&lt;/td&gt;
       &lt;td&gt;March 2018&lt;/td&gt;
       &lt;td&gt;April 2021&lt;/td&gt;
-      &lt;td&gt;&lt;a href="/flask-books.html"&gt;Post&lt;/a&gt;&lt;/td&gt;
+      &lt;td&gt;&lt;a href="/flask-books.html"&gt;Comment&lt;/a&gt;&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;th scope="row"&gt;2&lt;/th&gt;
+      &lt;td&gt;Beyond The Basic Stuff With Python&lt;/td&gt;
+      &lt;td&gt;Al Sweigart&lt;/td&gt;
+      &lt;td&gt;December 2020&lt;/td&gt;
+      &lt;td&gt;May 2021&lt;/td&gt;
+      &lt;td&gt;N/A&lt;/td&gt;
     &lt;/tr&gt;
   &lt;/tbody&gt;
 &lt;/table&gt;</content><category term="posts"></category><category term="books"></category></entry><entry><title>Remove Dash Conversion Of Smartypants Python Package</title><link href="https://www.georgexyz.com/remove-dash-conversion.html" rel="alternate"></link><published>2021-04-07T13:31:00-04:00</published><updated>2021-04-07T13:31:00-04:00</updated><author><name>George Zhang</name></author><id>tag:www.georgexyz.com,2021-04-07:/remove-dash-conversion.html</id><summary type="html">&lt;p&gt;When I am working on the last post 
