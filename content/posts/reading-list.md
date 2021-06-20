@@ -28,7 +28,15 @@ read one book a month so I will read 12 books in a year.
       <td>Miguel Grinberg</td>
       <td>March 2018</td>
       <td>April 2021</td>
-      <td><a href="/flask-books.html">Post</a></td>
+      <td><a href="/flask-books.html">Comment</a></td>
+    </tr>
+    <tr>
+      <th scope="row">2</th>
+      <td>Beyond The Basic Stuff With Python</td>
+      <td>Al Sweigart</td>
+      <td>December 2020</td>
+      <td>May 2021</td>
+      <td>N/A</td>
     </tr>
   </tbody>
 </table>
