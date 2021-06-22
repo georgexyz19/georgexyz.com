@@ -113,6 +113,12 @@ sudo apt-get install -y make build-essential libssl-dev zlib1g-dev
  libncursesw5-dev xz-utils tk-dev libffi-dev liblzma-dev python-openssl 
 curl https://pyenv.run | bash
 vim .bashrc 
+# Add those 4 lines to .bashrc for new version of pyenv.run
+# export PYENV_ROOT="$HOME/.pyenv"
+# export PATH="$PYENV_ROOT/bin:$PATH"
+# eval "$(pyenv init --path)"
+# eval "$(pyenv init -)"
+
 exec "$SHELL"
 pyenv install --list | grep " 3\.[6789]"
 
