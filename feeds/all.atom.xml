@@ -629,6 +629,12 @@ sudo apt-get install -y make build-essential libssl-dev zlib1g-dev
  libncursesw5-dev xz-utils tk-dev libffi-dev liblzma-dev python-openssl 
 curl https://pyenv.run &lt;span class="p"&gt;|&lt;/span&gt; bash
 vim .bashrc 
+&lt;span class="c1"&gt;# Add those 4 lines to .bashrc for new version of pyenv.run&lt;/span&gt;
+&lt;span class="c1"&gt;# export PYENV_ROOT=&amp;quot;$HOME/.pyenv&amp;quot;&lt;/span&gt;
+&lt;span class="c1"&gt;# export PATH=&amp;quot;$PYENV_ROOT/bin:$PATH&amp;quot;&lt;/span&gt;
+&lt;span class="c1"&gt;# eval &amp;quot;$(pyenv init --path)&amp;quot;&lt;/span&gt;
+&lt;span class="c1"&gt;# eval &amp;quot;$(pyenv init -)&amp;quot;&lt;/span&gt;
+
 &lt;span class="nb"&gt;exec&lt;/span&gt; &lt;span class="s2"&gt;&amp;quot;&lt;/span&gt;&lt;span class="nv"&gt;$SHELL&lt;/span&gt;&lt;span class="s2"&gt;&amp;quot;&lt;/span&gt;
 pyenv install --list &lt;span class="p"&gt;|&lt;/span&gt; grep &lt;span class="s2"&gt;&amp;quot; 3\.[6789]&amp;quot;&lt;/span&gt;
 
