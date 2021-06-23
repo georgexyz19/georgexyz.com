@@ -95,9 +95,11 @@ one of them is Screenshot.&lt;/p&gt;
 &lt;/div&gt;
 
 &lt;p&gt;However, it changed in later Android versions. You need to press two keys together to capture a screen 
-in some version. It is not difficult, but the design is not as good as this one. &lt;/p&gt;</content><category term="posts"></category><category term="design"></category></entry><entry><title>Reading List</title><link href="https://www.georgexyz.com/reading-list.html" rel="alternate"></link><published>2021-04-22T08:47:00-04:00</published><updated>2021-04-22T08:47:00-04:00</updated><author><name>George Zhang</name></author><id>tag:www.georgexyz.com,2021-04-22:/reading-list.html</id><summary type="html">&lt;p&gt;This post records a list of books I read. I am trying to find time to 
-read one book a month so I will read 12 books in a year …&lt;/p&gt;</summary><content type="html">&lt;p&gt;This post records a list of books I read. I am trying to find time to 
-read one book a month so I will read 12 books in a year. &lt;/p&gt;
+in some version. It is not difficult, but the design is not as good as this one. &lt;/p&gt;</content><category term="posts"></category><category term="design"></category></entry><entry><title>Reading List</title><link href="https://www.georgexyz.com/reading-list.html" rel="alternate"></link><published>2021-04-22T08:47:00-04:00</published><updated>2021-04-22T08:47:00-04:00</updated><author><name>George Zhang</name></author><id>tag:www.georgexyz.com,2021-04-22:/reading-list.html</id><summary type="html">&lt;p&gt;This post records books I read. I am trying to find time to read at least 
+one book a month so I can read 12 books in a year. &lt;/p&gt;
+&lt;h3&gt;Technical …&lt;/h3&gt;</summary><content type="html">&lt;p&gt;This post records books I read. I am trying to find time to read at least 
+one book a month so I can read 12 books in a year. &lt;/p&gt;
+&lt;h3&gt;Technical&lt;/h3&gt;
 &lt;table class="table table-striped"&gt;
   &lt;thead&gt;
     &lt;tr&gt;
@@ -125,6 +127,30 @@ read one book a month so I will read 12 books in a year. &lt;/p&gt;
       &lt;td&gt;December 2020&lt;/td&gt;
       &lt;td&gt;May 2021&lt;/td&gt;
       &lt;td&gt;N/A&lt;/td&gt;
+    &lt;/tr&gt;
+  &lt;/tbody&gt;
+&lt;/table&gt;
+
+&lt;h3&gt;Non-technical&lt;/h3&gt;
+&lt;table class="table table-striped"&gt;
+  &lt;thead&gt;
+    &lt;tr&gt;
+      &lt;th scope="col"&gt;#&lt;/th&gt;
+      &lt;th scope="col"&gt;Title&lt;/th&gt;
+      &lt;th scope="col"&gt;Author&lt;/th&gt;
+      &lt;th scope="col"&gt;Publish Month&lt;/th&gt;
+      &lt;th scope="col"&gt;Finish Reading&lt;/th&gt;
+      &lt;th scope="col"&gt;Links &lt;span class="amp"&gt;&amp;amp;&lt;/span&gt; Comments&lt;/th&gt;
+    &lt;/tr&gt;
+  &lt;/thead&gt;
+  &lt;tbody&gt;
+    &lt;tr&gt;
+      &lt;th scope="row"&gt;1&lt;/th&gt;
+      &lt;td&gt;Who Was Neil Armstrong?&lt;/td&gt;
+      &lt;td&gt;Roberta Edwards&lt;/td&gt;
+      &lt;td&gt;October 2008&lt;/td&gt;
+      &lt;td&gt;June 2021&lt;/td&gt;
+      &lt;td&gt;&lt;a href="https://tinylink.net/ur2hq"&gt;Amazon&lt;/a&gt;&lt;/td&gt;
     &lt;/tr&gt;
   &lt;/tbody&gt;
 &lt;/table&gt;</content><category term="posts"></category><category term="books"></category></entry><entry><title>Remove Dash Conversion Of Smartypants Python Package</title><link href="https://www.georgexyz.com/remove-dash-conversion.html" rel="alternate"></link><published>2021-04-07T13:31:00-04:00</published><updated>2021-04-07T13:31:00-04:00</updated><author><name>George Zhang</name></author><id>tag:www.georgexyz.com,2021-04-07:/remove-dash-conversion.html</id><summary type="html">&lt;p&gt;When I am working on the last post 
