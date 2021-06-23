@@ -6628,10 +6628,10 @@ three positional arguments. The decorator changes the function definition to be
 without arguments. When you call the &lt;code&gt;main&lt;/code&gt; fuction, it is simply &lt;code&gt;main()&lt;/code&gt; without 
 any arguments.  Normally that is not a good decorator practice, but this is 
 an exception and it works well.  &lt;/p&gt;</content><category term="posts"></category><category term="python"></category></entry><entry><title>Vim Tips</title><link href="https://www.georgexyz.com/vim-tips.html" rel="alternate"></link><published>2019-04-01T12:45:00-04:00</published><updated>2020-08-09T17:37:00-04:00</updated><author><name>George Zhang</name></author><id>tag:www.georgexyz.com,2019-04-01:/vim-tips.html</id><summary type="html">&lt;p&gt;Ubuntu 18.04 comes with a stripped down version of Vim. If you want to use Vim for 
-serious work, you want the full version. &lt;/p&gt;
-&lt;h3&gt;Vim Installation&lt;/h3&gt;
-&lt;p&gt;The default version …&lt;/p&gt;</summary><content type="html">&lt;p&gt;Ubuntu 18.04 comes with a stripped down version of Vim. If you want to use Vim for 
-serious work, you want the full version. &lt;/p&gt;
+serious work, you want the full version. I am using Vim 8 …&lt;/p&gt;</summary><content type="html">&lt;p&gt;Ubuntu 18.04 comes with a stripped down version of Vim. If you want to use Vim for 
+serious work, you want the full version. I am using Vim 8.0 under Linux Mint 19.03. 
+Some settings discussed in this article may not apply to your system, so keep that 
+in mind. &lt;/p&gt;
 &lt;h3&gt;Vim Installation&lt;/h3&gt;
 &lt;p&gt;The default version is started via command &lt;code&gt;vi&lt;/code&gt;. The &lt;code&gt;vi --version&lt;/code&gt; command shows 
 the version information. Note the Line 5 below shows &amp;#8220;Small version without &lt;span class="caps"&gt;GUI&lt;/span&gt;&amp;#8221;. 
