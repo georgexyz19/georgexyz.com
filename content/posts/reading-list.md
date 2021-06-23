@@ -7,8 +7,10 @@ note: This article will be hidden for now, cannot do it yet
 template: article-2
 no: 73
 
-This post records a list of books I read. I am trying to find time to 
-read one book a month so I will read 12 books in a year. 
+This post records books I read. I am trying to find time to read at least 
+one book a month so I can read 12 books in a year. 
+
+###Technical
 
 <table class="table table-striped">
   <thead>
@@ -37,6 +39,32 @@ read one book a month so I will read 12 books in a year.
       <td>December 2020</td>
       <td>May 2021</td>
       <td>N/A</td>
+    </tr>
+  </tbody>
+</table>
+
+###Non-technical
+
+
+<table class="table table-striped">
+  <thead>
+    <tr>
+      <th scope="col">#</th>
+      <th scope="col">Title</th>
+      <th scope="col">Author</th>
+      <th scope="col">Publish Month</th>
+      <th scope="col">Finish Reading</th>
+      <th scope="col">Links & Comments</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th scope="row">1</th>
+      <td>Who Was Neil Armstrong?</td>
+      <td>Roberta Edwards</td>
+      <td>October 2008</td>
+      <td>June 2021</td>
+      <td><a href="https://tinylink.net/ur2hq">Amazon</a></td>
     </tr>
   </tbody>
 </table>
