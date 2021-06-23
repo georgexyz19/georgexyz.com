@@ -7,7 +7,9 @@ modified: 2020-08-09 17:37
 
 
 Ubuntu 18.04 comes with a stripped down version of Vim. If you want to use Vim for 
-serious work, you want the full version. 
+serious work, you want the full version. I am using Vim 8.0 under Linux Mint 19.03. 
+Some settings discussed in this article may not apply to your system, so keep that 
+in mind. 
 
 ### Vim Installation
 
