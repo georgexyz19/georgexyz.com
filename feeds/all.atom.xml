@@ -1,16 +1,16 @@
 <?xml version="1.0" encoding="utf-8"?>
-<feed xmlns="http://www.w3.org/2005/Atom"><title>George Zhang</title><link href="https://www.georgexyz.com/" rel="alternate"></link><link href="https://www.georgexyz.com/feeds/all.atom.xml" rel="self"></link><id>https://www.georgexyz.com/</id><updated>2021-06-26T16:56:00-04:00</updated><entry><title>Some HTML/CSS Oddities</title><link href="https://www.georgexyz.com/some-htmlcss-oddities.html" rel="alternate"></link><published>2021-06-26T16:56:00-04:00</published><updated>2021-06-26T16:56:00-04:00</updated><author><name>George Zhang</name></author><id>tag:www.georgexyz.com,2021-06-26:/some-htmlcss-oddities.html</id><summary type="html">&lt;h3&gt;&lt;span class="caps"&gt;HTML&lt;/span&gt;/&lt;span class="caps"&gt;CSS&lt;/span&gt; Editor Layout&lt;/h3&gt;
+<feed xmlns="http://www.w3.org/2005/Atom"><title>George Zhang</title><link href="https://www.georgexyz.com/" rel="alternate"></link><link href="https://www.georgexyz.com/feeds/all.atom.xml" rel="self"></link><id>https://www.georgexyz.com/</id><updated>2021-06-26T16:56:00-04:00</updated><entry><title>Some HTML/CSS Notes</title><link href="https://www.georgexyz.com/some-htmlcss-oddities.html" rel="alternate"></link><published>2021-06-26T16:56:00-04:00</published><updated>2021-06-26T16:56:00-04:00</updated><author><name>George Zhang</name></author><id>tag:www.georgexyz.com,2021-06-26:/some-htmlcss-oddities.html</id><summary type="html">&lt;h3&gt;&lt;span class="caps"&gt;HTML&lt;/span&gt;/&lt;span class="caps"&gt;CSS&lt;/span&gt; Editor Layout&lt;/h3&gt;
 &lt;p&gt;I am reviewing the &lt;a href="https://www.internetingishard.com/html-and-css/"&gt;&lt;span class="caps"&gt;HTML&lt;/span&gt; &lt;span class="amp"&gt;&amp;amp;&lt;/span&gt; &lt;span class="caps"&gt;CSS&lt;/span&gt; Is Hard&lt;/a&gt; website, which is 
 an awesome resouce for studying &lt;span class="caps"&gt;HTML&lt;/span&gt; and &lt;span class="caps"&gt;CSS&lt;/span&gt;. It is easy to work through the …&lt;/p&gt;</summary><content type="html">&lt;h3&gt;&lt;span class="caps"&gt;HTML&lt;/span&gt;/&lt;span class="caps"&gt;CSS&lt;/span&gt; Editor Layout&lt;/h3&gt;
 &lt;p&gt;I am reviewing the &lt;a href="https://www.internetingishard.com/html-and-css/"&gt;&lt;span class="caps"&gt;HTML&lt;/span&gt; &lt;span class="amp"&gt;&amp;amp;&lt;/span&gt; &lt;span class="caps"&gt;CSS&lt;/span&gt; Is Hard&lt;/a&gt; website, which is 
-an awesome resouce for studying &lt;span class="caps"&gt;HTML&lt;/span&gt; and &lt;span class="caps"&gt;CSS&lt;/span&gt;. It is easy to work through the examples with this screen layout. 
-The left window opens the website.  The right top window is the Vim editor and the right bottom browser window 
+an awesome resouce for studying &lt;span class="caps"&gt;HTML&lt;/span&gt; and &lt;span class="caps"&gt;CSS&lt;/span&gt;. It is easy to work through the examples with this window layout. 
+The left window opens the website, the right top window is the Vim editor, and the right bottom browser window 
 is a preview of the &lt;span class="caps"&gt;HTML&lt;/span&gt; file.  &lt;/p&gt;
 &lt;div style="max-width:800px"&gt;
   &lt;img class="img-fluid pb-3" src="/images/html-editor.png" alt="HTML editor"&gt;
 &lt;/div&gt;
 
-&lt;h3&gt;&lt;span class="caps"&gt;HTML&lt;/span&gt;/&lt;span class="caps"&gt;CSS&lt;/span&gt; Oddities&lt;/h3&gt;
+&lt;h3&gt;&lt;span class="caps"&gt;HTML&lt;/span&gt;/&lt;span class="caps"&gt;CSS&lt;/span&gt; Notes&lt;/h3&gt;
 &lt;p&gt;Some &lt;span class="caps"&gt;HTML&lt;/span&gt;/&lt;span class="caps"&gt;CSS&lt;/span&gt; rules are strange (at least to me). This post records some of them for future reference.  &lt;/p&gt;
 &lt;h4&gt;&lt;span class="caps"&gt;CSS&lt;/span&gt; Descendant Selector&lt;/h4&gt;
 &lt;p&gt;The &lt;span class="caps"&gt;CSS&lt;/span&gt; descendant selector is a blank between two selectors. For example, the code below &lt;code&gt;p a&lt;/code&gt; selects 
