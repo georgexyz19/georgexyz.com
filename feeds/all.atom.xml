@@ -30,7 +30,16 @@ subscribe. &lt;/p&gt;
 
 &lt;p&gt;This just feels odd. If you do not pay attention, you would think they work the same, but they are 
 totally different things. The &lt;span class="caps"&gt;CSS&lt;/span&gt; has a child selector like this &lt;code&gt;li&amp;gt;a&lt;/code&gt;. It feels more natural than 
-the descendant selector. &lt;/p&gt;</content><category term="posts"></category><category term="web development"></category></entry><entry><title>Run MySql In A Docker Container With Flask</title><link href="https://www.georgexyz.com/run-mysql-in-a-docker-container-with-flask.html" rel="alternate"></link><published>2021-04-28T13:25:00-04:00</published><updated>2021-04-28T13:25:00-04:00</updated><author><name>George Zhang</name></author><id>tag:www.georgexyz.com,2021-04-28:/run-mysql-in-a-docker-container-with-flask.html</id><summary type="html">&lt;p&gt;Miguel Grinberg&amp;#8217;s &lt;em&gt;Flask Web Development&lt;/em&gt; book Chapter 5 shows how to run Flask with 
+the descendant selector. &lt;/p&gt;
+&lt;h3&gt;&lt;span class="caps"&gt;CSS&lt;/span&gt; Property Names&lt;/h3&gt;
+&lt;p&gt;Some &lt;span class="caps"&gt;CSS&lt;/span&gt; property names are not easy to remember. Here are a list of some confusing names. &lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;box-sizing: border-box;  /* I remember this rule as BSBB*/
+justfy-content: center;
+align-items: center;     /* really odd items vs content */
+position, display, float /* remember them as PDF */
+  display: flex;         /* this is for flexbox  */
+  flex: 1 (or auto);     /* flex itself is a property name */
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;</content><category term="posts"></category><category term="web development"></category></entry><entry><title>Run MySql In A Docker Container With Flask</title><link href="https://www.georgexyz.com/run-mysql-in-a-docker-container-with-flask.html" rel="alternate"></link><published>2021-04-28T13:25:00-04:00</published><updated>2021-04-28T13:25:00-04:00</updated><author><name>George Zhang</name></author><id>tag:www.georgexyz.com,2021-04-28:/run-mysql-in-a-docker-container-with-flask.html</id><summary type="html">&lt;p&gt;Miguel Grinberg&amp;#8217;s &lt;em&gt;Flask Web Development&lt;/em&gt; book Chapter 5 shows how to run Flask with 
 SqlAlchemy and a SQLite database. Because SQLite is included in Python, the settings 
 are simple …&lt;/p&gt;</summary><content type="html">&lt;p&gt;Miguel Grinberg&amp;#8217;s &lt;em&gt;Flask Web Development&lt;/em&gt; book Chapter 5 shows how to run Flask with 
 SqlAlchemy and a SQLite database. Because SQLite is included in Python, the settings 
