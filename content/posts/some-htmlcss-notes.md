@@ -55,9 +55,12 @@ align-items: center;     /* really odd items vs content */
 position, display, float /* remember them as PDF */
   display: flex;         /* this is for flexbox  */
   flex: 1 (or auto);     /* flex itself is a property name */
-
-position:    /* one of the values below SR.AF */ 
-  /* static, relative, absolute fixed */
-
 ```
 
+The responsive design mainly relies on media queries.  The media query syntax is not very intuitive. 
+
+```
+@media only screen and (max-width: 400px) {
+  body { ... }
+}
+```
