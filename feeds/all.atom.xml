@@ -47,7 +47,7 @@ position, display, float /* remember them as PDF */
 }
 &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
 
-&lt;p&gt;The oddest terms in &lt;span class="caps"&gt;HTML&lt;/span&gt;/&lt;span class="caps"&gt;CSS&lt;/span&gt; probably are &amp;#8220;art direction&amp;#8221;.  The author explains that &amp;#8220;(you can) &lt;br&gt;
+&lt;p&gt;The oddest terms in &lt;span class="caps"&gt;HTML&lt;/span&gt;/&lt;span class="caps"&gt;CSS&lt;/span&gt; probably are &amp;#8220;art direction&amp;#8221;.  The author explains that &amp;#8220;(you can) 
 think of art direction as responsive image optimization for designers.&amp;#8221;&lt;/p&gt;</content><category term="posts"></category><category term="web development"></category></entry><entry><title>Run MySql In A Docker Container With Flask</title><link href="https://www.georgexyz.com/run-mysql-in-a-docker-container-with-flask.html" rel="alternate"></link><published>2021-04-28T13:25:00-04:00</published><updated>2021-04-28T13:25:00-04:00</updated><author><name>George Zhang</name></author><id>tag:www.georgexyz.com,2021-04-28:/run-mysql-in-a-docker-container-with-flask.html</id><summary type="html">&lt;p&gt;Miguel Grinberg&amp;#8217;s &lt;em&gt;Flask Web Development&lt;/em&gt; book Chapter 5 shows how to run Flask with 
 SqlAlchemy and a SQLite database. Because SQLite is included in Python, the settings 
 are simple …&lt;/p&gt;</summary><content type="html">&lt;p&gt;Miguel Grinberg&amp;#8217;s &lt;em&gt;Flask Web Development&lt;/em&gt; book Chapter 5 shows how to run Flask with 
@@ -176,6 +176,14 @@ one book a month so I can read 12 books in a year. &lt;/p&gt;
       &lt;td&gt;December 2020&lt;/td&gt;
       &lt;td&gt;May 2021&lt;/td&gt;
       &lt;td&gt;N/A&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;th scope="row"&gt;3&lt;/th&gt;
+      &lt;td&gt;&lt;span class="caps"&gt;HTML&lt;/span&gt; &lt;span class="amp"&gt;&amp;amp;&lt;/span&gt; &lt;span class="caps"&gt;CSS&lt;/span&gt; Is Hard (web book)&lt;/td&gt;
+      &lt;td&gt;Oliver James&lt;/td&gt;
+      &lt;td&gt;2016&lt;/td&gt;
+      &lt;td&gt;June 2021&lt;/td&gt;
+      &lt;td&gt;&lt;a href="/some-htmlcss-notes.html"&gt;Notes&lt;/a&gt;&lt;/td&gt;
     &lt;/tr&gt;
   &lt;/tbody&gt;
 &lt;/table&gt;
