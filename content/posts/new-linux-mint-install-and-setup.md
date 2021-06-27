@@ -145,3 +145,14 @@ source venv/bin/activate
 pip install -r requirements.txt 
 invoke livereload
 ```
+###Browser Font Settings
+
+Below are screenshots of font setting windows in Chrome and Firefox under Linux Mint.
+
+<div style="max-width:400px">
+  <img class="img-fluid pb-3" src="/images/chrome-font.png" alt="Chrome Font">
+</div>
+
+<div style="max-width:400px">
+  <img class="img-fluid pb-3" src="/images/firefox-font.png" alt="Firefox Font">
+</div>
