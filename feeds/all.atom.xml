@@ -183,7 +183,8 @@ one book a month so I can read 12 books in a year. &lt;/p&gt;
       &lt;td&gt;Oliver James&lt;/td&gt;
       &lt;td&gt;2016&lt;/td&gt;
       &lt;td&gt;June 2021&lt;/td&gt;
-      &lt;td&gt;&lt;a href="/some-htmlcss-notes.html"&gt;Notes&lt;/a&gt;&lt;/td&gt;
+      &lt;td&gt;&lt;a href="https://www.internetingishard.com/html-and-css/"&gt;Link&lt;/a&gt; / 
+          &lt;a href="/some-htmlcss-notes.html"&gt;Notes&lt;/a&gt;&lt;/td&gt;
     &lt;/tr&gt;
   &lt;/tbody&gt;
 &lt;/table&gt;
