@@ -744,7 +744,17 @@ python -m venv venv
 &lt;span class="nb"&gt;source&lt;/span&gt; venv/bin/activate
 pip install -r requirements.txt 
 invoke livereload
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;</content><category term="posts"></category><category term="linux"></category><category term="linux mint"></category></entry><entry><title>Road Segment Crash Rate Calculator</title><link href="https://www.georgexyz.com/road-segment-crash-rate-calculator.html" rel="alternate"></link><published>2021-01-11T10:30:00-05:00</published><updated>2021-01-11T10:30:00-05:00</updated><author><name>George Zhang</name></author><id>tag:www.georgexyz.com,2021-01-11:/road-segment-crash-rate-calculator.html</id><summary type="html">&lt;p&gt;I am reading Part Two, Chapter 4.3 of 
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+
+&lt;h3&gt;Browser Font Settings&lt;/h3&gt;
+&lt;p&gt;Below are screenshots of font setting windows in Chrome and Firefox under Linux Mint.&lt;/p&gt;
+&lt;div style="max-width:400px"&gt;
+  &lt;img class="img-fluid pb-3" src="/images/chrome-font.png" alt="Chrome Font"&gt;
+&lt;/div&gt;
+
+&lt;div style="max-width:400px"&gt;
+  &lt;img class="img-fluid pb-3" src="/images/firefox-font.png" alt="Firefox Font"&gt;
+&lt;/div&gt;</content><category term="posts"></category><category term="linux"></category><category term="linux mint"></category></entry><entry><title>Road Segment Crash Rate Calculator</title><link href="https://www.georgexyz.com/road-segment-crash-rate-calculator.html" rel="alternate"></link><published>2021-01-11T10:30:00-05:00</published><updated>2021-01-11T10:30:00-05:00</updated><author><name>George Zhang</name></author><id>tag:www.georgexyz.com,2021-01-11:/road-segment-crash-rate-calculator.html</id><summary type="html">&lt;p&gt;I am reading Part Two, Chapter 4.3 of 
 &lt;a href="javascript.info"&gt;javascript.info&lt;/a&gt; tutorial.  It has an exercise to write a js deposit calculator. 
 I often use &lt;a href="/files/CrashRateCal.xlsx"&gt;a spreadsheet file&lt;/a&gt; to calculate …&lt;/p&gt;</summary><content type="html">&lt;p&gt;I am reading Part Two, Chapter 4.3 of 
 &lt;a href="javascript.info"&gt;javascript.info&lt;/a&gt; tutorial.  It has an exercise to write a js deposit calculator. 
