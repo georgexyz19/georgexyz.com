@@ -44,5 +44,16 @@ This just feels odd. If you do not pay attention, you would think they work the 
 totally different things. The CSS has a child selector like this `li>a`. It feels more natural than 
 the descendant selector. 
 
+###CSS Property Names
 
+Some CSS property names are not easy to remember. Here are a list of some confusing names. 
+
+```
+box-sizing: border-box;  /* I remember this rule as BSBB*/
+justfy-content: center;
+align-items: center;     /* really odd items vs content */
+position, display, float /* remember them as PDF */
+  display: flex;         /* this is for flexbox  */
+  flex: 1 (or auto);     /* flex itself is a property name */
+```
 
