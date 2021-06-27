@@ -65,7 +65,7 @@ The responsive design mainly relies on media queries.  The media query syntax is
 }
 ```
 
-The oddest terms in HTML/CSS probably are "art direction".  The author explains that "(you can)   
+The oddest terms in HTML/CSS probably are "art direction".  The author explains that "(you can) 
 think of art direction as responsive image optimization for designers."
 
 

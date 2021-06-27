@@ -40,6 +40,14 @@ one book a month so I can read 12 books in a year.
       <td>May 2021</td>
       <td>N/A</td>
     </tr>
+    <tr>
+      <th scope="row">3</th>
+      <td>HTML & CSS Is Hard (web book)</td>
+      <td>Oliver James</td>
+      <td>2016</td>
+      <td>June 2021</td>
+      <td><a href="/some-htmlcss-notes.html">Notes</a></td>
+    </tr>
   </tbody>
 </table>
 
