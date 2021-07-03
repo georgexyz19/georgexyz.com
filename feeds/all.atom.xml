@@ -47,8 +47,25 @@ position, display, float /* remember them as PDF */
 }
 &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
 
+&lt;p&gt;The logic behind &lt;code&gt;width&lt;/code&gt; and &lt;code&gt;max-width&lt;/code&gt; properties is interesting. The code below is an example. 
+The element with &lt;code&gt;box&lt;/code&gt; class will be 100% if it is less than 900px. The width will be 900px 
+if it is larger than 900px.    &lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;.box {
+  width: 100%;
+  max-width: 900px;
+}
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+
 &lt;p&gt;The oddest terms in &lt;span class="caps"&gt;HTML&lt;/span&gt;/&lt;span class="caps"&gt;CSS&lt;/span&gt; probably are &amp;#8220;art direction&amp;#8221;.  The author explains that &amp;#8220;(you can) 
-think of art direction as responsive image optimization for designers.&amp;#8221;&lt;/p&gt;</content><category term="posts"></category><category term="web development"></category></entry><entry><title>Run MySql In A Docker Container With Flask</title><link href="https://www.georgexyz.com/run-mysql-in-a-docker-container-with-flask.html" rel="alternate"></link><published>2021-04-28T13:25:00-04:00</published><updated>2021-04-28T13:25:00-04:00</updated><author><name>George Zhang</name></author><id>tag:www.georgexyz.com,2021-04-28:/run-mysql-in-a-docker-container-with-flask.html</id><summary type="html">&lt;p&gt;Miguel Grinberg&amp;#8217;s &lt;em&gt;Flask Web Development&lt;/em&gt; book Chapter 5 shows how to run Flask with 
+think of art direction as responsive image optimization for designers.&amp;#8221;&lt;/p&gt;
+&lt;h3&gt;&lt;span class="caps"&gt;CSS&lt;/span&gt; Frameworks&lt;/h3&gt;
+&lt;p&gt;The web book is awesome and the examples are easy to follow.  However, &lt;span class="caps"&gt;CSS&lt;/span&gt; itself is not easy to 
+understand and write.  The &lt;em&gt;Web Typography&lt;/em&gt; chapter has a simple page which includes a &lt;em&gt;typo.css&lt;/em&gt; 
+file. It only contains some basic stuff, but it has 201 lines of code. Some lines are difficult 
+to write if you are not very skilled at &lt;span class="caps"&gt;CSS&lt;/span&gt;. &lt;/p&gt;
+&lt;p&gt;That&amp;#8217;s probably why the &lt;span class="caps"&gt;CSS&lt;/span&gt; frameworks are popular. 
+Here is a list of &lt;a href="https://github.com/troxler/awesome-css-frameworks"&gt;awesome css frameworks&lt;/a&gt;. 
+This website is itself built on the Bootstrap &lt;span class="caps"&gt;CSS&lt;/span&gt; framework. &lt;/p&gt;</content><category term="posts"></category><category term="web development"></category></entry><entry><title>Run MySql In A Docker Container With Flask</title><link href="https://www.georgexyz.com/run-mysql-in-a-docker-container-with-flask.html" rel="alternate"></link><published>2021-04-28T13:25:00-04:00</published><updated>2021-04-28T13:25:00-04:00</updated><author><name>George Zhang</name></author><id>tag:www.georgexyz.com,2021-04-28:/run-mysql-in-a-docker-container-with-flask.html</id><summary type="html">&lt;p&gt;Miguel Grinberg&amp;#8217;s &lt;em&gt;Flask Web Development&lt;/em&gt; book Chapter 5 shows how to run Flask with 
 SqlAlchemy and a SQLite database. Because SQLite is included in Python, the settings 
 are simple …&lt;/p&gt;</summary><content type="html">&lt;p&gt;Miguel Grinberg&amp;#8217;s &lt;em&gt;Flask Web Development&lt;/em&gt; book Chapter 5 shows how to run Flask with 
 SqlAlchemy and a SQLite database. Because SQLite is included in Python, the settings 
