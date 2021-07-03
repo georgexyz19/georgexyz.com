@@ -65,7 +65,28 @@ The responsive design mainly relies on media queries.  The media query syntax is
 }
 ```
 
+The logic behind `width` and `max-width` properties is interesting. The code below is an example. 
+The element with `box` class will be 100% if it is less than 900px. The width will be 900px 
+if it is larger than 900px.    
+
+```
+.box {
+  width: 100%;
+  max-width: 900px;
+}
+```
+
 The oddest terms in HTML/CSS probably are "art direction".  The author explains that "(you can) 
 think of art direction as responsive image optimization for designers."
 
+###CSS Frameworks
+
+The web book is awesome and the examples are easy to follow.  However, CSS itself is not easy to 
+understand and write.  The *Web Typography* chapter has a simple page which includes a *typo.css* 
+file. It only contains some basic stuff, but it has 201 lines of code. Some lines are difficult 
+to write if you are not very skilled at CSS. 
+
+That's probably why the CSS frameworks are popular. 
+Here is a list of [awesome css frameworks](https://github.com/troxler/awesome-css-frameworks). 
+This website is itself built on the Bootstrap CSS framework. 
 
