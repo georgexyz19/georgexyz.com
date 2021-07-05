@@ -39,6 +39,19 @@ for color in colors:
     d[color] += 1
 ```
 
+You can make slight changes to the code above, but the logic is the same. It will 
+have one more line. 
+
+```python
+d = {}
+for color in colors:
+    if color not in d:
+        d[color] = 1
+    else:
+        d[color] += 1
+```
+
+
 ### Get Method of Dictionary
 If the color is not in the dictionary, using `d[color]` to access its value raises
 a KeyValue exception.  The dictionary `get` method returns the second argument 
