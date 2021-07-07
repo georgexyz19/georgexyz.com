@@ -16,6 +16,13 @@ compile Bootstrap scss to css. This 17 minute long youtube video explains it ver
 
 [Bootstrap 4 Theme Customization with Sass](https://youtu.be/6Ovw43Dkp44)
 
+It is easy to install Node in Linux Mint or Ubuntu with [NodeSource](https://github.com/nodesource/distributions#debinstall).  You only need to run those two commands to have Node and NPM installed. 
+
+```
+curl -fsSL https://deb.nodesource.com/setup_16.x | sudo -E bash -
+sudo apt-get install -y nodejs
+```
+
 I install Node version of Sass and Minify in Linux Mint with these commands. The Minify 
 tool removes extra blanks and line breaks in the css, and it also works for js and html files. 
 
