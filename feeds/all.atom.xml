@@ -3113,6 +3113,11 @@ it is easier for myself to publish or revise articles. &lt;/p&gt;
 &lt;p&gt;The Bootstrap theme css file is now compiled on my computer.  It is not too difficult to 
 compile Bootstrap scss to css. This 17 minute long youtube video explains it very well. &lt;/p&gt;
 &lt;p&gt;&lt;a href="https://youtu.be/6Ovw43Dkp44"&gt;Bootstrap 4 Theme Customization with Sass&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;It is easy to install Node in Linux Mint or Ubuntu with &lt;a href="https://github.com/nodesource/distributions#debinstall"&gt;NodeSource&lt;/a&gt;.  You only need to run those two commands to have Node and &lt;span class="caps"&gt;NPM&lt;/span&gt; installed. &lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;curl -fsSL https://deb.nodesource.com/setup_16.x | sudo -E bash -
+sudo apt-get install -y nodejs
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+
 &lt;p&gt;I install Node version of Sass and Minify in Linux Mint with these commands. The Minify 
 tool removes extra blanks and line breaks in the css, and it also works for js and html files. &lt;/p&gt;
 &lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;$sudo npm install -g sass
