@@ -65,7 +65,13 @@ file. It only contains some basic stuff, but it has 201 lines of code. Some line
 to write if you are not very skilled at &lt;span class="caps"&gt;CSS&lt;/span&gt;. &lt;/p&gt;
 &lt;p&gt;That&amp;#8217;s probably why the &lt;span class="caps"&gt;CSS&lt;/span&gt; frameworks are popular. 
 Here is a list of &lt;a href="https://github.com/troxler/awesome-css-frameworks"&gt;awesome css frameworks&lt;/a&gt;. 
-This website is itself built on the Bootstrap &lt;span class="caps"&gt;CSS&lt;/span&gt; framework. &lt;/p&gt;</content><category term="posts"></category><category term="web development"></category></entry><entry><title>Run MySql In A Docker Container With Flask</title><link href="https://www.georgexyz.com/run-mysql-in-a-docker-container-with-flask.html" rel="alternate"></link><published>2021-04-28T13:25:00-04:00</published><updated>2021-04-28T13:25:00-04:00</updated><author><name>George Zhang</name></author><id>tag:www.georgexyz.com,2021-04-28:/run-mysql-in-a-docker-container-with-flask.html</id><summary type="html">&lt;p&gt;Miguel Grinberg&amp;#8217;s &lt;em&gt;Flask Web Development&lt;/em&gt; book Chapter 5 shows how to run Flask with 
+This website is itself built on the Bootstrap &lt;span class="caps"&gt;CSS&lt;/span&gt; framework. The awesome list does not include 
+&lt;a href="http://getskeleton.com/"&gt;Skeleton&lt;/a&gt;, which is a nice minimal framework with ~400 lines of code. &lt;/p&gt;
+&lt;h3&gt;&lt;span class="caps"&gt;SCSS&lt;/span&gt; Language&lt;/h3&gt;
+&lt;p&gt;Many &lt;span class="caps"&gt;CSS&lt;/span&gt; frameworks are not actually written in &lt;span class="caps"&gt;CSS&lt;/span&gt;.  Instead they are written in &lt;span class="caps"&gt;SCSS&lt;/span&gt;, an 
+extension language which includes some programming features.  You can find more info on 
+the &lt;a href="https://sass-lang.com/"&gt;sass-lang.com&lt;/a&gt; website. The &lt;em&gt;Learn Sass&lt;/em&gt; page has nice examples 
+showing the basics of Scss language. &lt;/p&gt;</content><category term="posts"></category><category term="web development"></category></entry><entry><title>Run MySql In A Docker Container With Flask</title><link href="https://www.georgexyz.com/run-mysql-in-a-docker-container-with-flask.html" rel="alternate"></link><published>2021-04-28T13:25:00-04:00</published><updated>2021-04-28T13:25:00-04:00</updated><author><name>George Zhang</name></author><id>tag:www.georgexyz.com,2021-04-28:/run-mysql-in-a-docker-container-with-flask.html</id><summary type="html">&lt;p&gt;Miguel Grinberg&amp;#8217;s &lt;em&gt;Flask Web Development&lt;/em&gt; book Chapter 5 shows how to run Flask with 
 SqlAlchemy and a SQLite database. Because SQLite is included in Python, the settings 
 are simple …&lt;/p&gt;</summary><content type="html">&lt;p&gt;Miguel Grinberg&amp;#8217;s &lt;em&gt;Flask Web Development&lt;/em&gt; book Chapter 5 shows how to run Flask with 
 SqlAlchemy and a SQLite database. Because SQLite is included in Python, the settings 
