@@ -88,5 +88,12 @@ to write if you are not very skilled at CSS.
 
 That's probably why the CSS frameworks are popular. 
 Here is a list of [awesome css frameworks](https://github.com/troxler/awesome-css-frameworks). 
-This website is itself built on the Bootstrap CSS framework. 
+This website is itself built on the Bootstrap CSS framework. The awesome list does not include 
+[Skeleton](http://getskeleton.com/), which is a nice minimal framework with ~400 lines of code. 
 
+###SCSS Language
+
+Many CSS frameworks are not actually written in CSS.  Instead they are written in SCSS, an 
+extension language which includes some programming features.  You can find more info on 
+the [sass-lang.com](https://sass-lang.com/) website. The *Learn Sass* page has nice examples 
+showing the basics of Scss language. 
