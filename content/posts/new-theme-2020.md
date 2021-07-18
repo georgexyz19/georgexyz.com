@@ -35,6 +35,18 @@ $sass main.scss main.css
 $minify main.css > main.min.css
 ```
 
+Or you can install `sass` and `minify` locally and run them locally like this. 
+
+```
+$npm install sass
+$npm install minify
+
+#compile sass to css 
+#npx is command to run a local package like 'python -m'
+$npx sass main.scss main.css
+$npx minify main.css > main.min.css
+```
+
 The main.scss for the new theme has those contents. 
 
 ```
