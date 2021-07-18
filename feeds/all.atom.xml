@@ -3134,6 +3134,16 @@ $sass main.scss main.css
 $minify main.css &amp;gt; main.min.css
 &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
 
+&lt;p&gt;Or you can install &lt;code&gt;sass&lt;/code&gt; and &lt;code&gt;minify&lt;/code&gt; locally and run them locally like this. &lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;$npm install sass
+$npm install minify
+
+#compile sass to css 
+#npx is command to run a local package like &amp;#39;python -m&amp;#39;
+$npx sass main.scss main.css
+$npx minify main.css &amp;gt; main.min.css
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+
 &lt;p&gt;The main.scss for the new theme has those contents. &lt;/p&gt;
 &lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;$font-size-base: 1.1rem;
 $h5-font-size: $font-size-base * 1.0;
