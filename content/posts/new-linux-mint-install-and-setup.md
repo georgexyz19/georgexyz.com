@@ -52,6 +52,9 @@ The easy way is to copy truetype font files into this directory.
 /usr/share/fonts/truetype/
 ```
 
+Here is an excellent [online article](https://jichu4n.com/posts/how-to-set-default-fonts-and-font-aliases-on-linux/) about 
+how to set default fonts and font aliases on Linux.
+
 ### VS Code
 
 The VS code settings file is in this directory:
