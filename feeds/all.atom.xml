@@ -685,6 +685,8 @@ has information on how to add new fonts to Linux Mint. &lt;/p&gt;
 &lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;/usr/share/fonts/truetype/
 &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
 
+&lt;p&gt;Here is an excellent &lt;a href="https://jichu4n.com/posts/how-to-set-default-fonts-and-font-aliases-on-linux/"&gt;online article&lt;/a&gt; about 
+how to set default fonts and font aliases on Linux.&lt;/p&gt;
 &lt;h3&gt;&lt;span class="caps"&gt;VS&lt;/span&gt; Code&lt;/h3&gt;
 &lt;p&gt;The &lt;span class="caps"&gt;VS&lt;/span&gt; code settings file is in this directory:&lt;/p&gt;
 &lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;~/.config/Code/User/settings.json
