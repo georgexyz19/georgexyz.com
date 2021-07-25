@@ -49,6 +49,15 @@ one book a month so I can read 12 books in a year.
       <td><a href="https://www.internetingishard.com/html-and-css/">Link</a> / 
           <a href="/some-htmlcss-notes.html">Notes</a></td>
     </tr>
+    <tr>
+      <th scope="row">4</th>
+      <td>Fluent Python (Chap 1-13)</td>
+      <td>Luciano Ramalho</td>
+      <td>2015</td>
+      <td>July 2021</td>
+      <td><a href="https://www.oreilly.com/library/view/fluent-python/9781491946237/">Oreilly</a></td>
+    </tr>
+    
   </tbody>
 </table>
 

@@ -65,6 +65,13 @@ Check log:
 git log 
 : renders commit ids, authors, dates
 
+
+Discard changes in working dir:
+
+git reset --hard
+: discard changes in all files. If you accidently delete some files, the 
+  command will bring them back. 
+
 Clone a remote repo:
 
 git clone `<url>` `<dir>`
