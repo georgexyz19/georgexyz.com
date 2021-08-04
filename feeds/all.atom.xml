@@ -242,6 +242,15 @@ one book a month so I can read 12 books in a year. &lt;/p&gt;
       &lt;td&gt;June 2021&lt;/td&gt;
       &lt;td&gt;&lt;a href="https://tinylink.net/ur2hq"&gt;Amazon&lt;/a&gt;&lt;/td&gt;
     &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;th scope="row"&gt;2&lt;/th&gt;
+      &lt;td&gt;&lt;span class="caps"&gt;UNIX&lt;/span&gt;: A History and a Memoir&lt;/td&gt;
+      &lt;td&gt;Brian Kernighan&lt;/td&gt;
+      &lt;td&gt;October 2019&lt;/td&gt;
+      &lt;td&gt;August 2021&lt;/td&gt;
+      &lt;td&gt;&lt;a href="https://www.amazon.com/UNIX-History-Memoir-Brian-Kernighan-ebook/dp/B07ZQHX3R1/ref=sr_1_1?dchild=1&amp;keywords=a+history+of+unix&amp;qid=1628090075&amp;sr=8-1"&gt;Amazon&lt;/a&gt;&lt;/td&gt;
+    &lt;/tr&gt;
+  &lt;/tbody&gt;
   &lt;/tbody&gt;
 &lt;/table&gt;</content><category term="posts"></category><category term="books"></category></entry><entry><title>Remove Dash Conversion Of Smartypants Python Package</title><link href="https://www.georgexyz.com/remove-dash-conversion.html" rel="alternate"></link><published>2021-04-07T13:31:00-04:00</published><updated>2021-04-07T13:31:00-04:00</updated><author><name>George Zhang</name></author><id>tag:www.georgexyz.com,2021-04-07:/remove-dash-conversion.html</id><summary type="html">&lt;p&gt;When I am working on the last post 
 &lt;a href="https://www.georgexyz.com/git-command-reference.html"&gt;Git Command Reference&lt;/a&gt;, 
