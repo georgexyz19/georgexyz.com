@@ -2055,7 +2055,13 @@ sudo apt update
 sudo apt install filezilla -y
 &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
 
-&lt;p&gt;Reference: &lt;a href="https://superuser.com/questions/1411228/install-filezilla-under-linux-mint"&gt;Q&amp;amp;A on superuser.com&lt;/a&gt;&lt;/p&gt;</content><category term="posts"></category><category term="hardware"></category><category term="linux"></category></entry><entry><title>A Case of Linux Mint Crash</title><link href="https://www.georgexyz.com/a-case-of-linux-mint-crash.html" rel="alternate"></link><published>2020-09-21T13:54:00-04:00</published><updated>2020-09-21T13:54:00-04:00</updated><author><name>George Zhang</name></author><id>tag:www.georgexyz.com,2020-09-21:/a-case-of-linux-mint-crash.html</id><summary type="html">&lt;p&gt;Last night my main computer with Linux Mint 20 crashed and I was really worried
+&lt;p&gt;Reference: &lt;a href="https://superuser.com/questions/1411228/install-filezilla-under-linux-mint"&gt;Q&amp;amp;A on superuser.com&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;Update on 9/3/2021&lt;/strong&gt;&lt;/p&gt;
+&lt;p&gt;In Ubuntu 21.04, the fstab setting does not work.  The setting should be 
+in the following format. &lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;//&amp;lt;192.168...&amp;gt;/home/ /media/synology cifs  \
+   username=&amp;lt;name&amp;gt;,password=&amp;lt;pw&amp;gt;,uid=1000,gid=1000
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;</content><category term="posts"></category><category term="hardware"></category><category term="linux"></category></entry><entry><title>A Case of Linux Mint Crash</title><link href="https://www.georgexyz.com/a-case-of-linux-mint-crash.html" rel="alternate"></link><published>2020-09-21T13:54:00-04:00</published><updated>2020-09-21T13:54:00-04:00</updated><author><name>George Zhang</name></author><id>tag:www.georgexyz.com,2020-09-21:/a-case-of-linux-mint-crash.html</id><summary type="html">&lt;p&gt;Last night my main computer with Linux Mint 20 crashed and I was really worried
 that I might lose the files I had been working on.  After many google searches …&lt;/p&gt;</summary><content type="html">&lt;p&gt;Last night my main computer with Linux Mint 20 crashed and I was really worried
 that I might lose the files I had been working on.  After many google searches,
 I found a solution and knew why it happened.  &lt;/p&gt;

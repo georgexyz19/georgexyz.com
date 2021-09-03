@@ -179,6 +179,12 @@ sudo apt install filezilla -y
 </code></pre></div>
 
 <p>Reference: <a href="https://superuser.com/questions/1411228/install-filezilla-under-linux-mint">Q&amp;A on superuser.com</a></p>
+<p><strong>Update on 9/3/2021</strong></p>
+<p>In Ubuntu 21.04, the fstab setting does not work.  The setting should be 
+in the following format. </p>
+<div class="highlight"><pre><span></span><code>//&lt;192.168...&gt;/home/ /media/synology cifs  \
+   username=&lt;name&gt;,password=&lt;pw&gt;,uid=1000,gid=1000
+</code></pre></div>
 
 
 
