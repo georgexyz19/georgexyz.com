@@ -68,9 +68,11 @@ Those links are for people who already know the Python basics.
 
 [Python Descriptors Demystified](https://nbviewer.jupyter.org/urls/gist.github.com/ChrisBeaumont/5758381/raw/descriptor_writeup.ipynb) - Excellent doc
 
-[Python Decorators](https://blog.miguelgrinberg.com/post/the-ultimate-guide-to-python-decorators-part-i-function-registration) - Guides by Miguel Grinberg 
+[Python Decorators](https://blog.miguelgrinberg.com/post/the-ultimate-guide-to-python-decorators-part-i-function-registration) - Guides by Miguel Grinberg
 
-[Python Threading Into](https://realpython.com/intro-to-python-threading/) - Excellent realpython.com article
+[Python Concurrency Intro](https://realpython.com/python-concurrency/) - Nice intro to Python concurrency article 
+
+[Python Threading Intro](https://realpython.com/intro-to-python-threading/) - Excellent realpython.com article
 
 
 ### Other Python Resources
