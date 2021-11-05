@@ -162,12 +162,12 @@ The method makes changes to some settings and calls the <code>main</code> method
 in turn is derived from <code>click.Group</code> class defined in <code>core.py</code> file in click package. The complete
 class inheritance tree is shown below.  The <code>main</code> method in super class mentioned above is 
 defined all the way up in <code>click.BaseCommand</code> class.   </p>
-<div class="highlight"><pre><span></span><code>FlaskGroup                      cli.py Line 462
-  AppGroup                      cli.py Line 431
-    click.Group                 click/core.py Line 1331
-      click.MultiCommand             /core.py Line 1069
-        click.Command                /core.py Line 832
-          click.BaseCommand          /core.py Line 631
+<div class="highlight"><pre><span></span><code>click.BaseCommand          /core.py Line 631
+  click.Command                /core.py Line 832
+    click.MultiCommand             /core.py Line 1069
+      click.Group                 click/core.py Line 1331
+        AppGroup                      cli.py Line 431
+          FlaskGroup                      cli.py Line 462
 </code></pre></div>
 
 <p>Let&#8217;s get back to the <code>flask/cli.py</code> file and take a look at <code>AppGroup</code> class. The 

@@ -1855,12 +1855,12 @@ The method makes changes to some settings and calls the &lt;code&gt;main&lt;/cod
 in turn is derived from &lt;code&gt;click.Group&lt;/code&gt; class defined in &lt;code&gt;core.py&lt;/code&gt; file in click package. The complete
 class inheritance tree is shown below.  The &lt;code&gt;main&lt;/code&gt; method in super class mentioned above is 
 defined all the way up in &lt;code&gt;click.BaseCommand&lt;/code&gt; class.   &lt;/p&gt;
-&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;FlaskGroup                      cli.py Line 462
-  AppGroup                      cli.py Line 431
-    click.Group                 click/core.py Line 1331
-      click.MultiCommand             /core.py Line 1069
-        click.Command                /core.py Line 832
-          click.BaseCommand          /core.py Line 631
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;click.BaseCommand          /core.py Line 631
+  click.Command                /core.py Line 832
+    click.MultiCommand             /core.py Line 1069
+      click.Group                 click/core.py Line 1331
+        AppGroup                      cli.py Line 431
+          FlaskGroup                      cli.py Line 462
 &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
 
 &lt;p&gt;Let&amp;#8217;s get back to the &lt;code&gt;flask/cli.py&lt;/code&gt; file and take a look at &lt;code&gt;AppGroup&lt;/code&gt; class. The 
@@ -3424,7 +3424,8 @@ which discusses the dictionary with more details. &lt;/li&gt;
 &lt;p&gt;&lt;a href="https://www.foragoodstrftime.com/"&gt;For a Good Strftime&lt;/a&gt;&lt;/p&gt;
 &lt;p&gt;&lt;a href="https://pymotw.com/3/datetime/"&gt;Python datetime Module in PyMOTW-3&lt;/a&gt;&lt;/p&gt;
 &lt;h3&gt;Others&lt;/h3&gt;
-&lt;p&gt;&lt;a href="https://www.google.com/inputtools/try/"&gt;Google Input Tools&lt;/a&gt;&lt;/p&gt;</content><category term="posts"></category><category term="web development"></category></entry><entry><title>Two Flask Books by Miguel Grinberg</title><link href="https://www.georgexyz.com/flask-books.html" rel="alternate"></link><published>2020-04-01T23:00:00-04:00</published><updated>2020-04-01T23:00:00-04:00</updated><author><name>George Zhang</name></author><id>tag:www.georgexyz.com,2020-04-01:/flask-books.html</id><summary type="html">&lt;p&gt;This static blog site started on Github one year ago on April 1, 2009. 
+&lt;p&gt;&lt;a href="https://www.google.com/inputtools/try/"&gt;Google Input Tools&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;&lt;a href="https://www.bluesky.com/pages/downloadables"&gt;Nice wallpapers from bluesky.com&lt;/a&gt;&lt;/p&gt;</content><category term="posts"></category><category term="web development"></category></entry><entry><title>Two Flask Books by Miguel Grinberg</title><link href="https://www.georgexyz.com/flask-books.html" rel="alternate"></link><published>2020-04-01T23:00:00-04:00</published><updated>2020-04-01T23:00:00-04:00</updated><author><name>George Zhang</name></author><id>tag:www.georgexyz.com,2020-04-01:/flask-books.html</id><summary type="html">&lt;p&gt;This static blog site started on Github one year ago on April 1, 2009. 
 It has been one year, and it is going better than I originally planned. 
 The most …&lt;/p&gt;</summary><content type="html">&lt;p&gt;This static blog site started on Github one year ago on April 1, 2009. 
 It has been one year, and it is going better than I originally planned. 
