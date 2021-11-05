@@ -212,5 +212,7 @@ Those links are for people who already know the Python basics.
 
 [Google Input Tools](https://www.google.com/inputtools/try/)
 
+[Nice wallpapers from bluesky.com](https://www.bluesky.com/pages/downloadables)
+
 
 

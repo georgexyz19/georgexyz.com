@@ -120,12 +120,12 @@ class inheritance tree is shown below.  The `main` method in super class mention
 defined all the way up in `click.BaseCommand` class.   
 
 ```
-FlaskGroup                      cli.py Line 462
-  AppGroup                      cli.py Line 431
-    click.Group                 click/core.py Line 1331
-      click.MultiCommand             /core.py Line 1069
-        click.Command                /core.py Line 832
-          click.BaseCommand          /core.py Line 631
+click.BaseCommand          /core.py Line 631
+  click.Command                /core.py Line 832
+    click.MultiCommand             /core.py Line 1069
+      click.Group                 click/core.py Line 1331
+        AppGroup                      cli.py Line 431
+          FlaskGroup                      cli.py Line 462
 ```
 
 Let's get back to the `flask/cli.py` file and take a look at `AppGroup` class. The 
