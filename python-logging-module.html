@@ -1,0 +1,127 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <link rel="stylesheet" href="/theme/css/bs4min.css">
+    <link rel="shortcut icon" type="image/x-icon" href="/theme/images/favicon.ico" >
+    <link rel="icon" type="image/x-icon" href="/theme/images/favicon.ico" >
+<link rel="stylesheet" href="https://www.georgexyz.com/theme/css/friendly.css">
+<link rel="stylesheet" href="https://www.georgexyz.com/theme/css/custom.css">
+<meta name="author" content="George Zhang" />
+<meta name="keywords" content="python" />
+<meta name="description" content="This is the first post of 2022. I haven’t updated the blog site for a while. This is new year and new start, and I wish to spend more …" />
+    <title>Python Logging Module - George Zhang</title>
+  </head>
+  <body>
+    <!-- navbar -->
+    <nav class="navbar navbar-expand-md navbar-light" style="background-color: #e3f2fd;">
+      <div class="container">
+        <a class="navbar-brand" href="/">George Zhang</a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarColor01" aria-controls="navbarColor01" aria-expanded="false" aria-label="Toggle navigation">
+          <span class="navbar-toggler-icon"></span>
+        </button>
+
+        <div class="collapse navbar-collapse" id="navbarColor01">
+          <ul class="navbar-nav mr-auto">
+            <li class="nav-item">
+              <a class="nav-link " 
+                href="/articlelist.html">Articles</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link pr-3 " 
+                href="/tags.html">Tags</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link "
+                   href="/pages/projects.html">Projects</a>
+              </li>
+          </ul>
+
+          <ul class="navbar-nav">
+            <li class="nav-item">
+              <a class="nav-link " 
+                 href="/pages/about.html">About</a>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </nav>
+
+   
+
+<div class="container">
+
+  <div class="row">
+    <div class="col-lg-8 mx-auto">
+
+      <h2>Python Logging Module</h2>
+
+      <div class="text-muted mb-2">
+        <span>Posted on </span>
+        <time datetime="2022-01-07 08:49:00-05:00">
+          Friday, 01/07/2022 08:49
+        </time>
+
+        <span>with tags: </span>
+        <a href="https://www.georgexyz.com/tag/python.html">python</a>
+      </div>
+
+      <p>This is the first post of 2022.  I haven&#8217;t updated the blog site for a while. 
+This is new year and new start, and I wish to spend more time on 
+Python. </p>
+<h3>Links</h3>
+<p>The Python logging module deserves more time and I am doing a little more research 
+into this module. Here are some useful links regarding the module. </p>
+<p>Those two youtube videos by Corey Schafer are excellent introduction to the module. </p>
+<p><a href="https://youtu.be/-ARI4Cz-awo">Logging Basics - Video</a></p>
+<p><a href="https://youtu.be/jxmzY9soFXg?list=TLPQMDcwMTIwMjLZ4KpK-A_TWw">Logging Advanced - Video</a></p>
+<p>Those two videos cover the most contents in the official Python How-To article. 
+The How-to article is written by the logging module author Vinay Sajip. The official Python documentation also has a Logging Cookbook article. </p>
+<p><a href="https://docs.python.org/3/howto/logging.html">Logging How-To</a></p>
+<p><a href="https://docs.python.org/3/howto/logging-cookbook.html#logging-cookbook">Logging Cookbook</a></p>
+<p>A 2018 PyCon presentation by Mario Corchero is also very nice.  PyCon talk video is usually better than 
+other youtube teaching videos. Mario Corchero also writes an article which is published on opensource.com. </p>
+<p><a href="https://youtu.be/Pbz1fo7KlGg?list=TLPQMDcwMTIwMjLZ4KpK-A_TWw">Mario Corchero - Effortless Logging - Video</a></p>
+<p><a href="https://opensource.com/article/17/9/python-logging">A Guide to Logging in Python</a></p>
+<p>The Python logging module has three files (see below) and the documentations for 
+them are listed below. </p>
+<p><a href="https://docs.python.org/3/library/logging.html">logging — Logging facility for Python</a></p>
+<p><a href="https://docs.python.org/3/library/logging.config.html#module-logging.config">logging.config — Logging configuration</a></p>
+<p><a href="https://docs.python.org/3/library/logging.handlers.html#module-logging.handlers">logging.handlers — Logging handlers</a></p>
+<h3>Source Code</h3>
+<p>The Python version 3.9.7 is installed in my Ubuntu linux computer. The Python is 
+installed via a tool pyenv and the files are in the <code>~/.pyenv</code> directory. </p>
+<p>Here is the bash command to find out where the logging module is located. </p>
+<div class="highlight"><pre><span></span><code>$ find ~/.pyenv -type d -name &quot;logging&quot;
+/home/george/.pyenv/versions/3.9.7/lib/python3.9/logging
+</code></pre></div>
+
+<p>Here is a command to list number of lines in the logging module files. </p>
+<div class="highlight"><pre><span></span><code>$ find . -name &#39;*.py&#39; -exec wc -l &#39;{}&#39; + | sort -n
+   945 ./config.py
+  1544 ./handlers.py
+  2220 ./__init__.py
+  4709 total
+</code></pre></div>
+
+      <div class="mt-5 border-top">
+        <h3>Related Posts:</h3>
+        <ul>
+          <li><a href="https://www.georgexyz.com/python-logging.html">Python Standard Library Module Logging</a></li>
+        </ul>
+      </div>
+
+
+    </div>
+  </div>
+
+</div>
+
+   
+    <script src="https://code.jquery.com/jquery-3.4.1.slim.min.js" integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js" integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6" crossorigin="anonymous"></script>
+  </body>
+</html>

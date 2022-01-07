@@ -1,5 +1,42 @@
 <?xml version="1.0" encoding="utf-8"?>
-<feed xmlns="http://www.w3.org/2005/Atom"><title>George Zhang</title><link href="https://www.georgexyz.com/" rel="alternate"></link><link href="https://www.georgexyz.com/feeds/all.atom.xml" rel="self"></link><id>https://www.georgexyz.com/</id><updated>2021-09-03T15:07:00-04:00</updated><entry><title>A New Website</title><link href="https://www.georgexyz.com/a-new-website.html" rel="alternate"></link><published>2021-09-03T15:07:00-04:00</published><updated>2021-09-03T15:07:00-04:00</updated><author><name>George Zhang</name></author><id>tag:www.georgexyz.com,2021-09-03:/a-new-website.html</id><summary type="html">&lt;p&gt;I didn&amp;#8217;t add new post to this website for sometime. The reason is that I am busy 
+<feed xmlns="http://www.w3.org/2005/Atom"><title>George Zhang</title><link href="https://www.georgexyz.com/" rel="alternate"></link><link href="https://www.georgexyz.com/feeds/all.atom.xml" rel="self"></link><id>https://www.georgexyz.com/</id><updated>2022-01-07T08:49:00-05:00</updated><entry><title>Python Logging Module</title><link href="https://www.georgexyz.com/python-logging-module.html" rel="alternate"></link><published>2022-01-07T08:49:00-05:00</published><updated>2022-01-07T08:49:00-05:00</updated><author><name>George Zhang</name></author><id>tag:www.georgexyz.com,2022-01-07:/python-logging-module.html</id><summary type="html">&lt;p&gt;This is the first post of 2022.  I haven&amp;#8217;t updated the blog site for a while. 
+This is new year and new start, and I wish to spend more …&lt;/p&gt;</summary><content type="html">&lt;p&gt;This is the first post of 2022.  I haven&amp;#8217;t updated the blog site for a while. 
+This is new year and new start, and I wish to spend more time on 
+Python. &lt;/p&gt;
+&lt;h3&gt;Links&lt;/h3&gt;
+&lt;p&gt;The Python logging module deserves more time and I am doing a little more research 
+into this module. Here are some useful links regarding the module. &lt;/p&gt;
+&lt;p&gt;Those two youtube videos by Corey Schafer are excellent introduction to the module. &lt;/p&gt;
+&lt;p&gt;&lt;a href="https://youtu.be/-ARI4Cz-awo"&gt;Logging Basics - Video&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;&lt;a href="https://youtu.be/jxmzY9soFXg?list=TLPQMDcwMTIwMjLZ4KpK-A_TWw"&gt;Logging Advanced - Video&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;Those two videos cover the most contents in the official Python How-To article. 
+The How-to article is written by the logging module author Vinay Sajip. The official Python documentation also has a Logging Cookbook article. &lt;/p&gt;
+&lt;p&gt;&lt;a href="https://docs.python.org/3/howto/logging.html"&gt;Logging How-To&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;&lt;a href="https://docs.python.org/3/howto/logging-cookbook.html#logging-cookbook"&gt;Logging Cookbook&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;A 2018 PyCon presentation by Mario Corchero is also very nice.  PyCon talk video is usually better than 
+other youtube teaching videos. Mario Corchero also writes an article which is published on opensource.com. &lt;/p&gt;
+&lt;p&gt;&lt;a href="https://youtu.be/Pbz1fo7KlGg?list=TLPQMDcwMTIwMjLZ4KpK-A_TWw"&gt;Mario Corchero - Effortless Logging - Video&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;&lt;a href="https://opensource.com/article/17/9/python-logging"&gt;A Guide to Logging in Python&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;The Python logging module has three files (see below) and the documentations for 
+them are listed below. &lt;/p&gt;
+&lt;p&gt;&lt;a href="https://docs.python.org/3/library/logging.html"&gt;logging — Logging facility for Python&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;&lt;a href="https://docs.python.org/3/library/logging.config.html#module-logging.config"&gt;logging.config — Logging configuration&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;&lt;a href="https://docs.python.org/3/library/logging.handlers.html#module-logging.handlers"&gt;logging.handlers — Logging handlers&lt;/a&gt;&lt;/p&gt;
+&lt;h3&gt;Source Code&lt;/h3&gt;
+&lt;p&gt;The Python version 3.9.7 is installed in my Ubuntu linux computer. The Python is 
+installed via a tool pyenv and the files are in the &lt;code&gt;~/.pyenv&lt;/code&gt; directory. &lt;/p&gt;
+&lt;p&gt;Here is the bash command to find out where the logging module is located. &lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;$ find ~/.pyenv -type d -name &amp;quot;logging&amp;quot;
+/home/george/.pyenv/versions/3.9.7/lib/python3.9/logging
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+
+&lt;p&gt;Here is a command to list number of lines in the logging module files. &lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;$ find . -name &amp;#39;*.py&amp;#39; -exec wc -l &amp;#39;{}&amp;#39; + | sort -n
+   945 ./config.py
+  1544 ./handlers.py
+  2220 ./__init__.py
+  4709 total
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;</content><category term="posts"></category><category term="python"></category></entry><entry><title>A New Website</title><link href="https://www.georgexyz.com/a-new-website.html" rel="alternate"></link><published>2021-09-03T15:07:00-04:00</published><updated>2021-09-03T15:07:00-04:00</updated><author><name>George Zhang</name></author><id>tag:www.georgexyz.com,2021-09-03:/a-new-website.html</id><summary type="html">&lt;p&gt;I didn&amp;#8217;t add new post to this website for sometime. The reason is that I am busy 
 working on a new website. &lt;/p&gt;
 &lt;p&gt;&lt;a href="https://www.inkscapetutorial.org"&gt;www.inkscapetutorial.org&lt;/a&gt;&lt;/p&gt;
 &lt;p&gt;The website contains some …&lt;/p&gt;</summary><content type="html">&lt;p&gt;I didn&amp;#8217;t add new post to this website for sometime. The reason is that I am busy 
