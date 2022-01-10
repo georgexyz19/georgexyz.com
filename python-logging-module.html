@@ -78,11 +78,13 @@ into this module. Here are some useful links regarding the module. </p>
 <p><a href="https://youtu.be/-ARI4Cz-awo">Logging Basics - Video</a></p>
 <p><a href="https://youtu.be/jxmzY9soFXg?list=TLPQMDcwMTIwMjLZ4KpK-A_TWw">Logging Advanced - Video</a></p>
 <p>Those two videos cover the most contents in the official Python How-To article. 
-The How-to article is written by the logging module author Vinay Sajip. The official Python documentation also has a Logging Cookbook article. </p>
+The How-to article is written by the logging module author Vinay Sajip. 
+The official Python documentation also has a Logging Cookbook article. </p>
 <p><a href="https://docs.python.org/3/howto/logging.html">Logging How-To</a></p>
 <p><a href="https://docs.python.org/3/howto/logging-cookbook.html#logging-cookbook">Logging Cookbook</a></p>
-<p>A 2018 PyCon presentation by Mario Corchero is also very nice.  PyCon talk video is usually better than 
-other youtube teaching videos. Mario Corchero also writes an article which is published on opensource.com. </p>
+<p>A 2018 PyCon presentation by Mario Corchero is also very nice.  PyCon talk video 
+is usually better than other youtube teaching videos. Mario Corchero also writes 
+an article which is published on opensource.com. </p>
 <p><a href="https://youtu.be/Pbz1fo7KlGg?list=TLPQMDcwMTIwMjLZ4KpK-A_TWw">Mario Corchero - Effortless Logging - Video</a></p>
 <p><a href="https://opensource.com/article/17/9/python-logging">A Guide to Logging in Python</a></p>
 <p>The Python logging module has three files (see below) and the documentations for 
@@ -105,6 +107,73 @@ installed via a tool pyenv and the files are in the <code>~/.pyenv</code> direct
   2220 ./__init__.py
   4709 total
 </code></pre></div>
+
+<p>The source code is well written and well organized. The <code>__init__</code> module 
+defines most classes like LogRecord, Formatter, Filter, Filterer, Handler, 
+Manager, Logger, and RootLogger.  It also defines several global variables 
+and functions like root (variable), basicConfig, getLogger, and info.  The 
+root logger is an instance of <code>RootLogger</code> class.  The code is on line 
+1900 (version 0.5.1.2) as shown below. </p>
+<div class="highlight"><pre><span></span><code>root = RootLogger(WARNING)
+Logger.root = root
+Logger.manager = Manager(Logger.root)
+</code></pre></div>
+
+<p>The <code>Manager</code> class instance holds a dictionary of all loggers and it is 
+saved as a class variable of the class Logger. The key of the dict is the 
+name of the logger (like &#8216;<span class="caps">A.B.</span>C&#8217;) and the value is the logger itself. The 
+doc string of the <code>Manager</code> class is, </p>
+<blockquote>
+<p>There is [under normal circumstances] just one Manager instance, which
+holds the hierarchy of loggers.</p>
+</blockquote>
+<p>If we have those two lines of code in a module, the logger <code>A.B</code> will become 
+parent of <code>A.B.C</code>.  If we don&#8217;t have a logger &#8216;A&#8217;, the class will create 
+a <code>PlaceHolder</code> instance. The purpose of the hierarchy is that if we 
+do not attach a handler for <code>abc</code> logger, it will use the handler of 
+its parent to handle a LogRecord instance.  The <code>root</code> logger sits on 
+the top of the hierarchy.  </p>
+<div class="highlight"><pre><span></span><code>ab = getLogger(&#39;A.B&#39;)
+abc = getLogger(&#39;A.B.C&#39;)
+</code></pre></div>
+
+<p>The <code>getLogger</code> function in the <code>__init__</code> module looks like this, </p>
+<div class="highlight"><pre><span></span><code>def getLogger(name=None):
+    &quot;&quot;&quot;
+    Return a logger with the specified name, creating it if necessary.
+
+    If no name is specified, return the root logger.
+    &quot;&quot;&quot;
+    if not name or isinstance(name, str) and name == root.name:
+        return root
+    return Logger.manager.getLogger(name)
+</code></pre></div>
+
+<p>The <code>getLogger(self, name)</code> method in the <code>Manager</code> class is essentially like 
+the code below.  If the logger is in the dict, it returns the logger. 
+It it is not, the method creates a Logger instance and saves it in the dict.  </p>
+<div class="highlight"><pre><span></span><code>loggerDict = {}
+if name in self.loggerDict:
+    rv = self.loggerDict[name]
+    ...
+else:
+    rv = Logger(name)
+    ...
+    self.loggerDict[name] = rv
+    ...
+return rv
+</code></pre></div>
+
+<p>A logger method like <code>warning</code> will call the <code>_log</code> method in the Logger class. 
+The <code>_log</code> method then calls <code>makeRecord</code> and <code>handle</code> method.  The 
+<code>makeRecord</code> method creates an instance of <code>LogRecord</code> class, and the <code>handle</code> 
+method calls <code>callHandlers</code> method, which &#8220;loops through all handlers for 
+this logger and its parents in the logger hierarchy&#8221;. </p>
+<p>There are lots of details hiding in those classes and functions. The above 
+description gives you a general idea of the logging module. </p>
+<p>The <code>config.py</code> file has configuration related classes and functions, and 
+the <code>handlers.py</code> file has additional handlers.  The <code>__init__</code> module 
+defines two common handlers <code>StreamHandler</code> and <code>FileHandler</code>. </p>
 
       <div class="mt-5 border-top">
         <h3>Related Posts:</h3>

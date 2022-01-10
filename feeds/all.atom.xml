@@ -10,11 +10,13 @@ into this module. Here are some useful links regarding the module. &lt;/p&gt;
 &lt;p&gt;&lt;a href="https://youtu.be/-ARI4Cz-awo"&gt;Logging Basics - Video&lt;/a&gt;&lt;/p&gt;
 &lt;p&gt;&lt;a href="https://youtu.be/jxmzY9soFXg?list=TLPQMDcwMTIwMjLZ4KpK-A_TWw"&gt;Logging Advanced - Video&lt;/a&gt;&lt;/p&gt;
 &lt;p&gt;Those two videos cover the most contents in the official Python How-To article. 
-The How-to article is written by the logging module author Vinay Sajip. The official Python documentation also has a Logging Cookbook article. &lt;/p&gt;
+The How-to article is written by the logging module author Vinay Sajip. 
+The official Python documentation also has a Logging Cookbook article. &lt;/p&gt;
 &lt;p&gt;&lt;a href="https://docs.python.org/3/howto/logging.html"&gt;Logging How-To&lt;/a&gt;&lt;/p&gt;
 &lt;p&gt;&lt;a href="https://docs.python.org/3/howto/logging-cookbook.html#logging-cookbook"&gt;Logging Cookbook&lt;/a&gt;&lt;/p&gt;
-&lt;p&gt;A 2018 PyCon presentation by Mario Corchero is also very nice.  PyCon talk video is usually better than 
-other youtube teaching videos. Mario Corchero also writes an article which is published on opensource.com. &lt;/p&gt;
+&lt;p&gt;A 2018 PyCon presentation by Mario Corchero is also very nice.  PyCon talk video 
+is usually better than other youtube teaching videos. Mario Corchero also writes 
+an article which is published on opensource.com. &lt;/p&gt;
 &lt;p&gt;&lt;a href="https://youtu.be/Pbz1fo7KlGg?list=TLPQMDcwMTIwMjLZ4KpK-A_TWw"&gt;Mario Corchero - Effortless Logging - Video&lt;/a&gt;&lt;/p&gt;
 &lt;p&gt;&lt;a href="https://opensource.com/article/17/9/python-logging"&gt;A Guide to Logging in Python&lt;/a&gt;&lt;/p&gt;
 &lt;p&gt;The Python logging module has three files (see below) and the documentations for 
@@ -36,7 +38,74 @@ installed via a tool pyenv and the files are in the &lt;code&gt;~/.pyenv&lt;/cod
   1544 ./handlers.py
   2220 ./__init__.py
   4709 total
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;</content><category term="posts"></category><category term="python"></category></entry><entry><title>A New Website</title><link href="https://www.georgexyz.com/a-new-website.html" rel="alternate"></link><published>2021-09-03T15:07:00-04:00</published><updated>2021-09-03T15:07:00-04:00</updated><author><name>George Zhang</name></author><id>tag:www.georgexyz.com,2021-09-03:/a-new-website.html</id><summary type="html">&lt;p&gt;I didn&amp;#8217;t add new post to this website for sometime. The reason is that I am busy 
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+
+&lt;p&gt;The source code is well written and well organized. The &lt;code&gt;__init__&lt;/code&gt; module 
+defines most classes like LogRecord, Formatter, Filter, Filterer, Handler, 
+Manager, Logger, and RootLogger.  It also defines several global variables 
+and functions like root (variable), basicConfig, getLogger, and info.  The 
+root logger is an instance of &lt;code&gt;RootLogger&lt;/code&gt; class.  The code is on line 
+1900 (version 0.5.1.2) as shown below. &lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;root = RootLogger(WARNING)
+Logger.root = root
+Logger.manager = Manager(Logger.root)
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+
+&lt;p&gt;The &lt;code&gt;Manager&lt;/code&gt; class instance holds a dictionary of all loggers and it is 
+saved as a class variable of the class Logger. The key of the dict is the 
+name of the logger (like &amp;#8216;&lt;span class="caps"&gt;A.B.&lt;/span&gt;C&amp;#8217;) and the value is the logger itself. The 
+doc string of the &lt;code&gt;Manager&lt;/code&gt; class is, &lt;/p&gt;
+&lt;blockquote&gt;
+&lt;p&gt;There is [under normal circumstances] just one Manager instance, which
+holds the hierarchy of loggers.&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;p&gt;If we have those two lines of code in a module, the logger &lt;code&gt;A.B&lt;/code&gt; will become 
+parent of &lt;code&gt;A.B.C&lt;/code&gt;.  If we don&amp;#8217;t have a logger &amp;#8216;A&amp;#8217;, the class will create 
+a &lt;code&gt;PlaceHolder&lt;/code&gt; instance. The purpose of the hierarchy is that if we 
+do not attach a handler for &lt;code&gt;abc&lt;/code&gt; logger, it will use the handler of 
+its parent to handle a LogRecord instance.  The &lt;code&gt;root&lt;/code&gt; logger sits on 
+the top of the hierarchy.  &lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;ab = getLogger(&amp;#39;A.B&amp;#39;)
+abc = getLogger(&amp;#39;A.B.C&amp;#39;)
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+
+&lt;p&gt;The &lt;code&gt;getLogger&lt;/code&gt; function in the &lt;code&gt;__init__&lt;/code&gt; module looks like this, &lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;def getLogger(name=None):
+    &amp;quot;&amp;quot;&amp;quot;
+    Return a logger with the specified name, creating it if necessary.
+
+    If no name is specified, return the root logger.
+    &amp;quot;&amp;quot;&amp;quot;
+    if not name or isinstance(name, str) and name == root.name:
+        return root
+    return Logger.manager.getLogger(name)
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+
+&lt;p&gt;The &lt;code&gt;getLogger(self, name)&lt;/code&gt; method in the &lt;code&gt;Manager&lt;/code&gt; class is essentially like 
+the code below.  If the logger is in the dict, it returns the logger. 
+It it is not, the method creates a Logger instance and saves it in the dict.  &lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;loggerDict = {}
+if name in self.loggerDict:
+    rv = self.loggerDict[name]
+    ...
+else:
+    rv = Logger(name)
+    ...
+    self.loggerDict[name] = rv
+    ...
+return rv
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+
+&lt;p&gt;A logger method like &lt;code&gt;warning&lt;/code&gt; will call the &lt;code&gt;_log&lt;/code&gt; method in the Logger class. 
+The &lt;code&gt;_log&lt;/code&gt; method then calls &lt;code&gt;makeRecord&lt;/code&gt; and &lt;code&gt;handle&lt;/code&gt; method.  The 
+&lt;code&gt;makeRecord&lt;/code&gt; method creates an instance of &lt;code&gt;LogRecord&lt;/code&gt; class, and the &lt;code&gt;handle&lt;/code&gt; 
+method calls &lt;code&gt;callHandlers&lt;/code&gt; method, which &amp;#8220;loops through all handlers for 
+this logger and its parents in the logger hierarchy&amp;#8221;. &lt;/p&gt;
+&lt;p&gt;There are lots of details hiding in those classes and functions. The above 
+description gives you a general idea of the logging module. &lt;/p&gt;
+&lt;p&gt;The &lt;code&gt;config.py&lt;/code&gt; file has configuration related classes and functions, and 
+the &lt;code&gt;handlers.py&lt;/code&gt; file has additional handlers.  The &lt;code&gt;__init__&lt;/code&gt; module 
+defines two common handlers &lt;code&gt;StreamHandler&lt;/code&gt; and &lt;code&gt;FileHandler&lt;/code&gt;. &lt;/p&gt;</content><category term="posts"></category><category term="python"></category></entry><entry><title>A New Website</title><link href="https://www.georgexyz.com/a-new-website.html" rel="alternate"></link><published>2021-09-03T15:07:00-04:00</published><updated>2021-09-03T15:07:00-04:00</updated><author><name>George Zhang</name></author><id>tag:www.georgexyz.com,2021-09-03:/a-new-website.html</id><summary type="html">&lt;p&gt;I didn&amp;#8217;t add new post to this website for sometime. The reason is that I am busy 
 working on a new website. &lt;/p&gt;
 &lt;p&gt;&lt;a href="https://www.inkscapetutorial.org"&gt;www.inkscapetutorial.org&lt;/a&gt;&lt;/p&gt;
 &lt;p&gt;The website contains some …&lt;/p&gt;</summary><content type="html">&lt;p&gt;I didn&amp;#8217;t add new post to this website for sometime. The reason is that I am busy 
