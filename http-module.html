@@ -1,0 +1,276 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <link rel="stylesheet" href="/theme/css/bs4min.css">
+    <link rel="shortcut icon" type="image/x-icon" href="/theme/images/favicon.ico" >
+    <link rel="icon" type="image/x-icon" href="/theme/images/favicon.ico" >
+<link rel="stylesheet" href="https://www.georgexyz.com/theme/css/friendly.css">
+<link rel="stylesheet" href="https://www.georgexyz.com/theme/css/custom.css">
+<meta name="author" content="George Zhang" />
+<meta name="keywords" content="python" />
+<meta name="description" content="Python http module is “a package that collects several modules for working with the HyperText Transfer Protocol”. The module is a middle level module that sits between low level socket …" />
+    <title>Http Module - George Zhang</title>
+  </head>
+  <body>
+    <!-- navbar -->
+    <nav class="navbar navbar-expand-md navbar-light" style="background-color: #e3f2fd;">
+      <div class="container">
+        <a class="navbar-brand" href="/">George Zhang</a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarColor01" aria-controls="navbarColor01" aria-expanded="false" aria-label="Toggle navigation">
+          <span class="navbar-toggler-icon"></span>
+        </button>
+
+        <div class="collapse navbar-collapse" id="navbarColor01">
+          <ul class="navbar-nav mr-auto">
+            <li class="nav-item">
+              <a class="nav-link " 
+                href="/articlelist.html">Articles</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link pr-3 " 
+                href="/tags.html">Tags</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link "
+                   href="/pages/projects.html">Projects</a>
+              </li>
+          </ul>
+
+          <ul class="navbar-nav">
+            <li class="nav-item">
+              <a class="nav-link " 
+                 href="/pages/about.html">About</a>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </nav>
+
+   
+
+<div class="container">
+
+  <div class="row">
+    <div class="col-lg-8 mx-auto">
+
+      <h2>Http Module</h2>
+
+      <div class="text-muted mb-2">
+        <span>Posted on </span>
+        <time datetime="2022-01-31 16:00:00-05:00">
+          Monday, 01/31/2022 16:00
+        </time>
+
+        <span>with tags: </span>
+        <a href="https://www.georgexyz.com/tag/python.html">python</a>
+      </div>
+
+      <p>Python <code>http</code> module is &#8220;a package that collects several modules for working with 
+the HyperText Transfer Protocol&#8221;.  The module is a middle level module that sits 
+between low level <code>socket</code> and high level <code>urllib</code> modules. It is relatively simpler 
+than the other two modules.  </p>
+<p>I can&#8217;t find many documentation for the http module.  The standard library 
+has one page for each file in this package. The <em>Python 3 Module of the Week</em> 
+site has two pages for http.server and http.cookies. </p>
+<p><a href="https://docs.python.org/3/library/http.html"><span class="caps">HTTP</span> Modules - Python Docs</a></p>
+<p><a href="https://pymotw.com/3/http.server/index.html">http.server on Pymotw</a></p>
+<p><a href="https://pymotw.com/3/http.cookies/index.html">http.cookies on Pymotw</a></p>
+<h3>Source Code</h3>
+<p>The files are saved in this directory. </p>
+<div class="highlight"><pre><span></span><code>~/.pyenv/versions/3.9.7/lib/python3.9/http
+</code></pre></div>
+
+<p>The module has five files and the statistics of the files are shown below.</p>
+<div class="highlight"><pre><span></span><code>$ find . -maxdepth 1 -name &#39;*.py&#39; -exec wc -l &#39;{}&#39; + | sort -n
+   149 ./__init__.py
+   612 ./cookies.py
+  1295 ./server.py
+  1519 ./client.py
+  2113 ./cookiejar.py
+  5688 total
+</code></pre></div>
+
+<p>Those modules appear to have different authors so they are loosely related. 
+The <code>__init__.py</code> module defines an <code>HTTPStatus</code> class which &#8220;defines 
+a number of <span class="caps">HTTP</span> status codes, reason phrases and long descriptions&#8221;.  </p>
+<h3>Http Server Module</h3>
+<p>The http.server can be invoked directly on the command line.  We can setup 
+a simple http server via this command serving the current directory. </p>
+<div class="highlight"><pre><span></span><code>python -m http.server 8080
+</code></pre></div>
+
+<p>In the web browser we can access a static website by typing the address 
+<code>http://localhost:8080/</code>.  The http server will start serving the 
+<code>index.html</code> file of a website.</p>
+<p>The command will invoke the <code>server.py</code> script and start a server.  The 
+code after the <code>... = '__main__':</code> line starts running.  The code looks 
+like the concept shown below. </p>
+<div class="highlight"><pre><span></span><code># concept code
+
+addr = (host, port)
+with DualStackServer(addr, SimpleHTTPRequestHandler) as httpd:
+    try:
+        httpd.serve_forever()
+    except KeyboardInterrupt:
+        print(&#39;...&#39;)
+        sys.exit(0)
+</code></pre></div>
+
+<p>The <code>DualStackSever</code> is derived from <code>ThreadingHTTPServer</code>, which is 
+in turn derived from HTTPServer.  The whole hierarchy of the classes is 
+shown below. </p>
+<div class="highlight"><pre><span></span><code>socketserver.BaseServer
+    socketserver.TCPServer
+        HTTPServer
+            ThreadingHTTPServer
+                DualStackServer
+
+socketserver.ThreadingMixIn
+    ThreadingHTTPServer
+</code></pre></div>
+
+<p>The <code>http.server</code> module is closer to the <code>socketserver</code> module than 
+other modules in the <code>http</code> package. </p>
+<p>The <code>serve_forever</code> command can be thought as the entry point of the 
+module. It is defined in the <code>BaseServer</code> class of the <code>socketserver</code> 
+module. The code is shown below. </p>
+<div class="highlight"><pre><span></span><code># serve_forever method in BaseServer
+
+def serve_forever(self, poll_interval=0.5):
+    &quot;&quot;&quot;Handle one request at a time until shutdown.
+
+    Polls for shutdown every poll_interval seconds. Ignores
+    self.timeout. If you need to do periodic tasks, do them in
+    another thread.
+    &quot;&quot;&quot;
+    self.__is_shut_down.clear()
+    try:
+        # XXX: Consider using another file descriptor or connecting to the
+        # socket to wake this up instead of polling. Polling reduces our
+        # responsiveness to a shutdown request and wastes cpu at all other
+        # times.
+        with _ServerSelector() as selector:
+            selector.register(self, selectors.EVENT_READ)
+
+            while not self.__shutdown_request:
+                ready = selector.select(poll_interval)
+                # bpo-35017: shutdown() called during select(), 
+                #     exit immediately.
+                if self.__shutdown_request:
+                    break
+                if ready:
+                    self._handle_request_noblock()
+
+                self.service_actions()
+    finally:
+        self.__shutdown_request = False
+        self.__is_shut_down.set()
+</code></pre></div>
+
+<p>The <code>serve_forever</code> method uses the selector module. The <code>register</code> method is 
+called only once here, so the selector only have one server socket registered. 
+The selector does not include client sockets. I haven&#8217;t seen code like this in 
+other places. The method then calls <code>_handle_request_noblock</code>, which in turn 
+calls other methods in <code>BaseServer</code> and <code>TCPServer</code> classes. The <code>self.socket</code> 
+shown below is a network socket initialized in <code>__init__</code> method of <code>TCPServer</code> class. 
+The <code>request</code> variable is normally named <code>conn</code> or <code>connection</code> which is a 
+client socket. </p>
+<div class="highlight"><pre><span></span><code># concept code in _handle_request_noblock, simplified
+
+request, client_address = self.socket.accept() 
+self.RequestHandleClass(request, client_address, self)
+request.close()
+</code></pre></div>
+
+<p>The <code>RequestHandler</code> class also has a hierarchy. Two of the classes 
+are defined in the <code>socketserver</code> module and other two are defined in 
+the <code>http.server</code> module. Those four classes are well organized. </p>
+<div class="highlight"><pre><span></span><code>socketserver.BaseRequestHandler
+    socketserver.StreamRequestHandler
+        BaseHTTPRequestHandler
+            SimpleHTTPRequestHandler
+</code></pre></div>
+
+<p>Here is the code in the <code>__init__</code> method of <code>BaseRequestHandler</code> class. </p>
+<div class="highlight"><pre><span></span><code>    def __init__(self, request, client_address, server):
+        self.request = request
+        self.client_address = client_address
+        self.server = server
+        self.setup()
+        try:
+            self.handle()
+        finally:
+            self.finish()
+</code></pre></div>
+
+<p>The <code>setup</code> method is defined in the <code>StreamRequestHandler</code> class. It 
+sets up two file streams <code>rfile</code> and <code>wfile</code> on the client socket, and 
+derived classes can use those two streams to accept request from client 
+and write response to the client. </p>
+<p>The <code>rfile</code> is the return value of the <code>makefile</code> call on the socket. 
+The <code>wfile</code> is a class <code>_SocketWrite</code> object which derives from 
+<code>BufferedIOBase</code> class, and it has a method <code>write</code> which calls 
+<code>sendall</code> method of the socket. So those classes are all built on 
+top of the <code>socket</code> module. </p>
+<p>The <code>handle</code> method in <code>BaseHTTPRequestHandler</code> class calls the 
+<code>handle_one_request</code> method. It in turn calls <code>parse_request</code> 
+method and <code>method</code>.  The <code>parse_request</code> will parse the first 
+line of the request (e.g., &#8220;<span class="caps">GET</span> / <span class="caps">HTTP</span>/1.1&#8221;) and the <span class="caps">HTTP</span> headers. 
+The <code>method</code> refers to one of the methods defined in <code>SimpleHTTPRequestHandler</code> 
+class such as <code>do_GET</code> and <code>do_HEAD</code>.  The <code>do...</code> method will 
+write to the <code>wfile</code> stream and send the response back. 
+The <code>SimpleHTTPRequestHandler</code> does not define a <code>do_POST</code> method, 
+so it can&#8217;t handle any <span class="caps">POST</span> method. </p>
+<p>That&#8217;s basically how the <code>http.server</code> handles a request. </p>
+<h3>Http Client Module</h3>
+<p>The <code>http.client</code> module &#8220;defines classes implement the client side of the 
+<span class="caps">HTTP</span> and <span class="caps">HTTPS</span> protocols&#8221;.  The documentation says that &#8220;it is normally not 
+used directly&#8221; and implies that <code>urllib</code> is recommended. Here is an example 
+on how to use the module. </p>
+<div class="highlight"><pre><span></span><code>conn = http.client.HTTPSConnection(&#39;www.python.org&#39;)
+conn.request(&#39;GET&#39;, &#39;/&#39;)
+resp = conn.getresponse()
+print(resp.status, resp.reason)
+data = resp.read()  # return content in a byte string
+</code></pre></div>
+
+<p>If you already read the <code>http.server</code> module code, the source code in this 
+module is not difficult to understand. The <code>request</code> method will call the 
+<code>_send_request</code> method of the <code>HTTPConnection</code> class, which in turn calls
+<code>putrequest</code>, <code>putheader</code>, and <code>endheaders</code> methods.  The <code>send</code> method 
+of the class calls <code>sendall</code> method of the socket to actually transfer 
+the request. </p>
+<p>The <code>getresponse</code> method creates an instance of the <code>HTTPResponse</code> class, 
+calls the <code>begin</code> method, and returns the instance. Then we can call 
+the <code>read</code> method on the instance to get the actual <span class="caps">HTTP</span> response. </p>
+<h3>Http Cookies and Cookiejar</h3>
+<p>The http <code>cookies</code> module is relatively independent from 
+other modules.  The <code>cookies.py</code> module only imports three standard modules, 
+re, string, and types.  It defines <code>Morsel</code>, <code>BaseCookie</code>, and <code>SimpleCookie</code> 
+classes. The examples in the Python documentation do not show how to 
+use this module with other server or client module. </p>
+<p>The http <code>cookiejar</code> module defines a <code>Cookie</code> class and <code>CookieJar</code> and 
+<code>FileCookieJar</code> classes. This <code>Cookie</code> class is not related to the <code>SimpleCookie</code> 
+class. The examples on Python documentation shows how to use this module 
+with the <code>urllib</code> module. </p>
+<h3>Conclusion</h3>
+<p>I spent quite some time reading the <code>http</code> module source code and trying to 
+understand how they work. The code is a good resource for studying Python 
+network related topics. </p>
+
+
+
+    </div>
+  </div>
+
+</div>
+
+   
+    <script src="https://code.jquery.com/jquery-3.4.1.slim.min.js" integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js" integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6" crossorigin="anonymous"></script>
+  </body>
+</html>

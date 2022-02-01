@@ -1,5 +1,198 @@
 <?xml version="1.0" encoding="utf-8"?>
-<feed xmlns="http://www.w3.org/2005/Atom"><title>George Zhang</title><link href="https://www.georgexyz.com/" rel="alternate"></link><link href="https://www.georgexyz.com/feeds/all.atom.xml" rel="self"></link><id>https://www.georgexyz.com/</id><updated>2022-01-22T09:28:00-05:00</updated><entry><title>Unittest Module</title><link href="https://www.georgexyz.com/unittest-module.html" rel="alternate"></link><published>2022-01-22T09:28:00-05:00</published><updated>2022-01-22T09:28:00-05:00</updated><author><name>George Zhang</name></author><id>tag:www.georgexyz.com,2022-01-22:/unittest-module.html</id><summary type="html">&lt;p&gt;Unit test is one of the Python techniques I want to learn for quite some time. 
+<feed xmlns="http://www.w3.org/2005/Atom"><title>George Zhang</title><link href="https://www.georgexyz.com/" rel="alternate"></link><link href="https://www.georgexyz.com/feeds/all.atom.xml" rel="self"></link><id>https://www.georgexyz.com/</id><updated>2022-01-31T16:00:00-05:00</updated><entry><title>Http Module</title><link href="https://www.georgexyz.com/http-module.html" rel="alternate"></link><published>2022-01-31T16:00:00-05:00</published><updated>2022-01-31T16:00:00-05:00</updated><author><name>George Zhang</name></author><id>tag:www.georgexyz.com,2022-01-31:/http-module.html</id><summary type="html">&lt;p&gt;Python &lt;code&gt;http&lt;/code&gt; module is &amp;#8220;a package that collects several modules for working with 
+the HyperText Transfer Protocol&amp;#8221;.  The module is a middle level module that sits 
+between low level &lt;code&gt;socket …&lt;/code&gt;&lt;/p&gt;</summary><content type="html">&lt;p&gt;Python &lt;code&gt;http&lt;/code&gt; module is &amp;#8220;a package that collects several modules for working with 
+the HyperText Transfer Protocol&amp;#8221;.  The module is a middle level module that sits 
+between low level &lt;code&gt;socket&lt;/code&gt; and high level &lt;code&gt;urllib&lt;/code&gt; modules. It is relatively simpler 
+than the other two modules.  &lt;/p&gt;
+&lt;p&gt;I can&amp;#8217;t find many documentation for the http module.  The standard library 
+has one page for each file in this package. The &lt;em&gt;Python 3 Module of the Week&lt;/em&gt; 
+site has two pages for http.server and http.cookies. &lt;/p&gt;
+&lt;p&gt;&lt;a href="https://docs.python.org/3/library/http.html"&gt;&lt;span class="caps"&gt;HTTP&lt;/span&gt; Modules - Python Docs&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;&lt;a href="https://pymotw.com/3/http.server/index.html"&gt;http.server on Pymotw&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;&lt;a href="https://pymotw.com/3/http.cookies/index.html"&gt;http.cookies on Pymotw&lt;/a&gt;&lt;/p&gt;
+&lt;h3&gt;Source Code&lt;/h3&gt;
+&lt;p&gt;The files are saved in this directory. &lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;~/.pyenv/versions/3.9.7/lib/python3.9/http
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+
+&lt;p&gt;The module has five files and the statistics of the files are shown below.&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;$ find . -maxdepth 1 -name &amp;#39;*.py&amp;#39; -exec wc -l &amp;#39;{}&amp;#39; + | sort -n
+   149 ./__init__.py
+   612 ./cookies.py
+  1295 ./server.py
+  1519 ./client.py
+  2113 ./cookiejar.py
+  5688 total
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+
+&lt;p&gt;Those modules appear to have different authors so they are loosely related. 
+The &lt;code&gt;__init__.py&lt;/code&gt; module defines an &lt;code&gt;HTTPStatus&lt;/code&gt; class which &amp;#8220;defines 
+a number of &lt;span class="caps"&gt;HTTP&lt;/span&gt; status codes, reason phrases and long descriptions&amp;#8221;.  &lt;/p&gt;
+&lt;h3&gt;Http Server Module&lt;/h3&gt;
+&lt;p&gt;The http.server can be invoked directly on the command line.  We can setup 
+a simple http server via this command serving the current directory. &lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;python -m http.server 8080
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+
+&lt;p&gt;In the web browser we can access a static website by typing the address 
+&lt;code&gt;http://localhost:8080/&lt;/code&gt;.  The http server will start serving the 
+&lt;code&gt;index.html&lt;/code&gt; file of a website.&lt;/p&gt;
+&lt;p&gt;The command will invoke the &lt;code&gt;server.py&lt;/code&gt; script and start a server.  The 
+code after the &lt;code&gt;... = '__main__':&lt;/code&gt; line starts running.  The code looks 
+like the concept shown below. &lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;# concept code
+
+addr = (host, port)
+with DualStackServer(addr, SimpleHTTPRequestHandler) as httpd:
+    try:
+        httpd.serve_forever()
+    except KeyboardInterrupt:
+        print(&amp;#39;...&amp;#39;)
+        sys.exit(0)
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+
+&lt;p&gt;The &lt;code&gt;DualStackSever&lt;/code&gt; is derived from &lt;code&gt;ThreadingHTTPServer&lt;/code&gt;, which is 
+in turn derived from HTTPServer.  The whole hierarchy of the classes is 
+shown below. &lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;socketserver.BaseServer
+    socketserver.TCPServer
+        HTTPServer
+            ThreadingHTTPServer
+                DualStackServer
+
+socketserver.ThreadingMixIn
+    ThreadingHTTPServer
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+
+&lt;p&gt;The &lt;code&gt;http.server&lt;/code&gt; module is closer to the &lt;code&gt;socketserver&lt;/code&gt; module than 
+other modules in the &lt;code&gt;http&lt;/code&gt; package. &lt;/p&gt;
+&lt;p&gt;The &lt;code&gt;serve_forever&lt;/code&gt; command can be thought as the entry point of the 
+module. It is defined in the &lt;code&gt;BaseServer&lt;/code&gt; class of the &lt;code&gt;socketserver&lt;/code&gt; 
+module. The code is shown below. &lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;# serve_forever method in BaseServer
+
+def serve_forever(self, poll_interval=0.5):
+    &amp;quot;&amp;quot;&amp;quot;Handle one request at a time until shutdown.
+
+    Polls for shutdown every poll_interval seconds. Ignores
+    self.timeout. If you need to do periodic tasks, do them in
+    another thread.
+    &amp;quot;&amp;quot;&amp;quot;
+    self.__is_shut_down.clear()
+    try:
+        # XXX: Consider using another file descriptor or connecting to the
+        # socket to wake this up instead of polling. Polling reduces our
+        # responsiveness to a shutdown request and wastes cpu at all other
+        # times.
+        with _ServerSelector() as selector:
+            selector.register(self, selectors.EVENT_READ)
+
+            while not self.__shutdown_request:
+                ready = selector.select(poll_interval)
+                # bpo-35017: shutdown() called during select(), 
+                #     exit immediately.
+                if self.__shutdown_request:
+                    break
+                if ready:
+                    self._handle_request_noblock()
+
+                self.service_actions()
+    finally:
+        self.__shutdown_request = False
+        self.__is_shut_down.set()
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+
+&lt;p&gt;The &lt;code&gt;serve_forever&lt;/code&gt; method uses the selector module. The &lt;code&gt;register&lt;/code&gt; method is 
+called only once here, so the selector only have one server socket registered. 
+The selector does not include client sockets. I haven&amp;#8217;t seen code like this in 
+other places. The method then calls &lt;code&gt;_handle_request_noblock&lt;/code&gt;, which in turn 
+calls other methods in &lt;code&gt;BaseServer&lt;/code&gt; and &lt;code&gt;TCPServer&lt;/code&gt; classes. The &lt;code&gt;self.socket&lt;/code&gt; 
+shown below is a network socket initialized in &lt;code&gt;__init__&lt;/code&gt; method of &lt;code&gt;TCPServer&lt;/code&gt; class. 
+The &lt;code&gt;request&lt;/code&gt; variable is normally named &lt;code&gt;conn&lt;/code&gt; or &lt;code&gt;connection&lt;/code&gt; which is a 
+client socket. &lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;# concept code in _handle_request_noblock, simplified
+
+request, client_address = self.socket.accept() 
+self.RequestHandleClass(request, client_address, self)
+request.close()
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+
+&lt;p&gt;The &lt;code&gt;RequestHandler&lt;/code&gt; class also has a hierarchy. Two of the classes 
+are defined in the &lt;code&gt;socketserver&lt;/code&gt; module and other two are defined in 
+the &lt;code&gt;http.server&lt;/code&gt; module. Those four classes are well organized. &lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;socketserver.BaseRequestHandler
+    socketserver.StreamRequestHandler
+        BaseHTTPRequestHandler
+            SimpleHTTPRequestHandler
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+
+&lt;p&gt;Here is the code in the &lt;code&gt;__init__&lt;/code&gt; method of &lt;code&gt;BaseRequestHandler&lt;/code&gt; class. &lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;    def __init__(self, request, client_address, server):
+        self.request = request
+        self.client_address = client_address
+        self.server = server
+        self.setup()
+        try:
+            self.handle()
+        finally:
+            self.finish()
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+
+&lt;p&gt;The &lt;code&gt;setup&lt;/code&gt; method is defined in the &lt;code&gt;StreamRequestHandler&lt;/code&gt; class. It 
+sets up two file streams &lt;code&gt;rfile&lt;/code&gt; and &lt;code&gt;wfile&lt;/code&gt; on the client socket, and 
+derived classes can use those two streams to accept request from client 
+and write response to the client. &lt;/p&gt;
+&lt;p&gt;The &lt;code&gt;rfile&lt;/code&gt; is the return value of the &lt;code&gt;makefile&lt;/code&gt; call on the socket. 
+The &lt;code&gt;wfile&lt;/code&gt; is a class &lt;code&gt;_SocketWrite&lt;/code&gt; object which derives from 
+&lt;code&gt;BufferedIOBase&lt;/code&gt; class, and it has a method &lt;code&gt;write&lt;/code&gt; which calls 
+&lt;code&gt;sendall&lt;/code&gt; method of the socket. So those classes are all built on 
+top of the &lt;code&gt;socket&lt;/code&gt; module. &lt;/p&gt;
+&lt;p&gt;The &lt;code&gt;handle&lt;/code&gt; method in &lt;code&gt;BaseHTTPRequestHandler&lt;/code&gt; class calls the 
+&lt;code&gt;handle_one_request&lt;/code&gt; method. It in turn calls &lt;code&gt;parse_request&lt;/code&gt; 
+method and &lt;code&gt;method&lt;/code&gt;.  The &lt;code&gt;parse_request&lt;/code&gt; will parse the first 
+line of the request (e.g., &amp;#8220;&lt;span class="caps"&gt;GET&lt;/span&gt; / &lt;span class="caps"&gt;HTTP&lt;/span&gt;/1.1&amp;#8221;) and the &lt;span class="caps"&gt;HTTP&lt;/span&gt; headers. 
+The &lt;code&gt;method&lt;/code&gt; refers to one of the methods defined in &lt;code&gt;SimpleHTTPRequestHandler&lt;/code&gt; 
+class such as &lt;code&gt;do_GET&lt;/code&gt; and &lt;code&gt;do_HEAD&lt;/code&gt;.  The &lt;code&gt;do...&lt;/code&gt; method will 
+write to the &lt;code&gt;wfile&lt;/code&gt; stream and send the response back. 
+The &lt;code&gt;SimpleHTTPRequestHandler&lt;/code&gt; does not define a &lt;code&gt;do_POST&lt;/code&gt; method, 
+so it can&amp;#8217;t handle any &lt;span class="caps"&gt;POST&lt;/span&gt; method. &lt;/p&gt;
+&lt;p&gt;That&amp;#8217;s basically how the &lt;code&gt;http.server&lt;/code&gt; handles a request. &lt;/p&gt;
+&lt;h3&gt;Http Client Module&lt;/h3&gt;
+&lt;p&gt;The &lt;code&gt;http.client&lt;/code&gt; module &amp;#8220;defines classes implement the client side of the 
+&lt;span class="caps"&gt;HTTP&lt;/span&gt; and &lt;span class="caps"&gt;HTTPS&lt;/span&gt; protocols&amp;#8221;.  The documentation says that &amp;#8220;it is normally not 
+used directly&amp;#8221; and implies that &lt;code&gt;urllib&lt;/code&gt; is recommended. Here is an example 
+on how to use the module. &lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;conn = http.client.HTTPSConnection(&amp;#39;www.python.org&amp;#39;)
+conn.request(&amp;#39;GET&amp;#39;, &amp;#39;/&amp;#39;)
+resp = conn.getresponse()
+print(resp.status, resp.reason)
+data = resp.read()  # return content in a byte string
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+
+&lt;p&gt;If you already read the &lt;code&gt;http.server&lt;/code&gt; module code, the source code in this 
+module is not difficult to understand. The &lt;code&gt;request&lt;/code&gt; method will call the 
+&lt;code&gt;_send_request&lt;/code&gt; method of the &lt;code&gt;HTTPConnection&lt;/code&gt; class, which in turn calls
+&lt;code&gt;putrequest&lt;/code&gt;, &lt;code&gt;putheader&lt;/code&gt;, and &lt;code&gt;endheaders&lt;/code&gt; methods.  The &lt;code&gt;send&lt;/code&gt; method 
+of the class calls &lt;code&gt;sendall&lt;/code&gt; method of the socket to actually transfer 
+the request. &lt;/p&gt;
+&lt;p&gt;The &lt;code&gt;getresponse&lt;/code&gt; method creates an instance of the &lt;code&gt;HTTPResponse&lt;/code&gt; class, 
+calls the &lt;code&gt;begin&lt;/code&gt; method, and returns the instance. Then we can call 
+the &lt;code&gt;read&lt;/code&gt; method on the instance to get the actual &lt;span class="caps"&gt;HTTP&lt;/span&gt; response. &lt;/p&gt;
+&lt;h3&gt;Http Cookies and Cookiejar&lt;/h3&gt;
+&lt;p&gt;The http &lt;code&gt;cookies&lt;/code&gt; module is relatively independent from 
+other modules.  The &lt;code&gt;cookies.py&lt;/code&gt; module only imports three standard modules, 
+re, string, and types.  It defines &lt;code&gt;Morsel&lt;/code&gt;, &lt;code&gt;BaseCookie&lt;/code&gt;, and &lt;code&gt;SimpleCookie&lt;/code&gt; 
+classes. The examples in the Python documentation do not show how to 
+use this module with other server or client module. &lt;/p&gt;
+&lt;p&gt;The http &lt;code&gt;cookiejar&lt;/code&gt; module defines a &lt;code&gt;Cookie&lt;/code&gt; class and &lt;code&gt;CookieJar&lt;/code&gt; and 
+&lt;code&gt;FileCookieJar&lt;/code&gt; classes. This &lt;code&gt;Cookie&lt;/code&gt; class is not related to the &lt;code&gt;SimpleCookie&lt;/code&gt; 
+class. The examples on Python documentation shows how to use this module 
+with the &lt;code&gt;urllib&lt;/code&gt; module. &lt;/p&gt;
+&lt;h3&gt;Conclusion&lt;/h3&gt;
+&lt;p&gt;I spent quite some time reading the &lt;code&gt;http&lt;/code&gt; module source code and trying to 
+understand how they work. The code is a good resource for studying Python 
+network related topics. &lt;/p&gt;</content><category term="posts"></category><category term="python"></category></entry><entry><title>Unittest Module</title><link href="https://www.georgexyz.com/unittest-module.html" rel="alternate"></link><published>2022-01-22T09:28:00-05:00</published><updated>2022-01-22T09:28:00-05:00</updated><author><name>George Zhang</name></author><id>tag:www.georgexyz.com,2022-01-22:/unittest-module.html</id><summary type="html">&lt;p&gt;Unit test is one of the Python techniques I want to learn for quite some time. 
 This post records some articles I read and some notes I wrote in the …&lt;/p&gt;</summary><content type="html">&lt;p&gt;Unit test is one of the Python techniques I want to learn for quite some time. 
 This post records some articles I read and some notes I wrote in the past few days.  &lt;/p&gt;
 &lt;h3&gt;Links&lt;/h3&gt;
