@@ -1,5 +1,23 @@
 <?xml version="1.0" encoding="utf-8"?>
-<feed xmlns="http://www.w3.org/2005/Atom"><title>George Zhang</title><link href="https://www.georgexyz.com/" rel="alternate"></link><link href="https://www.georgexyz.com/feeds/all.atom.xml" rel="self"></link><id>https://www.georgexyz.com/</id><updated>2022-01-31T16:00:00-05:00</updated><entry><title>Http Module</title><link href="https://www.georgexyz.com/http-module.html" rel="alternate"></link><published>2022-01-31T16:00:00-05:00</published><updated>2022-01-31T16:00:00-05:00</updated><author><name>George Zhang</name></author><id>tag:www.georgexyz.com,2022-01-31:/http-module.html</id><summary type="html">&lt;p&gt;Python &lt;code&gt;http&lt;/code&gt; module is &amp;#8220;a package that collects several modules for working with 
+<feed xmlns="http://www.w3.org/2005/Atom"><title>George Zhang</title><link href="https://www.georgexyz.com/" rel="alternate"></link><link href="https://www.georgexyz.com/feeds/all.atom.xml" rel="self"></link><id>https://www.georgexyz.com/</id><updated>2022-02-07T09:50:00-05:00</updated><entry><title>Python IO Module</title><link href="https://www.georgexyz.com/python-io-module.html" rel="alternate"></link><published>2022-02-07T09:50:00-05:00</published><updated>2022-02-07T09:50:00-05:00</updated><author><name>George Zhang</name></author><id>tag:www.georgexyz.com,2022-02-07:/python-io-module.html</id><summary type="html">&lt;p&gt;The previous three modules logging, unittest, and http all import a low level module io and use 
+classes in the io module. So 
+I decide to take a close look …&lt;/p&gt;</summary><content type="html">&lt;p&gt;The previous three modules logging, unittest, and http all import a low level module io and use 
+classes in the io module. So 
+I decide to take a close look at the io module. Unfortunately there aren&amp;#8217;t many documents 
+available for the module. &lt;/p&gt;
+&lt;p&gt;The standard library documentation page for the module is not written in a tutorial style and it 
+does not include many examples on how to use the classes. &lt;/p&gt;
+&lt;p&gt;&lt;a href="https://docs.python.org/3/library/io.html"&gt;io module documentation&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;The &lt;em&gt;Python 3 Module of the Week&lt;/em&gt; has a short page for the module, which has three 
+good examples. &lt;/p&gt;
+&lt;p&gt;&lt;a href="https://pymotw.com/3/io/index.html"&gt;io module on PyMOTW-3&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;The source code of the &lt;code&gt;io.py&lt;/code&gt; only has 99 lines. which is a wrapper for the low level 
+built-in C module &lt;code&gt;_io&lt;/code&gt;.  This 
+&lt;a href="https://stackoverflow.com/questions/26208863/whats-the-difference-between-io-and-io"&gt;stack overflow answer&lt;/a&gt; 
+explains how the source code is organized. Unfortunately I don&amp;#8217;t want to read 
+the C code at this moment, so I really don&amp;#8217;t much to discuss for this post. 
+Hopefully I could add more to this post in the future when I read the C source 
+code or discover some good resources on this topic. &lt;/p&gt;</content><category term="posts"></category><category term="python"></category></entry><entry><title>Http Module</title><link href="https://www.georgexyz.com/http-module.html" rel="alternate"></link><published>2022-01-31T16:00:00-05:00</published><updated>2022-01-31T16:00:00-05:00</updated><author><name>George Zhang</name></author><id>tag:www.georgexyz.com,2022-01-31:/http-module.html</id><summary type="html">&lt;p&gt;Python &lt;code&gt;http&lt;/code&gt; module is &amp;#8220;a package that collects several modules for working with 
 the HyperText Transfer Protocol&amp;#8221;.  The module is a middle level module that sits 
 between low level &lt;code&gt;socket …&lt;/code&gt;&lt;/p&gt;</summary><content type="html">&lt;p&gt;Python &lt;code&gt;http&lt;/code&gt; module is &amp;#8220;a package that collects several modules for working with 
 the HyperText Transfer Protocol&amp;#8221;.  The module is a middle level module that sits 

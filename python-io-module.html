@@ -1,0 +1,101 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <link rel="stylesheet" href="/theme/css/bs4min.css">
+    <link rel="shortcut icon" type="image/x-icon" href="/theme/images/favicon.ico" >
+    <link rel="icon" type="image/x-icon" href="/theme/images/favicon.ico" >
+<link rel="stylesheet" href="https://www.georgexyz.com/theme/css/friendly.css">
+<link rel="stylesheet" href="https://www.georgexyz.com/theme/css/custom.css">
+<meta name="author" content="George Zhang" />
+<meta name="keywords" content="python" />
+<meta name="description" content="The previous three modules logging, unittest, and http all import a low level module io and use classes in the io module. So I decide to take a close look …" />
+    <title>Python IO Module - George Zhang</title>
+  </head>
+  <body>
+    <!-- navbar -->
+    <nav class="navbar navbar-expand-md navbar-light" style="background-color: #e3f2fd;">
+      <div class="container">
+        <a class="navbar-brand" href="/">George Zhang</a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarColor01" aria-controls="navbarColor01" aria-expanded="false" aria-label="Toggle navigation">
+          <span class="navbar-toggler-icon"></span>
+        </button>
+
+        <div class="collapse navbar-collapse" id="navbarColor01">
+          <ul class="navbar-nav mr-auto">
+            <li class="nav-item">
+              <a class="nav-link " 
+                href="/articlelist.html">Articles</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link pr-3 " 
+                href="/tags.html">Tags</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link "
+                   href="/pages/projects.html">Projects</a>
+              </li>
+          </ul>
+
+          <ul class="navbar-nav">
+            <li class="nav-item">
+              <a class="nav-link " 
+                 href="/pages/about.html">About</a>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </nav>
+
+   
+
+<div class="container">
+
+  <div class="row">
+    <div class="col-lg-8 mx-auto">
+
+      <h2>Python <span class="caps">IO</span> Module</h2>
+
+      <div class="text-muted mb-2">
+        <span>Posted on </span>
+        <time datetime="2022-02-07 09:50:00-05:00">
+          Monday, 02/07/2022 09:50
+        </time>
+
+        <span>with tags: </span>
+        <a href="https://www.georgexyz.com/tag/python.html">python</a>
+      </div>
+
+      <p>The previous three modules logging, unittest, and http all import a low level module io and use 
+classes in the io module. So 
+I decide to take a close look at the io module. Unfortunately there aren&#8217;t many documents 
+available for the module. </p>
+<p>The standard library documentation page for the module is not written in a tutorial style and it 
+does not include many examples on how to use the classes. </p>
+<p><a href="https://docs.python.org/3/library/io.html">io module documentation</a></p>
+<p>The <em>Python 3 Module of the Week</em> has a short page for the module, which has three 
+good examples. </p>
+<p><a href="https://pymotw.com/3/io/index.html">io module on PyMOTW-3</a></p>
+<p>The source code of the <code>io.py</code> only has 99 lines. which is a wrapper for the low level 
+built-in C module <code>_io</code>.  This 
+<a href="https://stackoverflow.com/questions/26208863/whats-the-difference-between-io-and-io">stack overflow answer</a> 
+explains how the source code is organized. Unfortunately I don&#8217;t want to read 
+the C code at this moment, so I really don&#8217;t much to discuss for this post. 
+Hopefully I could add more to this post in the future when I read the C source 
+code or discover some good resources on this topic. </p>
+
+
+
+    </div>
+  </div>
+
+</div>
+
+   
+    <script src="https://code.jquery.com/jquery-3.4.1.slim.min.js" integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js" integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6" crossorigin="anonymous"></script>
+  </body>
+</html>
