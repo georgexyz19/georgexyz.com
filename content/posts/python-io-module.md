@@ -25,7 +25,7 @@ The source code of the `io.py` only has 99 lines. which is a wrapper for the low
 built-in C module `_io`.  This 
 [stack overflow answer](https://stackoverflow.com/questions/26208863/whats-the-difference-between-io-and-io) 
 explains how the source code is organized. Unfortunately I don't want to read 
-the C code at this moment, so I really don't much to discuss for this post. 
+the C code at this moment, so I really don't have much to discuss in this post. 
 Hopefully I could add more to this post in the future when I read the C source 
 code or discover some good resources on this topic. 
  
