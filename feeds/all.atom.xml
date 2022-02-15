@@ -1,5 +1,199 @@
 <?xml version="1.0" encoding="utf-8"?>
-<feed xmlns="http://www.w3.org/2005/Atom"><title>George Zhang</title><link href="https://www.georgexyz.com/" rel="alternate"></link><link href="https://www.georgexyz.com/feeds/all.atom.xml" rel="self"></link><id>https://www.georgexyz.com/</id><updated>2022-02-07T09:50:00-05:00</updated><entry><title>Python IO Module</title><link href="https://www.georgexyz.com/python-io-module.html" rel="alternate"></link><published>2022-02-07T09:50:00-05:00</published><updated>2022-02-07T09:50:00-05:00</updated><author><name>George Zhang</name></author><id>tag:www.georgexyz.com,2022-02-07:/python-io-module.html</id><summary type="html">&lt;p&gt;The previous three modules logging, unittest, and http all import a low level module io and use 
+<feed xmlns="http://www.w3.org/2005/Atom"><title>George Zhang</title><link href="https://www.georgexyz.com/" rel="alternate"></link><link href="https://www.georgexyz.com/feeds/all.atom.xml" rel="self"></link><id>https://www.georgexyz.com/</id><updated>2022-02-14T00:15:00-05:00</updated><entry><title>Wsgiref Module</title><link href="https://www.georgexyz.com/wsgiref-module.html" rel="alternate"></link><published>2022-02-14T00:15:00-05:00</published><updated>2022-02-14T00:15:00-05:00</updated><author><name>George Zhang</name></author><id>tag:www.georgexyz.com,2022-02-14:/wsgiref-module.html</id><summary type="html">&lt;p&gt;I have written two posts regarding &lt;code&gt;wsgi&lt;/code&gt; interface before, but I still have questions.&lt;br&gt;
+This post discusses the &lt;code&gt;wsgiref&lt;/code&gt; module in the Python standard library. 
+To quote the python standard …&lt;/p&gt;</summary><content type="html">&lt;p&gt;I have written two posts regarding &lt;code&gt;wsgi&lt;/code&gt; interface before, but I still have questions.&lt;br&gt;
+This post discusses the &lt;code&gt;wsgiref&lt;/code&gt; module in the Python standard library. 
+To quote the python standard documentation,&lt;/p&gt;
+&lt;blockquote&gt;
+&lt;p&gt;The Web Server Gateway Interface (&lt;span class="caps"&gt;WSGI&lt;/span&gt;) is a standard interface between web server
+software and web applications written in Python. Wsgiref module contains &lt;span class="caps"&gt;WSGI&lt;/span&gt; utilities 
+and a reference server implementation.&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;h3&gt;Source Code&lt;/h3&gt;
+&lt;p&gt;The source code of the module is in this directory. &lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;~/.pyenv/versions/3.9.7/lib/python3.9/wsgiref
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+
+&lt;p&gt;The statistics of the files is shown below. &lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;$ find . -maxdepth 1 -name &amp;#39;*.py&amp;#39; -exec wc -l &amp;#39;{}&amp;#39; + | sort -n
+   23 ./__init__.py
+  165 ./simple_server.py
+  172 ./util.py
+  184 ./headers.py
+  441 ./validate.py
+  571 ./handlers.py
+ 1556 total
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+
+&lt;p&gt;The files are not long, and the total line count is only 1,556.  The code 
+in the &lt;code&gt;simple_server.py&lt;/code&gt; is dependent on the classes in &lt;code&gt;http.server&lt;/code&gt; module. 
+We will have difficulty to understand it if we haven&amp;#8217;t read &lt;code&gt;http&lt;/code&gt; module. 
+The &lt;code&gt;__init__.py&lt;/code&gt; file only contains a doc string, and it does not have 
+any code in it. &lt;/p&gt;
+&lt;h3&gt;Simple Server Module&lt;/h3&gt;
+&lt;p&gt;The &lt;code&gt;simple_server&lt;/code&gt; module is quite interesting. It is only 165 lines long, but 
+it it the heart of the whole &lt;code&gt;wsgiref&lt;/code&gt; module. The module defines a &lt;code&gt;demo_app&lt;/code&gt; 
+function, which is similar to a &lt;code&gt;hello_world&lt;/code&gt; app in the &lt;code&gt;get_started.py&lt;/code&gt; discussed 
+in my first &lt;span class="caps"&gt;WSGI&lt;/span&gt; post. The main part of the module is also interesting, and the 
+code is shown below. &lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;if __name__ == &amp;#39;__main__&amp;#39;:
+    with make_server(&amp;#39;&amp;#39;, 8000, demo_app) as httpd:
+        sa = httpd.socket.getsockname()
+        print(&amp;quot;Serving HTTP on&amp;quot;, sa[0], &amp;quot;port&amp;quot;, sa[1], &amp;quot;...&amp;quot;)
+        import webbrowser
+        webbrowser.open(&amp;#39;http://localhost:8000/xyz?abc&amp;#39;)
+        httpd.handle_request()  # serve one request, then exit
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+
+&lt;p&gt;The &lt;code&gt;with&lt;/code&gt; statement sets up a server &lt;code&gt;httpd&lt;/code&gt;, then it imports &lt;code&gt;webbrowser&lt;/code&gt; module 
+and opens a link. It is the same as sending a &lt;code&gt;GET&lt;/code&gt; request to the server, then 
+it calls &lt;code&gt;handle_request&lt;/code&gt; method of the server to handle the request. 
+The &lt;code&gt;demo_app&lt;/code&gt; is passed as an argument to the &lt;code&gt;make_server&lt;/code&gt; call, and it 
+becomes parts of the server. &lt;/p&gt;
+&lt;p&gt;The three classes defined in the module are relatively easy to understand. The 
+&lt;code&gt;WSGIServer&lt;/code&gt; derives from &lt;code&gt;HTTPServer&lt;/code&gt; and works as the server. The &lt;code&gt;WSGIRequestHandler&lt;/code&gt; 
+class derives from &lt;code&gt;BaseHTTPRequestHandler&lt;/code&gt; class and overrides its &lt;code&gt;handle&lt;/code&gt; 
+method. That&amp;#8217;s the method where the &lt;span class="caps"&gt;WSGI&lt;/span&gt; app is called. It initializes a 
+&lt;code&gt;ServerHandler&lt;/code&gt; instance and calls its &lt;code&gt;run&lt;/code&gt; method. The &lt;code&gt;ServerHandler&lt;/code&gt; 
+class is derived from &lt;code&gt;SimpleHandler&lt;/code&gt; class, which is defined in the 
+&lt;code&gt;wsgi.handler&lt;/code&gt; module. &lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;def handle(self):
+    &amp;quot;&amp;quot;&amp;quot;Handle a single HTTP request&amp;quot;&amp;quot;&amp;quot;
+
+    self.raw_requestline = self.rfile.readline(65537)
+    if len(self.raw_requestline) &amp;gt; 65536:
+        self.requestline = &amp;#39;&amp;#39;
+        self.request_version = &amp;#39;&amp;#39;
+        self.command = &amp;#39;&amp;#39;
+        self.send_error(414)
+        return
+
+    if not self.parse_request(): # An error code has been sent, just exit
+        return
+
+    handler = ServerHandler(
+        self.rfile, self.wfile, self.get_stderr(), self.get_environ(),
+        multithread=False,
+    )
+    handler.request_handler = self      # backpointer for logging
+    handler.run(self.server.get_app())
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+
+&lt;h3&gt;Handlers Module&lt;/h3&gt;
+&lt;p&gt;The &lt;code&gt;wsgi.handlers&lt;/code&gt; module defines the &lt;code&gt;BaseHandler&lt;/code&gt; and &lt;code&gt;SimpleHandler&lt;/code&gt; classes. 
+The two classes run the &lt;code&gt;wsgi&lt;/code&gt; app to handle an http request. The &lt;code&gt;run&lt;/code&gt; method of 
+&lt;code&gt;BaseHandler&lt;/code&gt; class can be regarded as the entry point. If we ignore exception 
+handling code, the method looks like this, &lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;# remove exception handling code
+def run(self, application):
+    self.setup_environ()
+    self.result = application(self.environ, self.start_response)
+    self.finish_response()
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+
+&lt;p&gt;The &lt;code&gt;setup_environ&lt;/code&gt; method is to setup the environment for one request. The 
+&lt;code&gt;application&lt;/code&gt; is the &lt;code&gt;wsgi&lt;/code&gt; app which could be a function or an entry point 
+to a web framework like Flask.  The second argument to the &lt;code&gt;application&lt;/code&gt; is 
+&lt;code&gt;self.start_response&lt;/code&gt;, which is a method defined in the same class. The 
+&lt;code&gt;finish_response&lt;/code&gt; call does the actual work of transmitting the http response 
+back to the client. &lt;/p&gt;
+&lt;p&gt;Let&amp;#8217;s look at the &lt;code&gt;start_response&lt;/code&gt; method first. The code is actually very 
+simple if we ignore the exception handling code. The method assigns two 
+instance variables &lt;code&gt;status&lt;/code&gt; and &lt;code&gt;headers&lt;/code&gt;, which are used later in other 
+methods. The &lt;code&gt;headers_class&lt;/code&gt; is &lt;code&gt;Headers&lt;/code&gt; class defined int he &lt;code&gt;headers.py&lt;/code&gt;. &lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;# exception handling code removed
+def start_response(self, status, headers,exc_info=None):
+    &amp;quot;&amp;quot;&amp;quot;&amp;#39;start_response()&amp;#39; callable as specified by PEP 3333&amp;quot;&amp;quot;&amp;quot;
+
+    if exc_info:
+        ...
+
+    self.status = status
+    self.headers = self.headers_class(headers)
+    status = self._convert_string_type(status, &amp;quot;Status&amp;quot;)
+
+    return self.write
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+
+&lt;p&gt;The &lt;code&gt;finish_response&lt;/code&gt; method sends the response back to the client. It 
+calls the &lt;code&gt;write&lt;/code&gt; and &lt;code&gt;finish_content&lt;/code&gt; methods. The &lt;code&gt;write&lt;/code&gt; method in 
+turn calls &lt;code&gt;send_headers&lt;/code&gt;, which calls &lt;code&gt;send_preamble&lt;/code&gt; and &lt;code&gt;_write&lt;/code&gt;. 
+The methods have status checks.  If a header is already sent, it won&amp;#8217;t 
+be sent again.  The &lt;code&gt;finish_response&lt;/code&gt; method has the following code, which 
+shows how the return value of the wsgi application is handled by the server. &lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;# exception handling code removed
+def finish_response(self):
+    try:
+        if not self.result_is_file() or not self.sendfile():
+            for data in self.result:
+                self.write(data)
+            self.finish_content()
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+
+&lt;p&gt;That&amp;#8217;s basically how the wsgi server works. The &lt;code&gt;wsgiref&lt;/code&gt; code is 
+well written and easy to read. &lt;/p&gt;
+&lt;p&gt;The &lt;code&gt;util.py&lt;/code&gt; file defines some helping class and functions for other 
+modules. The &lt;code&gt;validate.py&lt;/code&gt; file defines a &lt;code&gt;validator&lt;/code&gt; middleware which 
+can check &lt;span class="caps"&gt;WSGI&lt;/span&gt; compliancy.  The doc string of the function says this, &lt;/p&gt;
+&lt;blockquote&gt;
+&lt;p&gt;This middleware does not modify the request or response in any
+way, but will raise an AssertionError if anything seems off&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;h3&gt;Test &lt;span class="caps"&gt;POST&lt;/span&gt; Method&lt;/h3&gt;
+&lt;p&gt;The &lt;code&gt;wsgi&lt;/code&gt; demo app doesn&amp;#8217;t have code to handle &lt;span class="caps"&gt;POST&lt;/span&gt; request. 
+Let&amp;#8217;s see what happens if we send the serve a &lt;span class="caps"&gt;POST&lt;/span&gt; request. 
+This is the &lt;code&gt;wsgi&lt;/code&gt; app from the &lt;code&gt;wsgiref&lt;/code&gt; documentation page. &lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;# hello_wsgi.py
+from wsgiref.simple_server import make_server
+
+def hello_world_app(environ, start_response):
+    status = &amp;#39;200 OK&amp;#39;  # HTTP Status
+    headers = [(&amp;#39;Content-type&amp;#39;, &amp;#39;text/plain; charset=utf-8&amp;#39;)] 
+    start_response(status, headers)
+
+    # The returned object is going to be printed
+    return [b&amp;quot;Hello World\n&amp;quot;]
+
+with make_server(&amp;#39;&amp;#39;, 8080, hello_world_app) as httpd:
+    print(&amp;quot;Serving on port 8080...&amp;quot;)
+
+    # Serve until process is killed
+    httpd.serve_forever()
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+
+&lt;p&gt;We can run the app with bash command &lt;code&gt;python hello_wsgi.py&lt;/code&gt;.  On 
+anther terminal window, send a &lt;span class="caps"&gt;POST&lt;/span&gt; request with &lt;code&gt;curl&lt;/code&gt;. &lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;$curl -v -d &amp;quot;param1=value1&amp;amp;param2=value2&amp;quot; -X POST http://localhost:8080/
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+
+&lt;p&gt;Here is the response from the server. &lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;Note: Unnecessary use of -X or --request, POST is already inferred.
+*   Trying 127.0.0.1:8080...
+* Connected to localhost (127.0.0.1) port 8080 (#0)
+&amp;gt; POST / HTTP/1.1
+&amp;gt; Host: localhost:8080
+&amp;gt; User-Agent: curl/7.74.0
+&amp;gt; Accept: */*
+&amp;gt; Content-Length: 27
+&amp;gt; Content-Type: application/x-www-form-urlencoded
+&amp;gt; 
+* upload completely sent off: 27 out of 27 bytes
+* Mark bundle as not supporting multiuse
+* HTTP 1.0, assume close after body
+&amp;lt; HTTP/1.0 200 OK
+&amp;lt; Date: Tue, 15 Feb 2022 15:19:37 GMT
+&amp;lt; Server: WSGIServer/0.2 CPython/3.9.7
+&amp;lt; Content-type: text/plain; charset=utf-8
+&amp;lt; Content-Length: 12
+&amp;lt; 
+Hello World
+* Closing connection 0
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+
+&lt;p&gt;The server doesn&amp;#8217;t care if it is a &lt;span class="caps"&gt;GET&lt;/span&gt; or &lt;span class="caps"&gt;POST&lt;/span&gt; request. It simply 
+sends the same response back.  The request method info is saved 
+in the &lt;code&gt;environ&lt;/code&gt; variable with the key &lt;code&gt;REQUEST_METHOD&lt;/code&gt;, but the 
+wsgi app doesn&amp;#8217;t use this info for the above example. &lt;/p&gt;</content><category term="posts"></category><category term="WSGI"></category></entry><entry><title>Python IO Module</title><link href="https://www.georgexyz.com/python-io-module.html" rel="alternate"></link><published>2022-02-07T09:50:00-05:00</published><updated>2022-02-07T09:50:00-05:00</updated><author><name>George Zhang</name></author><id>tag:www.georgexyz.com,2022-02-07:/python-io-module.html</id><summary type="html">&lt;p&gt;The previous three modules logging, unittest, and http all import a low level module io and use 
 classes in the io module. So 
 I decide to take a close look …&lt;/p&gt;</summary><content type="html">&lt;p&gt;The previous three modules logging, unittest, and http all import a low level module io and use 
 classes in the io module. So 
@@ -15,7 +209,7 @@ good examples. &lt;/p&gt;
 built-in C module &lt;code&gt;_io&lt;/code&gt;.  This 
 &lt;a href="https://stackoverflow.com/questions/26208863/whats-the-difference-between-io-and-io"&gt;stack overflow answer&lt;/a&gt; 
 explains how the source code is organized. Unfortunately I don&amp;#8217;t want to read 
-the C code at this moment, so I really don&amp;#8217;t much to discuss for this post. 
+the C code at this moment, so I really don&amp;#8217;t have much to discuss in this post. 
 Hopefully I could add more to this post in the future when I read the C source 
 code or discover some good resources on this topic. &lt;/p&gt;</content><category term="posts"></category><category term="python"></category></entry><entry><title>Http Module</title><link href="https://www.georgexyz.com/http-module.html" rel="alternate"></link><published>2022-01-31T16:00:00-05:00</published><updated>2022-01-31T16:00:00-05:00</updated><author><name>George Zhang</name></author><id>tag:www.georgexyz.com,2022-01-31:/http-module.html</id><summary type="html">&lt;p&gt;Python &lt;code&gt;http&lt;/code&gt; module is &amp;#8220;a package that collects several modules for working with 
 the HyperText Transfer Protocol&amp;#8221;.  The module is a middle level module that sits 

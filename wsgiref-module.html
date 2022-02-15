@@ -1,0 +1,283 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <link rel="stylesheet" href="/theme/css/bs4min.css">
+    <link rel="shortcut icon" type="image/x-icon" href="/theme/images/favicon.ico" >
+    <link rel="icon" type="image/x-icon" href="/theme/images/favicon.ico" >
+<link rel="stylesheet" href="https://www.georgexyz.com/theme/css/friendly.css">
+<link rel="stylesheet" href="https://www.georgexyz.com/theme/css/custom.css">
+<meta name="author" content="George Zhang" />
+<meta name="keywords" content="WSGI" />
+<meta name="description" content="I have written two posts regarding wsgi interface before, but I still have questions. This post discusses the wsgiref module in the Python standard library. To quote the python standard …" />
+    <title>Wsgiref Module - George Zhang</title>
+  </head>
+  <body>
+    <!-- navbar -->
+    <nav class="navbar navbar-expand-md navbar-light" style="background-color: #e3f2fd;">
+      <div class="container">
+        <a class="navbar-brand" href="/">George Zhang</a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarColor01" aria-controls="navbarColor01" aria-expanded="false" aria-label="Toggle navigation">
+          <span class="navbar-toggler-icon"></span>
+        </button>
+
+        <div class="collapse navbar-collapse" id="navbarColor01">
+          <ul class="navbar-nav mr-auto">
+            <li class="nav-item">
+              <a class="nav-link " 
+                href="/articlelist.html">Articles</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link pr-3 " 
+                href="/tags.html">Tags</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link "
+                   href="/pages/projects.html">Projects</a>
+              </li>
+          </ul>
+
+          <ul class="navbar-nav">
+            <li class="nav-item">
+              <a class="nav-link " 
+                 href="/pages/about.html">About</a>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </nav>
+
+   
+
+<div class="container">
+
+  <div class="row">
+    <div class="col-lg-8 mx-auto">
+
+      <h2>Wsgiref Module</h2>
+
+      <div class="text-muted mb-2">
+        <span>Posted on </span>
+        <time datetime="2022-02-14 00:15:00-05:00">
+          Monday, 02/14/2022 00:15
+        </time>
+
+        <span>with tags: </span>
+        <a href="https://www.georgexyz.com/tag/wsgi.html">WSGI</a>
+      </div>
+
+      <p>I have written two posts regarding <code>wsgi</code> interface before, but I still have questions.<br>
+This post discusses the <code>wsgiref</code> module in the Python standard library. 
+To quote the python standard documentation,</p>
+<blockquote>
+<p>The Web Server Gateway Interface (<span class="caps">WSGI</span>) is a standard interface between web server
+software and web applications written in Python. Wsgiref module contains <span class="caps">WSGI</span> utilities 
+and a reference server implementation.</p>
+</blockquote>
+<h3>Source Code</h3>
+<p>The source code of the module is in this directory. </p>
+<div class="highlight"><pre><span></span><code>~/.pyenv/versions/3.9.7/lib/python3.9/wsgiref
+</code></pre></div>
+
+<p>The statistics of the files is shown below. </p>
+<div class="highlight"><pre><span></span><code>$ find . -maxdepth 1 -name &#39;*.py&#39; -exec wc -l &#39;{}&#39; + | sort -n
+   23 ./__init__.py
+  165 ./simple_server.py
+  172 ./util.py
+  184 ./headers.py
+  441 ./validate.py
+  571 ./handlers.py
+ 1556 total
+</code></pre></div>
+
+<p>The files are not long, and the total line count is only 1,556.  The code 
+in the <code>simple_server.py</code> is dependent on the classes in <code>http.server</code> module. 
+We will have difficulty to understand it if we haven&#8217;t read <code>http</code> module. 
+The <code>__init__.py</code> file only contains a doc string, and it does not have 
+any code in it. </p>
+<h3>Simple Server Module</h3>
+<p>The <code>simple_server</code> module is quite interesting. It is only 165 lines long, but 
+it it the heart of the whole <code>wsgiref</code> module. The module defines a <code>demo_app</code> 
+function, which is similar to a <code>hello_world</code> app in the <code>get_started.py</code> discussed 
+in my first <span class="caps">WSGI</span> post. The main part of the module is also interesting, and the 
+code is shown below. </p>
+<div class="highlight"><pre><span></span><code>if __name__ == &#39;__main__&#39;:
+    with make_server(&#39;&#39;, 8000, demo_app) as httpd:
+        sa = httpd.socket.getsockname()
+        print(&quot;Serving HTTP on&quot;, sa[0], &quot;port&quot;, sa[1], &quot;...&quot;)
+        import webbrowser
+        webbrowser.open(&#39;http://localhost:8000/xyz?abc&#39;)
+        httpd.handle_request()  # serve one request, then exit
+</code></pre></div>
+
+<p>The <code>with</code> statement sets up a server <code>httpd</code>, then it imports <code>webbrowser</code> module 
+and opens a link. It is the same as sending a <code>GET</code> request to the server, then 
+it calls <code>handle_request</code> method of the server to handle the request. 
+The <code>demo_app</code> is passed as an argument to the <code>make_server</code> call, and it 
+becomes parts of the server. </p>
+<p>The three classes defined in the module are relatively easy to understand. The 
+<code>WSGIServer</code> derives from <code>HTTPServer</code> and works as the server. The <code>WSGIRequestHandler</code> 
+class derives from <code>BaseHTTPRequestHandler</code> class and overrides its <code>handle</code> 
+method. That&#8217;s the method where the <span class="caps">WSGI</span> app is called. It initializes a 
+<code>ServerHandler</code> instance and calls its <code>run</code> method. The <code>ServerHandler</code> 
+class is derived from <code>SimpleHandler</code> class, which is defined in the 
+<code>wsgi.handler</code> module. </p>
+<div class="highlight"><pre><span></span><code>def handle(self):
+    &quot;&quot;&quot;Handle a single HTTP request&quot;&quot;&quot;
+
+    self.raw_requestline = self.rfile.readline(65537)
+    if len(self.raw_requestline) &gt; 65536:
+        self.requestline = &#39;&#39;
+        self.request_version = &#39;&#39;
+        self.command = &#39;&#39;
+        self.send_error(414)
+        return
+
+    if not self.parse_request(): # An error code has been sent, just exit
+        return
+
+    handler = ServerHandler(
+        self.rfile, self.wfile, self.get_stderr(), self.get_environ(),
+        multithread=False,
+    )
+    handler.request_handler = self      # backpointer for logging
+    handler.run(self.server.get_app())
+</code></pre></div>
+
+<h3>Handlers Module</h3>
+<p>The <code>wsgi.handlers</code> module defines the <code>BaseHandler</code> and <code>SimpleHandler</code> classes. 
+The two classes run the <code>wsgi</code> app to handle an http request. The <code>run</code> method of 
+<code>BaseHandler</code> class can be regarded as the entry point. If we ignore exception 
+handling code, the method looks like this, </p>
+<div class="highlight"><pre><span></span><code># remove exception handling code
+def run(self, application):
+    self.setup_environ()
+    self.result = application(self.environ, self.start_response)
+    self.finish_response()
+</code></pre></div>
+
+<p>The <code>setup_environ</code> method is to setup the environment for one request. The 
+<code>application</code> is the <code>wsgi</code> app which could be a function or an entry point 
+to a web framework like Flask.  The second argument to the <code>application</code> is 
+<code>self.start_response</code>, which is a method defined in the same class. The 
+<code>finish_response</code> call does the actual work of transmitting the http response 
+back to the client. </p>
+<p>Let&#8217;s look at the <code>start_response</code> method first. The code is actually very 
+simple if we ignore the exception handling code. The method assigns two 
+instance variables <code>status</code> and <code>headers</code>, which are used later in other 
+methods. The <code>headers_class</code> is <code>Headers</code> class defined int he <code>headers.py</code>. </p>
+<div class="highlight"><pre><span></span><code># exception handling code removed
+def start_response(self, status, headers,exc_info=None):
+    &quot;&quot;&quot;&#39;start_response()&#39; callable as specified by PEP 3333&quot;&quot;&quot;
+
+    if exc_info:
+        ...
+
+    self.status = status
+    self.headers = self.headers_class(headers)
+    status = self._convert_string_type(status, &quot;Status&quot;)
+
+    return self.write
+</code></pre></div>
+
+<p>The <code>finish_response</code> method sends the response back to the client. It 
+calls the <code>write</code> and <code>finish_content</code> methods. The <code>write</code> method in 
+turn calls <code>send_headers</code>, which calls <code>send_preamble</code> and <code>_write</code>. 
+The methods have status checks.  If a header is already sent, it won&#8217;t 
+be sent again.  The <code>finish_response</code> method has the following code, which 
+shows how the return value of the wsgi application is handled by the server. </p>
+<div class="highlight"><pre><span></span><code># exception handling code removed
+def finish_response(self):
+    try:
+        if not self.result_is_file() or not self.sendfile():
+            for data in self.result:
+                self.write(data)
+            self.finish_content()
+</code></pre></div>
+
+<p>That&#8217;s basically how the wsgi server works. The <code>wsgiref</code> code is 
+well written and easy to read. </p>
+<p>The <code>util.py</code> file defines some helping class and functions for other 
+modules. The <code>validate.py</code> file defines a <code>validator</code> middleware which 
+can check <span class="caps">WSGI</span> compliancy.  The doc string of the function says this, </p>
+<blockquote>
+<p>This middleware does not modify the request or response in any
+way, but will raise an AssertionError if anything seems off</p>
+</blockquote>
+<h3>Test <span class="caps">POST</span> Method</h3>
+<p>The <code>wsgi</code> demo app doesn&#8217;t have code to handle <span class="caps">POST</span> request. 
+Let&#8217;s see what happens if we send the serve a <span class="caps">POST</span> request. 
+This is the <code>wsgi</code> app from the <code>wsgiref</code> documentation page. </p>
+<div class="highlight"><pre><span></span><code># hello_wsgi.py
+from wsgiref.simple_server import make_server
+
+def hello_world_app(environ, start_response):
+    status = &#39;200 OK&#39;  # HTTP Status
+    headers = [(&#39;Content-type&#39;, &#39;text/plain; charset=utf-8&#39;)] 
+    start_response(status, headers)
+
+    # The returned object is going to be printed
+    return [b&quot;Hello World\n&quot;]
+
+with make_server(&#39;&#39;, 8080, hello_world_app) as httpd:
+    print(&quot;Serving on port 8080...&quot;)
+
+    # Serve until process is killed
+    httpd.serve_forever()
+</code></pre></div>
+
+<p>We can run the app with bash command <code>python hello_wsgi.py</code>.  On 
+anther terminal window, send a <span class="caps">POST</span> request with <code>curl</code>. </p>
+<div class="highlight"><pre><span></span><code>$curl -v -d &quot;param1=value1&amp;param2=value2&quot; -X POST http://localhost:8080/
+</code></pre></div>
+
+<p>Here is the response from the server. </p>
+<div class="highlight"><pre><span></span><code>Note: Unnecessary use of -X or --request, POST is already inferred.
+*   Trying 127.0.0.1:8080...
+* Connected to localhost (127.0.0.1) port 8080 (#0)
+&gt; POST / HTTP/1.1
+&gt; Host: localhost:8080
+&gt; User-Agent: curl/7.74.0
+&gt; Accept: */*
+&gt; Content-Length: 27
+&gt; Content-Type: application/x-www-form-urlencoded
+&gt; 
+* upload completely sent off: 27 out of 27 bytes
+* Mark bundle as not supporting multiuse
+* HTTP 1.0, assume close after body
+&lt; HTTP/1.0 200 OK
+&lt; Date: Tue, 15 Feb 2022 15:19:37 GMT
+&lt; Server: WSGIServer/0.2 CPython/3.9.7
+&lt; Content-type: text/plain; charset=utf-8
+&lt; Content-Length: 12
+&lt; 
+Hello World
+* Closing connection 0
+</code></pre></div>
+
+<p>The server doesn&#8217;t care if it is a <span class="caps">GET</span> or <span class="caps">POST</span> request. It simply 
+sends the same response back.  The request method info is saved 
+in the <code>environ</code> variable with the key <code>REQUEST_METHOD</code>, but the 
+wsgi app doesn&#8217;t use this info for the above example. </p>
+
+      <div class="mt-5 border-top">
+        <h3>Related Posts:</h3>
+        <ul>
+          <li><a href="https://www.georgexyz.com/understand-wsgi-interface-in-flask.html">Understand <span class="caps">WSGI</span> Interface and Request Context in Flask</a></li>
+        </ul>
+      </div>
+
+
+    </div>
+  </div>
+
+</div>
+
+   
+    <script src="https://code.jquery.com/jquery-3.4.1.slim.min.js" integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js" integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6" crossorigin="anonymous"></script>
+  </body>
+</html>
