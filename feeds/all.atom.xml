@@ -100,7 +100,7 @@ back to the client. &lt;/p&gt;
 &lt;p&gt;Let&amp;#8217;s look at the &lt;code&gt;start_response&lt;/code&gt; method first. The code is actually very 
 simple if we ignore the exception handling code. The method assigns two 
 instance variables &lt;code&gt;status&lt;/code&gt; and &lt;code&gt;headers&lt;/code&gt;, which are used later in other 
-methods. The &lt;code&gt;headers_class&lt;/code&gt; is &lt;code&gt;Headers&lt;/code&gt; class defined int he &lt;code&gt;headers.py&lt;/code&gt;. &lt;/p&gt;
+methods. The &lt;code&gt;headers_class&lt;/code&gt; is &lt;code&gt;Headers&lt;/code&gt; class defined in the &lt;code&gt;headers.py&lt;/code&gt;. &lt;/p&gt;
 &lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;# exception handling code removed
 def start_response(self, status, headers,exc_info=None):
     &amp;quot;&amp;quot;&amp;quot;&amp;#39;start_response()&amp;#39; callable as specified by PEP 3333&amp;quot;&amp;quot;&amp;quot;

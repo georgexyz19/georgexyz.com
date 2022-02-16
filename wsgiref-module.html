@@ -167,7 +167,7 @@ back to the client. </p>
 <p>Let&#8217;s look at the <code>start_response</code> method first. The code is actually very 
 simple if we ignore the exception handling code. The method assigns two 
 instance variables <code>status</code> and <code>headers</code>, which are used later in other 
-methods. The <code>headers_class</code> is <code>Headers</code> class defined int he <code>headers.py</code>. </p>
+methods. The <code>headers_class</code> is <code>Headers</code> class defined in the <code>headers.py</code>. </p>
 <div class="highlight"><pre><span></span><code># exception handling code removed
 def start_response(self, status, headers,exc_info=None):
     &quot;&quot;&quot;&#39;start_response()&#39; callable as specified by PEP 3333&quot;&quot;&quot;
@@ -266,6 +266,8 @@ wsgi app doesn&#8217;t use this info for the above example. </p>
         <h3>Related Posts:</h3>
         <ul>
           <li><a href="https://www.georgexyz.com/understand-wsgi-interface-in-flask.html">Understand <span class="caps">WSGI</span> Interface and Request Context in Flask</a></li>
+          <li><a href="https://www.georgexyz.com/django-WSGI.html">What is <span class="caps">WSGI</span>?</a></li>
+          <li><a href="https://www.georgexyz.com/http-module.html">Http Module</a></li>
         </ul>
       </div>
 
