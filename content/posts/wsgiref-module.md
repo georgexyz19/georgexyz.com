@@ -4,7 +4,7 @@ date: 2022-02-14 00:15
 modified: 2022-02-14 00:15
 tags: WSGI
 note: wsgi module code
-related_posts: understand-wsgi-interface-in-flask, django-WSGI; http-module
+related_posts: understand-wsgi-interface-in-flask, django-WSGI, http-module
 no: 82
 
 I have written two posts regarding `wsgi` interface before, but I still have questions.  
@@ -122,7 +122,7 @@ back to the client.
 Let's look at the `start_response` method first. The code is actually very 
 simple if we ignore the exception handling code. The method assigns two 
 instance variables `status` and `headers`, which are used later in other 
-methods. The `headers_class` is `Headers` class defined int he `headers.py`. 
+methods. The `headers_class` is `Headers` class defined in the `headers.py`. 
 
 ```
 # exception handling code removed
