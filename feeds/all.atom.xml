@@ -842,6 +842,11 @@ if it is larger than 900px.    &lt;/p&gt;
 
 &lt;p&gt;The oddest terms in &lt;span class="caps"&gt;HTML&lt;/span&gt;/&lt;span class="caps"&gt;CSS&lt;/span&gt; probably are &amp;#8220;art direction&amp;#8221;.  The author explains that &amp;#8220;(you can) 
 think of art direction as responsive image optimization for designers.&amp;#8221;&lt;/p&gt;
+&lt;h3&gt;Head, Header, and Heading&lt;/h3&gt;
+&lt;p&gt;All those three terms are used in &lt;span class="caps"&gt;HTML&lt;/span&gt;/&lt;span class="caps"&gt;CSS&lt;/span&gt;. The &lt;code&gt;head&lt;/code&gt; is html tag that is inside &lt;code&gt;html&lt;/code&gt; and 
+before &lt;code&gt;body&lt;/code&gt;.  The term &lt;code&gt;heading&lt;/code&gt; is not directly used as a tag name, and we call a section title&lt;br&gt;
+&lt;code&gt;h1&lt;/code&gt; heading or &lt;code&gt;h2&lt;/code&gt; heading. The &lt;code&gt;header&lt;/code&gt; is an html 5 tag, and it usually refers to the 
+section after navbar and before the main section of a webpage. Okay, my head hurts&amp;#8230;  &lt;/p&gt;
 &lt;h3&gt;&lt;span class="caps"&gt;CSS&lt;/span&gt; Frameworks&lt;/h3&gt;
 &lt;p&gt;The web book is awesome and the examples are easy to follow.  However, &lt;span class="caps"&gt;CSS&lt;/span&gt; itself is not easy to 
 understand and write.  The &lt;em&gt;Web Typography&lt;/em&gt; chapter has a simple page which includes a &lt;em&gt;typo.css&lt;/em&gt; 
