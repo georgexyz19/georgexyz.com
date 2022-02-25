@@ -79,6 +79,13 @@ if it is larger than 900px.
 The oddest terms in HTML/CSS probably are "art direction".  The author explains that "(you can) 
 think of art direction as responsive image optimization for designers."
 
+### Head, Header, and Heading
+
+All those three terms are used in HTML/CSS. The `head` is html tag that is inside `html` and 
+before `body`.  The term `heading` is not directly used as a tag name, and we call a section title  
+`h1` heading or `h2` heading. The `header` is an html 5 tag, and it usually refers to the 
+section after navbar and before the main section of a webpage. Okay, my head hurts...  
+
 ###CSS Frameworks
 
 The web book is awesome and the examples are easy to follow.  However, CSS itself is not easy to 
