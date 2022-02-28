@@ -1,0 +1,174 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <link rel="stylesheet" href="/theme/css/bs4min.css">
+    <link rel="shortcut icon" type="image/x-icon" href="/theme/images/favicon.ico" >
+    <link rel="icon" type="image/x-icon" href="/theme/images/favicon.ico" >
+<link rel="stylesheet" href="https://www.georgexyz.com/theme/css/friendly.css">
+<link rel="stylesheet" href="https://www.georgexyz.com/theme/css/custom.css">
+<meta name="author" content="George Zhang" />
+<meta name="keywords" content="python" />
+<meta name="description" content="The JSON module is often used to transmit data between web servers and applications. It is time to take a close look at this module after discussing several difficult modules …" />
+    <title>Json Module - George Zhang</title>
+  </head>
+  <body>
+    <!-- navbar -->
+    <nav class="navbar navbar-expand-md navbar-light" style="background-color: #e3f2fd;">
+      <div class="container">
+        <a class="navbar-brand" href="/">George Zhang</a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarColor01" aria-controls="navbarColor01" aria-expanded="false" aria-label="Toggle navigation">
+          <span class="navbar-toggler-icon"></span>
+        </button>
+
+        <div class="collapse navbar-collapse" id="navbarColor01">
+          <ul class="navbar-nav mr-auto">
+            <li class="nav-item">
+              <a class="nav-link " 
+                href="/articlelist.html">Articles</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link pr-3 " 
+                href="/tags.html">Tags</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link "
+                   href="/pages/projects.html">Projects</a>
+              </li>
+          </ul>
+
+          <ul class="navbar-nav">
+            <li class="nav-item">
+              <a class="nav-link " 
+                 href="/pages/about.html">About</a>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </nav>
+
+   
+
+<div class="container">
+
+  <div class="row">
+    <div class="col-lg-8 mx-auto">
+
+      <h2>Json Module</h2>
+
+      <div class="text-muted mb-2">
+        <span>Posted on </span>
+        <time datetime="2022-02-28 09:35:00-05:00">
+          Monday, 02/28/2022 09:35
+        </time>
+
+        <span>with tags: </span>
+        <a href="https://www.georgexyz.com/tag/python.html">python</a>
+      </div>
+
+      <p>The <code>JSON</code> module is often used to transmit data between web servers and applications. 
+It is time to take a close look at this module after discussing several difficult 
+modules. </p>
+<h3>References</h3>
+<p>Realpython website has a nice introductory article on Json. Here is the link, </p>
+<p><a href="https://realpython.com/python-json/">Working With <span class="caps">JSON</span> Data in Python</a></p>
+<p>The official Python document for Json module is good. </p>
+<p><a href="https://docs.python.org/3/library/json.html">Official <span class="caps">JSON</span> Module Documentation</a></p>
+<h3>Source Code</h3>
+<p>Like many other Python modules, the best way to learn is to read the source code. 
+The json directory has five files. Here is a list of the files. </p>
+<div class="highlight"><pre><span></span><code>$ cd ~/.pyenv/versions/3.9.7/lib/python3.9/json
+$ find . -maxdepth 1 -name &#39;*.py&#39; -exec wc -l &#39;{}&#39; + | sort -n
+   73 ./scanner.py
+   78 ./tool.py
+  356 ./decoder.py
+  359 ./__init__.py
+  442 ./encoder.py
+ 1308 total
+</code></pre></div>
+
+<p>The files in this module is quite short comparing with other modules. The total 
+line count is 1,308.  The reason is that some of the source code is written in 
+C and the code is in <code>_json</code> C module. But we are not going to discuss C code 
+in this post. </p>
+<p>The <code>__init__</code> module defines several functions like <code>dump</code>, <code>dumps</code>, <code>load</code>, 
+and <code>loads</code>.  For function <code>dumps</code>, it calls <code>JSONEncoder</code> to do the actual 
+encoding work.  The code looks like this, </p>
+<div class="highlight"><pre><span></span><code># simplified code 
+from .encoder import JSONEncoder
+_default_encoder = JSONEncoder(...)
+
+def dumps(obj, ....):
+    return _default_encoder.encode(obj)
+</code></pre></div>
+
+<p>The <code>encoder.py</code> module only defines one class <code>JSONEncoder</code> and several 
+functions.  The <code>encode</code> method is easy to understand. </p>
+<div class="highlight"><pre><span></span><code># encode method of JSONEncoder
+def encode(self, o):
+    &quot;&quot;&quot;Return a JSON string representation of a Python data structure.
+    &quot;&quot;&quot;
+    if isinstance(o, str):
+        if self.ensure_ascii:
+            return encode_basestring_ascii(o)
+        else:
+            return encode_basestring(o)
+
+    chunks = self.iterencode(o, _one_shot=True)
+    if not isinstance(chunks, (list, tuple)):
+        chunks = list(chunks)
+    return &#39;&#39;.join(chunks)
+</code></pre></div>
+
+<p>The <code>encode</code> method calls <code>iterencode</code> method to do the work. The <code>iterencode</code> 
+method in turn calls <code>c_make_encoder</code> or <code>_make_iterencode</code> function. 
+The <code>c_make_encoder</code> function is imported from C module. In simple cases, 
+the Json module will call the C module to do the encoding. </p>
+<div class="highlight"><pre><span></span><code># in module scope
+try:
+    from _json import encode_basestring as c_encode_basestring
+except ImportError:
+    c_encode_basestring = None
+
+# inside JSONEncoder class
+def iterencode(self, o, _one_shot=False):
+
+    ......
+
+    if (_one_shot and c_make_encoder is not None
+            and self.indent is None):
+        _iterencode = c_make_encoder(...)
+    else:
+        _iterencode = _make_iterencode(...)
+    return _iterencode(o, 0)
+</code></pre></div>
+
+<p>The <code>_make_iterencode</code> function shows how to convert a Python object to 
+a <span class="caps">JSON</span> iterable. There are recursive calls to do the conversion. The 
+code is not easy to write. </p>
+<p>The <code>decoder.py</code> module is the opposite of <code>encoder.py</code> module.  It defines 
+a <code>JSONDecoder</code> class to do the decoding work. The decoding is more complicated 
+than the encoding, but most of the implementation is in C code. The <code>scanner.py</code> 
+module defines a helper function <code>make_scanner</code> for <code>decoder.py</code> module. </p>
+<p>The <code>tool.py</code> module defines a command line tool, so we can use the module 
+in bash like this. </p>
+<div class="highlight"><pre><span></span><code>$ echo &#39;{&quot;json&quot;: &quot;obj&quot;}&#39; | python -m json.tool
+$ python -m json.tool infile outfile
+$ python -m json.tool --help   # to find more about the command line tool
+</code></pre></div>
+
+
+
+    </div>
+  </div>
+
+</div>
+
+   
+    <script src="https://code.jquery.com/jquery-3.4.1.slim.min.js" integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js" integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6" crossorigin="anonymous"></script>
+  </body>
+</html>
