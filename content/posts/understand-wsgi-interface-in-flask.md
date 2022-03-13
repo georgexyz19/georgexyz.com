@@ -119,7 +119,7 @@ def push(self):
 
 I will stop here for now and look at other code in `wsgi_app` at a later time.   
 
-<hr>
+<hr/>
 
 *updated on 3/28/2021*
 
@@ -160,7 +160,7 @@ Miguel Grinberg's *Flask Web Development* Book Chapter 2 Page 18 has an example 
 how the application context works. 
 
 ```
-(venv) george@X220:~/Code/flask-hello$ python
+(venv) $:~/Code/flask-hello$ python
 Python 3.9.2 (default, Mar 19 2021, 09:17:52) 
 [GCC 9.3.0] on linux
 Type "help", "copyright", "credits" or "license" for more information.
@@ -196,3 +196,42 @@ in Kennedy's article.
 
 The paragraphs of this article could be better organized, and I will revise the 
 article again later.  This probably is the most important topic in Flask. 
+
+
+<hr/>
+
+*updated on 3/13/2022*
+
+I am reading more on this topic and trying to get to the bottom of `request`, 
+`session`, `current_app`, and `g` variables. I found an amazing stack overflow 
+answer on this topic by Michael Ekoka.  This is one of the best articles I ever 
+read on internet. It is the second answer to this question. 
+
+[What is the purpose of Flask context stacks](https://stackoverflow.com/questions/20036520/what-is-the-purpose-of-flasks-context-stacks)
+
+I am kind of agreeing that "this is a way overcomplicated design", which is posted 
+as a comment to the answer. But Flask has been there for a long time, and we can 
+only work hard to understand it. 
+
+After reading this stack overflow answer, I read the source code of `_threading_local.py`, 
+which is in the standard library. 
+
+[_threading_local.py Source Code](https://github.com/python/cpython/blob/main/Lib/_threading_local.py)
+
+The lines from 170 to 185 are not very clear to me, and they are related to wr (weak reference). 
+Otherwise the stack overflow answer is a really nice guide to the source code. 
+
+Below are some handwritten notes regarding Flask class `wsgi_app` method.  
+
+[PDF Notes on wsgi_app](/files/wsgi_app_notes.pdf) 
+
+
+<hr/>
+
+The `wsgi_app` method first creates a `RequestContext` object and pushes it onto the stack. 
+This happens each time a request is received on the server. 
+
+When the `RequestContext` object is pushed, under normal condition it creates an `AppContext` 
+object and 
+pushes it onto a stack.  The `Flask` object `app` is only created once, and the `AppContext` 
+object stores a reference to it (the same as `RequestContext` object). 
