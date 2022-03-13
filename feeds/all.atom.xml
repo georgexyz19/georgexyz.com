@@ -2580,7 +2580,7 @@ a global variable defined in global.py module.  &lt;/p&gt;
 &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
 
 &lt;p&gt;I will stop here for now and look at other code in &lt;code&gt;wsgi_app&lt;/code&gt; at a later time.   &lt;/p&gt;
-&lt;hr&gt;
+&lt;hr/&gt;
 
 &lt;p&gt;&lt;em&gt;updated on 3/28/2021&lt;/em&gt;&lt;/p&gt;
 &lt;p&gt;Those three concepts are confusing if you do not read the source code. Kennedy&amp;#8217;s article 
@@ -2610,7 +2610,7 @@ def _lookup_req_object(name):
 
 &lt;p&gt;Miguel Grinberg&amp;#8217;s &lt;em&gt;Flask Web Development&lt;/em&gt; Book Chapter 2 Page 18 has an example to show
 how the application context works. &lt;/p&gt;
-&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;(venv) george@X220:~/Code/flask-hello$ python
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;(venv) $:~/Code/flask-hello$ python
 Python 3.9.2 (default, Mar 19 2021, 09:17:52) 
 [GCC 9.3.0] on linux
 Type &amp;quot;help&amp;quot;, &amp;quot;copyright&amp;quot;, &amp;quot;credits&amp;quot; or &amp;quot;license&amp;quot; for more information.
@@ -2643,7 +2643,33 @@ class. Miguel Grinberg&amp;#8217;s book refers those variables as &amp;#8220;fla
 on Table 2-1 (Page 2-1).  Those are probably should be called &amp;#8220;context locals&amp;#8221; as 
 in Kennedy&amp;#8217;s article. &lt;/p&gt;
 &lt;p&gt;The paragraphs of this article could be better organized, and I will revise the 
-article again later.  This probably is the most important topic in Flask. &lt;/p&gt;</content><category term="posts"></category><category term="WSGI"></category><category term="flask"></category></entry><entry><title>What Is Behind Flask Run Command</title><link href="https://www.georgexyz.com/what-is-behind-flask-run.html" rel="alternate"></link><published>2020-10-29T22:06:00-04:00</published><updated>2020-10-29T22:06:00-04:00</updated><author><name>George Zhang</name></author><id>tag:www.georgexyz.com,2020-10-29:/what-is-behind-flask-run.html</id><summary type="html">&lt;p&gt;Chapter 2 of Miguel Grinberg&amp;#8217;s &lt;em&gt;Flask Web Development&lt;/em&gt; describes how to run a basic Flask app. 
+article again later.  This probably is the most important topic in Flask. &lt;/p&gt;
+&lt;hr/&gt;
+
+&lt;p&gt;&lt;em&gt;updated on 3/13/2022&lt;/em&gt;&lt;/p&gt;
+&lt;p&gt;I am reading more on this topic and trying to get to the bottom of &lt;code&gt;request&lt;/code&gt;, 
+&lt;code&gt;session&lt;/code&gt;, &lt;code&gt;current_app&lt;/code&gt;, and &lt;code&gt;g&lt;/code&gt; variables. I found an amazing stack overflow 
+answer on this topic by Michael Ekoka.  This is one of the best articles I ever 
+read on internet. It is the second answer to this question. &lt;/p&gt;
+&lt;p&gt;&lt;a href="https://stackoverflow.com/questions/20036520/what-is-the-purpose-of-flasks-context-stacks"&gt;What is the purpose of Flask context stacks&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;I am kind of agreeing that &amp;#8220;this is a way overcomplicated design&amp;#8221;, which is posted 
+as a comment to the answer. But Flask has been there for a long time, and we can 
+only work hard to understand it. &lt;/p&gt;
+&lt;p&gt;After reading this stack overflow answer, I read the source code of &lt;code&gt;_threading_local.py&lt;/code&gt;, 
+which is in the standard library. &lt;/p&gt;
+&lt;p&gt;&lt;a href="https://github.com/python/cpython/blob/main/Lib/_threading_local.py"&gt;_threading_local.py Source Code&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;The lines from 170 to 185 are not very clear to me, and they are related to wr (weak reference). 
+Otherwise the stack overflow answer is a really nice guide to the source code. &lt;/p&gt;
+&lt;p&gt;Below are some handwritten notes regarding Flask class &lt;code&gt;wsgi_app&lt;/code&gt; method.  &lt;/p&gt;
+&lt;p&gt;&lt;a href="/files/wsgi_app_notes.pdf"&gt;&lt;span class="caps"&gt;PDF&lt;/span&gt; Notes on wsgi_app&lt;/a&gt; &lt;/p&gt;
+&lt;hr/&gt;
+
+&lt;p&gt;The &lt;code&gt;wsgi_app&lt;/code&gt; method first creates a &lt;code&gt;RequestContext&lt;/code&gt; object and pushes it onto the stack. 
+This happens each time a request is received on the server. &lt;/p&gt;
+&lt;p&gt;When the &lt;code&gt;RequestContext&lt;/code&gt; object is pushed, under normal condition it creates an &lt;code&gt;AppContext&lt;/code&gt; 
+object and 
+pushes it onto a stack.  The &lt;code&gt;Flask&lt;/code&gt; object &lt;code&gt;app&lt;/code&gt; is only created once, and the &lt;code&gt;AppContext&lt;/code&gt; 
+object stores a reference to it (the same as &lt;code&gt;RequestContext&lt;/code&gt; object). &lt;/p&gt;</content><category term="posts"></category><category term="WSGI"></category><category term="flask"></category></entry><entry><title>What Is Behind Flask Run Command</title><link href="https://www.georgexyz.com/what-is-behind-flask-run.html" rel="alternate"></link><published>2020-10-29T22:06:00-04:00</published><updated>2020-10-29T22:06:00-04:00</updated><author><name>George Zhang</name></author><id>tag:www.georgexyz.com,2020-10-29:/what-is-behind-flask-run.html</id><summary type="html">&lt;p&gt;Chapter 2 of Miguel Grinberg&amp;#8217;s &lt;em&gt;Flask Web Development&lt;/em&gt; describes how to run a basic Flask app. 
 Suppose you have a basic Flask app like below (from the book). &lt;/p&gt;
 &lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;&lt;span class="kn"&gt;from …&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;</summary><content type="html">&lt;p&gt;Chapter 2 of Miguel Grinberg&amp;#8217;s &lt;em&gt;Flask Web Development&lt;/em&gt; describes how to run a basic Flask app. 
 Suppose you have a basic Flask app like below (from the book). &lt;/p&gt;

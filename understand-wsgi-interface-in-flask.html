@@ -168,7 +168,7 @@ a global variable defined in global.py module.  </p>
 </code></pre></div>
 
 <p>I will stop here for now and look at other code in <code>wsgi_app</code> at a later time.   </p>
-<hr>
+<hr/>
 
 <p><em>updated on 3/28/2021</em></p>
 <p>Those three concepts are confusing if you do not read the source code. Kennedy&#8217;s article 
@@ -198,7 +198,7 @@ def _lookup_req_object(name):
 
 <p>Miguel Grinberg&#8217;s <em>Flask Web Development</em> Book Chapter 2 Page 18 has an example to show
 how the application context works. </p>
-<div class="highlight"><pre><span></span><code>(venv) george@X220:~/Code/flask-hello$ python
+<div class="highlight"><pre><span></span><code>(venv) $:~/Code/flask-hello$ python
 Python 3.9.2 (default, Mar 19 2021, 09:17:52) 
 [GCC 9.3.0] on linux
 Type &quot;help&quot;, &quot;copyright&quot;, &quot;credits&quot; or &quot;license&quot; for more information.
@@ -232,6 +232,32 @@ on Table 2-1 (Page 2-1).  Those are probably should be called &#8220;context loc
 in Kennedy&#8217;s article. </p>
 <p>The paragraphs of this article could be better organized, and I will revise the 
 article again later.  This probably is the most important topic in Flask. </p>
+<hr/>
+
+<p><em>updated on 3/13/2022</em></p>
+<p>I am reading more on this topic and trying to get to the bottom of <code>request</code>, 
+<code>session</code>, <code>current_app</code>, and <code>g</code> variables. I found an amazing stack overflow 
+answer on this topic by Michael Ekoka.  This is one of the best articles I ever 
+read on internet. It is the second answer to this question. </p>
+<p><a href="https://stackoverflow.com/questions/20036520/what-is-the-purpose-of-flasks-context-stacks">What is the purpose of Flask context stacks</a></p>
+<p>I am kind of agreeing that &#8220;this is a way overcomplicated design&#8221;, which is posted 
+as a comment to the answer. But Flask has been there for a long time, and we can 
+only work hard to understand it. </p>
+<p>After reading this stack overflow answer, I read the source code of <code>_threading_local.py</code>, 
+which is in the standard library. </p>
+<p><a href="https://github.com/python/cpython/blob/main/Lib/_threading_local.py">_threading_local.py Source Code</a></p>
+<p>The lines from 170 to 185 are not very clear to me, and they are related to wr (weak reference). 
+Otherwise the stack overflow answer is a really nice guide to the source code. </p>
+<p>Below are some handwritten notes regarding Flask class <code>wsgi_app</code> method.  </p>
+<p><a href="/files/wsgi_app_notes.pdf"><span class="caps">PDF</span> Notes on wsgi_app</a> </p>
+<hr/>
+
+<p>The <code>wsgi_app</code> method first creates a <code>RequestContext</code> object and pushes it onto the stack. 
+This happens each time a request is received on the server. </p>
+<p>When the <code>RequestContext</code> object is pushed, under normal condition it creates an <code>AppContext</code> 
+object and 
+pushes it onto a stack.  The <code>Flask</code> object <code>app</code> is only created once, and the <code>AppContext</code> 
+object stores a reference to it (the same as <code>RequestContext</code> object). </p>
 
       <div class="mt-5 border-top">
         <h3>Related Posts:</h3>
