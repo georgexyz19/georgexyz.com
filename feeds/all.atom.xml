@@ -5589,7 +5589,8 @@ good to know.  &lt;/p&gt;
 the command below restricts the search to &lt;code&gt;cli.py&lt;/code&gt; file.  You can also use &lt;code&gt;\*.h&lt;/code&gt; to restrict search 
 to &lt;code&gt;.h&lt;/code&gt; files. This is also from a 
 &lt;a href="https://stackoverflow.com/questions/12516937/how-can-i-grep-recursively-but-only-in-files-with-certain-extensions"&gt;stackoverflow Q&amp;amp;A&lt;/a&gt;. &lt;/p&gt;
-&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;$grep -winr --include cli.py &amp;quot;load_dotenv&amp;quot; ./
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;$grep -winr --include cli.py &amp;quot;load_dotenv&amp;quot; ./  
+$grep -win &amp;quot;load_dotenv&amp;quot; ./cli.py   # or this for this example
 &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;</content><category term="posts"></category><category term="linux"></category><category term="software utility"></category></entry><entry><title>Django Pagination</title><link href="https://www.georgexyz.com/django-pagination.html" rel="alternate"></link><published>2019-07-17T10:05:00-04:00</published><updated>2020-04-30T12:58:00-04:00</updated><author><name>George Zhang</name></author><id>tag:www.georgexyz.com,2019-07-17:/django-pagination.html</id><summary type="html">&lt;p&gt;Merriam-Webster dictionary defines pagination as &amp;#8220;the action of paging&amp;#8221;. In web 
 design world, pagination means separating a large list of contents onto 
 different pages for easy web navigation.   &lt;/p&gt;

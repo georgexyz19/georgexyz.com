@@ -158,7 +158,8 @@ good to know.  </p>
 the command below restricts the search to <code>cli.py</code> file.  You can also use <code>\*.h</code> to restrict search 
 to <code>.h</code> files. This is also from a 
 <a href="https://stackoverflow.com/questions/12516937/how-can-i-grep-recursively-but-only-in-files-with-certain-extensions">stackoverflow Q&amp;A</a>. </p>
-<div class="highlight"><pre><span></span><code>$grep -winr --include cli.py &quot;load_dotenv&quot; ./
+<div class="highlight"><pre><span></span><code>$grep -winr --include cli.py &quot;load_dotenv&quot; ./  
+$grep -win &quot;load_dotenv&quot; ./cli.py   # or this for this example
 </code></pre></div>
 
 
