@@ -115,6 +115,7 @@ to `.h` files. This is also from a
 [stackoverflow Q&A](https://stackoverflow.com/questions/12516937/how-can-i-grep-recursively-but-only-in-files-with-certain-extensions). 
 
 ```
-$grep -winr --include cli.py "load_dotenv" ./
+$grep -winr --include cli.py "load_dotenv" ./  
+$grep -win "load_dotenv" ./cli.py   # or this for this example
 ```
 
