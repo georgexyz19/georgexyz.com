@@ -1,5 +1,86 @@
 <?xml version="1.0" encoding="utf-8"?>
-<feed xmlns="http://www.w3.org/2005/Atom"><title>George Zhang</title><link href="https://www.georgexyz.com/" rel="alternate"></link><link href="https://www.georgexyz.com/feeds/all.atom.xml" rel="self"></link><id>https://www.georgexyz.com/</id><updated>2022-03-07T14:07:00-05:00</updated><entry><title>Sketch-Up Notes</title><link href="https://www.georgexyz.com/sketch-up-notes.html" rel="alternate"></link><published>2022-03-07T14:07:00-05:00</published><updated>2022-03-07T14:07:00-05:00</updated><author><name>George Zhang</name></author><id>tag:www.georgexyz.com,2022-03-07:/sketch-up-notes.html</id><summary type="html">&lt;p&gt;SketchUp is a 3D drawing tool. I am a big fan of the 2D open source software Inkscape. 
+<feed xmlns="http://www.w3.org/2005/Atom"><title>George Zhang</title><link href="https://www.georgexyz.com/" rel="alternate"></link><link href="https://www.georgexyz.com/feeds/all.atom.xml" rel="self"></link><id>https://www.georgexyz.com/</id><updated>2022-03-16T10:28:00-04:00</updated><entry><title>Simple Pelican Project Structure</title><link href="https://www.georgexyz.com/simple-pelican-project-structure.html" rel="alternate"></link><published>2022-03-16T10:28:00-04:00</published><updated>2022-03-16T10:28:00-04:00</updated><author><name>George Zhang</name></author><id>tag:www.georgexyz.com,2022-03-16:/simple-pelican-project-structure.html</id><summary type="html">&lt;p&gt;Pelican project structure can be complicated for a beginner.  A simple project structure 
+makes it easy to create simple websites. Once you understand the sub directories in the 
+&lt;code&gt;output&lt;/code&gt; dir …&lt;/p&gt;</summary><content type="html">&lt;p&gt;Pelican project structure can be complicated for a beginner.  A simple project structure 
+makes it easy to create simple websites. Once you understand the sub directories in the 
+&lt;code&gt;output&lt;/code&gt; dir, you can use &lt;code&gt;/&lt;/code&gt; to reference the website root and it makes 
+easier to reference other images files or static files. &lt;/p&gt;
+&lt;p&gt;The image below shows a simple Pelican project structure I used for one website. &lt;/p&gt;
+&lt;div style="max-width:800px"&gt;
+  &lt;img class="img-fluid pb-3" src="/images/simple_pelican_project.png" alt="pelican project dir"&gt; 
+&lt;/div&gt;
+
+&lt;p&gt;Here are the details of the project structure. &lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;The &lt;code&gt;files&lt;/code&gt; dir in &lt;code&gt;content&lt;/code&gt; becomes &lt;code&gt;files&lt;/code&gt; dir in &lt;code&gt;output&lt;/code&gt;. &lt;/li&gt;
+&lt;li&gt;The &lt;code&gt;images&lt;/code&gt; dir is copied to &lt;code&gt;output&lt;/code&gt;. It is the same as &lt;code&gt;files&lt;/code&gt; dir. &lt;/li&gt;
+&lt;li&gt;The html files in &lt;code&gt;pages&lt;/code&gt; dir map to the same files in &lt;code&gt;output&lt;/code&gt;.  This is not the default Pelican 
+behavior, and it requires a setting in the &lt;code&gt;pelicanconf.py&lt;/code&gt; file. &lt;/li&gt;
+&lt;li&gt;The markdown files (.md) in &lt;code&gt;posts&lt;/code&gt; dir map to files in &lt;code&gt;output&lt;/code&gt;. &lt;/li&gt;
+&lt;li&gt;Pelican creates a &lt;code&gt;theme&lt;/code&gt; dir in &lt;code&gt;output&lt;/code&gt;.  It maps to &lt;code&gt;theme&lt;/code&gt; dir under project dir. &lt;/li&gt;
+&lt;li&gt;The &lt;code&gt;static&lt;/code&gt; dir under &lt;code&gt;theme&lt;/code&gt; disappears.  &lt;span style="color:red;"&gt;This Pelican design choice is strange.&lt;/span&gt; &lt;/li&gt;
+&lt;li&gt;The directories in &lt;code&gt;static&lt;/code&gt; dir are copied to be under &lt;code&gt;theme&lt;/code&gt; dir in &lt;code&gt;output&lt;/code&gt;. &lt;/li&gt;
+&lt;li&gt;The &lt;code&gt;templates&lt;/code&gt; dir disappears.  The contents of the files become part of html file in &lt;code&gt;output&lt;/code&gt;. &lt;/li&gt;
+&lt;/ol&gt;
+&lt;p&gt;Below is the contents of the &lt;code&gt;pelicanconf.py&lt;/code&gt; file with some default settings removed. &lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;&lt;span class="ch"&gt;#!/usr/bin/env python&lt;/span&gt;
+&lt;span class="c1"&gt;# -*- coding: utf-8 -*- #&lt;/span&gt;
+&lt;span class="kn"&gt;from&lt;/span&gt; &lt;span class="nn"&gt;__future__&lt;/span&gt; &lt;span class="kn"&gt;import&lt;/span&gt; &lt;span class="n"&gt;unicode_literals&lt;/span&gt;
+
+&lt;span class="n"&gt;AUTHOR&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="s1"&gt;&amp;#39;FistName LastName&amp;#39;&lt;/span&gt;
+&lt;span class="n"&gt;SITENAME&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="s1"&gt;&amp;#39;www.example.com&amp;#39;&lt;/span&gt;
+&lt;span class="n"&gt;SITEURL&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="s1"&gt;&amp;#39;&amp;#39;&lt;/span&gt;
+
+&lt;span class="n"&gt;PATH&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="s1"&gt;&amp;#39;content&amp;#39;&lt;/span&gt;
+
+&lt;span class="n"&gt;TIMEZONE&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="s1"&gt;&amp;#39;America/New_York&amp;#39;&lt;/span&gt;
+
+&lt;span class="n"&gt;DEFAULT_LANG&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="s1"&gt;&amp;#39;en&amp;#39;&lt;/span&gt;
+
+&lt;span class="n"&gt;STATIC_PATHS&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="p"&gt;[&lt;/span&gt;&lt;span class="s1"&gt;&amp;#39;images&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="s1"&gt;&amp;#39;files&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;]&lt;/span&gt;
+&lt;span class="c1"&gt;# refer to files like this `/files/calendar/2019.svg`&lt;/span&gt;
+&lt;span class="c1"&gt;# images with src = `/images/homepage.png`&lt;/span&gt;
+
+&lt;span class="n"&gt;THEME&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="s2"&gt;&amp;quot;theme&amp;quot;&lt;/span&gt;
+
+&lt;span class="n"&gt;MARKDOWN&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="p"&gt;{&lt;/span&gt;
+    &lt;span class="s1"&gt;&amp;#39;extension_configs&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt; &lt;span class="p"&gt;{&lt;/span&gt;
+        &lt;span class="s1"&gt;&amp;#39;markdown.extensions.codehilite&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt; 
+           &lt;span class="p"&gt;{&lt;/span&gt;&lt;span class="s2"&gt;&amp;quot;css_class&amp;quot;&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt; &lt;span class="s2"&gt;&amp;quot;highlight&amp;quot;&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="s2"&gt;&amp;quot;guess_lang&amp;quot;&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt; &lt;span class="kc"&gt;False&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; 
+            &lt;span class="s2"&gt;&amp;quot;linenums&amp;quot;&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt; &lt;span class="kc"&gt;False&lt;/span&gt;&lt;span class="p"&gt;},&lt;/span&gt;
+        &lt;span class="s1"&gt;&amp;#39;markdown.extensions.extra&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt; &lt;span class="p"&gt;{},&lt;/span&gt;
+        &lt;span class="s1"&gt;&amp;#39;markdown.extensions.admonition&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt; &lt;span class="p"&gt;{},&lt;/span&gt;
+    &lt;span class="p"&gt;},&lt;/span&gt;
+    &lt;span class="s1"&gt;&amp;#39;output_format&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt; &lt;span class="s1"&gt;&amp;#39;html5&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;
+&lt;span class="p"&gt;}&lt;/span&gt;
+
+&lt;span class="c1"&gt;# not using category&lt;/span&gt;
+&lt;span class="n"&gt;CATEGORY_SAVE_AS&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="s1"&gt;&amp;#39;&amp;#39;&lt;/span&gt;
+&lt;span class="n"&gt;CATEGORIES_SAVE_AS&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="s1"&gt;&amp;#39;&amp;#39;&lt;/span&gt;
+
+&lt;span class="n"&gt;ARCHIVES_SAVE_AS&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="s1"&gt;&amp;#39;&amp;#39;&lt;/span&gt;
+
+&lt;span class="c1"&gt;# not using author&lt;/span&gt;
+&lt;span class="n"&gt;AUTHORS_URL&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="s1"&gt;&amp;#39;&amp;#39;&lt;/span&gt;
+&lt;span class="n"&gt;AUTHORS_SAVE_AS&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="s1"&gt;&amp;#39;&amp;#39;&lt;/span&gt;
+&lt;span class="n"&gt;AUTHOR_URL&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="s1"&gt;&amp;#39;&amp;#39;&lt;/span&gt;
+
+&lt;span class="c1"&gt;# not using tags&lt;/span&gt;
+&lt;span class="n"&gt;TAG_SAVE_AS&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="s1"&gt;&amp;#39;&amp;#39;&lt;/span&gt;
+&lt;span class="n"&gt;TAGS_SAVE_AS&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="s1"&gt;&amp;#39;&amp;#39;&lt;/span&gt;
+&lt;span class="n"&gt;TAG_URL&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="s1"&gt;&amp;#39;&amp;#39;&lt;/span&gt;
+
+&lt;span class="c1"&gt;# DEFAULT_PAGINATION = 3&lt;/span&gt;
+&lt;span class="n"&gt;INDEX_SAVE_AS&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="s1"&gt;&amp;#39;&amp;#39;&lt;/span&gt;
+&lt;span class="c1"&gt;# SUMMARY_MAX_LENGTH = 30&lt;/span&gt;
+
+&lt;span class="n"&gt;TYPOGRIFY&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="kc"&gt;True&lt;/span&gt;
+
+&lt;span class="c1"&gt;# change from `/output/pages/{slug}.html` &lt;/span&gt;
+&lt;span class="c1"&gt;#  to /output/{slug}.html&lt;/span&gt;
+&lt;span class="n"&gt;PAGE_URL&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="s1"&gt;&amp;#39;&lt;/span&gt;&lt;span class="si"&gt;{slug}&lt;/span&gt;&lt;span class="s1"&gt;.html&amp;#39;&lt;/span&gt;
+&lt;span class="n"&gt;PAGE_SAVE_AS&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="s1"&gt;&amp;#39;&lt;/span&gt;&lt;span class="si"&gt;{slug}&lt;/span&gt;&lt;span class="s1"&gt;.html&amp;#39;&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;</content><category term="posts"></category><category term="pelican"></category><category term="python"></category></entry><entry><title>Sketch-Up Notes</title><link href="https://www.georgexyz.com/sketch-up-notes.html" rel="alternate"></link><published>2022-03-07T14:07:00-05:00</published><updated>2022-03-07T14:07:00-05:00</updated><author><name>George Zhang</name></author><id>tag:www.georgexyz.com,2022-03-07:/sketch-up-notes.html</id><summary type="html">&lt;p&gt;SketchUp is a 3D drawing tool. I am a big fan of the 2D open source software Inkscape. 
 But sometimes I use the free version of SketchUp Make 2017 to …&lt;/p&gt;</summary><content type="html">&lt;p&gt;SketchUp is a 3D drawing tool. I am a big fan of the 2D open source software Inkscape. 
 But sometimes I use the free version of SketchUp Make 2017 to do simple 3D drawings. &lt;/p&gt;
 &lt;p&gt;Most of my knowledge of SketchUp is from a youtube video and the notes shown below. &lt;/p&gt;

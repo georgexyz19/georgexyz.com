@@ -1,0 +1,165 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <link rel="stylesheet" href="/theme/css/bs4min.css">
+    <link rel="shortcut icon" type="image/x-icon" href="/theme/images/favicon.ico" >
+    <link rel="icon" type="image/x-icon" href="/theme/images/favicon.ico" >
+<link rel="stylesheet" href="https://www.georgexyz.com/theme/css/friendly.css">
+<link rel="stylesheet" href="https://www.georgexyz.com/theme/css/custom.css">
+<meta name="author" content="George Zhang" />
+<meta name="keywords" content="pelican,python" />
+<meta name="description" content="Pelican project structure can be complicated for a beginner. A simple project structure makes it easy to create simple websites. Once you understand the sub directories in the output dir …" />
+    <title>Simple Pelican Project Structure - George Zhang</title>
+  </head>
+  <body>
+    <!-- navbar -->
+    <nav class="navbar navbar-expand-md navbar-light" style="background-color: #e3f2fd;">
+      <div class="container">
+        <a class="navbar-brand" href="/">George Zhang</a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarColor01" aria-controls="navbarColor01" aria-expanded="false" aria-label="Toggle navigation">
+          <span class="navbar-toggler-icon"></span>
+        </button>
+
+        <div class="collapse navbar-collapse" id="navbarColor01">
+          <ul class="navbar-nav mr-auto">
+            <li class="nav-item">
+              <a class="nav-link " 
+                href="/articlelist.html">Articles</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link pr-3 " 
+                href="/tags.html">Tags</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link "
+                   href="/pages/projects.html">Projects</a>
+              </li>
+          </ul>
+
+          <ul class="navbar-nav">
+            <li class="nav-item">
+              <a class="nav-link " 
+                 href="/pages/about.html">About</a>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </nav>
+
+   
+
+<div class="container">
+
+  <div class="row">
+    <div class="col-lg-8 mx-auto">
+
+      <h2>Simple Pelican Project Structure</h2>
+
+      <div class="text-muted mb-2">
+        <span>Posted on </span>
+        <time datetime="2022-03-16 10:28:00-04:00">
+          Wednesday, 03/16/2022 10:28
+        </time>
+
+        <span>with tags: </span>
+        <a href="https://www.georgexyz.com/tag/pelican.html">pelican</a>
+/        <a href="https://www.georgexyz.com/tag/python.html">python</a>
+      </div>
+
+      <p>Pelican project structure can be complicated for a beginner.  A simple project structure 
+makes it easy to create simple websites. Once you understand the sub directories in the 
+<code>output</code> dir, you can use <code>/</code> to reference the website root and it makes 
+easier to reference other images files or static files. </p>
+<p>The image below shows a simple Pelican project structure I used for one website. </p>
+<div style="max-width:800px">
+  <img class="img-fluid pb-3" src="/images/simple_pelican_project.png" alt="pelican project dir"> 
+</div>
+
+<p>Here are the details of the project structure. </p>
+<ol>
+<li>The <code>files</code> dir in <code>content</code> becomes <code>files</code> dir in <code>output</code>. </li>
+<li>The <code>images</code> dir is copied to <code>output</code>. It is the same as <code>files</code> dir. </li>
+<li>The html files in <code>pages</code> dir map to the same files in <code>output</code>.  This is not the default Pelican 
+behavior, and it requires a setting in the <code>pelicanconf.py</code> file. </li>
+<li>The markdown files (.md) in <code>posts</code> dir map to files in <code>output</code>. </li>
+<li>Pelican creates a <code>theme</code> dir in <code>output</code>.  It maps to <code>theme</code> dir under project dir. </li>
+<li>The <code>static</code> dir under <code>theme</code> disappears.  <span style="color:red;">This Pelican design choice is strange.</span> </li>
+<li>The directories in <code>static</code> dir are copied to be under <code>theme</code> dir in <code>output</code>. </li>
+<li>The <code>templates</code> dir disappears.  The contents of the files become part of html file in <code>output</code>. </li>
+</ol>
+<p>Below is the contents of the <code>pelicanconf.py</code> file with some default settings removed. </p>
+<div class="highlight"><pre><span></span><code><span class="ch">#!/usr/bin/env python</span>
+<span class="c1"># -*- coding: utf-8 -*- #</span>
+<span class="kn">from</span> <span class="nn">__future__</span> <span class="kn">import</span> <span class="n">unicode_literals</span>
+
+<span class="n">AUTHOR</span> <span class="o">=</span> <span class="s1">&#39;FistName LastName&#39;</span>
+<span class="n">SITENAME</span> <span class="o">=</span> <span class="s1">&#39;www.example.com&#39;</span>
+<span class="n">SITEURL</span> <span class="o">=</span> <span class="s1">&#39;&#39;</span>
+
+<span class="n">PATH</span> <span class="o">=</span> <span class="s1">&#39;content&#39;</span>
+
+<span class="n">TIMEZONE</span> <span class="o">=</span> <span class="s1">&#39;America/New_York&#39;</span>
+
+<span class="n">DEFAULT_LANG</span> <span class="o">=</span> <span class="s1">&#39;en&#39;</span>
+
+<span class="n">STATIC_PATHS</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;images&#39;</span><span class="p">,</span> <span class="s1">&#39;files&#39;</span><span class="p">]</span>
+<span class="c1"># refer to files like this `/files/calendar/2019.svg`</span>
+<span class="c1"># images with src = `/images/homepage.png`</span>
+
+<span class="n">THEME</span> <span class="o">=</span> <span class="s2">&quot;theme&quot;</span>
+
+<span class="n">MARKDOWN</span> <span class="o">=</span> <span class="p">{</span>
+    <span class="s1">&#39;extension_configs&#39;</span><span class="p">:</span> <span class="p">{</span>
+        <span class="s1">&#39;markdown.extensions.codehilite&#39;</span><span class="p">:</span> 
+           <span class="p">{</span><span class="s2">&quot;css_class&quot;</span><span class="p">:</span> <span class="s2">&quot;highlight&quot;</span><span class="p">,</span> <span class="s2">&quot;guess_lang&quot;</span><span class="p">:</span> <span class="kc">False</span><span class="p">,</span> 
+            <span class="s2">&quot;linenums&quot;</span><span class="p">:</span> <span class="kc">False</span><span class="p">},</span>
+        <span class="s1">&#39;markdown.extensions.extra&#39;</span><span class="p">:</span> <span class="p">{},</span>
+        <span class="s1">&#39;markdown.extensions.admonition&#39;</span><span class="p">:</span> <span class="p">{},</span>
+    <span class="p">},</span>
+    <span class="s1">&#39;output_format&#39;</span><span class="p">:</span> <span class="s1">&#39;html5&#39;</span><span class="p">,</span>
+<span class="p">}</span>
+
+<span class="c1"># not using category</span>
+<span class="n">CATEGORY_SAVE_AS</span> <span class="o">=</span> <span class="s1">&#39;&#39;</span>
+<span class="n">CATEGORIES_SAVE_AS</span> <span class="o">=</span> <span class="s1">&#39;&#39;</span>
+
+<span class="n">ARCHIVES_SAVE_AS</span> <span class="o">=</span> <span class="s1">&#39;&#39;</span>
+
+<span class="c1"># not using author</span>
+<span class="n">AUTHORS_URL</span> <span class="o">=</span> <span class="s1">&#39;&#39;</span>
+<span class="n">AUTHORS_SAVE_AS</span> <span class="o">=</span> <span class="s1">&#39;&#39;</span>
+<span class="n">AUTHOR_URL</span> <span class="o">=</span> <span class="s1">&#39;&#39;</span>
+
+<span class="c1"># not using tags</span>
+<span class="n">TAG_SAVE_AS</span> <span class="o">=</span> <span class="s1">&#39;&#39;</span>
+<span class="n">TAGS_SAVE_AS</span> <span class="o">=</span> <span class="s1">&#39;&#39;</span>
+<span class="n">TAG_URL</span> <span class="o">=</span> <span class="s1">&#39;&#39;</span>
+
+<span class="c1"># DEFAULT_PAGINATION = 3</span>
+<span class="n">INDEX_SAVE_AS</span> <span class="o">=</span> <span class="s1">&#39;&#39;</span>
+<span class="c1"># SUMMARY_MAX_LENGTH = 30</span>
+
+<span class="n">TYPOGRIFY</span> <span class="o">=</span> <span class="kc">True</span>
+
+<span class="c1"># change from `/output/pages/{slug}.html` </span>
+<span class="c1">#  to /output/{slug}.html</span>
+<span class="n">PAGE_URL</span> <span class="o">=</span> <span class="s1">&#39;</span><span class="si">{slug}</span><span class="s1">.html&#39;</span>
+<span class="n">PAGE_SAVE_AS</span> <span class="o">=</span> <span class="s1">&#39;</span><span class="si">{slug}</span><span class="s1">.html&#39;</span>
+</code></pre></div>
+
+
+
+    </div>
+  </div>
+
+</div>
+
+   
+    <script src="https://code.jquery.com/jquery-3.4.1.slim.min.js" integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js" integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6" crossorigin="anonymous"></script>
+  </body>
+</html>
