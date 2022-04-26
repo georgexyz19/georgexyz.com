@@ -1,4 +1,4 @@
-title: New Linux Mint Install and Setup
+title: New Ubuntu/Linux Mint System Install and Setup
 slug: new-linux-mint-install-and-setup
 date: 2021-01-15 11:03
 modified: 2021-01-15 11:03
@@ -114,8 +114,13 @@ git config --global user.name "<name>"
 sudo apt-get install -y make build-essential libssl-dev zlib1g-dev 
  libbz2-dev libreadline-dev libsqlite3-dev wget curl llvm libncurses5-dev
  libncursesw5-dev xz-utils tk-dev libffi-dev liblzma-dev python-openssl 
+
+# python-openssl cann't find, remove it from list OKAY
+
+
 curl https://pyenv.run | bash
 vim .bashrc 
+
 # Add those 4 lines to .bashrc for new version of pyenv.run
 # export PYENV_ROOT="$HOME/.pyenv"
 # export PATH="$PYENV_ROOT/bin:$PATH"
@@ -159,3 +164,32 @@ Below are screenshots of font setting windows in Chrome and Firefox under Linux 
 <div style="max-width:400px">
   <img class="img-fluid pb-3" src="/images/firefox-font.png" alt="Firefox Font">
 </div>
+
+###Pyenv Update (4/26/22)
+
+The new version of Pyenv needs some manual setting to make it work. 
+After installing the pyenv, add those lines to the `.bashrc` file (or the four lines 
+shown as comments above). 
+
+```python
+export PATH="$HOME/.pyenv/bin:$PATH"
+eval "$(pyenv init --path)"
+eval "$(pyenv virtualenv-init -)"
+```
+
+This works fine in Ubuntu 22.04 LTS, otherwise `python` command does not work. The 
+bash cann't find the `python` command. I am not sure the reason.  Need to read the 
+pyenv documentation to find out someday. 
+
+###Install Nodejs
+
+Node source does not work on Ubuntu 22.04 yet. I found 
+[a post by EntenKoeniq](https://github.com/nodesource/distributions/issues/1379#issuecomment-1107656661) in 
+github which works fine.  Here are the commands,
+
+```bash
+sudo curl -LO https://nodejs.org/dist/v18.0.0/node-v18.0.0-linux-x64.tar.xz
+sudo tar -xvf node-v18.0.0-linux-x64.tar.xz
+sudo cp -r node-v18.0.0-linux-x64/{bin,include,lib,share} /usr/
+node --version => v18.0.0
+```
