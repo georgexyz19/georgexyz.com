@@ -12,7 +12,7 @@
 <meta name="author" content="George Zhang" />
 <meta name="keywords" content="linux,linux mint" />
 <meta name="description" content="I have been using Linux Mint since June 2019. Most times I am happy with it. It seems that version 19.x is more stable than 20.x at this …" />
-    <title>New Linux Mint Install and Setup - George Zhang</title>
+    <title>New Ubuntu/Linux Mint System Install and Setup - George Zhang</title>
   </head>
   <body>
     <!-- navbar -->
@@ -56,7 +56,7 @@
   <div class="row">
     <div class="col-lg-8 mx-auto">
 
-      <h2>New Linux Mint Install and Setup</h2>
+      <h2>New Ubuntu/Linux Mint System Install and Setup</h2>
 
       <div class="text-muted mb-2">
         <span>Posted on </span>
@@ -169,8 +169,13 @@ git config --global user.name <span class="s2">&quot;&lt;name&gt;&quot;</span>
 sudo apt-get install -y make build-essential libssl-dev zlib1g-dev 
  libbz2-dev libreadline-dev libsqlite3-dev wget curl llvm libncurses5-dev
  libncursesw5-dev xz-utils tk-dev libffi-dev liblzma-dev python-openssl 
+
+<span class="c1"># python-openssl cann&#39;t find, remove it from list OKAY</span>
+
+
 curl https://pyenv.run <span class="p">|</span> bash
 vim .bashrc 
+
 <span class="c1"># Add those 4 lines to .bashrc for new version of pyenv.run</span>
 <span class="c1"># export PYENV_ROOT=&quot;$HOME/.pyenv&quot;</span>
 <span class="c1"># export PATH=&quot;$PYENV_ROOT/bin:$PATH&quot;</span>
@@ -213,6 +218,28 @@ invoke livereload
 <div style="max-width:400px">
   <img class="img-fluid pb-3" src="/images/firefox-font.png" alt="Firefox Font">
 </div>
+
+<h3>Pyenv Update (4/26/22)</h3>
+<p>The new version of Pyenv needs some manual setting to make it work. 
+After installing the pyenv, add those lines to the <code>.bashrc</code> file (or the four lines 
+shown as comments above). </p>
+<div class="highlight"><pre><span></span><code><span class="n">export</span> <span class="n">PATH</span><span class="o">=</span><span class="s2">&quot;$HOME/.pyenv/bin:$PATH&quot;</span>
+<span class="nb">eval</span> <span class="s2">&quot;$(pyenv init --path)&quot;</span>
+<span class="nb">eval</span> <span class="s2">&quot;$(pyenv virtualenv-init -)&quot;</span>
+</code></pre></div>
+
+<p>This works fine in Ubuntu 22.04 <span class="caps">LTS</span>, otherwise <code>python</code> command does not work. The 
+bash cann&#8217;t find the <code>python</code> command. I am not sure the reason.  Need to read the 
+pyenv documentation to find out someday. </p>
+<h3>Install Nodejs</h3>
+<p>Node source does not work on Ubuntu 22.04 yet. I found 
+<a href="https://github.com/nodesource/distributions/issues/1379#issuecomment-1107656661">a post by EntenKoeniq</a> in 
+github which works fine.  Here are the commands,</p>
+<div class="highlight"><pre><span></span><code>sudo curl -LO https://nodejs.org/dist/v18.0.0/node-v18.0.0-linux-x64.tar.xz
+sudo tar -xvf node-v18.0.0-linux-x64.tar.xz
+sudo cp -r node-v18.0.0-linux-x64/<span class="o">{</span>bin,include,lib,share<span class="o">}</span> /usr/
+node --version <span class="o">=</span>&gt; v18.0.0
+</code></pre></div>
 
       <div class="mt-5 border-top">
         <h3>Related Posts:</h3>

@@ -1642,7 +1642,7 @@ if a Ryobi Sander is in stock on &lt;em&gt;direct tools outlet&lt;/em&gt; websit
 &lt;li&gt;Send an email or text message to remind that it is in stock&lt;/li&gt;
 &lt;/ul&gt;
 &lt;p&gt;The code does not look complicated.  The program shapes up to 
-be a ticket scalping tool, and I am stopping the post right here. &lt;/p&gt;</content><category term="posts"></category><category term="python"></category></entry><entry><title>New Linux Mint Install and Setup</title><link href="https://www.georgexyz.com/new-linux-mint-install-and-setup.html" rel="alternate"></link><published>2021-01-15T11:03:00-05:00</published><updated>2021-01-15T11:03:00-05:00</updated><author><name>George Zhang</name></author><id>tag:www.georgexyz.com,2021-01-15:/new-linux-mint-install-and-setup.html</id><summary type="html">&lt;p&gt;I have been using Linux Mint since June 2019. Most times I am happy with it. 
+be a ticket scalping tool, and I am stopping the post right here. &lt;/p&gt;</content><category term="posts"></category><category term="python"></category></entry><entry><title>New Ubuntu/Linux Mint System Install and Setup</title><link href="https://www.georgexyz.com/new-linux-mint-install-and-setup.html" rel="alternate"></link><published>2021-01-15T11:03:00-05:00</published><updated>2021-01-15T11:03:00-05:00</updated><author><name>George Zhang</name></author><id>tag:www.georgexyz.com,2021-01-15:/new-linux-mint-install-and-setup.html</id><summary type="html">&lt;p&gt;I have been using Linux Mint since June 2019. Most times I am happy with it. 
 It seems that version 19.x is more stable than 20.x at this …&lt;/p&gt;</summary><content type="html">&lt;p&gt;I have been using Linux Mint since June 2019. Most times I am happy with it. 
 It seems that version 19.x is more stable than 20.x at this time. My computer 
 still has 19.3 installed, and eventually I will upgrade to 20.x or a newer version. 
@@ -1743,8 +1743,13 @@ git config --global user.name &lt;span class="s2"&gt;&amp;quot;&amp;lt;name&amp;
 sudo apt-get install -y make build-essential libssl-dev zlib1g-dev 
  libbz2-dev libreadline-dev libsqlite3-dev wget curl llvm libncurses5-dev
  libncursesw5-dev xz-utils tk-dev libffi-dev liblzma-dev python-openssl 
+
+&lt;span class="c1"&gt;# python-openssl cann&amp;#39;t find, remove it from list OKAY&lt;/span&gt;
+
+
 curl https://pyenv.run &lt;span class="p"&gt;|&lt;/span&gt; bash
 vim .bashrc 
+
 &lt;span class="c1"&gt;# Add those 4 lines to .bashrc for new version of pyenv.run&lt;/span&gt;
 &lt;span class="c1"&gt;# export PYENV_ROOT=&amp;quot;$HOME/.pyenv&amp;quot;&lt;/span&gt;
 &lt;span class="c1"&gt;# export PATH=&amp;quot;$PYENV_ROOT/bin:$PATH&amp;quot;&lt;/span&gt;
@@ -1786,7 +1791,29 @@ invoke livereload
 
 &lt;div style="max-width:400px"&gt;
   &lt;img class="img-fluid pb-3" src="/images/firefox-font.png" alt="Firefox Font"&gt;
-&lt;/div&gt;</content><category term="posts"></category><category term="linux"></category><category term="linux mint"></category></entry><entry><title>Road Segment Crash Rate Calculator</title><link href="https://www.georgexyz.com/road-segment-crash-rate-calculator.html" rel="alternate"></link><published>2021-01-11T10:30:00-05:00</published><updated>2021-01-11T10:30:00-05:00</updated><author><name>George Zhang</name></author><id>tag:www.georgexyz.com,2021-01-11:/road-segment-crash-rate-calculator.html</id><summary type="html">&lt;p&gt;I am reading Part Two, Chapter 4.3 of 
+&lt;/div&gt;
+
+&lt;h3&gt;Pyenv Update (4/26/22)&lt;/h3&gt;
+&lt;p&gt;The new version of Pyenv needs some manual setting to make it work. 
+After installing the pyenv, add those lines to the &lt;code&gt;.bashrc&lt;/code&gt; file (or the four lines 
+shown as comments above). &lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;&lt;span class="n"&gt;export&lt;/span&gt; &lt;span class="n"&gt;PATH&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="s2"&gt;&amp;quot;$HOME/.pyenv/bin:$PATH&amp;quot;&lt;/span&gt;
+&lt;span class="nb"&gt;eval&lt;/span&gt; &lt;span class="s2"&gt;&amp;quot;$(pyenv init --path)&amp;quot;&lt;/span&gt;
+&lt;span class="nb"&gt;eval&lt;/span&gt; &lt;span class="s2"&gt;&amp;quot;$(pyenv virtualenv-init -)&amp;quot;&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+
+&lt;p&gt;This works fine in Ubuntu 22.04 &lt;span class="caps"&gt;LTS&lt;/span&gt;, otherwise &lt;code&gt;python&lt;/code&gt; command does not work. The 
+bash cann&amp;#8217;t find the &lt;code&gt;python&lt;/code&gt; command. I am not sure the reason.  Need to read the 
+pyenv documentation to find out someday. &lt;/p&gt;
+&lt;h3&gt;Install Nodejs&lt;/h3&gt;
+&lt;p&gt;Node source does not work on Ubuntu 22.04 yet. I found 
+&lt;a href="https://github.com/nodesource/distributions/issues/1379#issuecomment-1107656661"&gt;a post by EntenKoeniq&lt;/a&gt; in 
+github which works fine.  Here are the commands,&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;sudo curl -LO https://nodejs.org/dist/v18.0.0/node-v18.0.0-linux-x64.tar.xz
+sudo tar -xvf node-v18.0.0-linux-x64.tar.xz
+sudo cp -r node-v18.0.0-linux-x64/&lt;span class="o"&gt;{&lt;/span&gt;bin,include,lib,share&lt;span class="o"&gt;}&lt;/span&gt; /usr/
+node --version &lt;span class="o"&gt;=&lt;/span&gt;&amp;gt; v18.0.0
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;</content><category term="posts"></category><category term="linux"></category><category term="linux mint"></category></entry><entry><title>Road Segment Crash Rate Calculator</title><link href="https://www.georgexyz.com/road-segment-crash-rate-calculator.html" rel="alternate"></link><published>2021-01-11T10:30:00-05:00</published><updated>2021-01-11T10:30:00-05:00</updated><author><name>George Zhang</name></author><id>tag:www.georgexyz.com,2021-01-11:/road-segment-crash-rate-calculator.html</id><summary type="html">&lt;p&gt;I am reading Part Two, Chapter 4.3 of 
 &lt;a href="javascript.info"&gt;javascript.info&lt;/a&gt; tutorial.  It has an exercise to write a js deposit calculator. 
 I often use &lt;a href="/files/CrashRateCal.xlsx"&gt;a spreadsheet file&lt;/a&gt; to calculate …&lt;/p&gt;</summary><content type="html">&lt;p&gt;I am reading Part Two, Chapter 4.3 of 
 &lt;a href="javascript.info"&gt;javascript.info&lt;/a&gt; tutorial.  It has an exercise to write a js deposit calculator. 
