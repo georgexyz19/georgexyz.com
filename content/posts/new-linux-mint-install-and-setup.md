@@ -193,3 +193,16 @@ sudo tar -xvf node-v18.0.0-linux-x64.tar.xz
 sudo cp -r node-v18.0.0-linux-x64/{bin,include,lib,share} /usr/
 node --version => v18.0.0
 ```
+
+###Ubuntu/Windows Dual Bool Time Issue
+
+When a computer has both Ubuntu and Windows system installed, the system time 
+in Windows is wrong.  The issue is described in this 
+[itsfoss.com article](https://itsfoss.com/wrong-time-dual-boot/). 
+
+The easy way to fix the issue is to run the commands in Ubuntu, 
+
+```
+timedatectl set-local-rtc 1
+timedatectl
+```
