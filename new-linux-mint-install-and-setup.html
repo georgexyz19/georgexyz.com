@@ -241,6 +241,15 @@ sudo cp -r node-v18.0.0-linux-x64/<span class="o">{</span>bin,include,lib,share<
 node --version <span class="o">=</span>&gt; v18.0.0
 </code></pre></div>
 
+<h3>Ubuntu/Windows Dual Bool Time Issue</h3>
+<p>When a computer has both Ubuntu and Windows system installed, the system time 
+in Windows is wrong.  The issue is described in this 
+<a href="https://itsfoss.com/wrong-time-dual-boot/">itsfoss.com article</a>. </p>
+<p>The easy way to fix the issue is to run the commands in Ubuntu, </p>
+<div class="highlight"><pre><span></span><code>timedatectl set-local-rtc 1
+timedatectl
+</code></pre></div>
+
       <div class="mt-5 border-top">
         <h3>Related Posts:</h3>
         <ul>

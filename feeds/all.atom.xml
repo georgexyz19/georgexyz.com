@@ -1813,6 +1813,15 @@ github which works fine.  Here are the commands,&lt;/p&gt;
 sudo tar -xvf node-v18.0.0-linux-x64.tar.xz
 sudo cp -r node-v18.0.0-linux-x64/&lt;span class="o"&gt;{&lt;/span&gt;bin,include,lib,share&lt;span class="o"&gt;}&lt;/span&gt; /usr/
 node --version &lt;span class="o"&gt;=&lt;/span&gt;&amp;gt; v18.0.0
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+
+&lt;h3&gt;Ubuntu/Windows Dual Bool Time Issue&lt;/h3&gt;
+&lt;p&gt;When a computer has both Ubuntu and Windows system installed, the system time 
+in Windows is wrong.  The issue is described in this 
+&lt;a href="https://itsfoss.com/wrong-time-dual-boot/"&gt;itsfoss.com article&lt;/a&gt;. &lt;/p&gt;
+&lt;p&gt;The easy way to fix the issue is to run the commands in Ubuntu, &lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;timedatectl set-local-rtc 1
+timedatectl
 &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;</content><category term="posts"></category><category term="linux"></category><category term="linux mint"></category></entry><entry><title>Road Segment Crash Rate Calculator</title><link href="https://www.georgexyz.com/road-segment-crash-rate-calculator.html" rel="alternate"></link><published>2021-01-11T10:30:00-05:00</published><updated>2021-01-11T10:30:00-05:00</updated><author><name>George Zhang</name></author><id>tag:www.georgexyz.com,2021-01-11:/road-segment-crash-rate-calculator.html</id><summary type="html">&lt;p&gt;I am reading Part Two, Chapter 4.3 of 
 &lt;a href="javascript.info"&gt;javascript.info&lt;/a&gt; tutorial.  It has an exercise to write a js deposit calculator. 
 I often use &lt;a href="/files/CrashRateCal.xlsx"&gt;a spreadsheet file&lt;/a&gt; to calculate …&lt;/p&gt;</summary><content type="html">&lt;p&gt;I am reading Part Two, Chapter 4.3 of 
