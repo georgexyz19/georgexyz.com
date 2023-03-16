@@ -3,7 +3,7 @@ blinker==1.4
 docutils==0.16
 feedgenerator==1.9.1
 ghp-import2==1.0.1
-invoke==1.4.1
+invoke==2.0.0
 Jinja2==2.11.2
 livereload==2.6.3
 Markdown==3.3.3
