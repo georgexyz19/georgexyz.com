@@ -3,7 +3,7 @@ slug: vim-tips
 meta: Vim Installation And Vim Tips
 tags: vim, linux
 date: 2019-04-01 12:45
-modified: 2020-08-09 17:37
+modified: 2023-03-16 22:51
 
 
 Ubuntu 18.04 comes with a stripped down version of Vim. If you want to use Vim for 
@@ -32,9 +32,9 @@ Those three commands remove the existing vim-tiny and install the full version w
 vim-gtk3 in Ubuntu/Linux Mint. 
 
 ```
-sudo apt-get remove vim-tiny
-sudo apt-get update
-sudo apt-get install vim-gtk3
+sudo apt remove vim-tiny
+sudo apt update
+sudo apt install vim-gtk3
 ```
 
 You can then check the vim version by command `vim --version`. 
