@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<feed xmlns="http://www.w3.org/2005/Atom"><title>George Zhang</title><link href="https://www.georgexyz.com/" rel="alternate"></link><link href="https://www.georgexyz.com/feeds/all.atom.xml" rel="self"></link><id>https://www.georgexyz.com/</id><updated>2022-03-16T10:28:00-04:00</updated><entry><title>Simple Pelican Project Structure</title><link href="https://www.georgexyz.com/simple-pelican-project-structure.html" rel="alternate"></link><published>2022-03-16T10:28:00-04:00</published><updated>2022-03-16T10:28:00-04:00</updated><author><name>George Zhang</name></author><id>tag:www.georgexyz.com,2022-03-16:/simple-pelican-project-structure.html</id><summary type="html">&lt;p&gt;Pelican project structure can be complicated for a beginner.  A simple project structure 
+<feed xmlns="http://www.w3.org/2005/Atom"><title>George Zhang</title><link href="https://www.georgexyz.com/" rel="alternate"></link><link href="https://www.georgexyz.com/feeds/all.atom.xml" rel="self"></link><id>https://www.georgexyz.com/</id><updated>2023-03-16T22:51:00-04:00</updated><entry><title>Simple Pelican Project Structure</title><link href="https://www.georgexyz.com/simple-pelican-project-structure.html" rel="alternate"></link><published>2022-03-16T10:28:00-04:00</published><updated>2022-03-16T10:28:00-04:00</updated><author><name>George Zhang</name></author><id>tag:www.georgexyz.com,2022-03-16:/simple-pelican-project-structure.html</id><summary type="html">&lt;p&gt;Pelican project structure can be complicated for a beginner.  A simple project structure 
 makes it easy to create simple websites. Once you understand the sub directories in the 
 &lt;code&gt;output&lt;/code&gt; dir …&lt;/p&gt;</summary><content type="html">&lt;p&gt;Pelican project structure can be complicated for a beginner.  A simple project structure 
 makes it easy to create simple websites. Once you understand the sub directories in the 
@@ -7849,7 +7849,7 @@ python click_example.py --xhtml True --cssfile mystyle.css myfile.html
 three positional arguments. The decorator changes the function definition to be 
 without arguments. When you call the &lt;code&gt;main&lt;/code&gt; fuction, it is simply &lt;code&gt;main()&lt;/code&gt; without 
 any arguments.  Normally that is not a good decorator practice, but this is 
-an exception and it works well.  &lt;/p&gt;</content><category term="posts"></category><category term="python"></category></entry><entry><title>Vim Tips</title><link href="https://www.georgexyz.com/vim-tips.html" rel="alternate"></link><published>2019-04-01T12:45:00-04:00</published><updated>2020-08-09T17:37:00-04:00</updated><author><name>George Zhang</name></author><id>tag:www.georgexyz.com,2019-04-01:/vim-tips.html</id><summary type="html">&lt;p&gt;Ubuntu 18.04 comes with a stripped down version of Vim. If you want to use Vim for 
+an exception and it works well.  &lt;/p&gt;</content><category term="posts"></category><category term="python"></category></entry><entry><title>Vim Tips</title><link href="https://www.georgexyz.com/vim-tips.html" rel="alternate"></link><published>2019-04-01T12:45:00-04:00</published><updated>2023-03-16T22:51:00-04:00</updated><author><name>George Zhang</name></author><id>tag:www.georgexyz.com,2019-04-01:/vim-tips.html</id><summary type="html">&lt;p&gt;Ubuntu 18.04 comes with a stripped down version of Vim. If you want to use Vim for 
 serious work, you want the full version. I am using Vim 8 …&lt;/p&gt;</summary><content type="html">&lt;p&gt;Ubuntu 18.04 comes with a stripped down version of Vim. If you want to use Vim for 
 serious work, you want the full version. I am using Vim 8.0 under Linux Mint 19.03. 
 Some settings discussed in this article may not apply to your system, so keep that 
@@ -7870,9 +7870,9 @@ Small version without GUI.  Features included (+) or not (-):
 &lt;p&gt;If you type command &lt;code&gt;vim&lt;/code&gt; in bash, it will tell you that &amp;#8220;command vim not found&amp;#8221;. 
 Those three commands remove the existing vim-tiny and install the full version with &lt;span class="caps"&gt;GUI&lt;/span&gt;
 vim-gtk3 in Ubuntu/Linux Mint. &lt;/p&gt;
-&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;sudo apt-get remove vim-tiny
-sudo apt-get update
-sudo apt-get install vim-gtk3
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;sudo apt remove vim-tiny
+sudo apt update
+sudo apt install vim-gtk3
 &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
 
 &lt;p&gt;You can then check the vim version by command &lt;code&gt;vim --version&lt;/code&gt;. &lt;/p&gt;
