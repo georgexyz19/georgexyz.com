@@ -8253,13 +8253,15 @@ $tree -I venv -v  # sort by name, or --sort=name
 
 &lt;p&gt;This is not necessary a Vim tip, but I can&amp;#8217;t find a good place to put it. &lt;/p&gt;
 &lt;p&gt;Source: &lt;a href="https://zaiste.net/posts/tree-ignore-directories-patterns/"&gt;zaiste.net blog post&lt;/a&gt;&lt;/p&gt;
-&lt;h4&gt;Nerdtree Plugin&lt;/h4&gt;
-&lt;p&gt;Vim has a built in file/directory management tool, but it is not very good.  Nerdtree plugin 
+&lt;!-- 
+comment out on 4/4/2023
+#### Nerdtree Plugin
+
+Vim has a built in file/directory management tool, but it is not very good.  Nerdtree plugin 
 is nice when you are working on a large project. Here are the steps for managing plugins 
-with Vundle.&lt;/p&gt;
-&lt;ul&gt;
-&lt;li&gt;Use git to download Vundle. &lt;/li&gt;
-&lt;/ul&gt;
+with Vundle.
+
+- Use git to download Vundle. 
 &lt;div class="ml-5"&gt;
 
 &lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;$ git clone https://github.com/gmarik/Vundle.vim.git \ 
@@ -8268,10 +8270,9 @@ with Vundle.&lt;/p&gt;
 
 
 &lt;/div&gt;
-&lt;ul&gt;
-&lt;li&gt;Setup a new .plugin.vimrc file and add those statements. Note at the end of this file 
-it loads &lt;code&gt;.vimrc&lt;/code&gt; file, so you do not need to keep two copies of &lt;code&gt;.vimrc&lt;/code&gt;. &lt;/li&gt;
-&lt;/ul&gt;
+- Setup a new .plugin.vimrc file and add those statements. Note at the end of this file 
+it loads `.vimrc` file, so you do not need to keep two copies of `.vimrc`. 
+
 &lt;div class="ml-5"&gt;
 
 &lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;&amp;quot; ~/.plugin.vimrc file
@@ -8316,12 +8317,10 @@ source ~/.vimrc
 
 &lt;/div&gt;
 
-&lt;ul&gt;
-&lt;li&gt;Inside Vim, run command &lt;code&gt;:PluginInstall&lt;/code&gt;.  Vundle will download and setup the 
-plugins listed in .plugin.vimrc file. Run command &lt;code&gt;:NERDTree&lt;/code&gt; to bring up 
-Nerdtree window on the left. &lt;/li&gt;
-&lt;li&gt;Setup a bash alias for &lt;code&gt;vimplugin&lt;/code&gt; in &lt;code&gt;.bashrc&lt;/code&gt; file.&lt;/li&gt;
-&lt;/ul&gt;
+-  Inside Vim, run command `:PluginInstall`.  Vundle will download and setup the 
+plugins listed in .plugin.vimrc file. Run command `:NERDTree` to bring up 
+Nerdtree window on the left. 
+-  Setup a bash alias for `vimplugin` in `.bashrc` file.
 &lt;div class="ml-5"&gt;
 
 &lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;alias pytree=&amp;quot;tree -I &amp;#39;venv|__pycache__&amp;#39; --sort=name &amp;quot;  # for tree
@@ -8331,18 +8330,19 @@ alias vimplugin=&amp;quot;vim -u ~/.plugin.vimrc &amp;quot;
 
 &lt;/div&gt;
 
-&lt;p&gt;Source: &lt;a href="https://realpython.com/vim-and-python-a-match-made-in-heaven/"&gt;realpython.com article&lt;/a&gt;,
-&lt;span class="ml-2"&gt;&lt;/span&gt;&lt;a href="https://github.com/preservim/nerdtree"&gt;Nerdtree github repo&lt;/a&gt;&lt;/p&gt;
-&lt;h4&gt;Nerdtree Shortcuts&lt;/h4&gt;
-&lt;p&gt;Here are some shortcuts in Nerdtree. Once you become familiar with them, it is 
-faster to navigate than a &lt;span class="caps"&gt;GUI&lt;/span&gt; file browser. &lt;/p&gt;
-&lt;ul&gt;
-&lt;li&gt;Press &lt;code&gt;m&lt;/code&gt; to modify dir, &lt;code&gt;a&lt;/code&gt; to add dir or file &lt;/li&gt;
-&lt;li&gt;&lt;code&gt;o&lt;/code&gt; to open, &lt;code&gt;O&lt;/code&gt; recursively open&lt;/li&gt;
-&lt;li&gt;&lt;code&gt;x&lt;/code&gt; to close open dir, &lt;code&gt;X&lt;/code&gt; recursively close&lt;/li&gt;
-&lt;li&gt;&lt;code&gt;C-W&lt;/code&gt; + &lt;code&gt;h j k l&lt;/code&gt; to move between windows&lt;/li&gt;
-&lt;li&gt;Map &lt;code&gt;C-H C-H&lt;/code&gt; to move cursor to left side and &lt;code&gt;C-L C-L&lt;/code&gt; to right side&lt;/li&gt;
-&lt;/ul&gt;
+Source: [realpython.com article](https://realpython.com/vim-and-python-a-match-made-in-heaven/),
+&lt;span class="ml-2"&gt;&lt;/span&gt;[Nerdtree github repo](https://github.com/preservim/nerdtree)
+
+#### Nerdtree Shortcuts
+
+Here are some shortcuts in Nerdtree. Once you become familiar with them, it is 
+faster to navigate than a &lt;span class="caps"&gt;GUI&lt;/span&gt; file browser. 
+
+- Press `m` to modify dir, `a` to add dir or file 
+- `o` to open, `O` recursively open
+- `x` to close open dir, `X` recursively close
+- `C-W` + `h j k l` to move between windows
+- Map `C-H C-H` to move cursor to left side and `C-L C-L` to right side
 &lt;div class="ml-5"&gt;
 
 &lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;noremap &amp;lt;C-H&amp;gt;&amp;lt;C-H&amp;gt; &amp;lt;C-W&amp;gt;&amp;lt;C-H&amp;gt;
@@ -8353,26 +8353,40 @@ noremap &amp;lt;C-L&amp;gt;&amp;lt;C-L&amp;gt; &amp;lt;C-W&amp;gt;&amp;lt;C-L&am
 
 &lt;/div&gt;
 
-&lt;h4&gt;Emmet Vim Plugin&lt;/h4&gt;
-&lt;p&gt;The other Vim plugin I use is the &lt;a href="https://github.com/mattn/emmet-vim"&gt;emmet-vim&lt;/a&gt;. 
-It is tedious to type html tags like &lt;code&gt;&amp;lt;div&amp;gt;&amp;lt;/div&amp;gt;&lt;/code&gt; when coding web pages.&lt;/p&gt;
-&lt;p&gt;If you follow above steps and install Vundle to manage plugins, you can add this line to 
-the &lt;code&gt;.plugin.vimrc&lt;/code&gt; file. &lt;/p&gt;
+
+#### Emmet Vim Plugin
+
+The other Vim plugin I use is the [emmet-vim](https://github.com/mattn/emmet-vim). 
+It is tedious to type html tags like `&lt;div&gt;&lt;/div&gt;` when coding web pages.
+
+If you follow above steps and install Vundle to manage plugins, you can add this line to 
+the `.plugin.vimrc` file. 
+
+
 &lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;Plugin &amp;#39;mattn/emmet-vim&amp;#39;
 &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
 
-&lt;p&gt;I also added those two settings in the same file as suggested in a youtube tutorial video.&lt;/p&gt;
+
+
+I also added those two settings in the same file as suggested in a youtube tutorial video.
+
+
 &lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;let g:user_emmet_mode=&amp;#39;n&amp;#39;    &amp;quot;only enable normal mode functions.
 let g:user_emmet_leader_key=&amp;#39;,&amp;#39; &amp;quot;activate two commas  
 &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
 
-&lt;p&gt;Here is the link to &lt;a href="https://youtu.be/ha7oyvhgP04"&gt;the youtube tutorial&lt;/a&gt;.&lt;/p&gt;
-&lt;p&gt;Link to the Github &lt;a href="https://github.com/mattn/emmet-vim"&gt;emmet-vim source code repo&lt;/a&gt;. &lt;/p&gt;
-&lt;h4&gt;Vim-Flake8 Plugin&lt;/h4&gt;
-&lt;p&gt;I am adding a Python linter to my Vim setup. Below are the steps to set it up. &lt;/p&gt;
-&lt;ul&gt;
-&lt;li&gt;Install &lt;code&gt;flake8&lt;/code&gt; to a virtual environment&lt;/li&gt;
-&lt;/ul&gt;
+
+
+Here is the link to [the youtube tutorial](https://youtu.be/ha7oyvhgP04).
+
+Link to the Github [emmet-vim source code repo](https://github.com/mattn/emmet-vim). 
+
+
+#### Vim-Flake8 Plugin
+
+I am adding a Python linter to my Vim setup. Below are the steps to set it up. 
+
+* Install `flake8` to a virtual environment
 &lt;div class="ml-5"&gt;
 
 &lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;$python -m venv .flake8.venv
@@ -8385,9 +8399,7 @@ $which flake8
 
 &lt;/div&gt;
 
-&lt;ul&gt;
-&lt;li&gt;Add two lines to &lt;code&gt;.plugin.vimrc&lt;/code&gt; file.&lt;/li&gt;
-&lt;/ul&gt;
+* Add two lines to `.plugin.vimrc` file.
 &lt;div class="ml-5"&gt;
 
 &lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;Plugin &amp;#39;nvie/vim-flake8&amp;#39;
@@ -8398,9 +8410,7 @@ let g:flake8_cmd=&amp;quot;/home/george/.flake8.venv/bin/flake8&amp;quot;
 
 &lt;/div&gt;
 
-&lt;ul&gt;
-&lt;li&gt;Config flake8 to change max line lengths, add those two lines to &lt;code&gt;~/.config/flake8&lt;/code&gt; file.&lt;/li&gt;
-&lt;/ul&gt;
+* Config flake8 to change max line lengths, add those two lines to `~/.config/flake8` file.
 &lt;div class="ml-5"&gt;
 
 &lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;[flake8]
@@ -8410,15 +8420,12 @@ max-line-length = 120
 
 &lt;/div&gt;
 
-&lt;ul&gt;
-&lt;li&gt;
-&lt;p&gt;Run &lt;code&gt;:PluginInstall&lt;/code&gt; vim command to install &lt;code&gt;vim-flake8&lt;/code&gt;.&lt;/p&gt;
-&lt;/li&gt;
-&lt;li&gt;
-&lt;p&gt;When a Python file is open, press &lt;code&gt;&amp;lt;F7&amp;gt;&lt;/code&gt; to run the linter.&lt;/p&gt;
-&lt;/li&gt;
-&lt;/ul&gt;
-&lt;p&gt;References: &lt;a href="https://github.com/nvie/vim-flake8"&gt;vim-flake8 repo&lt;/a&gt;&lt;/p&gt;
+* Run `:PluginInstall` vim command to install `vim-flake8`.
+
+* When a Python file is open, press `&lt;F7&gt;` to run the linter.
+
+References: [vim-flake8 repo](https://github.com/nvie/vim-flake8) --&gt;
+
 &lt;h4&gt;Links and References&lt;/h4&gt;
 &lt;p&gt;&lt;a href="https://vim.rtorr.com/"&gt;Vim Cheat Sheet&lt;/a&gt; 
 is a nice single web page which includes common vim commands.&lt;/p&gt;</content><category term="posts"></category><category term="vim"></category><category term="linux"></category></entry></feed>
