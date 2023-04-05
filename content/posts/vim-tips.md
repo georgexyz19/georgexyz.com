@@ -539,7 +539,8 @@ This is not necessary a Vim tip, but I can't find a good place to put it.
 
 Source: [zaiste.net blog post](https://zaiste.net/posts/tree-ignore-directories-patterns/)
 
-
+<!-- 
+comment out on 4/4/2023
 #### Nerdtree Plugin
 
 Vim has a built in file/directory management tool, but it is not very good.  Nerdtree plugin 
@@ -691,7 +692,7 @@ max-line-length = 120
 
 * When a Python file is open, press `<F7>` to run the linter.
 
-References: [vim-flake8 repo](https://github.com/nvie/vim-flake8)
+References: [vim-flake8 repo](https://github.com/nvie/vim-flake8) -->
 
 
 #### Links and References
