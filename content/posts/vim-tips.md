@@ -3,11 +3,12 @@ slug: vim-tips
 meta: Vim Installation And Vim Tips
 tags: vim, linux
 date: 2019-04-01 12:45
-modified: 2023-03-16 22:51
+modified: 2023-05-18 22:50
 
 
-Ubuntu 18.04 comes with a stripped down version of Vim. If you want to use Vim for 
-serious work, you want the full version. I am using Vim 8.0 under Linux Mint 19.03. 
+Ubuntu/Linux Mint comes with a stripped down version of Vim. If you want to use Vim for 
+serious work, you want the full version. I am using Vim 8.0 under Linux Mint 19.03 
+(upgrade to 21.1 as of 5/18/23). 
 Some settings discussed in this article may not apply to your system, so keep that 
 in mind. 
 
@@ -28,13 +29,13 @@ Small version without GUI.  Features included (+) or not (-):
 ```
 
 If you type command `vim` in bash, it will tell you that "command vim not found". 
-Those three commands remove the existing vim-tiny and install the full version with GUI
-vim-gtk3 in Ubuntu/Linux Mint. 
+Those three commands remove the existing vim-tiny and install the full version without GUI
+vim in Ubuntu/Linux Mint. 
 
 ```
 sudo apt remove vim-tiny
 sudo apt update
-sudo apt install vim-gtk3
+sudo apt install vim
 ```
 
 You can then check the vim version by command `vim --version`. 
@@ -699,5 +700,10 @@ References: [vim-flake8 repo](https://github.com/nvie/vim-flake8) -->
 
 [Vim Cheat Sheet](https://vim.rtorr.com/) 
 is a nice single web page which includes common vim commands.
+
+This article [Here Is Why Vim Uses hjkl Keys as Arrow Keys](https://catonmat.net/why-vim-uses-hjkl-as-arrow-keys) 
+is an interesting read. This 
+[wiki page](https://en.wikipedia.org/wiki/ADM-3A) 
+has more information on ADM-3A visual display terminal. 
 
 

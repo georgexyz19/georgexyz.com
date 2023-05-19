@@ -30,8 +30,8 @@
 
       <h2>{{ article.title }}</h2>
 
-      <div class="text-muted mb-2">
-        <span>Posted on </span>
+      <div class="text-muted mb-1">
+        <span>Originally Posted on </span>
         <time datetime="{{ article.date }}">
           {{ article.date.strftime('%A, %m/%d/%Y %H:%M') }}
         </time>
@@ -43,6 +43,13 @@
         {% if not loop.last %}/{% endif %}
         {% endfor %}
         {% endif %}
+      </div>
+
+      <div class="text-muted mb-4">
+        <span>Last Update on </span>
+        <time datetime="{{ article.modified }}">
+          {{ article.modified.strftime('%A, %m/%d/%Y %H:%M') }}
+        </time>
       </div>
 
       {{ article.content }}
