@@ -11,7 +11,7 @@
 <link rel="stylesheet" href="https://www.georgexyz.com/theme/css/custom.css">
 <meta name="author" content="George Zhang" />
 <meta name="keywords" content="vim,linux" />
-<meta name="description" content="Ubuntu 18.04 comes with a stripped down version of Vim. If you want to use Vim for serious work, you want the full version. I am using Vim 8 …" />
+<meta name="description" content="Ubuntu/Linux Mint comes with a stripped down version of Vim. If you want to use Vim for serious work, you want the full version. I am using Vim 8 …" />
     <title>Vim Tips - George Zhang</title>
   </head>
   <body>
@@ -58,8 +58,8 @@
 
       <h2>Vim Tips</h2>
 
-      <div class="text-muted mb-2">
-        <span>Posted on </span>
+      <div class="text-muted mb-1">
+        <span>Originally Posted on </span>
         <time datetime="2019-04-01 12:45:00-04:00">
           Monday, 04/01/2019 12:45
         </time>
@@ -69,8 +69,16 @@
 /        <a href="https://www.georgexyz.com/tag/linux.html">linux</a>
       </div>
 
-      <p>Ubuntu 18.04 comes with a stripped down version of Vim. If you want to use Vim for 
-serious work, you want the full version. I am using Vim 8.0 under Linux Mint 19.03. 
+      <div class="text-muted mb-4">
+        <span>Last Update on </span>
+        <time datetime="2023-05-18 22:50:00-04:00">
+          Thursday, 05/18/2023 22:50
+        </time>
+      </div>
+
+      <p>Ubuntu/Linux Mint comes with a stripped down version of Vim. If you want to use Vim for 
+serious work, you want the full version. I am using Vim 8.0 under Linux Mint 19.03 
+(upgrade to 21.1 as of 5/18/23). 
 Some settings discussed in this article may not apply to your system, so keep that 
 in mind. </p>
 <h3>Vim Installation</h3>
@@ -87,11 +95,11 @@ Small version without GUI.  Features included (+) or not (-):
 </code></pre></div>
 
 <p>If you type command <code>vim</code> in bash, it will tell you that &#8220;command vim not found&#8221;. 
-Those three commands remove the existing vim-tiny and install the full version with <span class="caps">GUI</span>
-vim-gtk3 in Ubuntu/Linux Mint. </p>
+Those three commands remove the existing vim-tiny and install the full version without <span class="caps">GUI</span>
+vim in Ubuntu/Linux Mint. </p>
 <div class="highlight"><pre><span></span><code>sudo apt remove vim-tiny
 sudo apt update
-sudo apt install vim-gtk3
+sudo apt install vim
 </code></pre></div>
 
 <p>You can then check the vim version by command <code>vim --version</code>. </p>
@@ -648,6 +656,10 @@ References: [vim-flake8 repo](https://github.com/nvie/vim-flake8) -->
 <h4>Links and References</h4>
 <p><a href="https://vim.rtorr.com/">Vim Cheat Sheet</a> 
 is a nice single web page which includes common vim commands.</p>
+<p>This article <a href="https://catonmat.net/why-vim-uses-hjkl-as-arrow-keys">Here Is Why Vim Uses hjkl Keys as Arrow Keys</a> 
+is an interesting read. This 
+<a href="https://en.wikipedia.org/wiki/ADM-3A">wiki page</a> 
+has more information on <span class="caps">ADM</span>-3A visual display terminal. </p>
 
 
 
