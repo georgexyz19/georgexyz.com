@@ -1,7 +1,7 @@
-title: New Ubuntu/Linux Mint System Install and Setup
+title: New Linux Mint/Ubuntu System Install and Setup
 slug: new-linux-mint-install-and-setup
 date: 2021-01-15 11:03
-modified: 2021-01-15 11:03
+modified: 2023-05-22 23:12
 tags: linux, linux mint
 note: note to be added
 related_posts: home-file-sharing, a-case-of-linux-mint-crash, linux-mint, vim-tips
@@ -11,6 +11,8 @@ I have been using Linux Mint since June 2019. Most times I am happy with it.
 It seems that version 19.x is more stable than 20.x at this time. My computer 
 still has 19.3 installed, and eventually I will upgrade to 20.x or a newer version. 
 Here is a short note to setup linux mint on a new computer. 
+
+The article has been updated to Linux Mint 21.1 Cinnamon in May 2023. 
 
 ### Steps
 
@@ -24,22 +26,18 @@ Here is a list of things to do:
 3. Install git, this step is needed for pyenv install. 
    Do not forget to set user email and user name. 
 
-4. Install pyenv and latest python 3.9.1.
+4. Install pyenv and latest python 3.X. 
 
 5. Setup SSH keys and upload to github.
 
 6. Download github repos with `git clone`.
 
-7. Install Chrome, VS Code (download deb packages). 
-   Chrome will ask for a keyring password, leave it blank.
-   Check out 
-   [this post](https://askubuntu.com/questions/867/how-can-i-stop-being-prompted-to-unlock-the-default-keyring-on-boot) 
-   for more info.  
+7. Install Chrome, VS Code (download deb packages).  
 
 8. Install other apps like Node, Inkscape, GIMP, etc.
 
 9. Copy Roboto font and Fira Code font. Font Selection 
-   tool to set default font (Ubuntu). 
+   tool to set default font. 
 
 ### Add New Fonts
 
@@ -77,11 +75,6 @@ The file has these lines:
 The print functionality of Chrome is much better than Mozilla Firefox 
 that comes with Linux Mint installation.  
 
-### Printer Driver
-
-[Canon website](https://www.usa.canon.com/internet/portal/us/home/support/details/printers/color-laser/canon-color-imageclass-mf642cdw) 
-provides printer drivers for Debian Linux.  Download the driver file, upzip it, and run `sudo ./install.sh` command to install it.  
-
 ### Script
 
 Here are the output of `history` bash command (with edit). 
@@ -94,7 +87,7 @@ sudo apt-get upgrade
 # update vim
 sudo apt-get remove vim-tiny
 sudo apt-get update
-sudo apt-get install vim-gtk3
+sudo apt-get install vim
 vim ~/.vimrc
 
 # mount synology network drive
@@ -111,21 +104,20 @@ git config --global user.name "<name>"
 
 
 # Install pyenv
-sudo apt-get install -y make build-essential libssl-dev zlib1g-dev 
- libbz2-dev libreadline-dev libsqlite3-dev wget curl llvm libncurses5-dev
- libncursesw5-dev xz-utils tk-dev libffi-dev liblzma-dev python-openssl 
-
-# python-openssl cann't find, remove it from list OKAY
+sudo apt update
+sudo apt install build-essential libssl-dev zlib1g-dev libbz2-dev \
+libreadline-dev libsqlite3-dev curl libncursesw5-dev xz-utils tk-dev \ 
+libxml2-dev libxmlsec1-dev libffi-dev liblzma-dev
 
 
 curl https://pyenv.run | bash
 vim .bashrc 
 
-# Add those 4 lines to .bashrc for new version of pyenv.run
+# Add those 3 lines to .bashrc for new version of pyenv.run
 # export PYENV_ROOT="$HOME/.pyenv"
-# export PATH="$PYENV_ROOT/bin:$PATH"
-# eval "$(pyenv init --path)"
+# command -v pyenv >/dev/null || export PATH="$PYENV_ROOT/bin:$PATH"
 # eval "$(pyenv init -)"
+
 
 exec "$SHELL"
 pyenv install --list | grep " 3\.[6789]"
@@ -152,46 +144,6 @@ python -m venv venv
 source venv/bin/activate
 pip install -r requirements.txt 
 invoke livereload
-```
-###Browser Font Settings
-
-Below are screenshots of font setting windows in Chrome and Firefox under Linux Mint.
-
-<div style="max-width:400px">
-  <img class="img-fluid pb-3" src="/images/chrome-font.png" alt="Chrome Font">
-</div>
-
-<div style="max-width:400px">
-  <img class="img-fluid pb-3" src="/images/firefox-font.png" alt="Firefox Font">
-</div>
-
-###Pyenv Update (4/26/22)
-
-The new version of Pyenv needs some manual setting to make it work. 
-After installing the pyenv, add those lines to the `.bashrc` file (or the four lines 
-shown as comments above). 
-
-```python
-export PATH="$HOME/.pyenv/bin:$PATH"
-eval "$(pyenv init --path)"
-eval "$(pyenv virtualenv-init -)"
-```
-
-This works fine in Ubuntu 22.04 LTS, otherwise `python` command does not work. The 
-bash cann't find the `python` command. I am not sure the reason.  Need to read the 
-pyenv documentation to find out someday. 
-
-###Install Nodejs
-
-Node source does not work on Ubuntu 22.04 yet. I found 
-[a post by EntenKoeniq](https://github.com/nodesource/distributions/issues/1379#issuecomment-1107656661) in 
-github which works fine.  Here are the commands,
-
-```bash
-sudo curl -LO https://nodejs.org/dist/v18.0.0/node-v18.0.0-linux-x64.tar.xz
-sudo tar -xvf node-v18.0.0-linux-x64.tar.xz
-sudo cp -r node-v18.0.0-linux-x64/{bin,include,lib,share} /usr/
-node --version => v18.0.0
 ```
 
 ###Ubuntu/Windows Dual Bool Time Issue
