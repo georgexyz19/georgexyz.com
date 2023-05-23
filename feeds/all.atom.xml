@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<feed xmlns="http://www.w3.org/2005/Atom"><title>George Zhang</title><link href="https://www.georgexyz.com/" rel="alternate"></link><link href="https://www.georgexyz.com/feeds/all.atom.xml" rel="self"></link><id>https://www.georgexyz.com/</id><updated>2023-05-22T23:12:00-04:00</updated><entry><title>Simple Pelican Project Structure</title><link href="https://www.georgexyz.com/simple-pelican-project-structure.html" rel="alternate"></link><published>2022-03-16T10:28:00-04:00</published><updated>2022-03-16T10:28:00-04:00</updated><author><name>George Zhang</name></author><id>tag:www.georgexyz.com,2022-03-16:/simple-pelican-project-structure.html</id><summary type="html">&lt;p&gt;Pelican project structure can be complicated for a beginner.  A simple project structure 
+<feed xmlns="http://www.w3.org/2005/Atom"><title>George Zhang</title><link href="https://www.georgexyz.com/" rel="alternate"></link><link href="https://www.georgexyz.com/feeds/all.atom.xml" rel="self"></link><id>https://www.georgexyz.com/</id><updated>2023-05-23T10:37:00-04:00</updated><entry><title>Simple Pelican Project Structure</title><link href="https://www.georgexyz.com/simple-pelican-project-structure.html" rel="alternate"></link><published>2022-03-16T10:28:00-04:00</published><updated>2022-03-16T10:28:00-04:00</updated><author><name>George Zhang</name></author><id>tag:www.georgexyz.com,2022-03-16:/simple-pelican-project-structure.html</id><summary type="html">&lt;p&gt;Pelican project structure can be complicated for a beginner.  A simple project structure 
 makes it easy to create simple websites. Once you understand the sub directories in the 
 &lt;code&gt;output&lt;/code&gt; dir …&lt;/p&gt;</summary><content type="html">&lt;p&gt;Pelican project structure can be complicated for a beginner.  A simple project structure 
 makes it easy to create simple websites. Once you understand the sub directories in the 
@@ -1642,17 +1642,18 @@ if a Ryobi Sander is in stock on &lt;em&gt;direct tools outlet&lt;/em&gt; websit
 &lt;li&gt;Send an email or text message to remind that it is in stock&lt;/li&gt;
 &lt;/ul&gt;
 &lt;p&gt;The code does not look complicated.  The program shapes up to 
-be a ticket scalping tool, and I am stopping the post right here. &lt;/p&gt;</content><category term="posts"></category><category term="python"></category></entry><entry><title>New Linux Mint/Ubuntu System Install and Setup</title><link href="https://www.georgexyz.com/new-linux-mint-install-and-setup.html" rel="alternate"></link><published>2021-01-15T11:03:00-05:00</published><updated>2023-05-22T23:12:00-04:00</updated><author><name>George Zhang</name></author><id>tag:www.georgexyz.com,2021-01-15:/new-linux-mint-install-and-setup.html</id><summary type="html">&lt;p&gt;I have been using Linux Mint since June 2019. Most times I am happy with it. 
+be a ticket scalping tool, and I am stopping the post right here. &lt;/p&gt;</content><category term="posts"></category><category term="python"></category></entry><entry><title>New Linux Mint/Ubuntu System Install and Setup</title><link href="https://www.georgexyz.com/new-linux-mint-install-and-setup.html" rel="alternate"></link><published>2021-01-15T11:03:00-05:00</published><updated>2023-05-23T10:37:00-04:00</updated><author><name>George Zhang</name></author><id>tag:www.georgexyz.com,2021-01-15:/new-linux-mint-install-and-setup.html</id><summary type="html">&lt;p&gt;I have been using Linux Mint since June 2019. Most times I am happy with it. 
 It seems that version 19.x is more stable than 20.x at this …&lt;/p&gt;</summary><content type="html">&lt;p&gt;I have been using Linux Mint since June 2019. Most times I am happy with it. 
 It seems that version 19.x is more stable than 20.x at this time. My computer 
 still has 19.3 installed, and eventually I will upgrade to 20.x or a newer version. 
 Here is a short note to setup linux mint on a new computer. &lt;/p&gt;
-&lt;p&gt;The article has been updated to Linux Mint 21.1 Cinnamon in May 2023. &lt;/p&gt;
+&lt;p&gt;The system has been upgraded to Linux Mint 21.1 Cinnamon in May 2023, and&lt;br&gt;
+the article has been modified to reflect that. &lt;/p&gt;
 &lt;h3&gt;Steps&lt;/h3&gt;
 &lt;p&gt;Here is a list of things to do:&lt;/p&gt;
 &lt;ol&gt;
 &lt;li&gt;
-&lt;p&gt;Remove vim-tiny and install vim-gtk3.
+&lt;p&gt;Remove vim-tiny and install vim.
    Add a ~/.vimrc, copy code from previous blog post.&lt;/p&gt;
 &lt;/li&gt;
 &lt;li&gt;
