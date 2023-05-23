@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<feed xmlns="http://www.w3.org/2005/Atom"><title>George Zhang</title><link href="https://www.georgexyz.com/" rel="alternate"></link><link href="https://www.georgexyz.com/feeds/all.atom.xml" rel="self"></link><id>https://www.georgexyz.com/</id><updated>2023-05-18T22:50:00-04:00</updated><entry><title>Simple Pelican Project Structure</title><link href="https://www.georgexyz.com/simple-pelican-project-structure.html" rel="alternate"></link><published>2022-03-16T10:28:00-04:00</published><updated>2022-03-16T10:28:00-04:00</updated><author><name>George Zhang</name></author><id>tag:www.georgexyz.com,2022-03-16:/simple-pelican-project-structure.html</id><summary type="html">&lt;p&gt;Pelican project structure can be complicated for a beginner.  A simple project structure 
+<feed xmlns="http://www.w3.org/2005/Atom"><title>George Zhang</title><link href="https://www.georgexyz.com/" rel="alternate"></link><link href="https://www.georgexyz.com/feeds/all.atom.xml" rel="self"></link><id>https://www.georgexyz.com/</id><updated>2023-05-22T23:12:00-04:00</updated><entry><title>Simple Pelican Project Structure</title><link href="https://www.georgexyz.com/simple-pelican-project-structure.html" rel="alternate"></link><published>2022-03-16T10:28:00-04:00</published><updated>2022-03-16T10:28:00-04:00</updated><author><name>George Zhang</name></author><id>tag:www.georgexyz.com,2022-03-16:/simple-pelican-project-structure.html</id><summary type="html">&lt;p&gt;Pelican project structure can be complicated for a beginner.  A simple project structure 
 makes it easy to create simple websites. Once you understand the sub directories in the 
 &lt;code&gt;output&lt;/code&gt; dir …&lt;/p&gt;</summary><content type="html">&lt;p&gt;Pelican project structure can be complicated for a beginner.  A simple project structure 
 makes it easy to create simple websites. Once you understand the sub directories in the 
@@ -1642,11 +1642,12 @@ if a Ryobi Sander is in stock on &lt;em&gt;direct tools outlet&lt;/em&gt; websit
 &lt;li&gt;Send an email or text message to remind that it is in stock&lt;/li&gt;
 &lt;/ul&gt;
 &lt;p&gt;The code does not look complicated.  The program shapes up to 
-be a ticket scalping tool, and I am stopping the post right here. &lt;/p&gt;</content><category term="posts"></category><category term="python"></category></entry><entry><title>New Ubuntu/Linux Mint System Install and Setup</title><link href="https://www.georgexyz.com/new-linux-mint-install-and-setup.html" rel="alternate"></link><published>2021-01-15T11:03:00-05:00</published><updated>2021-01-15T11:03:00-05:00</updated><author><name>George Zhang</name></author><id>tag:www.georgexyz.com,2021-01-15:/new-linux-mint-install-and-setup.html</id><summary type="html">&lt;p&gt;I have been using Linux Mint since June 2019. Most times I am happy with it. 
+be a ticket scalping tool, and I am stopping the post right here. &lt;/p&gt;</content><category term="posts"></category><category term="python"></category></entry><entry><title>New Linux Mint/Ubuntu System Install and Setup</title><link href="https://www.georgexyz.com/new-linux-mint-install-and-setup.html" rel="alternate"></link><published>2021-01-15T11:03:00-05:00</published><updated>2023-05-22T23:12:00-04:00</updated><author><name>George Zhang</name></author><id>tag:www.georgexyz.com,2021-01-15:/new-linux-mint-install-and-setup.html</id><summary type="html">&lt;p&gt;I have been using Linux Mint since June 2019. Most times I am happy with it. 
 It seems that version 19.x is more stable than 20.x at this …&lt;/p&gt;</summary><content type="html">&lt;p&gt;I have been using Linux Mint since June 2019. Most times I am happy with it. 
 It seems that version 19.x is more stable than 20.x at this time. My computer 
 still has 19.3 installed, and eventually I will upgrade to 20.x or a newer version. 
 Here is a short note to setup linux mint on a new computer. &lt;/p&gt;
+&lt;p&gt;The article has been updated to Linux Mint 21.1 Cinnamon in May 2023. &lt;/p&gt;
 &lt;h3&gt;Steps&lt;/h3&gt;
 &lt;p&gt;Here is a list of things to do:&lt;/p&gt;
 &lt;ol&gt;
@@ -1662,7 +1663,7 @@ Here is a short note to setup linux mint on a new computer. &lt;/p&gt;
    Do not forget to set user email and user name. &lt;/p&gt;
 &lt;/li&gt;
 &lt;li&gt;
-&lt;p&gt;Install pyenv and latest python 3.9.1.&lt;/p&gt;
+&lt;p&gt;Install pyenv and latest python 3.X. &lt;/p&gt;
 &lt;/li&gt;
 &lt;li&gt;
 &lt;p&gt;Setup &lt;span class="caps"&gt;SSH&lt;/span&gt; keys and upload to github.&lt;/p&gt;
@@ -1671,18 +1672,14 @@ Here is a short note to setup linux mint on a new computer. &lt;/p&gt;
 &lt;p&gt;Download github repos with &lt;code&gt;git clone&lt;/code&gt;.&lt;/p&gt;
 &lt;/li&gt;
 &lt;li&gt;
-&lt;p&gt;Install Chrome, &lt;span class="caps"&gt;VS&lt;/span&gt; Code (download deb packages). 
-   Chrome will ask for a keyring password, leave it blank.
-   Check out 
-   &lt;a href="https://askubuntu.com/questions/867/how-can-i-stop-being-prompted-to-unlock-the-default-keyring-on-boot"&gt;this post&lt;/a&gt; 
-   for more info.  &lt;/p&gt;
+&lt;p&gt;Install Chrome, &lt;span class="caps"&gt;VS&lt;/span&gt; Code (download deb packages).  &lt;/p&gt;
 &lt;/li&gt;
 &lt;li&gt;
 &lt;p&gt;Install other apps like Node, Inkscape, &lt;span class="caps"&gt;GIMP&lt;/span&gt;, etc.&lt;/p&gt;
 &lt;/li&gt;
 &lt;li&gt;
 &lt;p&gt;Copy Roboto font and Fira Code font. Font Selection 
-   tool to set default font (Ubuntu). &lt;/p&gt;
+   tool to set default font. &lt;/p&gt;
 &lt;/li&gt;
 &lt;/ol&gt;
 &lt;h3&gt;Add New Fonts&lt;/h3&gt;
@@ -1711,9 +1708,6 @@ how to set default fonts and font aliases on Linux.&lt;/p&gt;
 
 &lt;p&gt;The print functionality of Chrome is much better than Mozilla Firefox 
 that comes with Linux Mint installation.  &lt;/p&gt;
-&lt;h3&gt;Printer Driver&lt;/h3&gt;
-&lt;p&gt;&lt;a href="https://www.usa.canon.com/internet/portal/us/home/support/details/printers/color-laser/canon-color-imageclass-mf642cdw"&gt;Canon website&lt;/a&gt; 
-provides printer drivers for Debian Linux.  Download the driver file, upzip it, and run &lt;code&gt;sudo ./install.sh&lt;/code&gt; command to install it.  &lt;/p&gt;
 &lt;h3&gt;Script&lt;/h3&gt;
 &lt;p&gt;Here are the output of &lt;code&gt;history&lt;/code&gt; bash command (with edit). &lt;/p&gt;
 &lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;&lt;span class="c1"&gt;# update the system&lt;/span&gt;
@@ -1723,7 +1717,7 @@ sudo apt-get upgrade
 &lt;span class="c1"&gt;# update vim&lt;/span&gt;
 sudo apt-get remove vim-tiny
 sudo apt-get update
-sudo apt-get install vim-gtk3
+sudo apt-get install vim
 vim ~/.vimrc
 
 &lt;span class="c1"&gt;# mount synology network drive&lt;/span&gt;
@@ -1740,21 +1734,20 @@ git config --global user.name &lt;span class="s2"&gt;&amp;quot;&amp;lt;name&amp;
 
 
 &lt;span class="c1"&gt;# Install pyenv&lt;/span&gt;
-sudo apt-get install -y make build-essential libssl-dev zlib1g-dev 
- libbz2-dev libreadline-dev libsqlite3-dev wget curl llvm libncurses5-dev
- libncursesw5-dev xz-utils tk-dev libffi-dev liblzma-dev python-openssl 
-
-&lt;span class="c1"&gt;# python-openssl cann&amp;#39;t find, remove it from list OKAY&lt;/span&gt;
+sudo apt update
+sudo apt install build-essential libssl-dev zlib1g-dev libbz2-dev &lt;span class="se"&gt;\&lt;/span&gt;
+libreadline-dev libsqlite3-dev curl libncursesw5-dev xz-utils tk-dev &lt;span class="se"&gt;\ &lt;/span&gt;
+libxml2-dev libxmlsec1-dev libffi-dev liblzma-dev
 
 
 curl https://pyenv.run &lt;span class="p"&gt;|&lt;/span&gt; bash
 vim .bashrc 
 
-&lt;span class="c1"&gt;# Add those 4 lines to .bashrc for new version of pyenv.run&lt;/span&gt;
+&lt;span class="c1"&gt;# Add those 3 lines to .bashrc for new version of pyenv.run&lt;/span&gt;
 &lt;span class="c1"&gt;# export PYENV_ROOT=&amp;quot;$HOME/.pyenv&amp;quot;&lt;/span&gt;
-&lt;span class="c1"&gt;# export PATH=&amp;quot;$PYENV_ROOT/bin:$PATH&amp;quot;&lt;/span&gt;
-&lt;span class="c1"&gt;# eval &amp;quot;$(pyenv init --path)&amp;quot;&lt;/span&gt;
+&lt;span class="c1"&gt;# command -v pyenv &amp;gt;/dev/null || export PATH=&amp;quot;$PYENV_ROOT/bin:$PATH&amp;quot;&lt;/span&gt;
 &lt;span class="c1"&gt;# eval &amp;quot;$(pyenv init -)&amp;quot;&lt;/span&gt;
+
 
 &lt;span class="nb"&gt;exec&lt;/span&gt; &lt;span class="s2"&gt;&amp;quot;&lt;/span&gt;&lt;span class="nv"&gt;$SHELL&lt;/span&gt;&lt;span class="s2"&gt;&amp;quot;&lt;/span&gt;
 pyenv install --list &lt;span class="p"&gt;|&lt;/span&gt; grep &lt;span class="s2"&gt;&amp;quot; 3\.[6789]&amp;quot;&lt;/span&gt;
@@ -1781,38 +1774,6 @@ python -m venv venv
 &lt;span class="nb"&gt;source&lt;/span&gt; venv/bin/activate
 pip install -r requirements.txt 
 invoke livereload
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
-
-&lt;h3&gt;Browser Font Settings&lt;/h3&gt;
-&lt;p&gt;Below are screenshots of font setting windows in Chrome and Firefox under Linux Mint.&lt;/p&gt;
-&lt;div style="max-width:400px"&gt;
-  &lt;img class="img-fluid pb-3" src="/images/chrome-font.png" alt="Chrome Font"&gt;
-&lt;/div&gt;
-
-&lt;div style="max-width:400px"&gt;
-  &lt;img class="img-fluid pb-3" src="/images/firefox-font.png" alt="Firefox Font"&gt;
-&lt;/div&gt;
-
-&lt;h3&gt;Pyenv Update (4/26/22)&lt;/h3&gt;
-&lt;p&gt;The new version of Pyenv needs some manual setting to make it work. 
-After installing the pyenv, add those lines to the &lt;code&gt;.bashrc&lt;/code&gt; file (or the four lines 
-shown as comments above). &lt;/p&gt;
-&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;&lt;span class="n"&gt;export&lt;/span&gt; &lt;span class="n"&gt;PATH&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="s2"&gt;&amp;quot;$HOME/.pyenv/bin:$PATH&amp;quot;&lt;/span&gt;
-&lt;span class="nb"&gt;eval&lt;/span&gt; &lt;span class="s2"&gt;&amp;quot;$(pyenv init --path)&amp;quot;&lt;/span&gt;
-&lt;span class="nb"&gt;eval&lt;/span&gt; &lt;span class="s2"&gt;&amp;quot;$(pyenv virtualenv-init -)&amp;quot;&lt;/span&gt;
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
-
-&lt;p&gt;This works fine in Ubuntu 22.04 &lt;span class="caps"&gt;LTS&lt;/span&gt;, otherwise &lt;code&gt;python&lt;/code&gt; command does not work. The 
-bash cann&amp;#8217;t find the &lt;code&gt;python&lt;/code&gt; command. I am not sure the reason.  Need to read the 
-pyenv documentation to find out someday. &lt;/p&gt;
-&lt;h3&gt;Install Nodejs&lt;/h3&gt;
-&lt;p&gt;Node source does not work on Ubuntu 22.04 yet. I found 
-&lt;a href="https://github.com/nodesource/distributions/issues/1379#issuecomment-1107656661"&gt;a post by EntenKoeniq&lt;/a&gt; in 
-github which works fine.  Here are the commands,&lt;/p&gt;
-&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;sudo curl -LO https://nodejs.org/dist/v18.0.0/node-v18.0.0-linux-x64.tar.xz
-sudo tar -xvf node-v18.0.0-linux-x64.tar.xz
-sudo cp -r node-v18.0.0-linux-x64/&lt;span class="o"&gt;{&lt;/span&gt;bin,include,lib,share&lt;span class="o"&gt;}&lt;/span&gt; /usr/
-node --version &lt;span class="o"&gt;=&lt;/span&gt;&amp;gt; v18.0.0
 &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
 
 &lt;h3&gt;Ubuntu/Windows Dual Bool Time Issue&lt;/h3&gt;
