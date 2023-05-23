@@ -1,7 +1,7 @@
 title: New Linux Mint/Ubuntu System Install and Setup
 slug: new-linux-mint-install-and-setup
 date: 2021-01-15 11:03
-modified: 2023-05-23 10:37
+modified: 2023-05-23 16:08
 tags: linux, linux mint
 note: note to be added
 related_posts: home-file-sharing, a-case-of-linux-mint-crash, linux-mint, vim-tips
@@ -112,8 +112,8 @@ libxml2-dev libxmlsec1-dev libffi-dev liblzma-dev
 
 
 curl https://pyenv.run | bash
-vim .bashrc 
 
+vim .bashrc 
 # Add those 3 lines to .bashrc for new version of pyenv.run
 # export PYENV_ROOT="$HOME/.pyenv"
 # command -v pyenv >/dev/null || export PATH="$PYENV_ROOT/bin:$PATH"
@@ -147,9 +147,9 @@ pip install -r requirements.txt
 invoke livereload
 ```
 
-###Ubuntu/Windows Dual Bool Time Issue
+###Linux Mint/Windows Dual Bool Time Issue
 
-When a computer has both Ubuntu and Windows system installed, the system time 
+When a computer has both Linux Mint and Windows system installed, the system time 
 in Windows is wrong.  The issue is described in this 
 [itsfoss.com article](https://itsfoss.com/wrong-time-dual-boot/). 
 
