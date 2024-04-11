@@ -1,7 +1,7 @@
 title: Good Things Are Happening
 slug: good-things-are-happening
 date: 2024-04-10 20:47
-modified: 2024-04-10 20:47
+modified: 2024-04-10 21:16
 tags: books, design
 note: new post in 2024
 no: 87
