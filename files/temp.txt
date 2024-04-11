@@ -1,0 +1,36 @@
+    1  sudo apt update
+    2  sudo apt upgrade
+    3  sudo apt remove vim-tiny
+    4  sudo apt install vim
+    5  sudo apt install git
+    6  git config --global user.email <email>
+    7  git config --global user.name "<name>"
+    8  sudo apt install -y make build-essential libssl-dev zlib1g-dev libbz2-dev libreadline-dev libsqlite3-dev wget curl llvm libncursesw5-dev xz-utils tk-dev libxml2-dev libxmlsec1-dev libffi-dev liblzma-dev
+    9  curl https://pyenv.run | bash
+   10  echo 'export PYENV_ROOT="$HOME/.pyenv"' >> ~/.bashrc
+   11  echo 'command -v pyenv >/dev/null || export PATH="$PYENV_ROOT/bin:$PATH"' >> ~/.bashrc
+   12  echo 'eval "$(pyenv init -)"' >> ~/.bashrc
+   13  exec "$SHELL"
+   14  ssh-keygen -t rsa -b 4096 -C "<email>"
+   15  eval "$(ssh-agent -s)"
+   16  ssh-add ~/.ssh/id_rsa
+   17  cat ~/.ssh/id_rsa.pub 
+   18  mkdir git-repo
+   19  cd git-repo/
+   20  git clone git@github.com:georgexyz19/georgexyz.com.git
+   21  cd georgexyz.com/
+   22  ls
+   23  python -V
+   24  python -m venv venv
+   25  . venv/bin/activate
+   26  pip install -r requirements.txt 
+   27  code .
+   28  source commit_change.sh "minor change test"
+   29  exit
+   30  pyenv --version
+   31  pyenv install --list
+   32  pyenv install 3.8.19
+   33  pyenv install 3.12.2
+   34  pyenv global 3.8.19
+   35  exit
+  

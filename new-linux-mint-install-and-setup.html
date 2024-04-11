@@ -71,8 +71,8 @@
 
       <div class="text-muted mb-4">
         <span>Last Update on </span>
-        <time datetime="2023-05-23 16:08:00-04:00">
-          Tuesday, 05/23/2023 16:08
+        <time datetime="2024-04-11 09:56:00-04:00">
+          Thursday, 04/11/2024 09:56
         </time>
       </div>
 
@@ -217,6 +217,48 @@ in Windows is wrong.  The issue is described in this
 <p>The easy way to fix the issue is to run the commands in Ubuntu, </p>
 <div class="highlight"><pre><span></span><code>timedatectl set-local-rtc 1
 timedatectl
+</code></pre></div>
+
+<h3>New Script</h3>
+<p>Here is an update script in April 2024 for ubuntu 22.04. The new ubuntu seems to 
+solve the dual boot time issue mentioned above. </p>
+<div class="highlight"><pre><span></span><code>sudo apt update
+sudo apt upgrade
+sudo apt remove vim-tiny
+sudo apt install vim
+sudo apt install git
+git config --global user.email &lt;email&gt;
+git config --global user.name &quot;&lt;name&gt;&quot;
+sudo apt install -y make build-essential libssl-dev zlib1g-dev libbz2-dev \
+      libreadline-dev libsqlite3-dev wget curl llvm libncursesw5-dev \
+      xz-utils tk-dev libxml2-dev libxmlsec1-dev \
+      libffi-dev liblzma-dev
+curl https://pyenv.run | bash
+echo &#39;export PYENV_ROOT=&quot;$HOME/.pyenv&quot;&#39; &gt;&gt; ~/.bashrc
+echo &#39;command -v pyenv &gt;/dev/null ||   \
+      export PATH=&quot;$PYENV_ROOT/bin:$PATH&quot;&#39; &gt;&gt; ~/.bashrc
+echo &#39;eval &quot;$(pyenv init -)&quot;&#39; &gt;&gt; ~/.bashrc
+exec &quot;$SHELL&quot;
+ssh-keygen -t rsa -b 4096 -C &quot;&lt;email&gt;&quot;
+eval &quot;$(ssh-agent -s)&quot;
+ssh-add ~/.ssh/id_rsa
+cat ~/.ssh/id_rsa.pub 
+mkdir git-repo
+cd git-repo/
+git clone git@github.com:georgexyz19/georgexyz.com.git
+cd georgexyz.com/
+python -V
+python -m venv venv
+. venv/bin/activate
+pip install -r requirements.txt 
+code .
+source commit_change.sh &quot;minor change test&quot;
+pyenv --version
+pyenv install --list
+pyenv install 3.8.19
+pyenv install 3.12.2
+pyenv global 3.8.19
+exit
 </code></pre></div>
 
       <div class="mt-5 border-top">

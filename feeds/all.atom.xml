@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<feed xmlns="http://www.w3.org/2005/Atom"><title>George Zhang</title><link href="https://www.georgexyz.com/" rel="alternate"></link><link href="https://www.georgexyz.com/feeds/all.atom.xml" rel="self"></link><id>https://www.georgexyz.com/</id><updated>2024-04-10T21:16:00-04:00</updated><entry><title>Good Things Are Happening</title><link href="https://www.georgexyz.com/good-things-are-happening.html" rel="alternate"></link><published>2024-04-10T20:47:00-04:00</published><updated>2024-04-10T21:16:00-04:00</updated><author><name>George Zhang</name></author><id>tag:www.georgexyz.com,2024-04-10:/good-things-are-happening.html</id><summary type="html">&lt;p&gt;It’s been over a year since I last updated this site. Life has been a whirlwind of kids and work, 
+<feed xmlns="http://www.w3.org/2005/Atom"><title>George Zhang</title><link href="https://www.georgexyz.com/" rel="alternate"></link><link href="https://www.georgexyz.com/feeds/all.atom.xml" rel="self"></link><id>https://www.georgexyz.com/</id><updated>2024-04-11T09:56:00-04:00</updated><entry><title>Good Things Are Happening</title><link href="https://www.georgexyz.com/good-things-are-happening.html" rel="alternate"></link><published>2024-04-10T20:47:00-04:00</published><updated>2024-04-10T21:16:00-04:00</updated><author><name>George Zhang</name></author><id>tag:www.georgexyz.com,2024-04-10:/good-things-are-happening.html</id><summary type="html">&lt;p&gt;It’s been over a year since I last updated this site. Life has been a whirlwind of kids and work, 
 leaving little room for reading and writing. But recently …&lt;/p&gt;</summary><content type="html">&lt;p&gt;It’s been over a year since I last updated this site. Life has been a whirlwind of kids and work, 
 leaving little room for reading and writing. But recently, I’ve found myself diving back into reading, 
 and I decided to find time to start writing again.&lt;/p&gt;
@@ -1721,7 +1721,7 @@ if a Ryobi Sander is in stock on &lt;em&gt;direct tools outlet&lt;/em&gt; websit
 &lt;li&gt;Send an email or text message to remind that it is in stock&lt;/li&gt;
 &lt;/ul&gt;
 &lt;p&gt;The code does not look complicated.  The program shapes up to 
-be a ticket scalping tool, and I am stopping the post right here. &lt;/p&gt;</content><category term="posts"></category><category term="python"></category></entry><entry><title>New Linux Mint/Ubuntu System Install and Setup</title><link href="https://www.georgexyz.com/new-linux-mint-install-and-setup.html" rel="alternate"></link><published>2021-01-15T11:03:00-05:00</published><updated>2023-05-23T16:08:00-04:00</updated><author><name>George Zhang</name></author><id>tag:www.georgexyz.com,2021-01-15:/new-linux-mint-install-and-setup.html</id><summary type="html">&lt;p&gt;I have been using Linux Mint since June 2019. Most times I am happy with it. 
+be a ticket scalping tool, and I am stopping the post right here. &lt;/p&gt;</content><category term="posts"></category><category term="python"></category></entry><entry><title>New Linux Mint/Ubuntu System Install and Setup</title><link href="https://www.georgexyz.com/new-linux-mint-install-and-setup.html" rel="alternate"></link><published>2021-01-15T11:03:00-05:00</published><updated>2024-04-11T09:56:00-04:00</updated><author><name>George Zhang</name></author><id>tag:www.georgexyz.com,2021-01-15:/new-linux-mint-install-and-setup.html</id><summary type="html">&lt;p&gt;I have been using Linux Mint since June 2019. Most times I am happy with it. 
 It seems that version 19.x is more stable than 20.x at this …&lt;/p&gt;</summary><content type="html">&lt;p&gt;I have been using Linux Mint since June 2019. Most times I am happy with it. 
 It seems that version 19.x is more stable than 20.x at this time. My computer 
 still has 19.3 installed, and eventually I will upgrade to 20.x or a newer version. 
@@ -1863,6 +1863,48 @@ in Windows is wrong.  The issue is described in this
 &lt;p&gt;The easy way to fix the issue is to run the commands in Ubuntu, &lt;/p&gt;
 &lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;timedatectl set-local-rtc 1
 timedatectl
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+
+&lt;h3&gt;New Script&lt;/h3&gt;
+&lt;p&gt;Here is an update script in April 2024 for ubuntu 22.04. The new ubuntu seems to 
+solve the dual boot time issue mentioned above. &lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;sudo apt update
+sudo apt upgrade
+sudo apt remove vim-tiny
+sudo apt install vim
+sudo apt install git
+git config --global user.email &amp;lt;email&amp;gt;
+git config --global user.name &amp;quot;&amp;lt;name&amp;gt;&amp;quot;
+sudo apt install -y make build-essential libssl-dev zlib1g-dev libbz2-dev \
+      libreadline-dev libsqlite3-dev wget curl llvm libncursesw5-dev \
+      xz-utils tk-dev libxml2-dev libxmlsec1-dev \
+      libffi-dev liblzma-dev
+curl https://pyenv.run | bash
+echo &amp;#39;export PYENV_ROOT=&amp;quot;$HOME/.pyenv&amp;quot;&amp;#39; &amp;gt;&amp;gt; ~/.bashrc
+echo &amp;#39;command -v pyenv &amp;gt;/dev/null ||   \
+      export PATH=&amp;quot;$PYENV_ROOT/bin:$PATH&amp;quot;&amp;#39; &amp;gt;&amp;gt; ~/.bashrc
+echo &amp;#39;eval &amp;quot;$(pyenv init -)&amp;quot;&amp;#39; &amp;gt;&amp;gt; ~/.bashrc
+exec &amp;quot;$SHELL&amp;quot;
+ssh-keygen -t rsa -b 4096 -C &amp;quot;&amp;lt;email&amp;gt;&amp;quot;
+eval &amp;quot;$(ssh-agent -s)&amp;quot;
+ssh-add ~/.ssh/id_rsa
+cat ~/.ssh/id_rsa.pub 
+mkdir git-repo
+cd git-repo/
+git clone git@github.com:georgexyz19/georgexyz.com.git
+cd georgexyz.com/
+python -V
+python -m venv venv
+. venv/bin/activate
+pip install -r requirements.txt 
+code .
+source commit_change.sh &amp;quot;minor change test&amp;quot;
+pyenv --version
+pyenv install --list
+pyenv install 3.8.19
+pyenv install 3.12.2
+pyenv global 3.8.19
+exit
 &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;</content><category term="posts"></category><category term="linux"></category><category term="linux mint"></category></entry><entry><title>Road Segment Crash Rate Calculator</title><link href="https://www.georgexyz.com/road-segment-crash-rate-calculator.html" rel="alternate"></link><published>2021-01-11T10:30:00-05:00</published><updated>2021-01-11T10:30:00-05:00</updated><author><name>George Zhang</name></author><id>tag:www.georgexyz.com,2021-01-11:/road-segment-crash-rate-calculator.html</id><summary type="html">&lt;p&gt;I am reading Part Two, Chapter 4.3 of 
 &lt;a href="javascript.info"&gt;javascript.info&lt;/a&gt; tutorial.  It has an exercise to write a js deposit calculator. 
 I often use &lt;a href="/files/CrashRateCal.xlsx"&gt;a spreadsheet file&lt;/a&gt; to calculate …&lt;/p&gt;</summary><content type="html">&lt;p&gt;I am reading Part Two, Chapter 4.3 of 
