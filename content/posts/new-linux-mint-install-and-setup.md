@@ -1,7 +1,7 @@
 title: New Linux Mint/Ubuntu System Install and Setup
 slug: new-linux-mint-install-and-setup
 date: 2021-01-15 11:03
-modified: 2023-05-23 16:08
+modified: 2024-04-11 09:56
 tags: linux, linux mint
 note: note to be added
 related_posts: home-file-sharing, a-case-of-linux-mint-crash, linux-mint, vim-tips
@@ -158,4 +158,50 @@ The easy way to fix the issue is to run the commands in Ubuntu,
 ```
 timedatectl set-local-rtc 1
 timedatectl
+```
+
+### New Script
+
+Here is an update script in April 2024 for ubuntu 22.04. The new ubuntu seems to 
+solve the dual boot time issue mentioned above. 
+
+```
+sudo apt update
+sudo apt upgrade
+sudo apt remove vim-tiny
+sudo apt install vim
+sudo apt install git
+git config --global user.email <email>
+git config --global user.name "<name>"
+sudo apt install -y make build-essential libssl-dev zlib1g-dev libbz2-dev \
+      libreadline-dev libsqlite3-dev wget curl llvm libncursesw5-dev \
+      xz-utils tk-dev libxml2-dev libxmlsec1-dev \
+      libffi-dev liblzma-dev
+curl https://pyenv.run | bash
+echo 'export PYENV_ROOT="$HOME/.pyenv"' >> ~/.bashrc
+echo 'command -v pyenv >/dev/null ||   \
+      export PATH="$PYENV_ROOT/bin:$PATH"' >> ~/.bashrc
+echo 'eval "$(pyenv init -)"' >> ~/.bashrc
+exec "$SHELL"
+ssh-keygen -t rsa -b 4096 -C "<email>"
+eval "$(ssh-agent -s)"
+ssh-add ~/.ssh/id_rsa
+cat ~/.ssh/id_rsa.pub 
+mkdir git-repo
+cd git-repo/
+git clone git@github.com:georgexyz19/georgexyz.com.git
+cd georgexyz.com/
+python -V
+python -m venv venv
+. venv/bin/activate
+pip install -r requirements.txt 
+code .
+source commit_change.sh "minor change test"
+pyenv --version
+pyenv install --list
+pyenv install 3.8.19
+pyenv install 3.12.2
+pyenv global 3.8.19
+exit
+
 ```
