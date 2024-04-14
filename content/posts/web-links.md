@@ -2,7 +2,7 @@ title: A Collection of Web Links
 slug: web-links
 meta: April 1 post
 date: 2020-04-01 23:30
-modified: 2020-04-09 08:54
+modified: 2024-04-14 10:25
 tags: web development
 note: A short post on April 1, 2020
 no: 34
