@@ -9,6 +9,14 @@ no: 34
 
 This page has a collection of web links that I visit often.
 
+### Python Books I Love
+
+Those two books are freely available online. Check out the links below. 
+
+[Automate The Boring Stuff with Python](https://automatetheboringstuff.com/)
+
+[Think Python](http://greenteapress.com/thinkpython2/html/index.html)
+
 ### Python Quick Reference
 
 [Transforming Code into Beautiful, Idiomatic Python Code](https://github.com/JeffPaine/beautiful_idiomatic_python) - Github Link
@@ -19,17 +27,9 @@ This page has a collection of web links that I visit often.
 
 [Python Built-ins Worth Learning](https://treyhunner.com/2019/05/python-builtins-worth-learning/) - Wonderful Resource
 
-
-### Python Books I Love
-
-[Automate The Boring Stuff with Python](https://automatetheboringstuff.com/)
-
-[Think Python](http://greenteapress.com/thinkpython2/html/index.html)
-
-
 ### Python Basics Reference
 
-Here are some links on Python basics.  
+Here are some links on Python basics. 
 
 [List Methods](https://docs.python.org/3/tutorial/datastructures.html) - in Section 5.1
 
