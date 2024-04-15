@@ -2,7 +2,7 @@ title: A Collection of Web Links
 slug: web-links
 meta: April 1 post
 date: 2020-04-01 23:30
-modified: 2024-04-14 10:25
+modified: 2024-04-15 17:46
 tags: web development
 note: A short post on April 1, 2020
 no: 34
@@ -47,14 +47,17 @@ Here are some links on Python basics.
 
 [Python Context Manager](https://dbader.org/blog/python-context-managers-and-with-statement) - Tutorial on dbader.org 
 
-[Class Property](https://www.machinelearningplus.com/python/python-property/) - Nice property explanation
+[Python Iterators](https://dbader.org/blog/python-iterators) - Tutorial on dbader.org
 
-[Class Into](https://python.swaroopch.com/oop.html) - Chapter from *A Byte Of Python* book
+[Python Generator](https://dbader.org/blog/python-generators) - Tutorial on dbader.org
+
+[Python Class Into](https://python.swaroopch.com/oop.html) - Chapter from *A Byte Of Python* book
+
+[Class Property](https://www.machinelearningplus.com/python/python-property/) - Nice property explanation
 
 [Python Glossary](https://docs.python.org/3/glossary.html#term-descriptor) - On Python.com
 
 [Python Built-in Functions](https://docs.python.org/3/library/functions.html) - On Python.com
-
 
 ### Python Intermediate
 
