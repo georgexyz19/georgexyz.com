@@ -53,8 +53,9 @@ Here are some links on Python basics.
 
 [Python Class Into](https://python.swaroopch.com/oop.html) - Chapter from *A Byte Of Python* book
 
+<!-- HTML tag to comment out this line, too many ads on this page, ridiculous
 [Class Property](https://www.machinelearningplus.com/python/python-property/) - Nice property explanation
-
+-->
 ### Python References
 
 [Python Glossary](https://docs.python.org/3/glossary.html#term-descriptor) - On Python.com
