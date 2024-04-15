@@ -45,6 +45,8 @@ Here are some links on Python basics.
 
 [Regex Module on Python.org](https://docs.python.org/3/library/re.html) - Official doc
 
+[Python Context Manager](https://dbader.org/blog/python-context-managers-and-with-statement) - Tutorial on dbader.org 
+
 [Class Property](https://www.machinelearningplus.com/python/python-property/) - Nice property explanation
 
 [Class Into](https://python.swaroopch.com/oop.html) - Chapter from *A Byte Of Python* book
@@ -59,8 +61,6 @@ Here are some links on Python basics.
 Those links are for people who already know the Python basics.
 
 [Python Logging Howto](https://docs.python.org/3/howto/logging.html) - Official doc tutorials
-
-[Python Context Manager](https://dbader.org/blog/python-context-managers-and-with-statement) - Tutorial on dbader.org 
 
 [Python Metaclasses](https://realpython.com/python-metaclasses/) - Meta class intro (realpython.com)
 
