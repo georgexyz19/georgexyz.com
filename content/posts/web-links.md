@@ -27,7 +27,7 @@ Those two books are freely available online. Check out the links below.
 
 [Python Built-ins Worth Learning](https://treyhunner.com/2019/05/python-builtins-worth-learning/) - Wonderful Resource
 
-### Python Basics Reference
+### Python Basics
 
 Here are some links on Python basics. 
 
@@ -54,6 +54,8 @@ Here are some links on Python basics.
 [Python Class Into](https://python.swaroopch.com/oop.html) - Chapter from *A Byte Of Python* book
 
 [Class Property](https://www.machinelearningplus.com/python/python-property/) - Nice property explanation
+
+### Python References
 
 [Python Glossary](https://docs.python.org/3/glossary.html#term-descriptor) - On Python.com
 
