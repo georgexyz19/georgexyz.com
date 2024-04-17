@@ -43,8 +43,6 @@ Here are some links on Python basics.
 
 [Regex Module](https://developers.google.com/edu/python/regular-expressions) - Regular Expression Basics
 
-[Regex Module on Python.org](https://docs.python.org/3/library/re.html) - Official doc
-
 [Python Context Manager](https://dbader.org/blog/python-context-managers-and-with-statement) - Tutorial on dbader.org 
 
 [Python Iterators](https://dbader.org/blog/python-iterators) - Tutorial on dbader.org
@@ -56,11 +54,15 @@ Here are some links on Python basics.
 <!-- HTML tag to comment out this line, too many ads on this page, ridiculous
 [Class Property](https://www.machinelearningplus.com/python/python-property/) - Nice property explanation
 -->
+
 ### Python References
 
-[Python Glossary](https://docs.python.org/3/glossary.html#term-descriptor) - On Python.com
+[Python Glossary](https://docs.python.org/3/glossary.html#term-descriptor) - On Python.org
 
-[Python Built-in Functions](https://docs.python.org/3/library/functions.html) - On Python.com
+[Python Built-in Functions](https://docs.python.org/3/library/functions.html) - On Python.org
+
+[Regex Module](https://docs.python.org/3/library/re.html) - Official Regex Reference
+
 
 ### Python Intermediate
 
