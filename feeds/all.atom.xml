@@ -4453,7 +4453,6 @@ which discusses the dictionary with more details. &lt;/li&gt;
 &lt;p&gt;&lt;a href="https://dbader.org/blog/python-file-io"&gt;File &lt;span class="caps"&gt;IO&lt;/span&gt;&lt;/a&gt; - Tutorial on dbader.org&lt;/p&gt;
 &lt;p&gt;&lt;a href="https://greenteapress.com/thinkpython2/html/thinkpython2015.html"&gt;Files Chapter&lt;/a&gt; - &lt;em&gt;Think Python&lt;/em&gt; Book Chapter 14 &lt;/p&gt;
 &lt;p&gt;&lt;a href="https://developers.google.com/edu/python/regular-expressions"&gt;Regex Module&lt;/a&gt; - Regular Expression Basics&lt;/p&gt;
-&lt;p&gt;&lt;a href="https://docs.python.org/3/library/re.html"&gt;Regex Module on Python.org&lt;/a&gt; - Official doc&lt;/p&gt;
 &lt;p&gt;&lt;a href="https://dbader.org/blog/python-context-managers-and-with-statement"&gt;Python Context Manager&lt;/a&gt; - Tutorial on dbader.org &lt;/p&gt;
 &lt;p&gt;&lt;a href="https://dbader.org/blog/python-iterators"&gt;Python Iterators&lt;/a&gt; - Tutorial on dbader.org&lt;/p&gt;
 &lt;p&gt;&lt;a href="https://dbader.org/blog/python-generators"&gt;Python Generator&lt;/a&gt; - Tutorial on dbader.org&lt;/p&gt;
@@ -4461,9 +4460,11 @@ which discusses the dictionary with more details. &lt;/li&gt;
 &lt;!-- HTML tag to comment out this line, too many ads on this page, ridiculous
 [Class Property](https://www.machinelearningplus.com/python/python-property/) - Nice property explanation
 --&gt;
+
 &lt;h3&gt;Python References&lt;/h3&gt;
-&lt;p&gt;&lt;a href="https://docs.python.org/3/glossary.html#term-descriptor"&gt;Python Glossary&lt;/a&gt; - On Python.com&lt;/p&gt;
-&lt;p&gt;&lt;a href="https://docs.python.org/3/library/functions.html"&gt;Python Built-in Functions&lt;/a&gt; - On Python.com&lt;/p&gt;
+&lt;p&gt;&lt;a href="https://docs.python.org/3/glossary.html#term-descriptor"&gt;Python Glossary&lt;/a&gt; - On Python.org&lt;/p&gt;
+&lt;p&gt;&lt;a href="https://docs.python.org/3/library/functions.html"&gt;Python Built-in Functions&lt;/a&gt; - On Python.org&lt;/p&gt;
+&lt;p&gt;&lt;a href="https://docs.python.org/3/library/re.html"&gt;Regex Module&lt;/a&gt; - Official Regex Reference&lt;/p&gt;
 &lt;h3&gt;Python Intermediate&lt;/h3&gt;
 &lt;p&gt;Those links are for people who already know the Python basics.&lt;/p&gt;
 &lt;p&gt;&lt;a href="https://docs.python.org/3/howto/logging.html"&gt;Python Logging Howto&lt;/a&gt; - Official doc tutorials&lt;/p&gt;
