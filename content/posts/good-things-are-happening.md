@@ -1,7 +1,7 @@
 title: Good Things Are Happening
 slug: good-things-are-happening
 date: 2024-04-10 20:47
-modified: 2024-04-10 21:16
+modified: 2024-04-19 13:37
 tags: books, design
 note: new post in 2024
 no: 87
@@ -62,6 +62,8 @@ app at a time.
 So, whether it’s building atomic habits or taming digital demons, remember: small changes yield seismic 
 results. 
 
+This article was edited by Bing CoPilot. 
+<!--
 <hr>
 
 ### Original
@@ -106,3 +108,5 @@ that I can use to restrict my cell phone usage and I found the Stayfree app.  It
 see that I spent 1 -2 hours per day on Chrome brower on my phone.  Now I set it up in the Strayfree app 
 that during my work hours, I can't open Chrome brower on my phone.  It greatly improved my concentration and 
 reduced distraction. 
+
+-->
