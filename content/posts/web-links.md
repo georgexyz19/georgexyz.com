@@ -68,6 +68,8 @@ Here are some links on Python basics.
 
 Those links are for people who already know the Python basics.
 
+[Python Decorators](https://blog.miguelgrinberg.com/post/the-ultimate-guide-to-python-decorators-part-i-function-registration) - Three articles by Miguel Grinberg
+
 [Python Logging Howto](https://docs.python.org/3/howto/logging.html) - Official doc tutorials
 
 [Python Metaclasses](https://realpython.com/python-metaclasses/) - Meta class intro (realpython.com)
@@ -75,8 +77,6 @@ Those links are for people who already know the Python basics.
 [What are Descriptors](https://www.blog.pythonlibrary.org/2016/06/10/python-201-what-are-descriptors/) - Python 201 blog post
 
 [Python Descriptors Demystified](https://nbviewer.jupyter.org/urls/gist.github.com/ChrisBeaumont/5758381/raw/descriptor_writeup.ipynb) - Excellent doc
-
-[Python Decorators](https://blog.miguelgrinberg.com/post/the-ultimate-guide-to-python-decorators-part-i-function-registration) - Guides by Miguel Grinberg
 
 [Python Concurrency Intro](https://realpython.com/python-concurrency/) - Nice intro to Python concurrency article 
 
