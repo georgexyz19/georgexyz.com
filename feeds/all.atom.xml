@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<feed xmlns="http://www.w3.org/2005/Atom"><title>George Zhang</title><link href="https://www.georgexyz.com/" rel="alternate"></link><link href="https://www.georgexyz.com/feeds/all.atom.xml" rel="self"></link><id>https://www.georgexyz.com/</id><updated>2024-04-19T13:37:00-04:00</updated><entry><title>Good Things Are Happening</title><link href="https://www.georgexyz.com/good-things-are-happening.html" rel="alternate"></link><published>2024-04-10T20:47:00-04:00</published><updated>2024-04-19T13:37:00-04:00</updated><author><name>George Zhang</name></author><id>tag:www.georgexyz.com,2024-04-10:/good-things-are-happening.html</id><summary type="html">&lt;p&gt;It’s been over a year since I last updated this site. Life has been a whirlwind of kids and work, 
+<feed xmlns="http://www.w3.org/2005/Atom"><title>George Zhang</title><link href="https://www.georgexyz.com/" rel="alternate"></link><link href="https://www.georgexyz.com/feeds/all.atom.xml" rel="self"></link><id>https://www.georgexyz.com/</id><updated>2024-04-22T12:49:00-04:00</updated><entry><title>Good Things Are Happening</title><link href="https://www.georgexyz.com/good-things-are-happening.html" rel="alternate"></link><published>2024-04-10T20:47:00-04:00</published><updated>2024-04-22T12:49:00-04:00</updated><author><name>George Zhang</name></author><id>tag:www.georgexyz.com,2024-04-10:/good-things-are-happening.html</id><summary type="html">&lt;p&gt;It’s been over a year since I last updated this site. Life has been a whirlwind of kids and work, 
 leaving little room for reading and writing. But recently …&lt;/p&gt;</summary><content type="html">&lt;p&gt;It’s been over a year since I last updated this site. Life has been a whirlwind of kids and work, 
 leaving little room for reading and writing. But recently, I’ve found myself diving back into reading, 
 and I decided to find time to start writing again.&lt;/p&gt;
@@ -19,26 +19,26 @@ to embracing the future and making the most of these exciting tools!&lt;/p&gt;
 &lt;h3&gt;Atomic Habits by James Clear&lt;/h3&gt;
 &lt;p&gt;I’ve recently delved into James Clear’s masterpiece, Atomic Habits, and let me tell you—it’s a 
 game-changer. It’s a roadmap to transforming your life, one tiny habit at a time.&lt;/p&gt;
-&lt;p&gt;Crafted with Precision: Clear’s writing is like a well-tailored suit—sharp, concise, and perfectly 
+&lt;p&gt;Clear’s writing is like a well-tailored suit—sharp, concise, and perfectly 
 fitted. Each of the 20 chapters is a gem, packed with actionable insights that leave you nodding in agreement.&lt;/p&gt;
-&lt;p&gt;Unlocking the Power of Small Changes: Clear’s secret sauce lies in his focus on microscopic 
+&lt;p&gt;Clear’s secret sauce lies in his focus on microscopic 
 shifts. He reveals how these seemingly insignificant habits compound over time, shaping our destiny. 
 From the cue-routine-reward loop to the magic of habit stacking, this book is a treasure trove of practical wisdom.&lt;/p&gt;
-&lt;p&gt;A Joyful Read: Unlike some other books (which shall remain nameless), Atomic Habits doesn’t leave you 
+&lt;p&gt;Unlike some other books (which shall remain nameless), Atomic Habits doesn’t leave you 
 scratching your head. Clear’s clarity of thought makes it a joy to read. No more deciphering cryptic 
 sentences or re-reading paragraphs—just pure enlightenment.&lt;/p&gt;
 &lt;h3&gt;The Stayfree App&lt;/h3&gt;
 &lt;p&gt;After my Atomic Habits revelation, I decided to tackle my digital distractions. Enter the Stayfree app, 
 my newfound ally in the battle against mindless phone scrolling.&lt;/p&gt;
-&lt;p&gt;The Shocking Truth: I discovered I was spending 1 to 2 hours daily lost in the Chrome browser on my phone. 
+&lt;p&gt;I discovered I was spending 1 to 2 hours daily lost in the Chrome browser on my phone. 
 Yikes! That’s precious time slipping away.&lt;/p&gt;
-&lt;p&gt;Strayfree to the Rescue: With the Stayfree app, I set strict boundaries during my work hours. No more 
+&lt;p&gt;With the Stayfree app, I set strict boundaries during my work hours. No more 
 mindless browsing. Just focused productivity.&lt;/p&gt;
-&lt;p&gt;The Result: My concentration soared, and distractions plummeted. I’m reclaiming my time, one blocked 
+&lt;p&gt;My concentration soared, and distractions plummeted. I’m reclaiming my time, one blocked 
 app at a time.&lt;/p&gt;
 &lt;p&gt;So, whether it’s building atomic habits or taming digital demons, remember: small changes yield seismic 
 results. &lt;/p&gt;
-&lt;p&gt;This article was edited by Bing CoPilot. &lt;/p&gt;
+&lt;p&gt;This article was edited by Bing CoPilot and me. &lt;/p&gt;
 &lt;!--
 &lt;hr&gt;
 
@@ -4482,11 +4482,11 @@ which discusses the dictionary with more details. &lt;/li&gt;
 &lt;p&gt;&lt;a href="https://docs.python.org/3/library/re.html"&gt;Regex Module&lt;/a&gt; - Official Regex Reference&lt;/p&gt;
 &lt;h3&gt;Python Intermediate&lt;/h3&gt;
 &lt;p&gt;Those links are for people who already know the Python basics.&lt;/p&gt;
+&lt;p&gt;&lt;a href="https://blog.miguelgrinberg.com/post/the-ultimate-guide-to-python-decorators-part-i-function-registration"&gt;Python Decorators&lt;/a&gt; - Three articles by Miguel Grinberg&lt;/p&gt;
 &lt;p&gt;&lt;a href="https://docs.python.org/3/howto/logging.html"&gt;Python Logging Howto&lt;/a&gt; - Official doc tutorials&lt;/p&gt;
 &lt;p&gt;&lt;a href="https://realpython.com/python-metaclasses/"&gt;Python Metaclasses&lt;/a&gt; - Meta class intro (realpython.com)&lt;/p&gt;
 &lt;p&gt;&lt;a href="https://www.blog.pythonlibrary.org/2016/06/10/python-201-what-are-descriptors/"&gt;What are Descriptors&lt;/a&gt; - Python 201 blog post&lt;/p&gt;
 &lt;p&gt;&lt;a href="https://nbviewer.jupyter.org/urls/gist.github.com/ChrisBeaumont/5758381/raw/descriptor_writeup.ipynb"&gt;Python Descriptors Demystified&lt;/a&gt; - Excellent doc&lt;/p&gt;
-&lt;p&gt;&lt;a href="https://blog.miguelgrinberg.com/post/the-ultimate-guide-to-python-decorators-part-i-function-registration"&gt;Python Decorators&lt;/a&gt; - Guides by Miguel Grinberg&lt;/p&gt;
 &lt;p&gt;&lt;a href="https://realpython.com/python-concurrency/"&gt;Python Concurrency Intro&lt;/a&gt; - Nice intro to Python concurrency article &lt;/p&gt;
 &lt;p&gt;&lt;a href="https://realpython.com/intro-to-python-threading/"&gt;Python Threading Intro&lt;/a&gt; - Excellent realpython.com article&lt;/p&gt;
 &lt;h3&gt;Other Python Resources&lt;/h3&gt;
