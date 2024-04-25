@@ -25,7 +25,7 @@ Those two books are freely available online. Check out the links below.
 
 [Python Quick Reference by Data School](https://nbviewer.jupyter.org/github/justmarkham/python-reference/blob/master/reference.ipynb) - Excellent Summary
 
-[Python Built-ins Worth Learning](https://treyhunner.com/2019/05/python-builtins-worth-learning/) - Wonderful Resource
+[Python Built-ins Worth Learning](https://www.pythonmorsels.com/built-in-functions-in-python/) - Good Resource by Trey Hunner
 
 ### Python Basics
 
@@ -70,13 +70,17 @@ Those links are for people who already know the Python basics.
 
 [Python Decorators](https://blog.miguelgrinberg.com/post/the-ultimate-guide-to-python-decorators-part-i-function-registration) - Three articles by Miguel Grinberg
 
-[Python Logging Howto](https://docs.python.org/3/howto/logging.html) - Official doc tutorials
-
 [Python Metaclasses](https://realpython.com/python-metaclasses/) - Meta class intro (realpython.com)
 
-[What are Descriptors](https://www.blog.pythonlibrary.org/2016/06/10/python-201-what-are-descriptors/) - Python 201 blog post
-
 [Python Descriptors Demystified](https://nbviewer.jupyter.org/urls/gist.github.com/ChrisBeaumont/5758381/raw/descriptor_writeup.ipynb) - Excellent doc
+
+[Python.org Descriptor Guide](https://docs.python.org/3/howto/descriptor.html) - *One of the best Python articles* - by Raymond Hettinger
+
+<!-- comment out, not needed anymore
+[What are Descriptors](https://www.blog.pythonlibrary.org/2016/06/10/python-201-what-are-descriptors/) - Python 201 blog post
+-->
+
+[Python Logging Howto](https://docs.python.org/3/howto/logging.html) - Official doc tutorials
 
 [Python Concurrency Intro](https://realpython.com/python-concurrency/) - Nice intro to Python concurrency article 
 
