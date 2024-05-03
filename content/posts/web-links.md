@@ -2,7 +2,7 @@ title: A Collection of Web Links
 slug: web-links
 meta: April 1 post
 date: 2020-04-01 23:30
-modified: 2024-04-15 17:46
+modified: 2024-05-03 13:02
 tags: web development
 note: A short post on April 1, 2020
 no: 34
@@ -95,8 +95,13 @@ Those links are for people who already know the Python basics.
 
 [The Python Tutorial on python.org](https://docs.python.org/3/tutorial/index.html)
 
-<hr class="my-4"/>
 
+### Jupyter Notebook
+
+[Jupyter Notebook Youtube Tutorial](https://www.youtube.com/watch?v=5pf0_bpNbkw)  - Good Resource to Get Started by Rob Mulla
+
+
+<hr class="my-4"/>
 
 ### Flask Web Framework
 
@@ -154,7 +159,7 @@ Those links are for people who already know the Python basics.
 
 [Front End Web Framework Bootstrap](https://getbootstrap.com/)
 
-[HTML & CSS Is Hard - Web Book](https://www.internetingishard.com/html-and-css/)
+[HTML & CSS Is Hard - Web Book](https://internetingishard.netlify.app/) - Very good beginner resource
 
 [Mozilla Web Forms Page](https://developer.mozilla.org/en-US/docs/Learn/Forms)
 
