@@ -4493,6 +4493,8 @@ which discusses the dictionary with more details. &lt;/li&gt;
 &lt;p&gt;&lt;a href="https://docs.python.org/3/howto/logging.html"&gt;Python Logging Howto&lt;/a&gt; - Official doc tutorials&lt;/p&gt;
 &lt;p&gt;&lt;a href="https://realpython.com/python-concurrency/"&gt;Python Concurrency Intro&lt;/a&gt; - Nice intro to Python concurrency article &lt;/p&gt;
 &lt;p&gt;&lt;a href="https://realpython.com/intro-to-python-threading/"&gt;Python Threading Intro&lt;/a&gt; - Excellent realpython.com article&lt;/p&gt;
+&lt;h3&gt;Data Analysis&lt;/h3&gt;
+&lt;p&gt;&lt;a href="https://wesmckinney.com/book/"&gt;Python for Data Analysis, 3E&lt;/a&gt; - Excellent book on data analysis&lt;/p&gt;
 &lt;h3&gt;Other Python Resources&lt;/h3&gt;
 &lt;p&gt;&lt;a href="https://developers.google.com/edu/python/"&gt;Google&amp;#8217;s Python Class&lt;/a&gt;&lt;/p&gt;
 &lt;p&gt;&lt;a href="https://pymotw.com/3/"&gt;Python 3 Module of the Week PyMOTW-3&lt;/a&gt;&lt;/p&gt;
