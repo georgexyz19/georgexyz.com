@@ -86,6 +86,9 @@ Those links are for people who already know the Python basics.
 
 [Python Threading Intro](https://realpython.com/intro-to-python-threading/) - Excellent realpython.com article
 
+### Data Analysis
+
+[Python for Data Analysis, 3E](https://wesmckinney.com/book/) - Excellent book on data analysis
 
 ### Other Python Resources
 
