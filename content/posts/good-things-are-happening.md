@@ -5,6 +5,7 @@ modified: 2024-04-22 12:49
 tags: books, design
 note: new post in 2024
 no: 87
+status: draft
 
 It’s been over a year since I last updated this site. Life has been a whirlwind of kids and work, 
 leaving little room for reading and writing. But recently, I’ve found myself diving back into reading, 
