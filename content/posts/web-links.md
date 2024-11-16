@@ -43,6 +43,8 @@ Here are some links on Python basics.
 
 [Regex Module](https://developers.google.com/edu/python/regular-expressions) - Regular Expression Basics
 
+[Regular Expression Tester](https://pythonium.net/regex) - Regular Expression Tester with a graphical pattern visualizer
+
 [Python Context Manager](https://dbader.org/blog/python-context-managers-and-with-statement) - Tutorial on dbader.org 
 
 [Python Iterators](https://dbader.org/blog/python-iterators) - Tutorial on dbader.org
