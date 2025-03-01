@@ -1,5 +1,20 @@
 <?xml version="1.0" encoding="utf-8"?>
-<feed xmlns="http://www.w3.org/2005/Atom"><title>George Zhang</title><link href="https://www.georgexyz.com/" rel="alternate"></link><link href="https://www.georgexyz.com/feeds/all.atom.xml" rel="self"></link><id>https://www.georgexyz.com/</id><updated>2025-03-01T00:37:00-05:00</updated><entry><title>AI Is Exciting</title><link href="https://www.georgexyz.com/ai.html" rel="alternate"></link><published>2025-03-01T00:37:00-05:00</published><updated>2025-03-01T00:37:00-05:00</updated><author><name>George Zhang</name></author><id>tag:www.georgexyz.com,2025-03-01:/ai.html</id><summary type="html">&lt;p&gt;It’s been over a year since I last updated this website. Recently, I&amp;#8217;ve been using 
+<feed xmlns="http://www.w3.org/2005/Atom"><title>George Zhang</title><link href="https://www.georgexyz.com/" rel="alternate"></link><link href="https://www.georgexyz.com/feeds/all.atom.xml" rel="self"></link><id>https://www.georgexyz.com/</id><updated>2025-03-01T13:15:00-05:00</updated><entry><title>Develop With WSL</title><link href="https://www.georgexyz.com/develop-with-wsl.html" rel="alternate"></link><published>2025-03-01T13:15:00-05:00</published><updated>2025-03-01T13:15:00-05:00</updated><author><name>George Zhang</name></author><id>tag:www.georgexyz.com,2025-03-01:/develop-with-wsl.html</id><summary type="html">&lt;p&gt;I recently bought a new Windows 11 laptop and chose not to install Ubuntu. Instead, I’m using Windows Subsystem for Linux (&lt;span class="caps"&gt;WSL2&lt;/span&gt;) to update this blog site.&lt;/p&gt;
+&lt;p&gt;&lt;span class="caps"&gt;WSL&lt;/span&gt; is …&lt;/p&gt;</summary><content type="html">&lt;p&gt;I recently bought a new Windows 11 laptop and chose not to install Ubuntu. Instead, I’m using Windows Subsystem for Linux (&lt;span class="caps"&gt;WSL2&lt;/span&gt;) to update this blog site.&lt;/p&gt;
+&lt;p&gt;&lt;span class="caps"&gt;WSL&lt;/span&gt; is much more user-friendly than when I tried it a few years ago. The command below will install &lt;span class="caps"&gt;WSL&lt;/span&gt; and Ubuntu, and your system will be ready to go. Just remember to &amp;#8220;Run as Administrator&amp;#8221; when starting the Windows Command Prompt (cmd):&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;wsl --install
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+
+&lt;p&gt;One issue I encountered is with Windows Terminal, and &lt;span class="caps"&gt;VIM&lt;/span&gt; doesn&amp;#8217;t work well in it. After some searching, I found that ConEmu works better. You’ll need to set the default window size to 150 x 40. I&amp;#8217;m pretty happy with it so far.&lt;/p&gt;
+&lt;div style="max-width:800px"&gt;
+  &lt;img class="img-fluid pb-3" src="/images/wsl/wsl_conemu.png" alt="conemun"&gt; 
+&lt;/div&gt;
+
+&lt;p&gt;To open the current directory in &lt;span class="caps"&gt;VS&lt;/span&gt; Code, use this command:&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;code .
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+
+&lt;p&gt;Those last two blog posts were updated in &lt;span class="caps"&gt;WSL&lt;/span&gt; and ConEmu.  &lt;/p&gt;</content><category term="posts"></category><category term="linux"></category><category term="software utility"></category></entry><entry><title>AI Is Exciting</title><link href="https://www.georgexyz.com/ai.html" rel="alternate"></link><published>2025-03-01T00:37:00-05:00</published><updated>2025-03-01T00:37:00-05:00</updated><author><name>George Zhang</name></author><id>tag:www.georgexyz.com,2025-03-01:/ai.html</id><summary type="html">&lt;p&gt;It’s been over a year since I last updated this website. Recently, I&amp;#8217;ve been using 
 ChatGPT more and more, so it would be a good time to update …&lt;/p&gt;</summary><content type="html">&lt;p&gt;It’s been over a year since I last updated this website. Recently, I&amp;#8217;ve been using 
 ChatGPT more and more, so it would be a good time to update the wesite and write 
 something about &lt;span class="caps"&gt;AI&lt;/span&gt;.&lt;/p&gt;
