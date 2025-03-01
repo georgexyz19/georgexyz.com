@@ -1,0 +1,237 @@
+' This code was mostly writen by chatgpt
+' Fill the excel cells with data from outlook
+' The outlook data was extracted using regular expression
+' So far it works very well 2/27/2025
+
+Sub FillAll()
+
+     ' Add code to activate excel
+    Dim objExcel As Object
+    
+    On Error Resume Next
+    Set objExcel = GetObject(, "Excel.Application")  ' Get the running instance of Excel
+    On Error GoTo 0
+    
+    If objExcel Is Nothing Then
+        MsgBox "Excel is not running!", vbExclamation
+        Exit Sub
+    End If
+    
+    Call FindFirstBlankCellInColumnB
+    
+    Call InsertDate(objExcel)
+
+    objExcel.activeCell.Offset(0, 1).Select
+    
+    objExcel.activeCell.Value = "HMMS"
+    
+    objExcel.activeCell.Offset(0, 1).Select
+    
+    objExcel.activeCell.Value = ShowUserForm()
+    objExcel.activeCell.Offset(0, 1).Select
+    
+    
+    Call DoWorkOrder(objExcel)
+  
+    objExcel.activeCell.Offset(0, 1).Select
+    
+    Call DoLocation(objExcel)
+    
+    Set objExcel = Nothing
+
+
+End Sub
+
+
+Function ShowUserForm() As String
+    Dim UserForm As New UserForm1
+    Dim selectedValue As String
+    
+    UserForm.Show ' Show the UserForm
+    
+    ' Wait for the UserForm to close (via the OK button)
+    ShowUserForm = UserForm.GetSelectedValue ' Get the selected value after the form is hidden
+    
+    ' Display the selected value (or use it in your code)
+    'If selectedValue <> "" Then
+    '    MsgBox "The selected value is: " & selectedValue
+    'Else
+    '    MsgBox "No value was selected.", vbInformation
+    'End If
+End Function
+
+Sub InsertDate(objExcel As Object)
+    ' Insert today's date in MM/DD/YYYY format into the active cell
+    objExcel.activeCell.Value = Format(Date, "mm/dd/yyyy")
+End Sub
+
+
+Sub DoWorkOrder(objExcel As Object)
+    Dim objMail As MailItem
+    Dim strBody As String
+    Dim strPattern As String
+    Dim regEx As Object
+    Dim matches As Object
+    
+    
+     ' Add code to activate excel
+    ' Dim objExcel As Object
+    Dim strToPaste As String
+
+    ' Define the pattern to match the work order number
+    strPattern = "WO-\d{6}-\d{3,4}"
+
+    ' Get the selected email
+    Set objMail = Application.ActiveExplorer.Selection.Item(1)
+    strBody = objMail.Subject
+
+    ' Create RegExp object
+    Set regEx = CreateObject("VBScript.RegExp")
+    regEx.Pattern = strPattern
+    regEx.Global = True
+    
+    
+    ' Define the string to paste into Excel
+    ' strToPaste = "Your String Here"
+    
+    ' Attempt to get a running instance of Excel
+    ' On Error Resume Next
+    ' Set objExcel = GetObject(, "Excel.Application")  ' Get the running instance of Excel
+    ' On Error GoTo 0
+    
+    ' If objExcel Is Nothing Then
+    '    MsgBox "Excel is not running!", vbExclamation
+    '    Exit Sub
+    ' End If
+    
+    ' Ensure Excel is visible and bring it to the foreground
+    ' objExcel.Visible = True
+    ' objExcel.WindowState = 2  ' Minimize the window first, optional
+    ' objExcel.Windows(1).Activate  ' Activate the first window (Excel's active window)
+    
+    ' Paste the string into the active cell
+    ' objExcel.activeCell.Value = strToPaste
+    
+    ' Now, return focus back to Outlook
+    ' Application.Activate  ' Activate Outlook
+    
+
+    ' Execute the search
+    Set matches = regEx.Execute(strBody)
+    If matches.Count > 0 Then
+        ' Display the first match found
+        objExcel.activeCell.Value = matches(0).Value
+        ' MsgBox "Found work order: " & matches(0).Value & vbCrLf & "Copied to clipboard"
+    Else
+        MsgBox "No work order found in this email."
+    End If
+
+    ' Clean up
+    Set regEx = Nothing
+    Set objMail = Nothing
+End Sub
+
+
+Sub DoLocation(objExcel As Object)
+    Dim olApp As Object
+    Dim olNamespace As Object
+    Dim olMail As Object
+    Dim regEx As Object
+    Dim matches As Object
+    Dim match As Object
+    Dim emailBody As String
+    Dim locationPattern As String
+    Dim matchStr As String
+    
+     ' Add code to activate excel
+    ' Dim objExcel As Object
+    Dim strToPaste As String
+    
+
+    ' Define the regex pattern for "Location: xxx"
+    ' locationPattern = "(?<=Location:\s)(.*)" ' Look for "Location: " followed by any text until the end of the line
+    locationPattern = "Location:\s*(.*)" ' You can adjust this to be more flexible (e.g., for multiple words)
+
+    ' Create the Outlook application object and get the active email
+    ' Set olApp = CreateObject("Outlook.Application")
+    ' Set olNamespace = olApp.GetNamespace("MAPI")
+    Set olMail = Application.ActiveExplorer.Selection.Item(1) ' Assuming the email is selected
+    
+    ' Get the email body text
+    emailBody = olMail.Body
+
+    ' Create the regular expression object
+    Set regEx = CreateObject("VBScript.RegExp")
+    regEx.IgnoreCase = True
+    regEx.Global = True
+    regEx.Pattern = locationPattern
+    
+    ' Execute the regex on the email body
+    Set matches = regEx.Execute(emailBody)
+    
+    
+    ' Attempt to get a running instance of Excel
+    'On Error Resume Next
+    'Set objExcel = GetObject(, "Excel.Application")  ' Get the running instance of Excel
+    'On Error GoTo 0
+    
+    'If objExcel Is Nothing Then
+    '    MsgBox "Excel is not running!", vbExclamation
+    '    Exit Sub
+    'End If
+   
+
+    ' If matches are found, display the locations
+    matchStr = ""
+    If matches.Count > 0 Then
+        For Each match In matches
+            matchStr = matchStr & match.SubMatches(0) ' Display the found location
+        Next match
+        ' find the first match
+        objExcel.activeCell.Value = matchStr
+    Else
+        'MsgBox "No location found in the email."
+        ' LocationFromEmail = ""
+        MsgBox "No location found in this email."
+    End If
+End Sub
+
+
+Sub FindFirstBlankCellInColumnB()
+    Dim xlApp As Object
+    Dim xlWB As Object
+    Dim xlWS As Object
+    Dim rng As Object
+    
+    ' Get the Excel application and workbook objects
+    On Error Resume Next
+    Set xlApp = GetObject(, "Excel.Application")
+    On Error GoTo 0
+
+    If xlApp Is Nothing Then
+        MsgBox "Excel is not running."
+        Exit Sub
+    End If
+    
+    Set xlWB = xlApp.ActiveWorkbook
+    Set xlWS = xlWB.ActiveSheet
+    
+    ' Start from B3
+    Set rng = xlWS.Range("B3")
+    
+    ' Loop through the column until the first blank cell is found
+    Do While Not IsEmpty(rng.Value)
+        Set rng = rng.Offset(1, 0)
+    Loop
+    
+    ' Notify the user (optional)
+    'MsgBox "The first blank cell is at: " & rng.Address
+    rng.Select
+    
+    Set xlApp = Nothing
+    Set xlWB = Nothing
+    Set xlWS = Nothing
+    
+End Sub
+
+
