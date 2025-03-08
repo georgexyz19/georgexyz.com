@@ -70,8 +70,8 @@
 
       <div class="text-muted mb-4">
         <span>Last Update on </span>
-        <time datetime="2025-03-01 00:37:00-05:00">
-          Saturday, 03/01/2025 00:37
+        <time datetime="2025-03-08 07:34:00-05:00">
+          Saturday, 03/08/2025 07:34
         </time>
       </div>
 
@@ -90,8 +90,17 @@ something about <span class="caps">AI</span>.</p>
   <img class="img-fluid pb-3" src="/images/ai/outlook.png" alt="outlook question"> 
 </div>
 
-<p><span class="caps">AI</span> can help with writing code. I know a bit of <span class="caps">VBA</span>, and here’s a relatively complex <span class="caps">VBA</span> program that copies data from Outlook to Excel.</p>
+<p><span class="caps">AI</span> can help with writing code. I know a bit of <span class="caps">VBA</span>, and here’s a relatively complex <span class="caps">VBA</span>
+ program that copies data from Outlook to Excel.</p>
 <p><a href="/files/vba_code.txt"><span class="caps">VBA</span> program in txt form</a></p>
+<p>Here is another example of <span class="caps">AI</span> writing a short command-line script to list file names in a 
+directory without their extensions. Manually writing this type of code can be challenging 
+for a person.</p>
+<div class="highlight"><pre><span></span><code>@echo off
+for %%f in (*.*) do (
+    if /I &quot;%%~xf&quot; neq &quot;.bat&quot; echo %%~nf &gt;&gt; filelist.txt
+)
+</code></pre></div>
 
 
 
