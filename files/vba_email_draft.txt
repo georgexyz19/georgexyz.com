@@ -1,0 +1,112 @@
+' Code created by Chatgpt to generate draft emails 
+' work on this on 3/12/2025
+
+Sub CreateFileEmail()
+
+    Dim olApp As Object
+    Dim olMail As Object
+    Dim fs As Object
+    Dim folder As Object
+    Dim file As Object
+    Dim fileList As String
+    Dim dirPath As String
+    Dim dirFolder As String
+    Dim fridayDate As String
+    Dim currentDate As Date
+    Dim daysUntilFriday As Integer
+    Dim attachmentCount As Integer
+    Dim fileExtension As String
+    Dim fileWithoutExtension As String
+    Dim signature As String
+    Dim emailContent As String
+    
+    
+    ' Set your directory path here
+    
+    dirFolder = "C:\Users\UserName\Desktop\WORK\TE\"
+    
+    ' List of email addresses for "To" field (separate by semicolons)
+    Dim toList As String
+    toList = "......"
+    
+    ' List of email addresses for "CC" field (separate by semicolons)
+    Dim ccList As String
+    ccList = "......" & _
+              "......"
+    
+    ' Get the current date
+    currentDate = Date
+    
+    ' Calculate the number of days until the upcoming Friday
+    daysUntilFriday = 6 - Weekday(currentDate, vbSunday)
+    
+    ' Get the date for the upcoming Friday
+    fridayDate = DateAdd("d", daysUntilFriday, currentDate)
+    
+    ' Format the date as yyyy-mm-dd
+    fridayDate = Format(fridayDate, "mmmm dd, yyyy")
+    
+    yearMonth = Format(fridayDate, "yyyy-mm")
+    monthDateYear = Format(fridayDate, "mm-dd-yyyy")
+    
+    dirPath = dirFolder & yearMonth & "\" & monthDateYear & " Files"
+    
+    ' Create a list of PDF filenames in the directory and attach the files
+    Set fs = CreateObject("Scripting.FileSystemObject")
+    Set folder = fs.GetFolder(dirPath)
+    
+    fileList = "<ol>"
+    attachmentCount = 0
+    
+    ' Create a new email item
+    Set olApp = CreateObject("Outlook.Application")
+    Set olMail = olApp.CreateItem(0) ' 0 means olMailItem
+    
+    ' Loop through the files in the folder
+    For Each file In folder.Files
+        ' Only include PDF files
+        If LCase(Right(file.Name, 4)) = ".pdf" Then
+            ' Add the file to the email body (numbered list)
+            fileName = file.Name
+            fileWithoutExtension = Left(fileName, InStrRev(fileName, ".") - 1)
+            
+            fileList = fileList & "<li>" & fileWithoutExtension & "</li>"
+            
+            ' Attach the PDF file
+            olMail.Attachments.Add file.Path
+            attachmentCount = attachmentCount + 1
+        End If
+    Next file
+    
+    ' Close the ordered list tag
+    fileList = fileList & "</ol>"
+    
+    ' Set the email properties
+    olMail.Subject = "Files for the week of  (" & fridayDate & ")"
+    emailContent = "XXX and XXX, <br><br>" & _
+                       "Attached are " & attachmentCount & " files for this week, <br><br>" & _
+                        fileList & _
+                       "<br>Thank you and have a very nice weekend<br><br>" & _
+                       "George<br><br><br><br>"
+                       
+    signature = "XXXXXX " & _
+                   "XXXXXX <br> " 
+                   
+    olMail.HTMLBody = emailContent & signature
+  
+    ' Set the "To" field with the list of email addresses
+    olMail.To = toList
+    
+    ' Set the "CC" field with the list of email addresses
+    olMail.CC = ccList
+
+    ' Check if no PDF files were found
+    If attachmentCount = 0 Then
+        MsgBox "No PDF files found in the specified directory.", vbExclamation
+    Else
+        ' Display the email as a draft
+        olMail.Display
+    End If
+    
+End Sub
+
