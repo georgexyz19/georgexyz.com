@@ -29,3 +29,6 @@ code .
 
 Those last two blog posts were updated in WSL and ConEmu.  
 
+It is relatively easy to move the WSL2 installation to another Windows computer. 
+Here is [an ask Ubuntu article](https://askubuntu.com/questions/1429369/how-to-transfer-ubuntu-on-wsl-from-one-laptop-to-another) 
+which describes the process.  
