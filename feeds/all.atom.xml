@@ -29,7 +29,10 @@ week.&lt;/p&gt;</content><category term="posts"></category><category term="other
 &lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;code .
 &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
 
-&lt;p&gt;Those last two blog posts were updated in &lt;span class="caps"&gt;WSL&lt;/span&gt; and ConEmu.  &lt;/p&gt;</content><category term="posts"></category><category term="linux"></category><category term="software utility"></category></entry><entry><title>AI Is Exciting</title><link href="https://www.georgexyz.com/ai.html" rel="alternate"></link><published>2025-03-01T00:37:00-05:00</published><updated>2025-03-08T07:34:00-05:00</updated><author><name>George Zhang</name></author><id>tag:www.georgexyz.com,2025-03-01:/ai.html</id><summary type="html">&lt;p&gt;It’s been over a year since I last updated this website. Recently, I&amp;#8217;ve been using 
+&lt;p&gt;Those last two blog posts were updated in &lt;span class="caps"&gt;WSL&lt;/span&gt; and ConEmu.  &lt;/p&gt;
+&lt;p&gt;It is relatively easy to move the &lt;span class="caps"&gt;WSL2&lt;/span&gt; installation to another Windows computer. 
+Here is &lt;a href="https://askubuntu.com/questions/1429369/how-to-transfer-ubuntu-on-wsl-from-one-laptop-to-another"&gt;an ask Ubuntu article&lt;/a&gt; 
+which describes the process.  &lt;/p&gt;</content><category term="posts"></category><category term="linux"></category><category term="software utility"></category></entry><entry><title>AI Is Exciting</title><link href="https://www.georgexyz.com/ai.html" rel="alternate"></link><published>2025-03-01T00:37:00-05:00</published><updated>2025-03-08T07:34:00-05:00</updated><author><name>George Zhang</name></author><id>tag:www.georgexyz.com,2025-03-01:/ai.html</id><summary type="html">&lt;p&gt;It’s been over a year since I last updated this website. Recently, I&amp;#8217;ve been using 
 ChatGPT more and more, so it would be a good time to update …&lt;/p&gt;</summary><content type="html">&lt;p&gt;It’s been over a year since I last updated this website. Recently, I&amp;#8217;ve been using 
 ChatGPT more and more, so it would be a good time to update the wesite and write 
 something about &lt;span class="caps"&gt;AI&lt;/span&gt;.&lt;/p&gt;
