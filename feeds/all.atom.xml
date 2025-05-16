@@ -1,5 +1,16 @@
 <?xml version="1.0" encoding="utf-8"?>
-<feed xmlns="http://www.w3.org/2005/Atom"><title>George Zhang</title><link href="https://www.georgexyz.com/" rel="alternate"></link><link href="https://www.georgexyz.com/feeds/all.atom.xml" rel="self"></link><id>https://www.georgexyz.com/</id><updated>2025-05-04T23:03:00-04:00</updated><entry><title>ChatGPT Solves Programming Problem</title><link href="https://www.georgexyz.com/chatgpt-solves-programming-problem.html" rel="alternate"></link><published>2025-05-04T23:03:00-04:00</published><updated>2025-05-04T23:03:00-04:00</updated><author><name>George Zhang</name></author><id>tag:www.georgexyz.com,2025-05-04:/chatgpt-solves-programming-problem.html</id><summary type="html">&lt;p&gt;When I come across a well-written Python article online, I often print a copy and 
+<feed xmlns="http://www.w3.org/2005/Atom"><title>George Zhang</title><link href="https://www.georgexyz.com/" rel="alternate"></link><link href="https://www.georgexyz.com/feeds/all.atom.xml" rel="self"></link><id>https://www.georgexyz.com/</id><updated>2025-05-16T09:47:00-04:00</updated><entry><title>ChatGPT Limitation</title><link href="https://www.georgexyz.com/chatgpt-hallucination.html" rel="alternate"></link><published>2025-05-16T09:47:00-04:00</published><updated>2025-05-16T09:47:00-04:00</updated><author><name>George Zhang</name></author><id>tag:www.georgexyz.com,2025-05-16:/chatgpt-hallucination.html</id><summary type="html">&lt;p&gt;I was asking some questions on the ChatGPT Android app two days ago (5/14/2025) and received some interesting answers.&lt;/p&gt;
+&lt;p&gt;The iPhone 16 series was released in September 2024 …&lt;/p&gt;</summary><content type="html">&lt;p&gt;I was asking some questions on the ChatGPT Android app two days ago (5/14/2025) and received some interesting answers.&lt;/p&gt;
+&lt;p&gt;The iPhone 16 series was released in September 2024. It seems that ChatGPT doesn’t know that by default, but you can ask it to check apple website, and it will provide accurate information.&lt;/p&gt;
+&lt;p&gt;Screen Shot 1&lt;/p&gt;
+&lt;div style="max-width:400px"&gt;
+  &lt;img class="img-fluid pb-3" src="/images/chatgpt1.jpg" alt="chatgpt1"&gt; 
+&lt;/div&gt;
+
+&lt;p&gt;Screen Shot 2&lt;/p&gt;
+&lt;div style="max-width:400px"&gt;
+  &lt;img class="img-fluid pb-3" src="/images/chatgpt2.jpg" alt="chatgpt2"&gt; 
+&lt;/div&gt;</content><category term="posts"></category><category term="ai"></category></entry><entry><title>ChatGPT Solves Programming Problem</title><link href="https://www.georgexyz.com/chatgpt-solves-programming-problem.html" rel="alternate"></link><published>2025-05-04T23:03:00-04:00</published><updated>2025-05-04T23:03:00-04:00</updated><author><name>George Zhang</name></author><id>tag:www.georgexyz.com,2025-05-04:/chatgpt-solves-programming-problem.html</id><summary type="html">&lt;p&gt;When I come across a well-written Python article online, I often print a copy and 
 store it in a three-ring binder. Here is the link to an article I printed …&lt;/p&gt;</summary><content type="html">&lt;p&gt;When I come across a well-written Python article online, I often print a copy and 
 store it in a three-ring binder. Here is the link to an article I printed 
 on 9/28/2021:&lt;/p&gt;
