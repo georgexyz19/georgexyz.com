@@ -1,5 +1,42 @@
 <?xml version="1.0" encoding="utf-8"?>
-<feed xmlns="http://www.w3.org/2005/Atom"><title>George Zhang</title><link href="https://www.georgexyz.com/" rel="alternate"></link><link href="https://www.georgexyz.com/feeds/all.atom.xml" rel="self"></link><id>https://www.georgexyz.com/</id><updated>2025-05-16T09:47:00-04:00</updated><entry><title>ChatGPT Limitation</title><link href="https://www.georgexyz.com/chatgpt-hallucination.html" rel="alternate"></link><published>2025-05-16T09:47:00-04:00</published><updated>2025-05-16T09:47:00-04:00</updated><author><name>George Zhang</name></author><id>tag:www.georgexyz.com,2025-05-16:/chatgpt-hallucination.html</id><summary type="html">&lt;p&gt;I was asking some questions on the ChatGPT Android app two days ago (5/14/2025) and received some interesting answers.&lt;/p&gt;
+<feed xmlns="http://www.w3.org/2005/Atom"><title>George Zhang</title><link href="https://www.georgexyz.com/" rel="alternate"></link><link href="https://www.georgexyz.com/feeds/all.atom.xml" rel="self"></link><id>https://www.georgexyz.com/</id><updated>2025-09-05T20:01:00-04:00</updated><entry><title>An Interesting WIFI Card Problem</title><link href="https://www.georgexyz.com/an-interesting-wifi-card-problem.html" rel="alternate"></link><published>2025-09-05T20:01:00-04:00</published><updated>2025-09-05T20:01:00-04:00</updated><author><name>George Zhang</name></author><id>tag:www.georgexyz.com,2025-09-05:/an-interesting-wifi-card-problem.html</id><summary type="html">&lt;p&gt;I bought a new &lt;span class="caps"&gt;HP&lt;/span&gt; ZBook Firefly &lt;span class="caps"&gt;G10A&lt;/span&gt; last year with a Ryzen &lt;span class="caps"&gt;7840HS&lt;/span&gt; &lt;span class="caps"&gt;CPU&lt;/span&gt; and &lt;span class="caps"&gt;32GB&lt;/span&gt; &lt;span class="caps"&gt;RAM&lt;/span&gt;. It’s supposed to be much faster than my old 
+laptop, an …&lt;/p&gt;</summary><content type="html">&lt;p&gt;I bought a new &lt;span class="caps"&gt;HP&lt;/span&gt; ZBook Firefly &lt;span class="caps"&gt;G10A&lt;/span&gt; last year with a Ryzen &lt;span class="caps"&gt;7840HS&lt;/span&gt; &lt;span class="caps"&gt;CPU&lt;/span&gt; and &lt;span class="caps"&gt;32GB&lt;/span&gt; &lt;span class="caps"&gt;RAM&lt;/span&gt;. It’s supposed to be much faster than my old 
+laptop, an &lt;span class="caps"&gt;HP&lt;/span&gt; Firefly G8. However, I’ve found myself rarely using the new laptop, and I always pick up the old one as my first 
+choice.&lt;/p&gt;
+&lt;p&gt;So, I started asking myself: what’s the reason? What’s the point of buying a new laptop if I still prefer the old one? There are 
+probably two good reasons why the old Gen 8 Firefly feels better:&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;
+&lt;p&gt;The Gen 8 version’s trackpad has two physical buttons. The new Gen 10 version removed the buttons, and I really like those 
+physical buttons.&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;The Wi-Fi on the new laptop doesn’t work very well. Every time I turn on the laptop, I have to reconnect to my home network. 
+Also, when I use the laptop in my living room, the signal is very weak. Sometimes the laptop doesn’t pick up any Wi-Fi signal at 
+all. None of my other devices, like my phone or other laptops, have this problem. &lt;/p&gt;
+&lt;/li&gt;
+&lt;/ol&gt;
+&lt;p&gt;&lt;span class="caps"&gt;WIFI&lt;/span&gt; Status&lt;/p&gt;
+&lt;div style="max-width:400px"&gt;
+  &lt;img class="img-fluid pb-3" src="/images/WIFI1.PNG" alt="WIFI1"&gt; 
+&lt;/div&gt;
+
+&lt;p&gt;&lt;span class="caps"&gt;WIFI&lt;/span&gt; Device Property &lt;/p&gt;
+&lt;div style="max-width:400px"&gt;
+  &lt;img class="img-fluid pb-3" src="/images/WIFI2.PNG" alt="WIFI2"&gt; 
+&lt;/div&gt;
+
+&lt;p&gt;After some digging, I found that the MediaTek &lt;span class="caps"&gt;MT7922&lt;/span&gt; Wi-Fi card was the problem. There are many people complaining about MediaTek 
+Wi-Fi cards online. So I asked ChatGPT what a good replacement card would be. The answer was the Intel &lt;span class="caps"&gt;AX210&lt;/span&gt; Wi-Fi 6E card.&lt;/p&gt;
+&lt;p&gt;I spent about $17 on eBay and received the card today. It was quite easy to replace the Wi-Fi card, and the difference is 
+obvious. The new card completely solved the two &lt;span class="caps"&gt;WIFI&lt;/span&gt; problems.&lt;/p&gt;
+&lt;div style="max-width:400px"&gt;
+  &lt;img class="img-fluid pb-3" src="/images/WIFI3.PNG" alt="WIFI2"&gt; 
+&lt;/div&gt;
+
+&lt;p&gt;Interestingly, I found that the older driver (version 22.0.1.5) performs better than the newer drivers. The internet speed is 
+faster, and the signal is stronger with this older driver. I’m not sure why, but I’ll stick with the old driver and hope it lasts 
+for a while&lt;/p&gt;</content><category term="posts"></category><category term="hardware"></category></entry><entry><title>ChatGPT Limitation</title><link href="https://www.georgexyz.com/chatgpt-hallucination.html" rel="alternate"></link><published>2025-05-16T09:47:00-04:00</published><updated>2025-05-16T09:47:00-04:00</updated><author><name>George Zhang</name></author><id>tag:www.georgexyz.com,2025-05-16:/chatgpt-hallucination.html</id><summary type="html">&lt;p&gt;I was asking some questions on the ChatGPT Android app two days ago (5/14/2025) and received some interesting answers.&lt;/p&gt;
 &lt;p&gt;The iPhone 16 series was released in September 2024 …&lt;/p&gt;</summary><content type="html">&lt;p&gt;I was asking some questions on the ChatGPT Android app two days ago (5/14/2025) and received some interesting answers.&lt;/p&gt;
 &lt;p&gt;The iPhone 16 series was released in September 2024. It seems that ChatGPT doesn’t know that by default, but you can ask it to check apple website, and it will provide accurate information.&lt;/p&gt;
 &lt;p&gt;Screen Shot 1&lt;/p&gt;

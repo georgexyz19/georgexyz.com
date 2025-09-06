@@ -1,0 +1,128 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <link rel="stylesheet" href="/theme/css/bs4min.css">
+    <link rel="shortcut icon" type="image/x-icon" href="/theme/images/favicon.ico" >
+    <link rel="icon" type="image/x-icon" href="/theme/images/favicon.ico" >
+<link rel="stylesheet" href="https://www.georgexyz.com/theme/css/friendly.css">
+<link rel="stylesheet" href="https://www.georgexyz.com/theme/css/custom.css">
+<meta name="author" content="George Zhang" />
+<meta name="keywords" content="hardware" />
+<meta name="description" content="I bought a new HP ZBook Firefly G10A last year with a Ryzen 7840HS CPU and 32GB RAM. It’s supposed to be much faster than my old laptop, an …" />
+    <title>An Interesting WIFI Card Problem - George Zhang</title>
+  </head>
+  <body>
+    <!-- navbar -->
+    <nav class="navbar navbar-expand-md navbar-light" style="background-color: #e3f2fd;">
+      <div class="container">
+        <a class="navbar-brand" href="/">George Zhang</a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarColor01" aria-controls="navbarColor01" aria-expanded="false" aria-label="Toggle navigation">
+          <span class="navbar-toggler-icon"></span>
+        </button>
+
+        <div class="collapse navbar-collapse" id="navbarColor01">
+          <ul class="navbar-nav mr-auto">
+            <li class="nav-item">
+              <a class="nav-link " 
+                href="/articlelist.html">Articles</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link pr-3 " 
+                href="/tags.html">Tags</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link "
+                   href="/pages/projects.html">Projects</a>
+              </li>
+          </ul>
+
+          <ul class="navbar-nav">
+            <li class="nav-item">
+              <a class="nav-link " 
+                 href="/pages/about.html">About</a>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </nav>
+
+   
+
+<div class="container">
+
+  <div class="row">
+    <div class="col-lg-8 mx-auto">
+
+      <h2>An Interesting <span class="caps">WIFI</span> Card Problem</h2>
+
+      <div class="text-muted mb-1">
+        <span>Originally Posted on </span>
+        <time datetime="2025-09-05 20:01:00-04:00">
+          Friday, 09/05/2025 20:01
+        </time>
+
+        <span>with tags: </span>
+        <a href="https://www.georgexyz.com/tag/hardware.html">hardware</a>
+      </div>
+
+      <div class="text-muted mb-4">
+        <span>Last Update on </span>
+        <time datetime="2025-09-05 20:01:00-04:00">
+          Friday, 09/05/2025 20:01
+        </time>
+      </div>
+
+      <p>I bought a new <span class="caps">HP</span> ZBook Firefly <span class="caps">G10A</span> last year with a Ryzen <span class="caps">7840HS</span> <span class="caps">CPU</span> and <span class="caps">32GB</span> <span class="caps">RAM</span>. It’s supposed to be much faster than my old 
+laptop, an <span class="caps">HP</span> Firefly G8. However, I’ve found myself rarely using the new laptop, and I always pick up the old one as my first 
+choice.</p>
+<p>So, I started asking myself: what’s the reason? What’s the point of buying a new laptop if I still prefer the old one? There are 
+probably two good reasons why the old Gen 8 Firefly feels better:</p>
+<ol>
+<li>
+<p>The Gen 8 version’s trackpad has two physical buttons. The new Gen 10 version removed the buttons, and I really like those 
+physical buttons.</p>
+</li>
+<li>
+<p>The Wi-Fi on the new laptop doesn’t work very well. Every time I turn on the laptop, I have to reconnect to my home network. 
+Also, when I use the laptop in my living room, the signal is very weak. Sometimes the laptop doesn’t pick up any Wi-Fi signal at 
+all. None of my other devices, like my phone or other laptops, have this problem. </p>
+</li>
+</ol>
+<p><span class="caps">WIFI</span> Status</p>
+<div style="max-width:400px">
+  <img class="img-fluid pb-3" src="/images/WIFI1.PNG" alt="WIFI1"> 
+</div>
+
+<p><span class="caps">WIFI</span> Device Property </p>
+<div style="max-width:400px">
+  <img class="img-fluid pb-3" src="/images/WIFI2.PNG" alt="WIFI2"> 
+</div>
+
+<p>After some digging, I found that the MediaTek <span class="caps">MT7922</span> Wi-Fi card was the problem. There are many people complaining about MediaTek 
+Wi-Fi cards online. So I asked ChatGPT what a good replacement card would be. The answer was the Intel <span class="caps">AX210</span> Wi-Fi 6E card.</p>
+<p>I spent about $17 on eBay and received the card today. It was quite easy to replace the Wi-Fi card, and the difference is 
+obvious. The new card completely solved the two <span class="caps">WIFI</span> problems.</p>
+<div style="max-width:400px">
+  <img class="img-fluid pb-3" src="/images/WIFI3.PNG" alt="WIFI2"> 
+</div>
+
+<p>Interestingly, I found that the older driver (version 22.0.1.5) performs better than the newer drivers. The internet speed is 
+faster, and the signal is stronger with this older driver. I’m not sure why, but I’ll stick with the old driver and hope it lasts 
+for a while</p>
+
+
+
+    </div>
+  </div>
+
+</div>
+
+   
+    <script src="https://code.jquery.com/jquery-3.4.1.slim.min.js" integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js" integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6" crossorigin="anonymous"></script>
+  </body>
+</html>
