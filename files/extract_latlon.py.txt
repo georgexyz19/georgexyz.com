@@ -1,0 +1,78 @@
+import sys
+import re
+import extract_msg
+
+import geopandas as gpd
+from shapely.geometry import Point
+
+
+def is_in_ffcounty(lat, lon):
+
+    shapefile_path = r".......\tl_2023_51059_faces.shp"  # download 2023 Census county GIS Shape data
+
+    gdf = gpd.read_file(shapefile_path)
+
+    # Reproject to WGS84 if needed (lat/lon)
+    if gdf.crs != 'epsg:4326':
+        # print("conversion needed???")
+        gdf = gdf.to_crs(epsg=4326)
+
+    # Filter ffcounty County (adjust the column name if needed)
+    ffcounty = gdf
+
+    if ffcounty.empty:
+        raise ValueError("ffcounty County not found in the dataset")
+
+    # Create a Point from lat/lon (Note: GeoPandas usually expects lon, lat order for geometry)
+    point = Point(lon, lat)
+
+    # Check if point is inside ffcounty County polygon(s)
+    inside = ffcounty.contains(point).any()
+
+    return inside
+
+# Test with your coordinate 
+# lat = 33.014981
+# lon = -74.4952106
+
+# result = is_in_ffcounty_county(lat, lon)
+# print("In ffcounty County:" if result else "Not in ffcounty County.")
+
+
+def extract_lat_lon_from_msg(msg_path, output_path):
+    try:
+        msg = extract_msg.Message(msg_path)
+        body = msg.body
+
+        if not body:
+            with open(output_path, 'w') as f:
+                f.write("Message body is empty.")
+            return
+
+        pattern = r"Lat\/Lon:\s*([-+]?\d*\.\d+),\s*([-+]?\d*\.\d+)"
+        match = re.search(pattern, body)
+
+        with open(output_path, 'w') as f:
+            if match:
+                lat = match.group(1)
+                lon = match.group(2)
+                f.write(f"Latitude = {lat}\nLongitude = {lon}\n")
+
+                rt = is_in_ffcounty(float(lat), float(lon))
+                f.write("In ffcounty County:" if rt else "NOT in ffcounty County.")
+
+            else:
+                f.write("No Lat/Lon coordinates found.")
+
+    except Exception as e:
+        with open(output_path, 'w') as f:
+            f.write(f"Error reading .msg file: {e}")
+
+if __name__ == "__main__":
+    if len(sys.argv) < 3:
+        print("Usage: extract_latlon.py <msg_file_path> <output_file_path>")
+        sys.exit(1)
+
+    msg_file = sys.argv[1]
+    output_file = sys.argv[2]
+    extract_lat_lon_from_msg(msg_file, output_file)

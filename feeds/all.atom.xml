@@ -1,5 +1,69 @@
 <?xml version="1.0" encoding="utf-8"?>
-<feed xmlns="http://www.w3.org/2005/Atom"><title>George Zhang</title><link href="https://www.georgexyz.com/" rel="alternate"></link><link href="https://www.georgexyz.com/feeds/all.atom.xml" rel="self"></link><id>https://www.georgexyz.com/</id><updated>2025-09-05T20:01:00-04:00</updated><entry><title>An Interesting WIFI Card Problem</title><link href="https://www.georgexyz.com/an-interesting-wifi-card-problem.html" rel="alternate"></link><published>2025-09-05T20:01:00-04:00</published><updated>2025-09-05T20:01:00-04:00</updated><author><name>George Zhang</name></author><id>tag:www.georgexyz.com,2025-09-05:/an-interesting-wifi-card-problem.html</id><summary type="html">&lt;p&gt;I bought a new &lt;span class="caps"&gt;HP&lt;/span&gt; ZBook Firefly &lt;span class="caps"&gt;G10A&lt;/span&gt; last year with a Ryzen &lt;span class="caps"&gt;7840HS&lt;/span&gt; &lt;span class="caps"&gt;CPU&lt;/span&gt; and &lt;span class="caps"&gt;32GB&lt;/span&gt; &lt;span class="caps"&gt;RAM&lt;/span&gt;. It’s supposed to be much faster than my old 
+<feed xmlns="http://www.w3.org/2005/Atom"><title>George Zhang</title><link href="https://www.georgexyz.com/" rel="alternate"></link><link href="https://www.georgexyz.com/feeds/all.atom.xml" rel="self"></link><id>https://www.georgexyz.com/</id><updated>2025-09-20T00:19:00-04:00</updated><entry><title>Outlook VBA and Python Program</title><link href="https://www.georgexyz.com/outlook-vba-and-python-program.html" rel="alternate"></link><published>2025-09-20T00:19:00-04:00</published><updated>2025-09-20T00:19:00-04:00</updated><author><name>George Zhang</name></author><id>tag:www.georgexyz.com,2025-09-20:/outlook-vba-and-python-program.html</id><summary type="html">&lt;p&gt;I am trying to automate some of my Outlook tasks and have found something interesting. 
+Some of the emails I receive from a system include a line with latitude and …&lt;/p&gt;</summary><content type="html">&lt;p&gt;I am trying to automate some of my Outlook tasks and have found something interesting. 
+Some of the emails I receive from a system include a line with latitude and longitude 
+coordinates, like this:&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;Lat/Lon: 37.83635720,-76.17577260
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+
+&lt;p&gt;I want to write a Python program to read the coordinate and determine whether it falls 
+within a specific county. If the coordinate is inside the county boundary, the 
+program will perform certain actions.&lt;/p&gt;
+&lt;p&gt;My first thought was to try accessing Outlook emails using Python. Python has a win32com 
+package that can be used to interact with Outlook. However, I discovered that my Outlook 
+has a security setting that does not allow third-party programs to read email messages. 
+As a result, the following piece of code does not work:&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;&lt;span class="n"&gt;outlook&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="n"&gt;win32com&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;client&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;Dispatch&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="s2"&gt;&amp;quot;Outlook.Application&amp;quot;&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
+&lt;span class="n"&gt;explorer&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="n"&gt;outlook&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;ActiveExplorer&lt;/span&gt;&lt;span class="p"&gt;()&lt;/span&gt;
+
+&lt;span class="n"&gt;selection&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="n"&gt;explorer&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;Selection&lt;/span&gt; &lt;span class="c1"&gt;# selected msgs&lt;/span&gt;
+&lt;span class="k"&gt;if&lt;/span&gt; &lt;span class="n"&gt;selection&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;Count&lt;/span&gt; &lt;span class="o"&gt;==&lt;/span&gt; &lt;span class="mi"&gt;0&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt;
+    &lt;span class="nb"&gt;print&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="s2"&gt;&amp;quot;No item selected.&amp;quot;&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
+    &lt;span class="k"&gt;return&lt;/span&gt;
+
+&lt;span class="n"&gt;item&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="n"&gt;selection&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;Item&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="mi"&gt;1&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
+&lt;span class="n"&gt;body&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="n"&gt;item&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;Body&lt;/span&gt; &lt;span class="c1"&gt;# no access to body&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+
+&lt;p&gt;Interestingly, if the email message has a &lt;span class="caps"&gt;PDF&lt;/span&gt; attachment, the Python program can save it 
+to disk and read from the &lt;span class="caps"&gt;PDF&lt;/span&gt;. The code below actually works fine.&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;&lt;span class="n"&gt;outlook&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="n"&gt;win32com&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;client&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;Dispatch&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="s2"&gt;&amp;quot;Outlook.Application&amp;quot;&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
+&lt;span class="n"&gt;namespace&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="n"&gt;outlook&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;GetNamespace&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="s2"&gt;&amp;quot;MAPI&amp;quot;&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
+&lt;span class="n"&gt;selected_items&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="n"&gt;outlook&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;ActiveExplorer&lt;/span&gt;&lt;span class="p"&gt;()&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;Selection&lt;/span&gt;
+
+&lt;span class="k"&gt;for&lt;/span&gt; &lt;span class="n"&gt;mail&lt;/span&gt; &lt;span class="ow"&gt;in&lt;/span&gt; &lt;span class="n"&gt;selected_items&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt;
+    &lt;span class="k"&gt;for&lt;/span&gt; &lt;span class="n"&gt;attachment&lt;/span&gt; &lt;span class="ow"&gt;in&lt;/span&gt; &lt;span class="n"&gt;mail&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;Attachments&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt;
+        &lt;span class="k"&gt;if&lt;/span&gt; &lt;span class="n"&gt;attachment&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;FileName&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;lower&lt;/span&gt;&lt;span class="p"&gt;()&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;endswith&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="s2"&gt;&amp;quot;.pdf&amp;quot;&lt;/span&gt;&lt;span class="p"&gt;):&lt;/span&gt;
+            &lt;span class="c1"&gt;# Generate a unique temp file path&lt;/span&gt;
+            &lt;span class="n"&gt;temp_dir&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="n"&gt;tempfile&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;gettempdir&lt;/span&gt;&lt;span class="p"&gt;()&lt;/span&gt;
+            &lt;span class="n"&gt;unique_filename&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="sa"&gt;f&lt;/span&gt;&lt;span class="s2"&gt;&amp;quot;&lt;/span&gt;&lt;span class="si"&gt;{&lt;/span&gt;&lt;span class="n"&gt;uuid&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;uuid4&lt;/span&gt;&lt;span class="p"&gt;()&lt;/span&gt;&lt;span class="si"&gt;}&lt;/span&gt;&lt;span class="s2"&gt;.pdf&amp;quot;&lt;/span&gt;
+            &lt;span class="n"&gt;temp_path&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="n"&gt;os&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;path&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;join&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;temp_dir&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;unique_filename&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
+
+            &lt;span class="c1"&gt;# Save the attachment&lt;/span&gt;
+            &lt;span class="n"&gt;attachment&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;SaveAsFile&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;temp_path&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
+            &lt;span class="nb"&gt;print&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="sa"&gt;f&lt;/span&gt;&lt;span class="s2"&gt;&amp;quot;Saved: &lt;/span&gt;&lt;span class="si"&gt;{&lt;/span&gt;&lt;span class="n"&gt;temp_path&lt;/span&gt;&lt;span class="si"&gt;}&lt;/span&gt;&lt;span class="s2"&gt;&amp;quot;&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
+
+            &lt;span class="c1"&gt;# Extract text from the PDF&lt;/span&gt;
+            &lt;span class="n"&gt;extracted_text&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="n"&gt;extract_text_from_pdf&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;temp_path&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+
+&lt;p&gt;The next step is to write an Outlook &lt;span class="caps"&gt;VBA&lt;/span&gt; program that saves the email as a .msg file. 
+The &lt;span class="caps"&gt;VBA&lt;/span&gt; program can then call a Python script to process the file. The Python script 
+can write the result to a second file, which the &lt;span class="caps"&gt;VBA&lt;/span&gt; program can read to retrieve the 
+result. The steps may sound complicated, but the code itself is actually quite straightforward.&lt;/p&gt;
+&lt;p&gt;Below are the &lt;span class="caps"&gt;VBA&lt;/span&gt; and Python code files:&lt;/p&gt;
+&lt;p&gt;&lt;a href="/files/InCounty_Check.vba.txt"&gt;&lt;span class="caps"&gt;VBA&lt;/span&gt; program in txt form&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;&lt;a href="/files/extract_latlon.py.txt"&gt;Python program in txt form&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;Another interesting point is that we can use the pdfplumber Python package to read &lt;span class="caps"&gt;PDF&lt;/span&gt; 
+files and extract text from them. As mentioned earlier, win32com can save email attachments. 
+So, if you only need to extract information from a &lt;span class="caps"&gt;PDF&lt;/span&gt; email attachment, you can write a 
+pure Python program to handle it. If the Python program includes a &lt;span class="caps"&gt;GUI&lt;/span&gt; built with tkinter, 
+you can convert the script into a Windows executable file using PyInstaller. The command is:&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;pyinstaller --onefile --windowed textbox_copy.py
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+
+&lt;p&gt;Note that the generated executable can be quite large. In my case, the .exe file is 
+around 65 &lt;span class="caps"&gt;MB&lt;/span&gt;, even though the original Python script is relatively small.&lt;/p&gt;</content><category term="posts"></category><category term="ai"></category><category term="python"></category></entry><entry><title>An Interesting WIFI Card Problem</title><link href="https://www.georgexyz.com/an-interesting-wifi-card-problem.html" rel="alternate"></link><published>2025-09-05T20:01:00-04:00</published><updated>2025-09-05T20:01:00-04:00</updated><author><name>George Zhang</name></author><id>tag:www.georgexyz.com,2025-09-05:/an-interesting-wifi-card-problem.html</id><summary type="html">&lt;p&gt;I bought a new &lt;span class="caps"&gt;HP&lt;/span&gt; ZBook Firefly &lt;span class="caps"&gt;G10A&lt;/span&gt; last year with a Ryzen &lt;span class="caps"&gt;7840HS&lt;/span&gt; &lt;span class="caps"&gt;CPU&lt;/span&gt; and &lt;span class="caps"&gt;32GB&lt;/span&gt; &lt;span class="caps"&gt;RAM&lt;/span&gt;. It’s supposed to be much faster than my old 
 laptop, an …&lt;/p&gt;</summary><content type="html">&lt;p&gt;I bought a new &lt;span class="caps"&gt;HP&lt;/span&gt; ZBook Firefly &lt;span class="caps"&gt;G10A&lt;/span&gt; last year with a Ryzen &lt;span class="caps"&gt;7840HS&lt;/span&gt; &lt;span class="caps"&gt;CPU&lt;/span&gt; and &lt;span class="caps"&gt;32GB&lt;/span&gt; &lt;span class="caps"&gt;RAM&lt;/span&gt;. It’s supposed to be much faster than my old 
 laptop, an &lt;span class="caps"&gt;HP&lt;/span&gt; Firefly G8. However, I’ve found myself rarely using the new laptop, and I always pick up the old one as my first 
 choice.&lt;/p&gt;
