@@ -1,0 +1,87 @@
+
+Sub InCounty_Check()
+    Dim objItem As Object
+    Dim objMail As MailItem
+    Dim saveFolder As String
+    Dim fileName As String
+    Dim dtStamp As String
+    
+    ' Folder to save the .msg and output files
+    saveFolder = "......"
+    
+    If Dir(saveFolder, vbDirectory) = "" Then
+        MkDir saveFolder
+    End If
+    
+    If Application.ActiveExplorer.Selection.Count = 0 Then
+        MsgBox "No item selected!", vbExclamation
+        Exit Sub
+    End If
+    
+    Set objItem = Application.ActiveExplorer.Selection.Item(1)
+    
+    If TypeName(objItem) <> "MailItem" Then
+        MsgBox "Selected item is not an email.", vbExclamation
+        Exit Sub
+    End If
+    
+    Set objMail = objItem
+    
+    dtStamp = Format(Now, "yyyymmdd_hhnnss")
+    
+    fileName = objMail.Subject
+    fileName = Replace(fileName, "\", "_")
+    fileName = Replace(fileName, "/", "_")
+    fileName = Replace(fileName, ":", "_")
+    fileName = Replace(fileName, "*", "_")
+    fileName = Replace(fileName, "?", "_")
+    fileName = Replace(fileName, Chr(34), "_")
+    fileName = Replace(fileName, "<", "_")
+    fileName = Replace(fileName, ">", "_")
+    fileName = Replace(fileName, "|", "_")
+    fileName = Replace(fileName, vbCrLf, "_")
+    fileName = Replace(fileName, vbLf, "_")
+    
+    fileName = saveFolder & fileName & "_" & dtStamp & ".msg"
+    
+    ' Code to save the email as .msg file 
+    objMail.SaveAs fileName, olMSGUnicode
+    
+    ' Paths for Python and script
+    Dim pythonExePath As String
+    Dim pythonScriptPath As String
+    Dim outputFilePath As String
+    Dim shellCmd As String
+    Dim result As String
+    Dim fileNum As Integer
+    
+    pythonExePath = "......\python.exe"          ' << Change to your python.exe path
+    pythonScriptPath = ".......\extract_latlon.py" ' << Change to your Python script path
+    
+    outputFilePath = saveFolder & "latlon_result.txt"
+    
+    ' Clear output file before running
+    On Error Resume Next
+    Kill outputFilePath
+    On Error GoTo 0
+    
+    ' Command to run python script with the .msg file path and output file path as arguments
+    shellCmd = """" & pythonExePath & """ """ & pythonScriptPath & """ """ & fileName & """ """ & outputFilePath & """"
+    
+    ' Run Python hidden and wait for it to finish
+    Dim wsh As Object
+    Set wsh = CreateObject("WScript.Shell")
+    wsh.Run shellCmd, 0, True
+    
+    ' Read the result from output file
+    If Dir(outputFilePath) <> "" Then
+        fileNum = FreeFile
+        Open outputFilePath For Input As #fileNum
+        result = Input$(LOF(fileNum), fileNum)
+        Close #fileNum
+        MsgBox "Extracted Lat/Lon:" & vbCrLf & result, vbInformation
+    Else
+        MsgBox "No result file found. Python script may have failed.", vbExclamation
+    End If
+    
+End Sub
