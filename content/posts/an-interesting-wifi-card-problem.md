@@ -1,7 +1,7 @@
 title: An Interesting WIFI Card Problem
 slug: an-interesting-wifi-card-problem
 date: 2025-09-05 20:01
-modified: 2025-09-05 20:01
+modified: 2025-09-27 10:12
 tags: hardware
 note: note to be added
 no: 92
@@ -44,4 +44,9 @@ obvious. The new card completely solved the two WIFI problems.
 
 Interestingly, I found that the older driver (version 22.0.1.5) performs better than the newer drivers. The internet speed is 
 faster, and the signal is stronger with this older driver. I’m not sure why, but I’ll stick with the old driver and hope it lasts 
-for a while
+for a while. 
+
+The Intel Wi-Fi card also appears to have issues, particularly with the latest drivers. My desktop PC uses an AX211 card, 
+and the Wi-Fi does not automatically reconnect to the network after waking from sleep. I rolled back from version 23.140.0.3 
+to an older driver, 22.150.0.3, which seems to be working fine for now.
+
