@@ -1,0 +1,233 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <link rel="stylesheet" href="/theme/css/bs4min.css">
+    <link rel="shortcut icon" type="image/x-icon" href="/theme/images/favicon.ico" >
+    <link rel="icon" type="image/x-icon" href="/theme/images/favicon.ico" >
+<link rel="stylesheet" href="https://www.georgexyz.com/theme/css/friendly.css">
+<link rel="stylesheet" href="https://www.georgexyz.com/theme/css/custom.css">
+<meta name="author" content="George Zhang" />
+<meta name="keywords" content="software utility" />
+<meta name="description" content="I recently discovered some new Windows tools that I’d like to share. The first one is AutoHotkey v2, a powerful automation tool for Windows. With AutoHotkey, you can write …" />
+    <title>Some Tools and Tips - George Zhang</title>
+  </head>
+  <body>
+    <!-- navbar -->
+    <nav class="navbar navbar-expand-md navbar-light" style="background-color: #e3f2fd;">
+      <div class="container">
+        <a class="navbar-brand" href="/">George Zhang</a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarColor01" aria-controls="navbarColor01" aria-expanded="false" aria-label="Toggle navigation">
+          <span class="navbar-toggler-icon"></span>
+        </button>
+
+        <div class="collapse navbar-collapse" id="navbarColor01">
+          <ul class="navbar-nav mr-auto">
+            <li class="nav-item">
+              <a class="nav-link " 
+                href="/articlelist.html">Articles</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link pr-3 " 
+                href="/tags.html">Tags</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link "
+                   href="/pages/projects.html">Projects</a>
+              </li>
+          </ul>
+
+          <ul class="navbar-nav">
+            <li class="nav-item">
+              <a class="nav-link " 
+                 href="/pages/about.html">About</a>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </nav>
+
+   
+
+<div class="container">
+
+  <div class="row">
+    <div class="col-lg-8 mx-auto">
+
+      <h2>Some Tools and Tips</h2>
+
+      <div class="text-muted mb-1">
+        <span>Originally Posted on </span>
+        <time datetime="2025-12-31 05:24:00-05:00">
+          Wednesday, 12/31/2025 05:24
+        </time>
+
+        <span>with tags: </span>
+        <a href="https://www.georgexyz.com/tag/software-utility.html">software utility</a>
+      </div>
+
+      <div class="text-muted mb-4">
+        <span>Last Update on </span>
+        <time datetime="2025-12-31 05:24:00-05:00">
+          Wednesday, 12/31/2025 05:24
+        </time>
+      </div>
+
+      <p>I recently discovered some new Windows tools that I’d like to share. The first one is 
+<a href="https://www.autohotkey.com/docs/v2/">AutoHotkey v2</a>, a powerful automation tool for Windows.</p>
+<p>With AutoHotkey, you can write simple scripts that run in the background to create global keyboard shortcuts and 
+automate repetitive tasks. Below is an example of a basic script. It’s relatively easy to set up and can 
+significantly boost your productivity.</p>
+<p>Notice that the <em>Ctrl + Alt + A</em> shortcut invokes a <a href="https://winpython.github.io/">WinPython</a> script. 
+One nice aspect of this approach is that you don’t need to install Python to run the script. 
+You only need to extract WinPython and save it in a local folder.</p>
+<div class="highlight"><pre><span></span><code>;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+;  Auto reload the current script Ctrl + Alt + R
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+
+^!r::{
+    try Reload()
+    catch
+        MsgBox(&quot;Failed to reload the script.&quot;, &quot;Error&quot;, 16)
+}
+
+
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+;  AkelPad Win + A
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+
+#a:: {
+    Run(
+        &quot;.\APPS\akelpad-x64\AkelPad.exe&quot;,
+        &quot;&quot;,
+        &quot;&quot;
+    )
+}
+
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+;  OPEN x86 Book  Ctrl + Alt + X
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+^!x:: {
+    SumatraPDF := &quot;.\APPS\SumatraPDF.exe&quot;
+    mutcd := &quot;.\APPS\Files\x86_book.pdf&quot;
+    cmd := Format(&#39;&quot;{1}&quot; &quot;{2}&quot;&#39;, SumatraPDF, mutcd)
+    Run(cmd, &quot;&quot;, &quot;&quot;)
+}
+
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+;  FOR TIME SHEET APPROVAL Ctrl + Alt + A
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+^!a:: {
+    python := &quot;.\APPS\WPy64-31280\python\python.exe&quot;
+    script := &quot;.\APPS\approve_timesheet.py&quot;
+    cmd := Format(&#39;&quot;{1}&quot; &quot;{2}&quot;&#39;, python, script)
+    Run(cmd, &quot;&quot;, &quot;Hide&quot;)
+}
+
+
+::pwo::Please work on this request, thank you{!}{Enter}{Enter}George
+</code></pre></div>
+
+<p>I reread one of my favorite books <em>Programming Windows, 5th Edition</em> by Charles Petzold in October. With the help of 
+ChatGPT, I also discovered several useful tools and tips for Win32 programming.</p>
+<p>The typical recommendation for developing Win32 applications is to use Visual Studio 2022 Community Edition. However, 
+there is a very nice tool called <a href="https://github.com/Data-Oriented-House/PortableBuildTools">PortableBuildTools</a> on 
+GitHub that makes it easy to set up a Windows development environment. This approach allows you to avoid the bloated 
+Visual Studio interface while still having the essential build tools needed for Win32 development. </p>
+<p>I tried several ways to compile the Win32 example programs from the book, including CMake and <span class="caps">NMAKE</span>. The easiest 
+approach I found was to write a generic Windows batch file and use the Command Prompt to compile the program. Below is 
+the <code>build.bat</code> file I created. You’ll need to modify it if a project contains multiple <code>.c</code> or <code>.rc</code> files.</p>
+<div class="highlight"><pre><span></span><code>ECHO Call devcmd.bat to setup environment
+SET DEV_CMD_PATH=C:\BuildToolsx86\devcmd.bat
+
+REM Check if the file exists at the specified path
+IF EXIST &quot;%DEV_CMD_PATH%&quot; (
+    ECHO Found build environment script. Calling it now...
+    CALL &quot;%DEV_CMD_PATH%&quot;
+) ELSE (
+    ECHO Error: Build environment script not found at &quot;%DEV_CMD_PATH%&quot;
+    EXIT /B 
+)
+
+ECHO Starting compilation...
+
+SET CC_FLAGS=/c /W3 /O2 /MD /EHsc /D &quot;UNICODE&quot; /D &quot;_UNICODE&quot;
+SET RC_FLAGS=/l 0x409 /d &quot;UNICODE&quot; 
+SET LINK_FLAGS=kernel32.lib user32.lib gdi32.lib winspool.lib comdlg32.lib ^
+               advapi32.lib shell32.lib ole32.lib oleaut32.lib uuid.lib ^
+               odbc32.lib odbccp32.lib /nologo /subsystem:windows /machine:I386 
+
+FOR %%f IN (*.c *.cpp) DO (
+    ECHO Compiling %%f...
+
+    REM /Fo      = Specify output file/dir.
+    REM %%~nf    = The filename part of %%f (e.g., &quot;main&quot; from &quot;main.c&quot;)
+    REM %%~nf.obj = The output filename (e.g., &quot;main.obj&quot;)
+    REM %%f      = The full input filename (e.g., &quot;main.c&quot;)
+
+    cl %CC_FLAGS% /Fo%%~nf.obj %%f
+)
+ECHO C Files Compile Done.
+
+
+ECHO Compiling resources (*.rc to *.res)...
+
+FOR %%f IN (*.rc) DO (
+    ECHO Compiling resource file: %%f
+
+    REM Run the Resource Compiler (rc)
+    REM %%f     = The full input filename (e.g., &quot;app.rc&quot;)
+    REM /fo     = Specify the output filename
+    REM %%~nf   = The filename part of %%f (e.g., &quot;app&quot; from &quot;app.rc&quot;)
+    REM %%~nf.res = The output filename (e.g., &quot;app.res&quot;)
+
+    rc %RC_FLAGS% /fo %%~nf.res %%f
+)
+
+ECHO Resource compilation complete.
+
+
+REM Get the full path (e.g., C:\Path\To\MyFolder\)
+SET SCRIPT_FULL_PATH=%~dp0
+
+REM Remove the trailing backslash to make substitution easier
+SET FOLDER_NAME=%SCRIPT_FULL_PATH:~0,-1%
+
+FOR %%i IN (&quot;%FOLDER_NAME%&quot;) DO SET FOLDER_NAME=%%~nxi
+
+
+ECHO Linking object and resource files...
+
+link %LINK_FLAGS% *.obj *.res /OUT:%FOLDER_NAME%.exe
+
+ECHO Link command is complete
+
+
+ECHO Deleting all generated build files (*.obj, *.res)...
+del /Q /F *.obj *.res
+ECHO Clean up complete.
+
+ECHO Build complete.
+
+PAUSE
+</code></pre></div>
+
+<p>When developing Win32 programs, the Hex Editor <a href="https://mh-nexus.de/en/hxd/">HxD</a> can be quite helpful for inspecting 
+binaries and debugging low-level details.</p>
+<p>This post is not finished yet, and I plan to add more content in the future. </p>
+
+
+
+    </div>
+  </div>
+
+</div>
+
+   
+    <script src="https://code.jquery.com/jquery-3.4.1.slim.min.js" integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js" integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6" crossorigin="anonymous"></script>
+  </body>
+</html>

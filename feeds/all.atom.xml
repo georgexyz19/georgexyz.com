@@ -1,5 +1,148 @@
 <?xml version="1.0" encoding="utf-8"?>
-<feed xmlns="http://www.w3.org/2005/Atom"><title>George Zhang</title><link href="https://www.georgexyz.com/" rel="alternate"></link><link href="https://www.georgexyz.com/feeds/all.atom.xml" rel="self"></link><id>https://www.georgexyz.com/</id><updated>2025-09-27T10:12:00-04:00</updated><entry><title>Outlook VBA and Python Program</title><link href="https://www.georgexyz.com/outlook-vba-and-python-program.html" rel="alternate"></link><published>2025-09-20T00:19:00-04:00</published><updated>2025-09-20T00:19:00-04:00</updated><author><name>George Zhang</name></author><id>tag:www.georgexyz.com,2025-09-20:/outlook-vba-and-python-program.html</id><summary type="html">&lt;p&gt;I am trying to automate some of my Outlook tasks and have found something interesting. 
+<feed xmlns="http://www.w3.org/2005/Atom"><title>George Zhang</title><link href="https://www.georgexyz.com/" rel="alternate"></link><link href="https://www.georgexyz.com/feeds/all.atom.xml" rel="self"></link><id>https://www.georgexyz.com/</id><updated>2025-12-31T05:24:00-05:00</updated><entry><title>Some Tools and Tips</title><link href="https://www.georgexyz.com/some-tools-and-tips.html" rel="alternate"></link><published>2025-12-31T05:24:00-05:00</published><updated>2025-12-31T05:24:00-05:00</updated><author><name>George Zhang</name></author><id>tag:www.georgexyz.com,2025-12-31:/some-tools-and-tips.html</id><summary type="html">&lt;p&gt;I recently discovered some new Windows tools that I’d like to share. The first one is 
+&lt;a href="https://www.autohotkey.com/docs/v2/"&gt;AutoHotkey v2&lt;/a&gt;, a powerful automation tool for Windows.&lt;/p&gt;
+&lt;p&gt;With AutoHotkey, you can write …&lt;/p&gt;</summary><content type="html">&lt;p&gt;I recently discovered some new Windows tools that I’d like to share. The first one is 
+&lt;a href="https://www.autohotkey.com/docs/v2/"&gt;AutoHotkey v2&lt;/a&gt;, a powerful automation tool for Windows.&lt;/p&gt;
+&lt;p&gt;With AutoHotkey, you can write simple scripts that run in the background to create global keyboard shortcuts and 
+automate repetitive tasks. Below is an example of a basic script. It’s relatively easy to set up and can 
+significantly boost your productivity.&lt;/p&gt;
+&lt;p&gt;Notice that the &lt;em&gt;Ctrl + Alt + A&lt;/em&gt; shortcut invokes a &lt;a href="https://winpython.github.io/"&gt;WinPython&lt;/a&gt; script. 
+One nice aspect of this approach is that you don’t need to install Python to run the script. 
+You only need to extract WinPython and save it in a local folder.&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+;  Auto reload the current script Ctrl + Alt + R
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+
+^!r::{
+    try Reload()
+    catch
+        MsgBox(&amp;quot;Failed to reload the script.&amp;quot;, &amp;quot;Error&amp;quot;, 16)
+}
+
+
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+;  AkelPad Win + A
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+
+#a:: {
+    Run(
+        &amp;quot;.\APPS\akelpad-x64\AkelPad.exe&amp;quot;,
+        &amp;quot;&amp;quot;,
+        &amp;quot;&amp;quot;
+    )
+}
+
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+;  OPEN x86 Book  Ctrl + Alt + X
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+^!x:: {
+    SumatraPDF := &amp;quot;.\APPS\SumatraPDF.exe&amp;quot;
+    mutcd := &amp;quot;.\APPS\Files\x86_book.pdf&amp;quot;
+    cmd := Format(&amp;#39;&amp;quot;{1}&amp;quot; &amp;quot;{2}&amp;quot;&amp;#39;, SumatraPDF, mutcd)
+    Run(cmd, &amp;quot;&amp;quot;, &amp;quot;&amp;quot;)
+}
+
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+;  FOR TIME SHEET APPROVAL Ctrl + Alt + A
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+^!a:: {
+    python := &amp;quot;.\APPS\WPy64-31280\python\python.exe&amp;quot;
+    script := &amp;quot;.\APPS\approve_timesheet.py&amp;quot;
+    cmd := Format(&amp;#39;&amp;quot;{1}&amp;quot; &amp;quot;{2}&amp;quot;&amp;#39;, python, script)
+    Run(cmd, &amp;quot;&amp;quot;, &amp;quot;Hide&amp;quot;)
+}
+
+
+::pwo::Please work on this request, thank you{!}{Enter}{Enter}George
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+
+&lt;p&gt;I reread one of my favorite books &lt;em&gt;Programming Windows, 5th Edition&lt;/em&gt; by Charles Petzold in October. With the help of 
+ChatGPT, I also discovered several useful tools and tips for Win32 programming.&lt;/p&gt;
+&lt;p&gt;The typical recommendation for developing Win32 applications is to use Visual Studio 2022 Community Edition. However, 
+there is a very nice tool called &lt;a href="https://github.com/Data-Oriented-House/PortableBuildTools"&gt;PortableBuildTools&lt;/a&gt; on 
+GitHub that makes it easy to set up a Windows development environment. This approach allows you to avoid the bloated 
+Visual Studio interface while still having the essential build tools needed for Win32 development. &lt;/p&gt;
+&lt;p&gt;I tried several ways to compile the Win32 example programs from the book, including CMake and &lt;span class="caps"&gt;NMAKE&lt;/span&gt;. The easiest 
+approach I found was to write a generic Windows batch file and use the Command Prompt to compile the program. Below is 
+the &lt;code&gt;build.bat&lt;/code&gt; file I created. You’ll need to modify it if a project contains multiple &lt;code&gt;.c&lt;/code&gt; or &lt;code&gt;.rc&lt;/code&gt; files.&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;ECHO Call devcmd.bat to setup environment
+SET DEV_CMD_PATH=C:\BuildToolsx86\devcmd.bat
+
+REM Check if the file exists at the specified path
+IF EXIST &amp;quot;%DEV_CMD_PATH%&amp;quot; (
+    ECHO Found build environment script. Calling it now...
+    CALL &amp;quot;%DEV_CMD_PATH%&amp;quot;
+) ELSE (
+    ECHO Error: Build environment script not found at &amp;quot;%DEV_CMD_PATH%&amp;quot;
+    EXIT /B 
+)
+
+ECHO Starting compilation...
+
+SET CC_FLAGS=/c /W3 /O2 /MD /EHsc /D &amp;quot;UNICODE&amp;quot; /D &amp;quot;_UNICODE&amp;quot;
+SET RC_FLAGS=/l 0x409 /d &amp;quot;UNICODE&amp;quot; 
+SET LINK_FLAGS=kernel32.lib user32.lib gdi32.lib winspool.lib comdlg32.lib ^
+               advapi32.lib shell32.lib ole32.lib oleaut32.lib uuid.lib ^
+               odbc32.lib odbccp32.lib /nologo /subsystem:windows /machine:I386 
+
+FOR %%f IN (*.c *.cpp) DO (
+    ECHO Compiling %%f...
+
+    REM /Fo      = Specify output file/dir.
+    REM %%~nf    = The filename part of %%f (e.g., &amp;quot;main&amp;quot; from &amp;quot;main.c&amp;quot;)
+    REM %%~nf.obj = The output filename (e.g., &amp;quot;main.obj&amp;quot;)
+    REM %%f      = The full input filename (e.g., &amp;quot;main.c&amp;quot;)
+
+    cl %CC_FLAGS% /Fo%%~nf.obj %%f
+)
+ECHO C Files Compile Done.
+
+
+ECHO Compiling resources (*.rc to *.res)...
+
+FOR %%f IN (*.rc) DO (
+    ECHO Compiling resource file: %%f
+
+    REM Run the Resource Compiler (rc)
+    REM %%f     = The full input filename (e.g., &amp;quot;app.rc&amp;quot;)
+    REM /fo     = Specify the output filename
+    REM %%~nf   = The filename part of %%f (e.g., &amp;quot;app&amp;quot; from &amp;quot;app.rc&amp;quot;)
+    REM %%~nf.res = The output filename (e.g., &amp;quot;app.res&amp;quot;)
+
+    rc %RC_FLAGS% /fo %%~nf.res %%f
+)
+
+ECHO Resource compilation complete.
+
+
+REM Get the full path (e.g., C:\Path\To\MyFolder\)
+SET SCRIPT_FULL_PATH=%~dp0
+
+REM Remove the trailing backslash to make substitution easier
+SET FOLDER_NAME=%SCRIPT_FULL_PATH:~0,-1%
+
+FOR %%i IN (&amp;quot;%FOLDER_NAME%&amp;quot;) DO SET FOLDER_NAME=%%~nxi
+
+
+ECHO Linking object and resource files...
+
+link %LINK_FLAGS% *.obj *.res /OUT:%FOLDER_NAME%.exe
+
+ECHO Link command is complete
+
+
+ECHO Deleting all generated build files (*.obj, *.res)...
+del /Q /F *.obj *.res
+ECHO Clean up complete.
+
+ECHO Build complete.
+
+PAUSE
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+
+&lt;p&gt;When developing Win32 programs, the Hex Editor &lt;a href="https://mh-nexus.de/en/hxd/"&gt;HxD&lt;/a&gt; can be quite helpful for inspecting 
+binaries and debugging low-level details.&lt;/p&gt;
+&lt;p&gt;This post is not finished yet, and I plan to add more content in the future. &lt;/p&gt;</content><category term="posts"></category><category term="software utility"></category></entry><entry><title>Outlook VBA and Python Program</title><link href="https://www.georgexyz.com/outlook-vba-and-python-program.html" rel="alternate"></link><published>2025-09-20T00:19:00-04:00</published><updated>2025-09-20T00:19:00-04:00</updated><author><name>George Zhang</name></author><id>tag:www.georgexyz.com,2025-09-20:/outlook-vba-and-python-program.html</id><summary type="html">&lt;p&gt;I am trying to automate some of my Outlook tasks and have found something interesting. 
 Some of the emails I receive from a system include a line with latitude and …&lt;/p&gt;</summary><content type="html">&lt;p&gt;I am trying to automate some of my Outlook tasks and have found something interesting. 
 Some of the emails I receive from a system include a line with latitude and longitude 
 coordinates, like this:&lt;/p&gt;
