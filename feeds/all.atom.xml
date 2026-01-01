@@ -7365,6 +7365,16 @@ in year 2025.&lt;/p&gt;
 &lt;li&gt;2024: &lt;a href="/files/calendar/2024.svg"&gt;svg&lt;/a&gt; &lt;a href="/files/calendar/2024.pdf"&gt;pdf&lt;/a&gt;&lt;/li&gt;
 &lt;li&gt;2025: &lt;a href="/files/calendar/2025.svg"&gt;svg&lt;/a&gt; &lt;a href="/files/calendar/2025.pdf"&gt;pdf&lt;/a&gt;&lt;/li&gt;
 &lt;/ul&gt;
+&lt;h3&gt;1/1/2026 Update&lt;/h3&gt;
+&lt;p&gt;I am adding the 2026 to 2030 calendars to this post. I am glad the code I wrote back in 2019 
+still works fine. &lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;2026: &lt;a href="/files/calendar/2026.svg"&gt;svg&lt;/a&gt; &lt;a href="/files/calendar/2026.pdf"&gt;pdf&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;2027: &lt;a href="/files/calendar/2027.svg"&gt;svg&lt;/a&gt; &lt;a href="/files/calendar/2027.pdf"&gt;pdf&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;2028: &lt;a href="/files/calendar/2028.svg"&gt;svg&lt;/a&gt; &lt;a href="/files/calendar/2028.pdf"&gt;pdf&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;2029: &lt;a href="/files/calendar/2029.svg"&gt;svg&lt;/a&gt; &lt;a href="/files/calendar/2029.pdf"&gt;pdf&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;2030: &lt;a href="/files/calendar/2030.svg"&gt;svg&lt;/a&gt; &lt;a href="/files/calendar/2030.pdf"&gt;pdf&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
 &lt;p&gt;Here are the code in create_calendar.inx and create_calendar.py files. &lt;/p&gt;
 &lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;&lt;span class="cp"&gt;&amp;lt;?xml version=&amp;quot;1.0&amp;quot; encoding=&amp;quot;UTF-8&amp;quot;?&amp;gt;&lt;/span&gt;
 &lt;span class="nt"&gt;&amp;lt;inkscape-extension&lt;/span&gt; &lt;span class="na"&gt;xmlns=&lt;/span&gt;&lt;span class="s"&gt;&amp;quot;http://www.inkscape.org/namespace/inkscape/extension&amp;quot;&lt;/span&gt;&lt;span class="nt"&gt;&amp;gt;&lt;/span&gt;
