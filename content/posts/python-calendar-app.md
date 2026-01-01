@@ -42,6 +42,18 @@ in year 2025.
 * 2024: [svg](/files/calendar/2024.svg) [pdf](/files/calendar/2024.pdf)
 * 2025: [svg](/files/calendar/2025.svg) [pdf](/files/calendar/2025.pdf)
 
+### 1/1/2026 Update
+
+I am adding the 2026 to 2030 calendars to this post. I am glad the code I wrote back in 2019 
+still works fine. 
+
+* 2026: [svg](/files/calendar/2026.svg) [pdf](/files/calendar/2026.pdf)
+* 2027: [svg](/files/calendar/2027.svg) [pdf](/files/calendar/2027.pdf)
+* 2028: [svg](/files/calendar/2028.svg) [pdf](/files/calendar/2028.pdf)
+* 2029: [svg](/files/calendar/2029.svg) [pdf](/files/calendar/2029.pdf)
+* 2030: [svg](/files/calendar/2030.svg) [pdf](/files/calendar/2030.pdf)
+
+
 Here are the code in create_calendar.inx and create_calendar.py files. 
 
 ```xml
